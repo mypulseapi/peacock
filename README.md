@@ -5,10 +5,13 @@ Plain HTML + Tailwind CSS v4 (via the Tailwind CLI), themed with the Pulse
 
 ## Usage
 
+This project uses [pnpm](https://pnpm.io) (`brew install pnpm`). Don't use npm here —
+it would create a second lockfile.
+
 ```bash
-npm install
-npm run dev     # watch HTML + src/input.css → dist/output.css
-npm run build   # one-off minified build
+pnpm install
+pnpm dev        # watch HTML + src/input.css → dist/output.css
+pnpm build      # one-off minified build
 ```
 
 Then open `index.html` (home) or `components.html` (component spec) in your browser.

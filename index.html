@@ -3,38 +3,350 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rainbow</title>
+    <title>Pulse — Know which product data to fix first</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./dist/output.css" />
   </head>
-  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
-    <main class="mx-auto flex max-w-4xl flex-col items-center gap-12 px-6 py-24 text-center">
-      <h1
-        class="animate-rainbow bg-linear-to-r from-red-500 via-yellow-400 via-green-400 via-sky-500 to-violet-500 bg-[length:200%_auto] bg-clip-text text-6xl font-extrabold tracking-tight text-transparent sm:text-7xl"
-      >
-        Rainbow
-      </h1>
-      <p class="max-w-xl text-lg text-slate-400">
-        A plain HTML page styled with Tailwind CSS v4.
-      </p>
+  <body>
+    <!-- Announcement bar -->
+    <div class="bg-void px-6 py-2 text-center text-xs text-rose-100">
+      The Decision Audit is open for one category per merchant.
+      <a href="#request" class="ml-1 font-semibold text-coral-light underline-offset-4 hover:underline">Request yours →</a>
+    </div>
 
-      <div class="grid w-full grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7">
-        <div class="aspect-square rounded-2xl bg-red-500 shadow-lg shadow-red-500/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-orange-500 shadow-lg shadow-orange-500/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-yellow-400 shadow-lg shadow-yellow-400/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-green-500 shadow-lg shadow-green-500/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-sky-500 shadow-lg shadow-sky-500/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-indigo-500 shadow-lg shadow-indigo-500/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-violet-500 shadow-lg shadow-violet-500/30 transition hover:-translate-y-1"></div>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur-md">
+      <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
+        <a href="./index.html" class="flex items-center gap-2.5">
+          <span class="flex size-8 items-center justify-center rounded-md border-2 border-coral bg-coral-tint p-1">
+            <svg class="size-full text-coral" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <rect x="2" y="3" width="7" height="7" stroke="#F59E0B" stroke-dasharray="2 2" />
+              <path d="M12 7h9" />
+              <path d="M3 16h3l2-3 3 7 3-6 2 2h6" />
+            </svg>
+          </span>
+          <span class="font-display text-xl font-extrabold tracking-tight text-void">Pulse</span>
+        </a>
+        <nav class="hidden items-center gap-7 text-sm font-medium text-muted lg:flex">
+          <a href="#how" class="hover:text-coral">Product</a>
+          <a href="#why" class="hover:text-coral">Why Pulse</a>
+          <a href="#data" class="hover:text-coral">Your data</a>
+          <a href="./components.html" class="hover:text-coral">Components</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="#" class="btn-ghost btn-sm hidden sm:inline-flex">Sign in</a>
+          <a href="#request" class="btn-primary btn-sm">Request an audit</a>
+        </div>
       </div>
+    </header>
 
-      <a
-        href="https://tailwindcss.com/docs"
-        class="animate-rainbow rounded-full bg-linear-to-r from-red-500 via-yellow-400 via-green-400 via-sky-500 to-violet-500 bg-[length:200%_auto] p-[2px]"
-      >
-        <span class="block rounded-full bg-slate-950 px-6 py-3 font-semibold transition hover:bg-transparent hover:text-slate-950">
-          Read the Tailwind docs
-        </span>
-      </a>
+    <main>
+      <!-- Hero -->
+      <section class="blueprint-grid border-b border-line bg-white">
+        <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-12 lg:px-8 lg:py-28">
+          <div class="lg:col-span-7">
+            <span class="badge-coral mb-6">DECISION AUDIT · 48-HOUR TURNAROUND</span>
+            <h1 class="text-h1 sm:text-5xl lg:text-6xl">Know which product data to fix first.</h1>
+            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+              Pulse measures your product data against what shoppers actually decide on. It is not a PIM. Send one
+              category export and get a ranked repair list back within 48 hours.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#request" class="btn-primary">Request a Decision Audit</a>
+              <a href="#how" class="btn-secondary">See how it works</a>
+            </div>
+          </div>
+
+          <!-- Readiness preview card -->
+          <div class="lg:col-span-5">
+            <div class="card">
+              <div class="flex items-center justify-between">
+                <span class="eyebrow">Laptops · 216 products</span>
+                <span class="badge-warning">347 gaps found</span>
+              </div>
+              <div class="mt-5 flex items-end gap-3">
+                <span class="font-display text-5xl font-extrabold text-void">94</span>
+                <span class="mb-1.5 font-mono text-data text-muted">/ 216 shopper-ready</span>
+              </div>
+              <div class="mt-4 h-2 overflow-hidden rounded-full bg-surface-1">
+                <div class="h-full w-[43.5%] rounded-full bg-coral"></div>
+              </div>
+              <div class="mt-6 overflow-hidden rounded-lg border border-line font-mono text-data">
+                <div class="grid grid-cols-3 bg-surface-1 px-3 py-2 text-xs text-muted">
+                  <span>Product</span><span>Screen size</span><span>RAM</span>
+                </div>
+                <div class="grid grid-cols-3 items-center border-t border-line px-3 py-2">
+                  <span class="truncate">Aero 14</span><span>14"</span><span>16 GB</span>
+                </div>
+                <div class="grid grid-cols-3 items-center border-t border-line px-3 py-2">
+                  <span class="truncate">Studio Pro</span>
+                  <span><span class="missing-cell rounded px-2 py-0.5 text-xs">— — —</span></span>
+                  <span>32 GB</span>
+                </div>
+                <div class="grid grid-cols-3 items-center border-t border-line px-3 py-2">
+                  <span class="truncate">Everyday Ultra</span>
+                  <span><span class="missing-cell rounded px-2 py-0.5 text-xs">— — —</span></span>
+                  <span><span class="missing-cell rounded px-2 py-0.5 text-xs">— — —</span></span>
+                </div>
+              </div>
+              <p class="mt-4 text-xs text-muted">Every blank cell is a question your catalogue cannot answer.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Two shelves -->
+      <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <div class="mb-10 flex items-baseline gap-3 border-b border-line pb-4">
+          <span class="section-tag">01</span>
+          <h2 class="text-h2">Two shelves, the same missing fact.</h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="card">
+            <span class="eyebrow">Consumer goods</span>
+            <h3 class="mt-3 text-h3">A parent buying washing powder for baby skin</h3>
+            <p class="mt-2 text-body text-muted">
+              "Fragrance-free" is the one fact they need. It was never recorded, so the filter they look for does not
+              exist.
+            </p>
+            <div class="mt-5 flex items-center gap-3 font-mono text-data">
+              <span class="text-muted">fragrance_free:</span>
+              <span class="missing-cell rounded px-2 py-0.5">never recorded</span>
+            </div>
+          </article>
+          <article class="card">
+            <span class="eyebrow">Electronics</span>
+            <h3 class="mt-3 text-h3">A designer buying a laptop</h3>
+            <p class="mt-2 text-body text-muted">
+              Screen size is in 136 of 216 product titles — and in nobody's attributes.
+            </p>
+            <div class="mt-5 flex items-center gap-3 font-mono text-data">
+              <span class="text-muted">screen_size:</span>
+              <span class="missing-cell rounded px-2 py-0.5">only in titles</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Research stats -->
+      <section class="bg-void text-white">
+        <div class="blueprint-grid-dark">
+          <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <span class="badge border-rose-800 bg-rose-950 text-rose-200">INDEPENDENT RESEARCH</span>
+            <h2 class="mt-4 text-h2 text-white">Independent research says the same thing.</h2>
+            <div class="mt-10 grid gap-6 md:grid-cols-3">
+              <div class="rounded-xl border border-rose-950 bg-void-elevated p-6">
+                <div class="font-display text-5xl font-extrabold text-coral-light">38%</div>
+                <p class="mt-3 text-body text-rose-100">of retailers show an attribute but offer no filter for it.</p>
+                <p class="mt-4 font-mono text-xs text-rose-300/70">Baymard Institute</p>
+              </div>
+              <div class="rounded-xl border border-rose-950 bg-void-elevated p-6">
+                <div class="font-display text-5xl font-extrabold text-coral-light">79%</div>
+                <p class="mt-3 text-body text-rose-100">of product pages do not ship a full set of structured data.</p>
+                <p class="mt-4 font-mono text-xs text-rose-300/70">Adobe Analytics</p>
+              </div>
+              <div class="rounded-xl border border-rose-950 bg-void-elevated p-6">
+                <div class="font-display text-5xl font-extrabold text-coral-light">393%</div>
+                <p class="mt-3 text-body text-rose-100">growth in AI traffic to US retail — and agents don't guess.</p>
+                <p class="mt-4 font-mono text-xs text-rose-300/70">Adobe Analytics</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Budget comparison -->
+      <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <div class="mb-10 flex items-baseline gap-3 border-b border-line pb-4">
+          <span class="section-tag">02</span>
+          <h2 class="text-h2">The emptiest field is usually the wrong one to fix.</h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="card">
+            <span class="eyebrow">Fix the emptiest field</span>
+            <dl class="mt-5 grid grid-cols-2 gap-4">
+              <div>
+                <dt class="font-mono text-xs text-muted">Products to touch</dt>
+                <dd class="font-display text-4xl font-extrabold text-void">162</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-xs text-muted">Shoppers helped</dt>
+                <dd class="font-display text-4xl font-extrabold text-void">6</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="card border-coral ring-1 ring-coral">
+            <div class="flex items-center justify-between">
+              <span class="eyebrow text-coral">Fix the deciding field</span>
+              <span class="badge-coral">#1 RANKED</span>
+            </div>
+            <dl class="mt-5 grid grid-cols-2 gap-4">
+              <div>
+                <dt class="font-mono text-xs text-muted">Products to touch</dt>
+                <dd class="font-display text-4xl font-extrabold text-void">80</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-xs text-muted">Shoppers helped</dt>
+                <dd class="font-display text-4xl font-extrabold text-coral">94</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <p class="mt-4 font-mono text-xs text-muted">Screen size ranked first in all 12 runs. Positions two to four moved.</p>
+      </section>
+
+      <!-- How it works -->
+      <section id="how" class="scroll-mt-20 border-y border-line bg-white">
+        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+          <div class="mb-10 flex items-baseline gap-3 border-b border-line pb-4">
+            <span class="section-tag">03</span>
+            <h2 class="text-h2">How does it work?</h2>
+          </div>
+          <ol class="grid gap-6 md:grid-cols-3">
+            <li class="card bg-surface-0">
+              <span class="font-mono text-sm font-bold text-coral">01</span>
+              <h3 class="mt-2 text-h3">Send one category</h3>
+              <p class="mt-2 text-body text-muted">Upload a CSV or JSON export. No code, no tag, no system access.</p>
+            </li>
+            <li class="card bg-surface-0">
+              <span class="font-mono text-sm font-bold text-coral">02</span>
+              <h3 class="mt-2 text-h3">Get the Decision Audit</h3>
+              <p class="mt-2 text-body text-muted">
+                Within 48 hours: the ranked list, the affected products and your readiness number.
+              </p>
+            </li>
+            <li class="card bg-surface-0">
+              <span class="font-mono text-sm font-bold text-coral">03</span>
+              <h3 class="mt-2 text-h3">Fix it, then verify</h3>
+              <p class="mt-2 text-body text-muted">Fix the data yourself or with Pulse, then re-measure to see what changed.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Why Pulse -->
+      <section id="why" class="mx-auto max-w-7xl scroll-mt-20 px-6 py-20 lg:px-8">
+        <div class="mb-10 flex items-baseline gap-3 border-b border-line pb-4">
+          <span class="section-tag">04</span>
+          <h2 class="text-h2">Five reasons this is worth half an hour.</h2>
+        </div>
+        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <li class="card p-5">
+            <h3 class="text-base font-bold">Costliest gap first</h3>
+            <p class="mt-2 text-xs leading-relaxed text-muted">Ranked by what shoppers decide on, not by how empty a field is.</p>
+          </li>
+          <li class="card p-5">
+            <h3 class="text-base font-bold">No integration</h3>
+            <p class="mt-2 text-xs leading-relaxed text-muted">One export file. No code, no tag, no access to your systems.</p>
+          </li>
+          <li class="card p-5">
+            <h3 class="text-base font-bold">No customer data</h3>
+            <p class="mt-2 text-xs leading-relaxed text-muted">The audit reads product data only.</p>
+          </li>
+          <li class="card p-5">
+            <h3 class="text-base font-bold">Mostly recoverable</h3>
+            <p class="mt-2 text-xs leading-relaxed text-muted">Most gaps can be filled from text you already have.</p>
+          </li>
+          <li class="card p-5">
+            <h3 class="text-base font-bold">Measured results</h3>
+            <p class="mt-2 text-xs leading-relaxed text-muted">Re-measure after the fix to show what changed.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Data -->
+      <section id="data" class="scroll-mt-20 border-y border-line bg-white">
+        <div class="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-12 lg:px-8">
+          <div class="lg:col-span-5">
+            <span class="section-tag">05</span>
+            <h2 class="mt-4 text-h2">What happens to my data?</h2>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="badge-success">Product data only</span>
+              <span class="badge-success">No cookie, no login</span>
+              <span class="badge-success">Tenant-isolated</span>
+              <span class="badge-success">Deleted on request</span>
+            </div>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="overflow-hidden rounded-xl border border-line">
+              <div class="bg-surface-1 px-4 py-2.5 eyebrow">What the audit reads</div>
+              <ul class="divide-y divide-line font-mono text-data">
+                <li class="flex items-center justify-between px-4 py-3">
+                  <span>Product data</span><span class="badge-success">Read</span>
+                </li>
+                <li class="flex items-center justify-between px-4 py-3">
+                  <span>Order history</span><span class="badge border-line bg-surface-1 text-muted">Not read</span>
+                </li>
+                <li class="flex items-center justify-between px-4 py-3">
+                  <span>Cookies &amp; logins</span><span class="badge border-line bg-surface-1 text-muted">Not read</span>
+                </li>
+                <li class="flex items-center justify-between px-4 py-3">
+                  <span>Customer records</span><span class="badge border-line bg-surface-1 text-muted">Not read</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section id="request" class="scroll-mt-20 px-6 py-20 lg:px-8">
+        <div class="card-dark blueprint-grid-dark mx-auto max-w-5xl p-10 text-center lg:p-14">
+          <h2 class="text-h2 text-white sm:text-4xl">Send us one category. See what comes back.</h2>
+          <p class="mx-auto mt-4 max-w-2xl text-rose-100">
+            Pick a shelf. Get the ranked list, the affected products and a half-hour walkthrough with your
+            merchandising team.
+          </p>
+          <div class="mt-8 flex flex-wrap justify-center gap-3">
+            <a href="mailto:getintouch@thepulseapi.com" class="btn-primary">Request a Decision Audit</a>
+            <a href="#how" class="btn border border-rose-800 text-rose-100 hover:bg-void-elevated">Read the method first</a>
+          </div>
+          <p class="mt-6 font-mono text-xs text-rose-300/70">No obligation at any step.</p>
+        </div>
+      </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-line bg-white">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
+        <div>
+          <span class="font-display text-lg font-extrabold text-void">Pulse</span>
+          <p class="mt-2 text-xs text-muted">Know which product data to fix first.</p>
+          <a href="mailto:getintouch@thepulseapi.com" class="mt-4 block font-mono text-xs text-coral hover:underline">getintouch@thepulseapi.com</a>
+        </div>
+        <div>
+          <h3 class="eyebrow">Product</h3>
+          <ul class="mt-3 space-y-2 text-sm text-ink">
+            <li><a href="#" class="hover:text-coral">Decision Audit</a></li>
+            <li><a href="#" class="hover:text-coral">Decision Verification</a></li>
+            <li><a href="#" class="hover:text-coral">Decision Monitor</a></li>
+            <li><a href="#" class="hover:text-coral">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="eyebrow">Company</h3>
+          <ul class="mt-3 space-y-2 text-sm text-ink">
+            <li><a href="#" class="hover:text-coral">About us</a></li>
+            <li><a href="#" class="hover:text-coral">Contact</a></li>
+            <li><a href="#" class="hover:text-coral">Career</a> <span class="badge-coral ml-1 py-0 text-[10px]">Hiring</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="eyebrow">Legal</h3>
+          <ul class="mt-3 space-y-2 text-sm text-ink">
+            <li><a href="#" class="hover:text-coral">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-coral">Terms of Service</a></li>
+            <li><a href="#" class="hover:text-coral">Cookie Policy</a></li>
+            <li><a href="#" class="hover:text-coral">GDPR</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-line px-6 py-5 text-center font-mono text-xs text-muted">© 2026 Pulse. All rights reserved.</div>
+    </footer>
   </body>
 </html>

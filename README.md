@@ -1,4 +1,4 @@
-# rainbow-demo
+# Rainbow
 
 Plain HTML + Tailwind CSS v4 (via the Tailwind CLI).
 

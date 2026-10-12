@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rainbow Demo</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <main class="mx-auto flex max-w-4xl flex-col items-center gap-12 px-6 py-24 text-center">
+      <h1
+        class="animate-rainbow bg-linear-to-r from-red-500 via-yellow-400 via-green-400 via-sky-500 to-violet-500 bg-[length:200%_auto] bg-clip-text text-6xl font-extrabold tracking-tight text-transparent sm:text-7xl"
+      >
+        Rainbow Demo
+      </h1>
+      <p class="max-w-xl text-lg text-slate-400">
+        A plain HTML page styled with Tailwind CSS v4.
+      </p>
+
+      <div class="grid w-full grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7">
+        <div class="aspect-square rounded-2xl bg-red-500 shadow-lg shadow-red-500/30 transition hover:-translate-y-1"></div>
+        <div class="aspect-square rounded-2xl bg-orange-500 shadow-lg shadow-orange-500/30 transition hover:-translate-y-1"></div>
+        <div class="aspect-square rounded-2xl bg-yellow-400 shadow-lg shadow-yellow-400/30 transition hover:-translate-y-1"></div>
+        <div class="aspect-square rounded-2xl bg-green-500 shadow-lg shadow-green-500/30 transition hover:-translate-y-1"></div>
+        <div class="aspect-square rounded-2xl bg-sky-500 shadow-lg shadow-sky-500/30 transition hover:-translate-y-1"></div>
+        <div class="aspect-square rounded-2xl bg-indigo-500 shadow-lg shadow-indigo-500/30 transition hover:-translate-y-1"></div>
+        <div class="aspect-square rounded-2xl bg-violet-500 shadow-lg shadow-violet-500/30 transition hover:-translate-y-1"></div>
+      </div>
+
+      <a
+        href="https://tailwindcss.com/docs"
+        class="animate-rainbow rounded-full bg-linear-to-r from-red-500 via-yellow-400 via-green-400 via-sky-500 to-violet-500 bg-[length:200%_auto] p-[2px]"
+      >
+        <span class="block rounded-full bg-slate-950 px-6 py-3 font-semibold transition hover:bg-transparent hover:text-slate-950">
+          Read the Tailwind docs
+        </span>
+      </a>
+    </main>
+  </body>
+</html>

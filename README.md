@@ -27,7 +27,8 @@ Then open `index.html` (home) or `components.html` (component spec) in your brow
 | `surface-0/1`, `line` | `#FAFCFC` / `#F1F5F5` / `#E2E8F0` | Backgrounds, borders |
 | `success` / `warning` / `critical` | `#059669` / `#D97706` / `#DC2626` | Audit status |
 
-Fonts: `font-display` (Plus Jakarta Sans), `font-sans` (Inter), `font-mono` (JetBrains Mono).
+Fonts: `font-display` (Plus Jakarta Sans), `font-sans` (Inter). There is no monospace font —
+for numbers, SKUs and data use Inter with `tabular-nums` so digits line up.
 Type scale: `text-h1`, `text-h2`, `text-h3`, `text-body`, `text-data`.
 
 Component classes: `btn-primary`, `btn-secondary`, `btn-ghost`, `btn-sm`, `card`, `card-dark`,

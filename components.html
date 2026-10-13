@@ -124,40 +124,40 @@
           <div class="card space-y-5">
             <div>
               <div class="flex items-center justify-between tabular-nums text-data">
-                <span class="flex items-center gap-2 font-semibold text-void"><span class="badge-primary">#1</span>Screen size</span>
-                <span class="text-primary">100%</span>
+                <span class="flex items-center gap-2 font-semibold text-void"><span class="badge-signal">#1</span>Screen size</span>
+                <span class="text-signal-dark">100%</span>
               </div>
-              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-full rounded-full bg-primary"></div></div>
+              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-full rounded-full bg-signal"></div></div>
             </div>
             <div>
               <div class="flex items-center justify-between tabular-nums text-data">
                 <span class="flex items-center gap-2 text-ink"><span class="badge border-line text-muted">#2</span>Storage capacity</span>
                 <span class="text-muted">70%</span>
               </div>
-              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-7/10 rounded-full bg-primary/70"></div></div>
+              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-7/10 rounded-full bg-signal/70"></div></div>
             </div>
             <div>
               <div class="flex items-center justify-between tabular-nums text-data">
                 <span class="flex items-center gap-2 text-ink"><span class="badge border-line text-muted">#3</span>Memory / RAM</span>
                 <span class="text-muted">50%</span>
               </div>
-              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-1/2 rounded-full bg-primary/50"></div></div>
+              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-1/2 rounded-full bg-signal/50"></div></div>
             </div>
             <div>
               <div class="flex items-center justify-between tabular-nums text-data">
                 <span class="flex items-center gap-2 text-ink"><span class="badge border-line text-muted">#4</span>Battery life</span>
                 <span class="text-muted">35%</span>
               </div>
-              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-7/20 rounded-full bg-primary/35"></div></div>
+              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-7/20 rounded-full bg-signal/35"></div></div>
             </div>
             <div>
               <div class="flex items-center justify-between tabular-nums text-data">
                 <span class="flex items-center gap-2 text-ink"><span class="badge border-line text-muted">#5</span>Processor clock</span>
                 <span class="text-muted">20%</span>
               </div>
-              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-1/5 rounded-full bg-primary/20"></div></div>
+              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-1/5 rounded-full bg-signal/20"></div></div>
             </div>
-            <p class="border-t border-line pt-4 text-xs text-muted">Only rank #1 uses the solid primary colour; lower ranks use tints of it.</p>
+            <p class="border-t border-line pt-4 text-xs text-muted">Only rank #1 uses the solid signal colour; lower ranks use tints of it.</p>
           </div>
         </section>
 
@@ -204,7 +204,7 @@
               <button class="btn-primary btn-sm">Small</button>
               <button class="btn-primary" disabled>Disabled</button>
             </div>
-            <p class="text-xs text-muted">One per view. Primary CTAs and the #1 ranked fix only.</p>
+            <p class="text-xs text-muted">Main action, one per view. The #1 ranked item uses the signal colour instead.</p>
           </div>
           <div class="card space-y-4">
             <span class="eyebrow">.btn-secondary</span>
@@ -238,28 +238,32 @@
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           <div class="overflow-hidden rounded-xl border border-line bg-card">
             <div class="h-20 bg-primary"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-void">primary</div><div class="text-muted">CTAs, #1 ranked</div></div>
+            <div class="p-3 text-xs"><div class="font-bold text-void">primary</div><div class="text-muted">Indigo · buttons, links, active (60%)</div></div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
-            <div class="h-20 bg-gap"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-void">gap</div><div class="text-muted">Missing data only</div></div>
+            <div class="h-20 bg-signal"></div>
+            <div class="p-3 text-xs"><div class="font-bold text-void">signal</div><div class="text-muted">Coral · one highlight per view (30%)</div></div>
+          </div>
+          <div class="overflow-hidden rounded-xl border border-line bg-card">
+            <div class="h-20 bg-accent"></div>
+            <div class="p-3 text-xs"><div class="font-bold text-void">accent</div><div class="text-muted">Violet · personalisation (10%)</div></div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
             <div class="h-20 bg-void"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-void">void</div><div class="text-muted">Headlines, dark bands</div></div>
+            <div class="p-3 text-xs"><div class="font-bold text-void">void / ink</div><div class="text-muted">Ink · text, dark bands</div></div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
-            <div class="h-20 bg-ink"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-void">ink</div><div class="text-muted">Body text</div></div>
+            <div class="h-20 bg-success-line"></div>
+            <div class="p-3 text-xs"><div class="font-bold text-void">success</div><div class="text-muted">Mint · ready / live</div></div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
-            <div class="h-20 border-b border-line bg-surface-1"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-void">surface-1</div><div class="text-muted">Wells, table headers</div></div>
+            <div class="h-20 border-b border-line bg-surface-0"></div>
+            <div class="p-3 text-xs"><div class="font-bold text-void">surface-0</div><div class="text-muted">Mist · page background</div></div>
           </div>
-          <div class="overflow-hidden rounded-xl border border-line bg-card">
-            <div class="h-20 bg-success"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-void">success</div><div class="text-muted">Status: ready</div></div>
-          </div>
+        </div>
+        <div class="mt-4 overflow-hidden rounded-xl border border-line bg-card">
+          <div class="h-20 bg-brand-gradient"></div>
+          <div class="p-3 text-xs"><div class="font-bold text-void">bg-brand-gradient</div><div class="text-muted">Coral → Indigo · big brand moments only</div></div>
         </div>
       </section>
     </main>

@@ -1,8 +1,8 @@
 # DESIGN.md — Pulse Design System
 
 Source of truth for how every page and component in this project looks and reads.
-Origin: Google Stitch project "Pulse Brand Guidelines System" → screen
-"Pulse — Brand Guidelines (Electric Coral)" (first demo palette — colours will change).
+Brand colours: Figma "Pulse Design Work" › Branding › **Pulse Color** (actual swatch fills).
+Layout, components and voice: originally from the Google Stitch "Pulse Brand Guidelines System".
 All tokens live in `src/input.css`.
 
 Live reference: `components.html` shows every component below rendered with the real classes.
@@ -11,8 +11,9 @@ Live reference: `components.html` shows every component below rendered with the 
 
 ## 1. Principles
 
-1. **Flat and typographic.** Matte, opaque fills. No gradients, no glassmorphism, no glow,
-   no decorative illustration or stock imagery. Depth comes from 1px borders, spacing and `shadow-sm` only.
+1. **Flat and typographic.** Matte, opaque fills. No glassmorphism, no glow, no decorative
+   illustration or stock imagery. Depth comes from 1px borders, spacing and `shadow-sm` only.
+   The only gradient is the brand gradient (`bg-brand-gradient`, see §2).
 2. **Data first.** Visual interest comes from tables, ranked lists, scores and status badges —
    not decoration.
 3. **Colour has a job.** Every colour below has one meaning. Never use a colour outside its role.
@@ -21,7 +22,16 @@ Live reference: `components.html` shows every component below rendered with the 
 ## 2. Colour tokens
 
 **The palette is not final.** Every colour is defined once, in the `COLOURS` block of `@theme` in
-`src/input.css`. To re-theme the site, change the values there — never touch the HTML.
+`src/input.css`, in two layers:
+
+1. **Brand palette** — the 6 base colours from Figma (`--brand-ink`, `--brand-indigo`, `--brand-coral`,
+   `--brand-violet`, `--brand-mint`, `--brand-mist`). **To re-theme, change these hex values.**
+   They are not utilities — never use them in HTML.
+2. **Roles** — what pages use (`primary`, `signal`, `void` …). Shades are derived from the brand palette with
+   `color-mix(in oklab, …)` formulas, so they follow automatically. The mix percentages were checked for
+   WCAG AA contrast; if you change a brand colour, re-check contrast.
+
+Brand proportions (Figma): **Indigo 60%** (platform colour) · **Coral 30%** · **Violet 10%**.
 
 Rules:
 - Use only the token classes below (`bg-primary`, `text-muted`, `border-line` …). Tailwind's default palette
@@ -34,28 +44,36 @@ Rules:
 
 | Token | Role — and the only place it may be used |
 | --- | --- |
-| `primary` | Primary CTAs, active filters, the **#1** ranked item. Never a background filler. Max one solid-primary CTA per view. |
+| `primary` | **Indigo.** Buttons, links, active navigation and filters, brand marks, section tags. |
 | `primary-dark` | Hover / pressed state of primary; text in primary badges. |
 | `primary-light` | Primary on dark (`void`) backgrounds. |
 | `primary-tint` / `primary-line` | Background / border of primary chips and badges. |
 | `on-primary` | Text and icons on a primary fill. |
+| `signal` | **Coral — the alive signal, use once per view:** the #1 ranked item (fill, bar, ring, large number ≥ 24px). |
+| `signal-dark` | Small text in the signal colour (labels, small numbers) — plain `signal` is too light for small text. |
+| `signal-tint` / `signal-line` | Background / border of `badge-signal`. |
+| `accent` / `accent-tint` | **Violet — personalisation** highlights (10%). Not used on pages yet. |
 | `gap` | **Missing data only** — dashed empty cells, missing attributes, catalogue leaks. Never for branding. |
 | `gap-bg` / `gap-cell` / `gap-text` / `gap-border` | Panel fill / dashed-cell fill / text / border for gap elements. |
 | `gap-dark` / `gap-text-dark` | Gap border / text on dark backgrounds. |
-| `void` | Headlines and dark bands. |
+| `void` | **Ink.** Headlines and dark bands. |
 | `void-elevated` | Cards on a dark band. |
 | `void-line` / `void-line-strong` | Hairlines / accent rules on dark. |
 | `void-text` / `void-muted` / `on-void` | Body text / captions / headings and numbers on dark. |
 | `card` | Cards, panels, inputs, header background. |
-| `surface-0` | Page background (set on `body`). |
+| `surface-0` | **Mist.** Page background (set on `body`). |
 | `surface-1` | Table headers, wells, progress tracks. |
 | `line` | All 1px borders and dividers. |
 | `ink` | Body text, table values. |
 | `muted` | Captions, labels, metadata, secondary text. |
-| `success` (+ `-bg`, `-line`) | Status: complete / ready. |
+| `success` (+ `-bg`, `-line`) | **Mint.** Status: complete / ready. `success` is Mint darkened for readable text. |
 | `warning` (+ `-bg`, `-line`) | Status: degraded / low confidence. |
 | `critical` (+ `-bg`, `-line`) | Status: blocker / attribute missing completely. |
 | `grid-line` / `grid-line-dark` | Used only inside `blueprint-grid` / `blueprint-grid-dark`. |
+
+**Brand gradient:** `bg-brand-gradient` — Coral → Indigo at 112° (Figma "gradient"), built from the `signal`
+and `primary` tokens. Allowed for big brand moments (hero or closing CTA backgrounds, dark bands) — at most one
+per page, never behind small text. Not used on pages yet.
 
 Status colours are **only** for audit status — never decorative.
 
@@ -132,7 +150,7 @@ and every section separated by a horizontal hairline.
 
 | Class | What it is |
 | --- | --- |
-| `btn-primary` | Primary filled button. Main action. |
+| `btn-primary` | Indigo filled button. Main action — one per view. |
 | `btn-secondary` | White, bordered. Supporting action next to a primary. |
 | `btn-ghost` | No border. Low-emphasis utilities. |
 | `btn-sm` | Size modifier — combine: `btn-primary btn-sm`. |
@@ -140,10 +158,11 @@ and every section separated by a horizontal hairline.
 | `card` | `bg-card` panel, `border-line`, `rounded-xl`, `p-6`, `shadow-sm`. |
 | `card-dark` | `void` panel for scores and the final CTA. |
 | `eyebrow` | Small uppercase label above titles. |
-| `section-tag` | Numbered primary chip before an `h2` (`01`, `02` …). |
-| `badge-primary` / `badge-success` / `badge-warning` / `badge-critical` | Pill labels. Status badges map to audit states only. |
+| `section-tag` | Numbered primary (Indigo) chip before an `h2` (`01`, `02` …). |
+| `badge-primary` / `badge-signal` (the #1 item only) / `badge-success` / `badge-warning` / `badge-critical` | Pill labels. Status badges map to audit states only. |
 | `missing-cell` / `missing-cell-dark` | **Signature motif**: dashed amber box marking missing data. |
 | `blueprint-grid` / `blueprint-grid-dark` | Faint 24px grid background — behind mockups, visuals, dark bands and the final CTA. |
+| `bg-brand-gradient` | Coral → Indigo brand gradient (see §2). |
 | `frame` / `frame-dark` | Page column with continuous vertical hairlines (see §4). |
 | `reveal` | Fades + slides an element up 1rem when it scrolls into view. |
 | `reveal-bar` | Grows a bar from the left edge when it scrolls into view. |
@@ -160,8 +179,8 @@ Section header (use for every `h2` section):
 </div>
 ```
 
-Ranked list: only rank **#1** is solid `bg-primary` + `badge-primary`; lower ranks use tints
-(`bg-primary/70`, `/50`, `/35`, `/20`) and neutral badges (`badge border-line text-muted`).
+Ranked list: only rank **#1** is solid `bg-signal` + `badge-signal`; lower ranks use tints
+(`bg-signal/70`, `/50`, `/35`, `/20`) and neutral badges (`badge border-line text-muted`).
 
 Data table: wrapper `overflow-x-auto rounded-xl border border-line bg-card shadow-sm`;
 `thead` `bg-surface-1 text-xs text-muted`; rows `divide-y divide-line`; values `tabular-nums text-data`;
@@ -232,9 +251,9 @@ Quietly confident, empirical, calm. Peer to a merchandising lead.
 
 ## 9. Never
 
-- Gradients, glassmorphism, neon/glow shadows, `shadow-lg`+ on light cards.
+- Gradients other than `bg-brand-gradient`; glassmorphism, neon/glow shadows, `shadow-lg`+ on light cards.
 - Decorative looping animation (spinners, floating blobs, parallax); hover scale/lift effects.
-- Primary as a background fill for large areas; `gap` for anything that isn't missing data.
+- `signal` (Coral) more than once per view; `gap` for anything that isn't missing data.
 - Colours outside the theme tokens; arbitrary `[…]` values or breakpoint font sizes in HTML (see §2, §3).
 - Raw hex values or default Tailwind colours where a token exists.
 - Monospace fonts, extra font families, icon fonts loaded from a CDN.

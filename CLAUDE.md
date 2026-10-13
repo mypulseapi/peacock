@@ -54,8 +54,9 @@ Never ignore, silence or disable a warning (no lint settings changes, no `@layer
 
 ## Colours are not final
 
-The current palette is a first demo. Changing colours must only ever require editing the `COLOURS` block in
-`src/input.css`. So: never put a colour in HTML, JS or a utility; use role-named tokens (`primary`, not `coral`);
+Colours come from the Figma brand palette but may still change. Changing colours must only ever require editing
+the `--brand-*` values in the `COLOURS` block of `src/input.css` (role shades are derived with `color-mix()`).
+After changing a brand colour, re-check WCAG AA contrast of the derived roles. So: never put a colour in HTML, JS or a utility; use role-named tokens (`primary`, not `coral`);
 add new colours as tokens. `pnpm lint:tw` flags any class that generates no CSS (`[unknownClass]`), which
 catches default-palette colours because that palette is switched off.
 
@@ -86,4 +87,5 @@ catches default-palette colours because that palette is switched off.
 - Branch new work from `dev`; open pull requests into `dev`. Never commit directly to `main`.
 - **Never commit or push automatically.** After making changes, stop and let the user review them.
   Only run `git commit` / `git push` when the user explicitly says so.
-- Design source: Google Stitch project `15026689791361906848` (screen "Pulse — Brand Guidelines (Electric Coral)").
+- Design sources: brand colours from Figma file `IfFMuiAP9dL6OcRTn5B6V8` ("Pulse Design Work" › Branding › Pulse Color);
+  layout/components originally from Google Stitch project `15026689791361906848`.

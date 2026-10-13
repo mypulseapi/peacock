@@ -46,19 +46,41 @@
 
   /* ================================================================ */
   /* COLOURS — the ONLY place colours are defined.                     */
-  /* To re-theme the site, change the values below; nothing else.      */
-  /* Names describe the ROLE, not the hue, so they stay valid when     */
-  /* the palette changes. Current values: Stitch "Electric Coral" demo.*/
+  /*                                                                   */
+  /* 1. BRAND PALETTE: the 6 base colours from Figma                   */
+  /*    "Pulse Design Work › Branding › Pulse Color" (actual fills).    */
+  /*    To re-theme the site, change these hex values.                 */
+  /* 2. ROLES: what the pages use. Shades are DERIVED from the brand   */
+  /*    palette with color-mix() formulas, so they follow automatically.*/
+  /*    Mix percentages were checked for WCAG AA contrast.             */
   /* ================================================================ */
   --color-*: initial; /* switch off Tailwind's default palette: only tokens below exist */
 
-  /* Primary — CTAs, active filters, the #1 ranked item only */
-  --color-primary: #e11d48;
-  --color-primary-dark: #be123c; /* hover / pressed */
-  --color-primary-light: #f43f5e; /* primary on dark backgrounds */
-  --color-primary-tint: #fff1f2; /* background of primary chips/badges */
-  --color-primary-line: #fecdd3; /* border of primary chips/badges */
+  /* 1. Brand palette (not used directly in HTML — use the roles below) */
+  --brand-ink: #060914;
+  --brand-indigo: #3a08c6; /* 60% — trust, B2B & investment. The platform colour. */
+  --brand-coral: #f7423b; /* 30% — the alive signal. Use once per view. */
+  --brand-violet: #7343f8; /* 10% — personalisation. The bridge into the signal. */
+  --brand-mint: #51dfb3; /* live / ready */
+  --brand-mist: #f9f9f9; /* background */
+
+  /* Primary — Indigo: buttons, links, active navigation, brand marks */
+  --color-primary: var(--brand-indigo);
+  --color-primary-dark: color-mix(in oklab, var(--brand-indigo) 80%, black); /* hover / pressed */
+  --color-primary-light: color-mix(in oklab, var(--brand-indigo) 50%, white); /* primary on dark backgrounds */
+  --color-primary-tint: color-mix(in oklab, var(--brand-indigo) 7%, white); /* chip/badge background */
+  --color-primary-line: color-mix(in oklab, var(--brand-indigo) 22%, white); /* chip/badge border */
   --color-on-primary: #ffffff; /* text/icons on a primary fill */
+
+  /* Signal — Coral: the ONE highlight per view (the #1 ranked fix) */
+  --color-signal: var(--brand-coral); /* fills, bars, large numbers (>= 24px) */
+  --color-signal-dark: color-mix(in oklab, var(--brand-coral) 75%, black); /* small signal text */
+  --color-signal-tint: color-mix(in oklab, var(--brand-coral) 8%, white);
+  --color-signal-line: color-mix(in oklab, var(--brand-coral) 28%, white);
+
+  /* Accent — Violet: personalisation highlights (10%) */
+  --color-accent: var(--brand-violet);
+  --color-accent-tint: color-mix(in oklab, var(--brand-violet) 8%, white);
 
   /* Gap — missing data only (the "Missing Cell" motif) */
   --color-gap: #f59e0b;
@@ -69,27 +91,27 @@
   --color-gap-dark: #fbbf24; /* gap border on dark backgrounds */
   --color-gap-text-dark: oklch(87.9% 0.169 91.605); /* gap text on dark backgrounds */
 
-  /* Dark surfaces (void) */
-  --color-void: #140b0e; /* headlines, dark bands */
-  --color-void-elevated: #241318; /* cards on a dark band */
-  --color-void-line: oklch(27.1% 0.105 12.094); /* hairlines on dark */
-  --color-void-line-strong: oklch(45.5% 0.188 13.697); /* accent rules on dark */
-  --color-void-text: oklch(94.1% 0.03 12.58); /* body text on dark */
-  --color-void-muted: oklch(81% 0.117 11.638); /* captions on dark */
+  /* Dark surfaces (void) — Ink, tinted with Indigo */
+  --color-void: var(--brand-ink); /* headlines, dark bands */
+  --color-void-elevated: color-mix(in oklab, var(--brand-indigo) 14%, var(--brand-ink)); /* cards on a dark band */
+  --color-void-line: color-mix(in oklab, var(--brand-indigo) 30%, var(--brand-ink)); /* hairlines on dark */
+  --color-void-line-strong: color-mix(in oklab, var(--brand-indigo) 65%, var(--brand-ink)); /* accent rules on dark */
+  --color-void-text: color-mix(in oklab, var(--brand-indigo) 8%, white); /* body text on dark */
+  --color-void-muted: color-mix(in oklab, var(--brand-indigo) 30%, white); /* captions on dark */
   --color-on-void: #ffffff; /* headings/numbers on dark */
 
   /* Light surfaces & text */
   --color-card: #ffffff; /* cards, panels, inputs, header */
-  --color-surface-0: #fafcfc; /* page background */
+  --color-surface-0: var(--brand-mist); /* page background */
   --color-surface-1: #f1f5f5; /* table headers, wells, tracks */
   --color-line: #e2e8f0; /* all hairlines */
   --color-muted: #64748b; /* secondary text */
-  --color-ink: #1e293b; /* body text */
+  --color-ink: var(--brand-ink); /* body text */
 
   /* Status — audit states only */
-  --color-success: #059669;
-  --color-success-bg: oklch(97.9% 0.021 166.113);
-  --color-success-line: oklch(90.5% 0.093 164.15);
+  --color-success: color-mix(in oklab, var(--brand-mint) 45%, var(--brand-ink)); /* readable text/icons */
+  --color-success-bg: color-mix(in oklab, var(--brand-mint) 12%, white);
+  --color-success-line: color-mix(in oklab, var(--brand-mint) 45%, white);
   --color-warning: #d97706;
   --color-warning-bg: #fffbeb;
   --color-warning-line: oklch(92.4% 0.12 95.746);
@@ -186,6 +208,9 @@
 @utility badge-primary {
   @apply badge border-primary-line bg-primary-tint text-primary-dark;
 }
+@utility badge-signal {
+  @apply badge border-signal-line bg-signal-tint text-signal-dark;
+}
 @utility badge-success {
   @apply badge border-success-line bg-success-bg text-success;
 }
@@ -209,6 +234,11 @@
 /* ------------------------------------------------------------------ */
 /* Utilities                                                           */
 /* ------------------------------------------------------------------ */
+/* Brand gradient (Figma "Pulse Color › gradient"): Coral → Indigo. For big brand moments only. */
+@utility bg-brand-gradient {
+  background-image: linear-gradient(112.4deg, var(--color-signal) 5.18%, var(--color-primary) 95.68%);
+}
+
 @utility blueprint-grid {
   background-size: 24px 24px;
   background-image:

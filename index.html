@@ -11,342 +11,617 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./dist/output.css" />
+    <script defer src="./src/main.js"></script>
   </head>
   <body>
     <!-- Announcement bar -->
-    <div class="bg-void px-6 py-2 text-center text-xs text-rose-100">
+    <a href="#request" class="block bg-void px-6 py-2.5 text-center text-xs font-medium text-void-text transition-colors duration-200 ease-out-soft hover:text-on-void">
       The Decision Audit is open for one category per merchant.
-      <a href="#request" class="ml-1 font-semibold text-coral-light underline-offset-4 hover:underline">Request yours →</a>
-    </div>
+      <span class="ml-1 text-primary-light">Request yours →</span>
+    </a>
 
     <!-- Header -->
-    <header class="sticky top-0 z-50 border-b border-line bg-white">
-      <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
-        <a href="./index.html" class="flex items-center gap-2.5">
-          <span class="flex size-8 items-center justify-center rounded-md border-2 border-coral bg-coral-tint p-1">
-            <svg class="size-full text-coral" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <rect x="2" y="3" width="7" height="7" class="stroke-gap" stroke-dasharray="2 2" />
-              <path d="M12 7h9" />
-              <path d="M3 16h3l2-3 3 7 3-6 2 2h6" />
-            </svg>
-          </span>
-          <span class="font-display text-xl font-extrabold tracking-tight text-void">Pulse</span>
-        </a>
-        <nav class="hidden items-center gap-7 text-sm font-medium text-muted lg:flex">
-          <a href="#how" class="hover:text-coral">Product</a>
-          <a href="#why" class="hover:text-coral">Why Pulse</a>
-          <a href="#data" class="hover:text-coral">Your data</a>
-          <a href="./components.html" class="hover:text-coral">Components</a>
-        </nav>
+    <header class="sticky top-0 z-50 border-b border-line bg-card">
+      <div class="frame flex h-16 items-center justify-between px-6">
+        <div class="flex items-center gap-10">
+          <a href="./index.html" class="flex items-center gap-2.5" aria-label="Pulse home">
+            <span class="flex size-8 items-center justify-center rounded-md border-2 border-primary bg-primary-tint p-1">
+              <svg class="size-full text-primary" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="7" height="7" class="stroke-gap" stroke-dasharray="2 2" />
+                <path d="M12 7h9" />
+                <path d="M3 16h3l2-3 3 7 3-6 2 2h6" />
+              </svg>
+            </span>
+            <span class="font-display text-xl font-extrabold tracking-tight text-void">Pulse</span>
+          </a>
+          <nav class="hidden items-center gap-7 text-sm font-medium text-muted lg:flex">
+            <a href="#method" class="transition-colors duration-200 ease-out-soft hover:text-void">Product</a>
+            <a href="#research" class="transition-colors duration-200 ease-out-soft hover:text-void">Research</a>
+            <a href="#data" class="transition-colors duration-200 ease-out-soft hover:text-void">Your data</a>
+            <a href="./components.html" class="transition-colors duration-200 ease-out-soft hover:text-void">Components</a>
+          </nav>
+        </div>
         <div class="flex items-center gap-2">
-          <a href="#" class="btn-ghost btn-sm hidden sm:inline-flex">Sign in</a>
+          <a href="#" class="btn-secondary btn-sm hidden sm:inline-flex">Sign in</a>
           <a href="#request" class="btn-primary btn-sm">Request an audit</a>
         </div>
       </div>
     </header>
 
     <main>
-      <!-- Hero -->
-      <section class="blueprint-grid border-b border-line bg-white">
-        <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-12 lg:px-8 lg:py-28">
-          <div class="lg:col-span-7">
-            <span class="badge-coral mb-6">DECISION AUDIT · 48-HOUR TURNAROUND</span>
-            <h1 class="text-h1 sm:text-5xl lg:text-6xl">Know which product data to fix first.</h1>
-            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Pulse measures your product data against what shoppers actually decide on. It is not a PIM. Send one
-              category export and get a ranked repair list back within 48 hours.
+      <!-- ============================== HERO ============================== -->
+      <section class="border-b border-line">
+        <div class="frame overflow-hidden">
+          <div class="px-6 pt-20 pb-16 text-center lg:pt-28">
+            <div class="reveal">
+              <a href="#request" class="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-ink transition-colors duration-200 ease-out-soft hover:border-ink">
+                <span class="size-1.5 rounded-full bg-primary"></span>
+                Decision Audit · ranked list in 48 hours
+                <span class="text-muted">→</span>
+              </a>
+            </div>
+            <h1 class="mx-auto mt-8 max-w-4xl text-display text-balance">
+              <span class="reveal inline-block">Know</span>
+              <span class="reveal inline-block delay-75">which</span>
+              <span class="reveal inline-block delay-150">product</span>
+              <span class="reveal inline-block delay-225">data</span>
+              <span class="reveal inline-block delay-300">to</span>
+              <span class="reveal inline-block delay-375">fix</span>
+              <span class="reveal inline-block delay-450">first.</span>
+            </h1>
+            <p class="reveal mx-auto mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted delay-500">
+              Pulse measures your product data against what shoppers actually decide on. Send one category export,
+              get a ranked repair list back within 48 hours.
             </p>
-            <div class="mt-8 flex flex-wrap gap-3">
+            <div class="reveal mt-8 flex flex-wrap justify-center gap-3 delay-600">
+              <a href="#method" class="btn-secondary">See how it works</a>
               <a href="#request" class="btn-primary">Request a Decision Audit</a>
-              <a href="#how" class="btn-secondary">See how it works</a>
             </div>
           </div>
 
-          <!-- Readiness preview card -->
-          <div class="lg:col-span-5">
-            <div class="card">
-              <div class="flex items-center justify-between">
-                <span class="eyebrow">Laptops · 216 products</span>
-                <span class="badge-warning">347 gaps found</span>
-              </div>
-              <div class="mt-5 flex items-end gap-3">
-                <span class="font-display text-5xl font-extrabold text-void">94</span>
-                <span class="mb-1.5 tabular-nums text-data text-muted">/ 216 shopper-ready</span>
-              </div>
-              <div class="mt-4 h-2 overflow-hidden rounded-full bg-surface-1">
-                <div class="h-full w-[43.5%] rounded-full bg-coral"></div>
-              </div>
-              <div class="mt-6 overflow-hidden rounded-lg border border-line tabular-nums text-data">
-                <div class="grid grid-cols-3 bg-surface-1 px-3 py-2 text-xs text-muted">
-                  <span>Product</span><span>Screen size</span><span>RAM</span>
+          <!-- Product mockup -->
+          <div class="blueprint-grid border-t border-line px-4 pt-12 sm:px-10 lg:px-16">
+            <div class="reveal relative mx-auto max-w-6xl delay-700">
+              <div class="overflow-hidden rounded-t-xl border border-b-0 border-line bg-card shadow-sm">
+                <div class="flex h-10 items-center gap-1.5 border-b border-line px-4">
+                  <span class="size-2.5 rounded-full bg-line"></span>
+                  <span class="size-2.5 rounded-full bg-line"></span>
+                  <span class="size-2.5 rounded-full bg-line"></span>
+                  <span class="mx-auto text-xs text-muted">app.thepulseapi.com / audits / laptops</span>
                 </div>
-                <div class="grid grid-cols-3 items-center border-t border-line px-3 py-2">
-                  <span class="truncate">Aero 14</span><span>14"</span><span>16 GB</span>
-                </div>
-                <div class="grid grid-cols-3 items-center border-t border-line px-3 py-2">
-                  <span class="truncate">Studio Pro</span>
-                  <span><span class="missing-cell rounded px-2 py-0.5 text-xs">— — —</span></span>
-                  <span>32 GB</span>
-                </div>
-                <div class="grid grid-cols-3 items-center border-t border-line px-3 py-2">
-                  <span class="truncate">Everyday Ultra</span>
-                  <span><span class="missing-cell rounded px-2 py-0.5 text-xs">— — —</span></span>
-                  <span><span class="missing-cell rounded px-2 py-0.5 text-xs">— — —</span></span>
+                <div class="grid md:grid-cols-12">
+                  <!-- Sidebar -->
+                  <aside class="hidden border-r border-line bg-surface-0 p-4 md:col-span-3 md:block">
+                    <div class="flex items-center gap-2 px-2 text-sm font-semibold text-void">
+                      <span class="flex size-6 items-center justify-center rounded bg-void text-xs text-on-void">A</span>
+                      Acme Retail
+                    </div>
+                    <p class="eyebrow mt-6 px-2">Categories</p>
+                    <ul class="mt-2 space-y-0.5 text-sm">
+                      <li class="flex items-center justify-between rounded-md border border-line bg-card px-2 py-1.5 font-medium text-void">
+                        Laptops <span class="tabular-nums text-xs text-muted">216</span>
+                      </li>
+                      <li class="px-2 py-1.5 text-muted">Washing powder</li>
+                      <li class="px-2 py-1.5 text-muted">Foundation</li>
+                      <li class="px-2 py-1.5 text-muted">Running shoes</li>
+                      <li class="px-2 py-1.5 text-muted">Sofas</li>
+                    </ul>
+                  </aside>
+
+                  <!-- Main panel -->
+                  <div class="p-5 md:col-span-9 lg:p-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                      <div class="flex items-center gap-3">
+                        <h2 class="text-h3">Laptops</h2>
+                        <span class="badge-warning">347 gaps found</span>
+                      </div>
+                      <span class="btn-secondary btn-sm">Export ranked list</span>
+                    </div>
+
+                    <div class="mt-5 flex items-end gap-3">
+                      <span class="font-display text-5xl font-extrabold text-void" data-count="94">94</span>
+                      <span class="mb-1.5 tabular-nums text-data text-muted">/ 216 products a shopper can tell apart</span>
+                    </div>
+                    <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-surface-1">
+                      <div class="reveal-bar h-full w-94/216 rounded-full bg-ink delay-300"></div>
+                    </div>
+
+                    <div class="mt-6 overflow-x-auto rounded-lg border border-line">
+                      <table class="w-full min-w-140 text-left tabular-nums text-data">
+                        <thead class="bg-surface-1 text-xs text-muted">
+                          <tr>
+                            <th class="px-3 py-2 font-medium">Product</th>
+                            <th class="px-3 py-2 font-medium">Screen size</th>
+                            <th class="px-3 py-2 font-medium">RAM</th>
+                            <th class="px-3 py-2 font-medium">Storage</th>
+                            <th class="px-3 py-2 text-right font-medium">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody class="divide-y divide-line">
+                          <tr class="reveal delay-700">
+                            <td class="px-3 py-2.5 font-medium text-void">Aero 14</td>
+                            <td class="px-3 py-2.5">14"</td>
+                            <td class="px-3 py-2.5">16 GB</td>
+                            <td class="px-3 py-2.5">512 GB</td>
+                            <td class="px-3 py-2.5 text-right"><span class="badge-success">Ready</span></td>
+                          </tr>
+                          <tr class="reveal delay-800">
+                            <td class="px-3 py-2.5 font-medium text-void">Studio Pro 16</td>
+                            <td class="px-2 py-2"><span class="missing-cell block rounded px-2 py-0.5 text-xs">missing</span></td>
+                            <td class="px-3 py-2.5">32 GB</td>
+                            <td class="px-3 py-2.5">1 TB</td>
+                            <td class="px-3 py-2.5 text-right"><span class="badge-critical">Blocker</span></td>
+                          </tr>
+                          <tr class="reveal delay-900">
+                            <td class="px-3 py-2.5 font-medium text-void">Everyday Ultra</td>
+                            <td class="px-2 py-2"><span class="missing-cell block rounded px-2 py-0.5 text-xs">missing</span></td>
+                            <td class="px-2 py-2"><span class="missing-cell block rounded px-2 py-0.5 text-xs">missing</span></td>
+                            <td class="px-3 py-2.5">256 GB</td>
+                            <td class="px-3 py-2.5 text-right"><span class="badge-critical">Blocker</span></td>
+                          </tr>
+                          <tr class="reveal delay-1000">
+                            <td class="px-3 py-2.5 font-medium text-void">Flex 13</td>
+                            <td class="px-3 py-2.5">13.3"</td>
+                            <td class="px-3 py-2.5">8 GB</td>
+                            <td class="px-2 py-2"><span class="missing-cell block rounded px-2 py-0.5 text-xs">missing</span></td>
+                            <td class="px-3 py-2.5 text-right"><span class="badge-warning">Degraded</span></td>
+                          </tr>
+                          <tr class="reveal delay-1100">
+                            <td class="px-3 py-2.5 font-medium text-void">Creator 15</td>
+                            <td class="px-3 py-2.5">15.6"</td>
+                            <td class="px-3 py-2.5">16 GB</td>
+                            <td class="px-3 py-2.5">1 TB</td>
+                            <td class="px-3 py-2.5 text-right"><span class="badge-success">Ready</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <p class="mt-4 text-xs text-muted">Every blank cell is a question your catalogue cannot answer.</p>
+
+              <!-- Floating insight card -->
+              <div class="reveal absolute top-28 -right-4 hidden w-72 rounded-xl border border-line bg-card p-4 shadow-sm delay-1200 xl:block">
+                <div class="flex items-center justify-between">
+                  <span class="eyebrow">Decision Audit</span>
+                  <span class="badge-primary">#1 fix</span>
+                </div>
+                <p class="mt-3 font-display text-base font-bold text-void">Add screen size</p>
+                <p class="mt-1 text-xs leading-relaxed text-muted">Written in 136 of 216 product titles. Recorded in no attributes.</p>
+                <dl class="mt-4 grid grid-cols-2 gap-3 border-t border-line pt-3">
+                  <div>
+                    <dt class="text-xs text-muted">Products to touch</dt>
+                    <dd class="font-display text-xl font-extrabold text-void tabular-nums">80</dd>
+                  </div>
+                  <div>
+                    <dt class="text-xs text-muted">Shoppers helped</dt>
+                    <dd class="font-display text-xl font-extrabold text-primary tabular-nums">94</dd>
+                  </div>
+                </dl>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Two shelves -->
-      <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div class="mb-10 flex items-baseline gap-3 border-b border-line pb-4">
-          <span class="section-tag">01</span>
-          <h2 class="text-h2">Two shelves, the same missing fact.</h2>
-        </div>
-        <div class="grid gap-6 md:grid-cols-2">
-          <article class="card">
-            <span class="eyebrow">Consumer goods</span>
-            <h3 class="mt-3 text-h3">A parent buying washing powder for baby skin</h3>
-            <p class="mt-2 text-body text-muted">
-              "Fragrance-free" is the one fact they need. It was never recorded, so the filter they look for does not
-              exist.
-            </p>
-            <div class="mt-5 flex items-center gap-3 tabular-nums text-data">
-              <span class="text-muted">fragrance_free:</span>
-              <span class="missing-cell rounded px-2 py-0.5">never recorded</span>
-            </div>
-          </article>
-          <article class="card">
-            <span class="eyebrow">Electronics</span>
-            <h3 class="mt-3 text-h3">A designer buying a laptop</h3>
-            <p class="mt-2 text-body text-muted">
-              Screen size is in 136 of 216 product titles — and in nobody's attributes.
-            </p>
-            <div class="mt-5 flex items-center gap-3 tabular-nums text-data">
-              <span class="text-muted">screen_size:</span>
-              <span class="missing-cell rounded px-2 py-0.5">only in titles</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Research stats -->
-      <section class="bg-void text-white">
-        <div class="blueprint-grid-dark">
-          <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <span class="badge border-rose-800 bg-rose-950 text-rose-200">INDEPENDENT RESEARCH</span>
-            <h2 class="mt-4 text-h2 text-white">Independent research says the same thing.</h2>
-            <div class="mt-10 grid gap-6 md:grid-cols-3">
-              <div class="rounded-xl border border-rose-950 bg-void-elevated p-6">
-                <div class="font-display text-5xl font-extrabold text-coral-light">38%</div>
-                <p class="mt-3 text-body text-rose-100">of retailers show an attribute but offer no filter for it.</p>
-                <p class="mt-4 tabular-nums text-xs text-rose-300/70">Baymard Institute</p>
-              </div>
-              <div class="rounded-xl border border-rose-950 bg-void-elevated p-6">
-                <div class="font-display text-5xl font-extrabold text-coral-light">79%</div>
-                <p class="mt-3 text-body text-rose-100">of product pages do not ship a full set of structured data.</p>
-                <p class="mt-4 tabular-nums text-xs text-rose-300/70">Adobe Analytics</p>
-              </div>
-              <div class="rounded-xl border border-rose-950 bg-void-elevated p-6">
-                <div class="font-display text-5xl font-extrabold text-coral-light">393%</div>
-                <p class="mt-3 text-body text-rose-100">growth in AI traffic to US retail — and agents don't guess.</p>
-                <p class="mt-4 tabular-nums text-xs text-rose-300/70">Adobe Analytics</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Budget comparison -->
-      <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div class="mb-10 flex items-baseline gap-3 border-b border-line pb-4">
-          <span class="section-tag">02</span>
-          <h2 class="text-h2">The emptiest field is usually the wrong one to fix.</h2>
-        </div>
-        <div class="grid gap-6 md:grid-cols-2">
-          <div class="card">
-            <span class="eyebrow">Fix the emptiest field</span>
-            <dl class="mt-5 grid grid-cols-2 gap-4">
-              <div>
-                <dt class="tabular-nums text-xs text-muted">Products to touch</dt>
-                <dd class="font-display text-4xl font-extrabold text-void">162</dd>
-              </div>
-              <div>
-                <dt class="tabular-nums text-xs text-muted">Shoppers helped</dt>
-                <dd class="font-display text-4xl font-extrabold text-void">6</dd>
-              </div>
-            </dl>
-          </div>
-          <div class="card border-coral ring-1 ring-coral">
-            <div class="flex items-center justify-between">
-              <span class="eyebrow text-coral">Fix the deciding field</span>
-              <span class="badge-coral">#1 RANKED</span>
-            </div>
-            <dl class="mt-5 grid grid-cols-2 gap-4">
-              <div>
-                <dt class="tabular-nums text-xs text-muted">Products to touch</dt>
-                <dd class="font-display text-4xl font-extrabold text-void">80</dd>
-              </div>
-              <div>
-                <dt class="tabular-nums text-xs text-muted">Shoppers helped</dt>
-                <dd class="font-display text-4xl font-extrabold text-coral">94</dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-        <p class="mt-4 tabular-nums text-xs text-muted">Screen size ranked first in all 12 runs. Positions two to four moved.</p>
-      </section>
-
-      <!-- How it works -->
-      <section id="how" class="scroll-mt-20 border-y border-line bg-white">
-        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div class="mb-10 flex items-baseline gap-3 border-b border-line pb-4">
-            <span class="section-tag">03</span>
-            <h2 class="text-h2">How does it work?</h2>
-          </div>
-          <ol class="grid gap-6 md:grid-cols-3">
-            <li class="card bg-surface-0">
-              <span class="tabular-nums text-sm font-bold text-coral">01</span>
-              <h3 class="mt-2 text-h3">Send one category</h3>
-              <p class="mt-2 text-body text-muted">Upload a CSV or JSON export. No code, no tag, no system access.</p>
+      <!-- ========================= CATEGORY STRIP ========================= -->
+      <section class="border-b border-line" aria-label="Categories Pulse audits">
+        <div class="frame overflow-hidden">
+          <ul class="-mr-px -mb-px grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Beauty</span>
+              <span class="text-xs text-muted">shade</span>
             </li>
-            <li class="card bg-surface-0">
-              <span class="tabular-nums text-sm font-bold text-coral">02</span>
-              <h3 class="mt-2 text-h3">Get the Decision Audit</h3>
-              <p class="mt-2 text-body text-muted">
-                Within 48 hours: the ranked list, the affected products and your readiness number.
-              </p>
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Apparel</span>
+              <span class="text-xs text-muted">fit</span>
             </li>
-            <li class="card bg-surface-0">
-              <span class="tabular-nums text-sm font-bold text-coral">03</span>
-              <h3 class="mt-2 text-h3">Fix it, then verify</h3>
-              <p class="mt-2 text-body text-muted">Fix the data yourself or with Pulse, then re-measure to see what changed.</p>
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Electronics</span>
+              <span class="text-xs text-muted">screen size</span>
             </li>
-          </ol>
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Grocery</span>
+              <span class="text-xs text-muted">fragrance-free</span>
+            </li>
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Furniture</span>
+              <span class="text-xs text-muted">capacity</span>
+            </li>
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Parts</span>
+              <span class="text-xs text-muted">compatibility</span>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <!-- Why Pulse -->
-      <section id="why" class="mx-auto max-w-7xl scroll-mt-20 px-6 py-20 lg:px-8">
-        <div class="mb-10 flex items-baseline gap-3 border-b border-line pb-4">
-          <span class="section-tag">04</span>
-          <h2 class="text-h2">Five reasons this is worth half an hour.</h2>
-        </div>
-        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          <li class="card p-5">
-            <h3 class="text-base font-bold">Costliest gap first</h3>
-            <p class="mt-2 text-xs leading-relaxed text-muted">Ranked by what shoppers decide on, not by how empty a field is.</p>
-          </li>
-          <li class="card p-5">
-            <h3 class="text-base font-bold">No integration</h3>
-            <p class="mt-2 text-xs leading-relaxed text-muted">One export file. No code, no tag, no access to your systems.</p>
-          </li>
-          <li class="card p-5">
-            <h3 class="text-base font-bold">No customer data</h3>
-            <p class="mt-2 text-xs leading-relaxed text-muted">The audit reads product data only.</p>
-          </li>
-          <li class="card p-5">
-            <h3 class="text-base font-bold">Mostly recoverable</h3>
-            <p class="mt-2 text-xs leading-relaxed text-muted">Most gaps can be filled from text you already have.</p>
-          </li>
-          <li class="card p-5">
-            <h3 class="text-base font-bold">Measured results</h3>
-            <p class="mt-2 text-xs leading-relaxed text-muted">Re-measure after the fix to show what changed.</p>
-          </li>
-        </ul>
-      </section>
+      <!-- ===================== METHOD (sticky step nav) ===================== -->
+      <section id="method" class="scroll-mt-16 border-b border-line">
+        <div class="frame">
+          <div class="px-6 py-16 lg:px-12 lg:py-24">
+            <span class="reveal section-tag inline-block">The method</span>
+            <h2 class="reveal mt-6 max-w-3xl text-title">
+              The filter your buyer needs does not exist.
+              <span class="text-muted">Pulse finds which missing fact costs you the most, and fixes that first.</span>
+            </h2>
+          </div>
 
-      <!-- Data -->
-      <section id="data" class="scroll-mt-20 border-y border-line bg-white">
-        <div class="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-12 lg:px-8">
-          <div class="lg:col-span-5">
-            <span class="section-tag">05</span>
-            <h2 class="mt-4 text-h2">What happens to my data?</h2>
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span class="badge-success">Product data only</span>
-              <span class="badge-success">No cookie, no login</span>
-              <span class="badge-success">Tenant-isolated</span>
-              <span class="badge-success">Deleted on request</span>
+          <div class="grid border-t border-line lg:grid-cols-12">
+            <!-- Sticky step navigation -->
+            <aside class="hidden border-r border-line lg:col-span-3 lg:block">
+              <nav class="sticky top-16 py-16 pl-12" aria-label="Method steps">
+                <ol class="space-y-1 border-l border-line text-base font-medium">
+                  <li><a href="#problem" data-spy="problem" class="-ml-px block border-l-2 border-transparent py-2 pl-5 text-muted/60 transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:text-void">The problem</a></li>
+                  <li><a href="#audit" data-spy="audit" class="-ml-px block border-l-2 border-transparent py-2 pl-5 text-muted/60 transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:text-void">The audit</a></li>
+                  <li><a href="#priority" data-spy="priority" class="-ml-px block border-l-2 border-transparent py-2 pl-5 text-muted/60 transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:text-void">The priority</a></li>
+                  <li><a href="#repair" data-spy="repair" class="-ml-px block border-l-2 border-transparent py-2 pl-5 text-muted/60 transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:text-void">The repair</a></li>
+                  <li><a href="#payoff" data-spy="payoff" class="-ml-px block border-l-2 border-transparent py-2 pl-5 text-muted/60 transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:text-void">The payoff</a></li>
+                </ol>
+              </nav>
+            </aside>
+
+            <div class="divide-y divide-line lg:col-span-9">
+              <!-- 01 The problem -->
+              <article id="problem" class="scroll-mt-16">
+                <div class="px-6 py-12 lg:px-12 lg:py-16">
+                  <p class="eyebrow lg:hidden">01 · The problem</p>
+                  <h3 class="reveal mt-2 max-w-2xl text-h2 lg:mt-0">
+                    94 of 216 products a shopper still cannot tell apart.
+                    <span class="text-muted">347 fields are blank across this shelf. A shopper cannot filter on any of them, and neither can your search.</span>
+                  </h3>
+                </div>
+                <div class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-12 lg:px-12">
+                  <div class="reveal card mx-auto max-w-2xl">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                      <span class="eyebrow">Laptops shelf · 216 products</span>
+                      <div class="flex items-center gap-4 text-xs text-muted">
+                        <span class="flex items-center gap-1.5"><span class="size-2.5 rounded-sm bg-ink"></span>Ready (94)</span>
+                        <span class="flex items-center gap-1.5"><span class="missing-cell size-2.5 rounded-sm"></span>Can't tell apart (122)</span>
+                      </div>
+                    </div>
+                    <div class="mt-5 grid grid-cols-18 gap-1" data-shelf data-total="216" data-ready="94" role="img" aria-label="216 products: 94 ready, 122 missing a deciding attribute"></div>
+                    <p class="mt-5 border-t border-line pt-4 text-xs text-muted">Every blank cell is a question your catalogue cannot answer.</p>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 02 The audit -->
+              <article id="audit" class="scroll-mt-16">
+                <div class="px-6 py-12 lg:px-12 lg:py-16">
+                  <p class="eyebrow lg:hidden">02 · The audit</p>
+                  <h3 class="reveal mt-2 max-w-2xl text-h2 lg:mt-0">
+                    Two shelves, the same missing fact.
+                    <span class="text-muted">The shopper knows exactly what they need. Your catalogue never wrote it down.</span>
+                  </h3>
+                </div>
+                <div class="grid border-t border-line md:grid-cols-2 md:divide-x md:divide-line">
+                  <!-- Consumer goods: typing search -->
+                  <div class="px-6 py-10 lg:px-10">
+                    <h4 class="font-display text-base font-bold text-void">A parent buying washing powder for baby skin</h4>
+                    <p class="mt-1 text-body text-muted">They need "fragrance-free". It was never recorded.</p>
+                    <div class="group mt-8" data-type-root>
+                      <div class="flex items-center gap-2 rounded-lg border border-line bg-card px-3 py-2.5 shadow-sm">
+                        <svg class="size-4 text-muted" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+                        <span class="text-sm text-ink" data-type="fragrance-free">fragrance-free</span><span class="-ml-1.5 h-4 w-px animate-caret bg-ink"></span>
+                      </div>
+                      <div class="mt-3 rounded-lg border border-line bg-card p-3 transition-opacity duration-500 ease-out-soft js:opacity-0 group-data-typed:opacity-100">
+                        <p class="text-xs font-medium text-muted">0 filters match</p>
+                        <div class="mt-2 flex items-center gap-2 tabular-nums text-data">
+                          <span class="text-muted">fragrance_free:</span>
+                          <span class="missing-cell rounded px-2 py-0.5 text-xs">never recorded</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Electronics: titles vs attributes -->
+                  <div class="border-t border-line px-6 py-10 md:border-t-0 lg:px-10">
+                    <h4 class="font-display text-base font-bold text-void">A designer buying a laptop</h4>
+                    <p class="mt-1 text-body text-muted">Screen size is in the titles, and in nobody's attributes.</p>
+                    <div class="mt-8 space-y-5 rounded-lg border border-line bg-card p-4 shadow-sm">
+                      <div>
+                        <div class="flex justify-between tabular-nums text-data">
+                          <span class="text-ink">In product titles</span>
+                          <span class="font-semibold text-void">136 / 216</span>
+                        </div>
+                        <div class="mt-2 h-2 overflow-hidden rounded-full bg-surface-1">
+                          <div class="reveal-bar h-full w-136/216 rounded-full bg-ink"></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="flex justify-between tabular-nums text-data">
+                          <span class="text-ink">In filterable attributes</span>
+                          <span class="font-semibold text-gap-text">0 / 216</span>
+                        </div>
+                        <div class="missing-cell mt-2 h-2 rounded-full"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 03 The priority -->
+              <article id="priority" class="scroll-mt-16">
+                <div class="px-6 py-12 lg:px-12 lg:py-16">
+                  <p class="eyebrow lg:hidden">03 · The priority</p>
+                  <h3 class="reveal mt-2 max-w-2xl text-h2 lg:mt-0">
+                    The emptiest field is usually the wrong one to fix.
+                    <span class="text-muted">Pulse ranks gaps by the shoppers they block, not by how blank they are.</span>
+                  </h3>
+                </div>
+                <div class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-12 lg:px-12">
+                  <div class="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
+                    <div class="reveal card">
+                      <span class="eyebrow">Fix the emptiest field</span>
+                      <div class="mt-5 space-y-4 tabular-nums text-data">
+                        <div>
+                          <div class="flex justify-between"><span class="text-muted">Products to touch</span><span class="font-semibold text-void">162</span></div>
+                          <div class="mt-1.5 h-2 rounded-full bg-surface-1"><div class="reveal-bar h-full w-full rounded-full bg-ink/40"></div></div>
+                        </div>
+                        <div>
+                          <div class="flex justify-between"><span class="text-muted">Shoppers helped</span><span class="font-semibold text-void">6</span></div>
+                          <div class="mt-1.5 h-2 rounded-full bg-surface-1"><div class="reveal-bar h-full w-6/94 rounded-full bg-ink/40"></div></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="reveal card border-primary ring-1 ring-primary delay-150">
+                      <div class="flex items-center justify-between">
+                        <span class="eyebrow text-primary">Fix the deciding field</span>
+                        <span class="badge-primary">#1 ranked</span>
+                      </div>
+                      <div class="mt-5 space-y-4 tabular-nums text-data">
+                        <div>
+                          <div class="flex justify-between"><span class="text-muted">Products to touch</span><span class="font-semibold text-void">80</span></div>
+                          <div class="mt-1.5 h-2 rounded-full bg-surface-1"><div class="reveal-bar h-full w-80/162 rounded-full bg-ink/40"></div></div>
+                        </div>
+                        <div>
+                          <div class="flex justify-between"><span class="text-muted">Shoppers helped</span><span class="font-semibold text-primary">94</span></div>
+                          <div class="mt-1.5 h-2 rounded-full bg-surface-1"><div class="reveal-bar h-full w-full rounded-full bg-primary"></div></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mx-auto mt-4 max-w-3xl text-xs text-muted">Screen size ranked first in all 12 runs. Positions two to four moved.</p>
+                </div>
+              </article>
+
+              <!-- 04 The repair -->
+              <article id="repair" class="scroll-mt-16">
+                <div class="px-6 py-12 lg:px-12 lg:py-16">
+                  <p class="eyebrow lg:hidden">04 · The repair</p>
+                  <h3 class="reveal mt-2 max-w-2xl text-h2 lg:mt-0">
+                    How does it work?
+                    <span class="text-muted">One export in, a ranked list out. No code, no tag, no system access.</span>
+                  </h3>
+                </div>
+                <div class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-12 lg:px-12">
+                  <ol class="flex flex-col items-stretch gap-4 lg:flex-row lg:items-center lg:gap-0">
+                    <li class="reveal relative flex-1 rounded-xl border-2 border-ink bg-card p-4 shadow-sm">
+                      <span class="badge-success absolute -top-3 left-4 bg-card">Export received</span>
+                      <p class="eyebrow mt-1">01</p>
+                      <p class="mt-1 font-display text-base font-bold text-void">Send one category</p>
+                      <p class="mt-1 text-xs text-muted">CSV or JSON export of a single shelf.</p>
+                    </li>
+                    <li class="hidden h-px w-12 bg-ink/30 lg:block" aria-hidden="true"><span class="reveal-bar block h-px bg-ink delay-300"></span></li>
+                    <li class="reveal flex-1 rounded-xl border border-line bg-card p-4 shadow-sm delay-300">
+                      <p class="eyebrow">02</p>
+                      <p class="mt-1 font-display text-base font-bold text-void">Get the Decision Audit</p>
+                      <p class="mt-1 text-xs text-muted">Ranked list, affected products and readiness number within 48 hours.</p>
+                    </li>
+                    <li class="hidden h-px w-12 bg-ink/30 lg:block" aria-hidden="true"><span class="reveal-bar block h-px bg-ink delay-600"></span></li>
+                    <li class="reveal flex-1 rounded-xl border border-line bg-card p-4 shadow-sm delay-600">
+                      <p class="eyebrow">03</p>
+                      <p class="mt-1 font-display text-base font-bold text-void">Fix it, then verify</p>
+                      <p class="mt-1 text-xs text-muted">Fix the data yourself or with Pulse, then re-measure what changed.</p>
+                    </li>
+                  </ol>
+                </div>
+              </article>
+
+              <!-- 05 The payoff -->
+              <article id="payoff" class="scroll-mt-16">
+                <div class="px-6 py-12 lg:px-12 lg:py-16">
+                  <p class="eyebrow lg:hidden">05 · The payoff</p>
+                  <h3 class="reveal mt-2 max-w-2xl text-h2 lg:mt-0">
+                    Five reasons this is worth half an hour.
+                    <span class="text-muted">Built for merchandising teams who cannot fix everything this week.</span>
+                  </h3>
+                </div>
+                <div class="grid border-t border-line sm:grid-cols-3 sm:divide-x sm:divide-line">
+                  <div class="reveal px-6 py-8 lg:px-10">
+                    <p class="font-display text-2xl font-extrabold text-void">Customised</p>
+                    <p class="mt-1 text-xs text-muted">Scored against the buying criteria of your category.</p>
+                  </div>
+                  <div class="reveal border-t border-line px-6 py-8 delay-100 sm:border-t-0 lg:px-10">
+                    <p class="font-display text-2xl font-extrabold text-void"><span data-count="48">48</span> hours</p>
+                    <p class="mt-1 text-xs text-muted">From your export to a ranked list.</p>
+                  </div>
+                  <div class="reveal border-t border-line px-6 py-8 delay-200 sm:border-t-0 lg:px-10">
+                    <p class="font-display text-2xl font-extrabold text-void">Real time</p>
+                    <p class="mt-1 text-xs text-muted">Optional runtime ranks the live session, with a held-back control arm.</p>
+                  </div>
+                </div>
+                <ul class="grid border-t border-line text-sm sm:grid-cols-2">
+                  <li class="reveal flex gap-3 border-b border-line px-6 py-5 sm:border-r lg:px-10">
+                    <svg class="mt-0.5 size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+                    Prioritise the gap that costs the most shoppers.
+                  </li>
+                  <li class="reveal flex gap-3 border-b border-line px-6 py-5 delay-75 lg:px-10">
+                    <svg class="mt-0.5 size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+                    No code, no tag, no integration.
+                  </li>
+                  <li class="reveal flex gap-3 border-b border-line px-6 py-5 delay-150 sm:border-r lg:px-10">
+                    <svg class="mt-0.5 size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+                    No customer data. Product data only.
+                  </li>
+                  <li class="reveal flex gap-3 border-b border-line px-6 py-5 delay-225 lg:px-10">
+                    <svg class="mt-0.5 size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+                    Most gaps are recoverable from text you already have.
+                  </li>
+                  <li class="reveal flex gap-3 px-6 py-5 delay-300 sm:col-span-2 lg:px-10">
+                    <svg class="mt-0.5 size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+                    Re-measure after the fix to show what changed.
+                  </li>
+                </ul>
+              </article>
             </div>
           </div>
-          <div class="lg:col-span-7">
-            <div class="overflow-hidden rounded-xl border border-line">
-              <div class="bg-surface-1 px-4 py-2.5 eyebrow">What the audit reads</div>
+        </div>
+      </section>
+
+      <!-- ===================== RESEARCH (dark band) ===================== -->
+      <section id="research" class="scroll-mt-16 bg-void text-on-void">
+        <div class="frame-dark blueprint-grid-dark">
+          <div class="px-6 pt-24 pb-16 text-center lg:pt-32">
+            <p class="reveal text-sm font-medium text-void-muted">Independent research</p>
+            <h2 class="reveal mx-auto mt-3 max-w-3xl text-display text-balance text-on-void delay-100">
+              Independent research says the same thing.
+            </h2>
+          </div>
+          <div class="grid border-t border-void-line md:grid-cols-3 md:divide-x md:divide-void-line">
+            <div class="reveal px-6 py-10 lg:px-12">
+              <div class="border-l-2 border-void-line-strong pl-5">
+                <p class="font-display text-5xl font-extrabold text-on-void tabular-nums"><span data-count="38" data-suffix="%">38%</span></p>
+                <p class="mt-2 text-body text-void-text">of retailers show an attribute but offer no filter for it.</p>
+                <p class="mt-3 text-xs text-void-muted/70">Baymard Institute</p>
+              </div>
+            </div>
+            <div class="reveal border-t border-void-line px-6 py-10 delay-100 md:border-t-0 lg:px-12">
+              <div class="border-l-2 border-void-line-strong pl-5">
+                <p class="font-display text-5xl font-extrabold text-on-void tabular-nums"><span data-count="79" data-suffix="%">79%</span></p>
+                <p class="mt-2 text-body text-void-text">of product pages do not ship a full set of structured data.</p>
+                <p class="mt-3 text-xs text-void-muted/70">Adobe Analytics</p>
+              </div>
+            </div>
+            <div class="reveal border-t border-void-line px-6 py-10 delay-200 md:border-t-0 lg:px-12">
+              <div class="border-l-2 border-void-line-strong pl-5">
+                <p class="font-display text-5xl font-extrabold text-on-void tabular-nums"><span data-count="393" data-suffix="%">393%</span></p>
+                <p class="mt-2 text-body text-void-text">growth in AI traffic to US retail. Agents don't guess.</p>
+                <p class="mt-3 text-xs text-void-muted/70">Adobe Analytics</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Marquee of attributes shoppers filter on -->
+          <div class="overflow-hidden border-t border-void-line py-6" aria-label="Attributes shoppers filter on">
+            <ul class="flex w-max animate-marquee gap-3 motion-reduce:animate-none">
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">screen_size</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">fragrance_free</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">shade</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">capacity</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">fit</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">material</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">battery_life</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">skin_type</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">dimensions</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">compatibility</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">allergens</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">wattage</li>
+              <!-- duplicate set for a seamless loop -->
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">screen_size</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">fragrance_free</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">shade</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">capacity</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">fit</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">material</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">battery_life</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">skin_type</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">dimensions</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">compatibility</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">allergens</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">wattage</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ DATA ============================ -->
+      <section id="data" class="scroll-mt-16 border-b border-line">
+        <div class="frame grid lg:grid-cols-12">
+          <div class="px-6 py-16 lg:col-span-5 lg:border-r lg:border-line lg:px-12 lg:py-24">
+            <span class="reveal section-tag inline-block">Your data</span>
+            <h2 class="reveal mt-6 text-title">
+              What happens to my data?
+              <span class="text-muted">The audit reads product data. Nothing else.</span>
+            </h2>
+            <ul class="mt-8 grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-ink">
+              <li class="reveal flex items-center gap-2"><svg class="size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>Product data only</li>
+              <li class="reveal flex items-center gap-2 delay-75"><svg class="size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>No cookie, no login</li>
+              <li class="reveal flex items-center gap-2 delay-150"><svg class="size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>Tenant-isolated today</li>
+              <li class="reveal flex items-center gap-2 delay-225"><svg class="size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>Deleted on request</li>
+            </ul>
+          </div>
+          <div class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-16 lg:col-span-7 lg:border-t-0 lg:px-12 lg:py-24">
+            <div class="reveal overflow-hidden rounded-xl border border-line bg-card shadow-sm">
+              <div class="eyebrow border-b border-line bg-surface-1 px-4 py-2.5">What the audit reads</div>
               <ul class="divide-y divide-line tabular-nums text-data">
-                <li class="flex items-center justify-between px-4 py-3">
-                  <span>Product data</span><span class="badge-success">Read</span>
-                </li>
-                <li class="flex items-center justify-between px-4 py-3">
-                  <span>Order history</span><span class="badge border-line bg-surface-1 text-muted">Not read</span>
-                </li>
-                <li class="flex items-center justify-between px-4 py-3">
-                  <span>Cookies &amp; logins</span><span class="badge border-line bg-surface-1 text-muted">Not read</span>
-                </li>
-                <li class="flex items-center justify-between px-4 py-3">
-                  <span>Customer records</span><span class="badge border-line bg-surface-1 text-muted">Not read</span>
-                </li>
+                <li class="reveal flex items-center justify-between px-4 py-3.5 delay-150"><span class="text-void">Product data</span><span class="badge-success">Read</span></li>
+                <li class="reveal flex items-center justify-between px-4 py-3.5 delay-225"><span class="text-ink">Order history</span><span class="badge border-line bg-surface-1 text-muted">Not read</span></li>
+                <li class="reveal flex items-center justify-between px-4 py-3.5 delay-300"><span class="text-ink">Cookies &amp; logins</span><span class="badge border-line bg-surface-1 text-muted">Not read</span></li>
+                <li class="reveal flex items-center justify-between px-4 py-3.5 delay-375"><span class="text-ink">Customer records</span><span class="badge border-line bg-surface-1 text-muted">Not read</span></li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Final CTA -->
-      <section id="request" class="scroll-mt-20 px-6 py-20 lg:px-8">
-        <div class="card-dark blueprint-grid-dark mx-auto max-w-5xl p-10 text-center lg:p-14">
-          <h2 class="text-h2 text-white sm:text-4xl">Send us one category. See what comes back.</h2>
-          <p class="mx-auto mt-4 max-w-2xl text-rose-100">
-            Pick a shelf. Get the ranked list, the affected products and a half-hour walkthrough with your
-            merchandising team.
+      <!-- ========================== FINAL CTA ========================== -->
+      <section id="request" class="scroll-mt-16 border-b border-line">
+        <div class="frame blueprint-grid px-6 py-24 text-center lg:py-32">
+          <h2 class="reveal mx-auto max-w-3xl text-headline text-balance">
+            Send us one category. See what comes back.
+          </h2>
+          <p class="reveal mx-auto mt-5 max-w-xl text-lg text-pretty text-muted delay-100">
+            Pick a shelf. Get the ranked list, the affected products and a half-hour walkthrough with your merchandising team.
           </p>
-          <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <div class="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200">
+            <a href="#method" class="btn-secondary">Read the method first</a>
             <a href="mailto:getintouch@thepulseapi.com" class="btn-primary">Request a Decision Audit</a>
-            <a href="#how" class="btn border border-rose-800 text-rose-100 hover:bg-void-elevated">Read the method first</a>
           </div>
-          <p class="mt-6 tabular-nums text-xs text-rose-300/70">No obligation at any step.</p>
+          <p class="reveal mt-6 text-xs text-muted delay-300">No obligation at any step.</p>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-line bg-white">
-      <div class="mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
+    <footer>
+      <div class="frame grid gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-12">
         <div>
           <span class="font-display text-lg font-extrabold text-void">Pulse</span>
           <p class="mt-2 text-xs text-muted">Know which product data to fix first.</p>
-          <a href="mailto:getintouch@thepulseapi.com" class="mt-4 block tabular-nums text-xs text-coral hover:underline">getintouch@thepulseapi.com</a>
+          <a href="mailto:getintouch@thepulseapi.com" class="mt-4 block text-xs text-primary transition-colors duration-200 ease-out-soft hover:text-primary-dark">getintouch@thepulseapi.com</a>
         </div>
         <div>
           <h3 class="eyebrow">Product</h3>
           <ul class="mt-3 space-y-2 text-sm text-ink">
-            <li><a href="#" class="hover:text-coral">Decision Audit</a></li>
-            <li><a href="#" class="hover:text-coral">Decision Verification</a></li>
-            <li><a href="#" class="hover:text-coral">Decision Monitor</a></li>
-            <li><a href="#" class="hover:text-coral">Pricing</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Decision Audit</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Decision Verification</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Decision Monitor</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Pricing</a></li>
           </ul>
         </div>
         <div>
           <h3 class="eyebrow">Company</h3>
           <ul class="mt-3 space-y-2 text-sm text-ink">
-            <li><a href="#" class="hover:text-coral">About us</a></li>
-            <li><a href="#" class="hover:text-coral">Contact</a></li>
-            <li><a href="#" class="hover:text-coral">Career</a> <span class="badge-coral ml-1 py-0 text-[10px]">Hiring</span></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">About us</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Contact</a></li>
+            <li class="flex items-center gap-2"><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Career</a><span class="badge-primary">Hiring</span></li>
           </ul>
         </div>
         <div>
           <h3 class="eyebrow">Legal</h3>
           <ul class="mt-3 space-y-2 text-sm text-ink">
-            <li><a href="#" class="hover:text-coral">Privacy Policy</a></li>
-            <li><a href="#" class="hover:text-coral">Terms of Service</a></li>
-            <li><a href="#" class="hover:text-coral">Cookie Policy</a></li>
-            <li><a href="#" class="hover:text-coral">GDPR</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Privacy Policy</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Terms of Service</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Cookie Policy</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">GDPR</a></li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-line px-6 py-5 text-center tabular-nums text-xs text-muted">© 2026 Pulse. All rights reserved.</div>
+      <div class="border-t border-line">
+        <div class="frame px-6 py-5 text-center text-xs text-muted">© 2026 Pulse. All rights reserved.</div>
+      </div>
     </footer>
   </body>
 </html>

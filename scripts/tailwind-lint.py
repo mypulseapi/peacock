@@ -2,11 +2,13 @@
 """Report Tailwind CSS IntelliSense warnings for every *.html and src/*.css file.
 
 Runs the same language server the VS Code "Tailwind CSS IntelliSense" extension uses,
-so the output matches the squiggles in the editor. Exits 1 if anything is reported.
+so the output matches the squiggles in the editor. Also reports [unknownClass] for any
+class in the HTML that Tailwind generates no CSS for (e.g. `bg-rose-500` — the default
+palette is switched off, so only theme tokens exist). Exits 1 if anything is reported.
 
 Usage: pnpm lint:tw
 """
-import glob, json, os, pathlib, subprocess, sys, threading, time
+import glob, json, os, pathlib, re, subprocess, sys, tempfile, threading, time
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LINT = {
@@ -32,6 +34,28 @@ def server_command():
     if bundled:
         return ["node", bundled[-1], "--stdio"]
     return ["pnpm", "dlx", "@tailwindcss/language-server", "--stdio"]
+
+# Marker classes that intentionally produce no CSS of their own
+MARKER_CLASSES = {"group", "peer"}
+
+
+def unknown_classes(html_files):
+    """Classes used in class="…" that the Tailwind build generates no rule for."""
+    with tempfile.TemporaryDirectory() as tmp:
+        out = pathlib.Path(tmp) / "out.css"
+        subprocess.run([str(ROOT / "node_modules/.bin/tailwindcss"), "-i", "src/input.css", "-o", str(out)],
+                       cwd=ROOT, check=True, capture_output=True)
+        css = out.read_text()
+    found = []
+    for f in html_files:
+        for lineno, line in enumerate(f.read_text().splitlines(), 1):
+            for attr in re.findall(r'class="([^"]*)"', line):
+                for cls in attr.split():
+                    escaped = re.sub(r"([^a-zA-Z0-9_-])", r"\\\1", cls)
+                    if cls not in MARKER_CLASSES and "." + escaped not in css:
+                        found.append(f"{f.relative_to(ROOT)}:{lineno}  [unknownClass] `{cls}` generates no CSS "
+                                     "— use a theme token from src/input.css")
+    return found
 
 
 def main():
@@ -99,6 +123,9 @@ def main():
             total += 1
             line = d["range"]["start"]["line"] + 1
             print(f"{f.relative_to(ROOT)}:{line}  [{d.get('code')}] {d['message']}")
+    for problem in unknown_classes([f for f in files if f.suffix == ".html"]):
+        total += 1
+        print(problem)
     print(f"\n{total} Tailwind warning(s) in {len(files)} file(s).")
     sys.exit(1 if total else 0)
 

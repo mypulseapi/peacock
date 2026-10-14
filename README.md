@@ -18,10 +18,11 @@ Then open `index.html` (home) or `components.html` (component spec) in your brow
 
 ## Theme (`src/input.css`)
 
-All colours, fonts and sizes are tokens in `@theme`. **To change the colour scheme, edit only the
-`--brand-*` values in the `COLOURS` block** (Indigo, Coral, Violet, Mint, Ink, Mist); role tokens derive from them —
-`primary`, `signal`, `accent`, `gap`, `void`, `ink`, `muted`, `card`, `line`,
-`success`/`warning`/`critical` …), and Tailwind's default palette is switched off.
+All colours, fonts and sizes are tokens in `@theme`. Colours use the **Aurora** palette from
+`docs/pulse_brand_guidelines_v2.md` §3 (Indigo, Violet, Cyan, Coral, Ink, Mist + the Violet → Cyan → Coral gradient).
+Role tokens (`primary`, `accent`, `gap`, `void`, `ink`, `muted`, `card`, `line`, `success`/`warning`/`critical` …)
+are exact hex values in `light-dark()`, so the site follows the visitor's light/dark setting. Tailwind's default
+palette is switched off.
 
 Fonts: `font-display` (Plus Jakarta Sans), `font-sans` (Inter); numbers use `tabular-nums`.
 Type: `text-display` / `text-headline` / `text-title` (fluid), `text-h1`, `text-h2`, `text-h3`, `text-body`, `text-data`.

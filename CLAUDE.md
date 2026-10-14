@@ -46,7 +46,7 @@ Never ignore, silence or disable a warning (no lint settings changes, no `@layer
 
 1. Put pages in the **project root** as `*.html` — `src/input.css` only scans `@source "../*.html"`.
    If you add a subfolder, add a matching `@source` line.
-2. Copy the `<head>` from `index.html` exactly: same Google Fonts link (Inter + Plus Jakarta Sans only),
+2. Copy the `<head>` from `index.html` exactly (and its `<body class="overflow-x-clip">`, so pages never scroll sideways): same Google Fonts link (Inter + Plus Jakarta Sans only),
    `<link rel="stylesheet" href="./dist/output.css" />` and `<script defer src="./src/main.js"></script>`.
    Use `defer`, never `type="module"` — module scripts are blocked when the page is opened from `file://`.
 3. Use the ruled-frame layout (DESIGN.md §4) and the motion rules (DESIGN.md §6) — `index.html` is the reference page.

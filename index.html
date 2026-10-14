@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./dist/output.css" />
     <script defer src="./src/main.js"></script>
   </head>
-  <body>
+  <body class="overflow-x-clip">
     <!-- Icon sprite (Lucide-style, stroke icons). Use: <svg><use href="#i-name" /></svg> -->
     <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
       <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6" /></symbol>
@@ -358,66 +358,66 @@
                           <span class="demo-pill border-critical-line bg-critical-bg text-critical">347 gaps found</span>
                         </div>
                         <div class="demo-in flex items-center gap-3 border-b border-critical-line bg-critical-bg px-5 py-3"><span class="flex size-5 shrink-0 items-center justify-center rounded-full bg-critical text-on-primary"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg></span><p class="text-data leading-snug text-critical"><strong class="font-bold">347 fields are blank across this shelf.</strong> A shopper cannot filter on any of them, and neither can your search.</p></div>
-                        <div class="relative flex-1 overflow-x-auto">
-                          <table class="w-full min-w-160 text-left tabular-nums text-xs">
+                        <div class="relative flex-1 overflow-x-clip">
+                          <table class="w-full text-left tabular-nums text-xs">
                             <thead>
                               <tr class="border-b border-line">
-                                <th class="px-5 pt-4 pb-3 text-xs font-semibold text-muted">Name</th>
-                                <th class="hidden px-3 pt-4 pb-3 text-xs font-semibold text-muted md:table-cell">SKU</th>
-                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">1</span><span class="text-xs font-semibold text-ink">Screen size</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>80 missing</span></th>
-                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">2</span><span class="text-xs font-semibold text-ink">Memory</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>60 missing</span></th>
-                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">4</span><span class="text-xs font-semibold text-ink">Processor</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>162 missing</span></th>
-                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">3</span><span class="text-xs font-semibold text-ink">Storage</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>55 missing</span></th>
+                                <th class="pt-4 pr-2 pb-3 pl-5 text-xs font-semibold text-muted sm:pr-5">Name</th>
+                                <th class="hidden px-3 pt-4 pb-3 text-xs font-semibold text-muted lg:table-cell">SKU</th>
+                                <th class="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3"><span class="flex items-center gap-1.5"><span class="invisible hidden size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary sm:flex" aria-hidden="true">1</span><span class="text-xs font-semibold text-ink">Screen size</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>80 missing</span></th>
+                                <th class="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3"><span class="flex items-center gap-1.5"><span class="invisible hidden size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary sm:flex" aria-hidden="true">2</span><span class="text-xs font-semibold text-ink">Memory</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>60 missing</span></th>
+                                <th class="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="flex items-center gap-1.5"><span class="invisible hidden size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary sm:flex" aria-hidden="true">4</span><span class="text-xs font-semibold text-ink">Processor</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>162 missing</span></th>
+                                <th class="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="flex items-center gap-1.5"><span class="invisible hidden size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary sm:flex" aria-hidden="true">3</span><span class="text-xs font-semibold text-ink">Storage</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>55 missing</span></th>
                               </tr>
                             </thead>
                             <tbody class="divide-y divide-surface-1">
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>LG 16Z90TS-G</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">A1B2C3D4</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">16.0"</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-200"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-200"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">512GB</td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>LG 16Z90TS-G</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">A1B2C3D4</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3">16.0"</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="demo-in missing-flag delay-200"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="demo-in missing-flag delay-200"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell">512GB</td>
                               </tr>
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>Spectre x360</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">E5F6G7H8</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-300"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">16GB</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-300"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-300"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>Spectre x360</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">E5F6G7H8</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="demo-in missing-flag delay-300"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3">16GB</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="demo-in missing-flag delay-300"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="demo-in missing-flag delay-300"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
                               </tr>
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>ThinkPad X1 Carbon Gen 9</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">I9J0K1L2</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-400"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">32GB</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-400"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">1TB</td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>ThinkPad X1 Carbon Gen 9</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">I9J0K1L2</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="demo-in missing-flag delay-400"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3">32GB</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="demo-in missing-flag delay-400"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell">1TB</td>
                               </tr>
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>Razer Blade</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">M3N4O5P6</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">15.6"</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-500"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-500"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-500"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>Razer Blade</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">M3N4O5P6</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3">15.6"</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="demo-in missing-flag delay-500"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="demo-in missing-flag delay-500"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="demo-in missing-flag delay-500"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
                               </tr>
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>MacBook Pro</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">Q7R8S9T0</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-600"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">18GB</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">M3</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">512GB</td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>MacBook Pro</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">Q7R8S9T0</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="demo-in missing-flag delay-600"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3">18GB</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell">M3</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell">512GB</td>
                               </tr>
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>MSI GS66</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">Y5Z6A7B8</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>MSI GS66</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">Y5Z6A7B8</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
                               </tr>
                             </tbody>
                           </table>
@@ -438,66 +438,66 @@
                           <div class="flex items-baseline justify-between gap-4"><span class="text-data font-semibold text-primary">Scoring 216 products against 32 buying requirements</span><span class="tabular-nums text-xs text-muted">4 attributes</span></div>
                           <span class="scan-track block h-1.5 w-full overflow-hidden rounded-full mt-2"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-0"></span></span>
                         </div>
-                        <div class="relative flex-1 overflow-x-auto">
-                          <table class="w-full min-w-160 text-left tabular-nums text-xs">
+                        <div class="relative flex-1 overflow-x-clip">
+                          <table class="w-full text-left tabular-nums text-xs">
                             <thead>
                               <tr class="border-b border-line">
-                                <th class="px-5 pt-4 pb-3 text-xs font-semibold text-muted">Name</th>
-                                <th class="hidden px-3 pt-4 pb-3 text-xs font-semibold text-muted md:table-cell">SKU</th>
-                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">1</span><span class="text-xs font-semibold text-ink">Screen size</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-0"></span></span></span></th>
-                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">2</span><span class="text-xs font-semibold text-ink">Memory</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-180"></span></span></span></th>
-                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">4</span><span class="text-xs font-semibold text-ink">Processor</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-360"></span></span></span></th>
-                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">3</span><span class="text-xs font-semibold text-ink">Storage</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-540"></span></span></span></th>
+                                <th class="pt-4 pr-2 pb-3 pl-5 text-xs font-semibold text-muted sm:pr-5">Name</th>
+                                <th class="hidden px-3 pt-4 pb-3 text-xs font-semibold text-muted lg:table-cell">SKU</th>
+                                <th class="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3"><span class="flex items-center gap-1.5"><span class="invisible hidden size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary sm:flex" aria-hidden="true">1</span><span class="text-xs font-semibold text-ink">Screen size</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-0"></span></span></span></th>
+                                <th class="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3"><span class="flex items-center gap-1.5"><span class="invisible hidden size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary sm:flex" aria-hidden="true">2</span><span class="text-xs font-semibold text-ink">Memory</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-180"></span></span></span></th>
+                                <th class="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="flex items-center gap-1.5"><span class="invisible hidden size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary sm:flex" aria-hidden="true">4</span><span class="text-xs font-semibold text-ink">Processor</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-360"></span></span></span></th>
+                                <th class="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="flex items-center gap-1.5"><span class="invisible hidden size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary sm:flex" aria-hidden="true">3</span><span class="text-xs font-semibold text-ink">Storage</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-540"></span></span></span></th>
                               </tr>
                             </thead>
                             <tbody class="divide-y divide-surface-1">
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>LG 16Z90TS-G</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">A1B2C3D4</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">16.0"</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-90"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-180"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">512GB</td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>LG 16Z90TS-G</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">A1B2C3D4</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3">16.0"</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-90"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-180"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell">512GB</td>
                               </tr>
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>Spectre x360</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">E5F6G7H8</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-270"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">16GB</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-360"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-450"></span></span></span></td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>Spectre x360</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">E5F6G7H8</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-270"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3">16GB</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-360"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-450"></span></span></span></td>
                               </tr>
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>ThinkPad X1 Carbon Gen 9</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">I9J0K1L2</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-540"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">32GB</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-630"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">1TB</td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>ThinkPad X1 Carbon Gen 9</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">I9J0K1L2</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-540"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3">32GB</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-630"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell">1TB</td>
                               </tr>
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>Razer Blade</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">M3N4O5P6</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">15.6"</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-720"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-810"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-900"></span></span></span></td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>Razer Blade</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">M3N4O5P6</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3">15.6"</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-720"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-810"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-900"></span></span></span></td>
                               </tr>
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>MacBook Pro</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">Q7R8S9T0</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-990"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">18GB</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">M3</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">512GB</td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>MacBook Pro</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">Q7R8S9T0</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-990"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3">18GB</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell">M3</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell">512GB</td>
                               </tr>
                               <tr>
-                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>MSI GS66</span></td>
-                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">Y5Z6A7B8</td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1080"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1170"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1260"></span></span></span></td>
-                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1350"></span></span></span></td>
+                                <td class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"><span class="flex items-center gap-3"><span class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block" aria-hidden="true"></span>MSI GS66</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">Y5Z6A7B8</td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1080"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1170"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1260"></span></span></span></td>
+                                <td class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1350"></span></span></span></td>
                               </tr>
                             </tbody>
                           </table>

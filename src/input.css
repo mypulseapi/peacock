@@ -62,10 +62,10 @@
 
   /* ================================================================ */
   /* COLOURS — the ONLY place colours are defined.                     */
-  /* Source of truth: docs/pulse_color_palettes.md (default: Aurora).   */
+  /* Source of truth: docs/pulse_brand_guidelines_v2.md §3 (Aurora).  */
   /*                                                                   */
   /* 1. BRAND PALETTE (§3.1): base colours. Never used directly in HTML.*/
-  /* 2. ROLES (§3.2 light, §3.3 dark): what pages use. Every TEXT and   */
+  /* 2. ROLES (§3.3 light, §3.4 dark): what pages use. Every TEXT and   */
   /*    surface role is an exact, contrast-checked hex — no color-mix — */
   /*    written as light-dark(<light>, <dark>). The page follows the    */
   /*    OS theme; [data-theme] on <html> overrides it (see Base).       */
@@ -84,7 +84,7 @@
   --brand-mist: #f7f8fc; /* page background */
   --gradient-brand: linear-gradient(112deg, var(--brand-violet) 0%, var(--brand-cyan) 50%, var(--brand-coral) 100%);
 
-  /* 2. Roles — light-dark(light §3.2, dark §3.3) */
+  /* 2. Roles — light-dark(light §3.3, dark §3.4) */
   /* Text */
   --color-ink: light-dark(#0b1b3a, #eef0f7); /* main text, headings */
   --color-muted: light-dark(#56607a, #a9b3cc); /* secondary text */
@@ -103,7 +103,7 @@
   --color-on-primary: light-dark(#ffffff, #0a1230); /* text/icons on a primary fill */
   /* Accent — Coral: decorative on light; accent-text for coral text on light */
   --color-accent: #ff7a59; /* fills, bars, rings, large numbers (decorative on light; text allowed in dark) */
-  --color-accent-text: light-dark(#b8431a, #ff7a59); /* coral-family text — dark: accent itself (§3.3) */
+  --color-accent-text: light-dark(#b8431a, #ff7a59); /* coral-family text — dark: accent itself (§3.4) */
   --color-accent-tint: light-dark(#ffefe9, #3a2219); /* accent badge background — derived */
   --color-accent-line: color-mix(in oklab, var(--color-accent) 35%, var(--color-card)); /* accent badge border (decorative) — derived */
   /* Gap — Missing data (amber). Never shares a colour with critical. */
@@ -122,7 +122,7 @@
   --color-critical-line: color-mix(in oklab, var(--color-critical) 25%, var(--color-card)); /* badge border (decorative) — derived */
   --color-critical-hatch: color-mix(in oklab, var(--color-critical) 14%, transparent); /* missing-flag stripes (decorative) */
   --color-critical-ring: color-mix(in oklab, var(--color-critical) 28%, transparent); /* missing-flag outline (decorative) */
-  /* Dark band (void) — always dark, in both themes (§3.2) */
+  /* Dark band (void) — always dark, in both themes (§3.3) */
   --color-void: #0a1230; /* dark band background */
   --color-void-elevated: #121b3d; /* cards on the dark band — derived (= dark card) */
   --color-void-line: #252f57; /* hairlines on the dark band — derived (= dark line) */
@@ -364,7 +364,7 @@
 /* ------------------------------------------------------------------ */
 /* Utilities                                                           */
 /* ------------------------------------------------------------------ */
-/* Brand gradient (docs/pulse_color_palettes.md): Violet → Cyan → Coral. Never put white text on it. */
+/* Brand gradient (docs/pulse_brand_guidelines_v2.md §3.2): Violet → Cyan → Coral. Never put white text on it. */
 @utility bg-brand-gradient {
   background-image: var(--gradient-brand);
 }

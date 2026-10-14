@@ -148,6 +148,10 @@ separated by a horizontal hairline.
 - Visual areas (mockups, charts) sit on `blueprint-grid bg-surface-1/50`; text areas sit on the plain page.
 - Padding: text areas `px-6 py-12 lg:px-12 lg:py-16`; big statements `py-24 lg:py-32`.
 - Desktop grid: 12 columns (`lg:grid-cols-12`). Common splits: 3/9 (sticky nav + content), 5/7, 7/5.
+- **No sideways scrolling, ever.** `<body class="overflow-x-clip">` on every page (`clip`, not `hidden`, so the
+  sticky header keeps working). Content must also fit by itself: no `min-w-*` tables in sideways-scrolling boxes —
+  hide less important columns on small screens instead (the hero demo tables show 2 attribute columns below `sm`,
+  SKU from `lg`).
 - At most one dark (`bg-void`) band per page.
 - Inside cards: `p-6` (compact `p-4`/`p-5`), gaps `gap-4`–`gap-6`.
 - Radius: `rounded-xl` cards and windows, `rounded-lg` buttons and inner panels, `rounded` chips,

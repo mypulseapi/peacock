@@ -31,13 +31,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      # dist/ is git-ignored, so the CSS must be built here
+      - name: Build CSS
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build
+      - name: Assemble site
+        run: |
+          mkdir _site
+          cp -r *.html CNAME dist src _site/
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

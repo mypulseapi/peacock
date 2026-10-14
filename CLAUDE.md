@@ -54,12 +54,13 @@ Never ignore, silence or disable a warning (no lint settings changes, no `@layer
    `index.html`, and add the new page to the header nav. Dropdowns must stay `<details>` elements (no-JS fallback).
 5. Build the page from the existing component classes in DESIGN.md §5. Copy content patterns from `components.html`.
 
-## Colours are not final
+## Colours (Aurora palette)
 
-Colours come from the Figma brand palette but may still change. Changing colours must only ever require editing
-the `--brand-*` values in the `COLOURS` block of `src/input.css` (role shades are derived with `color-mix()`).
-After changing a brand colour, re-check WCAG AA contrast of the derived roles. So: never put a colour in HTML, JS or a utility; use role-named tokens (`primary`, not `coral`);
-add new colours as tokens. `pnpm lint:tw` flags any class that generates no CSS (`[unknownClass]`), which
+Colour values come from `docs/pulse_brand_guidelines_v2.md` §3 (Aurora) and live only in the `COLOURS` block of
+`src/input.css`. Every text/surface role is an exact hex written as `light-dark(<light>, <dark>)` — dark mode follows
+the OS, `<html data-theme>` overrides it. To change a colour, update the guideline and the token together, then
+re-check WCAG AA contrast with a script in **both** themes. Never put a colour in HTML, JS or a utility; use role-named
+tokens (`primary`, not `indigo`); add new colours as tokens (light + dark value). `pnpm lint:tw` flags any class that generates no CSS (`[unknownClass]`), which
 catches default-palette colours because that palette is switched off.
 
 ## Rules for new components
@@ -89,5 +90,5 @@ catches default-palette colours because that palette is switched off.
 - Branch new work from `dev`; open pull requests into `dev`. Never commit directly to `main`.
 - **Never commit or push automatically.** After making changes, stop and let the user review them.
   Only run `git commit` / `git push` when the user explicitly says so.
-- Design sources: brand colours from Figma file `IfFMuiAP9dL6OcRTn5B6V8` ("Pulse Design Work" › Branding › Pulse Color);
+- Design sources: brand colours from `docs/pulse_brand_guidelines_v2.md` (Aurora; the earlier Figma "Pulse Color" palette is superseded);
   layout/components originally from Google Stitch project `15026689791361906848`.

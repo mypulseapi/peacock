@@ -21,6 +21,7 @@ Static marketing/demo site for **Pulse**, built with plain HTML + Tailwind CSS v
 | Path | Purpose |
 | --- | --- |
 | `src/input.css` | The only stylesheet you edit: `@theme` tokens + component `@utility` classes. |
+| `src/assets/` | Images (`logo.webp` — the Pulse wordmark, 600×200). |
 | `src/main.js` | Page motion (scroll reveal, count-up, typing, shelf grid, scroll-spy). Plain script, no imports. |
 | `dist/output.css` | Generated — never edit, never commit (git-ignored). |
 | `index.html` | Home page. |
@@ -49,7 +50,8 @@ Never ignore, silence or disable a warning (no lint settings changes, no `@layer
    `<link rel="stylesheet" href="./dist/output.css" />` and `<script defer src="./src/main.js"></script>`.
    Use `defer`, never `type="module"` — module scripts are blocked when the page is opened from `file://`.
 3. Use the ruled-frame layout (DESIGN.md §4) and the motion rules (DESIGN.md §6) — `index.html` is the reference page.
-4. Reuse the header and footer markup from `index.html`, and add the new page to the header nav.
+4. Reuse the icon sprite (`<svg class="hidden">…</svg>` at the top of `<body>`), header and footer markup from
+   `index.html`, and add the new page to the header nav. Dropdowns must stay `<details>` elements (no-JS fallback).
 5. Build the page from the existing component classes in DESIGN.md §5. Copy content patterns from `components.html`.
 
 ## Colours are not final

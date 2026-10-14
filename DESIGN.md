@@ -13,7 +13,7 @@ Live reference: `components.html` shows every component below rendered with the 
 
 1. **Flat and typographic.** Matte, opaque fills. No glassmorphism, no glow, no decorative
    illustration or stock imagery. Depth comes from 1px borders, spacing and `shadow-sm` only.
-   The only gradient is the brand gradient (`bg-brand-gradient`, see §2).
+   The only gradients are the brand gradient (`bg-brand-gradient`) and the hero stage backdrop (`hero-backdrop`), see §2.
 2. **Data first.** Visual interest comes from tables, ranked lists, scores and status badges —
    not decoration.
 3. **Colour has a job.** Every colour below has one meaning. Never use a colour outside its role.
@@ -70,10 +70,18 @@ Rules:
 | `warning` (+ `-bg`, `-line`) | Status: degraded / low confidence. |
 | `critical` (+ `-bg`, `-line`) | Status: blocker / attribute missing completely. |
 | `grid-line` / `grid-line-dark` | Used only inside `blueprint-grid` / `blueprint-grid-dark`. |
+| `stage-base` / `stage-glow` / `stage-glow-accent` | Used only inside `hero-backdrop`: base tint, Indigo wash in the lower corners, faint Violet wash at the bottom centre. |
+| `window-close` / `window-minimise` / `window-zoom` | Only the three window-control dots in the hero app-window frame (Coral, amber, Mint). |
+| `critical-hatch` / `critical-ring` | Used only inside `missing-flag`: the red stripes and the 1px inner outline. |
+| `scan-band` | Used only inside `demo-scan`: the translucent Indigo band that sweeps across the audit step. |
 
 **Brand gradient:** `bg-brand-gradient` — Coral → Indigo at 112° (Figma "gradient"), built from the `signal`
 and `primary` tokens. Allowed for big brand moments (hero or closing CTA backgrounds, dark bands) — at most one
 per page, never behind small text. Not used on pages yet.
+
+**Hero stage backdrop:** `hero-backdrop` (on a `relative isolate` element) — starts as the page colour at the top so
+the headline area flows into it without a line, then turns into a soft, cool Indigo wash that is strongest at
+the bottom and the sides, around the app window (attio.com style, no lines or patterns). Built from the `stage-*` tokens. Only behind the home hero's product stage.
 
 Status colours are **only** for audit status — never decorative.
 
@@ -93,6 +101,7 @@ Only two font families. **No monospace font in this project** (JetBrains Mono wa
 | `text-h3` | 18px / 1.4 / 600 | Card and component titles. |
 | `text-body` | 14px / 1.6 | Paragraphs in cards. |
 | `text-data` | 13px / 1.5 | Table cells, metrics, SKUs. |
+| `text-caption` | 11px / 1.4 | Column notes, list sub-lines and small uppercase labels inside the hero demo. |
 | `text-xs` | 12px | Captions, eyebrows, badges. |
 
 Rules:
@@ -112,26 +121,27 @@ Responsive and one-off sizes belong in `@theme`, not in class attributes:
 
 | Class | Size | Use |
 | --- | --- | --- |
-| `text-display` | 40 → 60px, 800 | Page `h1`, the dark-band statement |
+| `text-display` | 40 → 60px, 800 | Page `h1` (one line from `xl`: `text-balance xl:whitespace-nowrap`), the dark-band statement |
 | `text-headline` | 36 → 48px, 800 | Closing CTA heading |
 | `text-title` | 30 → 36px, 700 | Section intro headings |
+| `text-nav` / `text-micro` | 15px / 10px | Header links and buttons / dropdown section labels |
 
 Need a new responsive size? Add a fluid `--text-*` token (with line-height/weight/letter-spacing) to `@theme`.
 
 ## 4. Layout & spacing — the ruled frame
 
-Pages use an Attio-style **ruled layout**: one centred column with continuous vertical hairlines,
-and every section separated by a horizontal hairline.
+Pages use an Attio-style **ruled layout**: one centred column (no side lines), with every section
+separated by a horizontal hairline.
 
 ```html
 <section class="border-b border-line">        <!-- full-width row, hairline below -->
-  <div class="frame">                         <!-- max-w-7xl + border-x border-line -->
+  <div class="frame">                         <!-- centred column: max-w-frame (85.5rem) -->
     <div class="px-6 py-16 lg:px-12 lg:py-24">…</div>
   </div>
 </section>
 ```
 
-- Every section (and the header/footer inner row) wraps its content in `frame` so the vertical lines never break.
+- Every section (and the header/footer inner row) wraps its content in `frame` so content edges line up.
   Dark bands use `bg-void` on the section and `frame-dark` inside.
 - Split content **inside** the frame with hairlines, not gaps: `grid … md:divide-x md:divide-line`,
   `divide-y divide-line`, or `border-t border-line` between a heading area and its visual.
@@ -161,9 +171,18 @@ and every section separated by a horizontal hairline.
 | `section-tag` | Numbered primary (Indigo) chip before an `h2` (`01`, `02` …). |
 | `badge-primary` / `badge-signal` (the #1 item only) / `badge-success` / `badge-warning` / `badge-critical` | Pill labels. Status badges map to audit states only. |
 | `missing-cell` / `missing-cell-dark` | **Signature motif**: dashed amber box marking missing data. |
+| `missing-flag` | Hero demo only (matches thepulseapi.com): red hatched flag with a warning icon for a missing value in the catalogue table. Its stripes slide sideways in an endless 1s loop (`--animate-missing-drift`; stopped with reduced motion). |
+| `demo-pill` | Hero demo only: status pill in a step's title bar. Add the colours: critical (`border-critical-line bg-critical-bg text-critical`), running (`border-line bg-surface-1 text-muted` + spinner), done (`border-primary bg-primary text-on-primary`). |
+| `scan-track` | Hatched `surface-1` track behind the demo's progress bars. |
 | `blueprint-grid` / `blueprint-grid-dark` | Faint 24px grid background — behind mockups, visuals, dark bands and the final CTA. |
 | `bg-brand-gradient` | Coral → Indigo brand gradient (see §2). |
-| `frame` / `frame-dark` | Page column with continuous vertical hairlines (see §4). |
+| `nav-link` | Header menu link / dropdown trigger: Plus Jakarta 15px medium, `ink` text with a `surface-1` hover pill. |
+| `nav-icon-tile` | 32px `primary-tint` square holding a 16px `primary` icon (mobile menu only). |
+| `frame` / `frame-dark` | Centred page column, `max-w-frame` (see §4). No side borders. |
+| `hero-backdrop` | Hero stage background: page colour → soft cool Indigo wash, strongest at the bottom and sides (see §2). Full width, no line above. The app window on it uses the attio.com frame: `rounded-2xl border border-line bg-surface-1 p-1.5` with the `window-*` dots, the app panel inset as `rounded-xl border border-line bg-card`. |
+| `hero-window` / `hero-fade` / `hero-stage` | Hero scroll effect: the product window that grows, the headline block that fades out, and the stage whose bottom padding ends it exactly at the bottom of the screen at full focus (see §6, Hero scroll zoom). `hero-stage` assumes the `h-17` header. |
+| `demo-stack` / `demo-step` | Hero workflow demo: steps stacked in one grid cell, only the `data-active` one visible. Without JS every step shows, one under another. |
+| `demo-in` / `demo-out` / `demo-bar` (+ `demo-bar-slow`, `demo-bar-scan`) / `demo-draw` / `demo-fill` / `demo-scan` / `demo-timer` | Motion inside a demo step: enter with stagger (`delay-*`), fade a "before" label away (`demo-out`, hidden without JS), grow a bar (`demo-bar-scan`: 1.9s `ease-scan` fill with a running shimmer), draw an SVG path (`pathLength="1"`), fill a grid cell, sweep one band across the step once (`demo-scan`, first child of a `relative` step), run the tab timer. They replay every time the step becomes active. |
 | `reveal` | Fades + slides an element up 1rem when it scrolls into view. |
 | `reveal-bar` | Grows a bar from the left edge when it scrolls into view. |
 | `animate-marquee` | Infinite horizontal scroll (40s). Content must be duplicated once for a seamless loop. |
@@ -198,6 +217,20 @@ Sticky step navigation: left `lg:col-span-3` column with `sticky top-16` nav; li
 `data-spy="<section-id>"` and style the active state with `data-active:border-primary data-active:text-void`
 (set by `src/main.js`). Content blocks in `lg:col-span-9`, separated by `divide-y divide-line`.
 
+Header / navbar (from thepulseapi.com): sticky, `h-17`, `bg-card`, bottom hairline. Logo `src/assets/logo.webp`
+(84×28) left; menu `nav-link`s centred; language picker, Sign In and `btn-primary` CTA right; below `lg` a ☰ button
+opens a full-screen menu. Dropdowns are native `<details data-dropdown>` — they work without JavaScript.
+Mega menus (`<details data-dropdown data-mega>`): `[data-nav-content]` is `flex` with one
+`nav-column w-76 p-3` column per group (light, inset divider between columns) — a small `text-xs text-muted` label, then items with a semibold `ink` title and a
+one-line `text-sm text-pretty text-muted` description (keep it under ~35 characters); no intro panel, no icons
+are taken over by `src/main.js` into one shared `nav-viewport` (attio.com style): the panel animates its
+width/height (150ms, `ease-in-out-cubic`) and the contents slide ±200px with an 8px blur (200ms) in the direction
+of travel. Give each menu's content a fixed width (`w-176`, `w-152` …) so the viewport can resize to it.
+Copy the whole `<header>` from `index.html`.
+
+Icons: Lucide-style stroke icons in an inline `<svg>` sprite at the top of `<body>`; use them with
+`<svg class="size-4" aria-hidden="true"><use href="#i-name" /></svg>`. Add new icons to the sprite, never inline paths.
+
 Product mockup: window `rounded-t-xl border border-b-0 border-line bg-card shadow-sm` with a
 `h-10` title bar (three `size-2.5 rounded-full bg-line` dots + muted URL), sitting on `blueprint-grid`
 and running into the section's bottom hairline. Use only real Pulse numbers in mockups.
@@ -210,15 +243,18 @@ spins or loops for decoration. All scroll effects are driven by `src/main.js` th
 | Effect | How | Use for |
 | --- | --- | --- |
 | Fade-up on scroll | `reveal` (+ `delay-75` … `delay-1200` to stagger) | Headings, cards, rows, list items |
-| Word-by-word headline | each word `<span class="reveal inline-block delay-N">`, steps of 75ms | The page `h1` only |
+| Headline | the `h1` is one plain sentence with `reveal` (fades up as a whole); never split words into spans | Page `h1` |
 | Growing bar | `reveal-bar` on the fill, real width as a fraction of the source numbers (`w-94/216`) | Progress, comparisons |
 | Count-up | `data-count="94"` (+ `data-suffix="%"`), real number as the fallback text | Key metrics only |
 | Typing | `data-type="text"` inside a `group` with `data-type-root`; reveal results with `group-data-typed:opacity-100` | Search / input demos |
 | Product shelf | `data-shelf data-total="216" data-ready="94"` on a `grid grid-cols-18 gap-1` | The readiness visual |
 | Marquee | `flex w-max animate-marquee motion-reduce:animate-none`, items duplicated with `aria-hidden="true"` | Attribute chips on the dark band |
 | Scroll-spy | `data-spy="section-id"` on nav links | Sticky step navigation |
+| Hero scroll zoom | `data-hero` on the section, `hero-fade` on the headline block, `hero-stage` + `data-hero-stage` on the visual area; `src/main.js` sets `--hero-p` 0 → 1 as the window scrolls up until it is centred in the screen below the header (attio.com style). The window sits near the top of the stage, 80px under the headline buttons (headline `pb-12` + stage `pt-8`). The headline fades out and lifts 2rem, the stage ends exactly at the bottom of the screen at focus (`hero-stage` bottom padding = (screen − header − window height) / 2, window height from `--hero-window-h` set by `src/main.js`; at least 5rem; plus 10px), so nothing below shows and no extra backdrop is left, and `hero-window` grows from its normal size (upright, no tilt) to +12% from `lg` (+4% below), centred on itself — but never beyond what fits below the header with 16px to spare (`--hero-zoom-fit`, set by `src/main.js`), so the step tabs are never hidden. If the window is taller than the screen, the effect stops with its top 16px under the header instead of centring it. The stage clips only sideways (`overflow-x-clip`) so the grown window is never cut at the top | The home hero only |
+| Workflow demo | `data-demo` on the window: tabs `data-demo-tab` (each holds a `demo-timer`), captions `data-demo-caption`, steps `data-demo-step` (mark the first of each `data-active` in the HTML). A step lasts as long as `--animate-demo-timer` (6s); hover or scrolling away pauses it, clicking a tab jumps. `data-demo-count` counts up on each visit (optional `data-from` start value and `data-delay` in ms); `data-demo-grid` (`data-total/before/after`) draws the payoff grid. Steps follow thepulseapi.com: problem → audit → priority → repair → payoff, with its real numbers | The home hero only |
+| Mega-menu switch | `nav-viewport` + `nav-content`, driven by `data-state` / `data-dir` from `src/main.js` | Header dropdowns only |
 
-Timing tokens: `ease-out-soft` (default), `ease-emphasized` (bars). Reveal = 700ms, bars = 1100ms,
+Timing tokens: `ease-out-soft` (default), `ease-emphasized` (bars), `ease-scan` (hero demo audit bars). Reveal = 700ms, bars = 1100ms,
 hover = `transition-colors duration-200 ease-out-soft`. Keep the total stagger in one view under ~1.2s.
 
 Rules:
@@ -251,7 +287,7 @@ Quietly confident, empirical, calm. Peer to a merchandising lead.
 
 ## 9. Never
 
-- Gradients other than `bg-brand-gradient`; glassmorphism, neon/glow shadows, `shadow-lg`+ on light cards.
+- Gradients other than `bg-brand-gradient` and `hero-backdrop`; glassmorphism, neon/glow shadows, `shadow-lg`+ on light cards.
 - Decorative looping animation (spinners, floating blobs, parallax); hover scale/lift effects.
 - `signal` (Coral) more than once per view; `gap` for anything that isn't missing data.
 - Colours outside the theme tokens; arbitrary `[…]` values or breakpoint font sizes in HTML (see §2, §3).

@@ -28,6 +28,8 @@
   --text-body--line-height: 1.6;
   --text-data: 0.8125rem;
   --text-data--line-height: 1.5;
+  --text-caption: 0.6875rem; /* 11px: column notes and small labels inside the hero demo */
+  --text-caption--line-height: 1.4;
 
   /* Fluid display sizes: scale smoothly with the viewport (min, preferred, max).
      Use these instead of sm:/lg: text sizes in the HTML. */
@@ -43,6 +45,18 @@
   --text-title--line-height: 1.2;
   --text-title--font-weight: 700;
   --text-title--letter-spacing: -0.02em;
+
+  /* Navigation (thepulseapi.com navbar: Plus Jakarta Sans 15px) */
+  --text-nav: 0.9375rem; /* 15px */
+  --text-nav--line-height: 1.5;
+  --text-micro: 0.625rem; /* 10px: dropdown section labels */
+  --text-micro--line-height: 1.4;
+  --text-micro--letter-spacing: 0.05em;
+  --radius-control: 0.625rem; /* 10px: nav links, nav buttons */
+
+  /* Page column width (frame). 85.5rem = 1368px: at a 1440px viewport the content edge
+     (frame + px-6) sits 60px from the window edge, matching thepulseapi.com. */
+  --container-frame: 85.5rem;
 
   /* ================================================================ */
   /* COLOURS — the ONLY place colours are defined.                     */
@@ -118,6 +132,21 @@
   --color-critical: #dc2626;
   --color-critical-bg: oklch(97.1% 0.013 17.38);
   --color-critical-line: oklch(88.5% 0.062 18.334);
+  --color-critical-hatch: color-mix(in oklab, var(--color-critical) 14%, transparent); /* missing-flag stripes */
+  --color-critical-ring: color-mix(in oklab, var(--color-critical) 28%, transparent); /* missing-flag outline */
+
+  /* Hero stage backdrop (attio.com style): the page colour fading into a soft, cool Indigo wash */
+  --color-stage-base: color-mix(in oklab, var(--color-primary) 7%, var(--color-surface-0));
+  --color-stage-glow: color-mix(in oklab, var(--color-primary) 14%, transparent);
+  --color-stage-glow-accent: color-mix(in oklab, var(--color-accent) 8%, transparent);
+
+  /* Hero demo: the band that sweeps across the audit step */
+  --color-scan-band: color-mix(in oklab, var(--color-primary) 22%, transparent);
+
+  /* App window controls (hero window frame) */
+  --color-window-close: var(--brand-coral);
+  --color-window-minimise: var(--color-gap);
+  --color-window-zoom: var(--brand-mint);
 
   /* Blueprint grid lines */
   --color-grid-line: rgb(15 23 42 / 0.04);
@@ -126,9 +155,57 @@
   /* Motion (modelled on attio.com: short, eased, never bouncy) */
   --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
   --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1); /* nav dropdown (attio.com) */
+  --ease-scan: cubic-bezier(0.34, 0.68, 0.28, 1); /* hero demo progress bars (thepulseapi.com) */
+
+  /* Floating panels (nav dropdown): hairline ring + soft drop shadow, built from tokens */
+  --shadow-nav: 0 0 0 1px var(--color-line), 0 12px 32px -12px color-mix(in oklab, var(--color-ink) 20%, transparent);
   --animate-marquee: marquee 40s linear infinite;
   --animate-caret: caret 1s step-end infinite;
   --animate-ring: ring 3.6s ease-in-out infinite;
+  --animate-dropdown: dropdown 150ms var(--ease-out-soft);
+  /* Hero workflow demo: one step lasts as long as its tab timer runs; the scan sweeps the audit step once;
+     the shimmer runs along the audit's progress bars */
+  --animate-demo-timer: demo-timer 6s linear;
+  --animate-demo-scan: demo-scan 3.4s ease-in-out both;
+  --animate-demo-shimmer: demo-shimmer 1.05s linear infinite;
+  /* missing-flag stripes: one 10px stripe period per loop, so it never jumps */
+  --animate-missing-drift: missing-drift 1s linear infinite;
+
+  @keyframes dropdown {
+    from {
+      opacity: 0;
+      translate: 0 -0.25rem;
+    }
+  }
+
+  @keyframes demo-timer {
+    from {
+      scale: 0 1;
+    }
+  }
+  @keyframes demo-scan {
+    from {
+      translate: -110% 0;
+    }
+    to {
+      translate: 260% 0;
+    }
+  }
+  @keyframes missing-drift {
+    to {
+      /* 135° stripes repeat every 10px across the stripes = 10px / sin(45°) ≈ 14.142px along the x-axis */
+      background-position-x: calc(10px / sin(45deg));
+    }
+  }
+  @keyframes demo-shimmer {
+    from {
+      translate: -100% 0;
+    }
+    to {
+      translate: 100% 0;
+    }
+  }
 
   @keyframes marquee {
     to {
@@ -165,6 +242,13 @@
   h3 {
     @apply font-display text-void;
   }
+  /* <details> dropdowns: hide the browser's disclosure triangle */
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
 }
 
 /* ------------------------------------------------------------------ */
@@ -185,6 +269,14 @@
 }
 @utility btn-sm {
   @apply px-3 py-1.5 text-xs;
+}
+
+/* Navigation */
+@utility nav-link {
+  @apply inline-flex items-center gap-1 rounded-control px-3 py-2 font-display text-nav font-medium whitespace-nowrap text-ink transition-colors duration-150 ease-out-soft hover:bg-surface-1 focus-visible:outline-2 focus-visible:outline-primary;
+}
+@utility nav-icon-tile {
+  @apply flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary-tint text-primary;
 }
 
 /* Surfaces */
@@ -226,6 +318,21 @@
   border: 1.5px dashed var(--color-gap);
   @apply bg-gap-cell tabular-nums text-gap-text;
 }
+/* Hero demo (thepulseapi.com): a missing value in the catalogue table — red, hatched, with a warning icon */
+@utility missing-flag {
+  @apply inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-bold text-critical;
+  background-color: var(--color-critical-bg);
+  background-image: repeating-linear-gradient(135deg, var(--color-critical-hatch) 0 5px, transparent 5px 10px);
+  box-shadow: inset 0 0 0 1px var(--color-critical-ring);
+  animation: var(--animate-missing-drift); /* the stripes slide sideways, endlessly */
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+/* Hero demo: status pill in a step's title bar (add colours: critical, running, done) */
+@utility demo-pill {
+  @apply inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 tabular-nums text-xs font-semibold;
+}
 @utility missing-cell-dark {
   border: 1.5px dashed var(--color-gap-dark);
   @apply bg-gap/10 tabular-nums text-gap-text-dark;
@@ -237,6 +344,26 @@
 /* Brand gradient (Figma "Pulse Color › gradient"): Coral → Indigo. For big brand moments only. */
 @utility bg-brand-gradient {
   background-image: linear-gradient(112.4deg, var(--color-signal) 5.18%, var(--color-primary) 95.68%);
+}
+
+/* Hero stage backdrop (attio.com style): starts as the plain page colour at the top, so the headline
+   area flows into it without a line, then turns into a soft cool wash that is strongest at the bottom
+   and the sides, around the app window. Built from the stage-* colour tokens; the element needs `relative isolate`. */
+@utility hero-backdrop {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      radial-gradient(40% 70% at 0% 100%, var(--color-stage-glow), transparent),
+      radial-gradient(40% 70% at 100% 100%, var(--color-stage-glow), transparent),
+      radial-gradient(60% 50% at 50% 100%, var(--color-stage-glow-accent), transparent),
+      linear-gradient(to bottom, var(--color-surface-0), var(--color-stage-base));
+    /* everything fades in from the top edge */
+    mask-image: linear-gradient(to bottom, transparent, black 50%);
+  }
 }
 
 @utility blueprint-grid {
@@ -253,12 +380,12 @@
     linear-gradient(to bottom, var(--color-grid-line-dark) 1px, transparent 1px);
 }
 
-/* Page frame: Attio-style continuous vertical hairlines; sections add border-b */
+/* Page frame: the centred page column; sections add border-b between them */
 @utility frame {
-  @apply mx-auto max-w-7xl border-x border-line;
+  @apply mx-auto max-w-frame;
 }
 @utility frame-dark {
-  @apply mx-auto max-w-7xl border-x border-void-line;
+  @apply mx-auto max-w-frame;
 }
 
 /* ------------------------------------------------------------------ */
@@ -302,3 +429,365 @@
 
 /* `js:` variant — styles that only apply when JavaScript runs (e.g. hide a result until it's typed) */
 @custom-variant js (@media (scripting: enabled));
+
+/* ------------------------------------------------------------------ */
+/* Header mega-menu (Attio-style shared viewport).                     */
+/* src/main.js moves each dropdown's [data-nav-content] into one        */
+/* viewport, sizes it with --nav-viewport-width/height and sets         */
+/* data-state / data-dir on the contents. Without JS the <details>      */
+/* dropdowns work on their own.                                         */
+/* ------------------------------------------------------------------ */
+@utility nav-viewport {
+  position: absolute;
+  top: 100%;
+  left: var(--nav-viewport-x, 0);
+  margin-top: 0.5rem;
+  width: var(--nav-viewport-width, auto);
+  height: var(--nav-viewport-height, auto);
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-nav);
+  transition-property: width, height, left, translate, opacity, visibility;
+  transition-duration: 150ms, 150ms, 150ms, 150ms, 150ms, 0s;
+  transition-delay: 0s, 0s, 0s, 0s, 0s, 150ms;
+  transition-timing-function: var(--ease-in-out-cubic);
+  &:not([data-open]) {
+    opacity: 0;
+    translate: 0 -0.25rem;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  &[data-open] {
+    transition-delay: 0s;
+  }
+  /* first open: appear at the new size without animating width/height */
+  &[data-instant] {
+    transition-property: translate, opacity, visibility;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity, visibility;
+    translate: none;
+  }
+}
+
+/* All menu contents share one grid cell, so the old one can animate out while the new one animates in */
+@utility nav-viewport-stack {
+  display: grid;
+  & > * {
+    grid-area: 1 / 1;
+    align-self: start;
+    justify-self: start;
+  }
+}
+
+/* One column in a mega menu. Columns after the first get a light, inset divider
+   (shorter than the panel, so it doesn't run edge to edge). */
+@utility nav-column {
+  position: relative;
+  &:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    top: 1.25rem;
+    bottom: 1.25rem;
+    left: 0;
+    width: 1px;
+    background-color: color-mix(in oklab, var(--color-line) 60%, transparent);
+  }
+}
+
+@utility nav-content {
+  &[data-state="inactive"] {
+    display: none;
+  }
+  &[data-state="active"][data-dir="right"] {
+    animation: nav-enter-from-right 200ms var(--ease-in-out-cubic);
+  }
+  &[data-state="active"][data-dir="left"] {
+    animation: nav-enter-from-left 200ms var(--ease-in-out-cubic);
+  }
+  &[data-state="exiting"] {
+    pointer-events: none;
+  }
+  &[data-state="exiting"][data-dir="right"] {
+    animation: nav-exit-to-left 200ms var(--ease-in-out-cubic) forwards;
+  }
+  &[data-state="exiting"][data-dir="left"] {
+    animation: nav-exit-to-right 200ms var(--ease-in-out-cubic) forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &[data-state="active"][data-dir] {
+      animation: nav-fade-in 100ms var(--ease-out-soft);
+    }
+    &[data-state="exiting"][data-dir] {
+      animation: nav-fade-out 100ms var(--ease-out-soft) forwards;
+    }
+  }
+}
+
+@keyframes nav-enter-from-right {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    translate: 12.5rem 0;
+  }
+}
+@keyframes nav-enter-from-left {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    translate: -12.5rem 0;
+  }
+}
+@keyframes nav-exit-to-left {
+  to {
+    opacity: 0;
+    filter: blur(8px);
+    translate: -12.5rem 0;
+  }
+}
+@keyframes nav-exit-to-right {
+  to {
+    opacity: 0;
+    filter: blur(8px);
+    translate: 12.5rem 0;
+  }
+}
+@keyframes nav-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes nav-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero scroll effect (attio.com-style). src/main.js sets --hero-p on   */
+/* [data-hero]: 0 at the top of the page → 1 when the product stage is  */
+/* filling the screen under the header. The window stands upright at its normal size  */
+/* while the title is in focus, then grows as it comes into focus.      */
+/* Without JS / with reduced motion it stays at its normal size.        */
+/* ------------------------------------------------------------------ */
+/* The headline steps back as the product stage takes over the screen */
+@utility hero-fade {
+  opacity: clamp(0, 1 - 1.25 * var(--hero-p, 0), 1);
+  translate: 0 calc(var(--hero-p, 0) * -2rem);
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    translate: none;
+  }
+}
+/* Stage bottom: at full focus the window is centred in the screen below the sticky header (h-17), so the
+   space under it is half of (screen − header − window height). src/main.js sets --hero-window-h; without
+   it (no JS / reduced motion, no zoom) the max() falls back to 5rem, which is also the floor that keeps
+   the zoomed window from being clipped. lvh, so a collapsing mobile address bar never uncovers the next section.
+   Plus 10px, so the backdrop always runs a little past the screen edge before the next section. */
+@utility hero-stage {
+  padding-bottom: calc(
+    max(calc(var(--spacing) * 20), calc((100lvh - var(--spacing) * 17 - var(--hero-window-h, 100lvh)) / 2)) +
+      var(--spacing) * 2.5
+  );
+}
+@utility hero-window {
+  --hero-zoom: 0.04; /* extra size at full focus: +4% on small screens … */
+  transform-origin: 50% 50%;
+  /* never more than fits below the header: src/main.js sets --hero-zoom-fit */
+  scale: calc(1 + min(var(--hero-zoom), var(--hero-zoom-fit, 1)) * var(--hero-p, 0));
+  will-change: scale;
+  @media (width >= 64rem) {
+    --hero-zoom: 0.12; /* … +12% from lg, where the stage has room on both sides */
+  }
+  @media (prefers-reduced-motion: reduce) {
+    scale: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero workflow demo (from thepulseapi.com): [data-demo] plays its     */
+/* steps in order. src/main.js sets data-active on the current tab,      */
+/* caption and step; each tab's timer bar sets the pace (when its        */
+/* animation ends, the next step starts). Without JS every step is shown */
+/* one under another; with reduced motion nothing plays by itself.       */
+/* ------------------------------------------------------------------ */
+@utility demo-stack {
+  @media (scripting: enabled) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr); /* wide tables scroll inside their step instead of stretching it */
+  }
+}
+@utility demo-step {
+  @media (scripting: enabled) {
+    grid-area: 1 / 1;
+    transition-property: opacity, translate, visibility;
+    transition-duration: 400ms, 400ms, 0s;
+    transition-timing-function: var(--ease-out-soft);
+    transition-delay: 0s, 0s, 400ms;
+    &:not([data-active]) {
+      opacity: 0;
+      translate: 0 0.5rem;
+      visibility: hidden;
+    }
+    &[data-active] {
+      transition-delay: 150ms, 150ms, 0s; /* the old step fades first */
+    }
+  }
+  @media (scripting: none) {
+    & + & {
+      border-top: 1px solid var(--color-line);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* Parts of a step that enter one after another (stagger with delay-*);
+   they reset only after the step has faded out */
+@utility demo-in {
+  transition-property: opacity, translate;
+  transition-duration: 500ms;
+  transition-timing-function: var(--ease-out-soft);
+  @media (scripting: enabled) {
+    [data-demo-step]:not([data-active]) & {
+      opacity: 0;
+      translate: 0 0.5rem;
+      transition-duration: 0s;
+      transition-delay: 400ms;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* Bars that grow from the left when their step starts (real width as a fraction: w-161/216) */
+@utility demo-bar {
+  transform-origin: left;
+  transition-property: scale;
+  transition-duration: var(--demo-bar-duration, 1100ms);
+  transition-timing-function: var(--demo-bar-ease, var(--ease-emphasized));
+  @media (scripting: enabled) {
+    [data-demo-step]:not([data-active]) & {
+      scale: 0 1;
+      transition-duration: 0s;
+      transition-delay: 400ms;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+@utility demo-bar-slow {
+  --demo-bar-duration: 4s;
+}
+/* Audit progress bar: fills like thepulseapi.com's scanner, with a light shimmer running along it */
+@utility demo-bar-scan {
+  --demo-bar-duration: 1900ms;
+  --demo-bar-ease: var(--ease-scan);
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-card) 85%, transparent) 45% 55%, transparent);
+    translate: -100% 0;
+    animation: var(--animate-demo-shimmer);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      display: none;
+    }
+  }
+}
+/* Hatched track behind the demo's progress bars */
+@utility scan-track {
+  background-color: var(--color-surface-1);
+  background-image: repeating-linear-gradient(135deg, color-mix(in oklab, var(--color-ink) 5%, transparent) 0 4px, transparent 4px 8px);
+}
+/* Opposite of demo-in: shown as the step starts, then fades away (after its delay-*).
+   Without JS only the end state is shown. */
+@utility demo-out {
+  transition: opacity 500ms var(--ease-out-soft);
+  @media (scripting: enabled) {
+    [data-demo-step][data-active] & {
+      opacity: 0;
+    }
+    [data-demo-step]:not([data-active]) & {
+      transition-duration: 0s;
+      transition-delay: 400ms;
+    }
+  }
+  @media (scripting: none) {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* SVG path (pathLength="1") drawn from start to end when its step starts */
+@utility demo-draw {
+  stroke-dasharray: 1;
+  transition-property: stroke-dashoffset;
+  transition-duration: 900ms;
+  transition-timing-function: var(--ease-emphasized);
+  @media (scripting: enabled) {
+    [data-demo-step]:not([data-active]) & {
+      stroke-dashoffset: 1;
+      transition-duration: 0s;
+      transition-delay: 400ms;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* Payoff grid cells that become separable after the repair (built by src/main.js) */
+@utility demo-fill {
+  background-color: var(--color-line);
+  transition: background-color 400ms var(--ease-out-soft);
+  [data-demo-step][data-active] & {
+    background-color: var(--color-primary);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* Translucent band sweeping once across the audit step when it starts (the step needs `relative`) */
+@utility demo-scan {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  &::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    width: 40%;
+    background-image: linear-gradient(90deg, transparent, var(--color-scan-band), transparent);
+    translate: -110% 0;
+  }
+  [data-active] > &::after {
+    animation: var(--animate-demo-scan);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+}
+/* Progress bar inside the active tab — its animationend advances the demo */
+@utility demo-timer {
+  transform-origin: left;
+  scale: 0 1;
+  [data-active] > & {
+    animation: var(--animate-demo-timer);
+  }
+  [data-demo]:hover &,
+  [data-demo][data-paused] & {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+}

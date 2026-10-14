@@ -3,38 +3,1026 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rainbow</title>
+    <title>Pulse — Know which product data to fix first</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./dist/output.css" />
+    <script defer src="./src/main.js"></script>
   </head>
-  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
-    <main class="mx-auto flex max-w-4xl flex-col items-center gap-12 px-6 py-24 text-center">
-      <h1
-        class="animate-rainbow bg-linear-to-r from-red-500 via-yellow-400 via-green-400 via-sky-500 to-violet-500 bg-[length:200%_auto] bg-clip-text text-6xl font-extrabold tracking-tight text-transparent sm:text-7xl"
-      >
-        Rainbow
-      </h1>
-      <p class="max-w-xl text-lg text-slate-400">
-        A plain HTML page styled with Tailwind CSS v4.
-      </p>
+  <body>
+    <!-- Icon sprite (Lucide-style, stroke icons). Use: <svg><use href="#i-name" /></svg> -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+      <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6" /></symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16" /><path d="M4 12h16" /><path d="M4 18h16" /></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></symbol>
+      <symbol id="i-triangle-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></symbol>
+      <symbol id="i-clipboard-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><path d="m9 14 2 2 4-4" /></symbol>
+      <symbol id="i-compare" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3" /><circle cx="6" cy="6" r="3" /><path d="M13 6h3a2 2 0 0 1 2 2v7" /><path d="M11 18H8a2 2 0 0 1-2-2V9" /></symbol>
+      <symbol id="i-bell-ring" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.268 21a2 2 0 0 0 3.464 0" /><path d="M22 8c0-2.3-.8-4.3-2-6" /><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /><path d="M4 2C2.8 3.7 2 5.7 2 8" /></symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1" /><circle cx="19" cy="21" r="1" /><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" /></symbol>
+      <symbol id="i-basket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 11-1 9" /><path d="m19 11-4-7" /><path d="M2 11h20" /><path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4" /><path d="M4.5 15.5h15" /><path d="m5 11 4-7" /><path d="m9 11 1 9" /></symbol>
+      <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2" /><rect width="6" height="6" x="9" y="9" rx="1" /><path d="M15 2v2" /><path d="M15 20v2" /><path d="M2 15h2" /><path d="M2 9h2" /><path d="M20 15h2" /><path d="M20 9h2" /><path d="M9 2v2" /><path d="M9 20v2" /></symbol>
+      <symbol id="i-sofa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3" /><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z" /><path d="M4 18v2" /><path d="M20 18v2" /></symbol>
+      <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" /><path d="M20 3v4" /><path d="M22 5h-4" /><path d="M4 17v2" /><path d="M5 18H3" /></symbol>
+      <symbol id="i-factory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /><path d="M17 18h1" /><path d="M12 18h1" /><path d="M7 18h1" /></symbol>
+      <symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /><path d="M14 2v4a2 2 0 0 0 2 2h4" /><path d="M16 13H8" /><path d="M16 17H8" /><path d="M10 9H8" /></symbol>
+      <symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" /></symbol>
+    </svg>
 
-      <div class="grid w-full grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7">
-        <div class="aspect-square rounded-2xl bg-red-500 shadow-lg shadow-red-500/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-orange-500 shadow-lg shadow-orange-500/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-yellow-400 shadow-lg shadow-yellow-400/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-green-500 shadow-lg shadow-green-500/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-sky-500 shadow-lg shadow-sky-500/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-indigo-500 shadow-lg shadow-indigo-500/30 transition hover:-translate-y-1"></div>
-        <div class="aspect-square rounded-2xl bg-violet-500 shadow-lg shadow-violet-500/30 transition hover:-translate-y-1"></div>
+    <!-- Header (layout and behaviour from thepulseapi.com). Dropdowns are native <details>: they work
+         without JavaScript; src/main.js adds hover-open, one-at-a-time, outside-click and Escape. -->
+    <header class="sticky top-0 z-50 border-b border-line bg-card font-display" data-nav>
+      <div class="frame flex h-17 items-center justify-between gap-4 px-6">
+        <a href="./index.html" aria-label="Pulse home" class="shrink-0">
+          <img src="./src/assets/logo.webp" alt="Pulse" width="84" height="28" class="h-7 w-auto" />
+        </a>
+
+        <!-- Desktop menu -->
+        <nav aria-label="Main" class="relative hidden lg:block" data-mega-nav>
+          <ul class="flex items-center gap-0.5">
+            <li><a href="#" class="nav-link">About us</a></li>
+
+            <li class="relative">
+              <details class="group" data-dropdown data-mega>
+                <summary class="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink">
+                  Product
+                  <svg class="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180" aria-hidden="true"><use href="#i-chevron-down" /></svg>
+                </summary>
+                <div data-panel class="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none">
+                  <div data-nav-content class="nav-content flex">
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">Measure &amp; repair</p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">Decision Audit</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Rank which missing fields to fix first</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">Decision Verification</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Re-measure what moved after a repair</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">Keep it measured</p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">Decision Monitor <span class="rounded bg-primary-tint px-1.5 py-0.5 text-micro font-semibold text-primary uppercase">Recurring</span></span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Get told when a shelf slips, and why</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#method" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">How it works</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">From a blank cell to a measured result</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </li>
+
+            <li class="relative">
+              <details class="group" data-dropdown data-mega>
+                <summary class="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink">
+                  Templates
+                  <svg class="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180" aria-hidden="true"><use href="#i-chevron-down" /></svg>
+                </summary>
+                <div data-panel class="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none">
+                  <div data-nav-content class="nav-content flex">
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">Everyday</p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">Ecommerce and retail</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Mixed catalogues, many shelves</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">FMCG and consumer goods</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Fragrance-free, allergens, pack size</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">Home &amp; beauty</p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">Furniture and homewares</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Dimensions, capacity, material</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">Cosmetics and personal care</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Shade, skin type, finish</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">Technical</p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">Technology and electronics</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Screen size, memory, storage</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">B2B and industrial</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Compatibility and technical specs</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </li>
+
+            <li class="relative">
+              <details class="group" data-dropdown data-mega>
+                <summary class="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink">
+                  Resources
+                  <svg class="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180" aria-hidden="true"><use href="#i-chevron-down" /></svg>
+                </summary>
+                <div data-panel class="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none">
+                  <div data-nav-content class="nav-content flex">
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">Learn</p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">Documentation</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Integrate in ten lines, or not at all</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">Notes</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">What we measured, and got wrong</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">Company</p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">About us</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Who builds Pulse, and why</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">Contact</span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">Talk to the team</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-ink">Career <span class="rounded bg-primary-tint px-1.5 py-0.5 text-micro font-semibold text-primary uppercase">Hiring</span></span>
+                            <span class="mt-1 block text-sm text-pretty text-muted">We are hiring</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </li>
+
+            <li><a href="#" class="nav-link">Pricing</a></li>
+          </ul>
+          <div class="nav-viewport" data-nav-viewport>
+            <div class="nav-viewport-stack" data-nav-stack></div>
+          </div>
+        </nav>
+
+        <!-- Desktop actions -->
+        <div class="hidden items-center gap-2 lg:flex">
+          <div class="relative">
+            <details class="group" data-dropdown>
+              <summary class="flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-line px-4 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-ink" aria-label="EN, switch language">
+                <svg class="size-4 text-primary" aria-hidden="true"><use href="#i-globe" /></svg>
+                EN
+                <svg class="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180" aria-hidden="true"><use href="#i-chevron-down" /></svg>
+              </summary>
+              <div data-panel class="absolute top-full right-0 mt-2 w-44 animate-dropdown rounded-2xl border border-line bg-card p-1.5 shadow-xl motion-reduce:animate-none">
+                <p class="border-b border-line px-3 py-2 text-micro font-medium text-muted uppercase">Switch language</p>
+                <a href="#" aria-current="true" class="mt-1 flex items-center gap-3 rounded-control bg-primary-tint px-3 py-2.5 text-sm font-medium text-primary">
+                  <span aria-hidden="true">🇺🇸</span> English
+                  <svg class="ml-auto size-4" aria-hidden="true"><use href="#i-check" /></svg>
+                </a>
+                <a href="#" lang="vi" class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-muted transition-colors duration-150 ease-out-soft hover:bg-surface-1 hover:text-ink">
+                  <span aria-hidden="true">🇻🇳</span> Tiếng Việt
+                </a>
+              </div>
+            </details>
+          </div>
+          <a href="#" class="nav-link">Sign In</a>
+          <a href="#request" class="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap">
+            Request an audit
+            <svg class="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5" aria-hidden="true"><use href="#i-arrow-right" /></svg>
+          </a>
+        </div>
+
+        <!-- Mobile menu -->
+        <details class="group lg:hidden" data-mobile-menu>
+          <summary class="flex size-9 cursor-pointer items-center justify-center rounded-control text-ink" aria-label="Open menu">
+            <svg class="size-5 group-open:hidden" aria-hidden="true"><use href="#i-menu" /></svg>
+            <svg class="hidden size-5 group-open:block" aria-hidden="true"><use href="#i-x" /></svg>
+          </summary>
+          <div class="fixed inset-x-0 top-17 bottom-0 animate-dropdown overflow-y-auto border-t border-line bg-card px-6 pt-4 pb-10 motion-reduce:animate-none">
+            <a href="#" class="block rounded-control px-4 py-3 text-lg font-medium text-ink">About us</a>
+
+            <p class="mt-6 px-4 text-xs font-semibold tracking-widest text-muted uppercase">Product</p>
+            <ul class="mt-2">
+              <li><a href="#" class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"><span class="nav-icon-tile size-9"><svg class="size-4" aria-hidden="true"><use href="#i-clipboard-check" /></svg></span>Decision Audit</a></li>
+              <li><a href="#" class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"><span class="nav-icon-tile size-9"><svg class="size-4" aria-hidden="true"><use href="#i-compare" /></svg></span>Decision Verification</a></li>
+              <li><a href="#" class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"><span class="nav-icon-tile size-9"><svg class="size-4" aria-hidden="true"><use href="#i-bell-ring" /></svg></span>Decision Monitor</a></li>
+            </ul>
+
+            <p class="mt-6 px-4 text-xs font-semibold tracking-widest text-muted uppercase">Templates</p>
+            <ul class="mt-2">
+              <li><a href="#" class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"><span class="nav-icon-tile size-9"><svg class="size-4" aria-hidden="true"><use href="#i-cart" /></svg></span>Ecommerce and retail</a></li>
+              <li><a href="#" class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"><span class="nav-icon-tile size-9"><svg class="size-4" aria-hidden="true"><use href="#i-basket" /></svg></span>FMCG and consumer goods</a></li>
+              <li><a href="#" class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"><span class="nav-icon-tile size-9"><svg class="size-4" aria-hidden="true"><use href="#i-cpu" /></svg></span>Technology and electronics</a></li>
+              <li><a href="#" class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"><span class="nav-icon-tile size-9"><svg class="size-4" aria-hidden="true"><use href="#i-sofa" /></svg></span>Furniture and homewares</a></li>
+              <li><a href="#" class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"><span class="nav-icon-tile size-9"><svg class="size-4" aria-hidden="true"><use href="#i-sparkles" /></svg></span>Cosmetics and personal care</a></li>
+              <li><a href="#" class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"><span class="nav-icon-tile size-9"><svg class="size-4" aria-hidden="true"><use href="#i-factory" /></svg></span>B2B and industrial</a></li>
+            </ul>
+
+            <p class="mt-6 px-4 text-xs font-semibold tracking-widest text-muted uppercase">Resources</p>
+            <ul class="mt-2">
+              <li><a href="#" class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"><span class="nav-icon-tile size-9"><svg class="size-4" aria-hidden="true"><use href="#i-file-text" /></svg></span>Documentation</a></li>
+              <li><a href="#" class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"><span class="nav-icon-tile size-9"><svg class="size-4" aria-hidden="true"><use href="#i-pen" /></svg></span>Notes</a></li>
+            </ul>
+
+            <div class="mt-6 border-t border-line pt-6">
+              <a href="#" class="block rounded-control px-4 py-3 text-lg font-medium text-ink">Pricing</a>
+              <a href="#" class="block rounded-control px-4 py-3 text-lg font-medium text-ink">Sign In</a>
+              <a href="#request" class="btn-primary mt-4 w-full rounded-control text-nav">Request an audit <svg class="size-3.5" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+            </div>
+          </div>
+        </details>
       </div>
+    </header>
 
-      <a
-        href="https://tailwindcss.com/docs"
-        class="animate-rainbow rounded-full bg-linear-to-r from-red-500 via-yellow-400 via-green-400 via-sky-500 to-violet-500 bg-[length:200%_auto] p-[2px]"
-      >
-        <span class="block rounded-full bg-slate-950 px-6 py-3 font-semibold transition hover:bg-transparent hover:text-slate-950">
-          Read the Tailwind docs
-        </span>
-      </a>
+    <main>
+      <!-- ============================== HERO ============================== -->
+      <!-- Two parts (like attio.com): the headline, then the product stage. While scrolling, src/main.js
+           sets --hero-p (0 → 1): the headline fades out, the stage fills the screen and the window grows. Inside, the workflow demo plays. -->
+      <section class="border-b border-line" data-hero>
+        <div class="frame">
+          <div class="hero-fade px-6 pt-20 pb-12 text-center lg:pt-28">
+            <div class="reveal">
+              <a href="#request" class="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-ink transition-colors duration-200 ease-out-soft hover:border-ink">
+                <span class="size-1.5 rounded-full bg-signal"></span>
+                Decision Audit · ranked list in 48 hours
+                <span class="text-muted">→</span>
+              </a>
+            </div>
+            <h1 class="reveal mt-8 text-display text-balance xl:whitespace-nowrap">Know which product data to fix first.</h1>
+            <p class="reveal mx-auto mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted delay-500">
+              Pulse measures your product data against what shoppers actually decide on. Send one category export,
+              get a ranked repair list back within 48 hours.
+            </p>
+            <div class="reveal mt-8 flex flex-wrap justify-center gap-3 delay-600">
+              <a href="#method" class="btn-secondary">See how it works</a>
+              <a href="#request" class="btn-primary">Request a Decision Audit</a>
+            </div>
+          </div>
+
+          <!-- Product stage: the Pulse workflow in five steps (from thepulseapi.com), played by src/main.js -->
+        </div>
+
+        <!-- Full-width so the backdrop runs edge to edge; it fades in from the page colour, no line above -->
+        <div class="hero-stage hero-backdrop relative isolate overflow-x-clip" data-hero-stage>
+          <div class="frame px-4 pt-8 sm:px-10 lg:px-16">
+            <div class="reveal mx-auto w-full max-w-5xl delay-700">
+              <div class="hero-window" data-demo>
+                <div class="mb-3 hidden flex-wrap items-center justify-between gap-3 js:flex">
+                  <div class="flex flex-wrap gap-2" role="tablist" aria-label="How a Decision Audit works">
+                    <button type="button" role="tab" class="relative flex items-center gap-1.5 overflow-hidden rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-critical data-active:bg-critical data-active:text-on-primary" aria-selected="true" data-demo-tab data-active><span class="tabular-nums opacity-60">01</span>The problem<span class="demo-timer absolute inset-x-3 bottom-0.5 h-px rounded-full bg-on-primary/70" aria-hidden="true"></span></button>
+                    <button type="button" role="tab" class="relative flex items-center gap-1.5 overflow-hidden rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:bg-primary data-active:text-on-primary" aria-selected="false" data-demo-tab><span class="tabular-nums opacity-60">02</span>The audit<span class="demo-timer absolute inset-x-3 bottom-0.5 h-px rounded-full bg-on-primary/70" aria-hidden="true"></span></button>
+                    <button type="button" role="tab" class="relative flex items-center gap-1.5 overflow-hidden rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:bg-primary data-active:text-on-primary" aria-selected="false" data-demo-tab><span class="tabular-nums opacity-60">03</span>The priority<span class="demo-timer absolute inset-x-3 bottom-0.5 h-px rounded-full bg-on-primary/70" aria-hidden="true"></span></button>
+                    <button type="button" role="tab" class="relative flex items-center gap-1.5 overflow-hidden rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:bg-primary data-active:text-on-primary" aria-selected="false" data-demo-tab><span class="tabular-nums opacity-60">04</span>The repair<span class="demo-timer absolute inset-x-3 bottom-0.5 h-px rounded-full bg-on-primary/70" aria-hidden="true"></span></button>
+                    <button type="button" role="tab" class="relative flex items-center gap-1.5 overflow-hidden rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:bg-primary data-active:text-on-primary" aria-selected="false" data-demo-tab><span class="tabular-nums opacity-60">05</span>The payoff<span class="demo-timer absolute inset-x-3 bottom-0.5 h-px rounded-full bg-on-primary/70" aria-hidden="true"></span></button>
+                  </div>
+                  <div class="hidden lg:block">
+                    <p class="demo-stack text-sm text-muted" aria-live="polite">
+                      <span class="demo-step" data-active data-demo-caption>94 of 216 products a shopper still cannot tell apart</span>
+                      <span class="demo-step" data-demo-caption>Every attribute scored against real buying decisions</span>
+                      <span class="demo-step" data-demo-caption>Screen size first. Worth 1.067 bits, missing on 80</span>
+                      <span class="demo-step" data-demo-caption>Recovered from your own titles and supplier specs</span>
+                      <span class="demo-step" data-demo-caption>Three times as many products a shopper can separate</span>
+                    </p>
+                  </div>
+                </div>
+                <!-- App window (attio.com style): a light frame with the window controls, the app panel inset in it -->
+                <div class="rounded-2xl border border-line bg-surface-1 p-1.5 shadow-sm">
+                  <div class="flex h-8 items-center gap-1.5 px-2.5">
+                    <span class="size-2.5 rounded-full bg-window-close"></span>
+                    <span class="size-2.5 rounded-full bg-window-minimise"></span>
+                    <span class="size-2.5 rounded-full bg-window-zoom"></span>
+                    <span class="mx-auto text-xs text-muted">app.thepulseapi.com / audits / laptops</span>
+                  </div>
+                  <div class="overflow-hidden rounded-xl border border-line bg-card">
+                    <div class="demo-stack">
+                      <!-- 01 The problem -->
+                      <div class="demo-step flex flex-col" data-demo-step data-active>
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-0 px-5 py-3.5">
+                          <p class="font-display text-sm font-bold text-void">My Catalogue <span class="ml-1 font-sans text-xs font-normal text-muted">Laptops / 216 products</span></p>
+                          <span class="demo-pill border-critical-line bg-critical-bg text-critical">347 gaps found</span>
+                        </div>
+                        <div class="demo-in flex items-center gap-3 border-b border-critical-line bg-critical-bg px-5 py-3"><span class="flex size-5 shrink-0 items-center justify-center rounded-full bg-critical text-on-primary"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg></span><p class="text-data leading-snug text-critical"><strong class="font-bold">347 fields are blank across this shelf.</strong> A shopper cannot filter on any of them, and neither can your search.</p></div>
+                        <div class="relative flex-1 overflow-x-auto">
+                          <table class="w-full min-w-160 text-left tabular-nums text-xs">
+                            <thead>
+                              <tr class="border-b border-line">
+                                <th class="px-5 pt-4 pb-3 text-xs font-semibold text-muted">Name</th>
+                                <th class="hidden px-3 pt-4 pb-3 text-xs font-semibold text-muted md:table-cell">SKU</th>
+                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">1</span><span class="text-xs font-semibold text-ink">Screen size</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>80 missing</span></th>
+                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">2</span><span class="text-xs font-semibold text-ink">Memory</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>60 missing</span></th>
+                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">4</span><span class="text-xs font-semibold text-ink">Processor</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>162 missing</span></th>
+                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">3</span><span class="text-xs font-semibold text-ink">Storage</span></span><span class="mt-1 flex items-center gap-1 text-caption font-bold text-critical"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>55 missing</span></th>
+                              </tr>
+                            </thead>
+                            <tbody class="divide-y divide-surface-1">
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>LG 16Z90TS-G</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">A1B2C3D4</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">16.0"</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-200"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-200"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">512GB</td>
+                              </tr>
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>Spectre x360</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">E5F6G7H8</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-300"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">16GB</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-300"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-300"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                              </tr>
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>ThinkPad X1 Carbon Gen 9</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">I9J0K1L2</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-400"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">32GB</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-400"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">1TB</td>
+                              </tr>
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>Razer Blade</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">M3N4O5P6</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">15.6"</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-500"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-500"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-500"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                              </tr>
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>MacBook Pro</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">Q7R8S9T0</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-600"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">18GB</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">M3</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">512GB</td>
+                              </tr>
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>MSI GS66</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">Y5Z6A7B8</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="demo-in missing-flag delay-700"><svg class="size-3" aria-hidden="true"><use href="#i-triangle-alert" /></svg>Missing</span></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-t border-surface-1 px-5 py-4">
+                          <p class="text-data text-muted">Every blank cell is a question your catalogue cannot answer.</p>
+                          <span class="rounded-md bg-surface-1 px-2.5 py-1 tabular-nums text-xs font-semibold text-muted">readiness 94 / 216</span>
+                        </div>
+                      </div>
+                      <!-- 02 The audit -->
+                      <div class="demo-step relative flex flex-col" data-demo-step>
+                        <span class="demo-scan" aria-hidden="true"></span>
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-0 px-5 py-3.5">
+                          <p class="font-display text-sm font-bold text-void">My Catalogue <span class="ml-1 font-sans text-xs font-normal text-muted">Laptops / 216 products</span></p>
+                          <span class="demo-pill flex-col items-stretch gap-1 border-line bg-surface-1 text-muted"><span class="flex items-center gap-2"><span class="size-3 animate-spin rounded-full border-2 border-current border-t-surface-1 motion-reduce:animate-none" aria-hidden="true"></span>Scoring attributes</span><span class="scan-track block h-0.75 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-0"></span></span></span>
+                        </div>
+                        <div class="border-b border-line bg-surface-0 px-5 py-3">
+                          <div class="flex items-baseline justify-between gap-4"><span class="text-data font-semibold text-primary">Scoring 216 products against 32 buying requirements</span><span class="tabular-nums text-xs text-muted">4 attributes</span></div>
+                          <span class="scan-track block h-1.5 w-full overflow-hidden rounded-full mt-2"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-0"></span></span>
+                        </div>
+                        <div class="relative flex-1 overflow-x-auto">
+                          <table class="w-full min-w-160 text-left tabular-nums text-xs">
+                            <thead>
+                              <tr class="border-b border-line">
+                                <th class="px-5 pt-4 pb-3 text-xs font-semibold text-muted">Name</th>
+                                <th class="hidden px-3 pt-4 pb-3 text-xs font-semibold text-muted md:table-cell">SKU</th>
+                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">1</span><span class="text-xs font-semibold text-ink">Screen size</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-0"></span></span></span></th>
+                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">2</span><span class="text-xs font-semibold text-ink">Memory</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-180"></span></span></span></th>
+                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">4</span><span class="text-xs font-semibold text-ink">Processor</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-360"></span></span></span></th>
+                                <th class="px-3 pt-4 pb-3 whitespace-nowrap"><span class="flex items-center gap-1.5"><span class="invisible flex size-4.5 items-center justify-center rounded bg-primary text-caption font-bold text-on-primary" aria-hidden="true">3</span><span class="text-xs font-semibold text-ink">Storage</span></span><span class="mt-1 block text-caption font-normal text-muted">scoring…<span class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-540"></span></span></span></th>
+                              </tr>
+                            </thead>
+                            <tbody class="divide-y divide-surface-1">
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>LG 16Z90TS-G</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">A1B2C3D4</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">16.0"</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-90"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-180"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">512GB</td>
+                              </tr>
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>Spectre x360</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">E5F6G7H8</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-270"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">16GB</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-360"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-450"></span></span></span></td>
+                              </tr>
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>ThinkPad X1 Carbon Gen 9</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">I9J0K1L2</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-540"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">32GB</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-630"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">1TB</td>
+                              </tr>
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>Razer Blade</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">M3N4O5P6</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">15.6"</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-720"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-810"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-900"></span></span></span></td>
+                              </tr>
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>MacBook Pro</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">Q7R8S9T0</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-990"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">18GB</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">M3</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap text-muted">512GB</td>
+                              </tr>
+                              <tr>
+                                <td class="px-5 py-3 font-medium whitespace-nowrap text-ink"><span class="flex items-center gap-3"><span class="size-5 shrink-0 rounded bg-surface-1" aria-hidden="true"></span>MSI GS66</span></td>
+                                <td class="hidden px-3 py-3 whitespace-nowrap text-muted md:table-cell">Y5Z6A7B8</td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1080"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1170"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1260"></span></span></span></td>
+                                <td class="px-3 py-2.5 whitespace-nowrap"><span class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"><span class="text-micro font-semibold text-muted uppercase">Scoring</span><span class="scan-track block h-1 w-full overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1350"></span></span></span></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-t border-surface-1 px-5 py-4">
+                          <p class="flex flex-wrap items-center gap-3 text-data text-muted">Reading titles, descriptions and supplier specs.<span class="scan-track inline-block h-1.25 w-32 overflow-hidden rounded-full"><span class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-240"></span></span></p>
+                          <span class="rounded-md bg-surface-1 px-2.5 py-1 tabular-nums text-xs font-semibold text-muted">readiness 94 / 216</span>
+                        </div>
+                      </div>
+                      <!-- 03 The priority -->
+                      <div class="demo-step flex flex-col" data-demo-step>
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-0 px-5 py-3.5">
+                          <p class="font-display text-sm font-bold text-void">Two ways to rank the same four gaps</p>
+                          <span class="demo-pill border-critical-bg bg-critical-bg font-bold text-critical">They disagree</span>
+                        </div>
+                        <div class="flex flex-1 flex-col justify-center px-5 py-6 sm:px-7">
+                          <div class="flex items-start gap-3 sm:gap-5">
+                            <div class="min-w-0 flex-1">
+                              <p class="text-caption font-bold tracking-wider text-muted uppercase">A completeness report</p>
+                              <p class="mt-0.5 mb-3 text-xs text-muted">ranks by what is absent</p>
+                              <ol class="space-y-2">
+                                <li class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-100 border-critical-line bg-critical-bg"><span class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-critical text-on-primary">1</span><span class="min-w-0 flex-1"><span class="block truncate text-data font-semibold text-ink">Processor</span><span class="block tabular-nums text-caption text-muted">162 products missing it</span></span></li>
+                                <li class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-200 border-line bg-card"><span class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-surface-1 text-muted">2</span><span class="min-w-0 flex-1"><span class="block truncate text-data font-semibold text-ink">Screen size</span><span class="block tabular-nums text-caption text-muted">80 products missing it</span></span></li>
+                                <li class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-300 border-line bg-card"><span class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-surface-1 text-muted">3</span><span class="min-w-0 flex-1"><span class="block truncate text-data font-semibold text-ink">Memory</span><span class="block tabular-nums text-caption text-muted">60 products missing it</span></span></li>
+                                <li class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-400 border-line bg-card"><span class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-surface-1 text-muted">4</span><span class="min-w-0 flex-1"><span class="block truncate text-data font-semibold text-ink">Storage</span><span class="block tabular-nums text-caption text-muted">55 products missing it</span></span></li>
+                              </ol>
+                            </div>
+                            <div class="relative hidden w-16 shrink-0 self-stretch sm:block" aria-hidden="true">
+                              <svg class="absolute inset-x-0 top-15 h-38 w-full overflow-visible" viewBox="0 0 40 200" preserveAspectRatio="none" fill="none">
+                                <path class="demo-draw stroke-critical delay-700" d="M0 8 C 40 8, 0 192, 40 192" pathLength="1" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+                              </svg>
+                              <div class="absolute inset-0 flex items-center justify-center pt-8"><span class="demo-in rounded-md bg-critical px-1.5 py-0.5 text-micro font-bold whitespace-nowrap text-on-primary delay-1000">1st → last</span></div>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                              <p class="text-caption font-bold tracking-wider text-primary uppercase">Pulse</p>
+                              <p class="mt-0.5 mb-3 text-xs text-muted">ranks by what shoppers need</p>
+                              <ol class="space-y-2">
+                                <li class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-500 border-primary bg-primary-tint"><span class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-primary text-on-primary">1</span><span class="min-w-0 flex-1"><span class="block truncate text-data font-semibold text-ink">Screen size</span><span class="block tabular-nums text-caption text-muted">13 of 32 requirements need it</span></span></li>
+                                <li class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-600 border-line bg-card"><span class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-surface-1 text-muted">2</span><span class="min-w-0 flex-1"><span class="block truncate text-data font-semibold text-ink">Memory</span><span class="block tabular-nums text-caption text-muted">15 of 32 requirements need it</span></span></li>
+                                <li class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-700 border-line bg-card"><span class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-surface-1 text-muted">3</span><span class="min-w-0 flex-1"><span class="block truncate text-data font-semibold text-ink">Storage</span><span class="block tabular-nums text-caption text-muted">10 of 32 requirements need it</span></span></li>
+                                <li class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-800 border-critical-line bg-critical-bg"><span class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-critical text-on-primary">4</span><span class="min-w-0 flex-1"><span class="block truncate text-data font-semibold text-ink">Processor</span><span class="block tabular-nums text-caption text-muted">2 of 32 requirements need it</span></span></li>
+                              </ol>
+                            </div>
+                          </div>
+                          <p class="demo-in mt-5 text-data leading-relaxed text-pretty text-muted delay-1200"><strong class="font-bold text-critical">Processor</strong> is missing on 162 products, so a completeness report puts it first. Only 2 of 32 requirements mention one, so it finishes last. <strong class="font-bold text-ink">Fixing it first would have been the most expensive way to change nothing.</strong></p>
+                        </div>
+                      </div>
+                      <!-- 04 The repair -->
+                      <div class="demo-step flex flex-col" data-demo-step>
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-0 px-5 py-3.5">
+                          <p class="font-display text-sm font-bold text-void">Recovering screen size</p>
+                          <span class="demo-pill border-primary bg-primary font-bold text-on-primary"><svg class="size-3.5" aria-hidden="true"><use href="#i-check" /></svg>No new data purchased</span>
+                        </div>
+                        <div class="flex flex-1 flex-col justify-center px-5 py-6 sm:px-7">
+                          <div class="flex flex-wrap items-end justify-between gap-4">
+                            <p class="max-w-md font-display text-lg font-semibold text-ink"><span class="font-display text-3xl leading-none font-bold text-primary tabular-nums" data-demo-count="161">161</span><span class="tabular-nums text-base font-bold text-muted"> / 216</span><span class="mt-1 block">values were already in text you own.</span></p>
+                            <p class="max-w-56 text-data leading-relaxed text-pretty text-muted">The other <strong class="tabular-nums font-bold text-ink">55</strong> genuinely need acquiring. We tell you which, so you can cost it before you commit.</p>
+                          </div>
+                          <div class="scan-track mt-5 h-2.5 overflow-hidden rounded-full"><div class="demo-bar h-full w-161/216 rounded-full bg-primary delay-200"></div></div>
+                          <p class="mt-6 mb-3 flex items-center gap-1.5 text-caption font-bold tracking-wider text-primary uppercase"><svg class="size-3" aria-hidden="true"><use href="#i-file-text" /></svg>Pulled straight out of your product titles</p>
+                          <ul class="space-y-2">
+                            <li class="demo-in flex flex-wrap items-center gap-3 rounded-lg border border-surface-1 bg-surface-0 px-3 py-1.5 delay-300"><span class="min-w-0 flex-1 truncate text-xs text-muted">HP Spectre x360 <mark class="rounded bg-primary-tint px-1 font-bold text-primary-dark">13.5"</mark> OLED Touch, 16GB</span><svg class="hidden size-3.5 text-primary sm:block" aria-hidden="true"><use href="#i-sparkles" /></svg><span class="demo-in inline-flex items-center gap-1.5 rounded-md bg-primary-tint px-1.5 py-0.5 tabular-nums text-xs font-bold text-primary ring-1 ring-primary-line ring-inset delay-520"><svg class="size-3.5" aria-hidden="true"><use href="#i-check" /></svg>13.5"</span></li>
+                            <li class="demo-in flex flex-wrap items-center gap-3 rounded-lg border border-surface-1 bg-surface-0 px-3 py-1.5 delay-500"><span class="min-w-0 flex-1 truncate text-xs text-muted">Lenovo ThinkPad X1 Carbon G9 <mark class="rounded bg-primary-tint px-1 font-bold text-primary-dark">14 inch</mark> WUXGA</span><svg class="hidden size-3.5 text-primary sm:block" aria-hidden="true"><use href="#i-sparkles" /></svg><span class="demo-in inline-flex items-center gap-1.5 rounded-md bg-primary-tint px-1.5 py-0.5 tabular-nums text-xs font-bold text-primary ring-1 ring-primary-line ring-inset delay-720"><svg class="size-3.5" aria-hidden="true"><use href="#i-check" /></svg>14.0"</span></li>
+                            <li class="demo-in flex flex-wrap items-center gap-3 rounded-lg border border-surface-1 bg-surface-0 px-3 py-1.5 delay-700"><span class="min-w-0 flex-1 truncate text-xs text-muted">MSI GS66 Stealth <mark class="rounded bg-primary-tint px-1 font-bold text-primary-dark">15.6</mark> FHD 240Hz</span><svg class="hidden size-3.5 text-primary sm:block" aria-hidden="true"><use href="#i-sparkles" /></svg><span class="demo-in inline-flex items-center gap-1.5 rounded-md bg-primary-tint px-1.5 py-0.5 tabular-nums text-xs font-bold text-primary ring-1 ring-primary-line ring-inset delay-920"><svg class="size-3.5" aria-hidden="true"><use href="#i-check" /></svg>15.6"</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <!-- 05 The payoff -->
+                      <div class="demo-step flex flex-col" data-demo-step>
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-0 px-5 py-3.5">
+                          <p class="font-display text-sm font-bold text-void">What your shoppers can now do</p>
+                          <span class="demo-pill border-primary bg-primary font-bold text-on-primary"><svg class="size-3.5" aria-hidden="true"><use href="#i-check" /></svg>Verified on your catalogue</span>
+                        </div>
+                        <div class="flex flex-1 flex-col justify-center px-5 py-8 sm:px-7">
+                          <div class="flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-data font-medium text-muted">
+                              <span class="flex items-center gap-2.5"><span class="size-3.5 rounded-sm bg-primary" aria-hidden="true"></span>A shopper can tell these apart</span>
+                              <span class="flex items-center gap-2.5"><span class="size-3.5 rounded-sm bg-line" aria-hidden="true"></span>Still indistinguishable</span>
+                            </div>
+                            <span class="grid text-data font-bold">
+                              <span class="demo-out col-start-1 row-start-1 inline-flex items-center justify-center rounded-full bg-surface-1 px-3 py-1 text-muted delay-1000">Your catalogue today</span>
+                              <span class="demo-in col-start-1 row-start-1 inline-flex items-center justify-center gap-2 rounded-full bg-primary-tint px-3 py-1 text-primary delay-1000"><svg class="size-3.5" aria-hidden="true"><use href="#i-check" /></svg>After the repair</span>
+                            </span>
+                          </div>
+                          <div class="mt-6 hidden grid-cols-24 gap-1 js:grid sm:grid-cols-36 sm:gap-1.25" data-demo-grid data-total="216" data-before="122" data-after="185" role="img" aria-label="216 laptops: a shopper can tell 122 apart before screen size is recorded and 185 after"></div>
+                          <div class="mt-6 flex flex-wrap items-end justify-between gap-4">
+                            <p class="max-w-md font-display text-lg font-semibold text-pretty text-ink">One attribute moved <span class="text-primary">63 more products</span> out of the pile nobody could choose between.</p>
+                            <div class="min-w-52">
+                              <p class="text-xs font-semibold tracking-wider text-muted uppercase">Screen size recorded</p>
+                              <div class="mt-2.5 space-y-1.5 tabular-nums text-xs">
+                                <div class="flex items-center gap-2.5"><span class="w-11 text-muted">Before</span><span class="h-2.5 flex-1 overflow-hidden rounded-full bg-surface-1"><span class="block h-full w-136/216 rounded-full bg-warning"></span></span><span class="w-16 text-right text-warning">136 / 216</span></div>
+                                <div class="flex items-center gap-2.5"><span class="w-11 text-muted">After</span><span class="h-2.5 flex-1 overflow-hidden rounded-full bg-surface-1"><span class="demo-bar block h-full w-full rounded-full bg-primary delay-1000"></span></span><span class="w-16 text-right text-primary"><span data-demo-count="216" data-from="136" data-delay="1000">216</span> / 216</span></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="border-t border-surface-1 px-5 py-4 text-data text-muted">A property of the repaired catalogue, not a forecast. No traffic and no test: you can confirm it the week you finish the work.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================= CATEGORY STRIP ========================= -->
+      <section class="border-b border-line" aria-label="Categories Pulse audits">
+        <div class="frame overflow-hidden">
+          <ul class="-mr-px -mb-px grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Beauty</span>
+              <span class="text-xs text-muted">shade</span>
+            </li>
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Apparel</span>
+              <span class="text-xs text-muted">fit</span>
+            </li>
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Electronics</span>
+              <span class="text-xs text-muted">screen size</span>
+            </li>
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Grocery</span>
+              <span class="text-xs text-muted">fragrance-free</span>
+            </li>
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Furniture</span>
+              <span class="text-xs text-muted">capacity</span>
+            </li>
+            <li class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line">
+              <span class="font-display text-lg font-bold text-ink">Parts</span>
+              <span class="text-xs text-muted">compatibility</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===================== METHOD (sticky step nav) ===================== -->
+      <section id="method" class="scroll-mt-16 border-b border-line">
+        <div class="frame">
+          <div class="px-6 py-16 lg:px-12 lg:py-24">
+            <span class="reveal section-tag inline-block">The method</span>
+            <h2 class="reveal mt-6 max-w-3xl text-title">
+              The filter your buyer needs does not exist.
+              <span class="text-muted">Pulse finds which missing fact costs you the most, and fixes that first.</span>
+            </h2>
+          </div>
+
+          <div class="grid border-t border-line lg:grid-cols-12">
+            <!-- Sticky step navigation -->
+            <aside class="hidden border-r border-line lg:col-span-3 lg:block">
+              <nav class="sticky top-16 py-16 pl-12" aria-label="Method steps">
+                <ol class="space-y-1 border-l border-line text-base font-medium">
+                  <li><a href="#problem" data-spy="problem" class="-ml-px block border-l-2 border-transparent py-2 pl-5 text-muted/60 transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:text-void">The problem</a></li>
+                  <li><a href="#audit" data-spy="audit" class="-ml-px block border-l-2 border-transparent py-2 pl-5 text-muted/60 transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:text-void">The audit</a></li>
+                  <li><a href="#priority" data-spy="priority" class="-ml-px block border-l-2 border-transparent py-2 pl-5 text-muted/60 transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:text-void">The priority</a></li>
+                  <li><a href="#repair" data-spy="repair" class="-ml-px block border-l-2 border-transparent py-2 pl-5 text-muted/60 transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:text-void">The repair</a></li>
+                  <li><a href="#payoff" data-spy="payoff" class="-ml-px block border-l-2 border-transparent py-2 pl-5 text-muted/60 transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-primary data-active:text-void">The payoff</a></li>
+                </ol>
+              </nav>
+            </aside>
+
+            <div class="divide-y divide-line lg:col-span-9">
+              <!-- 01 The problem -->
+              <article id="problem" class="scroll-mt-16">
+                <div class="px-6 py-12 lg:px-12 lg:py-16">
+                  <p class="eyebrow lg:hidden">01 · The problem</p>
+                  <h3 class="reveal mt-2 max-w-2xl text-h2 lg:mt-0">
+                    94 of 216 products a shopper still cannot tell apart.
+                    <span class="text-muted">347 fields are blank across this shelf. A shopper cannot filter on any of them, and neither can your search.</span>
+                  </h3>
+                </div>
+                <div class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-12 lg:px-12">
+                  <div class="reveal card mx-auto max-w-2xl">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                      <span class="eyebrow">Laptops shelf · 216 products</span>
+                      <div class="flex items-center gap-4 text-xs text-muted">
+                        <span class="flex items-center gap-1.5"><span class="size-2.5 rounded-sm bg-ink"></span>Ready (122)</span>
+                        <span class="flex items-center gap-1.5"><span class="missing-cell size-2.5 rounded-sm"></span>Can't tell apart (94)</span>
+                      </div>
+                    </div>
+                    <div class="mt-5 grid grid-cols-18 gap-1" data-shelf data-total="216" data-ready="122" role="img" aria-label="216 products: 122 ready, 94 a shopper cannot tell apart"></div>
+                    <p class="mt-5 border-t border-line pt-4 text-xs text-muted">Every blank cell is a question your catalogue cannot answer.</p>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 02 The audit -->
+              <article id="audit" class="scroll-mt-16">
+                <div class="px-6 py-12 lg:px-12 lg:py-16">
+                  <p class="eyebrow lg:hidden">02 · The audit</p>
+                  <h3 class="reveal mt-2 max-w-2xl text-h2 lg:mt-0">
+                    Two shelves, the same missing fact.
+                    <span class="text-muted">The shopper knows exactly what they need. Your catalogue never wrote it down.</span>
+                  </h3>
+                </div>
+                <div class="grid border-t border-line md:grid-cols-2 md:divide-x md:divide-line">
+                  <!-- Consumer goods: typing search -->
+                  <div class="px-6 py-10 lg:px-10">
+                    <h4 class="font-display text-base font-bold text-void">A parent buying washing powder for baby skin</h4>
+                    <p class="mt-1 text-body text-muted">They need "fragrance-free". It was never recorded.</p>
+                    <div class="group mt-8" data-type-root>
+                      <div class="flex items-center gap-2 rounded-lg border border-line bg-card px-3 py-2.5 shadow-sm">
+                        <svg class="size-4 text-muted" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+                        <span class="text-sm text-ink" data-type="fragrance-free">fragrance-free</span><span class="-ml-1.5 h-4 w-px animate-caret bg-ink"></span>
+                      </div>
+                      <div class="mt-3 rounded-lg border border-line bg-card p-3 transition-opacity duration-500 ease-out-soft js:opacity-0 group-data-typed:opacity-100">
+                        <p class="text-xs font-medium text-muted">0 filters match</p>
+                        <div class="mt-2 flex items-center gap-2 tabular-nums text-data">
+                          <span class="text-muted">fragrance_free:</span>
+                          <span class="missing-cell rounded px-2 py-0.5 text-xs">never recorded</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Electronics: titles vs attributes -->
+                  <div class="border-t border-line px-6 py-10 md:border-t-0 lg:px-10">
+                    <h4 class="font-display text-base font-bold text-void">A designer buying a laptop</h4>
+                    <p class="mt-1 text-body text-muted">Screen size is in the titles, and in nobody's attributes.</p>
+                    <div class="mt-8 space-y-5 rounded-lg border border-line bg-card p-4 shadow-sm">
+                      <div>
+                        <div class="flex justify-between tabular-nums text-data">
+                          <span class="text-ink">In product titles</span>
+                          <span class="font-semibold text-void">136 / 216</span>
+                        </div>
+                        <div class="mt-2 h-2 overflow-hidden rounded-full bg-surface-1">
+                          <div class="reveal-bar h-full w-136/216 rounded-full bg-ink"></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="flex justify-between tabular-nums text-data">
+                          <span class="text-ink">In filterable attributes</span>
+                          <span class="font-semibold text-gap-text">0 / 216</span>
+                        </div>
+                        <div class="missing-cell mt-2 h-2 rounded-full"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 03 The priority -->
+              <article id="priority" class="scroll-mt-16">
+                <div class="px-6 py-12 lg:px-12 lg:py-16">
+                  <p class="eyebrow lg:hidden">03 · The priority</p>
+                  <h3 class="reveal mt-2 max-w-2xl text-h2 lg:mt-0">
+                    The emptiest field is usually the wrong one to fix.
+                    <span class="text-muted">Pulse ranks gaps by the shoppers they block, not by how blank they are.</span>
+                  </h3>
+                </div>
+                <div class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-12 lg:px-12">
+                  <div class="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
+                    <div class="reveal card">
+                      <span class="eyebrow">Fix the emptiest field</span>
+                      <div class="mt-5 space-y-4 tabular-nums text-data">
+                        <div>
+                          <div class="flex justify-between"><span class="text-muted">Products to touch</span><span class="font-semibold text-void">162</span></div>
+                          <div class="mt-1.5 h-2 rounded-full bg-surface-1"><div class="reveal-bar h-full w-full rounded-full bg-ink/40"></div></div>
+                        </div>
+                        <div>
+                          <div class="flex justify-between"><span class="text-muted">Shoppers helped</span><span class="font-semibold text-void">6</span></div>
+                          <div class="mt-1.5 h-2 rounded-full bg-surface-1"><div class="reveal-bar h-full w-6/94 rounded-full bg-ink/40"></div></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="reveal card border-signal ring-1 ring-signal delay-150">
+                      <div class="flex items-center justify-between">
+                        <span class="eyebrow text-signal-dark">Fix the deciding field</span>
+                        <span class="badge-signal">#1 ranked</span>
+                      </div>
+                      <div class="mt-5 space-y-4 tabular-nums text-data">
+                        <div>
+                          <div class="flex justify-between"><span class="text-muted">Products to touch</span><span class="font-semibold text-void">80</span></div>
+                          <div class="mt-1.5 h-2 rounded-full bg-surface-1"><div class="reveal-bar h-full w-80/162 rounded-full bg-ink/40"></div></div>
+                        </div>
+                        <div>
+                          <div class="flex justify-between"><span class="text-muted">Shoppers helped</span><span class="font-semibold text-signal-dark">94</span></div>
+                          <div class="mt-1.5 h-2 rounded-full bg-surface-1"><div class="reveal-bar h-full w-full rounded-full bg-signal"></div></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mx-auto mt-4 max-w-3xl text-xs text-muted">Screen size ranked first in all 12 runs. Positions two to four moved.</p>
+                </div>
+              </article>
+
+              <!-- 04 The repair -->
+              <article id="repair" class="scroll-mt-16">
+                <div class="px-6 py-12 lg:px-12 lg:py-16">
+                  <p class="eyebrow lg:hidden">04 · The repair</p>
+                  <h3 class="reveal mt-2 max-w-2xl text-h2 lg:mt-0">
+                    How does it work?
+                    <span class="text-muted">One export in, a ranked list out. No code, no tag, no system access.</span>
+                  </h3>
+                </div>
+                <div class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-12 lg:px-12">
+                  <ol class="flex flex-col items-stretch gap-4 lg:flex-row lg:items-center lg:gap-0">
+                    <li class="reveal relative flex-1 rounded-xl border-2 border-ink bg-card p-4 shadow-sm">
+                      <span class="badge-success absolute -top-3 left-4 bg-card">Export received</span>
+                      <p class="eyebrow mt-1">01</p>
+                      <p class="mt-1 font-display text-base font-bold text-void">Send one category</p>
+                      <p class="mt-1 text-xs text-muted">CSV or JSON export of a single shelf.</p>
+                    </li>
+                    <li class="hidden h-px w-12 bg-ink/30 lg:block" aria-hidden="true"><span class="reveal-bar block h-px bg-ink delay-300"></span></li>
+                    <li class="reveal flex-1 rounded-xl border border-line bg-card p-4 shadow-sm delay-300">
+                      <p class="eyebrow">02</p>
+                      <p class="mt-1 font-display text-base font-bold text-void">Get the Decision Audit</p>
+                      <p class="mt-1 text-xs text-muted">Ranked list, affected products and readiness number within 48 hours.</p>
+                    </li>
+                    <li class="hidden h-px w-12 bg-ink/30 lg:block" aria-hidden="true"><span class="reveal-bar block h-px bg-ink delay-600"></span></li>
+                    <li class="reveal flex-1 rounded-xl border border-line bg-card p-4 shadow-sm delay-600">
+                      <p class="eyebrow">03</p>
+                      <p class="mt-1 font-display text-base font-bold text-void">Fix it, then verify</p>
+                      <p class="mt-1 text-xs text-muted">Fix the data yourself or with Pulse, then re-measure what changed.</p>
+                    </li>
+                  </ol>
+                </div>
+              </article>
+
+              <!-- 05 The payoff -->
+              <article id="payoff" class="scroll-mt-16">
+                <div class="px-6 py-12 lg:px-12 lg:py-16">
+                  <p class="eyebrow lg:hidden">05 · The payoff</p>
+                  <h3 class="reveal mt-2 max-w-2xl text-h2 lg:mt-0">
+                    Five reasons this is worth half an hour.
+                    <span class="text-muted">Built for merchandising teams who cannot fix everything this week.</span>
+                  </h3>
+                </div>
+                <div class="grid border-t border-line sm:grid-cols-3 sm:divide-x sm:divide-line">
+                  <div class="reveal px-6 py-8 lg:px-10">
+                    <p class="font-display text-2xl font-extrabold text-void">Customised</p>
+                    <p class="mt-1 text-xs text-muted">Scored against the buying criteria of your category.</p>
+                  </div>
+                  <div class="reveal border-t border-line px-6 py-8 delay-100 sm:border-t-0 lg:px-10">
+                    <p class="font-display text-2xl font-extrabold text-void"><span data-count="48">48</span> hours</p>
+                    <p class="mt-1 text-xs text-muted">From your export to a ranked list.</p>
+                  </div>
+                  <div class="reveal border-t border-line px-6 py-8 delay-200 sm:border-t-0 lg:px-10">
+                    <p class="font-display text-2xl font-extrabold text-void">Real time</p>
+                    <p class="mt-1 text-xs text-muted">Optional runtime ranks the live session, with a held-back control arm.</p>
+                  </div>
+                </div>
+                <ul class="grid border-t border-line text-sm sm:grid-cols-2">
+                  <li class="reveal flex gap-3 border-b border-line px-6 py-5 sm:border-r lg:px-10">
+                    <svg class="mt-0.5 size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+                    Prioritise the gap that costs the most shoppers.
+                  </li>
+                  <li class="reveal flex gap-3 border-b border-line px-6 py-5 delay-75 lg:px-10">
+                    <svg class="mt-0.5 size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+                    No code, no tag, no integration.
+                  </li>
+                  <li class="reveal flex gap-3 border-b border-line px-6 py-5 delay-150 sm:border-r lg:px-10">
+                    <svg class="mt-0.5 size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+                    No customer data. Product data only.
+                  </li>
+                  <li class="reveal flex gap-3 border-b border-line px-6 py-5 delay-225 lg:px-10">
+                    <svg class="mt-0.5 size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+                    Most gaps are recoverable from text you already have.
+                  </li>
+                  <li class="reveal flex gap-3 px-6 py-5 delay-300 sm:col-span-2 lg:px-10">
+                    <svg class="mt-0.5 size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+                    Re-measure after the fix to show what changed.
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== RESEARCH (dark band) ===================== -->
+      <section id="research" class="scroll-mt-16 bg-void text-on-void">
+        <div class="frame-dark blueprint-grid-dark">
+          <div class="px-6 pt-24 pb-16 text-center lg:pt-32">
+            <p class="reveal text-sm font-medium text-void-muted">Independent research</p>
+            <h2 class="reveal mx-auto mt-3 max-w-3xl text-display text-balance text-on-void delay-100">
+              Independent research says the same thing.
+            </h2>
+          </div>
+          <div class="grid border-t border-void-line md:grid-cols-3 md:divide-x md:divide-void-line">
+            <div class="reveal px-6 py-10 lg:px-12">
+              <div class="border-l-2 border-void-line-strong pl-5">
+                <p class="font-display text-5xl font-extrabold text-on-void tabular-nums"><span data-count="38" data-suffix="%">38%</span></p>
+                <p class="mt-2 text-body text-void-text">of retailers show an attribute but offer no filter for it.</p>
+                <p class="mt-3 text-xs text-void-muted/70">Baymard Institute</p>
+              </div>
+            </div>
+            <div class="reveal border-t border-void-line px-6 py-10 delay-100 md:border-t-0 lg:px-12">
+              <div class="border-l-2 border-void-line-strong pl-5">
+                <p class="font-display text-5xl font-extrabold text-on-void tabular-nums"><span data-count="79" data-suffix="%">79%</span></p>
+                <p class="mt-2 text-body text-void-text">of product pages do not ship a full set of structured data.</p>
+                <p class="mt-3 text-xs text-void-muted/70">Adobe Analytics</p>
+              </div>
+            </div>
+            <div class="reveal border-t border-void-line px-6 py-10 delay-200 md:border-t-0 lg:px-12">
+              <div class="border-l-2 border-void-line-strong pl-5">
+                <p class="font-display text-5xl font-extrabold text-on-void tabular-nums"><span data-count="393" data-suffix="%">393%</span></p>
+                <p class="mt-2 text-body text-void-text">growth in AI traffic to US retail. Agents don't guess.</p>
+                <p class="mt-3 text-xs text-void-muted/70">Adobe Analytics</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Marquee of attributes shoppers filter on -->
+          <div class="overflow-hidden border-t border-void-line py-6" aria-label="Attributes shoppers filter on">
+            <ul class="flex w-max animate-marquee gap-3 motion-reduce:animate-none">
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">screen_size</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">fragrance_free</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">shade</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">capacity</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">fit</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">material</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">battery_life</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">skin_type</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">dimensions</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">compatibility</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">allergens</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">wattage</li>
+              <!-- duplicate set for a seamless loop -->
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">screen_size</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">fragrance_free</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">shade</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">capacity</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">fit</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">material</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">battery_life</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">skin_type</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">dimensions</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">compatibility</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">allergens</li>
+              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm" aria-hidden="true">wattage</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ DATA ============================ -->
+      <section id="data" class="scroll-mt-16 border-b border-line">
+        <div class="frame grid lg:grid-cols-12">
+          <div class="px-6 py-16 lg:col-span-5 lg:border-r lg:border-line lg:px-12 lg:py-24">
+            <span class="reveal section-tag inline-block">Your data</span>
+            <h2 class="reveal mt-6 text-title">
+              What happens to my data?
+              <span class="text-muted">The audit reads product data. Nothing else.</span>
+            </h2>
+            <ul class="mt-8 grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-ink">
+              <li class="reveal flex items-center gap-2"><svg class="size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>Product data only</li>
+              <li class="reveal flex items-center gap-2 delay-75"><svg class="size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>No cookie, no login</li>
+              <li class="reveal flex items-center gap-2 delay-150"><svg class="size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>Tenant-isolated today</li>
+              <li class="reveal flex items-center gap-2 delay-225"><svg class="size-4 shrink-0 text-success" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>Deleted on request</li>
+            </ul>
+          </div>
+          <div class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-16 lg:col-span-7 lg:border-t-0 lg:px-12 lg:py-24">
+            <div class="reveal overflow-hidden rounded-xl border border-line bg-card shadow-sm">
+              <div class="eyebrow border-b border-line bg-surface-1 px-4 py-2.5">What the audit reads</div>
+              <ul class="divide-y divide-line tabular-nums text-data">
+                <li class="reveal flex items-center justify-between px-4 py-3.5 delay-150"><span class="text-void">Product data</span><span class="badge-success">Read</span></li>
+                <li class="reveal flex items-center justify-between px-4 py-3.5 delay-225"><span class="text-ink">Order history</span><span class="badge border-line bg-surface-1 text-muted">Not read</span></li>
+                <li class="reveal flex items-center justify-between px-4 py-3.5 delay-300"><span class="text-ink">Cookies &amp; logins</span><span class="badge border-line bg-surface-1 text-muted">Not read</span></li>
+                <li class="reveal flex items-center justify-between px-4 py-3.5 delay-375"><span class="text-ink">Customer records</span><span class="badge border-line bg-surface-1 text-muted">Not read</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================== FINAL CTA ========================== -->
+      <section id="request" class="scroll-mt-16 border-b border-line">
+        <div class="frame blueprint-grid px-6 py-24 text-center lg:py-32">
+          <h2 class="reveal mx-auto max-w-3xl text-headline text-balance">
+            Send us one category. See what comes back.
+          </h2>
+          <p class="reveal mx-auto mt-5 max-w-xl text-lg text-pretty text-muted delay-100">
+            Pick a shelf. Get the ranked list, the affected products and a half-hour walkthrough with your merchandising team.
+          </p>
+          <div class="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200">
+            <a href="#method" class="btn-secondary">Read the method first</a>
+            <a href="mailto:getintouch@thepulseapi.com" class="btn-primary">Request a Decision Audit</a>
+          </div>
+          <p class="reveal mt-6 text-xs text-muted delay-300">No obligation at any step.</p>
+        </div>
+      </section>
     </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="frame grid gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-12">
+        <div>
+          <span class="font-display text-lg font-extrabold text-void">Pulse</span>
+          <p class="mt-2 text-xs text-muted">Know which product data to fix first.</p>
+          <a href="mailto:getintouch@thepulseapi.com" class="mt-4 block text-xs text-primary transition-colors duration-200 ease-out-soft hover:text-primary-dark">getintouch@thepulseapi.com</a>
+        </div>
+        <div>
+          <h3 class="eyebrow">Product</h3>
+          <ul class="mt-3 space-y-2 text-sm text-ink">
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Decision Audit</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Decision Verification</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Decision Monitor</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="eyebrow">Company</h3>
+          <ul class="mt-3 space-y-2 text-sm text-ink">
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">About us</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Contact</a></li>
+            <li class="flex items-center gap-2"><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Career</a><span class="badge-primary">Hiring</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="eyebrow">Legal</h3>
+          <ul class="mt-3 space-y-2 text-sm text-ink">
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Privacy Policy</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Terms of Service</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">Cookie Policy</a></li>
+            <li><a href="#" class="transition-colors duration-200 ease-out-soft hover:text-primary">GDPR</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-line">
+        <div class="frame px-6 py-5 text-center text-xs text-muted">© 2026 Pulse. All rights reserved.</div>
+      </div>
+    </footer>
   </body>
 </html>

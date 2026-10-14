@@ -24,12 +24,13 @@
   --text-h3: 1.125rem;
   --text-h3--line-height: 1.4;
   --text-h3--font-weight: 600;
-  --text-body: 0.875rem;
+  --text-body: 1rem; /* 16px (v2 §4, up from 14px) */
   --text-body--line-height: 1.6;
-  --text-data: 0.8125rem;
+  --text-data: 0.875rem; /* 14px (v2 §4, up from 13px) */
   --text-data--line-height: 1.5;
-  --text-caption: 0.6875rem; /* 11px: column notes and small labels inside the hero demo */
+  --text-caption: 0.75rem; /* 12px — the smallest text size (v2 §4) */
   --text-caption--line-height: 1.4;
+  --text-caption--font-weight: 500;
 
   /* Fluid display sizes: scale smoothly with the viewport (min, preferred, max).
      Use these instead of sm:/lg: text sizes in the HTML. */
@@ -49,7 +50,8 @@
   /* Navigation (thepulseapi.com navbar: Plus Jakarta Sans 15px) */
   --text-nav: 0.9375rem; /* 15px */
   --text-nav--line-height: 1.5;
-  --text-micro: 0.625rem; /* 10px: dropdown section labels */
+  /* TEMPORARY ALIAS: text-micro (10px) is dropped in v2; it now renders at caption size (12px). Removed before Phase 7. */
+  --text-micro: 0.75rem;
   --text-micro--line-height: 1.4;
   --text-micro--letter-spacing: 0.05em;
   --radius-control: 0.625rem; /* 10px: nav links, nav buttons */
@@ -60,97 +62,113 @@
 
   /* ================================================================ */
   /* COLOURS — the ONLY place colours are defined.                     */
+  /* Source of truth: docs/pulse_brand_guidelines_v2.md ("Citrus").     */
   /*                                                                   */
-  /* 1. BRAND PALETTE: the 6 base colours from Figma                   */
-  /*    "Pulse Design Work › Branding › Pulse Color" (actual fills).    */
-  /*    To re-theme the site, change these hex values.                 */
-  /* 2. ROLES: what the pages use. Shades are DERIVED from the brand   */
-  /*    palette with color-mix() formulas, so they follow automatically.*/
-  /*    Mix percentages were checked for WCAG AA contrast.             */
+  /* 1. BRAND PALETTE (§3.1): base colours. Never used directly in HTML.*/
+  /* 2. ROLES (§3.3 light, §3.4 dark): what pages use. Every TEXT and   */
+  /*    surface role is an exact, contrast-checked hex — no color-mix — */
+  /*    written as light-dark(<light>, <dark>). The page follows the    */
+  /*    OS theme; [data-theme] on <html> overrides it (see Base).       */
+  /*    Dark values marked "derived" are not in the guideline; they     */
+  /*    were chosen and contrast-checked for this project.              */
+  /* 3. DECORATION: the Citrus band and its mosaic steps (never text).  */
   /* ================================================================ */
   --color-*: initial; /* switch off Tailwind's default palette: only tokens below exist */
 
-  /* 1. Brand palette (not used directly in HTML — use the roles below) */
-  --brand-ink: #060914;
-  --brand-indigo: #3a08c6; /* 60% — trust, B2B & investment. The platform colour. */
-  --brand-coral: #f7423b; /* 30% — the alive signal. Use once per view. */
-  --brand-violet: #7343f8; /* 10% — personalisation. The bridge into the signal. */
-  --brand-mint: #51dfb3; /* live / ready */
-  --brand-mist: #f9f9f9; /* background */
+  /* 1. Brand palette (§3.1) */
+  --brand-forest: #0b3d2e; /* foundation: primary buttons, links, symbol background */
+  --brand-mint: #00c48c; /* start of the Citrus band */
+  --brand-lime: #c6f432; /* middle of the band; primary in dark mode */
+  --brand-sun: #ffc83d; /* end of the band */
+  --brand-coral: #ff6b57; /* reserved for data gaps (Missing) */
+  --brand-ink: #10201a; /* text, dark backgrounds */
+  --brand-paper: #fafbf7; /* page background */
 
-  /* Primary — Indigo: buttons, links, active navigation, brand marks */
-  --color-primary: var(--brand-indigo);
-  --color-primary-dark: color-mix(in oklab, var(--brand-indigo) 80%, black); /* hover / pressed */
-  --color-primary-light: color-mix(in oklab, var(--brand-indigo) 50%, white); /* primary on dark backgrounds */
-  --color-primary-tint: color-mix(in oklab, var(--brand-indigo) 7%, white); /* chip/badge background */
-  --color-primary-line: color-mix(in oklab, var(--brand-indigo) 22%, white); /* chip/badge border */
-  --color-on-primary: #ffffff; /* text/icons on a primary fill */
+  /* 2. Roles — light-dark(light §3.3, dark §3.4) */
+  /* Text */
+  --color-ink: light-dark(#10201a, #f1f4ee); /* main text, headings */
+  --color-muted: light-dark(#55625b, #a3afa7); /* secondary text */
+  --color-link: light-dark(#0b3d2e, #2ee0a6); /* links */
+  /* Surfaces */
+  --color-surface-0: light-dark(#fafbf7, #0c1611); /* page background (Paper) */
+  --color-card: light-dark(#ffffff, #15221b); /* cards, panels, header */
+  --color-surface-1: light-dark(#f0f3ec, #1d2b24); /* wells, tracks, table headers — dark derived */
+  --color-line: light-dark(#e1e6dd, #2a3931); /* decorative hairlines — dark derived */
+  --color-line-control: light-dark(#7d8981, #6b7a71); /* input, checkbox, dropdown borders (>= 3:1) */
+  /* Primary — Forest in light, Lime in dark */
+  --color-primary: light-dark(#0b3d2e, #c6f432); /* buttons, links, active tabs, rank #1 */
+  --color-primary-hover: light-dark(#072a20, #d8f86a); /* hover / pressed — dark derived */
+  --color-primary-tint: light-dark(#e7ecea, #223319); /* badge and chip backgrounds — dark derived */
+  --color-on-primary: light-dark(#ffffff, #0c1611); /* text/icons on a primary fill */
+  /* Gap — Missing data only (Coral). Never shares a colour with critical. */
+  --color-gap: #ff6b57; /* dots, icons, large bars (decorative, both themes) */
+  --color-gap-fill: light-dark(#fbded7, #3d1f1a); /* Missing cell background — dark derived */
+  --color-gap-strong: light-dark(#b23a2a, #ff6b57); /* dashed Missing border, "Missing" text */
+  /* Status — success is never a button; it always carries a check icon + text */
+  --color-success: light-dark(#0b6b47, #5fe0a9);
+  --color-success-bg: light-dark(#e5f7ee, #123324); /* dark derived */
+  --color-warning: light-dark(#845300, #ffc83d);
+  --color-warning-bg: light-dark(#fff6db, #33290f); /* dark derived */
+  --color-critical: light-dark(#a8102b, #ff8a94); /* blocking errors only */
+  --color-critical-bg: light-dark(#fdecee, #3b181c); /* dark derived */
 
-  /* Signal — Coral: the ONE highlight per view (the #1 ranked fix) */
-  --color-signal: var(--brand-coral); /* fills, bars, large numbers (>= 24px) */
-  --color-signal-dark: color-mix(in oklab, var(--brand-coral) 75%, black); /* small signal text */
-  --color-signal-tint: color-mix(in oklab, var(--brand-coral) 8%, white);
-  --color-signal-line: color-mix(in oklab, var(--brand-coral) 28%, white);
+  /* 3. Decoration — the Citrus band (§3.2). Never used for text; Ink text passes on every step. */
+  --color-mint: var(--brand-mint);
+  --color-lime: var(--brand-lime);
+  --color-sun: var(--brand-sun);
+  /* Citrus mosaic steps: 8 cells evenly spaced along the band (step n sits at t = (n-1)/7),
+     using the band's own stops: Mint 0% → Lime 55% → Sun 100%. */
+  --color-citrus-1: var(--brand-mint);
+  --color-citrus-2: color-mix(in oklab, var(--brand-mint), var(--brand-lime) calc(100% * (1 / 7) / 0.55));
+  --color-citrus-3: color-mix(in oklab, var(--brand-mint), var(--brand-lime) calc(100% * (2 / 7) / 0.55));
+  --color-citrus-4: color-mix(in oklab, var(--brand-mint), var(--brand-lime) calc(100% * (3 / 7) / 0.55));
+  --color-citrus-5: color-mix(in oklab, var(--brand-lime), var(--brand-sun) calc(100% * (4 / 7 - 0.55) / 0.45));
+  --color-citrus-6: color-mix(in oklab, var(--brand-lime), var(--brand-sun) calc(100% * (5 / 7 - 0.55) / 0.45));
+  --color-citrus-7: color-mix(in oklab, var(--brand-lime), var(--brand-sun) calc(100% * (6 / 7 - 0.55) / 0.45));
+  --color-citrus-8: var(--brand-sun);
+  /* Blueprint grid lines (decorative) */
+  --color-grid-line: light-dark(rgb(16 32 26 / 0.05), rgb(241 244 238 / 0.05));
+  --color-grid-line-dark: rgb(241 244 238 / 0.05);
 
-  /* Accent — Violet: personalisation highlights (10%) */
-  --color-accent: var(--brand-violet);
-  --color-accent-tint: color-mix(in oklab, var(--brand-violet) 8%, white);
-
-  /* Gap — missing data only (the "Missing Cell" motif) */
-  --color-gap: #f59e0b;
-  --color-gap-bg: #fffbeb;
-  --color-gap-cell: #fffdf5; /* fill inside a dashed missing cell */
-  --color-gap-border: #d97706;
-  --color-gap-text: #b45309;
-  --color-gap-dark: #fbbf24; /* gap border on dark backgrounds */
-  --color-gap-text-dark: oklch(87.9% 0.169 91.605); /* gap text on dark backgrounds */
-
-  /* Dark surfaces (void) — Ink, tinted with Indigo */
-  --color-void: var(--brand-ink); /* headlines, dark bands */
-  --color-void-elevated: color-mix(in oklab, var(--brand-indigo) 14%, var(--brand-ink)); /* cards on a dark band */
-  --color-void-line: color-mix(in oklab, var(--brand-indigo) 30%, var(--brand-ink)); /* hairlines on dark */
-  --color-void-line-strong: color-mix(in oklab, var(--brand-indigo) 65%, var(--brand-ink)); /* accent rules on dark */
-  --color-void-text: color-mix(in oklab, var(--brand-indigo) 8%, white); /* body text on dark */
-  --color-void-muted: color-mix(in oklab, var(--brand-indigo) 30%, white); /* captions on dark */
-  --color-on-void: #ffffff; /* headings/numbers on dark */
-
-  /* Light surfaces & text */
-  --color-card: #ffffff; /* cards, panels, inputs, header */
-  --color-surface-0: var(--brand-mist); /* page background */
-  --color-surface-1: #f1f5f5; /* table headers, wells, tracks */
-  --color-line: #e2e8f0; /* all hairlines */
-  --color-muted: #64748b; /* secondary text */
-  --color-ink: var(--brand-ink); /* body text */
-
-  /* Status — audit states only */
-  --color-success: color-mix(in oklab, var(--brand-mint) 45%, var(--brand-ink)); /* readable text/icons */
-  --color-success-bg: color-mix(in oklab, var(--brand-mint) 12%, white);
-  --color-success-line: color-mix(in oklab, var(--brand-mint) 45%, white);
-  --color-warning: #d97706;
-  --color-warning-bg: #fffbeb;
-  --color-warning-line: oklch(92.4% 0.12 95.746);
-  --color-critical: #dc2626;
-  --color-critical-bg: oklch(97.1% 0.013 17.38);
-  --color-critical-line: oklch(88.5% 0.062 18.334);
-  --color-critical-hatch: color-mix(in oklab, var(--color-critical) 14%, transparent); /* missing-flag stripes */
-  --color-critical-ring: color-mix(in oklab, var(--color-critical) 28%, transparent); /* missing-flag outline */
-
-  /* Hero stage backdrop (attio.com style): the page colour fading into a soft, cool Indigo wash */
-  --color-stage-base: color-mix(in oklab, var(--color-primary) 7%, var(--color-surface-0));
-  --color-stage-glow: color-mix(in oklab, var(--color-primary) 14%, transparent);
-  --color-stage-glow-accent: color-mix(in oklab, var(--color-accent) 8%, transparent);
-
-  /* Hero demo: the band that sweeps across the audit step */
-  --color-scan-band: color-mix(in oklab, var(--color-primary) 22%, transparent);
-
-  /* App window controls (hero window frame) */
-  --color-window-close: var(--brand-coral);
-  --color-window-minimise: var(--color-gap);
-  --color-window-zoom: var(--brand-mint);
-
-  /* Blueprint grid lines */
-  --color-grid-line: rgb(15 23 42 / 0.04);
-  --color-grid-line-dark: rgb(255 255 255 / 0.05);
+  /* ---------------------------------------------------------------- */
+  /* TEMPORARY ALIASES (Phase 1 of the Citrus rebrand). Old token names */
+  /* still used by index.html / components.html / utilities, pointed at */
+  /* the closest new role. Every alias is removed before Phase 7.       */
+  /* ---------------------------------------------------------------- */
+  --color-primary-dark: var(--color-primary-hover); /* alias */
+  --color-primary-light: var(--brand-lime); /* alias */
+  --color-primary-line: var(--color-primary-tint); /* alias */
+  --color-signal: var(--color-primary); /* alias — signal removed; #1 uses primary */
+  --color-signal-dark: var(--color-primary); /* alias */
+  --color-signal-tint: var(--color-primary-tint); /* alias */
+  --color-signal-line: var(--color-primary-tint); /* alias */
+  --color-accent: var(--brand-lime); /* alias — violet removed */
+  --color-accent-tint: var(--color-primary-tint); /* alias */
+  --color-gap-bg: var(--color-gap-fill); /* alias */
+  --color-gap-cell: var(--color-gap-fill); /* alias */
+  --color-gap-border: var(--color-gap-strong); /* alias */
+  --color-gap-text: var(--color-gap-strong); /* alias */
+  --color-gap-dark: var(--brand-coral); /* alias */
+  --color-gap-text-dark: var(--brand-coral); /* alias */
+  --color-void: #0c1611; /* alias — dark band surface (dark surface-0) */
+  --color-void-elevated: #15221b; /* alias — dark card */
+  --color-void-line: #2a3931; /* alias — dark line */
+  --color-void-line-strong: #6b7a71; /* alias — dark line-control */
+  --color-void-text: #f1f4ee; /* alias — dark ink */
+  --color-void-muted: #a3afa7; /* alias — dark muted */
+  --color-on-void: #f1f4ee; /* alias — dark ink */
+  --color-success-line: var(--color-line); /* alias */
+  --color-warning-line: var(--color-line); /* alias */
+  --color-critical-line: var(--color-line); /* alias */
+  --color-critical-hatch: transparent; /* alias — stripes removed */
+  --color-critical-ring: var(--color-gap-strong); /* alias */
+  --color-stage-base: var(--color-surface-1); /* alias — hero wash replaced by the mosaic in Phase 4 */
+  --color-stage-glow: color-mix(in oklab, var(--brand-mint) 14%, transparent); /* alias */
+  --color-stage-glow-accent: color-mix(in oklab, var(--brand-sun) 10%, transparent); /* alias */
+  --color-scan-band: color-mix(in oklab, var(--brand-mint) 22%, transparent); /* alias */
+  --color-window-close: var(--brand-mint); /* alias — window dots: Mint / Lime / Sun, never Coral */
+  --color-window-minimise: var(--brand-lime); /* alias */
+  --color-window-zoom: var(--brand-sun); /* alias */
 
   /* Motion (modelled on attio.com: short, eased, never bouncy) */
   --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
@@ -235,12 +253,23 @@
 /* ------------------------------------------------------------------ */
 @layer base {
   body {
-    @apply bg-surface-0 font-sans text-ink antialiased selection:bg-primary-dark selection:text-on-primary;
+    @apply bg-surface-0 font-sans text-ink antialiased selection:bg-primary-hover selection:text-on-primary;
+  }
+  /* Theme: follow the OS by default; <html data-theme="light|dark"> overrides it.
+     Every role token is light-dark(), so this one property switches the whole palette. */
+  :root {
+    color-scheme: light dark;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
   }
   h1,
   h2,
   h3 {
-    @apply font-display text-void;
+    @apply font-display text-ink;
   }
   /* <details> dropdowns: hide the browser's disclosure triangle */
   summary {

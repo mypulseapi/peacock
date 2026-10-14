@@ -1,0 +1,3 @@
+# @parcel/watcher ships prebuilt binaries; its install script is only a node-gyp fallback
+allowBuilds:
+  '@parcel/watcher': false

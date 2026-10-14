@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./dist/output.css" />
@@ -15,19 +15,46 @@
   <body class="overflow-x-clip">
     <!-- Header -->
     <header class="sticky top-0 z-50 border-b border-line bg-card">
-      <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
+      <div
+        class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8"
+      >
         <a href="./index.html" class="flex items-center gap-2.5">
-          <span class="flex size-8 items-center justify-center rounded-md border-2 border-primary bg-primary-tint p-1">
-            <svg class="size-full text-primary" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <rect x="2" y="3" width="7" height="7" class="stroke-gap" stroke-dasharray="2 2" />
+          <span
+            class="flex size-8 items-center justify-center rounded-md border-2 border-primary bg-primary-tint p-1"
+          >
+            <svg
+              class="size-full text-primary"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <rect
+                x="2"
+                y="3"
+                width="7"
+                height="7"
+                class="stroke-gap"
+                stroke-dasharray="2 2"
+              />
               <path d="M12 7h9" />
               <path d="M3 16h3l2-3 3 7 3-6 2 2h6" />
             </svg>
           </span>
-          <span class="font-display text-xl font-extrabold tracking-tight text-ink">Pulse</span>
-          <span class="ml-1 rounded bg-surface-1 px-2 py-0.5 tabular-nums text-xs text-muted">Components v1.0</span>
+          <span
+            class="font-display text-xl font-extrabold tracking-tight text-ink"
+            >Pulse</span
+          >
+          <span
+            class="ml-1 rounded bg-surface-1 px-2 py-0.5 tabular-nums text-xs text-muted"
+            >Components v1.0</span
+          >
         </a>
-        <nav class="hidden items-center gap-6 tabular-nums text-xs font-medium text-muted lg:flex">
+        <nav
+          class="hidden items-center gap-6 tabular-nums text-xs font-medium text-muted lg:flex"
+        >
           <a href="#table" class="hover:text-primary">01. Audit table</a>
           <a href="#ranking" class="hover:text-primary">02. Ranking</a>
           <a href="#telemetry" class="hover:text-primary">03. Telemetry</a>
@@ -43,20 +70,29 @@
         <span class="eyebrow">Design system</span>
         <h1 class="mt-2 text-h1">UI Component Specification</h1>
         <p class="mt-3 max-w-3xl text-body text-muted">
-          Reusable building blocks for catalogue audit views. Every class here comes from <span class="font-medium text-primary">src/input.css</span>.
+          Reusable building blocks for catalogue audit views. Every class here
+          comes from
+          <span class="font-medium text-primary">src/input.css</span>.
         </p>
       </div>
 
       <!-- 01 Catalogue audit table -->
       <section id="table" class="scroll-mt-24">
-        <div class="mb-6 flex items-baseline justify-between border-b border-line pb-4">
+        <div
+          class="mb-6 flex items-baseline justify-between border-b border-line pb-4"
+        >
           <div class="flex items-center gap-3">
             <span class="section-tag">01</span>
             <h2 class="text-h2">Catalogue Audit Table</h2>
           </div>
-          <span class="hidden tabular-nums text-xs text-muted sm:inline">.missing-cell · .badge-* · .missing-flag · .demo-pill · .scan-track</span>
+          <span class="hidden tabular-nums text-xs text-muted sm:inline"
+            >.missing-cell · .badge-* · .missing-flag · .demo-pill ·
+            .scan-track</span
+          >
         </div>
-        <div class="overflow-x-auto rounded-xl border border-line bg-card shadow-sm">
+        <div
+          class="overflow-x-auto rounded-xl border border-line bg-card shadow-sm"
+        >
           <table class="w-full min-w-180 text-left tabular-nums text-data">
             <thead class="bg-surface-1 text-xs text-muted">
               <tr class="divide-x divide-line">
@@ -70,56 +106,124 @@
             </thead>
             <tbody class="divide-y divide-line">
               <tr class="divide-x divide-line">
-                <td class="px-4 py-3 font-sans font-medium text-ink">Aero Monitor 27</td>
+                <td class="px-4 py-3 font-sans font-medium text-ink">
+                  Aero Monitor 27
+                </td>
                 <td class="px-4 py-3 text-muted">AM-27-4K</td>
                 <td class="px-4 py-3">27"</td>
                 <td class="px-4 py-3 text-muted">n/a</td>
                 <td class="px-4 py-3 text-muted">n/a</td>
-                <td class="px-4 py-3 text-right"><span class="badge-success">Ready</span></td>
+                <td class="px-4 py-3 text-right">
+                  <span class="badge-success">Ready</span>
+                </td>
               </tr>
               <tr class="divide-x divide-line">
-                <td class="px-4 py-3 font-sans font-medium text-ink">Hydra Tablet Pro</td>
+                <td class="px-4 py-3 font-sans font-medium text-ink">
+                  Hydra Tablet Pro
+                </td>
                 <td class="px-4 py-3 text-muted">HT-PRO-11</td>
                 <td class="px-4 py-3">11"</td>
                 <td class="px-4 py-3">8 GB</td>
                 <td class="px-4 py-3">256 GB</td>
-                <td class="px-4 py-3 text-right"><span class="badge-success">Ready</span></td>
+                <td class="px-4 py-3 text-right">
+                  <span class="badge-success">Ready</span>
+                </td>
               </tr>
               <tr class="divide-x divide-line">
-                <td class="px-4 py-3 font-sans font-medium text-ink">Studio Soundbar Max</td>
+                <td class="px-4 py-3 font-sans font-medium text-ink">
+                  Studio Soundbar Max
+                </td>
                 <td class="px-4 py-3 text-muted">SS-MAX-01</td>
                 <td class="px-4 py-3 text-muted">n/a</td>
-                <td class="px-2 py-2"><span class="missing-cell block rounded px-2 py-1 text-xs">missing</span></td>
+                <td class="px-2 py-2">
+                  <span class="missing-cell block rounded px-2 py-1 text-xs"
+                    >missing</span
+                  >
+                </td>
                 <td class="px-4 py-3">16 GB</td>
-                <td class="px-4 py-3 text-right"><span class="badge-warning">Degraded</span></td>
+                <td class="px-4 py-3 text-right">
+                  <span class="badge-warning">Degraded</span>
+                </td>
               </tr>
               <tr class="divide-x divide-line">
-                <td class="px-4 py-3 font-sans font-medium text-ink">Everyday Ultrabook</td>
+                <td class="px-4 py-3 font-sans font-medium text-ink">
+                  Everyday Ultrabook
+                </td>
                 <td class="px-4 py-3 text-muted">EU-14-I7</td>
-                <td class="px-2 py-2"><span class="missing-cell block rounded px-2 py-1 text-xs">missing</span></td>
+                <td class="px-2 py-2">
+                  <span class="missing-cell block rounded px-2 py-1 text-xs"
+                    >missing</span
+                  >
+                </td>
                 <td class="px-4 py-3">16 GB</td>
                 <td class="px-4 py-3">512 GB</td>
-                <td class="px-4 py-3 text-right"><span class="badge-critical">Blocker</span></td>
+                <td class="px-4 py-3 text-right">
+                  <span class="badge-critical">Blocker</span>
+                </td>
               </tr>
               <tr class="divide-x divide-line">
-                <td class="px-4 py-3 font-sans font-medium text-ink">Apex Mechanical Keyboard</td>
+                <td class="px-4 py-3 font-sans font-medium text-ink">
+                  Apex Mechanical Keyboard
+                </td>
                 <td class="px-4 py-3 text-muted">AK-TKL-RGB</td>
                 <td class="px-4 py-3 text-muted">n/a</td>
                 <td class="px-4 py-3 text-muted">n/a</td>
                 <td class="px-4 py-3 text-muted">n/a</td>
-                <td class="px-4 py-3 text-right"><span class="badge-success">Ready</span></td>
+                <td class="px-4 py-3 text-right">
+                  <span class="badge-success">Ready</span>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
         <!-- Hero demo labels (thepulseapi.com workflow demo in index.html) -->
-        <div class="mt-4 flex flex-wrap items-center gap-4 rounded-xl border border-line bg-card px-5 py-4 shadow-sm">
+        <div
+          class="mt-4 flex flex-wrap items-center gap-4 rounded-xl border border-line bg-card px-5 py-4 shadow-sm"
+        >
           <span class="eyebrow">Hero demo</span>
-          <span class="missing-flag"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>Missing</span>
-          <span class="demo-pill border-critical-line bg-critical-bg text-critical">347 gaps found</span>
-          <span class="demo-pill border-line bg-surface-1 text-muted">Scoring attributes</span>
-          <span class="demo-pill border-primary bg-primary font-bold text-on-primary"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>No new data purchased</span>
-          <span class="scan-track block h-1.5 w-40 overflow-hidden rounded-full"><span class="block h-full w-2/3 rounded-full bg-primary"></span></span>
+          <span class="missing-flag"
+            ><svg
+              class="size-3.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
+              />
+              <path d="M12 9v4" />
+              <path d="M12 17h.01" /></svg
+            >Missing</span
+          >
+          <span
+            class="demo-pill border-critical-line bg-critical-bg text-critical"
+            >347 gaps found</span
+          >
+          <span class="demo-pill border-line bg-surface-1 text-muted"
+            >Scoring attributes</span
+          >
+          <span
+            class="demo-pill border-primary bg-primary font-bold text-on-primary"
+            ><svg
+              class="size-3.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 6 9 17l-5-5" /></svg
+            >No new data purchased</span
+          >
+          <span class="scan-track block h-1.5 w-40 overflow-hidden rounded-full"
+            ><span class="block h-full w-2/3 rounded-full bg-primary"></span
+          ></span>
         </div>
       </section>
 
@@ -132,41 +236,78 @@
           </div>
           <div class="card space-y-5">
             <div>
-              <div class="flex items-center justify-between tabular-nums text-data">
-                <span class="flex items-center gap-2 font-semibold text-ink"><span class="badge-signal">#1</span>Screen size</span>
+              <div
+                class="flex items-center justify-between tabular-nums text-data"
+              >
+                <span class="flex items-center gap-2 font-semibold text-ink"
+                  ><span class="badge-signal">#1</span>Screen size</span
+                >
                 <span class="text-signal-dark">100%</span>
               </div>
-              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-full rounded-full bg-signal"></div></div>
+              <div class="mt-2 h-2 rounded-full bg-surface-1">
+                <div class="h-full w-full rounded-full bg-signal"></div>
+              </div>
             </div>
             <div>
-              <div class="flex items-center justify-between tabular-nums text-data">
-                <span class="flex items-center gap-2 text-ink"><span class="badge border-line text-muted">#2</span>Storage capacity</span>
+              <div
+                class="flex items-center justify-between tabular-nums text-data"
+              >
+                <span class="flex items-center gap-2 text-ink"
+                  ><span class="badge border-line text-muted">#2</span>Storage
+                  capacity</span
+                >
                 <span class="text-muted">70%</span>
               </div>
-              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-7/10 rounded-full bg-signal/70"></div></div>
+              <div class="mt-2 h-2 rounded-full bg-surface-1">
+                <div class="h-full w-7/10 rounded-full bg-signal/70"></div>
+              </div>
             </div>
             <div>
-              <div class="flex items-center justify-between tabular-nums text-data">
-                <span class="flex items-center gap-2 text-ink"><span class="badge border-line text-muted">#3</span>Memory / RAM</span>
+              <div
+                class="flex items-center justify-between tabular-nums text-data"
+              >
+                <span class="flex items-center gap-2 text-ink"
+                  ><span class="badge border-line text-muted">#3</span>Memory /
+                  RAM</span
+                >
                 <span class="text-muted">50%</span>
               </div>
-              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-1/2 rounded-full bg-signal/50"></div></div>
+              <div class="mt-2 h-2 rounded-full bg-surface-1">
+                <div class="h-full w-1/2 rounded-full bg-signal/50"></div>
+              </div>
             </div>
             <div>
-              <div class="flex items-center justify-between tabular-nums text-data">
-                <span class="flex items-center gap-2 text-ink"><span class="badge border-line text-muted">#4</span>Battery life</span>
+              <div
+                class="flex items-center justify-between tabular-nums text-data"
+              >
+                <span class="flex items-center gap-2 text-ink"
+                  ><span class="badge border-line text-muted">#4</span>Battery
+                  life</span
+                >
                 <span class="text-muted">35%</span>
               </div>
-              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-7/20 rounded-full bg-signal/35"></div></div>
+              <div class="mt-2 h-2 rounded-full bg-surface-1">
+                <div class="h-full w-7/20 rounded-full bg-signal/35"></div>
+              </div>
             </div>
             <div>
-              <div class="flex items-center justify-between tabular-nums text-data">
-                <span class="flex items-center gap-2 text-ink"><span class="badge border-line text-muted">#5</span>Processor clock</span>
+              <div
+                class="flex items-center justify-between tabular-nums text-data"
+              >
+                <span class="flex items-center gap-2 text-ink"
+                  ><span class="badge border-line text-muted">#5</span>Processor
+                  clock</span
+                >
                 <span class="text-muted">20%</span>
               </div>
-              <div class="mt-2 h-2 rounded-full bg-surface-1"><div class="h-full w-1/5 rounded-full bg-signal/20"></div></div>
+              <div class="mt-2 h-2 rounded-full bg-surface-1">
+                <div class="h-full w-1/5 rounded-full bg-signal/20"></div>
+              </div>
             </div>
-            <p class="border-t border-line pt-4 text-xs text-muted">Only rank #1 uses the solid signal colour; lower ranks use tints of it.</p>
+            <p class="border-t border-line pt-4 text-xs text-muted">
+              Only rank #1 uses the solid signal colour; lower ranks use tints
+              of it.
+            </p>
           </div>
         </section>
 
@@ -177,24 +318,39 @@
             <h2 class="text-h2">Diagnostic Telemetry</h2>
           </div>
           <div class="card-dark blueprint-grid-dark">
-            <span class="tabular-nums text-xs tracking-wider text-void-muted uppercase">Catalogue readiness score</span>
+            <span
+              class="tabular-nums text-xs tracking-wider text-void-muted uppercase"
+              >Catalogue readiness score</span
+            >
             <div class="mt-3 flex items-end gap-2">
               <span class="font-display text-6xl font-extrabold">94</span>
-              <span class="mb-2 tabular-nums text-data text-void-muted">/ 216</span>
+              <span class="mb-2 tabular-nums text-data text-void-muted"
+                >/ 216</span
+              >
             </div>
-            <p class="mt-2 text-xs text-void-text">Products a shopper can tell apart on the deciding attribute.</p>
+            <p class="mt-2 text-xs text-void-text">
+              Products a shopper can tell apart on the deciding attribute.
+            </p>
           </div>
           <div class="mt-4 grid grid-cols-2 gap-4">
             <div class="card p-4">
               <span class="eyebrow">Gaps found</span>
-              <div class="mt-1 font-display text-2xl font-extrabold text-warning">347</div>
+              <div
+                class="mt-1 font-display text-2xl font-extrabold text-warning"
+              >
+                347
+              </div>
             </div>
             <div class="card p-4">
               <span class="eyebrow">Turnaround</span>
-              <div class="mt-1 font-display text-2xl font-extrabold text-ink">48 h</div>
+              <div class="mt-1 font-display text-2xl font-extrabold text-ink">
+                48 h
+              </div>
             </div>
           </div>
-          <div class="missing-cell mt-4 rounded-lg px-4 py-3 text-xs">screen_size — found in 136 titles, 0 attributes</div>
+          <div class="missing-cell mt-4 rounded-lg px-4 py-3 text-xs">
+            screen_size — found in 136 titles, 0 attributes
+          </div>
         </section>
       </div>
 
@@ -213,7 +369,10 @@
               <button class="btn-primary btn-sm">Small</button>
               <button class="btn-primary" disabled>Disabled</button>
             </div>
-            <p class="text-xs text-muted">Main action, one per view. The #1 ranked item uses the signal colour instead.</p>
+            <p class="text-xs text-muted">
+              Main action, one per view. The #1 ranked item uses the signal
+              colour instead.
+            </p>
           </div>
           <div class="card space-y-4">
             <span class="eyebrow">.btn-secondary</span>
@@ -223,7 +382,9 @@
               <button class="btn-secondary btn-sm">Small</button>
               <button class="btn-secondary" disabled>Disabled</button>
             </div>
-            <p class="text-xs text-muted">Supporting actions next to a primary button.</p>
+            <p class="text-xs text-muted">
+              Supporting actions next to a primary button.
+            </p>
           </div>
           <div class="card space-y-4">
             <span class="eyebrow">.btn-ghost</span>
@@ -233,7 +394,9 @@
               <button class="btn-ghost btn-sm">Small</button>
               <button class="btn-ghost" disabled>Disabled</button>
             </div>
-            <p class="text-xs text-muted">Low-emphasis utilities in toolbars and tables.</p>
+            <p class="text-xs text-muted">
+              Low-emphasis utilities in toolbars and tables.
+            </p>
           </div>
         </div>
       </section>
@@ -247,38 +410,66 @@
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           <div class="overflow-hidden rounded-xl border border-line bg-card">
             <div class="h-20 bg-primary"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-ink">primary</div><div class="text-muted">Indigo · buttons, links, active (60%)</div></div>
+            <div class="p-3 text-xs">
+              <div class="font-bold text-ink">primary</div>
+              <div class="text-muted">
+                Indigo · buttons, links, active (60%)
+              </div>
+            </div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
             <div class="h-20 bg-signal"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-ink">signal</div><div class="text-muted">Coral · one highlight per view (30%)</div></div>
+            <div class="p-3 text-xs">
+              <div class="font-bold text-ink">signal</div>
+              <div class="text-muted">Coral · one highlight per view (30%)</div>
+            </div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
             <div class="h-20 bg-accent"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-ink">accent</div><div class="text-muted">Violet · personalisation (10%)</div></div>
+            <div class="p-3 text-xs">
+              <div class="font-bold text-ink">accent</div>
+              <div class="text-muted">Violet · personalisation (10%)</div>
+            </div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
             <div class="h-20 bg-void"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-ink">void / ink</div><div class="text-muted">Ink · text, dark bands</div></div>
+            <div class="p-3 text-xs">
+              <div class="font-bold text-ink">void / ink</div>
+              <div class="text-muted">Ink · text, dark bands</div>
+            </div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
             <div class="h-20 bg-success-line"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-ink">success</div><div class="text-muted">Mint · ready / live</div></div>
+            <div class="p-3 text-xs">
+              <div class="font-bold text-ink">success</div>
+              <div class="text-muted">Mint · ready / live</div>
+            </div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
             <div class="h-20 border-b border-line bg-surface-0"></div>
-            <div class="p-3 text-xs"><div class="font-bold text-ink">surface-0</div><div class="text-muted">Mist · page background</div></div>
+            <div class="p-3 text-xs">
+              <div class="font-bold text-ink">surface-0</div>
+              <div class="text-muted">Mist · page background</div>
+            </div>
           </div>
         </div>
         <div class="mt-4 overflow-hidden rounded-xl border border-line bg-card">
           <div class="h-20 bg-brand-gradient"></div>
-          <div class="p-3 text-xs"><div class="font-bold text-ink">bg-brand-gradient</div><div class="text-muted">Coral → Indigo · big brand moments only</div></div>
+          <div class="p-3 text-xs">
+            <div class="font-bold text-ink">bg-brand-gradient</div>
+            <div class="text-muted">
+              Coral → Indigo · big brand moments only
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="border-t border-line bg-card px-6 py-5 text-center tabular-nums text-xs text-muted">
-      Pulse Design System · Colours from src/input.css · Source: Stitch “Pulse Brand Guidelines System”
+    <footer
+      class="border-t border-line bg-card px-6 py-5 text-center tabular-nums text-xs text-muted"
+    >
+      Pulse Design System · Colours from src/input.css · Source: Stitch “Pulse
+      Brand Guidelines System”
     </footer>
   </body>
 </html>

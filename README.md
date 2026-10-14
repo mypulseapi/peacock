@@ -24,7 +24,7 @@ Role tokens (`primary`, `accent`, `gap`, `void`, `ink`, `muted`, `card`, `line`,
 are exact hex values in `light-dark()`, so the site follows the visitor's light/dark setting. Tailwind's default
 palette is switched off.
 
-Fonts: `font-display` (Plus Jakarta Sans), `font-sans` (Inter); numbers use `tabular-nums`.
+Fonts: Inter only — `font-display` (Inter Display for large text, via the optical-size axis), `font-sans` (Inter); numbers use `tabular-nums`.
 Type: `text-display` / `text-headline` / `text-title` (fluid), `text-h1`, `text-h2`, `text-h3`, `text-body`, `text-data`.
 
 Component classes: `btn-primary`, `btn-secondary`, `btn-ghost`, `btn-sm`, `card`, `card-dark`,

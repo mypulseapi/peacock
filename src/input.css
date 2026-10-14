@@ -7,20 +7,25 @@
 /* ------------------------------------------------------------------ */
 @theme {
   /* Typography: fonts are loaded via Google Fonts <link> in each page */
-  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  /* Inter Display = Inter's optical-size axis (opsz 14–32, loaded from Google Fonts). With the default
+     font-optical-sizing: auto, text at 32px and up is drawn with the Display design (tighter, finer);
+     smaller text gets the text design. One family for everything; font-display keeps headings' role. */
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: initial; /* no monospace font: data uses Inter + tabular-nums */
-  --default-mono-font-family: var(--font-sans); /* <code>, <pre>, <kbd> also use Inter */
+  --default-mono-font-family: var(
+    --font-sans
+  ); /* <code>, <pre>, <kbd> also use Inter */
 
   /* Type scale (size / line-height / weight from the spec) */
   --text-h1: 2.5rem;
   --text-h1--line-height: 1.15;
   --text-h1--font-weight: 800;
-  --text-h1--letter-spacing: -0.025em;
+  --text-h1--letter-spacing: -0.01em;
   --text-h2: 1.5rem;
   --text-h2--line-height: 1.3;
   --text-h2--font-weight: 700;
-  --text-h2--letter-spacing: -0.02em;
+  --text-h2--letter-spacing: -0.01em;
   --text-h3: 1.125rem;
   --text-h3--line-height: 1.4;
   --text-h3--font-weight: 600;
@@ -34,20 +39,40 @@
 
   /* Fluid display sizes: scale smoothly with the viewport (min, preferred, max).
      Use these instead of sm:/lg: text sizes in the HTML. */
-  --text-display: clamp(2.5rem, 1.75rem + 3vw, 3.75rem); /* 40px → 60px: page h1, dark-band statement */
+  --text-display: clamp(
+    2.5rem,
+    1.75rem + 3vw,
+    3.75rem
+  ); /* 40px → 60px: page h1, dark-band statement */
   --text-display--line-height: 1.05;
   --text-display--font-weight: 800;
-  --text-display--letter-spacing: -0.03em;
-  --text-headline: clamp(2.25rem, 1.75rem + 2vw, 3rem); /* 36px → 48px: closing CTA */
+  --text-display--letter-spacing: -0.01em; /* Inter Display has tight spacing built in */
+  --text-hero: clamp(
+    2.25rem,
+    1.75rem + 2.25vw,
+    3.25rem
+  ); /* 36px → 52px: home hero title (two lines) */
+  --text-hero--line-height: 1.05;
+  --text-hero--font-weight: 600;
+  --text-hero--letter-spacing: -0.01em;
+  --text-headline: clamp(
+    2.25rem,
+    1.75rem + 2vw,
+    3rem
+  ); /* 36px → 48px: closing CTA */
   --text-headline--line-height: 1.1;
   --text-headline--font-weight: 800;
-  --text-headline--letter-spacing: -0.025em;
-  --text-title: clamp(1.875rem, 1.6rem + 1vw, 2.25rem); /* 30px → 36px: section intros */
+  --text-headline--letter-spacing: -0.01em;
+  --text-title: clamp(
+    1.875rem,
+    1.6rem + 1vw,
+    2.25rem
+  ); /* 30px → 36px: section intros */
   --text-title--line-height: 1.2;
   --text-title--font-weight: 700;
-  --text-title--letter-spacing: -0.02em;
+  --text-title--letter-spacing: -0.01em;
 
-  /* Navigation (thepulseapi.com navbar: Plus Jakarta Sans 15px) */
+  /* Navigation (15px, as the thepulseapi.com navbar) */
   --text-nav: 0.9375rem; /* 15px */
   --text-nav--line-height: 1.5;
   /* TEMPORARY ALIAS: text-micro (10px) is dropped in v2; it now renders at caption size (12px). Removed before Phase 7. */
@@ -56,9 +81,16 @@
   --text-micro--letter-spacing: 0.05em;
   --radius-control: 0.625rem; /* 10px: nav links, nav buttons */
 
-  /* Page column width (frame). 85.5rem = 1368px: at a 1440px viewport the content edge
-     (frame + px-6) sits 60px from the window edge, matching thepulseapi.com. */
-  --container-frame: 85.5rem;
+  /* Page column (frame), as on lovable.dev: content 70rem (1120px) wide, 84rem (1344px) from 2xl; the frame
+     adds the side margin itself (16px → 32px from md → 80px from lg). So the margin is 16px at 375px,
+     32px at 768px, 80px at 1280px, 160px at 1440px and 288px at 1920px. */
+  --container-frame: 70rem;
+  --container-frame-wide: 84rem;
+  /* Feature band (max-w-band): a near full-width dark card, 8px from the window edge, up to 1536px */
+  --container-band: 96rem;
+  /* Navbar column (max-w-nav): 85.5rem = 1368px, so at a 1440px viewport the header content (+ px-6)
+     sits 60px from the window edge, matching thepulseapi.com — the header keeps this width. */
+  --container-nav: 85.5rem;
 
   /* ================================================================ */
   /* COLOURS — the ONLY place colours are defined.                     */
@@ -82,7 +114,13 @@
   --brand-coral: #ff7a59; /* gradient end, accent (decorative on light) */
   --brand-ink: #0b1b3a; /* text, dark band */
   --brand-mist: #f7f8fc; /* page background */
-  --gradient-brand: linear-gradient(112deg, var(--brand-violet) 0%, var(--brand-cyan) 50%, var(--brand-coral) 100%);
+  /* Blended in OKLCH so Cyan → Coral passes through lilac/pink instead of a grey middle (sRGB default) */
+  --gradient-brand: linear-gradient(
+    112deg in oklch,
+    var(--brand-violet) 0%,
+    var(--brand-cyan) 50%,
+    var(--brand-coral) 100%
+  );
 
   /* 2. Roles — light-dark(light §3.3, dark §3.4) */
   /* Text */
@@ -92,36 +130,100 @@
   /* Surfaces */
   --color-surface-0: light-dark(#f7f8fc, #0a1230); /* page background */
   --color-card: light-dark(#ffffff, #121b3d); /* cards, panels, header */
-  --color-surface-1: light-dark(#eef0f7, #172046); /* wells, tracks, table headers — dark derived */
-  --color-line: light-dark(#e3e6ef, #252f57); /* decorative hairlines — dark derived */
-  --color-line-control: light-dark(#868da3, #626c91); /* input, checkbox, dropdown borders (>= 3:1) */
+  --color-surface-1: light-dark(
+    #eef0f7,
+    #172046
+  ); /* wells, tracks, table headers — dark derived */
+  --color-line: light-dark(
+    #e3e6ef,
+    #252f57
+  ); /* decorative hairlines — dark derived */
+  --color-line-control: light-dark(
+    #868da3,
+    #626c91
+  ); /* input, checkbox, dropdown borders (>= 3:1) */
   /* Primary — Indigo in light, soft violet in dark */
-  --color-primary: light-dark(#4f3df0, #a79cff); /* buttons, links, active states */
-  --color-primary-hover: light-dark(#3a2bc4, #bdb5ff); /* hover / pressed — dark derived */
-  --color-primary-tint: light-dark(#efedfe, #211f55); /* badge and chip backgrounds — dark derived */
-  --color-primary-line: color-mix(in oklab, var(--color-primary) 22%, var(--color-card)); /* chip/badge border (decorative) — derived */
-  --color-on-primary: light-dark(#ffffff, #0a1230); /* text/icons on a primary fill */
+  --color-primary: light-dark(
+    #4f3df0,
+    #a79cff
+  ); /* buttons, links, active states */
+  --color-primary-hover: light-dark(
+    #3a2bc4,
+    #bdb5ff
+  ); /* hover / pressed — dark derived */
+  --color-primary-tint: light-dark(
+    #efedfe,
+    #211f55
+  ); /* badge and chip backgrounds — dark derived */
+  --color-primary-line: color-mix(
+    in oklab,
+    var(--color-primary) 22%,
+    var(--color-card)
+  ); /* chip/badge border (decorative) — derived */
+  --color-on-primary: light-dark(
+    #ffffff,
+    #0a1230
+  ); /* text/icons on a primary fill */
   /* Accent — Coral: decorative on light; accent-text for coral text on light */
   --color-accent: #ff7a59; /* fills, bars, rings, large numbers (decorative on light; text allowed in dark) */
-  --color-accent-text: light-dark(#b8431a, #ff7a59); /* coral-family text — dark: accent itself (§3.4) */
-  --color-accent-tint: light-dark(#ffefe9, #3a2219); /* accent badge background — derived */
-  --color-accent-line: color-mix(in oklab, var(--color-accent) 35%, var(--color-card)); /* accent badge border (decorative) — derived */
+  --color-accent-text: light-dark(
+    #b8431a,
+    #ff7a59
+  ); /* coral-family text — dark: accent itself (§3.4) */
+  --color-accent-tint: light-dark(
+    #ffefe9,
+    #3a2219
+  ); /* accent badge background — derived */
+  --color-accent-line: color-mix(
+    in oklab,
+    var(--color-accent) 35%,
+    var(--color-card)
+  ); /* accent badge border (decorative) — derived */
   /* Gap — Missing data (amber). Never shares a colour with critical. */
   --color-gap: #ffb020; /* dots, bars, dashed borders (decorative on light; text allowed in dark) */
-  --color-gap-fill: light-dark(#ffefd2, #3a2a10); /* Missing cell background — dark derived */
-  --color-gap-strong: light-dark(#8f5b00, #ffb020); /* Missing text and dashed border */
+  --color-gap-fill: light-dark(
+    #ffefd2,
+    #3a2a10
+  ); /* Missing cell background — dark derived */
+  --color-gap-strong: light-dark(
+    #8f5b00,
+    #ffb020
+  ); /* Missing text and dashed border */
   /* Status — success is never a button; it always carries a check icon + text */
   --color-success: light-dark(#0e7a55, #4fd1a1);
   --color-success-bg: light-dark(#e6f7f0, #0f3330); /* dark derived */
-  --color-success-line: color-mix(in oklab, var(--color-success) 30%, var(--color-card)); /* badge border (decorative) — derived */
+  --color-success-line: color-mix(
+    in oklab,
+    var(--color-success) 30%,
+    var(--color-card)
+  ); /* badge border (decorative) — derived */
   --color-warning: light-dark(#8a5300, #ffc857);
   --color-warning-bg: light-dark(#fff6db, #3a2e10); /* dark derived */
-  --color-warning-line: color-mix(in oklab, var(--color-warning) 30%, var(--color-card)); /* badge border (decorative) — derived */
-  --color-critical: light-dark(#b4152b, #ff8a94); /* blocking errors (and the hero demo's problem step) */
+  --color-warning-line: color-mix(
+    in oklab,
+    var(--color-warning) 30%,
+    var(--color-card)
+  ); /* badge border (decorative) — derived */
+  --color-critical: light-dark(
+    #b4152b,
+    #ff8a94
+  ); /* blocking errors (and the hero demo's problem step) */
   --color-critical-bg: light-dark(#fdecee, #3d1a2b); /* dark derived */
-  --color-critical-line: color-mix(in oklab, var(--color-critical) 25%, var(--color-card)); /* badge border (decorative) — derived */
-  --color-critical-hatch: color-mix(in oklab, var(--color-critical) 14%, transparent); /* missing-flag stripes (decorative) */
-  --color-critical-ring: color-mix(in oklab, var(--color-critical) 28%, transparent); /* missing-flag outline (decorative) */
+  --color-critical-line: color-mix(
+    in oklab,
+    var(--color-critical) 25%,
+    var(--color-card)
+  ); /* badge border (decorative) — derived */
+  --color-critical-hatch: color-mix(
+    in oklab,
+    var(--color-critical) 14%,
+    transparent
+  ); /* missing-flag stripes (decorative) */
+  --color-critical-ring: color-mix(
+    in oklab,
+    var(--color-critical) 28%,
+    transparent
+  ); /* missing-flag outline (decorative) */
   /* Dark band (void) — always dark, in both themes (§3.3) */
   --color-void: #0a1230; /* dark band background */
   --color-void-elevated: #121b3d; /* cards on the dark band — derived (= dark card) */
@@ -135,10 +237,39 @@
   /* 3. Decoration — gradient stops and the hero backdrop (never text on light) */
   --color-violet: var(--brand-violet);
   --color-cyan: var(--brand-cyan);
-  --color-stage-base: color-mix(in oklab, var(--color-primary) 7%, var(--color-surface-0)); /* hero backdrop */
-  --color-stage-glow: color-mix(in oklab, var(--color-primary) 14%, transparent);
-  --color-stage-glow-accent: color-mix(in oklab, var(--color-violet) 8%, transparent);
-  --color-scan-band: color-mix(in oklab, var(--color-primary) 22%, transparent); /* hero demo audit sweep */
+  /* Hero demo step tabs: step 1 keeps the problem step's red (critical); steps 2–5 run along the Aurora gradient
+     (active tab fill, same in both themes). Step 2 = Violet→Cyan mixed 50% in OKLab; step 4 = Cyan→Coral 50% in
+     OKLCH (shorter hue path, so it stays vivid instead of grey). Text: on-primary on step 1 (6.81 light / 8.16 dark),
+     Ink on 2–5 (5.66 · 8.25 · 7.08 · 6.64). */
+  --color-step-1: var(
+    --color-critical
+  ); /* step 1 keeps the red of the problem step */
+  --color-step-2: #5892ff;
+  --color-step-3: var(--brand-cyan);
+  --color-step-4: #cf8cf5;
+  --color-step-5: var(--brand-coral);
+  --color-on-step-1: var(--color-on-primary);
+  --color-on-step: #0b1b3a; /* Ink, fixed in both themes */
+  --color-stage-base: color-mix(
+    in oklab,
+    var(--color-primary) 7%,
+    var(--color-surface-0)
+  ); /* hero backdrop */
+  --color-stage-glow: color-mix(
+    in oklab,
+    var(--color-primary) 14%,
+    transparent
+  );
+  --color-stage-glow-accent: color-mix(
+    in oklab,
+    var(--color-violet) 8%,
+    transparent
+  );
+  --color-scan-band: color-mix(
+    in oklab,
+    var(--color-primary) 22%,
+    transparent
+  ); /* hero demo audit sweep */
   /* Blueprint grid lines */
   --color-grid-line: light-dark(rgb(11 27 58 / 0.04), rgb(238 240 247 / 0.05));
   --color-grid-line-dark: rgb(238 240 247 / 0.05);
@@ -149,7 +280,9 @@
   /* current role. To be removed in a later clean-up phase.             */
   /* ---------------------------------------------------------------- */
   --color-primary-dark: var(--color-primary-hover); /* alias */
-  --color-primary-light: var(--color-void-accent); /* alias — primary on the dark band */
+  --color-primary-light: var(
+    --color-void-accent
+  ); /* alias — primary on the dark band */
   --color-signal: var(--color-accent); /* alias — the coral #1 highlight */
   --color-signal-dark: var(--color-accent-text); /* alias */
   --color-signal-tint: var(--color-accent-tint); /* alias */
@@ -159,19 +292,35 @@
   --color-gap-border: var(--color-gap-strong); /* alias */
   --color-gap-text: var(--color-gap-strong); /* alias */
   --color-gap-dark: var(--color-gap); /* alias — gap on the dark band */
-  --color-gap-text-dark: var(--color-gap); /* alias — amber text is allowed on the dark band */
-  --color-window-close: var(--color-accent); /* alias — window dots: Coral / amber / Cyan, as before */
+  --color-gap-text-dark: var(
+    --color-gap
+  ); /* alias — amber text is allowed on the dark band */
+  --color-window-close: var(
+    --color-accent
+  ); /* alias — window dots: Coral / amber / Cyan, as before */
   --color-window-minimise: var(--color-gap); /* alias */
   --color-window-zoom: var(--color-cyan); /* alias */
 
   /* Motion (modelled on attio.com: short, eased, never bouncy) */
   --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
   --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
-  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1); /* nav dropdown (attio.com) */
-  --ease-scan: cubic-bezier(0.34, 0.68, 0.28, 1); /* hero demo progress bars (thepulseapi.com) */
+  --ease-in-out-cubic: cubic-bezier(
+    0.65,
+    0,
+    0.35,
+    1
+  ); /* nav dropdown (attio.com) */
+  --ease-scan: cubic-bezier(
+    0.34,
+    0.68,
+    0.28,
+    1
+  ); /* hero demo progress bars (thepulseapi.com) */
 
   /* Floating panels (nav dropdown): hairline ring + soft drop shadow, built from tokens */
-  --shadow-nav: 0 0 0 1px var(--color-line), 0 12px 32px -12px color-mix(in oklab, var(--color-ink) 20%, transparent);
+  --shadow-nav:
+    0 0 0 1px var(--color-line),
+    0 12px 32px -12px color-mix(in oklab, var(--color-ink) 20%, transparent);
   --animate-marquee: marquee 40s linear infinite;
   --animate-caret: caret 1s step-end infinite;
   --animate-ring: ring 3.6s ease-in-out infinite;
@@ -345,9 +494,15 @@
 @utility missing-flag {
   @apply inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-bold text-critical;
   background-color: var(--color-critical-bg);
-  background-image: repeating-linear-gradient(135deg, var(--color-critical-hatch) 0 5px, transparent 5px 10px);
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-critical-hatch) 0 5px,
+    transparent 5px 10px
+  );
   box-shadow: inset 0 0 0 1px var(--color-critical-ring);
-  animation: var(--animate-missing-drift); /* the stripes slide sideways, endlessly */
+  animation: var(
+    --animate-missing-drift
+  ); /* the stripes slide sideways, endlessly */
   @media (prefers-reduced-motion: reduce) {
     animation: none;
   }
@@ -381,9 +536,21 @@
     pointer-events: none;
     background-image:
       radial-gradient(40% 70% at 0% 100%, var(--color-stage-glow), transparent),
-      radial-gradient(40% 70% at 100% 100%, var(--color-stage-glow), transparent),
-      radial-gradient(60% 50% at 50% 100%, var(--color-stage-glow-accent), transparent),
-      linear-gradient(to bottom, var(--color-surface-0), var(--color-stage-base));
+      radial-gradient(
+        40% 70% at 100% 100%,
+        var(--color-stage-glow),
+        transparent
+      ),
+      radial-gradient(
+        60% 50% at 50% 100%,
+        var(--color-stage-glow-accent),
+        transparent
+      ),
+      linear-gradient(
+        to bottom,
+        var(--color-surface-0),
+        var(--color-stage-base)
+      );
     /* everything fades in from the top edge */
     mask-image: linear-gradient(to bottom, transparent, black 50%);
   }
@@ -405,10 +572,22 @@
 
 /* Page frame: the centred page column; sections add border-b between them */
 @utility frame {
-  @apply mx-auto max-w-frame;
+  margin-inline: auto;
+  box-sizing: content-box; /* max-width is the content; the side padding is the page margin */
+  max-width: var(--container-frame);
+  padding-inline: calc(var(--spacing) * 4);
+  @media (width >= 48rem) {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+  @media (width >= 64rem) {
+    padding-inline: calc(var(--spacing) * 20);
+  }
+  @media (width >= 96rem) {
+    max-width: var(--container-frame-wide);
+  }
 }
 @utility frame-dark {
-  @apply mx-auto max-w-frame;
+  @apply frame;
 }
 
 /* ------------------------------------------------------------------ */
@@ -434,6 +613,120 @@
 }
 
 /* Bars that grow from the left edge */
+/* How it works (lovable.dev style): src/main.js marks the step — and its card — whose card has crossed
+   the middle of the screen with data-active, and sets --how-p (0 → 1) as that card scrolls past.
+   The active step's description slides open and its text rises in; a two-colour line fills under it.
+   The active card is bright, the others dimmed (from lg); its contents replay their entrance
+   (how-in, how-bar) every time it becomes active. Without JS everything is shown, nothing moves;
+   with reduced motion the states switch without animating. */
+@utility how-desc {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 400ms var(--ease-out-soft),
+    opacity 400ms var(--ease-out-soft);
+  & > * {
+    overflow: hidden;
+  }
+  & > * > * {
+    translate: 0 0.75rem;
+    transition: translate 500ms var(--ease-out-soft) 120ms;
+  }
+  [data-active] > & {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+  [data-active] > & > * > * {
+    translate: 0 0;
+  }
+  @media (scripting: none) {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    & > * > * {
+      translate: 0 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    & > * > * {
+      transition: none;
+    }
+  }
+}
+@utility how-progress {
+  transform-origin: left;
+  scale: var(--how-p, 0) 1;
+  opacity: 0;
+  [data-active] > & {
+    opacity: 1;
+  }
+  @media (scripting: none) {
+    display: none;
+  }
+}
+/* The visual card of a step: dimmed until its step is active (desktop only) */
+@utility how-card {
+  transition: opacity 500ms var(--ease-out-soft);
+  @media (scripting: enabled) and (width >= 64rem) {
+    &:not([data-active]) {
+      opacity: 0.4;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* Soft glow behind a card's panel (decorative): the primary colour, faded out */
+@utility how-glow {
+  background-image:
+    radial-gradient(
+      70% 60% at 50% 110%,
+      color-mix(in oklab, var(--color-primary) 35%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      50% 50% at 0% 0%,
+      color-mix(in oklab, var(--color-cyan) 12%, transparent),
+      transparent
+    );
+}
+/* How it works — story scenes (a "beat" timeline). src/main.js plays the active card's [data-scene]:
+   it sets data-play, then data-b2, data-b3 … at the times listed in data-beats, holds the last frame,
+   fades out (data-fade), resets instantly (data-instant) and plays again — until the visitor pauses.
+   Elements are written in their FINAL state; the variants below describe earlier beats:
+     pre-N:  before beat N has been reached        at-N:  during beat N only
+   So without JS, with reduced motion (never data-play), or on an inactive card, the final frame shows. */
+@custom-variant pre-2 (&:where([data-play]:not([data-b2]) *));
+@custom-variant pre-3 (&:where([data-play]:not([data-b3]) *));
+@custom-variant pre-4 (&:where([data-play]:not([data-b4]) *));
+@custom-variant pre-5 (&:where([data-play]:not([data-b5]) *));
+@custom-variant pre-6 (&:where([data-play]:not([data-b6]) *));
+@custom-variant pre-7 (&:where([data-play]:not([data-b7]) *));
+@custom-variant pre-8 (&:where([data-play]:not([data-b8]) *));
+@custom-variant at-2 (&:where([data-play][data-b2]:not([data-b3]) *));
+@custom-variant at-3 (&:where([data-play][data-b3]:not([data-b4]) *));
+@custom-variant at-4 (&:where([data-play][data-b4]:not([data-b5]) *));
+@custom-variant at-5 (&:where([data-play][data-b5]:not([data-b6]) *));
+@custom-variant at-6 (&:where([data-play][data-b6]:not([data-b7]) *));
+@custom-variant at-7 (&:where([data-play][data-b7]:not([data-b8]) *));
+@utility how-scene {
+  transition: opacity 400ms var(--ease-out-soft);
+  &[data-fade] {
+    opacity: 0;
+  }
+  /* jumping to a beat state (start / reset) happens without transitions */
+  &[data-instant],
+  &[data-instant] * {
+    transition: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &,
+    & * {
+      transition: none;
+    }
+  }
+}
 @utility reveal-bar {
   transform-origin: left;
   transition-property: scale;
@@ -610,7 +903,10 @@
    Plus 10px, so the backdrop always runs a little past the screen edge before the next section. */
 @utility hero-stage {
   padding-bottom: calc(
-    max(calc(var(--spacing) * 20), calc((100lvh - var(--spacing) * 17 - var(--hero-window-h, 100lvh)) / 2)) +
+    max(
+        calc(var(--spacing) * 20),
+        calc((100lvh - var(--spacing) * 17 - var(--hero-window-h, 100lvh)) / 2)
+      ) +
       var(--spacing) * 2.5
   );
 }
@@ -618,7 +914,9 @@
   --hero-zoom: 0.04; /* extra size at full focus: +4% on small screens … */
   transform-origin: 50% 50%;
   /* never more than fits below the header: src/main.js sets --hero-zoom-fit */
-  scale: calc(1 + min(var(--hero-zoom), var(--hero-zoom-fit, 1)) * var(--hero-p, 0));
+  scale: calc(
+    1 + min(var(--hero-zoom), var(--hero-zoom-fit, 1)) * var(--hero-p, 0)
+  );
   will-change: scale;
   @media (width >= 64rem) {
     --hero-zoom: 0.12; /* … +12% from lg, where the stage has room on both sides */
@@ -638,7 +936,10 @@
 @utility demo-stack {
   @media (scripting: enabled) {
     display: grid;
-    grid-template-columns: minmax(0, 1fr); /* wide tables scroll inside their step instead of stretching it */
+    grid-template-columns: minmax(
+      0,
+      1fr
+    ); /* wide tables scroll inside their step instead of stretching it */
   }
 }
 @utility demo-step {
@@ -714,7 +1015,12 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-card) 85%, transparent) 45% 55%, transparent);
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--color-card) 85%, transparent) 45% 55%,
+      transparent
+    );
     translate: -100% 0;
     animation: var(--animate-demo-shimmer);
   }
@@ -727,7 +1033,11 @@
 /* Hatched track behind the demo's progress bars */
 @utility scan-track {
   background-color: var(--color-surface-1);
-  background-image: repeating-linear-gradient(135deg, color-mix(in oklab, var(--color-ink) 5%, transparent) 0 4px, transparent 4px 8px);
+  background-image: repeating-linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--color-ink) 5%, transparent) 0 4px,
+    transparent 4px 8px
+  );
 }
 /* Opposite of demo-in: shown as the step starts, then fades away (after its delay-*).
    Without JS only the end state is shown. */
@@ -789,7 +1099,12 @@
     position: absolute;
     inset-block: 0;
     width: 40%;
-    background-image: linear-gradient(90deg, transparent, var(--color-scan-band), transparent);
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-scan-band),
+      transparent
+    );
     translate: -110% 0;
   }
   [data-active] > &::after {

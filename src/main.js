@@ -7,7 +7,9 @@
 //   [data-demo]            → plays the hero workflow demo (tabs, steps, captions — see DESIGN.md §6)
 //   [data-spy] links       → highlight the section currently in view (sets [data-active])
 
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reduceMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
 
 // Counts from data-from (default 0) to the target, after data-delay ms (default 0)
 function countUp(el) {
@@ -57,7 +59,9 @@ function buildShelf(el) {
       i < ready
         ? "reveal aspect-square rounded-sm bg-ink duration-300"
         : "reveal aspect-square rounded-sm missing-cell duration-300";
-    cell.style.transitionDelay = reduceMotion ? "0ms" : `${Math.round(i * 6)}ms`;
+    cell.style.transitionDelay = reduceMotion
+      ? "0ms"
+      : `${Math.round(i * 6)}ms`;
     cells.push(cell);
   }
   el.replaceChildren(...cells);
@@ -70,7 +74,11 @@ function show(el) {
   if (el.dataset.type !== undefined) typeText(el);
   if (el.dataset.shelf !== undefined) {
     const cells = buildShelf(el);
-    requestAnimationFrame(() => requestAnimationFrame(() => cells.forEach((c) => c.setAttribute("data-shown", ""))));
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() =>
+        cells.forEach((c) => c.setAttribute("data-shown", "")),
+      ),
+    );
   }
 }
 
@@ -85,7 +93,9 @@ const revealObserver = new IntersectionObserver(
   { rootMargin: "0px 0px -10% 0px" },
 );
 document
-  .querySelectorAll(".reveal, .reveal-bar, [data-count], [data-type], [data-shelf]")
+  .querySelectorAll(
+    ".reveal, .reveal-bar, [data-count], [data-type], [data-shelf]",
+  )
   .forEach((el) => revealObserver.observe(el));
 
 // Scroll-spy for the sticky step navigation
@@ -94,7 +104,12 @@ const spyObserver = new IntersectionObserver(
   (entries) => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
-      spyLinks.forEach((link) => link.toggleAttribute("data-active", link.dataset.spy === entry.target.id));
+      spyLinks.forEach((link) =>
+        link.toggleAttribute(
+          "data-active",
+          link.dataset.spy === entry.target.id,
+        ),
+      );
     }
   },
   { rootMargin: "-45% 0px -50% 0px" },
@@ -109,22 +124,28 @@ spyLinks.forEach((link) => {
 //   contents slide/blur in the direction of travel.
 // - Other dropdowns (language): hover-open, one open at a time, outside click / Escape to close.
 // - Page scroll is locked while the mobile menu is open.
-const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const canHover = window.matchMedia(
+  "(hover: hover) and (pointer: fine)",
+).matches;
 const mobileMenu = document.querySelector("[data-mobile-menu]");
 const megaNav = document.querySelector("[data-mega-nav]");
 const mega = megaNav ? createMegaMenu(megaNav) : null;
-const dropdowns = [...document.querySelectorAll("[data-dropdown]:not([data-mega])")];
+const dropdowns = [
+  ...document.querySelectorAll("[data-dropdown]:not([data-mega])"),
+];
 
 function createMegaMenu(nav) {
   const viewport = nav.querySelector("[data-nav-viewport]");
   const stack = nav.querySelector("[data-nav-stack]");
-  const items = [...nav.querySelectorAll("details[data-mega]")].map((details, index) => {
-    const content = details.querySelector("[data-nav-content]");
-    details.querySelector("[data-panel]").hidden = true; // the no-JS panel is replaced by the viewport
-    content.dataset.state = "inactive";
-    stack.append(content);
-    return { details, content, index };
-  });
+  const items = [...nav.querySelectorAll("details[data-mega]")].map(
+    (details, index) => {
+      const content = details.querySelector("[data-nav-content]");
+      details.querySelector("[data-panel]").hidden = true; // the no-JS panel is replaced by the viewport
+      content.dataset.state = "inactive";
+      stack.append(content);
+      return { details, content, index };
+    },
+  );
   let active = null;
   let closeTimer;
 
@@ -145,7 +166,10 @@ function createMegaMenu(nav) {
       const previous = active.content;
       previous.dataset.state = "exiting";
       previous.dataset.dir = dir;
-      setTimeout(() => previous.dataset.state === "exiting" && settle(previous), 200);
+      setTimeout(
+        () => previous.dataset.state === "exiting" && settle(previous),
+        200,
+      );
       item.content.dataset.dir = dir;
     } else {
       delete item.content.dataset.dir; // first open: the viewport fades in, no slide
@@ -156,10 +180,19 @@ function createMegaMenu(nav) {
     viewport.toggleAttribute("data-instant", !switching);
     const width = item.content.offsetWidth;
     // Anchored to the menu's left edge (like attio.com), but shifted left if it would overflow the window
-    const overflow = nav.getBoundingClientRect().left + width - (document.documentElement.clientWidth - 16);
-    viewport.style.setProperty("--nav-viewport-x", `${-Math.max(0, Math.ceil(overflow))}px`);
+    const overflow =
+      nav.getBoundingClientRect().left +
+      width -
+      (document.documentElement.clientWidth - 16);
+    viewport.style.setProperty(
+      "--nav-viewport-x",
+      `${-Math.max(0, Math.ceil(overflow))}px`,
+    );
     viewport.style.setProperty("--nav-viewport-width", `${width}px`);
-    viewport.style.setProperty("--nav-viewport-height", `${item.content.offsetHeight}px`);
+    viewport.style.setProperty(
+      "--nav-viewport-height",
+      `${item.content.offsetHeight}px`,
+    );
     if (!switching) {
       void viewport.offsetWidth; // apply the size before the open transition starts
       viewport.setAttribute("data-open", "");
@@ -185,17 +218,30 @@ function createMegaMenu(nav) {
       const hoverClick = canHover && e.detail > 0;
       active === item && !hoverClick ? close() : open(item);
     });
-    if (canHover) item.details.parentElement.addEventListener("mouseenter", () => open(item));
+    if (canHover)
+      item.details.parentElement.addEventListener("mouseenter", () =>
+        open(item),
+      );
   });
   if (canHover) {
     // Hovering a plain link (About us, Pricing) closes the menu; leaving the nav closes it after a beat
-    nav.querySelectorAll(":scope > ul > li:not(:has([data-mega]))").forEach((li) => li.addEventListener("mouseenter", close));
-    nav.addEventListener("mouseleave", () => (closeTimer = setTimeout(close, 150)));
+    nav
+      .querySelectorAll(":scope > ul > li:not(:has([data-mega]))")
+      .forEach((li) => li.addEventListener("mouseenter", close));
+    nav.addEventListener(
+      "mouseleave",
+      () => (closeTimer = setTimeout(close, 150)),
+    );
     nav.addEventListener("mouseenter", () => clearTimeout(closeTimer));
   }
   viewport.addEventListener("click", (e) => e.target.closest("a") && close());
 
-  return { close, isOpen: () => active !== null, focusTrigger: () => active?.details.querySelector("summary").focus(), contains: (el) => nav.contains(el) };
+  return {
+    close,
+    isOpen: () => active !== null,
+    focusTrigger: () => active?.details.querySelector("summary").focus(),
+    contains: (el) => nav.contains(el),
+  };
 }
 
 function closeAll(except) {
@@ -207,7 +253,9 @@ function keepInView(d) {
   const panel = d.querySelector("[data-panel]");
   if (!panel) return;
   panel.style.marginLeft = "";
-  const overflow = panel.getBoundingClientRect().right - (document.documentElement.clientWidth - 16);
+  const overflow =
+    panel.getBoundingClientRect().right -
+    (document.documentElement.clientWidth - 16);
   if (overflow > 0) panel.style.marginLeft = `-${Math.ceil(overflow)}px`;
 }
 
@@ -242,7 +290,8 @@ document.addEventListener("keydown", (e) => {
     mega.close();
     return;
   }
-  const open = dropdowns.find((d) => d.open) || (mobileMenu?.open && mobileMenu);
+  const open =
+    dropdowns.find((d) => d.open) || (mobileMenu?.open && mobileMenu);
   if (!open) return;
   open.open = false;
   open.querySelector("summary")?.focus();
@@ -250,10 +299,14 @@ document.addEventListener("keydown", (e) => {
 
 mobileMenu?.addEventListener("toggle", () => {
   document.documentElement.classList.toggle("overflow-hidden", mobileMenu.open);
-  mobileMenu.querySelector("summary").setAttribute("aria-label", mobileMenu.open ? "Close menu" : "Open menu");
+  mobileMenu
+    .querySelector("summary")
+    .setAttribute("aria-label", mobileMenu.open ? "Close menu" : "Open menu");
 });
 // Close the mobile menu when one of its links is followed (e.g. #request)
-mobileMenu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => (mobileMenu.open = false)));
+mobileMenu
+  ?.querySelectorAll("a")
+  .forEach((a) => a.addEventListener("click", () => (mobileMenu.open = false)));
 
 // Hero scroll effect: --hero-p goes 0 → 1 as the product window scrolls up until it is centred in the
 // screen below the sticky header. CSS turns it into the headline fade (hero-fade) and the window zoom
@@ -280,20 +333,30 @@ if (hero && heroWindow && !reduceMotion) {
     const screenCentre = headerHeight + (innerHeight - headerHeight) / 2;
     const gap = 16; // space kept between the header and the window (tabs included), and at the bottom
     // Centre the window; if it is taller than the screen below the header, stop with its top just under the header
-    distance = Math.max(240, Math.min(windowCentre - screenCentre, top - headerHeight - gap)); // always leave some scroll for the effect
+    distance = Math.max(
+      240,
+      Math.min(windowCentre - screenCentre, top - headerHeight - gap),
+    ); // always leave some scroll for the effect
     // hero-window grows only as far as the whole window still fits below the header
     const room = innerHeight - headerHeight - 2 * gap;
-    hero.style.setProperty("--hero-zoom-fit", Math.max(0, room / windowHeight - 1).toFixed(4));
+    hero.style.setProperty(
+      "--hero-zoom-fit",
+      Math.max(0, room / windowHeight - 1).toFixed(4),
+    );
     // hero-stage uses this to end exactly at the bottom of the screen once the window is centred
     hero.style.setProperty("--hero-window-h", `${windowHeight}px`);
     update();
   };
-  addEventListener("scroll", () => {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(update);
-    }
-  }, { passive: true });
+  addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true },
+  );
   addEventListener("resize", measure);
   new ResizeObserver(measure).observe(heroWindow); // web fonts and the demo can change its height
   measure();
@@ -306,7 +369,11 @@ if (hero && heroWindow && !reduceMotion) {
 const demo = document.querySelector("[data-demo]");
 if (demo) {
   const tabs = [...demo.querySelectorAll("[data-demo-tab]")];
-  const groups = [tabs, [...demo.querySelectorAll("[data-demo-step]")], [...demo.querySelectorAll("[data-demo-caption]")]];
+  const groups = [
+    tabs,
+    [...demo.querySelectorAll("[data-demo-step]")],
+    [...demo.querySelectorAll("[data-demo-caption]")],
+  ];
 
   const grid = demo.querySelector("[data-demo-grid]");
   if (grid) {
@@ -317,7 +384,8 @@ if (demo) {
     const cells = [];
     for (let i = 0; i < total; i++) {
       const cell = document.createElement("span");
-      if (i < before) cell.className = "aspect-square rounded-xs bg-primary sm:rounded-sm";
+      if (i < before)
+        cell.className = "aspect-square rounded-xs bg-primary sm:rounded-sm";
       else if (i < after) {
         cell.className = "demo-fill aspect-square rounded-xs sm:rounded-sm";
         cell.style.transitionDelay = `${1000 + (i - before) * 13}ms`; // one after another, as on thepulseapi.com
@@ -328,16 +396,154 @@ if (demo) {
   }
 
   const go = (index) => {
-    groups.forEach((list) => list.forEach((el) => el.removeAttribute("data-active")));
+    groups.forEach((list) =>
+      list.forEach((el) => el.removeAttribute("data-active")),
+    );
     void demo.offsetWidth; // restart the timer and the step's entrance even when the same step is picked again
     groups.forEach((list) => list[index]?.setAttribute("data-active", ""));
-    tabs.forEach((tab, i) => tab.setAttribute("aria-selected", String(i === index)));
+    tabs.forEach((tab, i) =>
+      tab.setAttribute("aria-selected", String(i === index)),
+    );
     groups[1][index].querySelectorAll("[data-demo-count]").forEach(countUp);
   };
   tabs.forEach((tab, i) => {
     tab.addEventListener("click", () => go(i));
-    tab.querySelector(".demo-timer")?.addEventListener("animationend", () => go((i + 1) % tabs.length));
+    tab
+      .querySelector(".demo-timer")
+      ?.addEventListener("animationend", () => go((i + 1) % tabs.length));
   });
-  new IntersectionObserver(([entry]) => demo.toggleAttribute("data-paused", !entry.isIntersecting)).observe(demo);
+  new IntersectionObserver(([entry]) =>
+    demo.toggleAttribute("data-paused", !entry.isIntersecting),
+  ).observe(demo);
   go(0);
+}
+
+// How it works (lovable.dev style): the step whose card has crossed the middle of the screen is active.
+// Its description opens (CSS: how-desc) and --how-p (0 → 1) fills the line under it as the card scrolls
+// past (CSS: how-progress). The active card — once it is on screen — plays its story on a loop: a "beat"
+// timeline on its [data-scene] (CSS: how-scene, pre-N / at-N variants). data-play starts it, data-b2 …
+// arrive at the times in data-beats; the last frame holds, the scene fades out, resets instantly and plays
+// again. "Pause animation" freezes the current frame. Without JS, or with reduced motion (never data-play),
+// every scene simply shows its final frame.
+const how = document.querySelector("[data-how]");
+if (how) {
+  const steps = [...how.querySelectorAll("[data-how-step]")];
+  const cards = [...how.querySelectorAll("[data-how-card]")];
+  const scenes = cards.map((card) => card.querySelector("[data-scene]"));
+  const pauseButton = how.querySelector("[data-how-pause]");
+  const HOLD = 2600; // ms the final frame stays before the loop restarts
+  const FADE = 400; // ms, matches how-scene's opacity transition
+  let timers = [];
+  let playing = null; // the scene currently looping
+  let paused = false;
+
+  const clearTimers = () => {
+    timers.forEach(clearTimeout);
+    timers = [];
+  };
+  // jump a scene back to its first beat (or, with keep = false, out of play mode) without transitions
+  const reset = (scene, keep = true) => {
+    scene.setAttribute("data-instant", "");
+    for (let b = 2; b <= 9; b++) scene.removeAttribute(`data-b${b}`);
+    scene.toggleAttribute("data-play", keep);
+    void scene.offsetWidth; // apply the jump before transitions come back
+    scene.removeAttribute("data-instant");
+  };
+  const run = (scene) => {
+    clearTimers();
+    reset(scene);
+    const beats = scene.dataset.beats.split(" ").map(Number);
+    beats.forEach((t, i) => {
+      if (i > 0)
+        timers.push(
+          setTimeout(() => scene.setAttribute(`data-b${i + 1}`, ""), t),
+        );
+    });
+    timers.push(
+      setTimeout(
+        () => {
+          scene.setAttribute("data-fade", "");
+          timers.push(
+            setTimeout(() => {
+              scene.removeAttribute("data-fade");
+              run(scene);
+            }, FADE),
+          );
+        },
+        beats[beats.length - 1] + HOLD,
+      ),
+    );
+  };
+  const play = (scene) => {
+    if (playing === scene) return;
+    if (playing) reset(playing, false);
+    playing = scene;
+    if (scene && !paused && !reduceMotion) run(scene);
+    else clearTimers();
+  };
+
+  pauseButton?.addEventListener("click", () => {
+    paused = !paused;
+    pauseButton.setAttribute("aria-pressed", String(paused));
+    pauseButton.querySelector("[data-how-pause-label]").textContent = paused
+      ? "Play animation"
+      : "Pause animation";
+    pauseButton
+      .querySelector("[data-how-pause-icon]")
+      .setAttribute("href", paused ? "#i-play" : "#i-pause");
+    if (paused)
+      clearTimers(); // freeze on the current frame
+    else if (playing) run(playing);
+  });
+
+  // Clicking a step scrolls smoothly to its card (centred) instead of jumping; reduced motion jumps
+  how.querySelectorAll("[data-how-link]").forEach((link) =>
+    link.addEventListener("click", (event) => {
+      const card = document.querySelector(link.getAttribute("href"));
+      if (!card) return;
+      event.preventDefault();
+      card.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "center",
+      });
+      history.replaceState(null, "", link.getAttribute("href"));
+    }),
+  );
+
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const middle = innerHeight / 2;
+    let index = 0;
+    cards.forEach((card, i) => {
+      if (card.getBoundingClientRect().top <= middle) index = i;
+    });
+    const box = cards[index].getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, (middle - box.top) / box.height));
+    steps.forEach((step, i) => {
+      step.toggleAttribute("data-active", i === index);
+      step.style.setProperty("--how-p", i === index ? p.toFixed(3) : "0");
+    });
+    // the active card brightens and plays its story — only once it is on screen
+    let live = null;
+    cards.forEach((card, i) => {
+      const r = card.getBoundingClientRect();
+      const on = i === index && r.top < innerHeight * 0.8 && r.bottom > 0;
+      card.toggleAttribute("data-active", on);
+      if (on) live = scenes[i];
+    });
+    play(live);
+  };
+  addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true },
+  );
+  addEventListener("resize", update);
+  update();
 }

@@ -103,8 +103,8 @@ catches default-palette colours because that palette is switched off.
 
 ## Git workflow
 
-- Branches: `main` (production) ← `dev` (integration) ← `feature/<name>` (work).
-- Branch new work from `dev`; open pull requests into `dev`. Never commit directly to `main`.
+- Work directly on `main` (decided 15 Oct 2026): no feature or dev branches, never switch branches.
+- Every push to `main` deploys to staging (GitHub Pages, staging.thepulseapi.com).
 - **Never commit or push automatically.** After making changes, stop and let the user review them.
   Only run `git commit` / `git push` when the user explicitly says so.
 - Design sources: brand colours from `docs/pulse_brand_guidelines_v2.md` (Aurora; the earlier Figma "Pulse Color" palette is superseded);

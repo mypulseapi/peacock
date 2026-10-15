@@ -31,7 +31,7 @@
 
   /* Type scale (size / line-height / weight from the spec) */
   --text-h1: 2.5rem;
-  --text-h1--line-height: 1.1;
+  --text-h1--line-height: 1.18;
   --text-h1--font-weight: 600;
   --text-h1--letter-spacing: -0.02em;
   --text-h2: 1.5rem;
@@ -57,13 +57,13 @@
     1.75rem + 3vw,
     3.75rem
   ); /* 40px → 60px: page h1, dark-band statement */
-  --text-display--line-height: 1;
+  --text-display--line-height: 1.1;
   --text-display--font-weight: 600;
   --text-display--letter-spacing: -0.022em; /* as linear.app: −0.022em at display sizes */
   /* Home hero title: always two lines, sized to its column (the parent is an @container). The longer line,
      "Uncover Shoppers’ Intent", is 10.98em wide, so 9cqi keeps it inside; at most 34px (1440px screens). */
   --text-hero: min(2.125rem, 9cqi);
-  --text-hero--line-height: 1;
+  --text-hero--line-height: 1.15;
   --text-hero--font-weight: 600;
   --text-hero--letter-spacing: -0.022em;
   --text-headline: clamp(
@@ -71,7 +71,7 @@
     1.75rem + 2vw,
     3rem
   ); /* 36px → 48px: closing CTA */
-  --text-headline--line-height: 1.05;
+  --text-headline--line-height: 1.12;
   --text-headline--font-weight: 600;
   --text-headline--letter-spacing: -0.02em;
   --text-title: clamp(
@@ -79,7 +79,7 @@
     1.6rem + 1vw,
     2.25rem
   ); /* 30px → 36px: section intros */
-  --text-title--line-height: 1.1;
+  --text-title--line-height: 1.18;
   --text-title--font-weight: 550;
   --text-title--letter-spacing: -0.02em;
 
@@ -297,8 +297,6 @@
   --animate-caret: caret 1s step-end infinite;
   --animate-ring: ring 3.6s ease-in-out infinite;
   --animate-dropdown: dropdown 150ms var(--ease-out-soft);
-  --animate-orbit-cw: orbit 70s linear infinite; /* data orbit: outer dotted ring */
-  --animate-orbit-ccw: orbit 50s linear infinite reverse; /* data orbit: inner dotted ring */
   /* Hero workflow demo: one step lasts as long as its tab timer runs; the scan sweeps the audit step once;
      the shimmer runs along the audit's progress bars */
   --animate-demo-timer: demo-timer 6s linear;
@@ -306,12 +304,6 @@
   --animate-demo-shimmer: demo-shimmer 1.05s linear infinite;
   /* missing-flag stripes: one 10px stripe period per loop, so it never jumps */
   --animate-missing-drift: missing-drift 1s linear infinite;
-
-  @keyframes orbit {
-    to {
-      rotate: 360deg;
-    }
-  }
   @keyframes dropdown {
     from {
       opacity: 0;
@@ -724,16 +716,10 @@
     }
   }
 }
-/* Data orbit rings (thepulseapi.com "blind spot" style): slow turn, stopped by the pause button ([data-held]) */
-@utility orbit-ring {
-  [data-pausable][data-held] & {
-    animation-play-state: paused;
-  }
-}
 
 /* Why PULSE orbit (#why). src/main.js turns the ring by setting --why-angle (one turn every 2 minutes); the
    circles counter-turn so they stay upright. Picking a circle turns the ring (data-turning: a 900ms ease) until
-   that circle is at 12 o'clock, then the card under it opens ([data-why][data-open]). */
+   that circle is at 3 o'clock and the card shows in the slot to the right ([data-why][data-show]). */
 @property --why-angle {
   syntax: "<angle>";
   inherits: true;
@@ -748,17 +734,35 @@
 @utility why-upright {
   rotate: calc(var(--why-angle) * -1);
 }
-/* The card opens after the turn; closed it is hidden from everyone */
+/* Orbit size: up to 32rem, but always leaves room for the card slot (20rem card + 3rem line) beside it */
+@utility why-orbit-size {
+  width: min(32rem, 100% - 23rem);
+}
+/* Card slot right of the orbit: always 23rem wide, so the orbit never moves when a reason opens */
+@utility why-slot {
+  display: flex;
+  align-items: center; /* the card centres on the circle at 3 o'clock */
+  width: 23rem;
+  align-self: stretch;
+}
+/* Hint in the empty slot: fades out when a card shows */
+@utility why-hint {
+  transition: opacity 250ms var(--ease-out-soft);
+  [data-why][data-show] & {
+    opacity: 0;
+  }
+}
+/* The card (and its line) fade in after the turn ([data-why][data-show]); hidden from everyone otherwise */
 @utility why-card {
   transition-property: opacity, scale, visibility;
   transition-duration: 250ms;
   transition-timing-function: var(--ease-out-soft);
-  [data-why]:not([data-open]) & {
+  [data-why]:not([data-show]) & {
     visibility: hidden;
     opacity: 0;
     scale: 0.96;
   }
-  [data-why][data-open] & {
+  [data-why][data-show] & {
     transition-delay: 600ms;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -1006,6 +1010,22 @@
     --hero-tx2 600ms ease-out,
     --hero-ty2 600ms ease-out,
     --hero-tail 500ms ease-out;
+}
+/* Soft gradient section background (Why PULSE): page colour with a faint Violet wash from the top left and a Cyan
+   wash from the bottom right. 12% each keeps muted text AA even where they overlap (4.69 light / 6.27 dark). */
+@utility bg-soft-gradient {
+  background-color: var(--color-surface-0);
+  background-image:
+    radial-gradient(
+      70% 60% at 0% 0%,
+      color-mix(in oklab, var(--color-violet) 12%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      70% 60% at 100% 100%,
+      color-mix(in oklab, var(--color-cyan) 12%, transparent),
+      transparent
+    );
 }
 /* Coloured shadow behind the product demo: the brand gradient, blurred, under the window */
 @utility hero-glow {

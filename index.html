@@ -130,20 +130,6 @@
         <path d="m9 14 2 2 4-4" />
       </symbol>
       <symbol
-        id="i-shield-check"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path
-          d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
-        />
-        <path d="m9 12 2 2 4-4" />
-      </symbol>
-      <symbol
         id="i-trending-up"
         viewBox="0 0 24 24"
         fill="none"
@@ -3364,9 +3350,9 @@
         <div class="frame">
           <div class="px-6 pt-24 pb-16 text-center lg:pt-32">
             <h2
-              class="reveal mx-auto max-w-3xl text-display text-balance text-ink"
+              class="reveal mx-auto max-w-5xl text-title text-balance text-ink"
             >
-              Independent research says the same thing.
+              Independent Research Highlights the Same Problems
             </h2>
           </div>
           <!-- Stats (stats-2 layout): source on top, then number and finding. Each card is a 3-row subgrid, so numbers line up across cards -->
@@ -3389,22 +3375,21 @@
               >
                 <span data-count="38" data-suffix="%">38%</span>
               </p>
-              <!-- TODO-COPY-REVIEW: wording aligned with the Baymard source -->
               <p class="text-body text-ink">
-                of e-commerce sites don&rsquo;t offer filters for all the
-                product details they show in listings.
+                of retailers do not allow shoppers to filter by their desired
+                product attributes
               </p>
             </div>
             <div
               class="reveal row-span-3 grid grid-rows-subgrid gap-y-2 rounded-2xl border border-line bg-card shadow-sm p-6 delay-100"
             >
-              <!-- TODO-COPY-REVIEW: source given by the team; confirm the 79% figure appears in this Adobe article -->
+              <!-- 79%: Mirasvit audit of 5,470 Magento (Adobe Commerce) sites, Aug 2026 -->
               <p class="pb-12 text-sm text-muted">
                 <a
-                  href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable"
+                  href="https://mirasvit.com/blog/magento-structured-data-ai-readiness.html"
                   rel="noopener"
                   class="rounded-sm underline decoration-line-control underline-offset-2 transition-colors duration-150 ease-out-soft hover:text-ink hover:decoration-current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                  >Adobe Analytics, 2026</a
+                  >Mirasvit, 2026</a
                 >
               </p>
               <p
@@ -3413,7 +3398,7 @@
                 <span data-count="79" data-suffix="%">79%</span>
               </p>
               <p class="text-body text-ink">
-                of product pages ship no full set of structured data.
+                of product pages are missing some structured product data
               </p>
             </div>
             <div
@@ -3433,7 +3418,7 @@
                 <span data-count="393" data-suffix="%">393%</span>
               </p>
               <p class="text-body text-ink">
-                growth in AI traffic to US retail. Agents don&rsquo;t guess.
+                growth in AI-driven traffic to US retail websites
               </p>
             </div>
           </div>
@@ -3441,70 +3426,74 @@
       </section>
 
       <!-- ========================= WHY PULSE ========================= -->
-      <!-- Radial orbit of the five reasons (copy from thepulseapi.com "Why Pulse"; layout from a radial orbital timeline).
-           The ring turns slowly (src/main.js, --why-angle). Clicking a circle turns it to 12 o'clock and opens a card
-           under it with the reason; click it again, × or Esc closes the card and the ring turns on. Reduced motion: the
+      <!-- Radial orbit of the five reasons (layout from a radial orbital timeline).
+           The ring turns slowly (src/main.js, --why-angle). Clicking a circle turns it to 3 o'clock and opens a card
+           to the right of the orbit with the reason; click it again, × or Esc closes the card and the ring turns on. Reduced motion: the
            ring stays still. Without JS the reasons are listed under the title. -->
-      <!-- TODO-COPY-REVIEW: the short labels on the circles are new -->
-      <section id="why" class="scroll-mt-16 border-b border-line" data-why>
-        <div class="frame grid lg:grid-cols-12">
+      <!-- TODO-COPY-REVIEW: the five titles are from the team; the short circle labels and the card sentences are drafts -->
+      <section
+        id="why"
+        class="bg-soft-gradient scroll-mt-16 border-b border-line"
+        data-why
+      >
+        <div
+          class="mx-auto grid w-full max-w-band px-6 lg:grid-cols-10 lg:px-8"
+        >
           <div
-            class="flex flex-col justify-center py-16 lg:col-span-5 lg:border-r lg:border-line lg:py-24 lg:pr-12"
+            class="flex flex-col justify-center py-16 lg:col-span-3 lg:border-r lg:border-line lg:py-24 lg:pr-10"
           >
-            <span class="reveal section-tag inline-block self-start"
-              >Why PULSE</span
-            >
-            <h2 class="reveal mt-6 text-title">
-              Five reasons this is worth half an hour.
+            <h2 class="reveal text-title">
+              Why ecommerce brands should choose PULSE
             </h2>
-            <p class="reveal mt-4 hidden text-sm text-muted js:block">
-              Select a circle to read each reason.
-            </p>
             <ol
               class="mt-8 list-decimal space-y-3 pl-5 text-data text-muted js:hidden"
             >
               <li>
                 <strong class="font-semibold text-ink"
-                  >Fix the costly gap first.</strong
+                  >Capture Shopper Intent from the First Interaction.</strong
                 >
-                You find out which missing field costs the most, instead of
-                enriching in whatever order seemed sensible.
+                PULSE reads what a shopper is trying to decide from their very
+                first interaction, before they search, filter or leave.
               </li>
               <li>
                 <strong class="font-semibold text-ink"
-                  >Just a spreadsheet.</strong
+                  >Connect Shoppers with the Right Products.</strong
                 >
-                It runs on a spreadsheet. No code, no tag on your site, no
-                integration, and no engineering time.
+                Each shopper&rsquo;s intent is matched with the products whose
+                attributes actually answer it, so they reach a suitable product
+                sooner.
               </li>
               <li>
                 <strong class="font-semibold text-ink"
-                  >No customer data.</strong
+                  >Reduce Losing Sales Opportunities from Early Shopper
+                  Exits.</strong
                 >
-                No customer data is involved at any point, so there is no
-                privacy review to clear before you start.
+                When products can&rsquo;t be told apart, shoppers leave early.
+                Fixing the attributes that decide the purchase keeps them
+                choosing.
               </li>
               <li>
                 <strong class="font-semibold text-ink"
-                  >A cheaper repair.</strong
+                  >Turn Commerce Data into Actionable Marketing
+                  Intelligence.</strong
                 >
-                Most of what is missing turns out to be recoverable from text
-                you already own, so the repair is cheaper than it looks.
+                Your catalogue and shopper signals become a ranked list of what
+                to fix and promote first, not another dashboard to read.
               </li>
               <li>
                 <strong class="font-semibold text-ink"
-                  >Proof of what moved.</strong
+                  >Uncover Insights Others Miss or Fail To Collect.</strong
                 >
-                You can re-measure after the repair and show what moved, which
-                is the part that gets the next round funded.
+                PULSE measures the attributes shoppers need but your catalogue
+                never recorded: the gaps a completeness report cannot see.
               </li>
             </ol>
           </div>
           <div
-            class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-16 lg:col-span-7 lg:border-t-0 lg:px-10 lg:py-20"
+            class="flex items-center justify-center border-t border-line py-16 lg:col-span-7 lg:border-t-0 lg:py-20 lg:pl-10"
           >
             <div
-              class="reveal relative mx-auto aspect-square w-full max-w-140"
+              class="reveal why-orbit-size relative aspect-square shrink-0"
               data-why-orbit
             >
               <svg
@@ -3517,16 +3506,21 @@
                   cx="200"
                   cy="200"
                   r="176"
-                  class="stroke-line-control"
-                  stroke-opacity="0.5"
-                  stroke-width="1.5"
+                  class="stroke-primary"
+                  stroke-opacity="0.45"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-dasharray="1 13"
                 />
                 <circle
                   cx="200"
                   cy="200"
                   r="64"
-                  class="stroke-line"
-                  stroke-width="1"
+                  class="stroke-cyan"
+                  stroke-opacity="0.6"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-dasharray="1 9"
                 />
               </svg>
               <div
@@ -3534,9 +3528,16 @@
                 aria-hidden="true"
               >
                 <span
-                  class="grid size-1/6 place-items-center rounded-full bg-brand-gradient shadow-glow transition duration-500 ease-out-soft pre-shown:scale-75 pre-shown:opacity-0"
+                  class="size-1/6 overflow-hidden rounded-full shadow-glow transition duration-500 ease-out-soft pre-shown:scale-75 pre-shown:opacity-0"
                 >
-                  <span class="size-1/2 rounded-full bg-card/80"></span>
+                  <!-- the icon file has a light margin round its circle: zoom 1.3× (circle is 144 of 180px) to crop it -->
+                  <img
+                    src="./src/assets/brand/apple-touch-icon.png"
+                    alt=""
+                    width="180"
+                    height="180"
+                    class="size-full scale-130"
+                  />
                 </span>
               </div>
               <div
@@ -3558,15 +3559,15 @@
                         class="grid size-14 place-items-center rounded-full border-2 border-line-control bg-card text-muted transition duration-300 ease-out-soft group-hover:border-primary group-hover:text-primary group-data-active:size-16 group-data-active:border-primary group-data-active:bg-primary group-data-active:text-on-primary group-data-active:shadow-glow"
                       >
                         <svg
-                          class="size-5 group-data-active:size-6"
+                          class="size-5 fill-none stroke-current stroke-2 group-data-active:size-6"
                           aria-hidden="true"
                         >
-                          <use href="#i-compare" />
+                          <use href="#i-pointer" />
                         </svg>
                       </span>
                       <span
                         class="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
-                        >Fix the costly gap first</span
+                        >Shopper intent</span
                       >
                     </span>
                   </span>
@@ -3589,12 +3590,12 @@
                           class="size-5 group-data-active:size-6"
                           aria-hidden="true"
                         >
-                          <use href="#i-file-text" />
+                          <use href="#i-cart" />
                         </svg>
                       </span>
                       <span
                         class="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
-                        >Just a spreadsheet</span
+                        >Right products</span
                       >
                     </span>
                   </span>
@@ -3617,12 +3618,12 @@
                           class="size-5 group-data-active:size-6"
                           aria-hidden="true"
                         >
-                          <use href="#i-shield-check" />
+                          <use href="#i-trending-up" />
                         </svg>
                       </span>
                       <span
                         class="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
-                        >No customer data</span
+                        >Fewer early exits</span
                       >
                     </span>
                   </span>
@@ -3645,12 +3646,12 @@
                           class="size-5 group-data-active:size-6"
                           aria-hidden="true"
                         >
-                          <use href="#i-sparkles" />
+                          <use href="#i-clipboard-check" />
                         </svg>
                       </span>
                       <span
                         class="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
-                        >A cheaper repair</span
+                        >Marketing intelligence</span
                       >
                     </span>
                   </span>
@@ -3673,29 +3674,38 @@
                           class="size-5 group-data-active:size-6"
                           aria-hidden="true"
                         >
-                          <use href="#i-trending-up" />
+                          <use href="#i-sparkles" />
                         </svg>
                       </span>
                       <span
                         class="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
-                        >Proof of what moved</span
+                        >Hidden insights</span
                       >
                     </span>
                   </span>
                 </button>
               </div>
-              <!-- Dropdown card under the circle at 12 o'clock -->
+            </div>
+            <!-- Card slot: always beside the orbit (nothing slides). Shows a hint until a reason is picked, then the card, with a line from the circle at 3 o'clock -->
+            <div class="why-slot relative shrink-0" data-why-slot>
+              <p
+                class="why-hint absolute top-1/2 left-12 hidden -translate-y-1/2 items-center gap-2 text-sm text-muted js:flex"
+              >
+                <svg class="size-4 rotate-180" aria-hidden="true">
+                  <use href="#i-arrow-right" /></svg
+                >Select a circle to read each reason.
+              </p>
+              <span
+                class="why-card absolute top-1/2 left-0 h-px w-12 bg-line-control"
+                aria-hidden="true"
+              ></span>
               <div
                 id="why-card"
-                class="why-card absolute top-1/5 left-1/2 z-10 w-80 -translate-x-1/2 rounded-2xl border border-line-control bg-card p-6 shadow-xl"
+                class="why-card relative ml-12 w-80 rounded-2xl border border-line-control bg-card p-6 shadow-xl"
                 role="region"
                 aria-label="Reason"
                 data-why-card
               >
-                <span
-                  class="absolute bottom-full left-1/2 h-5 w-px -translate-x-1/2 bg-line-control"
-                  aria-hidden="true"
-                ></span>
                 <button
                   type="button"
                   class="hit-area absolute top-4 right-4 grid size-7 place-items-center rounded-full text-muted transition-colors duration-150 ease-out-soft hover:bg-surface-1 hover:text-ink focus-visible:outline-2 focus-visible:outline-primary"
@@ -3712,11 +3722,11 @@
                     >Reason 01 / 05</span
                   >
                   <h3 class="mt-4 text-h3 text-ink">
-                    Fix the costly gap first
+                    Capture Shopper Intent from the First Interaction
                   </h3>
                   <p class="mt-2 text-data leading-relaxed text-muted">
-                    You find out which missing field costs the most, instead of
-                    enriching in whatever order seemed sensible.
+                    PULSE reads what a shopper is trying to decide from their
+                    very first interaction, before they search, filter or leave.
                   </p>
                   <div class="mt-4 border-t border-line pt-4">
                     <button
@@ -3724,7 +3734,7 @@
                       class="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary"
                       data-why-next
                     >
-                      Next: Just a spreadsheet<svg
+                      Next: Right products<svg
                         class="size-3"
                         aria-hidden="true"
                       >
@@ -3738,10 +3748,13 @@
                     class="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
                     >Reason 02 / 05</span
                   >
-                  <h3 class="mt-4 text-h3 text-ink">Just a spreadsheet</h3>
+                  <h3 class="mt-4 text-h3 text-ink">
+                    Connect Shoppers with the Right Products
+                  </h3>
                   <p class="mt-2 text-data leading-relaxed text-muted">
-                    It runs on a spreadsheet. No code, no tag on your site, no
-                    integration, and no engineering time.
+                    Each shopper&rsquo;s intent is matched with the products
+                    whose attributes actually answer it, so they reach a
+                    suitable product sooner.
                   </p>
                   <div class="mt-4 border-t border-line pt-4">
                     <button
@@ -3749,7 +3762,7 @@
                       class="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary"
                       data-why-next
                     >
-                      Next: No customer data<svg
+                      Next: Fewer early exits<svg
                         class="size-3"
                         aria-hidden="true"
                       >
@@ -3763,10 +3776,13 @@
                     class="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
                     >Reason 03 / 05</span
                   >
-                  <h3 class="mt-4 text-h3 text-ink">No customer data</h3>
+                  <h3 class="mt-4 text-h3 text-ink">
+                    Reduce Losing Sales Opportunities from Early Shopper Exits
+                  </h3>
                   <p class="mt-2 text-data leading-relaxed text-muted">
-                    No customer data is involved at any point, so there is no
-                    privacy review to clear before you start.
+                    When products can&rsquo;t be told apart, shoppers leave
+                    early. Fixing the attributes that decide the purchase keeps
+                    them choosing.
                   </p>
                   <div class="mt-4 border-t border-line pt-4">
                     <button
@@ -3774,7 +3790,7 @@
                       class="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary"
                       data-why-next
                     >
-                      Next: A cheaper repair<svg
+                      Next: Marketing intelligence<svg
                         class="size-3"
                         aria-hidden="true"
                       >
@@ -3788,11 +3804,13 @@
                     class="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
                     >Reason 04 / 05</span
                   >
-                  <h3 class="mt-4 text-h3 text-ink">A cheaper repair</h3>
+                  <h3 class="mt-4 text-h3 text-ink">
+                    Turn Commerce Data into Actionable Marketing Intelligence
+                  </h3>
                   <p class="mt-2 text-data leading-relaxed text-muted">
-                    Most of what is missing turns out to be recoverable from
-                    text you already own, so the repair is cheaper than it
-                    looks.
+                    Your catalogue and shopper signals become a ranked list of
+                    what to fix and promote first, not another dashboard to
+                    read.
                   </p>
                   <div class="mt-4 border-t border-line pt-4">
                     <button
@@ -3800,7 +3818,7 @@
                       class="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary"
                       data-why-next
                     >
-                      Next: Proof of what moved<svg
+                      Next: Hidden insights<svg
                         class="size-3"
                         aria-hidden="true"
                       >
@@ -3814,10 +3832,13 @@
                     class="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
                     >Reason 05 / 05</span
                   >
-                  <h3 class="mt-4 text-h3 text-ink">Proof of what moved</h3>
+                  <h3 class="mt-4 text-h3 text-ink">
+                    Uncover Insights Others Miss or Fail To Collect
+                  </h3>
                   <p class="mt-2 text-data leading-relaxed text-muted">
-                    You can re-measure after the repair and show what moved,
-                    which is the part that gets the next round funded.
+                    PULSE measures the attributes shoppers need but your
+                    catalogue never recorded: the gaps a completeness report
+                    cannot see.
                   </p>
                   <div class="mt-4 border-t border-line pt-4">
                     <button
@@ -3825,7 +3846,7 @@
                       class="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary"
                       data-why-next
                     >
-                      Next: Fix the costly gap first<svg
+                      Next: Shopper intent<svg
                         class="size-3"
                         aria-hidden="true"
                       >
@@ -3835,207 +3856,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================ DATA ============================ -->
-      <section id="data" class="scroll-mt-16 border-b border-line">
-        <div class="frame grid lg:grid-cols-12">
-          <div
-            class="py-16 lg:col-span-5 lg:border-r lg:border-line lg:py-24 lg:pr-12"
-          >
-            <span class="reveal section-tag inline-block">Your data</span>
-            <h2 class="reveal mt-6 text-title">
-              What happens to my data?
-              <span class="text-muted"
-                >The audit reads product data. Nothing else.</span
-              >
-            </h2>
-            <ul class="mt-8 grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-ink">
-              <li class="reveal flex items-center gap-2">
-                <svg
-                  class="size-4 shrink-0 text-success"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="m5 12 5 5 9-10" /></svg
-                >Product data only
-              </li>
-              <li class="reveal flex items-center gap-2 delay-75">
-                <svg
-                  class="size-4 shrink-0 text-success"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="m5 12 5 5 9-10" /></svg
-                >No cookie, no login
-              </li>
-              <li class="reveal flex items-center gap-2 delay-150">
-                <svg
-                  class="size-4 shrink-0 text-success"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="m5 12 5 5 9-10" /></svg
-                >Tenant-isolated today
-              </li>
-              <li class="reveal flex items-center gap-2 delay-225">
-                <svg
-                  class="size-4 shrink-0 text-success"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="m5 12 5 5 9-10" /></svg
-                >Deleted on request
-              </li>
-            </ul>
-          </div>
-          <div
-            class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-16 lg:col-span-7 lg:border-t-0 lg:px-12 lg:py-24"
-          >
-            <!-- Data orbit (thepulseapi.com "blind spot" style): the audit in the centre, product categories around it, then
-                 what it reads (Product data) and what it never reads. Rings turn slowly; the button pauses them (WCAG 2.2.2). -->
-            <div
-              class="reveal relative flex flex-col overflow-hidden rounded-3xl border border-line bg-card p-6 shadow-sm"
-              data-pausable
-            >
-              <p class="eyebrow">What the audit reads</p>
-              <div class="relative mx-auto mt-4 aspect-square w-full max-w-104">
-                <svg
-                  class="orbit-ring absolute inset-0 size-full text-primary motion-safe:animate-orbit-cw"
-                  viewBox="0 0 400 400"
-                  aria-hidden="true"
-                >
-                  <circle
-                    cx="200"
-                    cy="200"
-                    r="178"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-opacity="0.35"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                    stroke-dasharray="1 14"
-                  />
-                </svg>
-                <svg
-                  class="orbit-ring absolute inset-0 size-full text-cyan motion-safe:animate-orbit-ccw"
-                  viewBox="0 0 400 400"
-                  aria-hidden="true"
-                >
-                  <circle
-                    cx="200"
-                    cy="200"
-                    r="126"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-opacity="0.5"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                    stroke-dasharray="1 12"
-                  />
-                </svg>
-                <div class="absolute inset-0 grid place-items-center">
-                  <p
-                    class="grid aspect-square w-1/3 place-items-center rounded-full bg-primary px-4 text-center text-on-primary shadow-lg transition duration-500 ease-out-soft pre-shown:scale-75 pre-shown:opacity-0"
-                  >
-                    <span
-                      ><span class="block text-xl font-semibold">The audit</span
-                      ><span class="mt-1 block text-xs font-medium"
-                        >reads product data only</span
-                      ></span
-                    >
-                  </p>
-                </div>
-                <span
-                  class="absolute grid w-3/25 left-1/2 top-13/100 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-250 pre-shown:scale-50 pre-shown:opacity-0"
-                  ><svg class="size-5" aria-hidden="true">
-                    <use href="#i-sparkles" /></svg
-                ></span>
-                <span
-                  class="absolute grid w-3/25 left-41/50 top-63/200 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-350 pre-shown:scale-50 pre-shown:opacity-0"
-                  ><svg class="size-5" aria-hidden="true">
-                    <use href="#i-cart" /></svg
-                ></span>
-                <span
-                  class="absolute grid w-3/25 left-41/50 top-137/200 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-450 pre-shown:scale-50 pre-shown:opacity-0"
-                  ><svg class="size-5" aria-hidden="true">
-                    <use href="#i-cpu" /></svg
-                ></span>
-                <span
-                  class="absolute grid w-3/25 left-1/2 top-87/100 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-550 pre-shown:scale-50 pre-shown:opacity-0"
-                  ><svg class="size-5" aria-hidden="true">
-                    <use href="#i-basket" /></svg
-                ></span>
-                <span
-                  class="absolute grid w-3/25 left-9/50 top-137/200 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-650 pre-shown:scale-50 pre-shown:opacity-0"
-                  ><svg class="size-5" aria-hidden="true">
-                    <use href="#i-sofa" /></svg
-                ></span>
-                <span
-                  class="absolute grid w-3/25 left-9/50 top-63/200 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-750 pre-shown:scale-50 pre-shown:opacity-0"
-                  ><svg class="size-5" aria-hidden="true">
-                    <use href="#i-factory" /></svg
-                ></span>
-                <ul aria-label="What the audit reads">
-                  <li
-                    class="absolute top-7/100 left-1/4 -translate-1/2 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap shadow-lg bg-primary text-on-primary transition duration-500 ease-out-soft delay-850 pre-shown:scale-90 pre-shown:opacity-0"
-                  >
-                    <svg class="size-3.5" aria-hidden="true">
-                      <use href="#i-check" /></svg
-                    >Product data<span class="sr-only">: read</span>
-                  </li>
-                  <li
-                    class="absolute top-7/100 left-3/4 -translate-1/2 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap shadow-lg border border-line bg-card text-muted transition duration-500 ease-out-soft delay-1000 pre-shown:scale-90 pre-shown:opacity-0"
-                  >
-                    <svg class="size-3.5" aria-hidden="true">
-                      <use href="#i-x" /></svg
-                    ><span class="line-through">Order history</span
-                    ><span class="sr-only">: not read</span>
-                  </li>
-                  <li
-                    class="absolute top-93/100 left-1/4 -translate-1/2 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap shadow-lg border border-line bg-card text-muted transition duration-500 ease-out-soft delay-1150 pre-shown:scale-90 pre-shown:opacity-0"
-                  >
-                    <svg class="size-3.5" aria-hidden="true">
-                      <use href="#i-x" /></svg
-                    ><span class="line-through">Cookies &amp; logins</span
-                    ><span class="sr-only">: not read</span>
-                  </li>
-                  <li
-                    class="absolute top-93/100 left-3/4 -translate-1/2 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap shadow-lg border border-line bg-card text-muted transition duration-500 ease-out-soft delay-1300 pre-shown:scale-90 pre-shown:opacity-0"
-                  >
-                    <svg class="size-3.5" aria-hidden="true">
-                      <use href="#i-x" /></svg
-                    ><span class="line-through">Customer records</span
-                    ><span class="sr-only">: not read</span>
-                  </li>
-                </ul>
-              </div>
-              <button
-                type="button"
-                class="hit-area absolute right-4 bottom-4 hidden size-8 items-center justify-center rounded-full text-muted transition-colors duration-150 ease-out-soft hover:bg-surface-1 hover:text-ink focus-visible:outline-2 focus-visible:outline-primary motion-safe:js:inline-flex"
-                aria-label="Pause orbit animation"
-                aria-pressed="false"
-                data-pause
-              >
-                <svg class="size-4" aria-hidden="true">
-                  <use href="#i-pause" />
-                </svg>
-              </button>
             </div>
           </div>
         </div>

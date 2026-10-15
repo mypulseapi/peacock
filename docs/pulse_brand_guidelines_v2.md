@@ -264,9 +264,9 @@ One family, two optical designs. Adopted 14 Oct 2026; replaces Plus Jakarta Sans
 
 | Style    | Size            | Line-height | Weight  |
 | -------- | --------------- | ----------- | ------- |
-| Display  | 40 → 60px fluid | 1           | 600     |
-| Headline | 36 → 48px fluid | 1.05        | 600     |
-| Title    | 30 → 36px fluid | 1.1         | 550     |
+| Display  | 40 → 60px fluid | 1.1         | 600     |
+| Headline | 36 → 48px fluid | 1.12        | 600     |
+| Title    | 30 → 36px fluid | 1.18        | 550     |
 | Lead     | 18px            | 1.6         | 400     |
 | Body     | 16px            | 1.6         | 400     |
 | Data     | 14px            | 1.5         | 400–600 |
@@ -327,7 +327,7 @@ Touch targets: buttons are at least 44px tall; demo tabs, header links, the logo
 
 ### 6.3 Homepage order
 
-Unchanged: Navigation → headline + CTA → product demo → category strip → method → independent research (dark band) → data privacy → CTA → footer.
+Current order (15 Oct 2026): Navigation → hero (headline + CTA left, product demo right) → category strip (hidden) → two shelves → how it works → independent research → why PULSE → CTA → footer. The data privacy section was removed.
 
 ### 6.4 Technical additions (from the audit, open)
 

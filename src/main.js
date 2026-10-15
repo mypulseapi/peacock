@@ -8,7 +8,7 @@
 //   [data-spy] links       → highlight the section currently in view (sets [data-active])
 //   [data-hero]            → hero background light (and its tail) follows the cursor (--hero-x / --hero-y …)
 //   [data-why]             → Why PULSE orbit: turning ring; a circle turns to the top and opens its reason
-//   [data-pause] buttons   → pause the hero demo / data orbit (sets [data-held] on [data-pausable])
+//   [data-pause] buttons   → pause the hero demo (sets [data-held] on [data-pausable])
 
 const reduceMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
@@ -400,7 +400,7 @@ if (demo) {
 }
 
 // Pause buttons for content that moves by itself (WCAG 2.2.2): [data-pause] toggles data-held on its
-// [data-pausable] wrapper (CSS stops the hero demo timer / the orbit rings); aria-pressed and the icon follow.
+// [data-pausable] wrapper (CSS stops the hero demo timer); aria-pressed and the icon follow.
 document.querySelectorAll("[data-pause]").forEach((button) => {
   const target = button.closest("[data-pausable]");
   button.addEventListener("click", () => {
@@ -413,7 +413,7 @@ document.querySelectorAll("[data-pause]").forEach((button) => {
 });
 
 // Why PULSE orbit: the ring of five circles turns slowly (--why-angle, one turn every 2 minutes; not with
-// reduced motion, and only while on screen). Clicking a circle turns it to 12 o'clock and opens the card under it
+// reduced motion, and only while on screen). Clicking a circle turns it to 3 o'clock and opens the card beside it
 // with its reason; clicking it again, the card's × or Esc closes the card and the ring turns on. "Next" moves on.
 const why = document.querySelector("[data-why]");
 if (why) {
@@ -441,27 +441,41 @@ if (why) {
   ).observe(why);
   requestAnimationFrame(tick);
 
+  // Switching reasons: the card fades out (250ms), the ring turns, then the card fades back in with the new
+  // reason (CSS why-card waits 600ms after data-show, so it appears as the 900ms turn ends).
+  let swap = 0;
+  const showPanel = (index) => {
+    panels.forEach((panel, i) =>
+      panel.toggleAttribute("data-active", i === index),
+    );
+    why.setAttribute("data-open", "");
+    why.setAttribute("data-show", "");
+  };
   const select = (index) => {
+    const switching = open >= 0 && open !== index;
     open = index;
-    // Shortest turn that brings circle `index` (at index × step degrees on the ring) to the top
-    const delta = ((((-index * step - angle) % 360) + 540) % 360) - 180;
+    // Shortest turn that brings circle `index` (at index × step degrees on the ring) to 3 o'clock (90°)
+    const delta = ((((90 - index * step - angle) % 360) + 540) % 360) - 180;
     angle += delta;
     if (!reduceMotion) spin.setAttribute("data-turning", "");
     setAngle();
     setTimeout(() => spin.removeAttribute("data-turning"), 900);
-    why.setAttribute("data-open", "");
     tabs.forEach((tab, i) => {
       tab.toggleAttribute("data-active", i === index);
       tab.setAttribute("aria-expanded", String(i === index));
     });
-    panels.forEach((panel, i) =>
-      panel.toggleAttribute("data-active", i === index),
-    );
+    clearTimeout(swap);
+    if (switching && !reduceMotion) {
+      why.removeAttribute("data-show"); // the slot stays open; only the card fades out and back in
+      swap = setTimeout(() => showPanel(index), 300);
+    } else showPanel(index);
   };
   const close = () => {
     const was = open;
     open = -1;
+    clearTimeout(swap);
     why.removeAttribute("data-open");
+    why.removeAttribute("data-show");
     tabs.forEach((tab) => {
       tab.removeAttribute("data-active");
       tab.setAttribute("aria-expanded", "false");
@@ -476,11 +490,11 @@ if (why) {
   why.querySelectorAll("[data-why-next]").forEach((button) =>
     button.addEventListener("click", () => {
       select((open + 1) % tabs.length);
-      // keep focus in the card: move it to the next reason's own "Next" button
-      panels[open].querySelector("[data-why-next]").focus();
+      // the card is hidden while it swaps, so keep focus on the new reason's circle
+      tabs[open].focus();
     }),
   );
-  // Esc closes the card wherever focus is (after "Next" the focused button is hidden with its panel)
+  // Esc closes the card wherever focus is
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && open >= 0) close();
   });

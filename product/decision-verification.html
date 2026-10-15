@@ -145,6 +145,74 @@
         <path d="m22 7-8.5 8.5-5-5L2 17" />
       </symbol>
       <symbol
+        id="i-terminal"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m4 17 6-6-6-6" />
+        <path d="M12 19h8" />
+      </symbol>
+      <symbol
+        id="i-flask"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"
+        />
+        <path d="M6.453 15h11.094" />
+        <path d="M8.5 2h7" />
+      </symbol>
+      <symbol
+        id="i-shield-alert"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+        />
+        <path d="M12 8v4" />
+        <path d="M12 16h.01" />
+      </symbol>
+      <symbol
+        id="i-key"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
+        />
+        <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+      </symbol>
+      <symbol
+        id="i-plus"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M5 12h14" />
+        <path d="M12 5v14" />
+      </symbol>
+      <symbol
         id="i-compare"
         viewBox="0 0 24 24"
         fill="none"
@@ -421,7 +489,7 @@
         <!-- Desktop menu -->
         <nav aria-label="Main" class="relative hidden lg:block" data-mega-nav>
           <ul class="flex items-center gap-0.5">
-            <li><a href="#" class="nav-link">About us</a></li>
+            <li><a href="../about.html" class="nav-link">About us</a></li>
 
             <li class="relative">
               <details class="group" data-dropdown data-mega>
@@ -720,7 +788,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            href="#"
+                            href="../about.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -735,7 +803,7 @@
                         </li>
                         <li>
                           <a
-                            href="#"
+                            href="../contact.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -774,7 +842,7 @@
               </details>
             </li>
 
-            <li><a href="#" class="nav-link">Pricing</a></li>
+            <li><a href="../pricing.html" class="nav-link">Pricing</a></li>
             <li><a href="#" class="nav-link">Blog</a></li>
           </ul>
           <div class="nav-viewport" data-nav-viewport>
@@ -826,7 +894,7 @@
           </div>
           <a href="#" class="nav-link">Sign In</a>
           <a
-            href="../index.html#request"
+            href="#request"
             class="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap"
           >
             Request an audit
@@ -856,7 +924,7 @@
             class="fixed inset-x-0 top-17 bottom-0 animate-dropdown overflow-y-auto border-t border-line bg-card px-6 pt-4 pb-10 motion-reduce:animate-none"
           >
             <a
-              href="#"
+              href="../about.html"
               class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
               >About us</a
             >
@@ -997,7 +1065,7 @@
 
             <div class="mt-6 border-t border-line pt-6">
               <a
-                href="#"
+                href="../pricing.html"
                 class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
                 >Pricing</a
               >
@@ -1012,7 +1080,7 @@
                 >Sign In</a
               >
               <a
-                href="../index.html#request"
+                href="#request"
                 class="btn-primary mt-4 w-full rounded-control text-nav"
                 >Request an audit
                 <svg class="size-3.5" aria-hidden="true">
@@ -1454,28 +1522,40 @@
           </div>
         </div>
       </section>
-
-      <section class="border-b border-line">
-        <div class="frame py-20 lg:py-28">
-          <div
-            class="reveal bg-soft-gradient rounded-3xl border border-line px-8 py-14 lg:px-16 lg:py-20"
-          >
-            <h2 class="max-w-2xl text-title text-balance">
-              Finished the repair? Send it back.
-            </h2>
-            <p class="mt-5 max-w-xl text-lg text-pretty text-muted">
-              Same category, same measurement, and a document you can hand to
-              whoever asked whether it was worth doing.
-            </p>
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="mailto:getintouch@thepulseapi.com" class="btn-primary"
-                >Request a Decision Audit</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
+    <!-- shell:cta (only on pages that carry these markers: edit here, then run python3 scripts/sync-shell.py) -->
+    <!-- Call to action, right above the footer on the home page and the product pages (pages opt in with
+         the shell:cta markers): a dot pattern whose dots light up
+         around the cursor (src/main.js sets --cta-x / --cta-y and data-lit; CSS cta-dots). -->
+    <section
+      id="request"
+      class="cta-dots scroll-mt-16 border-t border-line"
+      data-cta
+    >
+      <div class="frame py-24 text-center lg:py-32">
+        <h2 class="reveal mx-auto max-w-3xl text-headline text-balance">
+          Send us one category. See what comes back.
+        </h2>
+        <p
+          class="reveal mx-auto mt-5 max-w-xl text-lg text-pretty text-muted delay-100"
+        >
+          Pick a shelf. Get the ranked list, the affected products and a
+          half-hour walkthrough with your merchandising team.
+        </p>
+        <div class="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200">
+          <a href="../index.html#method" class="btn-secondary"
+            >Read the method first</a
+          >
+          <a href="mailto:getintouch@thepulseapi.com" class="btn-primary"
+            >Request a Decision Audit</a
+          >
+        </div>
+        <p class="reveal mt-6 text-xs text-muted delay-300">
+          No obligation at any step.
+        </p>
+      </div>
+    </section>
+    <!-- /shell:cta -->
     <!-- shell:footer (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
     <footer class="border-t border-line bg-card">
       <div class="frame pt-20 pb-12 lg:pt-24">
@@ -1521,7 +1601,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="../pricing.html"
                   class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                   >Pricing</a
                 >
@@ -1533,14 +1613,14 @@
             <ul class="mt-6 space-y-3.5 text-sm text-muted">
               <li>
                 <a
-                  href="#"
+                  href="../about.html"
                   class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                   >About us</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  href="../contact.html"
                   class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                   >Contact</a
                 >
@@ -1608,28 +1688,28 @@
           <ul class="flex flex-wrap items-center gap-x-7 gap-y-2">
             <li>
               <a
-                href="#"
+                href="../privacy.html"
                 class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
                 >Privacy Policy</a
               >
             </li>
             <li>
               <a
-                href="#"
+                href="../terms.html"
                 class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
                 >Terms of Service</a
               >
             </li>
             <li>
               <a
-                href="#"
+                href="../cookies.html"
                 class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
                 >Cookie Policy</a
               >
             </li>
             <li>
               <a
-                href="#"
+                href="../gdpr.html"
                 class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
                 >GDPR</a
               >

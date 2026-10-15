@@ -447,6 +447,10 @@
 @utility eyebrow {
   @apply tabular-nums text-xs font-medium tracking-wider text-muted uppercase;
 }
+/* Form fields (input, select, textarea): 44px tall, line-control border (≥ 3:1), primary focus ring */
+@utility field {
+  @apply block min-h-11 w-full rounded-control border border-line-control bg-card px-3.5 py-2.5 text-data text-ink placeholder:text-muted focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-60;
+}
 @utility badge {
   @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 tabular-nums text-xs font-semibold;
 }
@@ -1024,6 +1028,55 @@
       color-mix(in oklab, var(--color-cyan) 12%, transparent),
       transparent
     );
+}
+/* Call-to-action band (shared above the footer): a dot pattern that fades out towards the edges, and a layer of
+   primary dots that only shows inside a circle around the cursor (--cta-x / --cta-y, [data-lit], set by src/main.js).
+   The dots are 1.5–2px, so text over them keeps its contrast. Reduced motion or touch: static dots only. */
+@utility cta-dots {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color-surface-0);
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-size: 22px 22px;
+  }
+  &::before {
+    background-image: radial-gradient(
+      circle,
+      var(--color-line-control) 1.2px,
+      transparent 1.6px
+    );
+    opacity: 0.55;
+    mask-image: radial-gradient(70% 90% at 50% 50%, black 30%, transparent);
+  }
+  &::after {
+    background-image: radial-gradient(
+      circle,
+      var(--color-primary) 1.6px,
+      transparent 2.1px
+    );
+    mask-image: radial-gradient(
+      12rem circle at var(--cta-x, 50%) var(--cta-y, 50%),
+      black,
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 300ms var(--ease-out-soft);
+  }
+  &[data-lit]::after {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      display: none;
+    }
+  }
 }
 /* Coloured shadow behind the product demo: the brand gradient, blurred, under the window */
 @utility hero-glow {

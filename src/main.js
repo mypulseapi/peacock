@@ -7,6 +7,7 @@
 //   [data-demo]            → plays the hero workflow demo (tabs, steps, captions — see DESIGN.md §6)
 //   [data-spy] links       → highlight the section currently in view (sets [data-active])
 //   [data-hero]            → hero background light (and its tail) follows the cursor (--hero-x / --hero-y …)
+//   [data-cta]             → call-to-action band: dots light up around the cursor (--cta-x / --cta-y)
 //   [data-why]             → Why PULSE orbit: turning ring; a circle turns to the top and opens its reason
 //   [data-pause] buttons   → pause the hero demo (sets [data-held] on [data-pausable])
 
@@ -341,6 +342,27 @@ if (hero && !reduceMotion) {
     });
   });
 }
+
+// Call-to-action band (every page): the dots around the cursor light up. Mouse and pen only, not with reduced
+// motion; the light fades out when the pointer leaves the band (CSS cta-dots).
+document.querySelectorAll("[data-cta]").forEach((cta) => {
+  if (reduceMotion) return;
+  let frame = 0;
+  let point = null;
+  cta.addEventListener("pointermove", (event) => {
+    if (event.pointerType === "touch") return;
+    cta.setAttribute("data-lit", "");
+    point = event;
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      const box = cta.getBoundingClientRect();
+      cta.style.setProperty("--cta-x", `${point.clientX - box.left}px`);
+      cta.style.setProperty("--cta-y", `${point.clientY - box.top}px`);
+    });
+  });
+  cta.addEventListener("pointerleave", () => cta.removeAttribute("data-lit"));
+});
 
 // Hero workflow demo: steps play in order. The pace comes from CSS — when the active tab's timer bar
 // (animate-demo-timer) finishes, the next step starts. Hovering the app window (not the timeline) or scrolling it out of view

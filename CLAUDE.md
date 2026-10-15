@@ -19,18 +19,20 @@ Static marketing/demo site for **Pulse**, built with plain HTML + Tailwind CSS v
 
 ## Project layout
 
-| Path                       | Purpose                                                                                          |
-| -------------------------- | ------------------------------------------------------------------------------------------------ |
-| `src/input.css`            | The only stylesheet you edit: `@theme` tokens + component `@utility` classes.                    |
-| `src/assets/`              | `brand/` (official logo + white logo, favicons) and `fonts/` (Inter 4.1, SIL OFL).               |
-| `src/main.js`              | Page motion (scroll reveal, count-up, typing, shelf grid, scroll-spy). Plain script, no imports. |
-| `dist/output.css`          | Generated — never edit, never commit (git-ignored).                                              |
-| `index.html`               | Home page.                                                                                       |
-| `product/`                 | Product pages: overview (`product/index.html`) and Decision Audit / Verification / Monitor.      |
-| `scripts/sync-shell.py`    | Copies the shared head, icon sprite, header and footer from `index.html` into every other page.  |
-| `components.html`          | Living component spec — every reusable component is shown here.                                  |
-| `DESIGN.md`                | Design rules (tokens, type, components, voice).                                                  |
-| `scripts/tailwind-lint.py` | Runs the Tailwind language server headless; backs `pnpm lint:tw`.                                |
+| Path                                                   | Purpose                                                                                                                              |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `src/input.css`                                        | The only stylesheet you edit: `@theme` tokens + component `@utility` classes.                                                        |
+| `src/assets/`                                          | `brand/` (official logo + white logo, favicons), `about/` (About page photos, from the live site) and `fonts/` (Inter 4.1, SIL OFL). |
+| `src/main.js`                                          | Page motion (scroll reveal, count-up, typing, shelf grid, scroll-spy). Plain script, no imports.                                     |
+| `dist/output.css`                                      | Generated — never edit, never commit (git-ignored).                                                                                  |
+| `index.html`                                           | Home page.                                                                                                                           |
+| `pricing.html` `about.html` `contact.html`             | Company pages (root, like the live site's `/pricing`, `/about`, `/contact`).                                                         |
+| `privacy.html` `terms.html` `cookies.html` `gdpr.html` | Legal pages (root), linked from the footer.                                                                                          |
+| `product/`                                             | Product pages: overview (`product/index.html`) and Decision Audit / Verification / Monitor.                                          |
+| `scripts/sync-shell.py`                                | Copies the shared head, icon sprite, header and footer from `index.html` into every other page.                                      |
+| `components.html`                                      | Living component spec — every reusable component is shown here.                                                                      |
+| `DESIGN.md`                                            | Design rules (tokens, type, components, voice).                                                                                      |
+| `scripts/tailwind-lint.py`                             | Runs the Tailwind language server headless; backs `pnpm lint:tw`.                                                                    |
 
 ## Formatting — always format what you save
 
@@ -68,6 +70,8 @@ Never ignore, silence or disable a warning (no lint settings changes, no `@layer
 2. Don't copy the head, header or footer by hand. Give the page empty shell markers, then run
    `python3 scripts/sync-shell.py` (and `pnpm format`). It fills `<!-- shell:head --><!-- /shell:head -->`,
    `shell:sprite`, `shell:header` and `shell:footer` from `index.html` and rewrites relative URLs for the folder depth.
+   The call to action above the footer is opt-in: add `<!-- shell:cta --><!-- /shell:cta -->` right before the footer
+   markers on pages where visitors explore the product (home, `product/`); company and legal pages leave it out.
    Copy an existing page in `product/` as the starting point: it has the page's own `<title>`, `<body class="overflow-x-clip">`
    and the markers. After editing the header or footer in `index.html`, run the script again so every page matches.
    Use `defer` for scripts, never `type="module"` (module scripts are blocked when a page is opened from `file://`).

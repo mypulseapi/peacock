@@ -1,0 +1,1730 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decision Audit: which product data to fix first | Pulse</title>
+    <!-- shell:head (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
+    <link rel="icon" href="../src/assets/brand/favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="../src/assets/brand/favicon-32.png"
+      type="image/png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../src/assets/brand/apple-touch-icon.png"
+    />
+    <link
+      rel="preload"
+      href="../src/assets/fonts/InterVariable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="../dist/output.css" />
+    <script defer src="../src/main.js"></script>
+    <!-- /shell:head -->
+  </head>
+  <body class="overflow-x-clip">
+    <!-- shell:sprite (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
+    <!-- Icon sprite (Lucide-style, stroke icons). Use: <svg><use href="#i-name" /></svg> -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+      <symbol
+        id="i-chevron-down"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m6 9 6 6 6-6" />
+      </symbol>
+      <symbol
+        id="i-arrow-right"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </symbol>
+      <symbol
+        id="i-globe"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </symbol>
+      <symbol
+        id="i-check"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M20 6 9 17l-5-5" />
+      </symbol>
+      <symbol
+        id="i-menu"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M4 6h16" />
+        <path d="M4 12h16" />
+        <path d="M4 18h16" />
+      </symbol>
+      <symbol
+        id="i-x"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </symbol>
+      <symbol
+        id="i-triangle-alert"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
+        />
+        <path d="M12 9v4" />
+        <path d="M12 17h.01" />
+      </symbol>
+      <symbol
+        id="i-clipboard-check"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect width="8" height="4" x="8" y="2" rx="1" />
+        <path
+          d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+        />
+        <path d="m9 14 2 2 4-4" />
+      </symbol>
+      <symbol
+        id="i-trending-up"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M16 7h6v6" />
+        <path d="m22 7-8.5 8.5-5-5L2 17" />
+      </symbol>
+      <symbol
+        id="i-compare"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="18" cy="18" r="3" />
+        <circle cx="6" cy="6" r="3" />
+        <path d="M13 6h3a2 2 0 0 1 2 2v7" />
+        <path d="M11 18H8a2 2 0 0 1-2-2V9" />
+      </symbol>
+      <symbol
+        id="i-bell-ring"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+        <path d="M22 8c0-2.3-.8-4.3-2-6" />
+        <path
+          d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"
+        />
+        <path d="M4 2C2.8 3.7 2 5.7 2 8" />
+      </symbol>
+      <symbol
+        id="i-cart"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="8" cy="21" r="1" />
+        <circle cx="19" cy="21" r="1" />
+        <path
+          d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
+        />
+      </symbol>
+      <symbol
+        id="i-basket"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m15 11-1 9" />
+        <path d="m19 11-4-7" />
+        <path d="M2 11h20" />
+        <path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4" />
+        <path d="M4.5 15.5h15" />
+        <path d="m5 11 4-7" />
+        <path d="m9 11 1 9" />
+      </symbol>
+      <symbol
+        id="i-cpu"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect width="16" height="16" x="4" y="4" rx="2" />
+        <rect width="6" height="6" x="9" y="9" rx="1" />
+        <path d="M15 2v2" />
+        <path d="M15 20v2" />
+        <path d="M2 15h2" />
+        <path d="M2 9h2" />
+        <path d="M20 15h2" />
+        <path d="M20 9h2" />
+        <path d="M9 2v2" />
+        <path d="M9 20v2" />
+      </symbol>
+      <symbol
+        id="i-sofa"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3" />
+        <path
+          d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"
+        />
+        <path d="M4 18v2" />
+        <path d="M20 18v2" />
+      </symbol>
+      <symbol
+        id="i-sparkles"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"
+        />
+        <path d="M20 3v4" />
+        <path d="M22 5h-4" />
+        <path d="M4 17v2" />
+        <path d="M5 18H3" />
+      </symbol>
+      <symbol
+        id="i-factory"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"
+        />
+        <path d="M17 18h1" />
+        <path d="M12 18h1" />
+        <path d="M7 18h1" />
+      </symbol>
+      <symbol
+        id="i-file-text"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+        <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+        <path d="M16 13H8" />
+        <path d="M16 17H8" />
+        <path d="M10 9H8" />
+      </symbol>
+      <symbol
+        id="i-pen"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+        />
+      </symbol>
+      <symbol
+        id="i-linkedin"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+        />
+        <rect width="4" height="12" x="2" y="9" />
+        <circle cx="4" cy="4" r="2" />
+      </symbol>
+      <symbol
+        id="i-facebook"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+        />
+      </symbol>
+      <symbol
+        id="i-github"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+        />
+        <path d="M9 18c-4.51 2-5-2-7-2" />
+      </symbol>
+      <symbol
+        id="i-pause"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect x="14" y="4" width="4" height="16" rx="1" />
+        <rect x="6" y="4" width="4" height="16" rx="1" />
+      </symbol>
+      <symbol
+        id="i-play"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polygon points="6 3 20 12 6 21 6 3" />
+      </symbol>
+      <symbol
+        id="i-pointer"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"
+        />
+      </symbol>
+      <symbol
+        id="i-file"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+        <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+      </symbol>
+    </svg>
+    <!-- /shell:sprite -->
+    <!-- shell:header (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
+    <!-- Header (layout and behaviour from thepulseapi.com). Dropdowns are native <details>: they work
+         without JavaScript; src/main.js adds hover-open, one-at-a-time, outside-click and Escape. -->
+    <header
+      class="sticky top-0 z-50 border-b border-line bg-card font-display"
+      data-nav
+    >
+      <div
+        class="mx-auto flex h-17 max-w-nav items-center justify-between gap-4 px-6"
+      >
+        <a
+          href="../index.html"
+          aria-label="Pulse home"
+          class="hit-area shrink-0"
+        >
+          <picture
+            ><source
+              srcset="../src/assets/brand/logo-white.webp"
+              media="(prefers-color-scheme: dark)" />
+            <img
+              src="../src/assets/brand/logo.webp"
+              alt="Pulse"
+              width="84"
+              height="28"
+              class="h-7 w-auto"
+          /></picture>
+        </a>
+
+        <!-- Desktop menu -->
+        <nav aria-label="Main" class="relative hidden lg:block" data-mega-nav>
+          <ul class="flex items-center gap-0.5">
+            <li><a href="#" class="nav-link">About us</a></li>
+
+            <li class="relative">
+              <details class="group" data-dropdown data-mega>
+                <summary
+                  class="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink"
+                >
+                  Product
+                  <svg
+                    class="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron-down" />
+                  </svg>
+                </summary>
+                <div
+                  data-panel
+                  class="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none"
+                >
+                  <div data-nav-content class="nav-content flex">
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">
+                        Measure &amp; repair
+                      </p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a
+                            href="../product/decision-audit.html"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Decision Audit</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Rank which missing fields to fix first</span
+                            >
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="../product/decision-verification.html"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Decision Verification</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Re-measure what moved after a repair</span
+                            >
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">
+                        Keep it measured
+                      </p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a
+                            href="../product/decision-monitor.html"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Decision Monitor
+                              <span
+                                class="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase"
+                                >Recurring</span
+                              ></span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Get told when a shelf slips, and why</span
+                            >
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="../index.html#method"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >How it works</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >From a blank cell to a measured result</span
+                            >
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </li>
+
+            <li class="relative">
+              <details class="group" data-dropdown data-mega>
+                <summary
+                  class="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink"
+                >
+                  Templates
+                  <svg
+                    class="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron-down" />
+                  </svg>
+                </summary>
+                <div
+                  data-panel
+                  class="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none"
+                >
+                  <div data-nav-content class="nav-content flex">
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">
+                        Everyday
+                      </p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a
+                            href="#"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Ecommerce and retail</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Mixed catalogues, many shelves</span
+                            >
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >FMCG and consumer goods</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Fragrance-free, allergens, pack size</span
+                            >
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">
+                        Home &amp; beauty
+                      </p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a
+                            href="#"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Furniture and homewares</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Dimensions, capacity, material</span
+                            >
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Cosmetics and personal care</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Shade, skin type, finish</span
+                            >
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">
+                        Technical
+                      </p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a
+                            href="#"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Technology and electronics</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Screen size, memory, storage</span
+                            >
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >B2B and industrial</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Compatibility and technical specs</span
+                            >
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </li>
+
+            <li class="relative">
+              <details class="group" data-dropdown data-mega>
+                <summary
+                  class="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink"
+                >
+                  Resources
+                  <svg
+                    class="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron-down" />
+                  </svg>
+                </summary>
+                <div
+                  data-panel
+                  class="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none"
+                >
+                  <div data-nav-content class="nav-content flex">
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">
+                        Learn
+                      </p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a
+                            href="#"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Documentation</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Integrate in ten lines, or not at all</span
+                            >
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Notes</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >What we measured, and got wrong</span
+                            >
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="nav-column w-76 p-3">
+                      <p class="px-3 pt-1 pb-2 text-xs font-medium text-muted">
+                        Company
+                      </p>
+                      <ul class="space-y-1">
+                        <li>
+                          <a
+                            href="#"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >About us</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Who builds Pulse, and why</span
+                            >
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Contact</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >Talk to the team</span
+                            >
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Career
+                              <span
+                                class="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase"
+                                >Hiring</span
+                              ></span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >We are hiring</span
+                            >
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </li>
+
+            <li><a href="#" class="nav-link">Pricing</a></li>
+            <li><a href="#" class="nav-link">Blog</a></li>
+          </ul>
+          <div class="nav-viewport" data-nav-viewport>
+            <div class="nav-viewport-stack" data-nav-stack></div>
+          </div>
+        </nav>
+
+        <!-- Desktop actions -->
+        <div class="hidden items-center gap-2 lg:flex">
+          <div class="relative">
+            <details class="group" data-dropdown>
+              <summary
+                class="hit-area flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-line px-4 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-ink"
+                aria-label="EN, switch language"
+              >
+                <svg class="size-4 text-primary" aria-hidden="true">
+                  <use href="#i-globe" />
+                </svg>
+                EN
+                <svg
+                  class="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
+                  aria-hidden="true"
+                >
+                  <use href="#i-chevron-down" />
+                </svg>
+              </summary>
+              <div
+                data-panel
+                class="absolute top-full right-0 mt-2 w-44 animate-dropdown rounded-2xl border border-line bg-card p-1.5 shadow-xl motion-reduce:animate-none"
+              >
+                <p
+                  class="border-b border-line px-3 py-2 text-label font-medium text-muted uppercase"
+                >
+                  Switch language
+                </p>
+                <a
+                  href="#"
+                  aria-current="true"
+                  class="mt-1 flex min-h-11 items-center gap-3 rounded-control bg-primary-tint px-3 py-2.5 text-sm font-medium text-primary"
+                >
+                  <span aria-hidden="true">🇺🇸</span> English
+                  <svg class="ml-auto size-4" aria-hidden="true">
+                    <use href="#i-check" />
+                  </svg>
+                </a>
+                <!-- Tiếng Việt: add back (with hreflang) when the Vietnamese page exists — guideline §9 -->
+              </div>
+            </details>
+          </div>
+          <a href="#" class="nav-link">Sign In</a>
+          <a
+            href="../index.html#request"
+            class="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap"
+          >
+            Request an audit
+            <svg
+              class="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
+              aria-hidden="true"
+            >
+              <use href="#i-arrow-right" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Mobile menu -->
+        <details class="group lg:hidden" data-mobile-menu>
+          <summary
+            class="flex size-9 cursor-pointer items-center justify-center rounded-control text-ink"
+            aria-label="Open menu"
+          >
+            <svg class="size-5 group-open:hidden" aria-hidden="true">
+              <use href="#i-menu" />
+            </svg>
+            <svg class="hidden size-5 group-open:block" aria-hidden="true">
+              <use href="#i-x" />
+            </svg>
+          </summary>
+          <div
+            class="fixed inset-x-0 top-17 bottom-0 animate-dropdown overflow-y-auto border-t border-line bg-card px-6 pt-4 pb-10 motion-reduce:animate-none"
+          >
+            <a
+              href="#"
+              class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
+              >About us</a
+            >
+
+            <p
+              class="mt-6 px-4 text-xs font-semibold tracking-widest text-muted uppercase"
+            >
+              Product
+            </p>
+            <ul class="mt-2">
+              <li>
+                <a
+                  href="../product/decision-audit.html"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-clipboard-check" /></svg></span
+                  >Decision Audit</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../product/decision-verification.html"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-compare" /></svg></span
+                  >Decision Verification</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../product/decision-monitor.html"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-bell-ring" /></svg></span
+                  >Decision Monitor</a
+                >
+              </li>
+            </ul>
+
+            <p
+              class="mt-6 px-4 text-xs font-semibold tracking-widest text-muted uppercase"
+            >
+              Templates
+            </p>
+            <ul class="mt-2">
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-cart" /></svg></span
+                  >Ecommerce and retail</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-basket" /></svg></span
+                  >FMCG and consumer goods</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-cpu" /></svg></span
+                  >Technology and electronics</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-sofa" /></svg></span
+                  >Furniture and homewares</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-sparkles" /></svg></span
+                  >Cosmetics and personal care</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-factory" /></svg></span
+                  >B2B and industrial</a
+                >
+              </li>
+            </ul>
+
+            <p
+              class="mt-6 px-4 text-xs font-semibold tracking-widest text-muted uppercase"
+            >
+              Resources
+            </p>
+            <ul class="mt-2">
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-file-text" /></svg></span
+                  >Documentation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-pen" /></svg></span
+                  >Notes</a
+                >
+              </li>
+            </ul>
+
+            <div class="mt-6 border-t border-line pt-6">
+              <a
+                href="#"
+                class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
+                >Pricing</a
+              >
+              <a
+                href="#"
+                class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
+                >Blog</a
+              >
+              <a
+                href="#"
+                class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
+                >Sign In</a
+              >
+              <a
+                href="../index.html#request"
+                class="btn-primary mt-4 w-full rounded-control text-nav"
+                >Request an audit
+                <svg class="size-3.5" aria-hidden="true">
+                  <use href="#i-arrow-right" /></svg
+              ></a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </header>
+    <!-- /shell:header -->
+    <main>
+      <section class="hero-bg border-b border-line">
+        <div
+          class="frame grid items-center gap-12 py-20 lg:grid-cols-12 lg:gap-16 lg:py-28"
+        >
+          <div class="lg:col-span-6">
+            <h1 class="reveal text-headline text-balance">
+              Find out which missing product data is actually costing you.
+            </h1>
+            <p
+              class="reveal mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted delay-100"
+            >
+              Send one category export. In 48 hours you get a ranked list of the
+              attributes worth recording, the products missing each one, and
+              where each missing fact already lives. No code, no tag, no
+              customer data, and nothing to install.
+            </p>
+            <div class="reveal mt-8 flex flex-wrap gap-3 delay-200">
+              <a href="mailto:getintouch@thepulseapi.com" class="btn-primary"
+                >Request a Decision Audit</a
+              >
+              <a href="index.html" class="btn-secondary">All products</a>
+            </div>
+          </div>
+          <div class="reveal delay-300 lg:col-span-6">
+            <div class="rounded-3xl border border-line bg-card p-5 shadow-sm">
+              <p class="mb-3 text-xs font-medium text-muted">Example data</p>
+              <div class="flex items-center gap-4 rounded-2xl bg-surface-1 p-4">
+                <span
+                  class="grid size-12 shrink-0 place-items-center rounded-full bg-primary text-on-primary"
+                  ><svg
+                    class="size-5 fill-none stroke-current stroke-2"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-pointer" /></svg
+                ></span>
+                <ul class="grid flex-1 gap-1.5 text-sm text-ink">
+                  <li class="flex items-center gap-2">
+                    <span class="size-1.5 rounded-full bg-primary"></span>Mobile
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="size-1.5 rounded-full bg-primary"></span>First
+                    visit
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="size-1.5 rounded-full bg-success"></span
+                    >Session live
+                  </li>
+                </ul>
+              </div>
+              <p class="mt-5 eyebrow">What this shopper already knew</p>
+              <ul class="mt-3 space-y-2">
+                <li
+                  class="flex items-center gap-3 rounded-xl border px-3.5 py-3 border-critical-line bg-critical-bg"
+                >
+                  <span
+                    class="grid size-6 shrink-0 place-items-center rounded-full bg-critical text-on-primary"
+                    ><svg class="size-3.5" aria-hidden="true">
+                      <use href="#i-x" /></svg
+                  ></span>
+                  <span class="min-w-0 flex-1 text-data"
+                    ><strong class="font-semibold text-ink"
+                      >A size or fit</strong
+                    >
+                    <span class="text-muted">34 in inseam</span></span
+                  >
+                  <span class="text-xs font-semibold text-critical"
+                    >No such field</span
+                  >
+                </li>
+                <li
+                  class="flex items-center gap-3 rounded-xl border px-3.5 py-3 border-critical-line bg-critical-bg"
+                >
+                  <span
+                    class="grid size-6 shrink-0 place-items-center rounded-full bg-critical text-on-primary"
+                    ><svg class="size-3.5" aria-hidden="true">
+                      <use href="#i-x" /></svg
+                  ></span>
+                  <span class="min-w-0 flex-1 text-data"
+                    ><strong class="font-semibold text-ink"
+                      >A material or ingredient</strong
+                    >
+                    <span class="text-muted">fragrance-free</span></span
+                  >
+                  <span class="text-xs font-semibold text-critical"
+                    >No such field</span
+                  >
+                </li>
+                <li
+                  class="flex items-center gap-3 rounded-xl border px-3.5 py-3 border-primary bg-primary-tint"
+                >
+                  <span
+                    class="grid size-6 shrink-0 place-items-center rounded-full bg-primary text-on-primary"
+                    ><svg class="size-3.5" aria-hidden="true">
+                      <use href="#i-check" /></svg
+                  ></span>
+                  <span class="min-w-0 flex-1 text-data"
+                    ><strong class="font-semibold text-ink"
+                      >A price ceiling</strong
+                    >
+                    <span class="text-muted">under $1,200</span></span
+                  >
+                  <span class="text-xs font-semibold text-primary"
+                    >Can filter</span
+                  >
+                </li>
+              </ul>
+              <p class="mt-4 flex items-center gap-3 text-data text-muted">
+                <span
+                  class="rounded-md bg-critical-bg px-2 py-0.5 text-sm font-bold text-critical tabular-nums"
+                  >2/3</span
+                >of what they knew is not a field, so this visitor is shown the
+                same order as everyone else.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scroll-mt-16 border-b border-line">
+        <div class="frame py-20 lg:py-28">
+          <div class="grid gap-6 lg:grid-cols-12 lg:items-end">
+            <div class="lg:col-span-7">
+              <p class="reveal eyebrow">Why nobody else can tell you this</p>
+              <h2 class="reveal mt-3 text-title text-balance">
+                One session, and the two ways of finding out where it broke.
+              </h2>
+            </div>
+            <p class="reveal text-lg text-pretty text-muted lg:col-span-5">
+              A shopper leaves without buying. Working out why is the whole
+              business, and there are only two ways to do it.
+            </p>
+          </div>
+          <ol class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            <li
+              class="reveal rounded-2xl border p-4 border-line bg-card delay-0"
+            >
+              <div class="flex items-center gap-2 text-muted">
+                <svg class="size-4 text-primary" aria-hidden="true">
+                  <use href="#i-globe" /></svg
+                ><span class="text-xs tabular-nums">01</span>
+              </div>
+              <p class="mt-3 text-data font-semibold text-ink">Arrived</p>
+              <p class="text-xs text-muted">from a price comparison page</p>
+            </li>
+            <li
+              class="reveal rounded-2xl border p-4 border-line bg-card delay-75"
+            >
+              <div class="flex items-center gap-2 text-muted">
+                <svg class="size-4 text-primary" aria-hidden="true">
+                  <use href="#i-sparkles" /></svg
+                ><span class="text-xs tabular-nums">02</span>
+              </div>
+              <p class="mt-3 text-data font-semibold text-ink">Searched</p>
+              <p class="text-xs text-muted">&ldquo;lightweight&rdquo;</p>
+            </li>
+            <li
+              class="reveal rounded-2xl border p-4 border-critical-line bg-critical-bg delay-150"
+            >
+              <div class="flex items-center gap-2 text-muted">
+                <svg class="size-4 text-critical" aria-hidden="true">
+                  <use href="#i-triangle-alert" /></svg
+                ><span class="text-xs tabular-nums">03</span>
+              </div>
+              <p class="mt-3 text-data font-semibold text-ink">Filtered</p>
+              <p class="text-xs text-muted">nothing to filter on</p>
+              <span
+                class="mt-3 inline-block rounded-md bg-critical px-2 py-0.5 text-xs font-semibold text-on-primary"
+                >Chain breaks here</span
+              >
+            </li>
+            <li
+              class="reveal rounded-2xl border p-4 border-line bg-card delay-225"
+            >
+              <div class="flex items-center gap-2 text-muted">
+                <svg class="size-4 text-primary" aria-hidden="true">
+                  <use href="#i-file" /></svg
+                ><span class="text-xs tabular-nums">04</span>
+              </div>
+              <p class="mt-3 text-data font-semibold text-ink">Opened</p>
+              <p class="text-xs text-muted">three products, then two more</p>
+            </li>
+            <li
+              class="reveal rounded-2xl border p-4 border-line bg-card delay-300"
+            >
+              <div class="flex items-center gap-2 text-muted">
+                <svg class="size-4 text-primary" aria-hidden="true">
+                  <use href="#i-arrow-right" /></svg
+                ><span class="text-xs tabular-nums">05</span>
+              </div>
+              <p class="mt-3 text-data font-semibold text-ink">Left</p>
+              <p class="text-xs text-muted">without choosing one</p>
+            </li>
+          </ol>
+          <p class="reveal mt-6 max-w-3xl text-data leading-relaxed text-muted">
+            The session did not fail at the checkout. It failed at step three,
+            because &ldquo;lightweight&rdquo; is not a field in this catalogue,
+            so nothing could narrow and the shopper was left comparing by hand.
+            Filtering is where most shelves break: 78% of mobile ecommerce sites
+            score poor or mediocre on it, and 58% on desktop.
+            <span class="text-ink">Baymard Institute, 2025 benchmark</span>
+          </p>
+          <div class="mt-10 grid gap-6 md:grid-cols-2">
+            <div
+              class="reveal rounded-2xl border border-warning-line bg-warning-bg p-6"
+            >
+              <p
+                class="text-xs font-semibold tracking-wider text-warning uppercase"
+              >
+                Every engagement-ranked tool
+              </p>
+              <h3 class="mt-3 text-h3 text-ink">
+                Has to wait for the chain to run, and still cannot see the gap.
+              </h3>
+              <p class="mt-2 text-data leading-relaxed text-muted">
+                Click and conversion models weigh the fields that already exist.
+                A field nobody recorded generates no clicks, so it scores zero
+                and stays invisible no matter how much traffic you send at it.
+              </p>
+              <p class="mt-5 text-sm font-semibold text-warning">
+                Needs months of traffic. Never surfaces the missing field.
+              </p>
+            </div>
+            <div
+              class="reveal rounded-2xl border border-primary-line bg-primary-tint p-6 delay-100"
+            >
+              <p
+                class="text-xs font-semibold tracking-wider text-primary uppercase"
+              >
+                The Decision Audit
+              </p>
+              <h3 class="mt-3 text-h3 text-ink">
+                Computes the break point before a single session runs.
+              </h3>
+              <p class="mt-2 text-data leading-relaxed text-muted">
+                Where the chain breaks is a property of your catalogue, not of
+                your visitors, so it can be measured from an export. That is why
+                this works on a new category, a new market or a launch range
+                with no history at all.
+              </p>
+              <p class="mt-5 text-sm font-semibold text-primary">
+                Needs one CSV. Works on day one, with zero traffic.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scroll-mt-16 border-b border-line bg-surface-1/50">
+        <div class="frame py-20 lg:py-28">
+          <div class="grid items-center gap-12 lg:grid-cols-12">
+            <div class="lg:col-span-5">
+              <p class="reveal eyebrow">What it looks like</p>
+              <h2 class="reveal mt-3 text-title">
+                The list you actually receive.
+              </h2>
+              <p class="reveal mt-5 text-lg text-pretty text-muted">
+                Ranked by bits of decision information, with the affected
+                products attached to each row.
+              </p>
+            </div>
+            <div class="reveal delay-200 lg:col-span-7">
+              <div
+                class="overflow-hidden rounded-2xl border border-line bg-card shadow-sm"
+              >
+                <div
+                  class="flex items-center justify-between border-b border-line bg-surface-0 px-5 py-3.5"
+                >
+                  <p class="text-data font-semibold text-ink">
+                    Your ranked repair list
+                  </p>
+                  <span
+                    class="rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-semibold text-primary"
+                    >48 hours</span
+                  >
+                </div>
+                <ol class="divide-y divide-line">
+                  <li class="grid grid-cols-12 items-center gap-4 px-5 py-4">
+                    <span class="col-span-5"
+                      ><span class="block text-data font-semibold text-ink"
+                        >1. Screen size</span
+                      ><span class="block text-xs text-muted tabular-nums"
+                        >80 products missing it</span
+                      ></span
+                    >
+                    <span
+                      class="col-span-5 h-2 overflow-hidden rounded-full bg-surface-1"
+                      ><span
+                        class="reveal-bar block h-full rounded-full bg-primary w-full"
+                      ></span
+                    ></span>
+                    <span
+                      class="col-span-2 text-right text-data font-semibold text-primary tabular-nums"
+                      >1.067</span
+                    >
+                  </li>
+                  <li class="grid grid-cols-12 items-center gap-4 px-5 py-4">
+                    <span class="col-span-5"
+                      ><span class="block text-data font-semibold text-ink"
+                        >2. Memory</span
+                      ><span class="block text-xs text-muted tabular-nums"
+                        >60 products missing it</span
+                      ></span
+                    >
+                    <span
+                      class="col-span-5 h-2 overflow-hidden rounded-full bg-surface-1"
+                      ><span
+                        class="reveal-bar block h-full rounded-full bg-primary w-95/100"
+                      ></span
+                    ></span>
+                    <span
+                      class="col-span-2 text-right text-data font-semibold text-primary tabular-nums"
+                      >1.012</span
+                    >
+                  </li>
+                  <li class="grid grid-cols-12 items-center gap-4 px-5 py-4">
+                    <span class="col-span-5"
+                      ><span class="block text-data font-semibold text-ink"
+                        >3. Processor</span
+                      ><span class="block text-xs text-muted tabular-nums"
+                        >162 products missing it</span
+                      ></span
+                    >
+                    <span
+                      class="col-span-5 h-2 overflow-hidden rounded-full bg-surface-1"
+                      ><span
+                        class="reveal-bar block h-full rounded-full bg-primary w-70/100"
+                      ></span
+                    ></span>
+                    <span
+                      class="col-span-2 text-right text-data font-semibold text-primary tabular-nums"
+                      >0.747</span
+                    >
+                  </li>
+                  <li class="grid grid-cols-12 items-center gap-4 px-5 py-4">
+                    <span class="col-span-5"
+                      ><span class="block text-data font-semibold text-ink"
+                        >4. Storage</span
+                      ><span class="block text-xs text-muted tabular-nums"
+                        >55 products missing it</span
+                      ></span
+                    >
+                    <span
+                      class="col-span-5 h-2 overflow-hidden rounded-full bg-surface-1"
+                      ><span
+                        class="reveal-bar block h-full rounded-full bg-primary w-64/100"
+                      ></span
+                    ></span>
+                    <span
+                      class="col-span-2 text-right text-data font-semibold text-primary tabular-nums"
+                      >0.688</span
+                    >
+                  </li>
+                </ol>
+                <p class="border-t border-line px-5 py-3.5 text-xs text-muted">
+                  Ranked by bits of decision information, not by how much is
+                  absent. Example data.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scroll-mt-16 border-b border-line">
+        <div class="frame py-20 lg:py-28">
+          <div class="grid gap-6 lg:grid-cols-12 lg:items-end">
+            <div class="lg:col-span-7">
+              <p class="reveal eyebrow">What happens</p>
+              <h2 class="reveal mt-3 text-title text-balance">
+                How does the audit work?
+              </h2>
+            </div>
+            <p class="reveal text-lg text-pretty text-muted lg:col-span-5">
+              Three things happen, and only the first one needs anything from
+              you.
+            </p>
+          </div>
+          <ol class="mt-12 grid gap-6 md:grid-cols-3">
+            <li
+              class="reveal rounded-2xl border border-line bg-card p-6 shadow-sm delay-100"
+            >
+              <div class="flex items-center gap-3">
+                <span
+                  class="grid size-9 place-items-center rounded-full bg-primary text-sm font-semibold text-on-primary tabular-nums"
+                  >01</span
+                >
+                <span
+                  class="rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-semibold text-primary uppercase"
+                  >You, once</span
+                >
+              </div>
+              <h3 class="mt-5 text-h3 text-ink">Send one category</h3>
+              <p class="mt-2 text-data leading-relaxed text-muted">
+                A CSV or JSON export of a single category. Product name,
+                description, category, price, and whatever attributes you
+                already record. Pick the shelf where you most suspect shoppers
+                struggle.
+              </p>
+            </li>
+            <li
+              class="reveal rounded-2xl border border-line bg-card p-6 shadow-sm delay-200"
+            >
+              <div class="flex items-center gap-3">
+                <span
+                  class="grid size-9 place-items-center rounded-full bg-primary text-sm font-semibold text-on-primary tabular-nums"
+                  >02</span
+                >
+                <span
+                  class="rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-semibold text-primary uppercase"
+                  >Us, 48 hours</span
+                >
+              </div>
+              <h3 class="mt-5 text-h3 text-ink">We measure it</h3>
+              <p class="mt-2 text-data leading-relaxed text-muted">
+                We work out how much each attribute contributes to telling your
+                products apart today, and how much it would contribute if it
+                were recorded everywhere. The difference is what that field is
+                worth, measured in bits rather than guessed from clicks.
+              </p>
+            </li>
+            <li
+              class="reveal rounded-2xl border border-line bg-card p-6 shadow-sm delay-300"
+            >
+              <div class="flex items-center gap-3">
+                <span
+                  class="grid size-9 place-items-center rounded-full bg-primary text-sm font-semibold text-on-primary tabular-nums"
+                  >03</span
+                >
+                <span
+                  class="rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-semibold text-primary uppercase"
+                  >30 minutes</span
+                >
+              </div>
+              <h3 class="mt-5 text-h3 text-ink">We walk you through it</h3>
+              <p class="mt-2 text-data leading-relaxed text-muted">
+                You get the ranked list and the working files, then half an hour
+                with whoever owns merchandising to go through what it found and
+                what it would take to act on it.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="scroll-mt-16 border-b border-line">
+        <div class="frame py-20 lg:py-28">
+          <div class="grid gap-10 lg:grid-cols-12">
+            <div class="lg:col-span-4">
+              <p class="reveal eyebrow">Questions</p>
+              <h2 class="reveal mt-3 text-title">The ones that decide it.</h2>
+            </div>
+            <div class="reveal border-t border-line lg:col-span-8">
+              <details class="group border-b border-line">
+                <summary
+                  class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink"
+                >
+                  What exactly do I need to send you?
+                  <svg
+                    class="size-5 shrink-0 text-primary transition-transform duration-200 ease-out-soft group-open:rotate-180"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron-down" />
+                  </svg>
+                </summary>
+                <p class="pb-6 text-body text-muted">
+                  One category export as CSV or JSON, containing product name,
+                  description, category, price and any attributes you already
+                  record. Nothing else. No customer records, no order history,
+                  no access to your systems, and no code on your site. Most
+                  merchants can produce this from their PIM or platform in under
+                  an hour.
+                </p>
+              </details>
+              <details class="group border-b border-line">
+                <summary
+                  class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink"
+                >
+                  Do I need a technical coordinator to use the product?
+                  <svg
+                    class="size-5 shrink-0 text-primary transition-transform duration-200 ease-out-soft group-open:rotate-180"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron-down" />
+                  </svg>
+                </summary>
+                <p class="pb-6 text-body text-muted">
+                  No. One person to produce the export, and whoever owns
+                  merchandising for the walkthrough. No engineering time,
+                  because nothing is being installed.
+                </p>
+              </details>
+              <details class="group border-b border-line">
+                <summary
+                  class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink"
+                >
+                  How long does it take to receive the result?
+                  <svg
+                    class="size-5 shrink-0 text-primary transition-transform duration-200 ease-out-soft group-open:rotate-180"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron-down" />
+                  </svg>
+                </summary>
+                <p class="pb-6 text-body text-muted">
+                  48 hours from receiving the file. The measurement itself is
+                  fast; the time is in reading your taxonomy properly so the
+                  attributes we score are the ones your category actually uses.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-b border-line">
+        <div class="frame py-20 lg:py-28">
+          <div
+            class="reveal bg-soft-gradient rounded-3xl border border-line px-8 py-14 lg:px-16 lg:py-20"
+          >
+            <h2 class="max-w-2xl text-title text-balance">
+              Pick the shelf you most suspect, and send it.
+            </h2>
+            <p class="mt-5 max-w-xl text-lg text-pretty text-muted">
+              One category, a fixed fee, and an answer in two days that is
+              useful whether or not you ever work with us again.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="mailto:getintouch@thepulseapi.com" class="btn-primary"
+                >Request a Decision Audit</a
+              >
+            </div>
+            <p class="mt-6 text-xs text-muted">
+              No obligation at any step, and no integration at any point.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- shell:footer (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
+    <footer class="border-t border-line bg-card">
+      <div class="frame pt-20 pb-12 lg:pt-24">
+        <div class="grid gap-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+          <div>
+            <a href="../index.html" aria-label="Pulse home" class="inline-flex"
+              ><picture
+                ><source
+                  srcset="../src/assets/brand/logo-white.webp"
+                  media="(prefers-color-scheme: dark)" />
+                <img
+                  src="../src/assets/brand/logo.webp"
+                  alt="Pulse"
+                  width="84"
+                  height="28"
+                  loading="lazy"
+                  class="h-7 w-auto" /></picture
+            ></a>
+          </div>
+          <div>
+            <h2 class="text-nav font-semibold">Product</h2>
+            <ul class="mt-6 space-y-3.5 text-sm text-muted">
+              <li>
+                <a
+                  href="../product/decision-audit.html"
+                  class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                  >Decision Audit</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../product/decision-verification.html"
+                  class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                  >Decision Verification</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../product/decision-monitor.html"
+                  class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                  >Decision Monitor</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                  >Pricing</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="text-nav font-semibold">Company</h2>
+            <ul class="mt-6 space-y-3.5 text-sm text-muted">
+              <li>
+                <a
+                  href="#"
+                  class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                  >About us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                  >Contact</a
+                >
+              </li>
+              <li class="flex items-center gap-2">
+                <a
+                  href="#"
+                  class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                  >Career</a
+                ><span
+                  class="inline-flex shrink-0 items-center rounded bg-primary px-1.5 py-0.5 text-caption font-semibold whitespace-nowrap text-on-primary"
+                  >We are hiring</span
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="text-nav font-semibold">Contact point</h2>
+            <div class="mt-6 flex gap-3">
+              <a
+                href="https://www.linkedin.com/company/thepulseapi"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
+                ><svg class="size-5" aria-hidden="true">
+                  <use href="#i-linkedin" /></svg
+              ></a>
+              <a
+                href="https://www.facebook.com/thepulseapi"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
+                ><svg class="size-5" aria-hidden="true">
+                  <use href="#i-facebook" /></svg
+              ></a>
+              <a
+                href="https://github.com/thepulseapi"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
+                ><svg class="size-5" aria-hidden="true">
+                  <use href="#i-github" /></svg
+              ></a>
+            </div>
+            <ul class="mt-5 space-y-3.5 text-sm text-muted">
+              <li>
+                <a
+                  href="mailto:getintouch@thepulseapi.com"
+                  class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                  >getintouch@thepulseapi.com</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-line">
+        <div
+          class="frame flex flex-col gap-3 py-4 text-data text-ink sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p>© 2026 Pulse. All rights reserved.</p>
+          <ul class="flex flex-wrap items-center gap-x-7 gap-y-2">
+            <li>
+              <a
+                href="#"
+                class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
+                >Terms of Service</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
+                >Cookie Policy</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
+                >GDPR</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <!-- /shell:footer -->
+  </body>
+</html>

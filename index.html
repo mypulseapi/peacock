@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pulse — Uncover Shoppers&rsquo; Intent and Catalogue Gaps</title>
+    <!-- shell:head (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
     <link rel="icon" href="./src/assets/brand/favicon.ico" sizes="any" />
     <link
       rel="icon"
@@ -23,8 +24,10 @@
     />
     <link rel="stylesheet" href="./dist/output.css" />
     <script defer src="./src/main.js"></script>
+    <!-- /shell:head -->
   </head>
   <body class="overflow-x-clip">
+    <!-- shell:sprite (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
     <!-- Icon sprite (Lucide-style, stroke icons). Use: <svg><use href="#i-name" /></svg> -->
     <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
       <symbol
@@ -386,7 +389,9 @@
         <path d="M14 2v4a2 2 0 0 0 2 2h4" />
       </symbol>
     </svg>
+    <!-- /shell:sprite -->
 
+    <!-- shell:header (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
     <!-- Header (layout and behaviour from thepulseapi.com). Dropdowns are native <details>: they work
          without JavaScript; src/main.js adds hover-open, one-at-a-time, outside-click and Escape. -->
     <header
@@ -444,7 +449,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            href="#"
+                            href="product/decision-audit.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -459,7 +464,7 @@
                         </li>
                         <li>
                           <a
-                            href="#"
+                            href="product/decision-verification.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -481,7 +486,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            href="#"
+                            href="product/decision-monitor.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -865,7 +870,7 @@
             <ul class="mt-2">
               <li>
                 <a
-                  href="#"
+                  href="product/decision-audit.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -875,7 +880,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="product/decision-verification.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -885,7 +890,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="product/decision-monitor.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1019,6 +1024,7 @@
         </details>
       </div>
     </header>
+    <!-- /shell:header -->
 
     <main>
       <!-- ============================== HERO ============================== -->
@@ -3894,6 +3900,7 @@
 
     <!-- Footer -->
     <!-- Footer (as on thepulseapi.com): logo, Product, Company, Contact point; legal bar below -->
+    <!-- shell:footer (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
     <footer class="border-t border-line bg-card">
       <div class="frame pt-20 pb-12 lg:pt-24">
         <div class="grid gap-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
@@ -3917,21 +3924,21 @@
             <ul class="mt-6 space-y-3.5 text-sm text-muted">
               <li>
                 <a
-                  href="#"
+                  href="product/decision-audit.html"
                   class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                   >Decision Audit</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  href="product/decision-verification.html"
                   class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                   >Decision Verification</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  href="product/decision-monitor.html"
                   class="inline-flex min-h-6 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                   >Decision Monitor</a
                 >
@@ -4055,5 +4062,6 @@
         </div>
       </div>
     </footer>
+    <!-- /shell:footer -->
   </body>
 </html>

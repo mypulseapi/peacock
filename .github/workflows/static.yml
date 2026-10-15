@@ -46,7 +46,7 @@ jobs:
       - name: Assemble site
         run: |
           mkdir _site
-          cp -r *.html CNAME dist src _site/
+          cp -r *.html CNAME dist src product _site/
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Report Tailwind CSS IntelliSense warnings for every *.html and src/*.css file.
+"""Report Tailwind CSS IntelliSense warnings for every *.html (any folder) and src/*.css file.
 
 Runs the same language server the VS Code "Tailwind CSS IntelliSense" extension uses,
 so the output matches the squiggles in the editor. Also reports [unknownClass] for any
@@ -59,7 +59,9 @@ def unknown_classes(html_files):
 
 
 def main():
-    files = sorted(ROOT.glob("*.html")) + sorted((ROOT / "src").glob("*.css"))
+    pages = [p for p in ROOT.rglob("*.html")
+             if not {"node_modules", "dist", ".git"}.intersection(p.relative_to(ROOT).parts)]
+    files = sorted(pages) + sorted((ROOT / "src").glob("*.css"))
     proc = subprocess.Popen(server_command(), cwd=ROOT, stdin=subprocess.PIPE,
                             stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
     diagnostics = {}

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @source "../*.html";
+@source "../product/*.html"; /* one line per page folder */
 @source "./*.js";
 
 /* Inter 4.1 (rsms/inter, SIL OFL — src/assets/fonts/OFL.txt), self-hosted because the Google Fonts copy has its
@@ -445,9 +446,6 @@
 /* Labels & badges */
 @utility eyebrow {
   @apply tabular-nums text-xs font-medium tracking-wider text-muted uppercase;
-}
-@utility section-tag {
-  @apply rounded border border-primary-line bg-primary-tint px-2 py-0.5 tabular-nums text-sm font-bold text-primary;
 }
 @utility badge {
   @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 tabular-nums text-xs font-semibold;

@@ -7,6 +7,7 @@
 //   [data-demo]            → plays the hero workflow demo (tabs, steps, captions — see DESIGN.md §6)
 //   [data-spy] links       → highlight the section currently in view (sets [data-active])
 //   [data-hero]            → hero background light (and its tail) follows the cursor (--hero-x / --hero-y …)
+//   [data-why]             → Why PULSE orbit: turning ring; a circle turns to the top and opens its reason
 //   [data-pause] buttons   → pause the hero demo / data orbit (sets [data-held] on [data-pausable])
 
 const reduceMotion = window.matchMedia(
@@ -410,6 +411,80 @@ document.querySelectorAll("[data-pause]").forEach((button) => {
       .setAttribute("href", held ? "#i-play" : "#i-pause");
   });
 });
+
+// Why PULSE orbit: the ring of five circles turns slowly (--why-angle, one turn every 2 minutes; not with
+// reduced motion, and only while on screen). Clicking a circle turns it to 12 o'clock and opens the card under it
+// with its reason; clicking it again, the card's × or Esc closes the card and the ring turns on. "Next" moves on.
+const why = document.querySelector("[data-why]");
+if (why) {
+  const spin = why.querySelector("[data-why-spin]");
+  const tabs = [...why.querySelectorAll("[data-why-tab]")];
+  const panels = [...why.querySelectorAll("[data-why-panel]")];
+  const step = 360 / tabs.length;
+  const speed = 360 / 120000; // degrees per millisecond
+  let angle = 0;
+  let open = -1;
+  let onScreen = false;
+  let last = performance.now();
+  const setAngle = () => spin.style.setProperty("--why-angle", `${angle}deg`);
+
+  const tick = (now) => {
+    if (open < 0 && onScreen && !reduceMotion) {
+      angle = (angle + (now - last) * speed) % 360;
+      setAngle();
+    }
+    last = now;
+    requestAnimationFrame(tick);
+  };
+  new IntersectionObserver(
+    ([entry]) => (onScreen = entry.isIntersecting),
+  ).observe(why);
+  requestAnimationFrame(tick);
+
+  const select = (index) => {
+    open = index;
+    // Shortest turn that brings circle `index` (at index × step degrees on the ring) to the top
+    const delta = ((((-index * step - angle) % 360) + 540) % 360) - 180;
+    angle += delta;
+    if (!reduceMotion) spin.setAttribute("data-turning", "");
+    setAngle();
+    setTimeout(() => spin.removeAttribute("data-turning"), 900);
+    why.setAttribute("data-open", "");
+    tabs.forEach((tab, i) => {
+      tab.toggleAttribute("data-active", i === index);
+      tab.setAttribute("aria-expanded", String(i === index));
+    });
+    panels.forEach((panel, i) =>
+      panel.toggleAttribute("data-active", i === index),
+    );
+  };
+  const close = () => {
+    const was = open;
+    open = -1;
+    why.removeAttribute("data-open");
+    tabs.forEach((tab) => {
+      tab.removeAttribute("data-active");
+      tab.setAttribute("aria-expanded", "false");
+    });
+    if (was >= 0) tabs[was].focus();
+  };
+
+  tabs.forEach((tab, i) =>
+    tab.addEventListener("click", () => (open === i ? close() : select(i))),
+  );
+  why.querySelector("[data-why-close]").addEventListener("click", close);
+  why.querySelectorAll("[data-why-next]").forEach((button) =>
+    button.addEventListener("click", () => {
+      select((open + 1) % tabs.length);
+      // keep focus in the card: move it to the next reason's own "Next" button
+      panels[open].querySelector("[data-why-next]").focus();
+    }),
+  );
+  // Esc closes the card wherever focus is (after "Next" the focused button is hidden with its panel)
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && open >= 0) close();
+  });
+}
 
 // How it works (lovable.dev style): the step whose card has crossed the middle of the screen is active.
 // Its description opens (CSS: how-desc) and --how-p (0 → 1) fills the line under it as the card scrolls

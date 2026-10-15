@@ -290,6 +290,10 @@
   --shadow-nav:
     0 0 0 1px var(--color-line),
     0 12px 32px -12px color-mix(in oklab, var(--color-ink) 20%, transparent);
+  /* Soft primary halo: the selected circle and the centre orb of the #why orbit */
+  --shadow-glow:
+    0 0 0 6px color-mix(in oklab, var(--color-primary) 14%, transparent),
+    0 0 32px 6px color-mix(in oklab, var(--color-primary) 30%, transparent);
   --animate-caret: caret 1s step-end infinite;
   --animate-ring: ring 3.6s ease-in-out infinite;
   --animate-dropdown: dropdown 150ms var(--ease-out-soft);
@@ -724,6 +728,47 @@
 @utility orbit-ring {
   [data-pausable][data-held] & {
     animation-play-state: paused;
+  }
+}
+
+/* Why PULSE orbit (#why). src/main.js turns the ring by setting --why-angle (one turn every 2 minutes); the
+   circles counter-turn so they stay upright. Picking a circle turns the ring (data-turning: a 900ms ease) until
+   that circle is at 12 o'clock, then the card under it opens ([data-why][data-open]). */
+@property --why-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@utility why-spin {
+  rotate: var(--why-angle);
+  &[data-turning] {
+    transition: --why-angle 900ms var(--ease-in-out-cubic);
+  }
+}
+@utility why-upright {
+  rotate: calc(var(--why-angle) * -1);
+}
+/* The card opens after the turn; closed it is hidden from everyone */
+@utility why-card {
+  transition-property: opacity, scale, visibility;
+  transition-duration: 250ms;
+  transition-timing-function: var(--ease-out-soft);
+  [data-why]:not([data-open]) & {
+    visibility: hidden;
+    opacity: 0;
+    scale: 0.96;
+  }
+  [data-why][data-open] & {
+    transition-delay: 600ms;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* Only the selected reason shows in the card */
+@utility why-panel {
+  &:not([data-active]) {
+    display: none;
   }
 }
 

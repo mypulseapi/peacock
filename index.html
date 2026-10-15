@@ -130,6 +130,32 @@
         <path d="m9 14 2 2 4-4" />
       </symbol>
       <symbol
+        id="i-shield-check"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+        />
+        <path d="m9 12 2 2 4-4" />
+      </symbol>
+      <symbol
+        id="i-trending-up"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M16 7h6v6" />
+        <path d="m22 7-8.5 8.5-5-5L2 17" />
+      </symbol>
+      <symbol
         id="i-compare"
         viewBox="0 0 24 24"
         fill="none"
@@ -3409,6 +3435,406 @@
               <p class="text-body text-ink">
                 growth in AI traffic to US retail. Agents don&rsquo;t guess.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================= WHY PULSE ========================= -->
+      <!-- Radial orbit of the five reasons (copy from thepulseapi.com "Why Pulse"; layout from a radial orbital timeline).
+           The ring turns slowly (src/main.js, --why-angle). Clicking a circle turns it to 12 o'clock and opens a card
+           under it with the reason; click it again, × or Esc closes the card and the ring turns on. Reduced motion: the
+           ring stays still. Without JS the reasons are listed under the title. -->
+      <!-- TODO-COPY-REVIEW: the short labels on the circles are new -->
+      <section id="why" class="scroll-mt-16 border-b border-line" data-why>
+        <div class="frame grid lg:grid-cols-12">
+          <div
+            class="flex flex-col justify-center py-16 lg:col-span-5 lg:border-r lg:border-line lg:py-24 lg:pr-12"
+          >
+            <span class="reveal section-tag inline-block self-start"
+              >Why PULSE</span
+            >
+            <h2 class="reveal mt-6 text-title">
+              Five reasons this is worth half an hour.
+            </h2>
+            <p class="reveal mt-4 hidden text-sm text-muted js:block">
+              Select a circle to read each reason.
+            </p>
+            <ol
+              class="mt-8 list-decimal space-y-3 pl-5 text-data text-muted js:hidden"
+            >
+              <li>
+                <strong class="font-semibold text-ink"
+                  >Fix the costly gap first.</strong
+                >
+                You find out which missing field costs the most, instead of
+                enriching in whatever order seemed sensible.
+              </li>
+              <li>
+                <strong class="font-semibold text-ink"
+                  >Just a spreadsheet.</strong
+                >
+                It runs on a spreadsheet. No code, no tag on your site, no
+                integration, and no engineering time.
+              </li>
+              <li>
+                <strong class="font-semibold text-ink"
+                  >No customer data.</strong
+                >
+                No customer data is involved at any point, so there is no
+                privacy review to clear before you start.
+              </li>
+              <li>
+                <strong class="font-semibold text-ink"
+                  >A cheaper repair.</strong
+                >
+                Most of what is missing turns out to be recoverable from text
+                you already own, so the repair is cheaper than it looks.
+              </li>
+              <li>
+                <strong class="font-semibold text-ink"
+                  >Proof of what moved.</strong
+                >
+                You can re-measure after the repair and show what moved, which
+                is the part that gets the next round funded.
+              </li>
+            </ol>
+          </div>
+          <div
+            class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-16 lg:col-span-7 lg:border-t-0 lg:px-10 lg:py-20"
+          >
+            <div
+              class="reveal relative mx-auto aspect-square w-full max-w-140"
+              data-why-orbit
+            >
+              <svg
+                class="absolute inset-0 size-full"
+                viewBox="0 0 400 400"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="200"
+                  cy="200"
+                  r="176"
+                  class="stroke-line-control"
+                  stroke-opacity="0.5"
+                  stroke-width="1.5"
+                />
+                <circle
+                  cx="200"
+                  cy="200"
+                  r="64"
+                  class="stroke-line"
+                  stroke-width="1"
+                />
+              </svg>
+              <div
+                class="absolute inset-0 grid place-items-center"
+                aria-hidden="true"
+              >
+                <span
+                  class="grid size-1/6 place-items-center rounded-full bg-brand-gradient shadow-glow transition duration-500 ease-out-soft pre-shown:scale-75 pre-shown:opacity-0"
+                >
+                  <span class="size-1/2 rounded-full bg-card/80"></span>
+                </span>
+              </div>
+              <div
+                class="why-spin absolute inset-0 hidden js:block"
+                data-why-spin
+              >
+                <button
+                  type="button"
+                  class="group absolute left-1/2 top-3/50 -translate-1/2 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  aria-expanded="false"
+                  aria-controls="why-card"
+                  data-why-tab
+                >
+                  <span class="why-upright block">
+                    <span
+                      class="block transition duration-400 ease-out-soft delay-250 pre-shown:scale-50 pre-shown:opacity-0"
+                    >
+                      <span
+                        class="grid size-14 place-items-center rounded-full border-2 border-line-control bg-card text-muted transition duration-300 ease-out-soft group-hover:border-primary group-hover:text-primary group-data-active:size-16 group-data-active:border-primary group-data-active:bg-primary group-data-active:text-on-primary group-data-active:shadow-glow"
+                      >
+                        <svg
+                          class="size-5 group-data-active:size-6"
+                          aria-hidden="true"
+                        >
+                          <use href="#i-compare" />
+                        </svg>
+                      </span>
+                      <span
+                        class="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
+                        >Fix the costly gap first</span
+                      >
+                    </span>
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="group absolute left-23/25 top-73/200 -translate-1/2 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  aria-expanded="false"
+                  aria-controls="why-card"
+                  data-why-tab
+                >
+                  <span class="why-upright block">
+                    <span
+                      class="block transition duration-400 ease-out-soft delay-350 pre-shown:scale-50 pre-shown:opacity-0"
+                    >
+                      <span
+                        class="grid size-14 place-items-center rounded-full border-2 border-line-control bg-card text-muted transition duration-300 ease-out-soft group-hover:border-primary group-hover:text-primary group-data-active:size-16 group-data-active:border-primary group-data-active:bg-primary group-data-active:text-on-primary group-data-active:shadow-glow"
+                      >
+                        <svg
+                          class="size-5 group-data-active:size-6"
+                          aria-hidden="true"
+                        >
+                          <use href="#i-file-text" />
+                        </svg>
+                      </span>
+                      <span
+                        class="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
+                        >Just a spreadsheet</span
+                      >
+                    </span>
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="group absolute left-19/25 top-171/200 -translate-1/2 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  aria-expanded="false"
+                  aria-controls="why-card"
+                  data-why-tab
+                >
+                  <span class="why-upright block">
+                    <span
+                      class="block transition duration-400 ease-out-soft delay-450 pre-shown:scale-50 pre-shown:opacity-0"
+                    >
+                      <span
+                        class="grid size-14 place-items-center rounded-full border-2 border-line-control bg-card text-muted transition duration-300 ease-out-soft group-hover:border-primary group-hover:text-primary group-data-active:size-16 group-data-active:border-primary group-data-active:bg-primary group-data-active:text-on-primary group-data-active:shadow-glow"
+                      >
+                        <svg
+                          class="size-5 group-data-active:size-6"
+                          aria-hidden="true"
+                        >
+                          <use href="#i-shield-check" />
+                        </svg>
+                      </span>
+                      <span
+                        class="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
+                        >No customer data</span
+                      >
+                    </span>
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="group absolute left-6/25 top-171/200 -translate-1/2 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  aria-expanded="false"
+                  aria-controls="why-card"
+                  data-why-tab
+                >
+                  <span class="why-upright block">
+                    <span
+                      class="block transition duration-400 ease-out-soft delay-550 pre-shown:scale-50 pre-shown:opacity-0"
+                    >
+                      <span
+                        class="grid size-14 place-items-center rounded-full border-2 border-line-control bg-card text-muted transition duration-300 ease-out-soft group-hover:border-primary group-hover:text-primary group-data-active:size-16 group-data-active:border-primary group-data-active:bg-primary group-data-active:text-on-primary group-data-active:shadow-glow"
+                      >
+                        <svg
+                          class="size-5 group-data-active:size-6"
+                          aria-hidden="true"
+                        >
+                          <use href="#i-sparkles" />
+                        </svg>
+                      </span>
+                      <span
+                        class="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
+                        >A cheaper repair</span
+                      >
+                    </span>
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="group absolute left-2/25 top-73/200 -translate-1/2 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  aria-expanded="false"
+                  aria-controls="why-card"
+                  data-why-tab
+                >
+                  <span class="why-upright block">
+                    <span
+                      class="block transition duration-400 ease-out-soft delay-650 pre-shown:scale-50 pre-shown:opacity-0"
+                    >
+                      <span
+                        class="grid size-14 place-items-center rounded-full border-2 border-line-control bg-card text-muted transition duration-300 ease-out-soft group-hover:border-primary group-hover:text-primary group-data-active:size-16 group-data-active:border-primary group-data-active:bg-primary group-data-active:text-on-primary group-data-active:shadow-glow"
+                      >
+                        <svg
+                          class="size-5 group-data-active:size-6"
+                          aria-hidden="true"
+                        >
+                          <use href="#i-trending-up" />
+                        </svg>
+                      </span>
+                      <span
+                        class="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
+                        >Proof of what moved</span
+                      >
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <!-- Dropdown card under the circle at 12 o'clock -->
+              <div
+                id="why-card"
+                class="why-card absolute top-1/5 left-1/2 z-10 w-80 -translate-x-1/2 rounded-2xl border border-line-control bg-card p-6 shadow-xl"
+                role="region"
+                aria-label="Reason"
+                data-why-card
+              >
+                <span
+                  class="absolute bottom-full left-1/2 h-5 w-px -translate-x-1/2 bg-line-control"
+                  aria-hidden="true"
+                ></span>
+                <button
+                  type="button"
+                  class="hit-area absolute top-4 right-4 grid size-7 place-items-center rounded-full text-muted transition-colors duration-150 ease-out-soft hover:bg-surface-1 hover:text-ink focus-visible:outline-2 focus-visible:outline-primary"
+                  aria-label="Close"
+                  data-why-close
+                >
+                  <svg class="size-4" aria-hidden="true">
+                    <use href="#i-x" />
+                  </svg>
+                </button>
+                <div class="why-panel" data-why-panel>
+                  <span
+                    class="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
+                    >Reason 01 / 05</span
+                  >
+                  <h3 class="mt-4 text-h3 text-ink">
+                    Fix the costly gap first
+                  </h3>
+                  <p class="mt-2 text-data leading-relaxed text-muted">
+                    You find out which missing field costs the most, instead of
+                    enriching in whatever order seemed sensible.
+                  </p>
+                  <div class="mt-4 border-t border-line pt-4">
+                    <button
+                      type="button"
+                      class="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary"
+                      data-why-next
+                    >
+                      Next: Just a spreadsheet<svg
+                        class="size-3"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-arrow-right" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="why-panel" data-why-panel>
+                  <span
+                    class="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
+                    >Reason 02 / 05</span
+                  >
+                  <h3 class="mt-4 text-h3 text-ink">Just a spreadsheet</h3>
+                  <p class="mt-2 text-data leading-relaxed text-muted">
+                    It runs on a spreadsheet. No code, no tag on your site, no
+                    integration, and no engineering time.
+                  </p>
+                  <div class="mt-4 border-t border-line pt-4">
+                    <button
+                      type="button"
+                      class="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary"
+                      data-why-next
+                    >
+                      Next: No customer data<svg
+                        class="size-3"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-arrow-right" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="why-panel" data-why-panel>
+                  <span
+                    class="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
+                    >Reason 03 / 05</span
+                  >
+                  <h3 class="mt-4 text-h3 text-ink">No customer data</h3>
+                  <p class="mt-2 text-data leading-relaxed text-muted">
+                    No customer data is involved at any point, so there is no
+                    privacy review to clear before you start.
+                  </p>
+                  <div class="mt-4 border-t border-line pt-4">
+                    <button
+                      type="button"
+                      class="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary"
+                      data-why-next
+                    >
+                      Next: A cheaper repair<svg
+                        class="size-3"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-arrow-right" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="why-panel" data-why-panel>
+                  <span
+                    class="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
+                    >Reason 04 / 05</span
+                  >
+                  <h3 class="mt-4 text-h3 text-ink">A cheaper repair</h3>
+                  <p class="mt-2 text-data leading-relaxed text-muted">
+                    Most of what is missing turns out to be recoverable from
+                    text you already own, so the repair is cheaper than it
+                    looks.
+                  </p>
+                  <div class="mt-4 border-t border-line pt-4">
+                    <button
+                      type="button"
+                      class="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary"
+                      data-why-next
+                    >
+                      Next: Proof of what moved<svg
+                        class="size-3"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-arrow-right" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="why-panel" data-why-panel>
+                  <span
+                    class="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
+                    >Reason 05 / 05</span
+                  >
+                  <h3 class="mt-4 text-h3 text-ink">Proof of what moved</h3>
+                  <p class="mt-2 text-data leading-relaxed text-muted">
+                    You can re-measure after the repair and show what moved,
+                    which is the part that gets the next round funded.
+                  </p>
+                  <div class="mt-4 border-t border-line pt-4">
+                    <button
+                      type="button"
+                      class="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-primary"
+                      data-why-next
+                    >
+                      Next: Fix the costly gap first<svg
+                        class="size-3"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-arrow-right" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -343,7 +343,7 @@ if (hero && !reduceMotion) {
 }
 
 // Hero workflow demo: steps play in order. The pace comes from CSS — when the active tab's timer bar
-// (animate-demo-timer) finishes, the next step starts. Hovering the demo or scrolling it out of view
+// (animate-demo-timer) finishes, the next step starts. Hovering the app window (not the timeline) or scrolling it out of view
 // pauses the timer; clicking a tab jumps to that step. With reduced motion the timer is hidden, so
 // nothing advances by itself.
 const demo = document.querySelector("[data-demo]");

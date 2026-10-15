@@ -53,7 +53,7 @@ Additions for screens that do not exist yet:
 
 ### 2.1 Logo — unchanged
 
-The existing logo stays: a gradient **P** (coral-red `#e14251` → purple `#9d4199` → blue) followed by "ulse" in blue `#4542ed`. Its violet/blue tones match Aurora. File: `src/assets/logo.webp` (600×200 raster), shown 28px tall in the header.
+The existing logo stays: a gradient **P** (coral-red `#e14251` → purple `#9d4199` → blue) followed by "ulse" in blue `#4542ed`. Its violet/blue tones match Aurora. Files (official, from thepulseapi.com): `src/assets/brand/logo.webp` (600×200 raster), shown 28px tall in the header and footer, and the reversed `logo-white.webp`, used automatically when the OS is in dark mode. The symbol (the gradient P in a circle) is the favicon: `favicon.ico` (16/32/48), `favicon-32.png`, `apple-touch-icon.png` (180, on Mist).
 
 Logo contrast (decorative logos are exempt from WCAG contrast, recorded for awareness):
 
@@ -67,11 +67,11 @@ Logo contrast (decorative logos are exempt from WCAG contrast, recorded for awar
 
 ### 2.2 Open items
 
-| Item                                                                                              | Status |
-| ------------------------------------------------------------------------------------------------- | ------ |
-| SVG master (no raster master)                                                                     | TBD    |
-| Symbol only (favicon, avatar), stacked, reversed (for dark mode / dark band), one-colour variants | TBD    |
-| Clear space and minimum size rules                                                                | TBD    |
+| Item                                                                                              | Status                                                                                        |
+| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| SVG master (no raster master)                                                                     | TBD                                                                                           |
+| Symbol only (favicon, avatar), stacked, reversed (for dark mode / dark band), one-colour variants | Symbol (favicon) and reversed: done, from the official raster files. Stacked, one-colour: TBD |
+| Clear space and minimum size rules                                                                | TBD                                                                                           |
 
 ### 2.3 Don't
 
@@ -182,7 +182,7 @@ The site follows the visitor's OS setting (`prefers-color-scheme`); `<html data-
 - On light backgrounds, Cyan, Coral (`accent`) and gap amber are **decorative only**. For text use `accent-text` or `gap-strong`.
 - On the dark band and in dark mode, Cyan, Coral, amber and `#A79CFF` are all fine as text.
 - **Missing ≠ Critical:** Missing cells use the gap family; critical is only for blocking errors. Never communicate state with colour alone (icon + text).
-  **Exception (decided 14 Oct 2026):** the hero demo's problem step keeps its red `critical` styling (Missing flags, "347 gaps found" pill, problem alert), as on the current site — and the "How it works" scenes use the same red Missing flag (`missing-flag`, with the warning icon) so Missing looks the same everywhere on the home page.
+  **Exception (decided 14 Oct 2026):** the hero demo's problem step keeps its red `critical` styling (Missing flags and the "357 fields are missing information" alert), as on the current site — and the "How it works" scenes use the same red Missing flag (`missing-flag`, with the warning icon) so Missing looks the same everywhere on the home page.
 - **Primary vs Success:** buttons are always `primary`; success states always carry a check icon and text on `success-bg`. Never use the success colour for a button.
 - Text tokens are fixed hex values — never `color-mix()` — so every ratio below stays true.
 
@@ -245,27 +245,28 @@ Decorative only (do not use as text on light): Coral / card 2.57 · Cyan / card 
 
 ## 4. Typography — Inter (Inter Display for headings)
 
-One family, two optical designs. Adopted 14 Oct 2026; replaces Plus Jakarta Sans.
+One family, two optical designs. Adopted 14 Oct 2026; replaces Plus Jakarta Sans. Retuned 15 Oct 2026 to match linear.app / attio.com.
 
 | Role                        | Font                                                                              | Weights |
 | --------------------------- | --------------------------------------------------------------------------------- | ------- |
-| Headings, large numbers     | **Inter Display** — Inter's optical size 32, applied automatically at 32px and up | 500–800 |
+| Headings, large numbers     | **Inter Display** — Inter's optical size 32, applied automatically at 32px and up | 550–600 |
 | Body, UI, numbers in tables | **Inter** text design (`tabular-nums` on for numbers)                             | 400–600 |
 
-- Loaded once from Google Fonts with the optical-size axis: `Inter:opsz,wght@14..32,400..800`. With the default `font-optical-sizing: auto`, browsers use the Display design for large text and the text design for small text — no extra file.
-- Heading letter-spacing: −0.01em (Inter Display already has tight spacing built in; −0.02em and tighter makes letters collide).
+- Self-hosted: Inter 4.1 variable (`src/assets/fonts/InterVariable.woff2`, wght 100–900, opsz 14–32), trimmed to Latin, Latin Extended and Vietnamese. Not Google Fonts: its copy has the stylistic sets stripped. With the default `font-optical-sizing: auto`, browsers use the Display design for large text and the text design for small text — no extra file.
+- Stylistic set 03 on everywhere (round quotes and commas), as linear.app and attio.com.
+- Letter-spacing: body −0.011em; headings −0.022em (display, hero) → −0.02em (headline, title, h1) → −0.015em (h2) → −0.01em (h3). Big numbers semibold, never bold/extrabold.
 - No monospace font: data uses Inter `tabular-nums`.
 - Fallback: `ui-sans-serif, system-ui, sans-serif`.
 - SIL OFL licensed.
-- **Vietnamese: supported.** Google Fonts serves a `vietnamese` subset of Inter (Ă, Đ, Ơ, Ư, all tone marks, ₫). Verified 14 Oct 2026: ữ, ặ, ỗ, ẫ, ợ and "Tiếng Việt" render in Inter itself (no fallback font) at Display size (56px, weights 500 and 800) and at text size (16px).
+- **Vietnamese: supported.** The self-hosted file keeps the Vietnamese ranges (Ă, Đ, Ơ, Ư, all tone marks, ₫); checked 15 Oct 2026 that every Vietnamese letter is in the font.
 
 **Type scale** (implemented):
 
 | Style    | Size            | Line-height | Weight  |
 | -------- | --------------- | ----------- | ------- |
-| Display  | 40 → 60px fluid | 1.05        | 800     |
-| Headline | 36 → 48px fluid | 1.1         | 800     |
-| Title    | 30 → 36px fluid | 1.2         | 700     |
+| Display  | 40 → 60px fluid | 1           | 600     |
+| Headline | 36 → 48px fluid | 1.05        | 600     |
+| Title    | 30 → 36px fluid | 1.1         | 550     |
 | Lead     | 18px            | 1.6         | 400     |
 | Body     | 16px            | 1.6         | 400     |
 | Data     | 14px            | 1.5         | 400–600 |
@@ -279,11 +280,10 @@ For Vietnamese, keep Display line-height at 1.1 or above so diacritics are not c
 
 ### 5.1 Core motifs
 
-| Motif               | Description                                                          | Use                                                                                                         |
-| ------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| **Aurora gradient** | Violet → Cyan → Coral at 112°                                        | Big brand moments only (hero or closing CTA backgrounds, social, Open Graph image); never behind small text |
-| **Hero backdrop**   | Mist fading into a soft Indigo wash behind the product window        | Home hero only                                                                                              |
-| **Missing cell**    | `gap-fill` background, dashed amber border, "Missing" text with icon | Data tables, anywhere data is missing                                                                       |
+| Motif               | Description                                                          | Use                                                                                                                                                                        |
+| ------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Aurora gradient** | Violet → Cyan → Coral at 112°                                        | Big brand moments only (hero or closing CTA backgrounds, social, Open Graph image); never behind small text. Used blurred as the coloured shadow behind the home hero demo |
+| **Missing cell**    | `gap-fill` background, dashed amber border, "Missing" text with icon | Data tables, anywhere data is missing                                                                                                                                      |
 
 ### 5.2 Data cell states
 
@@ -295,13 +295,13 @@ For Vietnamese, keep Display line-height at 1.1 or above so diacritics are not c
 ### 5.3 Imagery and icons
 
 - No stock photos of people. Visuals are built from tables, grids and real data.
-- The hero product demo should carry a small "Example data" label (flagged by the audit) — TBD.
+- The hero product demo carries a small "Example data" label in its window title bar, and a pause button (WCAG 2.2.2). Industry stats show source name, year and a link.
 - Industry statistics must show source name, year and link — TBD (separate task).
 - Icons: Lucide, 2px stroke, unchanged.
 
 ### 5.4 Motion
 
-Unchanged from the current site (reveal, bars, count-up, hero scroll zoom, workflow demo). Every animation must respect `prefers-reduced-motion`. Open items from the audit: the typing caret does not stop with reduced motion; the looping demo effects (spinner, shimmer, drifting stripes) need a policy decision.
+Unchanged from the current site (reveal, bars, count-up, workflow demo; the hero scroll zoom was removed with the two-column hero, 15 Oct 2026). Every animation must respect `prefers-reduced-motion`. Open items from the audit: the typing caret does not stop with reduced motion; the looping demo effects (spinner, shimmer, drifting stripes) need a policy decision.
 
 ---
 
@@ -311,7 +311,7 @@ Unchanged from the current site (reveal, bars, count-up, hero scroll zoom, workf
 
 Keep: mobile-first, breakpoints 640/768/1024/1280px, 4px spacing, 1368px max width, no horizontal scroll. Radii: buttons 8px, controls 10px, cards 12px, app window 16px.
 
-Open: demo tabs and footer links need a touch target of at least 44×44px (currently 26px and 16–20px).
+Touch targets: buttons are at least 44px tall; demo tabs, header links, the logo and the language button get an invisible 44×44px tap area (`hit-area`). Open: footer links are 24px tall (they pass WCAG 2.2 AA 2.5.8, 24px with spacing, but not 44px).
 
 ### 6.2 Components
 
@@ -331,7 +331,8 @@ Unchanged: Navigation → headline + CTA → product demo → category strip →
 
 ### 6.4 Technical additions (from the audit, open)
 
-- Meta description, 1200×630 Open Graph image (Aurora gradient + headline in Ink, large text only), favicon, canonical, sitemap.
+- Done 15 Oct 2026: favicon and apple-touch icon.
+- Postponed (15 Oct 2026, to be handled later): meta description, Open Graph image and tags, Twitter card, canonical, `sitemap.xml`, `robots.txt`.
 - When the Vietnamese version ships: add `hreflang` for `en` and `vi`.
 
 ---
@@ -362,7 +363,7 @@ Unchanged: Navigation → headline + CTA → product demo → category strip →
 
 - Target WCAG 2.2 AA; every colour pair in section 3.6 passes.
 - Never communicate state through colour alone: Missing always has an icon or text.
-- Vietnamese: finish the translation before enabling the language switcher (both options currently link to `#`).
+- Vietnamese: finish the translation before enabling the option. Until then the switcher lists English only (Tiếng Việt is commented out in the header).
 - Number formats: English `1,234.5`; Vietnamese `1.234,5`; ratios like "94 / 216" stay the same in both.
 
 ---
@@ -393,10 +394,10 @@ File naming: `pulse_asset_variant_theme_size_version.ext`. Brand owner and appro
 - [ ] Missing uses the gap family (exception: hero demo problem step, see 3.5)
 - [x] Body 16px, captions at least 12px (tokens)
 - [ ] Remaining contrast failures fixed (opacity reductions, see 3.6)
-- [ ] Logo: SVG master and reversed variant for dark mode
-- [ ] Hero demo labelled "Example data"; industry stats linked to sources
-- [ ] Meta description, OG image and favicon in place
-- [ ] Touch targets ≥ 44px for demo tabs and key controls
+- [ ] Logo: SVG master (reversed variant for dark mode: done)
+- [x] Hero demo labelled "Example data"; industry stats linked to sources
+- [ ] Meta description, OG image and tags (postponed; favicon in place)
+- [x] Touch targets ≥ 44px for demo tabs and key controls (footer links still 24px)
 - [x] `pnpm build` and `pnpm lint:tw` both pass
 
 ---
@@ -420,7 +421,7 @@ File naming: `pulse_asset_variant_theme_size_version.ext`. Brand owner and appro
 | `void` (dark band)                            | `#060914`                         | `#0A1230`                                                      |
 | Brand gradient                                | Coral → Indigo, 112.4°            | Violet → Cyan → Coral, 112°                                    |
 
-Temporary aliases still in `src/input.css` (old names → new roles, to remove in a clean-up): `primary-dark`, `primary-light`, `signal`, `signal-dark`, `signal-tint`, `signal-line`, `gap-bg`, `gap-cell`, `gap-border`, `gap-text`, `gap-dark`, `gap-text-dark`, `window-close`, `window-minimise`, `window-zoom`.
+The temporary aliases (`primary-dark`, `primary-light`, `signal*`, `gap-bg`, `gap-cell`, `gap-border`, `gap-text`, `gap-dark`, `gap-text-dark`, `window-*`, `text-micro`) were removed on 15 Oct 2026; `text-micro` became the real token `text-label`.
 
 ---
 

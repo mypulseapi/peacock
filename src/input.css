@@ -2,12 +2,24 @@
 @source "../*.html";
 @source "./*.js";
 
+/* Inter 4.1 (rsms/inter, SIL OFL — src/assets/fonts/OFL.txt), self-hosted because the Google Fonts copy has its
+   stylistic sets stripped. One variable file: wght 100–900 + opsz 14–32 (Inter Display at large sizes), trimmed
+   to Latin, Latin Extended and Vietnamese with every OpenType feature kept. The url is relative to dist/output.css. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../src/assets/fonts/InterVariable.woff2") format("woff2");
+}
+
 /* ------------------------------------------------------------------ */
 /* Design tokens — the single source of truth for colour, type, motion */
 /* ------------------------------------------------------------------ */
 @theme {
-  /* Typography: fonts are loaded via Google Fonts <link> in each page */
-  /* Inter Display = Inter's optical-size axis (opsz 14–32, loaded from Google Fonts). With the default
+  /* Typography: Inter, self-hosted (@font-face above), set like linear.app / attio.com: stylistic set 03
+     (round quotes and commas), slightly tight body tracking, lighter and tighter headings. */
+  /* Inter Display = Inter's optical-size axis (opsz 14–32). With the default
      font-optical-sizing: auto, text at 32px and up is drawn with the Display design (tighter, finer);
      smaller text gets the text design. One family for everything; font-display keeps headings' role. */
   --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -19,16 +31,17 @@
 
   /* Type scale (size / line-height / weight from the spec) */
   --text-h1: 2.5rem;
-  --text-h1--line-height: 1.15;
-  --text-h1--font-weight: 800;
-  --text-h1--letter-spacing: -0.01em;
+  --text-h1--line-height: 1.1;
+  --text-h1--font-weight: 600;
+  --text-h1--letter-spacing: -0.02em;
   --text-h2: 1.5rem;
-  --text-h2--line-height: 1.3;
-  --text-h2--font-weight: 700;
-  --text-h2--letter-spacing: -0.01em;
+  --text-h2--line-height: 1.25;
+  --text-h2--font-weight: 550;
+  --text-h2--letter-spacing: -0.015em;
   --text-h3: 1.125rem;
-  --text-h3--line-height: 1.4;
-  --text-h3--font-weight: 600;
+  --text-h3--line-height: 1.35;
+  --text-h3--font-weight: 550;
+  --text-h3--letter-spacing: -0.01em;
   --text-body: 1rem; /* 16px (v2 §4, up from 14px) */
   --text-body--line-height: 1.6;
   --text-data: 0.875rem; /* 14px (v2 §4, up from 13px) */
@@ -44,41 +57,39 @@
     1.75rem + 3vw,
     3.75rem
   ); /* 40px → 60px: page h1, dark-band statement */
-  --text-display--line-height: 1.05;
-  --text-display--font-weight: 800;
-  --text-display--letter-spacing: -0.01em; /* Inter Display has tight spacing built in */
-  --text-hero: clamp(
-    2.25rem,
-    1.75rem + 2.25vw,
-    3.25rem
-  ); /* 36px → 52px: home hero title (two lines) */
-  --text-hero--line-height: 1.05;
+  --text-display--line-height: 1;
+  --text-display--font-weight: 600;
+  --text-display--letter-spacing: -0.022em; /* as linear.app: −0.022em at display sizes */
+  /* Home hero title: always two lines, sized to its column (the parent is an @container). The longer line,
+     "Uncover Shoppers’ Intent", is 10.98em wide, so 9cqi keeps it inside; at most 34px (1440px screens). */
+  --text-hero: min(2.125rem, 9cqi);
+  --text-hero--line-height: 1;
   --text-hero--font-weight: 600;
-  --text-hero--letter-spacing: -0.01em;
+  --text-hero--letter-spacing: -0.022em;
   --text-headline: clamp(
     2.25rem,
     1.75rem + 2vw,
     3rem
   ); /* 36px → 48px: closing CTA */
-  --text-headline--line-height: 1.1;
-  --text-headline--font-weight: 800;
-  --text-headline--letter-spacing: -0.01em;
+  --text-headline--line-height: 1.05;
+  --text-headline--font-weight: 600;
+  --text-headline--letter-spacing: -0.02em;
   --text-title: clamp(
     1.875rem,
     1.6rem + 1vw,
     2.25rem
   ); /* 30px → 36px: section intros */
-  --text-title--line-height: 1.2;
-  --text-title--font-weight: 700;
-  --text-title--letter-spacing: -0.01em;
+  --text-title--line-height: 1.1;
+  --text-title--font-weight: 550;
+  --text-title--letter-spacing: -0.02em;
 
   /* Navigation (15px, as the thepulseapi.com navbar) */
   --text-nav: 0.9375rem; /* 15px */
   --text-nav--line-height: 1.5;
-  /* TEMPORARY ALIAS: text-micro (10px) is dropped in v2; it now renders at caption size (12px). Removed before Phase 7. */
-  --text-micro: 0.75rem;
-  --text-micro--line-height: 1.4;
-  --text-micro--letter-spacing: 0.05em;
+  /* Small uppercase labels (table badges, dropdown section labels): 12px, tracked out */
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.05em;
   --radius-control: 0.625rem; /* 10px: nav links, nav buttons */
 
   /* Page column (frame), as on lovable.dev: content 70rem (1120px) wide, 84rem (1344px) from 2xl; the frame
@@ -250,21 +261,6 @@
   --color-step-5: var(--brand-coral);
   --color-on-step-1: var(--color-on-primary);
   --color-on-step: #0b1b3a; /* Ink, fixed in both themes */
-  --color-stage-base: color-mix(
-    in oklab,
-    var(--color-primary) 7%,
-    var(--color-surface-0)
-  ); /* hero backdrop */
-  --color-stage-glow: color-mix(
-    in oklab,
-    var(--color-primary) 14%,
-    transparent
-  );
-  --color-stage-glow-accent: color-mix(
-    in oklab,
-    var(--color-violet) 8%,
-    transparent
-  );
   --color-scan-band: color-mix(
     in oklab,
     var(--color-primary) 22%,
@@ -273,33 +269,6 @@
   /* Blueprint grid lines */
   --color-grid-line: light-dark(rgb(11 27 58 / 0.04), rgb(238 240 247 / 0.05));
   --color-grid-line-dark: rgb(238 240 247 / 0.05);
-
-  /* ---------------------------------------------------------------- */
-  /* TEMPORARY ALIASES (from Phase 1). Old token names still used by    */
-  /* index.html / components.html / utilities, pointed at the closest   */
-  /* current role. To be removed in a later clean-up phase.             */
-  /* ---------------------------------------------------------------- */
-  --color-primary-dark: var(--color-primary-hover); /* alias */
-  --color-primary-light: var(
-    --color-void-accent
-  ); /* alias — primary on the dark band */
-  --color-signal: var(--color-accent); /* alias — the coral #1 highlight */
-  --color-signal-dark: var(--color-accent-text); /* alias */
-  --color-signal-tint: var(--color-accent-tint); /* alias */
-  --color-signal-line: var(--color-accent-line); /* alias */
-  --color-gap-bg: var(--color-gap-fill); /* alias */
-  --color-gap-cell: var(--color-gap-fill); /* alias */
-  --color-gap-border: var(--color-gap-strong); /* alias */
-  --color-gap-text: var(--color-gap-strong); /* alias */
-  --color-gap-dark: var(--color-gap); /* alias — gap on the dark band */
-  --color-gap-text-dark: var(
-    --color-gap
-  ); /* alias — amber text is allowed on the dark band */
-  --color-window-close: var(
-    --color-accent
-  ); /* alias — window dots: Coral / amber / Cyan, as before */
-  --color-window-minimise: var(--color-gap); /* alias */
-  --color-window-zoom: var(--color-cyan); /* alias */
 
   /* Motion (modelled on attio.com: short, eased, never bouncy) */
   --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
@@ -321,10 +290,11 @@
   --shadow-nav:
     0 0 0 1px var(--color-line),
     0 12px 32px -12px color-mix(in oklab, var(--color-ink) 20%, transparent);
-  --animate-marquee: marquee 40s linear infinite;
   --animate-caret: caret 1s step-end infinite;
   --animate-ring: ring 3.6s ease-in-out infinite;
   --animate-dropdown: dropdown 150ms var(--ease-out-soft);
+  --animate-orbit-cw: orbit 70s linear infinite; /* data orbit: outer dotted ring */
+  --animate-orbit-ccw: orbit 50s linear infinite reverse; /* data orbit: inner dotted ring */
   /* Hero workflow demo: one step lasts as long as its tab timer runs; the scan sweeps the audit step once;
      the shimmer runs along the audit's progress bars */
   --animate-demo-timer: demo-timer 6s linear;
@@ -333,6 +303,11 @@
   /* missing-flag stripes: one 10px stripe period per loop, so it never jumps */
   --animate-missing-drift: missing-drift 1s linear infinite;
 
+  @keyframes orbit {
+    to {
+      rotate: 360deg;
+    }
+  }
   @keyframes dropdown {
     from {
       opacity: 0;
@@ -343,6 +318,9 @@
   @keyframes demo-timer {
     from {
       scale: 0 1;
+    }
+    to {
+      scale: 1 1;
     }
   }
   @keyframes demo-scan {
@@ -368,11 +346,6 @@
     }
   }
 
-  @keyframes marquee {
-    to {
-      translate: -50% 0;
-    }
-  }
   @keyframes caret {
     50% {
       opacity: 0;
@@ -397,6 +370,9 @@
 @layer base {
   body {
     @apply bg-surface-0 font-sans text-ink antialiased selection:bg-primary-hover selection:text-on-primary;
+    /* linear.app / attio.com: round quotes and commas (ss03), body tracking −0.011em; headings set their own */
+    font-feature-settings: "ss03";
+    letter-spacing: -0.011em;
   }
   /* Theme: follow the OS by default; <html data-theme="light|dark"> overrides it.
      Every role token is light-dark(), so this one property switches the whole palette. */
@@ -427,11 +403,22 @@
 /* Components (registered with @utility so they can be @apply-ed)      */
 /* ------------------------------------------------------------------ */
 /* Buttons */
+/* Invisible 44×44px minimum tap area (guideline §11) around a smaller control, without changing how it looks.
+   Needs room around the control and no overflow-hidden on it (a clipped area can't be clicked). */
+@utility hit-area {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset-block: min(0px, calc((100% - 2.75rem) / 2));
+    inset-inline: min(0px, calc((100% - 2.75rem) / 2));
+  }
+}
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50;
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50;
 }
 @utility btn-primary {
-  @apply btn border border-primary bg-primary text-on-primary hover:border-primary-dark hover:bg-primary-dark;
+  @apply btn border border-primary bg-primary text-on-primary hover:border-primary-hover hover:bg-primary-hover;
 }
 @utility btn-secondary {
   @apply btn border border-line bg-card text-ink hover:border-ink hover:bg-surface-1;
@@ -440,12 +427,12 @@
   @apply btn text-muted hover:bg-surface-1 hover:text-ink;
 }
 @utility btn-sm {
-  @apply px-3 py-1.5 text-xs;
+  @apply hit-area min-h-0 px-3 py-1.5 text-xs;
 }
 
 /* Navigation */
 @utility nav-link {
-  @apply inline-flex items-center gap-1 rounded-control px-2 py-2 font-display text-nav font-medium whitespace-nowrap text-ink transition-colors duration-150 ease-out-soft hover:bg-surface-1 focus-visible:outline-2 focus-visible:outline-primary xl:px-3;
+  @apply hit-area inline-flex items-center gap-1 rounded-control px-2 py-2 font-display text-nav font-medium whitespace-nowrap text-ink transition-colors duration-150 ease-out-soft hover:bg-surface-1 focus-visible:outline-2 focus-visible:outline-primary xl:px-3;
 }
 @utility nav-icon-tile {
   @apply flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary-tint text-primary;
@@ -470,10 +457,10 @@
   @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 tabular-nums text-xs font-semibold;
 }
 @utility badge-primary {
-  @apply badge border-primary-line bg-primary-tint text-primary-dark;
+  @apply badge border-primary-line bg-primary-tint text-primary-hover;
 }
 @utility badge-signal {
-  @apply badge border-signal-line bg-signal-tint text-signal-dark;
+  @apply badge border-accent-line bg-accent-tint text-accent-text;
 }
 @utility badge-success {
   @apply badge border-success-line bg-success-bg text-success;
@@ -488,7 +475,7 @@
 /* Signature motif: "The Missing Cell" */
 @utility missing-cell {
   border: 1.5px dashed var(--color-gap);
-  @apply bg-gap-cell tabular-nums text-gap-text;
+  @apply bg-gap-fill tabular-nums text-gap-strong;
 }
 /* Hero demo (thepulseapi.com): a missing value in the catalogue table — red, hatched, with a warning icon */
 @utility missing-flag {
@@ -511,10 +498,6 @@
 @utility demo-pill {
   @apply inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 tabular-nums text-xs font-semibold;
 }
-@utility missing-cell-dark {
-  border: 1.5px dashed var(--color-gap-dark);
-  @apply bg-gap/10 tabular-nums text-gap-text-dark;
-}
 
 /* ------------------------------------------------------------------ */
 /* Utilities                                                           */
@@ -524,36 +507,21 @@
   background-image: var(--gradient-brand);
 }
 
-/* Hero stage backdrop (attio.com style): starts as the plain page colour at the top, so the headline
-   area flows into it without a line, then turns into a soft cool wash that is strongest at the bottom
-   and the sides, around the app window. Built from the stage-* colour tokens; the element needs `relative isolate`. */
-@utility hero-backdrop {
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background-image:
-      radial-gradient(40% 70% at 0% 100%, var(--color-stage-glow), transparent),
-      radial-gradient(
-        40% 70% at 100% 100%,
-        var(--color-stage-glow),
-        transparent
-      ),
-      radial-gradient(
-        60% 50% at 50% 100%,
-        var(--color-stage-glow-accent),
-        transparent
-      ),
-      linear-gradient(
-        to bottom,
-        var(--color-surface-0),
-        var(--color-stage-base)
-      );
-    /* everything fades in from the top edge */
-    mask-image: linear-gradient(to bottom, transparent, black 50%);
-  }
+/* Dark band gradient: the void base lit by a soft Violet glow (top left) and a Cyan glow (bottom right).
+   Text on it stays AA at the brightest point (white 12.05, void-muted 5.74 on the Violet glow). */
+@utility bg-void-gradient {
+  background-color: var(--color-void);
+  background-image:
+    radial-gradient(
+      60% 80% at 0% 0%,
+      color-mix(in oklab, var(--color-violet) 35%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      60% 80% at 100% 100%,
+      color-mix(in oklab, var(--color-cyan) 25%, transparent),
+      transparent
+    );
 }
 
 @utility blueprint-grid {
@@ -743,6 +711,22 @@
   }
 }
 
+/* `pre-shown:` — the state before a .reveal ancestor is shown (src/main.js sets data-shown). Only with JS and
+   motion allowed, so without JS or with reduced motion the final state shows at once. Stagger with delay-*. */
+@custom-variant pre-shown {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    &:where(.reveal:not([data-shown]) *) {
+      @slot;
+    }
+  }
+}
+/* Data orbit rings (thepulseapi.com "blind spot" style): slow turn, stopped by the pause button ([data-held]) */
+@utility orbit-ring {
+  [data-pausable][data-held] & {
+    animation-play-state: paused;
+  }
+}
+
 /* `js:` variant — styles that only apply when JavaScript runs (e.g. hide a result until it's typed) */
 @custom-variant js (@media (scripting: enabled));
 
@@ -881,48 +865,117 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* Hero scroll effect (attio.com-style). src/main.js sets --hero-p on   */
-/* [data-hero]: 0 at the top of the page → 1 when the product stage is  */
-/* filling the screen under the header. The window stands upright at its normal size  */
-/* while the title is in focus, then grows as it comes into focus.      */
-/* Without JS / with reduced motion it stays at its normal size.        */
+/* Hero: headline left, product demo right, one screen tall, on a soft  */
+/* gradient that follows the cursor.                                    */
 /* ------------------------------------------------------------------ */
-/* The headline steps back as the product stage takes over the screen */
-@utility hero-fade {
-  opacity: clamp(0, 1 - 1.25 * var(--hero-p, 0), 1);
-  translate: 0 calc(var(--hero-p, 0) * -2rem);
-  @media (prefers-reduced-motion: reduce) {
-    opacity: 1;
-    translate: none;
-  }
+/* Cursor position for the hero spotlight (src/main.js sets them on pointer move). Registered so they
+   can transition: a 100ms ease smooths the movement while the light stays on the cursor; the tail copies
+   take 300ms and 600ms, so while the cursor moves they stretch out behind it like a comet tail. */
+@property --hero-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 72%;
 }
-/* Stage bottom: at full focus the window is centred in the screen below the sticky header (h-17), so the
-   space under it is half of (screen − header − window height). src/main.js sets --hero-window-h; without
-   it (no JS / reduced motion, no zoom) the max() falls back to 5rem, which is also the floor that keeps
-   the zoomed window from being clipped. lvh, so a collapsing mobile address bar never uncovers the next section.
-   Plus 10px, so the backdrop always runs a little past the screen edge before the next section. */
-@utility hero-stage {
-  padding-bottom: calc(
-    max(
-        calc(var(--spacing) * 20),
-        calc((100lvh - var(--spacing) * 17 - var(--hero-window-h, 100lvh)) / 2)
-      ) +
-      var(--spacing) * 2.5
-  );
+@property --hero-y {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 40%;
 }
-@utility hero-window {
-  --hero-zoom: 0.04; /* extra size at full focus: +4% on small screens … */
-  transform-origin: 50% 50%;
-  /* never more than fits below the header: src/main.js sets --hero-zoom-fit */
-  scale: calc(
-    1 + min(var(--hero-zoom), var(--hero-zoom-fit, 1)) * var(--hero-p, 0)
-  );
-  will-change: scale;
-  @media (width >= 64rem) {
-    --hero-zoom: 0.12; /* … +12% from lg, where the stage has room on both sides */
-  }
-  @media (prefers-reduced-motion: reduce) {
-    scale: none;
+/* The tail: two fainter copies of the light that follow the same position more slowly. --hero-tail is 1
+   while the cursor moves and fades to 0 when it stops, so the tail only shows in motion. */
+@property --hero-tail {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+@property --hero-tx1 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 72%;
+}
+@property --hero-ty1 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 40%;
+}
+@property --hero-tx2 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 72%;
+}
+@property --hero-ty2 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 40%;
+}
+/* One screen tall below the sticky h-17 header (svh: the mobile address bar never cuts it) */
+@utility hero-screen {
+  min-height: calc(100svh - var(--spacing) * 17);
+}
+/* Soft background: page colour with a faint Cyan wash (top right) and Violet wash (bottom left), plus a
+   small, clear Indigo light at --hero-x / --hero-y (solid core, soft edge) with a two-part tail that only
+   shows while the cursor moves. At rest: light 14% + wash 4% keeps text AA (muted 4.55 light / 6.50 dark). */
+@utility hero-bg {
+  --hero-light: color-mix(in oklab, var(--color-primary) 14%, transparent);
+  background-color: var(--color-surface-0);
+  background-image:
+    radial-gradient(
+      20rem circle at var(--hero-x) var(--hero-y),
+      var(--hero-light),
+      var(--hero-light) 20%,
+      transparent 70%
+    ),
+    radial-gradient(
+      17rem circle at var(--hero-tx1) var(--hero-ty1),
+      color-mix(
+        in oklab,
+        var(--color-primary) calc(var(--hero-tail) * 6%),
+        transparent
+      ),
+      transparent 70%
+    ),
+    radial-gradient(
+      14rem circle at var(--hero-tx2) var(--hero-ty2),
+      color-mix(
+        in oklab,
+        var(--color-primary) calc(var(--hero-tail) * 4%),
+        transparent
+      ),
+      transparent 70%
+    ),
+    radial-gradient(
+      55% 60% at 90% 10%,
+      color-mix(in oklab, var(--color-cyan) 4%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      50% 60% at 5% 95%,
+      color-mix(in oklab, var(--color-violet) 4%, transparent),
+      transparent
+    );
+  transition:
+    --hero-x 100ms ease-out,
+    --hero-y 100ms ease-out,
+    --hero-tx1 300ms ease-out,
+    --hero-ty1 300ms ease-out,
+    --hero-tx2 600ms ease-out,
+    --hero-ty2 600ms ease-out,
+    --hero-tail 500ms ease-out;
+}
+/* Coloured shadow behind the product demo: the brand gradient, blurred, under the window */
+@utility hero-glow {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 10% 2% -2%;
+    z-index: -1;
+    border-radius: 2rem;
+    background-image: var(--gradient-brand);
+    filter: blur(72px);
+    opacity: 0.3;
+    pointer-events: none;
   }
 }
 
@@ -1114,18 +1167,26 @@
     display: none;
   }
 }
-/* Progress bar inside the active tab — its animationend advances the demo */
+/* Timeline segment fill inside each step tab — the active one's animationend advances the demo */
 @utility demo-timer {
   transform-origin: left;
   scale: 0 1;
-  [data-active] > & {
+  [data-active] & {
     animation: var(--animate-demo-timer);
   }
+  [data-done] & {
+    scale: 1 1; /* steps already played stay full on the timeline */
+  }
   [data-demo]:hover &,
-  [data-demo][data-paused] & {
+  [data-demo][data-paused] &,
+  [data-demo][data-held] & {
     animation-play-state: paused;
   }
+  /* Nothing advances by itself: the active segment simply shows full */
   @media (prefers-reduced-motion: reduce) {
-    display: none;
+    animation: none !important;
+    [data-active] & {
+      scale: 1 1;
+    }
   }
 }

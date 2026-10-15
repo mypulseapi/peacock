@@ -6,6 +6,8 @@
 //   [data-shelf]           → draws a grid of product squares (data-total, data-ready)
 //   [data-demo]            → plays the hero workflow demo (tabs, steps, captions — see DESIGN.md §6)
 //   [data-spy] links       → highlight the section currently in view (sets [data-active])
+//   [data-hero]            → hero background light (and its tail) follows the cursor (--hero-x / --hero-y …)
+//   [data-pause] buttons   → pause the hero demo / data orbit (sets [data-held] on [data-pausable])
 
 const reduceMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
@@ -308,58 +310,35 @@ mobileMenu
   ?.querySelectorAll("a")
   .forEach((a) => a.addEventListener("click", () => (mobileMenu.open = false)));
 
-// Hero scroll effect: --hero-p goes 0 → 1 as the product window scrolls up until it is centred in the
-// screen below the sticky header. CSS turns it into the headline fade (hero-fade) and the window zoom
-// (hero-window). The stage reaches just to the bottom of the screen at that point (hero-stage), so
-// nothing below it shows and no extra backdrop is left over.
+// Hero background: the soft spotlight follows the cursor with a fading tail (CSS hero-bg transitions them).
+// Mouse and pen only, not with reduced motion; without it the light stays at its resting place.
 const hero = document.querySelector("[data-hero]");
-const heroWindow = hero?.querySelector(".hero-window");
-const header = document.querySelector("[data-nav]");
-if (hero && heroWindow && !reduceMotion) {
-  let distance = 1;
-  let ticking = false;
-  const update = () => {
-    ticking = false;
-    const p = Math.min(1, Math.max(0, scrollY / distance));
-    hero.style.setProperty("--hero-p", p.toFixed(4));
-  };
-  const measure = () => {
-    // Layout position (offsetTop), so the window's zoom and its fade-in slide don't skew the measurement
-    let top = 0;
-    for (let el = heroWindow; el; el = el.offsetParent) top += el.offsetTop;
-    const headerHeight = header?.offsetHeight ?? 0;
-    const windowHeight = heroWindow.offsetHeight;
-    const windowCentre = top + windowHeight / 2;
-    const screenCentre = headerHeight + (innerHeight - headerHeight) / 2;
-    const gap = 16; // space kept between the header and the window (tabs included), and at the bottom
-    // Centre the window; if it is taller than the screen below the header, stop with its top just under the header
-    distance = Math.max(
-      240,
-      Math.min(windowCentre - screenCentre, top - headerHeight - gap),
-    ); // always leave some scroll for the effect
-    // hero-window grows only as far as the whole window still fits below the header
-    const room = innerHeight - headerHeight - 2 * gap;
-    hero.style.setProperty(
-      "--hero-zoom-fit",
-      Math.max(0, room / windowHeight - 1).toFixed(4),
-    );
-    // hero-stage uses this to end exactly at the bottom of the screen once the window is centred
-    hero.style.setProperty("--hero-window-h", `${windowHeight}px`);
-    update();
-  };
-  addEventListener(
-    "scroll",
-    () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
+if (hero && !reduceMotion) {
+  let frame = 0;
+  let still = 0;
+  hero.addEventListener("pointermove", (event) => {
+    if (event.pointerType === "touch") return;
+    // The tail shows while the cursor moves and fades out 150ms after it stops
+    hero.style.setProperty("--hero-tail", "1");
+    clearTimeout(still);
+    still = setTimeout(() => hero.style.setProperty("--hero-tail", "0"), 150);
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      const box = hero.getBoundingClientRect();
+      const x = ((event.clientX - box.left) / box.width) * 100;
+      const y = ((event.clientY - box.top) / box.height) * 100;
+      // The light and both tail copies get the same position; CSS moves the tail more slowly
+      for (const [px, py] of [
+        ["--hero-x", "--hero-y"],
+        ["--hero-tx1", "--hero-ty1"],
+        ["--hero-tx2", "--hero-ty2"],
+      ]) {
+        hero.style.setProperty(px, `${x.toFixed(1)}%`);
+        hero.style.setProperty(py, `${y.toFixed(1)}%`);
       }
-    },
-    { passive: true },
-  );
-  addEventListener("resize", measure);
-  new ResizeObserver(measure).observe(heroWindow); // web fonts and the demo can change its height
-  measure();
+    });
+  });
 }
 
 // Hero workflow demo: steps play in order. The pace comes from CSS — when the active tab's timer bar
@@ -401,9 +380,10 @@ if (demo) {
     );
     void demo.offsetWidth; // restart the timer and the step's entrance even when the same step is picked again
     groups.forEach((list) => list[index]?.setAttribute("data-active", ""));
-    tabs.forEach((tab, i) =>
-      tab.setAttribute("aria-selected", String(i === index)),
-    );
+    tabs.forEach((tab, i) => {
+      tab.setAttribute("aria-selected", String(i === index));
+      tab.toggleAttribute("data-done", i < index); // earlier steps stay full on the timeline
+    });
     groups[1][index].querySelectorAll("[data-demo-count]").forEach(countUp);
   };
   tabs.forEach((tab, i) => {
@@ -417,6 +397,19 @@ if (demo) {
   ).observe(demo);
   go(0);
 }
+
+// Pause buttons for content that moves by itself (WCAG 2.2.2): [data-pause] toggles data-held on its
+// [data-pausable] wrapper (CSS stops the hero demo timer / the orbit rings); aria-pressed and the icon follow.
+document.querySelectorAll("[data-pause]").forEach((button) => {
+  const target = button.closest("[data-pausable]");
+  button.addEventListener("click", () => {
+    const held = target.toggleAttribute("data-held");
+    button.setAttribute("aria-pressed", String(held));
+    button
+      .querySelector("use")
+      .setAttribute("href", held ? "#i-play" : "#i-pause");
+  });
+});
 
 // How it works (lovable.dev style): the step whose card has crossed the middle of the screen is active.
 // Its description opens (CSS: how-desc) and --how-p (0 → 1) fills the line under it as the card scrolls

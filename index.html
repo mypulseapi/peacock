@@ -3,12 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pulse — Know which product data to fix first</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Pulse — Uncover Shoppers&rsquo; Intent and Catalogue Gaps</title>
+    <link rel="icon" href="./src/assets/brand/favicon.ico" sizes="any" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap"
-      rel="stylesheet"
+      rel="icon"
+      href="./src/assets/brand/favicon-32.png"
+      type="image/png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="./src/assets/brand/apple-touch-icon.png"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/fonts/InterVariable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
     <link rel="stylesheet" href="./dist/output.css" />
     <script defer src="./src/main.js"></script>
@@ -373,14 +384,22 @@
       <div
         class="mx-auto flex h-17 max-w-nav items-center justify-between gap-4 px-6"
       >
-        <a href="./index.html" aria-label="Pulse home" class="shrink-0">
-          <img
-            src="./src/assets/logo.webp"
-            alt="Pulse"
-            width="84"
-            height="28"
-            class="h-7 w-auto"
-          />
+        <a
+          href="./index.html"
+          aria-label="Pulse home"
+          class="hit-area shrink-0"
+        >
+          <picture
+            ><source
+              srcset="./src/assets/brand/logo-white.webp"
+              media="(prefers-color-scheme: dark)" />
+            <img
+              src="./src/assets/brand/logo.webp"
+              alt="Pulse"
+              width="84"
+              height="28"
+              class="h-7 w-auto"
+          /></picture>
         </a>
 
         <!-- Desktop menu -->
@@ -457,7 +476,7 @@
                               class="flex items-center gap-2 text-sm font-semibold text-ink"
                               >Decision Monitor
                               <span
-                                class="rounded bg-primary-tint px-1.5 py-0.5 text-micro font-semibold text-primary uppercase"
+                                class="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase"
                                 >Recurring</span
                               ></span
                             >
@@ -722,7 +741,7 @@
                               class="flex items-center gap-2 text-sm font-semibold text-ink"
                               >Career
                               <span
-                                class="rounded bg-primary-tint px-1.5 py-0.5 text-micro font-semibold text-primary uppercase"
+                                class="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase"
                                 >Hiring</span
                               ></span
                             >
@@ -752,7 +771,7 @@
           <div class="relative">
             <details class="group" data-dropdown>
               <summary
-                class="flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-line px-4 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-ink"
+                class="hit-area flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-line px-4 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-ink"
                 aria-label="EN, switch language"
               >
                 <svg class="size-4 text-primary" aria-hidden="true">
@@ -771,27 +790,21 @@
                 class="absolute top-full right-0 mt-2 w-44 animate-dropdown rounded-2xl border border-line bg-card p-1.5 shadow-xl motion-reduce:animate-none"
               >
                 <p
-                  class="border-b border-line px-3 py-2 text-micro font-medium text-muted uppercase"
+                  class="border-b border-line px-3 py-2 text-label font-medium text-muted uppercase"
                 >
                   Switch language
                 </p>
                 <a
                   href="#"
                   aria-current="true"
-                  class="mt-1 flex items-center gap-3 rounded-control bg-primary-tint px-3 py-2.5 text-sm font-medium text-primary"
+                  class="mt-1 flex min-h-11 items-center gap-3 rounded-control bg-primary-tint px-3 py-2.5 text-sm font-medium text-primary"
                 >
                   <span aria-hidden="true">🇺🇸</span> English
                   <svg class="ml-auto size-4" aria-hidden="true">
                     <use href="#i-check" />
                   </svg>
                 </a>
-                <a
-                  href="#"
-                  lang="vi"
-                  class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-muted transition-colors duration-150 ease-out-soft hover:bg-surface-1 hover:text-ink"
-                >
-                  <span aria-hidden="true">🇻🇳</span> Tiếng Việt
-                </a>
+                <!-- Tiếng Việt: add back (with hreflang) when the Vietnamese page exists — guideline §9 -->
               </div>
             </details>
           </div>
@@ -997,158 +1010,173 @@
 
     <main>
       <!-- ============================== HERO ============================== -->
-      <!-- Two parts (like attio.com): the headline, then the product stage. While scrolling, src/main.js
-           sets --hero-p (0 → 1): the headline fades out, the stage fills the screen and the window grows. Inside, the workflow demo plays. -->
-      <section class="border-b border-line" data-hero>
-        <div class="frame">
-          <div class="hero-fade pt-20 pb-20 text-center lg:pt-28">
-            <h1 class="reveal text-hero text-balance xl:whitespace-nowrap">
-              Uncover Shoppers’ Intent and Catalogue Gaps.
+      <!-- Two columns, one screen tall: the headline on the left, the product demo (the Pulse workflow in five
+           steps, from thepulseapi.com, played by src/main.js) on the right with a coloured shadow. The soft
+           background light follows the cursor (src/main.js sets --hero-x / --hero-y). -->
+      <section
+        class="hero-bg hero-screen flex items-center overflow-x-clip border-b border-line"
+        data-hero
+      >
+        <div
+          class="mx-auto grid w-full max-w-band items-center gap-12 px-6 py-12 lg:grid-cols-10 lg:gap-14 lg:px-8"
+        >
+          <div class="@container lg:col-span-3">
+            <h1 class="reveal text-hero">
+              <span class="block whitespace-nowrap"
+                >Uncover Shoppers’ Intent</span
+              >
+              <span class="block whitespace-nowrap">and Catalogue Gaps.</span>
             </h1>
             <p
-              class="reveal mx-auto mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted delay-500 md:max-w-none md:whitespace-nowrap"
+              class="reveal mt-6 max-w-md text-lg leading-relaxed text-pretty text-muted delay-200"
             >
               PULSE matches shopper intent with products from the first
               interaction.
             </p>
-            <div
-              class="reveal mt-8 flex flex-wrap justify-center gap-3 delay-600"
-            >
-              <a href="#method" class="btn-secondary">See how it works</a>
+            <div class="reveal mt-8 flex flex-wrap gap-3 delay-300">
               <a href="#request" class="btn-primary"
                 >Request a Decision Audit</a
               >
+              <a href="#method" class="btn-secondary">See how it works</a>
             </div>
           </div>
 
-          <!-- Product stage: the Pulse workflow in five steps (from thepulseapi.com), played by src/main.js -->
-        </div>
-
-        <!-- Full-width so the backdrop runs edge to edge; it fades in from the page colour, no line above -->
-        <div
-          class="hero-stage hero-backdrop relative isolate overflow-x-clip"
-          data-hero-stage
-        >
-          <div class="frame pt-8">
-            <div class="reveal mx-auto w-full max-w-5xl delay-700">
-              <div class="hero-window" data-demo>
+          <div class="reveal delay-400 lg:col-span-7">
+            <div class="hero-glow">
+              <div class="relative" data-demo data-pausable>
+                <!-- Timeline: one segment per step; the active segment fills while its step plays (demo-timer), done steps stay full -->
                 <div
-                  class="mb-3 hidden flex-wrap items-center justify-between gap-3 js:flex"
+                  class="mb-4 hidden grid-cols-5 gap-3 js:grid"
+                  role="tablist"
+                  aria-label="How a Decision Audit works"
                 >
-                  <div
-                    class="flex flex-wrap gap-2"
-                    role="tablist"
-                    aria-label="How a Decision Audit works"
+                  <button
+                    type="button"
+                    role="tab"
+                    class="group hit-area flex flex-col gap-2 rounded-sm text-left text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary data-active:text-ink"
+                    aria-selected="true"
+                    data-demo-tab
+                    data-active
                   >
-                    <button
-                      type="button"
-                      role="tab"
-                      class="relative flex items-center gap-1.5 overflow-hidden rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-step-1 data-active:bg-step-1 data-active:text-on-step-1"
-                      aria-selected="true"
-                      data-demo-tab
-                      data-active
+                    <span
+                      class="block h-1 overflow-hidden rounded-full bg-line"
+                      aria-hidden="true"
+                      ><span
+                        class="demo-timer block h-full rounded-full bg-step-1"
+                      ></span
+                    ></span>
+                    <span class="flex items-center gap-1.5"
+                      ><span class="tabular-nums">01</span>The problem</span
                     >
-                      <span class="tabular-nums opacity-60">01</span>The
-                      problem<span
-                        class="demo-timer absolute inset-x-3 bottom-0.5 h-px rounded-full bg-current/70"
-                        aria-hidden="true"
-                      ></span>
-                    </button>
-                    <button
-                      type="button"
-                      role="tab"
-                      class="relative flex items-center gap-1.5 overflow-hidden rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-step-2 data-active:bg-step-2 data-active:text-on-step"
-                      aria-selected="false"
-                      data-demo-tab
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    class="group hit-area flex flex-col gap-2 rounded-sm text-left text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary data-active:text-ink"
+                    aria-selected="false"
+                    data-demo-tab
+                  >
+                    <span
+                      class="block h-1 overflow-hidden rounded-full bg-line"
+                      aria-hidden="true"
+                      ><span
+                        class="demo-timer block h-full rounded-full bg-step-2"
+                      ></span
+                    ></span>
+                    <span class="flex items-center gap-1.5"
+                      ><span class="tabular-nums">02</span>The audit</span
                     >
-                      <span class="tabular-nums opacity-60">02</span>The
-                      audit<span
-                        class="demo-timer absolute inset-x-3 bottom-0.5 h-px rounded-full bg-current/70"
-                        aria-hidden="true"
-                      ></span>
-                    </button>
-                    <button
-                      type="button"
-                      role="tab"
-                      class="relative flex items-center gap-1.5 overflow-hidden rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-step-3 data-active:bg-step-3 data-active:text-on-step"
-                      aria-selected="false"
-                      data-demo-tab
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    class="group hit-area flex flex-col gap-2 rounded-sm text-left text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary data-active:text-ink"
+                    aria-selected="false"
+                    data-demo-tab
+                  >
+                    <span
+                      class="block h-1 overflow-hidden rounded-full bg-line"
+                      aria-hidden="true"
+                      ><span
+                        class="demo-timer block h-full rounded-full bg-step-3"
+                      ></span
+                    ></span>
+                    <span class="flex items-center gap-1.5"
+                      ><span class="tabular-nums">03</span>The priority</span
                     >
-                      <span class="tabular-nums opacity-60">03</span>The
-                      priority<span
-                        class="demo-timer absolute inset-x-3 bottom-0.5 h-px rounded-full bg-current/70"
-                        aria-hidden="true"
-                      ></span>
-                    </button>
-                    <button
-                      type="button"
-                      role="tab"
-                      class="relative flex items-center gap-1.5 overflow-hidden rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-step-4 data-active:bg-step-4 data-active:text-on-step"
-                      aria-selected="false"
-                      data-demo-tab
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    class="group hit-area flex flex-col gap-2 rounded-sm text-left text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary data-active:text-ink"
+                    aria-selected="false"
+                    data-demo-tab
+                  >
+                    <span
+                      class="block h-1 overflow-hidden rounded-full bg-line"
+                      aria-hidden="true"
+                      ><span
+                        class="demo-timer block h-full rounded-full bg-step-4"
+                      ></span
+                    ></span>
+                    <span class="flex items-center gap-1.5"
+                      ><span class="tabular-nums">04</span>The repair</span
                     >
-                      <span class="tabular-nums opacity-60">04</span>The
-                      repair<span
-                        class="demo-timer absolute inset-x-3 bottom-0.5 h-px rounded-full bg-current/70"
-                        aria-hidden="true"
-                      ></span>
-                    </button>
-                    <button
-                      type="button"
-                      role="tab"
-                      class="relative flex items-center gap-1.5 overflow-hidden rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink data-active:border-step-5 data-active:bg-step-5 data-active:text-on-step"
-                      aria-selected="false"
-                      data-demo-tab
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    class="group hit-area flex flex-col gap-2 rounded-sm text-left text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary data-active:text-ink"
+                    aria-selected="false"
+                    data-demo-tab
+                  >
+                    <span
+                      class="block h-1 overflow-hidden rounded-full bg-line"
+                      aria-hidden="true"
+                      ><span
+                        class="demo-timer block h-full rounded-full bg-step-5"
+                      ></span
+                    ></span>
+                    <span class="flex items-center gap-1.5"
+                      ><span class="tabular-nums">05</span>The outcome</span
                     >
-                      <span class="tabular-nums opacity-60">05</span>The
-                      payoff<span
-                        class="demo-timer absolute inset-x-3 bottom-0.5 h-px rounded-full bg-current/70"
-                        aria-hidden="true"
-                      ></span>
-                    </button>
-                  </div>
-                  <div class="hidden lg:block">
-                    <p class="demo-stack text-sm text-muted" aria-live="polite">
-                      <span class="demo-step" data-active data-demo-caption
-                        >94 of 216 products a shopper still cannot tell
-                        apart</span
-                      >
-                      <span class="demo-step" data-demo-caption
-                        >Every attribute scored against real buying
-                        decisions</span
-                      >
-                      <span class="demo-step" data-demo-caption
-                        >Screen size first. Worth 1.067 bits, missing on
-                        80</span
-                      >
-                      <span class="demo-step" data-demo-caption
-                        >Recovered from your own titles and supplier specs</span
-                      >
-                      <span class="demo-step" data-demo-caption
-                        >Three times as many products a shopper can
-                        separate</span
-                      >
-                    </p>
-                  </div>
+                  </button>
                 </div>
                 <!-- App window (attio.com style): a light frame with the window controls, the app panel inset in it -->
                 <div
                   class="rounded-2xl border border-line bg-surface-1 p-1.5 shadow-sm"
                 >
-                  <div class="flex h-8 items-center gap-1.5 px-2.5">
-                    <span class="size-2.5 rounded-full bg-window-close"></span>
-                    <span
-                      class="size-2.5 rounded-full bg-window-minimise"
-                    ></span>
-                    <span class="size-2.5 rounded-full bg-window-zoom"></span>
-                    <span class="mx-auto text-xs text-muted"
+                  <div class="flex h-8 items-center gap-3 px-2.5">
+                    <div class="flex flex-1 gap-1.5" aria-hidden="true">
+                      <span class="size-2.5 rounded-full bg-accent"></span>
+                      <span class="size-2.5 rounded-full bg-gap"></span>
+                      <span class="size-2.5 rounded-full bg-cyan"></span>
+                    </div>
+                    <span class="text-xs text-muted"
                       >app.thepulseapi.com / audits / laptops</span
                     >
+                    <div class="flex flex-1 items-center justify-end gap-2">
+                      <span
+                        class="rounded-full border border-line bg-card px-2 py-0.5 text-xs font-medium text-muted"
+                        >Example data</span
+                      >
+                      <button
+                        type="button"
+                        class="hit-area hidden size-6 items-center justify-center rounded-full text-muted transition-colors duration-150 ease-out-soft hover:bg-card hover:text-ink focus-visible:outline-2 focus-visible:outline-primary motion-safe:js:inline-flex"
+                        aria-label="Pause demo"
+                        aria-pressed="false"
+                        data-pause
+                      >
+                        <svg class="size-3.5" aria-hidden="true">
+                          <use href="#i-pause" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                   <div
                     class="overflow-hidden rounded-xl border border-line bg-card"
                   >
-                    <div class="demo-stack">
+                    <div class="demo-stack lg:min-h-145">
                       <!-- 01 The problem -->
                       <div
                         class="demo-step flex flex-col"
@@ -1158,17 +1186,11 @@
                         <div
                           class="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-0 px-5 py-3.5"
                         >
-                          <p class="font-display text-sm font-bold text-ink">
-                            My Catalogue
-                            <span
-                              class="ml-1 font-sans text-xs font-normal text-muted"
-                              >Laptops / 216 products</span
-                            >
-                          </p>
-                          <span
-                            class="demo-pill border-critical-line bg-critical-bg text-critical"
-                            >347 gaps found</span
+                          <p
+                            class="font-display text-base font-semibold text-ink"
                           >
+                            My Laptop Catalogue: 216 Products
+                          </p>
                         </div>
                         <div
                           class="demo-in flex items-center gap-3 border-b border-critical-line bg-critical-bg px-5 py-3"
@@ -1180,25 +1202,22 @@
                           ></span>
                           <p class="text-data leading-snug text-critical">
                             <strong class="font-bold"
-                              >347 fields are blank across this shelf.</strong
+                              >357 fields are missing information.</strong
                             >
-                            A shopper cannot filter on any of them, and neither
-                            can your search.
+                            Shoppers can&rsquo;t use them to filter products,
+                            and your search can&rsquo;t either.
                           </p>
                         </div>
                         <div class="relative flex-1 overflow-x-clip">
-                          <table class="w-full text-left tabular-nums text-xs">
+                          <table
+                            class="h-full w-full text-left tabular-nums text-xs"
+                          >
                             <thead>
                               <tr class="border-b border-line">
                                 <th
                                   class="pt-4 pr-2 pb-3 pl-5 text-xs font-semibold text-muted sm:pr-5"
                                 >
                                   Name
-                                </th>
-                                <th
-                                  class="hidden px-3 pt-4 pb-3 text-xs font-semibold text-muted lg:table-cell"
-                                >
-                                  SKU
                                 </th>
                                 <th
                                   class="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3"
@@ -1292,11 +1311,6 @@
                                   >
                                 </td>
                                 <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  A1B2C3D4
-                                </td>
-                                <td
                                   class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                 >
                                   16.0"
@@ -1336,11 +1350,6 @@
                                     ></span
                                     >Spectre x360</span
                                   >
-                                </td>
-                                <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  E5F6G7H8
                                 </td>
                                 <td
                                   class="px-2 py-2.5 whitespace-nowrap sm:px-3"
@@ -1388,11 +1397,6 @@
                                   >
                                 </td>
                                 <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  I9J0K1L2
-                                </td>
-                                <td
                                   class="px-2 py-2.5 whitespace-nowrap sm:px-3"
                                 >
                                   <span class="demo-in missing-flag delay-400"
@@ -1434,11 +1438,6 @@
                                   >
                                 </td>
                                 <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  M3N4O5P6
-                                </td>
-                                <td
                                   class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                 >
                                   15.6"
@@ -1471,102 +1470,6 @@
                                   >
                                 </td>
                               </tr>
-                              <tr>
-                                <td
-                                  class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"
-                                >
-                                  <span class="flex items-center gap-3"
-                                    ><span
-                                      class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
-                                      aria-hidden="true"
-                                    ></span
-                                    >MacBook Pro</span
-                                  >
-                                </td>
-                                <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  Q7R8S9T0
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3"
-                                >
-                                  <span class="demo-in missing-flag delay-600"
-                                    ><svg class="size-3" aria-hidden="true">
-                                      <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
-                                  >
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
-                                >
-                                  18GB
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell"
-                                >
-                                  M3
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell"
-                                >
-                                  512GB
-                                </td>
-                              </tr>
-                              <tr>
-                                <td
-                                  class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"
-                                >
-                                  <span class="flex items-center gap-3"
-                                    ><span
-                                      class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
-                                      aria-hidden="true"
-                                    ></span
-                                    >MSI GS66</span
-                                  >
-                                </td>
-                                <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  Y5Z6A7B8
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3"
-                                >
-                                  <span class="demo-in missing-flag delay-700"
-                                    ><svg class="size-3" aria-hidden="true">
-                                      <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
-                                  >
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3"
-                                >
-                                  <span class="demo-in missing-flag delay-700"
-                                    ><svg class="size-3" aria-hidden="true">
-                                      <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
-                                  >
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
-                                >
-                                  <span class="demo-in missing-flag delay-700"
-                                    ><svg class="size-3" aria-hidden="true">
-                                      <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
-                                  >
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
-                                >
-                                  <span class="demo-in missing-flag delay-700"
-                                    ><svg class="size-3" aria-hidden="true">
-                                      <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
-                                  >
-                                </td>
-                              </tr>
                             </tbody>
                           </table>
                         </div>
@@ -1577,10 +1480,6 @@
                             Every blank cell is a question your catalogue cannot
                             answer.
                           </p>
-                          <span
-                            class="rounded-md bg-surface-1 px-2.5 py-1 tabular-nums text-xs font-semibold text-muted"
-                            >readiness 94 / 216</span
-                          >
                         </div>
                       </div>
                       <!-- 02 The audit -->
@@ -1592,12 +1491,10 @@
                         <div
                           class="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-0 px-5 py-3.5"
                         >
-                          <p class="font-display text-sm font-bold text-ink">
-                            My Catalogue
-                            <span
-                              class="ml-1 font-sans text-xs font-normal text-muted"
-                              >Laptops / 216 products</span
-                            >
+                          <p
+                            class="font-display text-base font-semibold text-ink"
+                          >
+                            My Laptop Catalogue: 216 Products
                           </p>
                           <span
                             class="demo-pill flex-col items-stretch gap-1 border-line bg-surface-1 text-muted"
@@ -1606,7 +1503,7 @@
                                 class="size-3 animate-spin rounded-full border-2 border-current border-t-surface-1 motion-reduce:animate-none"
                                 aria-hidden="true"
                               ></span
-                              >Scoring attributes</span
+                              >Auditing attributes</span
                             ><span
                               class="scan-track block h-0.75 w-full overflow-hidden rounded-full"
                               ><span
@@ -1621,32 +1518,23 @@
                             class="flex items-baseline justify-between gap-4"
                           >
                             <span class="text-data font-semibold text-primary"
-                              >Scoring 216 products against 32 buying
+                              >Auditing 216 products against 32 buying
                               requirements</span
                             ><span class="tabular-nums text-xs text-muted"
                               >4 attributes</span
                             >
                           </div>
-                          <span
-                            class="scan-track block h-1.5 w-full overflow-hidden rounded-full mt-2"
-                            ><span
-                              class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-0"
-                            ></span
-                          ></span>
                         </div>
                         <div class="relative flex-1 overflow-x-clip">
-                          <table class="w-full text-left tabular-nums text-xs">
+                          <table
+                            class="h-full w-full text-left tabular-nums text-xs"
+                          >
                             <thead>
                               <tr class="border-b border-line">
                                 <th
                                   class="pt-4 pr-2 pb-3 pl-5 text-xs font-semibold text-muted sm:pr-5"
                                 >
                                   Name
-                                </th>
-                                <th
-                                  class="hidden px-3 pt-4 pb-3 text-xs font-semibold text-muted lg:table-cell"
-                                >
-                                  SKU
                                 </th>
                                 <th
                                   class="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3"
@@ -1662,7 +1550,7 @@
                                     ></span
                                   ><span
                                     class="mt-1 block text-caption font-normal text-muted"
-                                    >scoring…<span
+                                    >auditing…<span
                                       class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"
                                       ><span
                                         class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-0"
@@ -1683,7 +1571,7 @@
                                     ></span
                                   ><span
                                     class="mt-1 block text-caption font-normal text-muted"
-                                    >scoring…<span
+                                    >auditing…<span
                                       class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"
                                       ><span
                                         class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-180"
@@ -1704,7 +1592,7 @@
                                     ></span
                                   ><span
                                     class="mt-1 block text-caption font-normal text-muted"
-                                    >scoring…<span
+                                    >auditing…<span
                                       class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"
                                       ><span
                                         class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-360"
@@ -1725,7 +1613,7 @@
                                     ></span
                                   ><span
                                     class="mt-1 block text-caption font-normal text-muted"
-                                    >scoring…<span
+                                    >auditing…<span
                                       class="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"
                                       ><span
                                         class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-540"
@@ -1748,11 +1636,6 @@
                                   >
                                 </td>
                                 <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  A1B2C3D4
-                                </td>
-                                <td
                                   class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                 >
                                   16.0"
@@ -1761,31 +1644,17 @@
                                   class="px-2 py-2.5 whitespace-nowrap sm:px-3"
                                 >
                                   <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-90"
-                                      ></span></span
-                                  ></span>
+                                    class="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
+                                    >Auditing</span
+                                  >
                                 </td>
                                 <td
                                   class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
                                 >
                                   <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-180"
-                                      ></span></span
-                                  ></span>
+                                    class="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
+                                    >Auditing</span
+                                  >
                                 </td>
                                 <td
                                   class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell"
@@ -1806,24 +1675,12 @@
                                   >
                                 </td>
                                 <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  E5F6G7H8
-                                </td>
-                                <td
                                   class="px-2 py-2.5 whitespace-nowrap sm:px-3"
                                 >
                                   <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-270"
-                                      ></span></span
-                                  ></span>
+                                    class="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
+                                    >Auditing</span
+                                  >
                                 </td>
                                 <td
                                   class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
@@ -1834,31 +1691,17 @@
                                   class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
                                 >
                                   <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-360"
-                                      ></span></span
-                                  ></span>
+                                    class="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
+                                    >Auditing</span
+                                  >
                                 </td>
                                 <td
                                   class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
                                 >
                                   <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-450"
-                                      ></span></span
-                                  ></span>
+                                    class="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
+                                    >Auditing</span
+                                  >
                                 </td>
                               </tr>
                               <tr>
@@ -1874,24 +1717,12 @@
                                   >
                                 </td>
                                 <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  I9J0K1L2
-                                </td>
-                                <td
                                   class="px-2 py-2.5 whitespace-nowrap sm:px-3"
                                 >
                                   <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-540"
-                                      ></span></span
-                                  ></span>
+                                    class="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
+                                    >Auditing</span
+                                  >
                                 </td>
                                 <td
                                   class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
@@ -1902,16 +1733,9 @@
                                   class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
                                 >
                                   <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-630"
-                                      ></span></span
-                                  ></span>
+                                    class="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
+                                    >Auditing</span
+                                  >
                                 </td>
                                 <td
                                   class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell"
@@ -1932,11 +1756,6 @@
                                   >
                                 </td>
                                 <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  M3N4O5P6
-                                </td>
-                                <td
                                   class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                 >
                                   15.6"
@@ -1945,172 +1764,25 @@
                                   class="px-2 py-2.5 whitespace-nowrap sm:px-3"
                                 >
                                   <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-720"
-                                      ></span></span
-                                  ></span>
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
-                                >
-                                  <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-810"
-                                      ></span></span
-                                  ></span>
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
-                                >
-                                  <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-900"
-                                      ></span></span
-                                  ></span>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td
-                                  class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"
-                                >
-                                  <span class="flex items-center gap-3"
-                                    ><span
-                                      class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
-                                      aria-hidden="true"
-                                    ></span
-                                    >MacBook Pro</span
+                                    class="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
+                                    >Auditing</span
                                   >
                                 </td>
                                 <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  Q7R8S9T0
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3"
+                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
                                 >
                                   <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-990"
-                                      ></span></span
-                                  ></span>
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
-                                >
-                                  18GB
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell"
-                                >
-                                  M3
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell"
-                                >
-                                  512GB
-                                </td>
-                              </tr>
-                              <tr>
-                                <td
-                                  class="py-3 pr-2 pl-5 font-medium text-ink sm:pr-5 sm:whitespace-nowrap"
-                                >
-                                  <span class="flex items-center gap-3"
-                                    ><span
-                                      class="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
-                                      aria-hidden="true"
-                                    ></span
-                                    >MSI GS66</span
+                                    class="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
+                                    >Auditing</span
                                   >
                                 </td>
                                 <td
-                                  class="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell"
-                                >
-                                  Y5Z6A7B8
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3"
-                                >
-                                  <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1080"
-                                      ></span></span
-                                  ></span>
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3"
-                                >
-                                  <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1170"
-                                      ></span></span
-                                  ></span>
-                                </td>
-                                <td
                                   class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
                                 >
                                   <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1260"
-                                      ></span></span
-                                  ></span>
-                                </td>
-                                <td
-                                  class="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
-                                >
-                                  <span
-                                    class="inline-flex w-18 flex-col gap-0.5 rounded-md bg-surface-1 px-2 py-1"
-                                    ><span
-                                      class="text-micro font-semibold text-muted uppercase"
-                                      >Scoring</span
-                                    ><span
-                                      class="scan-track block h-1 w-full overflow-hidden rounded-full"
-                                      ><span
-                                        class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-1350"
-                                      ></span></span
-                                  ></span>
+                                    class="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
+                                    >Auditing</span
+                                  >
                                 </td>
                               </tr>
                             </tbody>
@@ -2122,18 +1794,8 @@
                           <p
                             class="flex flex-wrap items-center gap-3 text-data text-muted"
                           >
-                            Reading titles, descriptions and supplier
-                            specs.<span
-                              class="scan-track inline-block h-1.25 w-32 overflow-hidden rounded-full"
-                              ><span
-                                class="demo-bar demo-bar-scan block h-full rounded-full bg-primary delay-240"
-                              ></span
-                            ></span>
+                            Reading titles, descriptions and supplier specs.
                           </p>
-                          <span
-                            class="rounded-md bg-surface-1 px-2.5 py-1 tabular-nums text-xs font-semibold text-muted"
-                            >readiness 94 / 216</span
-                          >
                         </div>
                       </div>
                       <!-- 03 The priority -->
@@ -2141,13 +1803,11 @@
                         <div
                           class="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-0 px-5 py-3.5"
                         >
-                          <p class="font-display text-sm font-bold text-ink">
-                            Two ways to rank the same four gaps
-                          </p>
-                          <span
-                            class="demo-pill border-critical-bg bg-critical-bg font-bold text-critical"
-                            >They disagree</span
+                          <p
+                            class="font-display text-sm font-semibold text-ink"
                           >
+                            Two ways to rank the same four missing attributes
+                          </p>
                         </div>
                         <div
                           class="flex flex-1 flex-col justify-center px-5 py-6 sm:px-7"
@@ -2157,14 +1817,14 @@
                               <p
                                 class="text-caption font-bold tracking-wider text-muted uppercase"
                               >
-                                A completeness report
+                                Traditional Catalogue Audit
                               </p>
-                              <p class="mt-0.5 mb-3 text-xs text-muted">
+                              <p class="mt-0.5 mb-5 text-xs text-muted">
                                 ranks by what is absent
                               </p>
-                              <ol class="space-y-2">
+                              <ol class="space-y-3">
                                 <li
-                                  class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-100 border-critical-line bg-critical-bg"
+                                  class="demo-in flex h-16 items-center gap-3 rounded-lg border px-4 py-2 delay-100 border-critical-line bg-critical-bg"
                                 >
                                   <span
                                     class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-critical text-on-primary"
@@ -2180,7 +1840,7 @@
                                   >
                                 </li>
                                 <li
-                                  class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-200 border-line bg-card"
+                                  class="demo-in flex h-16 items-center gap-3 rounded-lg border px-4 py-2 delay-200 border-line bg-card"
                                 >
                                   <span
                                     class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-surface-1 text-muted"
@@ -2196,7 +1856,7 @@
                                   >
                                 </li>
                                 <li
-                                  class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-300 border-line bg-card"
+                                  class="demo-in flex h-16 items-center gap-3 rounded-lg border px-4 py-2 delay-300 border-line bg-card"
                                 >
                                   <span
                                     class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-surface-1 text-muted"
@@ -2212,7 +1872,7 @@
                                   >
                                 </li>
                                 <li
-                                  class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-400 border-line bg-card"
+                                  class="demo-in flex h-16 items-center gap-3 rounded-lg border px-4 py-2 delay-400 border-line bg-card"
                                 >
                                   <span
                                     class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-surface-1 text-muted"
@@ -2234,7 +1894,7 @@
                               aria-hidden="true"
                             >
                               <svg
-                                class="absolute inset-x-0 top-15 h-38 w-full overflow-visible"
+                                class="absolute inset-x-0 top-19 h-62 w-full overflow-visible"
                                 viewBox="0 0 40 200"
                                 preserveAspectRatio="none"
                                 fill="none"
@@ -2243,31 +1903,38 @@
                                   class="demo-draw stroke-critical delay-700"
                                   d="M0 8 C 40 8, 0 192, 40 192"
                                   pathLength="1"
-                                  stroke-width="1.5"
-                                  vector-effect="non-scaling-stroke"
+                                  stroke-width="1.25"
                                 />
                               </svg>
                               <div
                                 class="absolute inset-0 flex items-center justify-center pt-8"
                               >
                                 <span
-                                  class="demo-in rounded-md bg-critical px-1.5 py-0.5 text-micro font-bold whitespace-nowrap text-on-primary delay-1000"
+                                  class="demo-in rounded-md bg-critical px-1.5 py-0.5 text-label font-bold whitespace-nowrap text-on-primary delay-1000"
                                   >1st → last</span
                                 >
                               </div>
                             </div>
                             <div class="min-w-0 flex-1">
-                              <p
-                                class="text-caption font-bold tracking-wider text-primary uppercase"
-                              >
-                                Pulse
+                              <p class="flex h-4.5 items-center">
+                                <picture
+                                  ><source
+                                    srcset="./src/assets/brand/logo-white.webp"
+                                    media="(prefers-color-scheme: dark)" />
+                                  <img
+                                    src="./src/assets/brand/logo.webp"
+                                    alt="Pulse"
+                                    width="54"
+                                    height="18"
+                                    class="h-4.5 w-auto"
+                                /></picture>
                               </p>
-                              <p class="mt-0.5 mb-3 text-xs text-muted">
+                              <p class="mt-0.5 mb-5 text-xs text-muted">
                                 ranks by what shoppers need
                               </p>
-                              <ol class="space-y-2">
+                              <ol class="space-y-3">
                                 <li
-                                  class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-500 border-primary bg-primary-tint"
+                                  class="demo-in flex h-16 items-center gap-3 rounded-lg border px-4 py-2 delay-500 border-primary bg-primary-tint"
                                 >
                                   <span
                                     class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-primary text-on-primary"
@@ -2283,7 +1950,7 @@
                                   >
                                 </li>
                                 <li
-                                  class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-600 border-line bg-card"
+                                  class="demo-in flex h-16 items-center gap-3 rounded-lg border px-4 py-2 delay-600 border-line bg-card"
                                 >
                                   <span
                                     class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-surface-1 text-muted"
@@ -2299,7 +1966,7 @@
                                   >
                                 </li>
                                 <li
-                                  class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-700 border-line bg-card"
+                                  class="demo-in flex h-16 items-center gap-3 rounded-lg border px-4 py-2 delay-700 border-line bg-card"
                                 >
                                   <span
                                     class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-surface-1 text-muted"
@@ -2315,7 +1982,7 @@
                                   >
                                 </li>
                                 <li
-                                  class="demo-in flex h-10 items-center gap-3 rounded-lg border px-3 py-1.5 delay-800 border-critical-line bg-critical-bg"
+                                  class="demo-in flex h-16 items-center gap-3 rounded-lg border px-4 py-2 delay-800 border-critical-line bg-critical-bg"
                                 >
                                   <span
                                     class="flex size-5 shrink-0 items-center justify-center rounded tabular-nums text-caption font-bold bg-critical text-on-primary"
@@ -2334,18 +2001,17 @@
                             </div>
                           </div>
                           <p
-                            class="demo-in mt-5 text-data leading-relaxed text-pretty text-muted delay-1200"
+                            class="demo-in mt-12 text-data leading-relaxed text-pretty text-muted delay-1200"
                           >
                             <strong class="font-bold text-critical"
                               >Processor</strong
                             >
-                            is missing on 162 products, so a completeness report
-                            puts it first. Pulse ranks by how much a fix helps
-                            shoppers decide: only 2 of 32 requirements mention a
-                            processor, so it finishes last.
+                            is missing from 162 products, so a traditional audit
+                            ranks it first. But only 2 of 32 shopper
+                            requirements mention it, so PULSE ranks it last.
                             <strong class="font-bold text-ink"
-                              >Fixing it first would have been the most
-                              expensive way to change nothing.</strong
+                              >Fixing it first could waste time and resources
+                              with little impact on shoppers.</strong
                             >
                           </p>
                         </div>
@@ -2355,7 +2021,9 @@
                         <div
                           class="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-0 px-5 py-3.5"
                         >
-                          <p class="font-display text-sm font-bold text-ink">
+                          <p
+                            class="font-display text-sm font-semibold text-ink"
+                          >
                             Recovering screen size
                           </p>
                           <span
@@ -2368,6 +2036,24 @@
                         <div
                           class="flex flex-1 flex-col justify-center px-5 py-6 sm:px-7"
                         >
+                          <p
+                            class="mb-8 flex items-center gap-2.5 rounded-lg border border-primary-line bg-primary-tint px-3.5 py-2.5 text-data font-medium text-ink"
+                          >
+                            <svg
+                              class="size-4 shrink-0 text-primary"
+                              aria-hidden="true"
+                            >
+                              <use href="#i-sparkles" />
+                            </svg>
+                            <span
+                              >Currently, PULSE identifies
+                              <strong class="font-bold text-primary"
+                                >Screen size</strong
+                              >
+                              as the attribute that needs priority
+                              correction.</span
+                            >
+                          </p>
                           <div
                             class="flex flex-wrap items-end justify-between gap-4"
                           >
@@ -2375,7 +2061,7 @@
                               class="max-w-md font-display text-lg font-semibold text-ink"
                             >
                               <span
-                                class="font-display text-3xl leading-none font-bold text-primary tabular-nums"
+                                class="font-display text-5xl leading-none font-semibold text-primary tabular-nums"
                                 data-demo-count="161"
                                 >161</span
                               ><span
@@ -2383,7 +2069,8 @@
                               >
                                 / 216</span
                               ><span class="mt-1 block"
-                                >values were already in text you own.</span
+                                >values were found in your existing product
+                                titles.</span
                               >
                             </p>
                             <p
@@ -2398,28 +2085,28 @@
                             </p>
                           </div>
                           <div
-                            class="scan-track mt-5 h-2.5 overflow-hidden rounded-full"
+                            class="scan-track mt-8 h-3 overflow-hidden rounded-full"
                           >
                             <div
                               class="demo-bar h-full w-161/216 rounded-full bg-primary delay-200"
                             ></div>
                           </div>
                           <p
-                            class="mt-6 mb-3 flex items-center gap-1.5 text-caption font-bold tracking-wider text-primary uppercase"
+                            class="mt-10 mb-4 flex items-center gap-1.5 text-caption font-bold tracking-wider text-primary uppercase"
                           >
                             <svg class="size-3" aria-hidden="true">
                               <use href="#i-file-text" /></svg
                             >Pulled straight out of your product titles
                           </p>
-                          <ul class="space-y-2">
+                          <ul class="space-y-3">
                             <li
-                              class="demo-in flex flex-wrap items-center gap-3 rounded-lg border border-surface-1 bg-surface-0 px-3 py-1.5 delay-300"
+                              class="demo-in flex flex-wrap items-center gap-3 rounded-lg border border-surface-1 bg-surface-0 px-4 py-3.5 delay-300"
                             >
                               <span
                                 class="min-w-0 flex-1 truncate text-xs text-muted"
                                 >HP Spectre x360
                                 <mark
-                                  class="rounded bg-primary-tint px-1 font-bold text-primary-dark"
+                                  class="rounded bg-primary-tint px-1 font-bold text-primary-hover"
                                   >13.5"</mark
                                 >
                                 OLED Touch, 16GB</span
@@ -2436,13 +2123,13 @@
                               >
                             </li>
                             <li
-                              class="demo-in flex flex-wrap items-center gap-3 rounded-lg border border-surface-1 bg-surface-0 px-3 py-1.5 delay-500"
+                              class="demo-in flex flex-wrap items-center gap-3 rounded-lg border border-surface-1 bg-surface-0 px-4 py-3.5 delay-500"
                             >
                               <span
                                 class="min-w-0 flex-1 truncate text-xs text-muted"
                                 >Lenovo ThinkPad X1 Carbon G9
                                 <mark
-                                  class="rounded bg-primary-tint px-1 font-bold text-primary-dark"
+                                  class="rounded bg-primary-tint px-1 font-bold text-primary-hover"
                                   >14 inch</mark
                                 >
                                 WUXGA</span
@@ -2459,13 +2146,13 @@
                               >
                             </li>
                             <li
-                              class="demo-in flex flex-wrap items-center gap-3 rounded-lg border border-surface-1 bg-surface-0 px-3 py-1.5 delay-700"
+                              class="demo-in flex flex-wrap items-center gap-3 rounded-lg border border-surface-1 bg-surface-0 px-4 py-3.5 delay-700"
                             >
                               <span
                                 class="min-w-0 flex-1 truncate text-xs text-muted"
                                 >MSI GS66 Stealth
                                 <mark
-                                  class="rounded bg-primary-tint px-1 font-bold text-primary-dark"
+                                  class="rounded bg-primary-tint px-1 font-bold text-primary-hover"
                                   >15.6</mark
                                 >
                                 FHD 240Hz</span
@@ -2484,12 +2171,14 @@
                           </ul>
                         </div>
                       </div>
-                      <!-- 05 The payoff -->
+                      <!-- 05 The outcome -->
                       <div class="demo-step flex flex-col" data-demo-step>
                         <div
                           class="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-0 px-5 py-3.5"
                         >
-                          <p class="font-display text-sm font-bold text-ink">
+                          <p
+                            class="font-display text-sm font-semibold text-ink"
+                          >
                             What your shoppers can now do
                           </p>
                           <span
@@ -2523,21 +2212,9 @@
                                 >Still indistinguishable</span
                               >
                             </div>
-                            <span class="grid text-data font-bold">
-                              <span
-                                class="demo-out col-start-1 row-start-1 inline-flex items-center justify-center rounded-full bg-surface-1 px-3 py-1 text-muted delay-1000"
-                                >Your catalogue today</span
-                              >
-                              <span
-                                class="demo-in col-start-1 row-start-1 inline-flex items-center justify-center gap-2 rounded-full bg-primary-tint px-3 py-1 text-primary delay-1000"
-                                ><svg class="size-3.5" aria-hidden="true">
-                                  <use href="#i-check" /></svg
-                                >After the repair</span
-                              >
-                            </span>
                           </div>
                           <div
-                            class="mt-6 hidden grid-cols-24 gap-1 js:grid sm:grid-cols-36 sm:gap-1.25"
+                            class="mt-8 hidden grid-cols-24 gap-1 js:grid sm:grid-cols-27 sm:gap-1.5"
                             data-demo-grid
                             data-total="216"
                             data-before="122"
@@ -2546,14 +2223,15 @@
                             aria-label="216 laptops: a shopper can tell 122 apart before screen size is recorded and 185 after"
                           ></div>
                           <div
-                            class="mt-6 flex flex-wrap items-end justify-between gap-4"
+                            class="mt-8 flex flex-wrap items-end justify-between gap-4"
                           >
                             <p
                               class="max-w-md font-display text-lg font-semibold text-pretty text-ink"
                             >
-                              One attribute moved
-                              <span class="text-primary">63 more products</span>
-                              out of the pile nobody could choose between.
+                              Adding one attribute helped shoppers distinguish
+                              <span class="whitespace-nowrap text-primary"
+                                >63 more products</span
+                              >.
                             </p>
                             <div class="min-w-52">
                               <p
@@ -2596,16 +2274,30 @@
                             </div>
                           </div>
                         </div>
-                        <p
-                          class="border-t border-surface-1 px-5 py-4 text-data text-muted"
-                        >
-                          A property of the repaired catalogue, not a forecast.
-                          No traffic and no test: you can confirm it the week
-                          you finish the work.
-                        </p>
                       </div>
                     </div>
                   </div>
+                </div>
+                <!-- Step caption under the window (follows the active step) -->
+                <div class="mt-5 hidden js:block">
+                  <p
+                    class="demo-stack text-center text-sm font-medium text-ink"
+                    aria-live="polite"
+                  >
+                    <span class="demo-step" data-active data-demo-caption
+                      >94 out of 216 products have unclear differences for
+                      shoppers</span
+                    >
+                    <span class="demo-step" data-demo-caption
+                      >Every attribute scored against real buying
+                      decisions</span
+                    >
+                    <span class="demo-step" data-demo-caption></span>
+                    <span class="demo-step" data-demo-caption></span>
+                    <span class="demo-step" data-demo-caption
+                      >Three times as many products a shopper can separate</span
+                    >
+                  </p>
                 </div>
               </div>
             </div>
@@ -2626,7 +2318,7 @@
             <li
               class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
             >
-              <span class="font-display text-lg font-bold text-ink"
+              <span class="font-display text-lg font-semibold text-ink"
                 >Beauty</span
               >
               <span class="text-xs text-muted">shade</span>
@@ -2634,7 +2326,7 @@
             <li
               class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
             >
-              <span class="font-display text-lg font-bold text-ink"
+              <span class="font-display text-lg font-semibold text-ink"
                 >Apparel</span
               >
               <span class="text-xs text-muted">fit</span>
@@ -2642,7 +2334,7 @@
             <li
               class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
             >
-              <span class="font-display text-lg font-bold text-ink"
+              <span class="font-display text-lg font-semibold text-ink"
                 >Electronics</span
               >
               <span class="text-xs text-muted">screen size</span>
@@ -2650,7 +2342,7 @@
             <li
               class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
             >
-              <span class="font-display text-lg font-bold text-ink"
+              <span class="font-display text-lg font-semibold text-ink"
                 >Grocery</span
               >
               <span class="text-xs text-muted">fragrance-free</span>
@@ -2658,7 +2350,7 @@
             <li
               class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
             >
-              <span class="font-display text-lg font-bold text-ink"
+              <span class="font-display text-lg font-semibold text-ink"
                 >Furniture</span
               >
               <span class="text-xs text-muted">capacity</span>
@@ -2666,7 +2358,9 @@
             <li
               class="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
             >
-              <span class="font-display text-lg font-bold text-ink">Parts</span>
+              <span class="font-display text-lg font-semibold text-ink"
+                >Parts</span
+              >
               <span class="text-xs text-muted">compatibility</span>
             </li>
           </ul>
@@ -2678,13 +2372,8 @@
            and one where nobody has measured it yet (washing powder). -->
       <section class="border-b border-line">
         <div class="frame py-20 lg:py-28">
-          <p
-            class="reveal text-xs font-semibold tracking-widest text-muted uppercase"
-          >
-            What this looks like
-          </p>
-          <h2 class="reveal mt-4 text-title text-ink delay-100">
-            Two shelves, the same missing fact.
+          <h2 class="reveal text-title text-ink">
+            Different Products. The Same Catalogue Problem
           </h2>
           <div class="mt-12 grid gap-6 md:grid-cols-2 lg:mt-16">
             <article
@@ -2695,8 +2384,11 @@
               >
                 Consumer goods
               </p>
-              <h3 class="mt-4 text-h2 text-pretty text-ink">
-                A parent is buying washing powder for a baby&rsquo;s skin.
+              <h3 class="mt-4 text-h2 text-ink">
+                <span class="block">A parent is buying</span
+                ><span class="block"
+                  >washing powder for a baby&rsquo;s skin.</span
+                >
               </h3>
               <dl class="mt-6 space-y-5 border-t border-line pt-6">
                 <div>
@@ -2704,8 +2396,13 @@
                     Never recorded
                   </dt>
                   <dd class="mt-1.5 text-pretty text-ink">
-                    Whether a pack is fragrance free is printed on the box and
-                    photographed, not recorded as a field.
+                    The product packaging shows whether it&rsquo;s
+                    fragrance-free, but this information
+                    <strong
+                      class="text-lg/none font-bold whitespace-nowrap text-critical"
+                      >isn&rsquo;t recorded</strong
+                    >
+                    in the catalogue.
                   </dd>
                 </div>
                 <div>
@@ -2713,8 +2410,10 @@
                     What it costs
                   </dt>
                   <dd class="mt-1.5 text-pretty text-ink">
-                    The filter they need does not exist, so a shelf of forty
-                    packs stays a shelf of forty packs.
+                    Without this attribute, shoppers can&rsquo;t filter for
+                    fragrance-free options and must browse all
+                    <strong class="font-semibold tabular-nums">40</strong>
+                    products to find a suitable one.
                   </dd>
                 </div>
               </dl>
@@ -2727,9 +2426,11 @@
               >
                 Ecommerce and electronics
               </p>
-              <h3 class="mt-4 text-h2 text-pretty text-ink">
-                A designer is buying a laptop and needs the screen big enough to
-                work on.
+              <h3 class="mt-4 text-h2 text-ink">
+                <span class="block">A designer is buying a laptop and</span
+                ><span class="block"
+                  >needs the screen big enough to work on.</span
+                >
               </h3>
               <dl class="mt-6 space-y-5 border-t border-line pt-6">
                 <div>
@@ -2737,11 +2438,16 @@
                     Never recorded
                   </dt>
                   <dd class="mt-1.5 text-pretty text-ink">
-                    Screen size is in
+                    Screen size appears in
                     <strong class="font-semibold tabular-nums"
                       >136 of 216</strong
                     >
-                    product titles and in nobody&rsquo;s attributes.
+                    product titles, but
+                    <strong
+                      class="text-lg/none font-bold whitespace-nowrap text-critical"
+                      >isn&rsquo;t recorded</strong
+                    >
+                    as a separate attribute.
                   </dd>
                 </div>
                 <div>
@@ -2749,18 +2455,17 @@
                     What it costs
                   </dt>
                   <dd class="mt-1.5 text-pretty text-ink">
-                    <strong class="font-semibold tabular-nums">94</strong> of
-                    those 216 products cannot be told apart once every question
-                    the catalogue supports has been answered.
+                    Without clear product attributes, shoppers struggle to see
+                    the differences between
+                    <strong class="font-semibold tabular-nums"
+                      >94 of the 216</strong
+                    >
+                    laptops.
                   </dd>
                 </div>
               </dl>
             </article>
           </div>
-          <p class="reveal mt-8 max-w-xl text-sm text-pretty text-muted">
-            The second example is a shelf we measured. The first is the same
-            failure in a category where nobody has measured it yet.
-          </p>
         </div>
       </section>
 
@@ -3123,7 +2828,7 @@
                     <div
                       class="rounded-xl border border-line bg-card shadow-sm absolute top-1/2 right-0 w-56 -translate-y-1/2 p-4 transition-all duration-700 ease-out-soft pre-7:translate-x-4 pre-7:opacity-0"
                     >
-                      <p class="font-display text-lg font-extrabold text-ink">
+                      <p class="font-display text-lg font-semibold text-ink">
                         Pulse
                       </p>
                       <div class="mt-2 grid">
@@ -3570,7 +3275,7 @@
                         </p>
                         <p class="mt-2 flex items-baseline gap-2 tabular-nums">
                           <span
-                            class="grid font-display text-3xl font-bold text-ink"
+                            class="grid font-display text-3xl font-semibold text-ink"
                             ><span
                               class="col-start-1 row-start-1 opacity-0 transition-opacity duration-300 pre-5:opacity-100"
                               >122</span
@@ -3600,7 +3305,8 @@
                           Screen size recorded
                         </p>
                         <p class="mt-2 flex items-baseline gap-2 tabular-nums">
-                          <span class="font-display text-3xl font-bold text-ink"
+                          <span
+                            class="font-display text-3xl font-semibold text-ink"
                             >216</span
                           ><span class="text-sm text-muted"
                             >/ 216 · was 136</span
@@ -3627,185 +3333,83 @@
         </div>
       </section>
 
-      <!-- ===================== RESEARCH (dark band) ===================== -->
-      <section id="research" class="scroll-mt-16 bg-void text-on-void">
-        <div class="frame-dark blueprint-grid-dark">
+      <!-- ===================== RESEARCH ===================== -->
+      <section id="research" class="scroll-mt-16 border-b border-line">
+        <div class="frame">
           <div class="px-6 pt-24 pb-16 text-center lg:pt-32">
-            <p class="reveal text-sm font-medium text-void-muted">
-              Independent research
-            </p>
             <h2
-              class="reveal mx-auto mt-3 max-w-3xl text-display text-balance text-on-void delay-100"
+              class="reveal mx-auto max-w-3xl text-display text-balance text-ink"
             >
               Independent research says the same thing.
             </h2>
           </div>
+          <!-- Stats (stats-2 layout): source on top, then number and finding. Each card is a 3-row subgrid, so numbers line up across cards -->
           <div
-            class="grid border-t border-void-line md:grid-cols-3 md:divide-x md:divide-void-line"
+            class="grid gap-4 px-6 pt-6 pb-24 md:grid-cols-3 lg:px-12 lg:pt-12 lg:pb-32"
           >
-            <div class="reveal px-6 py-10 lg:px-12">
-              <div class="border-l-2 border-void-line-strong pl-5">
-                <p
-                  class="font-display text-5xl font-extrabold text-on-void tabular-nums"
+            <div
+              class="reveal row-span-3 grid grid-rows-subgrid gap-y-2 rounded-2xl border border-line bg-card shadow-sm p-6"
+            >
+              <p class="pb-12 text-sm text-muted">
+                <a
+                  href="https://baymard.com/research-articles/have-filters-for-list-item-info"
+                  rel="noopener"
+                  class="rounded-sm underline decoration-line-control underline-offset-2 transition-colors duration-150 ease-out-soft hover:text-ink hover:decoration-current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  >Baymard Institute, 2019</a
                 >
-                  <span data-count="38" data-suffix="%">38%</span>
-                </p>
-                <p class="mt-2 text-body text-void-text">
-                  of retailers show an attribute but offer no filter for it.
-                </p>
-                <p class="mt-3 text-xs text-void-muted/70">Baymard Institute</p>
-              </div>
+              </p>
+              <p
+                class="text-6xl font-semibold tracking-tight text-ink tabular-nums"
+              >
+                <span data-count="38" data-suffix="%">38%</span>
+              </p>
+              <!-- TODO-COPY-REVIEW: wording aligned with the Baymard source -->
+              <p class="text-body text-ink">
+                of e-commerce sites don&rsquo;t offer filters for all the
+                product details they show in listings.
+              </p>
             </div>
             <div
-              class="reveal border-t border-void-line px-6 py-10 delay-100 md:border-t-0 lg:px-12"
+              class="reveal row-span-3 grid grid-rows-subgrid gap-y-2 rounded-2xl border border-line bg-card shadow-sm p-6 delay-100"
             >
-              <div class="border-l-2 border-void-line-strong pl-5">
-                <p
-                  class="font-display text-5xl font-extrabold text-on-void tabular-nums"
+              <!-- TODO-COPY-REVIEW: source given by the team; confirm the 79% figure appears in this Adobe article -->
+              <p class="pb-12 text-sm text-muted">
+                <a
+                  href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable"
+                  rel="noopener"
+                  class="rounded-sm underline decoration-line-control underline-offset-2 transition-colors duration-150 ease-out-soft hover:text-ink hover:decoration-current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  >Adobe Analytics, 2026</a
                 >
-                  <span data-count="79" data-suffix="%">79%</span>
-                </p>
-                <p class="mt-2 text-body text-void-text">
-                  of product pages do not ship a full set of structured data.
-                </p>
-                <p class="mt-3 text-xs text-void-muted/70">Adobe Analytics</p>
-              </div>
+              </p>
+              <p
+                class="text-6xl font-semibold tracking-tight text-ink tabular-nums"
+              >
+                <span data-count="79" data-suffix="%">79%</span>
+              </p>
+              <p class="text-body text-ink">
+                of product pages ship no full set of structured data.
+              </p>
             </div>
             <div
-              class="reveal border-t border-void-line px-6 py-10 delay-200 md:border-t-0 lg:px-12"
+              class="reveal row-span-3 grid grid-rows-subgrid gap-y-2 rounded-2xl border border-line bg-card shadow-sm p-6 delay-200"
             >
-              <div class="border-l-2 border-void-line-strong pl-5">
-                <p
-                  class="font-display text-5xl font-extrabold text-on-void tabular-nums"
+              <p class="pb-12 text-sm text-muted">
+                <a
+                  href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable"
+                  rel="noopener"
+                  class="rounded-sm underline decoration-line-control underline-offset-2 transition-colors duration-150 ease-out-soft hover:text-ink hover:decoration-current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  >Adobe Analytics, 2026</a
                 >
-                  <span data-count="393" data-suffix="%">393%</span>
-                </p>
-                <p class="mt-2 text-body text-void-text">
-                  growth in AI traffic to US retail. Agents don't guess.
-                </p>
-                <p class="mt-3 text-xs text-void-muted/70">Adobe Analytics</p>
-              </div>
+              </p>
+              <p
+                class="text-6xl font-semibold tracking-tight text-ink tabular-nums"
+              >
+                <span data-count="393" data-suffix="%">393%</span>
+              </p>
+              <p class="text-body text-ink">
+                growth in AI traffic to US retail. Agents don&rsquo;t guess.
+              </p>
             </div>
-          </div>
-
-          <!-- Marquee of attributes shoppers filter on -->
-          <div
-            class="overflow-hidden border-t border-void-line py-6"
-            aria-label="Attributes shoppers filter on"
-          >
-            <ul
-              class="flex w-max animate-marquee gap-3 motion-reduce:animate-none"
-            >
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                screen_size
-              </li>
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                fragrance_free
-              </li>
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                shade
-              </li>
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                capacity
-              </li>
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                fit
-              </li>
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                material
-              </li>
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                battery_life
-              </li>
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                skin_type
-              </li>
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                dimensions
-              </li>
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                compatibility
-              </li>
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                allergens
-              </li>
-              <li class="missing-cell-dark rounded-md px-3 py-1.5 text-sm">
-                wattage
-              </li>
-              <!-- duplicate set for a seamless loop -->
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                screen_size
-              </li>
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                fragrance_free
-              </li>
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                shade
-              </li>
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                capacity
-              </li>
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                fit
-              </li>
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                material
-              </li>
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                battery_life
-              </li>
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                skin_type
-              </li>
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                dimensions
-              </li>
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                compatibility
-              </li>
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                allergens
-              </li>
-              <li
-                class="missing-cell-dark rounded-md px-3 py-1.5 text-sm"
-                aria-hidden="true"
-              >
-                wattage
-              </li>
-            </ul>
           </div>
         </div>
       </section>
@@ -3877,46 +3481,135 @@
           <div
             class="blueprint-grid border-t border-line bg-surface-1/50 px-6 py-16 lg:col-span-7 lg:border-t-0 lg:px-12 lg:py-24"
           >
+            <!-- Data orbit (thepulseapi.com "blind spot" style): the audit in the centre, product categories around it, then
+                 what it reads (Product data) and what it never reads. Rings turn slowly; the button pauses them (WCAG 2.2.2). -->
             <div
-              class="reveal overflow-hidden rounded-xl border border-line bg-card shadow-sm"
+              class="reveal relative flex flex-col overflow-hidden rounded-3xl border border-line bg-card p-6 shadow-sm"
+              data-pausable
             >
-              <div
-                class="eyebrow border-b border-line bg-surface-1 px-4 py-2.5"
-              >
-                What the audit reads
+              <p class="eyebrow">What the audit reads</p>
+              <div class="relative mx-auto mt-4 aspect-square w-full max-w-104">
+                <svg
+                  class="orbit-ring absolute inset-0 size-full text-primary motion-safe:animate-orbit-cw"
+                  viewBox="0 0 400 400"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="200"
+                    cy="200"
+                    r="178"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-opacity="0.35"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-dasharray="1 14"
+                  />
+                </svg>
+                <svg
+                  class="orbit-ring absolute inset-0 size-full text-cyan motion-safe:animate-orbit-ccw"
+                  viewBox="0 0 400 400"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="200"
+                    cy="200"
+                    r="126"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-opacity="0.5"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-dasharray="1 12"
+                  />
+                </svg>
+                <div class="absolute inset-0 grid place-items-center">
+                  <p
+                    class="grid aspect-square w-1/3 place-items-center rounded-full bg-primary px-4 text-center text-on-primary shadow-lg transition duration-500 ease-out-soft pre-shown:scale-75 pre-shown:opacity-0"
+                  >
+                    <span
+                      ><span class="block text-xl font-semibold">The audit</span
+                      ><span class="mt-1 block text-xs font-medium"
+                        >reads product data only</span
+                      ></span
+                    >
+                  </p>
+                </div>
+                <span
+                  class="absolute grid w-3/25 left-1/2 top-13/100 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-250 pre-shown:scale-50 pre-shown:opacity-0"
+                  ><svg class="size-5" aria-hidden="true">
+                    <use href="#i-sparkles" /></svg
+                ></span>
+                <span
+                  class="absolute grid w-3/25 left-41/50 top-63/200 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-350 pre-shown:scale-50 pre-shown:opacity-0"
+                  ><svg class="size-5" aria-hidden="true">
+                    <use href="#i-cart" /></svg
+                ></span>
+                <span
+                  class="absolute grid w-3/25 left-41/50 top-137/200 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-450 pre-shown:scale-50 pre-shown:opacity-0"
+                  ><svg class="size-5" aria-hidden="true">
+                    <use href="#i-cpu" /></svg
+                ></span>
+                <span
+                  class="absolute grid w-3/25 left-1/2 top-87/100 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-550 pre-shown:scale-50 pre-shown:opacity-0"
+                  ><svg class="size-5" aria-hidden="true">
+                    <use href="#i-basket" /></svg
+                ></span>
+                <span
+                  class="absolute grid w-3/25 left-9/50 top-137/200 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-650 pre-shown:scale-50 pre-shown:opacity-0"
+                  ><svg class="size-5" aria-hidden="true">
+                    <use href="#i-sofa" /></svg
+                ></span>
+                <span
+                  class="absolute grid w-3/25 left-9/50 top-63/200 -translate-1/2 aspect-square place-items-center rounded-full border border-line bg-card text-primary shadow-sm transition duration-400 ease-out-soft delay-750 pre-shown:scale-50 pre-shown:opacity-0"
+                  ><svg class="size-5" aria-hidden="true">
+                    <use href="#i-factory" /></svg
+                ></span>
+                <ul aria-label="What the audit reads">
+                  <li
+                    class="absolute top-7/100 left-1/4 -translate-1/2 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap shadow-lg bg-primary text-on-primary transition duration-500 ease-out-soft delay-850 pre-shown:scale-90 pre-shown:opacity-0"
+                  >
+                    <svg class="size-3.5" aria-hidden="true">
+                      <use href="#i-check" /></svg
+                    >Product data<span class="sr-only">: read</span>
+                  </li>
+                  <li
+                    class="absolute top-7/100 left-3/4 -translate-1/2 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap shadow-lg border border-line bg-card text-muted transition duration-500 ease-out-soft delay-1000 pre-shown:scale-90 pre-shown:opacity-0"
+                  >
+                    <svg class="size-3.5" aria-hidden="true">
+                      <use href="#i-x" /></svg
+                    ><span class="line-through">Order history</span
+                    ><span class="sr-only">: not read</span>
+                  </li>
+                  <li
+                    class="absolute top-93/100 left-1/4 -translate-1/2 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap shadow-lg border border-line bg-card text-muted transition duration-500 ease-out-soft delay-1150 pre-shown:scale-90 pre-shown:opacity-0"
+                  >
+                    <svg class="size-3.5" aria-hidden="true">
+                      <use href="#i-x" /></svg
+                    ><span class="line-through">Cookies &amp; logins</span
+                    ><span class="sr-only">: not read</span>
+                  </li>
+                  <li
+                    class="absolute top-93/100 left-3/4 -translate-1/2 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap shadow-lg border border-line bg-card text-muted transition duration-500 ease-out-soft delay-1300 pre-shown:scale-90 pre-shown:opacity-0"
+                  >
+                    <svg class="size-3.5" aria-hidden="true">
+                      <use href="#i-x" /></svg
+                    ><span class="line-through">Customer records</span
+                    ><span class="sr-only">: not read</span>
+                  </li>
+                </ul>
               </div>
-              <ul class="divide-y divide-line tabular-nums text-data">
-                <li
-                  class="reveal flex items-center justify-between px-4 py-3.5 delay-150"
-                >
-                  <span class="text-ink">Product data</span
-                  ><span class="badge-success">Read</span>
-                </li>
-                <li
-                  class="reveal flex items-center justify-between px-4 py-3.5 delay-225"
-                >
-                  <span class="text-ink">Order history</span
-                  ><span class="badge border-line bg-surface-1 text-muted"
-                    >Not read</span
-                  >
-                </li>
-                <li
-                  class="reveal flex items-center justify-between px-4 py-3.5 delay-300"
-                >
-                  <span class="text-ink">Cookies &amp; logins</span
-                  ><span class="badge border-line bg-surface-1 text-muted"
-                    >Not read</span
-                  >
-                </li>
-                <li
-                  class="reveal flex items-center justify-between px-4 py-3.5 delay-375"
-                >
-                  <span class="text-ink">Customer records</span
-                  ><span class="badge border-line bg-surface-1 text-muted"
-                    >Not read</span
-                  >
-                </li>
-              </ul>
+              <button
+                type="button"
+                class="hit-area absolute right-4 bottom-4 hidden size-8 items-center justify-center rounded-full text-muted transition-colors duration-150 ease-out-soft hover:bg-surface-1 hover:text-ink focus-visible:outline-2 focus-visible:outline-primary motion-safe:js:inline-flex"
+                aria-label="Pause orbit animation"
+                aria-pressed="false"
+                data-pause
+              >
+                <svg class="size-4" aria-hidden="true">
+                  <use href="#i-pause" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -3959,14 +3652,18 @@
         <div class="grid gap-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           <div>
             <a href="./index.html" aria-label="Pulse home" class="inline-flex"
-              ><img
-                src="./src/assets/logo.webp"
-                alt="Pulse"
-                width="84"
-                height="28"
-                loading="lazy"
-                class="h-7 w-auto"
-            /></a>
+              ><picture
+                ><source
+                  srcset="./src/assets/brand/logo-white.webp"
+                  media="(prefers-color-scheme: dark)" />
+                <img
+                  src="./src/assets/brand/logo.webp"
+                  alt="Pulse"
+                  width="84"
+                  height="28"
+                  loading="lazy"
+                  class="h-7 w-auto" /></picture
+            ></a>
           </div>
           <div>
             <h2 class="text-nav font-semibold">Product</h2>

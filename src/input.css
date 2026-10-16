@@ -106,39 +106,51 @@
 
   /* ================================================================ */
   /* COLOURS — the ONLY place colours are defined.                     */
-  /* Source of truth: docs/pulse_brand_guidelines_v2.md §3 (Aurora).  */
+  /* Source of truth: docs/pulse_brand_guidelines_v3.md (Signal).    */
   /*                                                                   */
-  /* 1. BRAND PALETTE (§3.1): base colours. Never used directly in HTML.*/
-  /* 2. ROLES (§3.3 light, §3.4 dark): what pages use. Every TEXT and   */
+  /* 1. BRAND PALETTE (§3): base colours. Never used directly in HTML.  */
+  /* 2. ROLES (§5): what pages use. Every TEXT and                      */
   /*    surface role is an exact, contrast-checked hex — no color-mix — */
   /*    written as light-dark(<light>, <dark>). The page follows the    */
   /*    OS theme; [data-theme] on <html> overrides it (see Base).       */
   /*    Values marked "derived" are not in the palette doc; they were   */
-  /*    chosen and contrast-checked for this project (§3.4).            */
+  /*    chosen and contrast-checked for this project (v2 §3.4).         */
   /* 3. DECORATION: gradient stops, never text on light backgrounds.    */
   /* ================================================================ */
   --color-*: initial; /* switch off Tailwind's default palette: only tokens below exist */
 
-  /* 1. Brand palette — Aurora (§3.1) */
-  --brand-indigo: #4f3df0; /* primary: buttons, links, active states */
-  --brand-violet: #6e5bff; /* gradient start, decoration */
-  --brand-cyan: #00c2ff; /* gradient middle, decoration, charts */
-  --brand-coral: #ff7a59; /* gradient end, accent (decorative on light) */
+  /* 1. Brand palette — Signal (§3) */
+  --brand-blue: #2552ff; /* Pulse Blue: buttons, links, active states, gradient end */
+  --brand-red: #f84840; /* Signal Red: the #1 highlight, gradient start (graphic only on light) */
+  --brand-sky: #3990e2; /* Sky Blue: illustrations, icon accents, focus ring, calm gradient */
   --brand-ink: #0b1b3a; /* text, dark band */
   --brand-mist: #f7f8fc; /* page background */
-  /* Blended in OKLCH so Cyan → Coral passes through lilac/pink instead of a grey middle (sRGB default) */
-  --gradient-brand: linear-gradient(
+  /* Blended in OKLCH so Red → Blue passes through pink and violet instead of a grey middle (sRGB default).
+     Browsers without OKLCH interpolation get the sRGB fallback with the OKLCH stops written out (§4). */
+  --gradient-signal: linear-gradient(
     112deg in oklch,
-    var(--brand-violet) 0%,
-    var(--brand-cyan) 50%,
-    var(--brand-coral) 100%
-  );
+    var(--brand-red) 0%,
+    var(--brand-blue) 100%
+  ); /* big brand moments: closing CTA, OG image, the blurred glow behind the hero demo */
+  --gradient-calm: linear-gradient(
+    112deg in oklch,
+    var(--brand-sky) 0%,
+    var(--brand-blue) 100%
+  ); /* product screens where red would look like an error: progress lines, onboarding headers */
+  --gradient-signal-fallback: linear-gradient(
+    112deg,
+    #f84840 0%,
+    #e7318a 25%,
+    #c134c6 50%,
+    #893ff2 75%,
+    #2552ff 100%
+  ); /* the OKLCH path in sRGB stops, for browsers without "in oklch" (see bg-signal-gradient) */
 
-  /* 2. Roles — light-dark(light §3.3, dark §3.4) */
+  /* 2. Roles — light-dark(light, dark) (§5) */
   /* Text */
   --color-ink: light-dark(#0b1b3a, #eef0f7); /* main text, headings */
   --color-muted: light-dark(#56607a, #a9b3cc); /* secondary text */
-  --color-link: light-dark(#4f3df0, #a79cff); /* links */
+  --color-link: light-dark(#2552ff, #80a7ff); /* links */
   /* Surfaces */
   --color-surface-0: light-dark(#f7f8fc, #0a1230); /* page background */
   --color-card: light-dark(#ffffff, #121b3d); /* cards, panels, header */
@@ -154,19 +166,19 @@
     #868da3,
     #626c91
   ); /* input, checkbox, dropdown borders (>= 3:1) */
-  /* Primary — Indigo in light, soft violet in dark */
+  /* Primary — Pulse Blue in light, soft blue in dark */
   --color-primary: light-dark(
-    #4f3df0,
-    #a79cff
+    #2552ff,
+    #80a7ff
   ); /* buttons, links, active states */
   --color-primary-hover: light-dark(
-    #3a2bc4,
-    #bdb5ff
-  ); /* hover / pressed — dark derived */
+    #1d43d9,
+    #93bbff
+  ); /* hover / pressed (Deep Blue) */
   --color-primary-tint: light-dark(
-    #efedfe,
-    #211f55
-  ); /* badge and chip backgrounds — dark derived */
+    #eaf2ff,
+    #162448
+  ); /* badge and chip backgrounds */
   --color-primary-line: color-mix(
     in oklab,
     var(--color-primary) 22%,
@@ -176,21 +188,27 @@
     #ffffff,
     #0a1230
   ); /* text/icons on a primary fill */
-  /* Accent — Coral: decorative on light; accent-text for coral text on light */
-  --color-accent: #ff7a59; /* fills, bars, rings, large numbers (decorative on light; text allowed in dark) */
-  --color-accent-text: light-dark(
-    #b8431a,
-    #ff7a59
-  ); /* coral-family text — dark: accent itself (§3.4) */
-  --color-accent-tint: light-dark(
-    #ffefe9,
-    #3a2219
-  ); /* accent badge background — derived */
-  --color-accent-line: color-mix(
+  /* Signal — Signal Red, the #1 priority: graphic only on light; signal-text for red text */
+  --color-signal: #f84840; /* the #1 ring, bar, dot (graphic only on light; text allowed in dark) */
+  --color-signal-text: light-dark(
+    #c8261f,
+    #ff6b63
+  ); /* red text: the "#1" label, a key number */
+  --color-signal-tint: light-dark(
+    #ffeceb,
+    #3a1a22
+  ); /* background behind the #1 row or badge */
+  --color-signal-line: color-mix(
     in oklab,
-    var(--color-accent) 35%,
+    var(--color-signal) 35%,
     var(--color-card)
-  ); /* accent badge border (decorative) — derived */
+  ); /* #1 badge border (decorative) — derived */
+  /* Sky Blue — supporting blue: illustrations, icon accents (graphic only on light) */
+  --color-sky: light-dark(#3990e2, #7db8f2);
+  /* Slate — every other rank and comparison baseline next to the #1 (graphic; label it in text) */
+  --color-baseline: #868da3;
+  /* Focus — 2px outline, 2px offset, on every interactive element */
+  --color-focus: light-dark(#3990e2, #93bbff);
   /* Gap — Missing data (amber). Never shares a colour with critical. */
   --color-gap: #ffb020; /* dots, bars, dashed borders (decorative on light; text allowed in dark) */
   --color-gap-fill: light-dark(
@@ -201,6 +219,11 @@
     #8f5b00,
     #ffb020
   ); /* Missing text and dashed border */
+  --color-gap-hatch: color-mix(
+    in oklab,
+    var(--color-gap) 22%,
+    transparent
+  ); /* missing-flag stripes (decorative) */
   /* Status — success is never a button; it always carries a check icon + text */
   --color-success: light-dark(#0e7a55, #4fd1a1);
   --color-success-bg: light-dark(#e6f7f0, #0f3330); /* dark derived */
@@ -216,26 +239,13 @@
     var(--color-warning) 30%,
     var(--color-card)
   ); /* badge border (decorative) — derived */
-  --color-critical: light-dark(
-    #b4152b,
-    #ff8a94
-  ); /* blocking errors (and the hero demo's problem step) */
+  --color-critical: light-dark(#b4152b, #ff8a94); /* blocking errors only */
   --color-critical-bg: light-dark(#fdecee, #3d1a2b); /* dark derived */
   --color-critical-line: color-mix(
     in oklab,
     var(--color-critical) 25%,
     var(--color-card)
   ); /* badge border (decorative) — derived */
-  --color-critical-hatch: color-mix(
-    in oklab,
-    var(--color-critical) 14%,
-    transparent
-  ); /* missing-flag stripes (decorative) */
-  --color-critical-ring: color-mix(
-    in oklab,
-    var(--color-critical) 28%,
-    transparent
-  ); /* missing-flag outline (decorative) */
   /* Dark band (void) — always dark, in both themes (§3.3) */
   --color-void: #0a1230; /* dark band background */
   --color-void-elevated: #121b3d; /* cards on the dark band — derived (= dark card) */
@@ -243,25 +253,18 @@
   --color-void-line-strong: #626c91; /* accent rules on the dark band — derived (= dark line-control) */
   --color-void-text: #eef0f7; /* body text on the dark band — derived (= dark text) */
   --color-void-muted: #a9b3cc; /* captions on the dark band */
-  --color-void-accent: #a79cff; /* accent text on the dark band */
+  --color-void-accent: #80a7ff; /* accent text and links on the dark band */
   --color-on-void: #ffffff; /* headings/numbers on the dark band */
 
-  /* 3. Decoration — gradient stops and the hero backdrop (never text on light) */
-  --color-violet: var(--brand-violet);
-  --color-cyan: var(--brand-cyan);
-  /* Hero demo step tabs: step 1 keeps the problem step's red (critical); steps 2–5 run along the Aurora gradient
-     (active tab fill, same in both themes). Step 2 = Violet→Cyan mixed 50% in OKLab; step 4 = Cyan→Coral 50% in
-     OKLCH (shorter hue path, so it stays vivid instead of grey). Text: on-primary on step 1 (6.81 light / 8.16 dark),
-     Ink on 2–5 (5.66 · 8.25 · 7.08 · 6.64). */
-  --color-step-1: var(
-    --color-critical
-  ); /* step 1 keeps the red of the problem step */
-  --color-step-2: #5892ff;
-  --color-step-3: var(--brand-cyan);
-  --color-step-4: #cf8cf5;
-  --color-step-5: var(--brand-coral);
-  --color-on-step-1: var(--color-on-primary);
-  --color-on-step: #0b1b3a; /* Ink, fixed in both themes */
+  /* 3. Decoration — the hero demo timeline (never text on light) */
+  /* Hero demo step tabs: the 4px timer segments run along the Signal gradient — its 0 / 25 / 50 / 75 / 100% stops
+     (§4), same in both themes. Graphics only: the tab labels sit beside them in ink / muted. */
+  --color-step-1: var(--brand-red);
+  --color-step-2: #e7318a;
+  --color-step-3: #c134c6;
+  --color-step-4: #893ff2;
+  --color-step-5: var(--brand-blue);
+  --color-on-step: #0b1b3a; /* Ink, fixed in both themes: text on a signal fill (4.86) */
   --color-scan-band: color-mix(
     in oklab,
     var(--color-primary) 22%,
@@ -387,6 +390,11 @@
   h3 {
     @apply font-display text-ink;
   }
+  /* Focus (§9): 2px Sky outline, 2px offset, on every interactive element; components only add outline-2 */
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
   /* <details> dropdowns: hide the browser's disclosure triangle */
   summary {
     list-style: none;
@@ -412,7 +420,7 @@
   }
 }
 @utility btn {
-  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50;
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:pointer-events-none disabled:opacity-50;
 }
 @utility btn-primary {
   @apply btn border border-primary bg-primary text-on-primary hover:border-primary-hover hover:bg-primary-hover;
@@ -429,7 +437,7 @@
 
 /* Navigation */
 @utility nav-link {
-  @apply hit-area inline-flex items-center gap-1 rounded-control px-2 py-2 font-display text-nav font-medium whitespace-nowrap text-ink transition-colors duration-150 ease-out-soft hover:bg-surface-1 focus-visible:outline-2 focus-visible:outline-primary xl:px-3;
+  @apply hit-area inline-flex items-center gap-1 rounded-control px-2 py-2 font-display text-nav font-medium whitespace-nowrap text-ink transition-colors duration-150 ease-out-soft hover:bg-surface-1 focus-visible:outline-2 focus-visible:outline-focus xl:px-3;
 }
 @utility nav-icon-tile {
   @apply flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary-tint text-primary;
@@ -447,9 +455,9 @@
 @utility eyebrow {
   @apply tabular-nums text-xs font-medium tracking-wider text-muted uppercase;
 }
-/* Form fields (input, select, textarea): 44px tall, line-control border (≥ 3:1), primary focus ring */
+/* Form fields (input, select, textarea): 44px tall, line-control border (≥ 3:1), focus ring */
 @utility field {
-  @apply block min-h-11 w-full rounded-control border border-line-control bg-card px-3.5 py-2.5 text-data text-ink placeholder:text-muted focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-60;
+  @apply block min-h-11 w-full rounded-control border border-line-control bg-card px-3.5 py-2.5 text-data text-ink placeholder:text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:cursor-not-allowed disabled:opacity-60;
 }
 @utility badge {
   @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 tabular-nums text-xs font-semibold;
@@ -458,7 +466,7 @@
   @apply badge border-primary-line bg-primary-tint text-primary-hover;
 }
 @utility badge-signal {
-  @apply badge border-accent-line bg-accent-tint text-accent-text;
+  @apply badge border-signal-line bg-signal-tint text-signal-text;
 }
 @utility badge-success {
   @apply badge border-success-line bg-success-bg text-success;
@@ -475,16 +483,18 @@
   border: 1.5px dashed var(--color-gap);
   @apply bg-gap-fill tabular-nums text-gap-strong;
 }
-/* Hero demo (thepulseapi.com): a missing value in the catalogue table — red, hatched, with a warning icon */
+/* Hero demo (thepulseapi.com): a missing value in the catalogue table — the Missing cell (amber, dashed, with a
+   warning icon), hatched */
 @utility missing-flag {
-  @apply inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-bold text-critical;
-  background-color: var(--color-critical-bg);
+  @apply inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-bold text-gap-strong;
+  outline: 1.5px dashed var(--color-gap); /* drawn inside, so the flag keeps its size */
+  outline-offset: -1.5px;
+  background-color: var(--color-gap-fill);
   background-image: repeating-linear-gradient(
     135deg,
-    var(--color-critical-hatch) 0 5px,
+    var(--color-gap-hatch) 0 5px,
     transparent 5px 10px
   );
-  box-shadow: inset 0 0 0 1px var(--color-critical-ring);
   animation: var(
     --animate-missing-drift
   ); /* the stripes slide sideways, endlessly */
@@ -500,24 +510,40 @@
 /* ------------------------------------------------------------------ */
 /* Utilities                                                           */
 /* ------------------------------------------------------------------ */
-/* Brand gradient (docs/pulse_brand_guidelines_v2.md §3.2): Violet → Cyan → Coral. Never put white text on it. */
-@utility bg-brand-gradient {
-  background-image: var(--gradient-brand);
+/* Signal gradient (docs/pulse_brand_guidelines_v3.md §4): Signal Red → Pulse Blue in OKLCH. Text on it: white,
+   large text only (24px+, or 18.5px+ bold) — never body text or small labels. */
+@utility bg-signal-gradient {
+  background-image: var(--gradient-signal);
+  @supports not (background: linear-gradient(in oklch, red, blue)) {
+    background-image: var(--gradient-signal-fallback);
+  }
 }
 
-/* Dark band gradient: the void base lit by a soft Violet glow (top left) and a Cyan glow (bottom right).
-   Text on it stays AA at the brightest point (white 12.05, void-muted 5.74 on the Violet glow). */
+/* Calm gradient (§4): Sky → Pulse Blue, for product UI where red would read as an error (the How it works progress
+   line). Same text rule as the Signal gradient. */
+@utility bg-calm-gradient {
+  background-image: var(--gradient-calm);
+  @supports not (background: linear-gradient(in oklch, red, blue)) {
+    background-image: linear-gradient(
+      112deg,
+      var(--brand-sky),
+      var(--brand-blue)
+    );
+  }
+}
+/* Dark band gradient: the void base lit by a soft Pulse Blue glow (top left) and a Sky glow (bottom right).
+   Text on it stays AA at the brightest point (white 12.82, void-muted 6.11 on the Sky glow). */
 @utility bg-void-gradient {
   background-color: var(--color-void);
   background-image:
     radial-gradient(
       60% 80% at 0% 0%,
-      color-mix(in oklab, var(--color-violet) 35%, transparent),
+      color-mix(in oklab, var(--brand-blue) 35%, transparent),
       transparent
     ),
     radial-gradient(
       60% 80% at 100% 100%,
-      color-mix(in oklab, var(--color-cyan) 25%, transparent),
+      color-mix(in oklab, var(--brand-sky) 25%, transparent),
       transparent
     );
 }
@@ -653,7 +679,7 @@
     ),
     radial-gradient(
       50% 50% at 0% 0%,
-      color-mix(in oklab, var(--color-cyan) 12%, transparent),
+      color-mix(in oklab, var(--color-sky) 12%, transparent),
       transparent
     );
 }
@@ -963,9 +989,9 @@
 @utility hero-screen {
   min-height: calc(100svh - var(--spacing) * 17);
 }
-/* Soft background: page colour with a faint Cyan wash (top right) and Violet wash (bottom left), plus a
-   small, clear Indigo light at --hero-x / --hero-y (solid core, soft edge) with a two-part tail that only
-   shows while the cursor moves. At rest: light 14% + wash 4% keeps text AA (muted 4.55 light / 6.50 dark). */
+/* Soft background: page colour with a faint Sky wash (top right) and Pulse Blue wash (bottom left), plus a
+   small, clear primary light at --hero-x / --hero-y (solid core, soft edge) with a two-part tail that only
+   shows while the cursor moves. At rest: light 14% + wash 4% keeps text AA (muted 4.57 light / 6.44 dark). */
 @utility hero-bg {
   --hero-light: color-mix(in oklab, var(--color-primary) 14%, transparent);
   background-color: var(--color-surface-0);
@@ -996,12 +1022,12 @@
     ),
     radial-gradient(
       55% 60% at 90% 10%,
-      color-mix(in oklab, var(--color-cyan) 4%, transparent),
+      color-mix(in oklab, var(--color-sky) 4%, transparent),
       transparent
     ),
     radial-gradient(
       50% 60% at 5% 95%,
-      color-mix(in oklab, var(--color-violet) 4%, transparent),
+      color-mix(in oklab, var(--color-primary) 4%, transparent),
       transparent
     );
   transition:
@@ -1013,19 +1039,19 @@
     --hero-ty2 600ms ease-out,
     --hero-tail 500ms ease-out;
 }
-/* Soft gradient section background (Why PULSE): page colour with a faint Violet wash from the top left and a Cyan
-   wash from the bottom right. 12% each keeps muted text AA even where they overlap (4.69 light / 6.27 dark). */
+/* Soft gradient section background (Why Pulse): page colour with a faint Pulse Blue wash from the top left and a
+   Sky wash from the bottom right. 10% each keeps muted text AA even where they overlap (4.66 light / 6.18 dark). */
 @utility bg-soft-gradient {
   background-color: var(--color-surface-0);
   background-image:
     radial-gradient(
       70% 60% at 0% 0%,
-      color-mix(in oklab, var(--color-violet) 12%, transparent),
+      color-mix(in oklab, var(--color-primary) 10%, transparent),
       transparent
     ),
     radial-gradient(
       70% 60% at 100% 100%,
-      color-mix(in oklab, var(--color-cyan) 12%, transparent),
+      color-mix(in oklab, var(--color-sky) 10%, transparent),
       transparent
     );
 }
@@ -1078,7 +1104,7 @@
     }
   }
 }
-/* Coloured shadow behind the product demo: the brand gradient, blurred, under the window */
+/* Coloured shadow behind the product demo: the Signal gradient, blurred, under the window */
 @utility hero-glow {
   position: relative;
   isolation: isolate;
@@ -1088,7 +1114,10 @@
     inset: 10% 2% -2%;
     z-index: -1;
     border-radius: 2rem;
-    background-image: var(--gradient-brand);
+    background-image: var(--gradient-signal);
+    @supports not (background: linear-gradient(in oklch, red, blue)) {
+      background-image: var(--gradient-signal-fallback);
+    }
     filter: blur(72px);
     opacity: 0.3;
     pointer-events: none;

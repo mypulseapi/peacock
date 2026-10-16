@@ -211,7 +211,7 @@
             >Missing</span
           >
           <span
-            class="demo-pill border-critical-line bg-critical-bg text-critical"
+            class="demo-pill border-dashed border-gap bg-gap-fill text-gap-strong"
             >347 gaps found</span
           >
           <span class="demo-pill border-line bg-surface-1 text-muted"
@@ -252,10 +252,10 @@
                 <span class="flex items-center gap-2 font-semibold text-ink"
                   ><span class="badge-signal">#1</span>Screen size</span
                 >
-                <span class="text-accent-text">100%</span>
+                <span class="text-signal-text">100%</span>
               </div>
               <div class="mt-2 h-2 rounded-full bg-surface-1">
-                <div class="h-full w-full rounded-full bg-accent"></div>
+                <div class="h-full w-full rounded-full bg-signal"></div>
               </div>
             </div>
             <div>
@@ -269,7 +269,7 @@
                 <span class="text-muted">70%</span>
               </div>
               <div class="mt-2 h-2 rounded-full bg-surface-1">
-                <div class="h-full w-7/10 rounded-full bg-accent/70"></div>
+                <div class="h-full w-7/10 rounded-full bg-baseline"></div>
               </div>
             </div>
             <div>
@@ -283,7 +283,7 @@
                 <span class="text-muted">50%</span>
               </div>
               <div class="mt-2 h-2 rounded-full bg-surface-1">
-                <div class="h-full w-1/2 rounded-full bg-accent/50"></div>
+                <div class="h-full w-1/2 rounded-full bg-baseline"></div>
               </div>
             </div>
             <div>
@@ -297,7 +297,7 @@
                 <span class="text-muted">35%</span>
               </div>
               <div class="mt-2 h-2 rounded-full bg-surface-1">
-                <div class="h-full w-7/20 rounded-full bg-accent/35"></div>
+                <div class="h-full w-7/20 rounded-full bg-baseline"></div>
               </div>
             </div>
             <div>
@@ -311,12 +311,11 @@
                 <span class="text-muted">20%</span>
               </div>
               <div class="mt-2 h-2 rounded-full bg-surface-1">
-                <div class="h-full w-1/5 rounded-full bg-accent/20"></div>
+                <div class="h-full w-1/5 rounded-full bg-baseline"></div>
               </div>
             </div>
             <p class="border-t border-line pt-4 text-xs text-muted">
-              Only rank #1 uses the solid accent colour; lower ranks use tints
-              of it.
+              Only rank #1 uses Signal Red; every other rank uses Slate.
             </p>
           </div>
         </section>
@@ -378,8 +377,8 @@
               <button class="btn-primary" disabled>Disabled</button>
             </div>
             <p class="text-xs text-muted">
-              Main action, one per view. The #1 ranked item uses the accent
-              colour instead.
+              Main action, one per view. Signal Red marks the #1 ranked item and
+              is never a button.
             </p>
           </div>
           <div class="card space-y-4">
@@ -420,22 +419,24 @@
             <div class="p-3 text-xs">
               <div class="font-bold text-ink">primary</div>
               <div class="text-muted">
-                Indigo · buttons, links, active (60%)
+                Pulse Blue · buttons, links, active (10%)
               </div>
             </div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
-            <div class="h-20 bg-accent"></div>
+            <div class="h-20 bg-signal"></div>
             <div class="p-3 text-xs">
-              <div class="font-bold text-ink">accent</div>
-              <div class="text-muted">Coral · one highlight per view (30%)</div>
+              <div class="font-bold text-ink">signal</div>
+              <div class="text-muted">
+                Signal Red · the #1, once per view (5%)
+              </div>
             </div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
-            <div class="h-20 bg-accent"></div>
+            <div class="h-20 bg-sky"></div>
             <div class="p-3 text-xs">
-              <div class="font-bold text-ink">accent</div>
-              <div class="text-muted">Violet · personalisation (10%)</div>
+              <div class="font-bold text-ink">sky</div>
+              <div class="text-muted">Sky Blue · icons, focus ring</div>
             </div>
           </div>
           <div class="overflow-hidden rounded-xl border border-line bg-card">
@@ -461,11 +462,12 @@
           </div>
         </div>
         <div class="mt-4 overflow-hidden rounded-xl border border-line bg-card">
-          <div class="h-20 bg-brand-gradient"></div>
+          <div class="h-20 bg-signal-gradient"></div>
           <div class="p-3 text-xs">
-            <div class="font-bold text-ink">bg-brand-gradient</div>
+            <div class="font-bold text-ink">bg-signal-gradient</div>
             <div class="text-muted">
-              Coral → Indigo · big brand moments only
+              Signal Red → Pulse Blue · big brand moments only; white text at
+              24px+ only
             </div>
           </div>
         </div>

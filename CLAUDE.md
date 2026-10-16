@@ -19,20 +19,20 @@ Static marketing/demo site for **Pulse**, built with plain HTML + Tailwind CSS v
 
 ## Project layout
 
-| Path                                                   | Purpose                                                                                                                              |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `src/input.css`                                        | The only stylesheet you edit: `@theme` tokens + component `@utility` classes.                                                        |
-| `src/assets/`                                          | `brand/` (official logo + white logo, favicons), `about/` (About page photos, from the live site) and `fonts/` (Inter 4.1, SIL OFL). |
-| `src/main.js`                                          | Page motion (scroll reveal, count-up, typing, shelf grid, scroll-spy). Plain script, no imports.                                     |
-| `dist/output.css`                                      | Generated — never edit, never commit (git-ignored).                                                                                  |
-| `index.html`                                           | Home page.                                                                                                                           |
-| `pricing.html` `about.html` `contact.html`             | Company pages (root, like the live site's `/pricing`, `/about`, `/contact`).                                                         |
-| `privacy.html` `terms.html` `cookies.html` `gdpr.html` | Legal pages (root), linked from the footer.                                                                                          |
-| `product/`                                             | Product pages: overview (`product/index.html`) and Decision Audit / Verification / Monitor.                                          |
-| `scripts/sync-shell.py`                                | Copies the shared head, icon sprite, header and footer from `index.html` into every other page.                                      |
-| `components.html`                                      | Living component spec — every reusable component is shown here.                                                                      |
-| `DESIGN.md`                                            | Design rules (tokens, type, components, voice).                                                                                      |
-| `scripts/tailwind-lint.py`                             | Runs the Tailwind language server headless; backs `pnpm lint:tw`.                                                                    |
+| Path                                                   | Purpose                                                                                                                                                                                                                                              |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/input.css`                                        | The only stylesheet you edit: `@theme` tokens + component `@utility` classes.                                                                                                                                                                        |
+| `src/assets/`                                          | `brand/` (logo SVG masters — `logo.svg`, `logo-white.svg`, `logo-mono-*.svg`, `symbol.svg` — the `.webp` logos and favicons rendered from them, `og-image.png`), `about/` (About page photos, from the live site) and `fonts/` (Inter 4.1, SIL OFL). |
+| `src/main.js`                                          | Page motion (scroll reveal, count-up, typing, shelf grid, scroll-spy). Plain script, no imports.                                                                                                                                                     |
+| `dist/output.css`                                      | Generated — never edit, never commit (git-ignored).                                                                                                                                                                                                  |
+| `index.html`                                           | Home page.                                                                                                                                                                                                                                           |
+| `pricing.html` `about.html` `contact.html`             | Company pages (root, like the live site's `/pricing`, `/about`, `/contact`).                                                                                                                                                                         |
+| `privacy.html` `terms.html` `cookies.html` `gdpr.html` | Legal pages (root), linked from the footer.                                                                                                                                                                                                          |
+| `product/`                                             | Product pages: overview (`product/index.html`) and Decision Audit / Verification / Monitor.                                                                                                                                                          |
+| `scripts/sync-shell.py`                                | Copies the shared head, icon sprite, header and footer from `index.html` into every other page.                                                                                                                                                      |
+| `components.html`                                      | Living component spec — every reusable component is shown here.                                                                                                                                                                                      |
+| `DESIGN.md`                                            | Design rules (tokens, type, components, voice).                                                                                                                                                                                                      |
+| `scripts/tailwind-lint.py`                             | Runs the Tailwind language server headless; backs `pnpm lint:tw`.                                                                                                                                                                                    |
 
 ## Formatting — always format what you save
 
@@ -80,9 +80,9 @@ Never ignore, silence or disable a warning (no lint settings changes, no `@layer
    `index.html`, and add the new page to the header nav. Dropdowns must stay `<details>` elements (no-JS fallback).
 5. Build the page from the existing component classes in DESIGN.md §5. Copy content patterns from `components.html`.
 
-## Colours (Aurora palette)
+## Colours (Signal palette)
 
-Colour values come from `docs/pulse_brand_guidelines_v2.md` §3 (Aurora) and live only in the `COLOURS` block of
+Colour values come from `docs/pulse_brand_guidelines_v3.md` §3–§6 (Signal; it replaces v2 Aurora) and live only in the `COLOURS` block of
 `src/input.css`. Every text/surface role is an exact hex written as `light-dark(<light>, <dark>)` — dark mode follows
 the OS, `<html data-theme>` overrides it. To change a colour, update the guideline and the token together, then
 re-check WCAG AA contrast with a script in **both** themes. Never put a colour in HTML, JS or a utility; use role-named
@@ -117,5 +117,5 @@ catches default-palette colours because that palette is switched off.
 - Every push to `main` deploys to staging (GitHub Pages, staging.thepulseapi.com).
 - **Never commit or push automatically.** After making changes, stop and let the user review them.
   Only run `git commit` / `git push` when the user explicitly says so.
-- Design sources: brand colours from `docs/pulse_brand_guidelines_v2.md` (Aurora; the earlier Figma "Pulse Color" palette is superseded);
+- Design sources: brand colours from `docs/pulse_brand_guidelines_v3.md` (Signal, 16 Oct 2026; v2 Aurora and the earlier Figma "Pulse Color" palette are superseded);
   layout/components originally from Google Stitch project `15026689791361906848`.

@@ -83,6 +83,10 @@
   --text-title--line-height: 1.18;
   --text-title--font-weight: 550;
   --text-title--letter-spacing: -0.02em;
+  /* DEAL acronym block (About page): the finished column is 28px, 36px from md (768px); the "DEAL" row it starts
+     from is drawn 2.7× larger with a transform (about 76 / 97px), so only these two sizes exist */
+  --text-deal: 1.75rem; /* 28px */
+  --text-deal-md: 2.25rem; /* 36px */
 
   /* Navigation (15px, as the thepulseapi.com navbar) */
   --text-nav: 0.9375rem; /* 15px */
@@ -742,6 +746,137 @@
     &:where(.reveal:not([data-shown]) *) {
       @slot;
     }
+  }
+}
+
+/* Comparison card, "old way" column (product/decision-audit.html): a hairline strikethrough — 0.5px is a true
+   hairline on high-density screens; 1x screens round it up to 1px */
+@utility strike-hairline {
+  text-decoration-line: line-through;
+  text-decoration-thickness: 0.5px;
+}
+
+/* Background-video hero media (the video and its poster): always the full height of the hero and pinned to the right,
+   so the top and the bottom of the video are never cut; wide screens show page colour on the left, where the video
+   fades in (behind the title), narrow screens trim the blurred left side. */
+@utility hero-video-media {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  aspect-ratio: 16 / 9;
+  mask-image: linear-gradient(to right, transparent, black 30%);
+}
+
+/* Background-video hero (product pages, [data-bg-video]): the title and the description under it sit top left, so the
+   page colour fades in from that corner only and the rest of the video stays clear.
+   Every text element is checked frame by frame across the loop. */
+@utility hero-video-scrim {
+  /* the title and description span the width below xl: fade down from the top */
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--color-surface-0) 95%, transparent) 0%,
+    color-mix(in oklab, var(--color-surface-0) 92%, transparent) 55%,
+    transparent 85%
+  );
+  @media (width >= 80rem) {
+    background-image:
+      radial-gradient(
+        90% 100% at 0% 0%,
+        color-mix(in oklab, var(--color-surface-0) 95%, transparent) 0%,
+        color-mix(in oklab, var(--color-surface-0) 92%, transparent) 62%,
+        transparent 98%
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--color-surface-0) 50%, transparent),
+        transparent 30%
+      );
+  }
+}
+
+/* DEAL acronym (About page, [data-deal]): "DEAL" in one big Ink row → the letters drop into a Pulse Blue column
+   (FLIP: the column is the real layout; each initial starts from --deal-from, a translate + scale to its place in
+   the big row) → each line opens into its word. The markup is the FINAL state, so without JS or with reduced
+   motion the expanded column shows at once. src/main.js measures once and loops data-state:
+     hold → stack → expand → (2s) → collapse (words close, bottom first) → return (letters fly back into the big
+     row, Blue → Ink) → hold … ; "done" is the still final state (paused, off screen, resized).
+   Only transform, opacity and max-width move (plus the Ink ↔ Blue colour). */
+@utility deal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* centred on the EXPANDED width (src/main.js pins it while the words are collapsed) */
+  width: var(--deal-w, fit-content);
+  margin-inline: auto;
+  font-family: var(--font-display);
+  font-size: var(--text-deal);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  @media (width >= 48rem) {
+    font-size: var(--text-deal-md);
+  }
+  /* JS + motion: stay invisible until src/main.js has measured and set the hold state (no flash of the column) */
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    &:not([data-state]) {
+      opacity: 0;
+    }
+  }
+  & > span {
+    display: flex;
+    white-space: nowrap;
+  }
+}
+@utility deal-initial {
+  display: inline-block;
+  color: var(--color-primary);
+  transform-origin: 0 0;
+  [data-state="hold"] & {
+    color: var(--color-ink);
+    transform: var(--deal-from);
+  }
+  [data-state="stack"] & {
+    transition:
+      transform 0.9s cubic-bezier(0.65, 0, 0.35, 1) calc(var(--i) * 70ms),
+      color 0.6s var(--ease-out-soft) calc(var(--i) * 70ms);
+  }
+  /* the way back: last letter first, into the same big row (--deal-from) */
+  [data-state="return"] & {
+    color: var(--color-ink);
+    transform: var(--deal-from);
+    transition:
+      transform 0.7s cubic-bezier(0.65, 0, 0.35, 1) calc(var(--ri) * 60ms),
+      color 0.5s var(--ease-out-soft) calc(var(--ri) * 60ms);
+  }
+}
+@utility deal-word {
+  display: inline-block;
+  overflow: hidden;
+  [data-state="hold"] &,
+  [data-state="stack"] &,
+  [data-state="collapse"] &,
+  [data-state="return"] & {
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(-0.5rem);
+  }
+  [data-state="expand"] & {
+    max-width: var(--w);
+    transition:
+      max-width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--i) * 150ms),
+      opacity 0.4s var(--ease-out-soft) calc(var(--i) * 150ms),
+      transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--i) * 150ms);
+  }
+  /* the way back: words close from the bottom line up */
+  [data-state="collapse"] & {
+    transition:
+      max-width 0.45s cubic-bezier(0.65, 0, 0.35, 1) calc(var(--ri) * 100ms),
+      opacity 0.3s var(--ease-out-soft) calc(var(--ri) * 100ms + 150ms),
+      transform 0.45s cubic-bezier(0.65, 0, 0.35, 1) calc(var(--ri) * 100ms);
   }
 }
 

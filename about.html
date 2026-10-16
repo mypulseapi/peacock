@@ -80,6 +80,31 @@
         <path d="M20 6 9 17l-5-5" />
       </symbol>
       <symbol
+        id="i-circle-alert"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" x2="12" y1="8" y2="12" />
+        <line x1="12" x2="12.01" y1="16" y2="16" />
+      </symbol>
+      <symbol
+        id="i-circle-check"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="m9 12 2 2 4-4" />
+      </symbol>
+      <symbol
         id="i-menu"
         viewBox="0 0 24 24"
         fill="none"
@@ -1097,6 +1122,48 @@
     <main>
       <!-- Layout as on thepulseapi.com/en/about: hero with photo; "Who is behind this" accordions; where it came
            from; four working rules; where we actually are, with the call to action under it. -->
+      <!-- DEAL acronym (deal / deal-initial / deal-word in src/input.css, [data-deal] in src/main.js): written in
+           its final, expanded state; screen readers hear the aria-label once, the animated letters are hidden.
+           HIDDEN for now (16 Oct 2026, not wanted on the page yet): remove the `hidden` attribute to show it. -->
+      <section class="border-b border-line" hidden>
+        <div class="frame flex flex-col items-center py-20 lg:py-24">
+          <p
+            class="deal"
+            role="img"
+            aria-label="DEAL: Decision, Engagement, Auditing and Agentic, Layer"
+            data-deal
+          >
+            <span aria-hidden="true"
+              ><span class="deal-initial">D</span
+              ><span class="deal-word">ecision</span></span
+            >
+            <span aria-hidden="true"
+              ><span class="deal-initial">E</span
+              ><span class="deal-word">ngagement</span></span
+            >
+            <span aria-hidden="true"
+              ><span class="deal-initial">A</span
+              ><span class="deal-word"
+                >uditing &amp; <span class="text-primary">A</span>gentic</span
+              ></span
+            >
+            <span aria-hidden="true"
+              ><span class="deal-initial">L</span
+              ><span class="deal-word">ayer</span></span
+            >
+          </p>
+          <button
+            type="button"
+            class="btn-ghost btn-sm hit-area mt-8 hidden motion-safe:js:inline-flex"
+            aria-pressed="false"
+            data-deal-pause
+          >
+            <svg class="size-4" aria-hidden="true">
+              <use href="#i-pause" data-deal-pause-icon /></svg
+            ><span data-deal-pause-label>Pause animation</span>
+          </button>
+        </div>
+      </section>
       <section class="hero-bg border-b border-line">
         <div
           class="frame grid items-center gap-12 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24"

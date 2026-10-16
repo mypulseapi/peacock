@@ -10,6 +10,8 @@
 //   [data-cta]             → call-to-action band: dots light up around the cursor (--cta-x / --cta-y)
 //   [data-why]             → Why PULSE orbit: turning ring; a circle turns to the top and opens its reason
 //   [data-pause] buttons   → pause the hero demo (sets [data-held] on [data-pausable])
+//   [data-bg-video]        → product hero background video: theme-matched source, plays only while on screen
+//   [data-deal]            → About page DEAL acronym: big row → column → words (data-state hold/stack/expand/done)
 
 const reduceMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
@@ -651,3 +653,177 @@ if (how) {
   addEventListener("resize", update);
   update();
 }
+
+// DEAL acronym (About page). The HTML is the final, expanded column. Measure it once, pin its width, start each
+// initial from its place in a big centred "DEAL" row (FLIP: translate + scale back to the column), then loop:
+//   hold 1.1s → stack (letters drop into the column, Ink → Blue) → 2.3s expand (words open) → 2s on the words →
+//   collapse (words close, bottom first) → return (letters fly back into the row, Blue → Ink) → hold …
+// It runs while 40% of the block is on screen; the Pause button stops it on the final words (WCAG 2.2.2). A
+// resize shows the final state with fresh measurements, then the loop goes on. Reduced motion: nothing runs.
+if (!reduceMotion)
+  document
+    .querySelectorAll("[data-deal]")
+    .forEach((deal) => deal.closest("[hidden]") || initDeal(deal)); // a hidden block (About page, for now) stays idle
+
+function initDeal(deal) {
+  const SCALE = 2.7; // the big row is 2.7× the column size
+  // one cycle, in ms from the hold state
+  const STACK_AT = 1100;
+  const EXPAND_AT = 2300;
+  const COLLAPSE_AT = 5600; // ≈ 2.2s on the finished words (they are open by 3350)
+  const RETURN_AT = 6350; // words closed: 3 × 100ms stagger + 450ms
+  const CYCLE = 7300; // letters back in the row: 3 × 60ms + 700ms, then the next hold starts
+  const initials = [...deal.querySelectorAll(".deal-initial")];
+  const words = [...deal.querySelectorAll(".deal-word")];
+  const pause = deal.parentElement.querySelector("[data-deal-pause]");
+  let timers = [];
+  let measured = false;
+  let visible = false;
+  let paused = false;
+
+  const clear = () => {
+    timers.forEach(clearTimeout);
+    timers = [];
+  };
+  const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+  const state = (name) => deal.setAttribute("data-state", name);
+  // still, final words (paused, off screen, resized)
+  const finish = () => {
+    clear();
+    state("done");
+  };
+  // Measure the final layout once (and after a resize), then put every initial back into the big row
+  const measure = () => {
+    state("done");
+    deal.style.removeProperty("--deal-w");
+    const box = deal.getBoundingClientRect();
+    const rects = initials.map((el) => el.getBoundingClientRect());
+    const widths = words.map((el) => el.scrollWidth);
+    const rowWidth = rects.reduce((sum, r) => sum + r.width * SCALE, 0);
+    const rowHeight = rects[0].height * SCALE;
+    let x = box.left + (box.width - rowWidth) / 2;
+    const y = box.top + (box.height - rowHeight) / 2;
+    initials.forEach((el, i) => {
+      const r = rects[i];
+      el.style.setProperty("--i", i);
+      el.style.setProperty("--ri", initials.length - 1 - i);
+      el.style.setProperty(
+        "--deal-from",
+        `translate(${(x - r.left).toFixed(1)}px, ${(y - r.top).toFixed(1)}px) scale(${SCALE})`,
+      );
+      x += r.width * SCALE;
+    });
+    words.forEach((el, i) => {
+      el.style.setProperty("--i", i);
+      el.style.setProperty("--ri", words.length - 1 - i);
+      el.style.setProperty("--w", `${widths[i]}px`);
+    });
+    deal.style.setProperty("--deal-w", `${box.width}px`);
+    measured = true;
+  };
+  const cycle = () => {
+    clear();
+    state("hold"); // the end of "return" looks exactly like "hold", so the jump is invisible
+    at(STACK_AT, () => state("stack"));
+    at(EXPAND_AT, () => state("expand"));
+    at(COLLAPSE_AT, () => state("collapse"));
+    at(RETURN_AT, () => state("return"));
+    at(CYCLE, cycle);
+  };
+  const start = () => {
+    if (paused || !visible) return;
+    if (!measured) measure();
+    cycle();
+  };
+
+  document.fonts.ready.then(() => {
+    measure();
+    state(paused ? "done" : "hold");
+    new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible) start();
+        else finish();
+      },
+      { threshold: 0.4 },
+    ).observe(deal);
+  });
+
+  pause?.addEventListener("click", () => {
+    paused = !paused;
+    pause.setAttribute("aria-pressed", String(paused));
+    pause.querySelector("[data-deal-pause-label]").textContent = paused
+      ? "Play animation"
+      : "Pause animation";
+    pause
+      .querySelector("[data-deal-pause-icon]")
+      .setAttribute("href", paused ? "#i-play" : "#i-pause");
+    if (paused) finish();
+    else start();
+  });
+
+  let resizeTimer;
+  let lastWidth = innerWidth;
+  addEventListener("resize", () => {
+    if (innerWidth === lastWidth) return; // mobile address bar: height-only resizes are not layout changes
+    lastWidth = innerWidth;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      finish();
+      measure();
+      state("done");
+      at(2000, start); // show the final words, then carry on looping
+    }, 150);
+  });
+}
+
+// Background video (product heroes). data-bg-video is the file stem: "<stem>-light|dark.av1.mp4" (AV1, smaller) and
+// ".h264.mp4" (fallback) plus "<stem>-light|dark.webp" (poster, the <picture> behind it). The theme follows the OS
+// or <html data-theme>. It plays only while on screen and never with reduced motion (the poster stays). There is no
+// pause button (decided 16 Oct 2026): reduced motion is the opt-out.
+document.querySelectorAll("[data-bg-video]").forEach((video) => {
+  if (reduceMotion) return;
+  const stem = video.dataset.bgVideo;
+  const section = video.closest("section");
+  const poster = section.querySelector("[data-bg-poster]");
+  const osDark = matchMedia("(prefers-color-scheme: dark)");
+  let visible = false;
+  let theme = null;
+
+  const currentTheme = () =>
+    document.documentElement.dataset.theme ??
+    (osDark.matches ? "dark" : "light");
+  const load = () => {
+    const next = currentTheme();
+    if (next === theme) return;
+    theme = next;
+    video.replaceChildren(
+      Object.assign(document.createElement("source"), {
+        src: `${stem}-${theme}.av1.mp4`,
+        type: 'video/mp4; codecs="av01.0.08M.08"',
+      }),
+      Object.assign(document.createElement("source"), {
+        src: `${stem}-${theme}.h264.mp4`,
+        type: "video/mp4",
+      }),
+    );
+    // the poster <picture> only knows the OS theme; follow a data-theme override too
+    if (document.documentElement.dataset.theme) {
+      poster.querySelectorAll("source").forEach((s) => s.remove());
+      poster.querySelector("img").src = `${stem}-${theme}.webp`;
+    }
+    video.load();
+    update();
+  };
+  const update = () => {
+    if (visible) video.play().catch(() => {});
+    else video.pause();
+  };
+
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    if (visible) load(); // first time on screen: fetch the video
+    update();
+  }).observe(section);
+  osDark.addEventListener("change", () => theme && load());
+});

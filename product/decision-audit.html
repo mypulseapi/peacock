@@ -78,6 +78,31 @@
         <path d="M20 6 9 17l-5-5" />
       </symbol>
       <symbol
+        id="i-circle-alert"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" x2="12" y1="8" y2="12" />
+        <line x1="12" x2="12.01" y1="16" y2="16" />
+      </symbol>
+      <symbol
+        id="i-circle-check"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="m9 12 2 2 4-4" />
+      </symbol>
+      <symbol
         id="i-menu"
         viewBox="0 0 24 24"
         fill="none"
@@ -1093,119 +1118,58 @@
     </header>
     <!-- /shell:header -->
     <main>
-      <section class="hero-bg border-b border-line">
-        <div
-          class="frame grid items-center gap-12 py-20 lg:grid-cols-12 lg:gap-16 lg:py-28"
-        >
-          <div class="lg:col-span-6">
-            <h1 class="reveal text-headline text-balance">
-              Find out which missing product data is actually costing you.
+      <!-- Hero with a background video, as linear.app/intake: the Decision Audit story (catalogue with Missing
+           fields → 48-hour audit → ranked list with the #1 ring) in a 12s loop, rendered from the site's own UI
+           in light and dark (src/assets/product/decision-audit-*). src/main.js ([data-bg-video]) picks the theme,
+           plays it only on screen and never with reduced motion; without JS the poster frame shows. No pause button (decided 16 Oct 2026). -->
+      <section class="relative isolate overflow-hidden border-b border-line">
+        <div class="absolute inset-0 -z-10" aria-hidden="true">
+          <picture data-bg-poster>
+            <source
+              srcset="../src/assets/product/decision-audit-dark.webp"
+              media="(prefers-color-scheme: dark)"
+            />
+            <img
+              src="../src/assets/product/decision-audit-light.webp"
+              alt=""
+              width="1920"
+              height="1080"
+              class="hero-video-media"
+            />
+          </picture>
+          <video
+            class="hero-video-media"
+            width="1920"
+            height="1080"
+            muted
+            loop
+            playsinline
+            preload="none"
+            data-bg-video="../src/assets/product/decision-audit"
+          ></video>
+          <div class="absolute inset-0 hero-video-scrim"></div>
+        </div>
+        <!-- the frame keeps the page margins; the box inside it is the hero's height (540 / 800px) with the title and
+             the description under it at the top left -->
+        <div class="frame">
+          <div class="min-h-135 py-14 lg:min-h-200 lg:py-20">
+            <h1 class="reveal max-w-2xl text-headline text-balance">
+              <span class="sm:block">Fix the product</span>
+              <span class="sm:block">data shoppers decide on</span>
             </h1>
             <p
-              class="reveal mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted delay-100"
+              class="reveal mt-6 max-w-lg text-lg leading-relaxed text-balance text-muted delay-100"
             >
-              Send one category export. In 48 hours you get a ranked list of the
-              attributes worth recording, the products missing each one, and
-              where each missing fact already lives. No code, no tag, no
-              customer data, and nothing to install.
+              Identify, prioritize, and verify the product-information fixes
+              that matter most to buying decisions.
             </p>
-            <div class="reveal mt-8 flex flex-wrap gap-3 delay-200">
-              <a href="mailto:getintouch@thepulseapi.com" class="btn-primary"
-                >Request a Decision Audit</a
-              >
-              <a href="index.html" class="btn-secondary">All products</a>
-            </div>
-          </div>
-          <div class="reveal delay-300 lg:col-span-6">
-            <div class="rounded-3xl border border-line bg-card p-5 shadow-sm">
-              <p class="mb-3 text-xs font-medium text-muted">Example data</p>
-              <div class="flex items-center gap-4 rounded-2xl bg-surface-1 p-4">
-                <span
-                  class="grid size-12 shrink-0 place-items-center rounded-full bg-primary text-on-primary"
-                  ><svg
-                    class="size-5 fill-none stroke-current stroke-2"
-                    aria-hidden="true"
-                  >
-                    <use href="#i-pointer" /></svg
-                ></span>
-                <ul class="grid flex-1 gap-1.5 text-sm text-ink">
-                  <li class="flex items-center gap-2">
-                    <span class="size-1.5 rounded-full bg-primary"></span>Mobile
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <span class="size-1.5 rounded-full bg-primary"></span>First
-                    visit
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <span class="size-1.5 rounded-full bg-success"></span
-                    >Session live
-                  </li>
-                </ul>
-              </div>
-              <p class="mt-5 eyebrow">What this shopper already knew</p>
-              <ul class="mt-3 space-y-2">
-                <li
-                  class="flex items-center gap-3 rounded-xl border px-3.5 py-3 border-critical-line bg-critical-bg"
-                >
-                  <span
-                    class="grid size-6 shrink-0 place-items-center rounded-full bg-critical text-on-primary"
-                    ><svg class="size-3.5" aria-hidden="true">
-                      <use href="#i-x" /></svg
-                  ></span>
-                  <span class="min-w-0 flex-1 text-data"
-                    ><strong class="font-semibold text-ink"
-                      >A size or fit</strong
-                    >
-                    <span class="text-muted">34 in inseam</span></span
-                  >
-                  <span class="text-xs font-semibold text-critical"
-                    >No such field</span
-                  >
-                </li>
-                <li
-                  class="flex items-center gap-3 rounded-xl border px-3.5 py-3 border-critical-line bg-critical-bg"
-                >
-                  <span
-                    class="grid size-6 shrink-0 place-items-center rounded-full bg-critical text-on-primary"
-                    ><svg class="size-3.5" aria-hidden="true">
-                      <use href="#i-x" /></svg
-                  ></span>
-                  <span class="min-w-0 flex-1 text-data"
-                    ><strong class="font-semibold text-ink"
-                      >A material or ingredient</strong
-                    >
-                    <span class="text-muted">fragrance-free</span></span
-                  >
-                  <span class="text-xs font-semibold text-critical"
-                    >No such field</span
-                  >
-                </li>
-                <li
-                  class="flex items-center gap-3 rounded-xl border px-3.5 py-3 border-primary bg-primary-tint"
-                >
-                  <span
-                    class="grid size-6 shrink-0 place-items-center rounded-full bg-primary text-on-primary"
-                    ><svg class="size-3.5" aria-hidden="true">
-                      <use href="#i-check" /></svg
-                  ></span>
-                  <span class="min-w-0 flex-1 text-data"
-                    ><strong class="font-semibold text-ink"
-                      >A price ceiling</strong
-                    >
-                    <span class="text-muted">under $1,200</span></span
-                  >
-                  <span class="text-xs font-semibold text-primary"
-                    >Can filter</span
-                  >
-                </li>
-              </ul>
-              <p class="mt-4 flex items-center gap-3 text-data text-muted">
-                <span
-                  class="rounded-md bg-critical-bg px-2 py-0.5 text-sm font-bold text-critical tabular-nums"
-                  >2/3</span
-                >of what they knew is not a field, so this visitor is shown the
-                same order as everyone else.
-              </p>
+            <!-- Placeholder: not wired up yet (connect it to the AI assistant when it exists) -->
+            <div class="reveal mt-8 delay-200">
+              <button type="button" class="btn-secondary" data-ask-ai>
+                <svg class="size-4 text-primary" aria-hidden="true">
+                  <use href="#i-sparkles" /></svg
+                >Ask AI
+              </button>
             </div>
           </div>
         </div>
@@ -1286,55 +1250,103 @@
               <p class="text-xs text-muted">without choosing one</p>
             </li>
           </ol>
-          <p class="reveal mt-6 max-w-3xl text-data leading-relaxed text-muted">
-            The session did not fail at the checkout. It failed at step three,
-            because &ldquo;lightweight&rdquo; is not a field in this catalogue,
-            so nothing could narrow and the shopper was left comparing by hand.
-            Filtering is where most shelves break: 78% of mobile ecommerce sites
-            score poor or mediocre on it, and 58% on desktop.
-            <span class="text-ink">Baymard Institute, 2025 benchmark</span>
-          </p>
-          <div class="mt-10 grid gap-6 md:grid-cols-2">
-            <div
-              class="reveal rounded-2xl border border-warning-line bg-warning-bg p-6"
-            >
+          <!-- Comparison: one card, two columns split by a hairline. Left (the usual way) is struck through in muted;
+               right (the Decision Audit) is ticked in ink. -->
+          <div
+            class="reveal mt-10 grid divide-y divide-line overflow-hidden rounded-2xl border border-line bg-card md:grid-cols-2 md:divide-x md:divide-y-0"
+          >
+            <div class="p-6 lg:p-10">
               <p
-                class="text-xs font-semibold tracking-wider text-warning uppercase"
+                class="flex items-center gap-3 text-xs font-medium tracking-widest text-muted uppercase"
               >
-                Every engagement-ranked tool
+                <svg class="size-5" aria-hidden="true">
+                  <use href="#i-circle-alert" /></svg
+                >Every engagement-ranked tool
               </p>
-              <h3 class="mt-3 text-h3 text-ink">
-                Has to wait for the chain to run, and still cannot see the gap.
-              </h3>
-              <p class="mt-2 text-data leading-relaxed text-muted">
-                Click and conversion models weigh the fields that already exist.
-                A field nobody recorded generates no clicks, so it scores zero
-                and stays invisible no matter how much traffic you send at it.
-              </p>
-              <p class="mt-5 text-sm font-semibold text-warning">
-                Needs months of traffic. Never surfaces the missing field.
-              </p>
+              <ul class="mt-8 space-y-5 text-base leading-relaxed text-pretty">
+                <li class="flex gap-4">
+                  <span
+                    class="mt-3 h-px w-3 shrink-0 scale-y-50 bg-muted"
+                    aria-hidden="true"
+                  ></span
+                  ><span class="text-muted strike-hairline"
+                    >Has to wait for the chain to run, and still cannot see the
+                    gap</span
+                  >
+                </li>
+                <li class="flex gap-4">
+                  <span
+                    class="mt-3 h-px w-3 shrink-0 scale-y-50 bg-muted"
+                    aria-hidden="true"
+                  ></span
+                  ><span class="text-muted strike-hairline"
+                    >Click and conversion models weigh the fields that already
+                    exist</span
+                  >
+                </li>
+                <li class="flex gap-4">
+                  <span
+                    class="mt-3 h-px w-3 shrink-0 scale-y-50 bg-muted"
+                    aria-hidden="true"
+                  ></span
+                  ><span class="text-muted strike-hairline"
+                    >A field nobody recorded generates no clicks, so it scores
+                    zero and stays invisible no matter how much traffic you send
+                    at it</span
+                  >
+                </li>
+                <li class="flex gap-4">
+                  <span
+                    class="mt-3 h-px w-3 shrink-0 scale-y-50 bg-muted"
+                    aria-hidden="true"
+                  ></span
+                  ><span class="text-muted strike-hairline"
+                    >Needs months of traffic. Never surfaces the missing
+                    field</span
+                  >
+                </li>
+              </ul>
             </div>
-            <div
-              class="reveal rounded-2xl border border-primary-line bg-primary-tint p-6 delay-100"
-            >
+            <div class="p-6 lg:p-10">
               <p
-                class="text-xs font-semibold tracking-wider text-primary uppercase"
+                class="flex items-center gap-3 text-xs font-medium tracking-widest text-ink uppercase"
               >
-                The Decision Audit
+                <svg class="size-5" aria-hidden="true">
+                  <use href="#i-circle-check" /></svg
+                >The Decision Audit
               </p>
-              <h3 class="mt-3 text-h3 text-ink">
-                Computes the break point before a single session runs.
-              </h3>
-              <p class="mt-2 text-data leading-relaxed text-muted">
-                Where the chain breaks is a property of your catalogue, not of
-                your visitors, so it can be measured from an export. That is why
-                this works on a new category, a new market or a launch range
-                with no history at all.
-              </p>
-              <p class="mt-5 text-sm font-semibold text-primary">
-                Needs one CSV. Works on day one, with zero traffic.
-              </p>
+              <ul class="mt-8 space-y-5 text-base leading-relaxed text-pretty">
+                <li class="flex gap-4">
+                  <svg class="mt-1 size-4 shrink-0 text-ink" aria-hidden="true">
+                    <use href="#i-check" /></svg
+                  ><span class="text-ink"
+                    >Computes the break point before a single session runs</span
+                  >
+                </li>
+                <li class="flex gap-4">
+                  <svg class="mt-1 size-4 shrink-0 text-ink" aria-hidden="true">
+                    <use href="#i-check" /></svg
+                  ><span class="text-ink"
+                    >Where the chain breaks is a property of your catalogue, not
+                    of your visitors, so it can be measured from an export</span
+                  >
+                </li>
+                <li class="flex gap-4">
+                  <svg class="mt-1 size-4 shrink-0 text-ink" aria-hidden="true">
+                    <use href="#i-check" /></svg
+                  ><span class="text-ink"
+                    >Works on a new category, a new market or a launch range
+                    with no history at all</span
+                  >
+                </li>
+                <li class="flex gap-4">
+                  <svg class="mt-1 size-4 shrink-0 text-ink" aria-hidden="true">
+                    <use href="#i-check" /></svg
+                  ><span class="text-ink"
+                    >Needs one CSV. Works on day one, with zero traffic</span
+                  >
+                </li>
+              </ul>
             </div>
           </div>
         </div>

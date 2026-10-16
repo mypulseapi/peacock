@@ -23,8 +23,36 @@
       crossorigin
     />
     <link rel="stylesheet" href="./dist/output.css" />
+    <!-- for the DEAL specimen (the only motion on this page) -->
+    <script defer src="./src/main.js"></script>
   </head>
   <body class="overflow-x-clip">
+    <!-- icons for the DEAL specimen's pause button (the pages share the full sprite from index.html) -->
+    <svg class="hidden" aria-hidden="true">
+      <symbol
+        id="i-pause"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect x="14" y="4" width="4" height="16" rx="1" />
+        <rect x="6" y="4" width="4" height="16" rx="1" />
+      </symbol>
+      <symbol
+        id="i-play"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polygon points="6 3 20 12 6 21 6 3" />
+      </symbol>
+    </svg>
     <!-- Header -->
     <header class="sticky top-0 z-50 border-b border-line bg-card">
       <div
@@ -406,6 +434,57 @@
             </p>
           </div>
         </div>
+      </section>
+
+      <!-- DEAL acronym (about.html) -->
+      <section id="deal" class="scroll-mt-24">
+        <div class="mb-6 flex items-center gap-3 border-b border-line pb-4">
+          <h2 class="text-h2">DEAL Acronym</h2>
+        </div>
+        <div
+          class="flex flex-col items-center rounded-xl border border-line bg-card px-6 py-12 shadow-sm"
+        >
+          <p
+            class="deal"
+            role="img"
+            aria-label="DEAL: Decision, Engagement, Auditing and Agentic, Layer"
+            data-deal
+          >
+            <span aria-hidden="true"
+              ><span class="deal-initial">D</span
+              ><span class="deal-word">ecision</span></span
+            >
+            <span aria-hidden="true"
+              ><span class="deal-initial">E</span
+              ><span class="deal-word">ngagement</span></span
+            >
+            <span aria-hidden="true"
+              ><span class="deal-initial">A</span
+              ><span class="deal-word"
+                >uditing &amp; <span class="text-primary">A</span>gentic</span
+              ></span
+            >
+            <span aria-hidden="true"
+              ><span class="deal-initial">L</span
+              ><span class="deal-word">ayer</span></span
+            >
+          </p>
+          <button
+            type="button"
+            class="btn-ghost btn-sm hit-area mt-8 hidden motion-safe:js:inline-flex"
+            aria-pressed="false"
+            data-deal-pause
+          >
+            <svg class="size-4" aria-hidden="true">
+              <use href="#i-pause" data-deal-pause-icon /></svg
+            ><span data-deal-pause-label>Pause animation</span>
+          </button>
+        </div>
+        <p class="mt-3 text-xs text-muted">
+          .deal · .deal-initial · .deal-word · [data-deal] · [data-deal-pause] —
+          loops while on screen, with a pause button; the markup is the final
+          state (no JS, reduced motion).
+        </p>
       </section>
 
       <!-- 05 Palette -->

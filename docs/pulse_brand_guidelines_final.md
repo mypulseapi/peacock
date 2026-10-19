@@ -1,10 +1,12 @@
-# Pulse — Brand Guidelines v3.0 "Signal"
+# Pulse — Brand Guidelines "Signal" (final)
 
-Oct 16, 2026 · @Henry
+Oct 16, 2026 · @Henry · Final, Oct 19, 2026: typography changed from Inter to Geist + Geist Mono (§8); dark surfaces changed from navy to cool black `#0B0D12`, new §5.1 dark mode reference and chart tokens; reversed logo in every dark context (§7).
+
+**This is the final, current guideline** and the single source of truth for brand colour and type. `DESIGN.md` applies it to the website, and every value here lives as a token in `src/input.css`. Earlier versions (v2 Aurora, the v4 dark-mode draft) were removed on 19 Oct 2026; they remain in git history.
 
 ## 1. What changes in v3, and why
 
-v3 replaces the Aurora palette with **Signal**, built from your three favourites and tuned so each one does its job better: Pulse Blue `#2552FF`, Signal Red `#F84840` and Sky Blue `#3990E2`. Everything else in v2 that already works stays: the voice, Inter, Lucide icons, the 4px grid, layout and motion.
+v3 replaces the Aurora palette with **Signal**, built from your three favourites and tuned so each one does its job better: Pulse Blue `#2552FF`, Signal Red `#F84840` and Sky Blue `#3990E2`. Everything else in v2 that already works stays: the voice, Lucide icons, the 4px grid, layout and motion. (The final version later replaced Inter with Geist + Geist Mono, §8.)
 
 **How the final colours were chosen.** I searched every colour within a small distance of your originals (OKLCH, calculated in Python) and kept the one that fixed the most problems while still looking like your choice.
 
@@ -81,14 +83,14 @@ Three brand colours, two derived shades for hover and red text, and the neutrals
 
 **Neutrals and states** (kept from v2, already contrast-checked)
 
-| Name      | Hex       | Role                      |
-| --------- | --------- | ------------------------- |
-| Ink       | `#0B1B3A` | Text, headings            |
-| Muted     | `#56607A` | Secondary text            |
-| Mist      | `#F7F8FC` | Page background           |
-| White     | `#FFFFFF` | Cards, panels, header     |
-| Night     | `#0A1230` | Dark band, dark-mode page |
-| Gap Amber | `#FFB020` | Missing data only         |
+| Name      | Hex       | Role                                                                                 |
+| --------- | --------- | ------------------------------------------------------------------------------------ |
+| Ink       | `#0B1B3A` | Text, headings                                                                       |
+| Muted     | `#56607A` | Secondary text                                                                       |
+| Mist      | `#F7F8FC` | Page background                                                                      |
+| White     | `#FFFFFF` | Cards, panels, header                                                                |
+| Night     | `#0B0D12` | Dark band and dark-mode page: a cool black with a trace of blue (was navy `#0A1230`) |
+| Gap Amber | `#FFB020` | Missing data only                                                                    |
 
 **Balance (a guide, not a rule):** about 70% Mist and White, 15% Ink text, 10% Pulse Blue, 5% Signal Red. Red works because it is rare: one red thing per screen is the target, never more than two.
 
@@ -133,29 +135,82 @@ Colours along the Signal gradient and text on them (WCAG ratios, calculated):
 
 ## 5. Semantic tokens
 
-Only the brand-colour tokens change; neutrals, Gap and status tokens keep their v2 values. Dark mode still follows the OS setting, and `<html data-theme>` overrides it.
+Light values: only the brand-colour tokens change; neutrals, Gap and status tokens keep their v2 values. Dark values: the final version moves every dark surface, line and neutral text from navy to cool black (§5.1). Dark mode follows the OS setting, and `<html data-theme>` overrides it.
 
-| Token                                       | Light                             | Dark                              | Use                                                                                     |
-| ------------------------------------------- | --------------------------------- | --------------------------------- | --------------------------------------------------------------------------------------- |
-| `primary`                                   | `#2552FF`                         | `#80A7FF`                         | Primary button fill, active tab, selected state                                         |
-| `primary-hover`                             | `#1D43D9`                         | `#93BBFF`                         | Hover and pressed                                                                       |
-| `on-primary`                                | `#FFFFFF`                         | `#0A1230`                         | Text on primary fills                                                                   |
-| `link`                                      | `#2552FF`                         | `#80A7FF`                         | Text links (same as primary; passes on every surface)                                   |
-| `primary-tint`                              | `#EAF2FF`                         | `#162448`                         | Badge and chip backgrounds; text on it uses `primary-hover` (light) or `primary` (dark) |
-| `signal`                                    | `#F84840`                         | `#F84840`                         | #1 highlight: ring, bar, dot, pulse line (graphic only on light)                        |
-| `signal-text`                               | `#C8261F`                         | `#FF6B63`                         | Red text, e.g. the "#1" label or a key number                                           |
-| `signal-tint`                               | `#FFECEB`                         | `#3A1A22`                         | Background behind the #1 row or badge                                                   |
-| `sky`                                       | `#3990E2`                         | `#7DB8F2`                         | Illustrations, icon accents, info badge                                                 |
-| `focus`                                     | `#3990E2`                         | `#93BBFF`                         | 2px focus outline, 2px offset                                                           |
-| `ink` / `muted`                             | `#0B1B3A` / `#56607A`             | `#EEF0F7` / `#A9B3CC`             | Unchanged                                                                               |
-| `surface-0` / `card` / `surface-1`          | `#F7F8FC` / `#FFFFFF` / `#EEF0F7` | `#0A1230` / `#121B3D` / `#172046` | Unchanged                                                                               |
-| `line` / `line-control`                     | `#E3E6EF` / `#868DA3`             | `#252F57` / `#626C91`             | Unchanged                                                                               |
-| `gap` / `gap-fill` / `gap-strong`           | `#FFB020` / `#FFEFD2` / `#8F5B00` | `#FFB020` / `#3A2A10` / `#FFB020` | Unchanged; Missing only                                                                 |
-| `success` / `warning` / `critical` (+`-bg`) | v2 values                         | v2 values                         | Unchanged                                                                               |
-| `void` (dark band)                          | `#0A1230`                         | `#0A1230`                         | Unchanged                                                                               |
-| `void-accent`                               | `#80A7FF`                         | `#80A7FF`                         | Accent text on the dark band (was violet `#A79CFF`)                                     |
+| Token                                       | Light                             | Dark                              | Use                                                                                              |
+| ------------------------------------------- | --------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `primary`                                   | `#2552FF`                         | `#80A7FF`                         | Primary button fill, active tab, selected state                                                  |
+| `primary-hover`                             | `#1D43D9`                         | `#93BBFF`                         | Hover and pressed                                                                                |
+| `on-primary`                                | `#FFFFFF`                         | `#0B0D12`                         | Text on primary fills                                                                            |
+| `link`                                      | `#2552FF`                         | `#80A7FF`                         | Text links (same as primary; passes on every surface)                                            |
+| `primary-tint`                              | `#EAF2FF`                         | `#142140`                         | Badge and chip backgrounds; text on it uses `primary-hover` (light) or `primary` (dark)          |
+| `primary-line`                              | `#CBDDFF`                         | `#293349`                         | Chip and badge border (decorative; derived: 22% `primary` in `card`, OKLab)                      |
+| `signal`                                    | `#F84840`                         | `#F84840`                         | #1 highlight: ring, bar, dot, pulse line (graphic only on light)                                 |
+| `signal-text`                               | `#C8261F`                         | `#FF6B63`                         | Red text, e.g. the "#1" label or a key number                                                    |
+| `signal-tint`                               | `#FFECEB`                         | `#2E1517`                         | Background behind the #1 row or badge                                                            |
+| `signal-line`                               | `#FFC5BC`                         | `#5D2D2E`                         | #1 badge border (decorative; derived: 35% `signal` in `card`, OKLab)                             |
+| `sky`                                       | `#3990E2`                         | `#7DB8F2`                         | Illustrations, icon accents, info badge                                                          |
+| `focus`                                     | `#3990E2`                         | `#93BBFF`                         | 2px focus outline, 2px offset                                                                    |
+| `ink` / `muted`                             | `#0B1B3A` / `#56607A`             | `#EEF0F5` / `#A3A9B8`             | Text, secondary text                                                                             |
+| `surface-0` / `card` / `surface-1`          | `#F7F8FC` / `#FFFFFF` / `#EEF0F7` | `#0B0D12` / `#14171F` / `#1B1F29` | Page, cards, raised wells                                                                        |
+| `line` / `line-control`                     | `#E3E6EF` / `#868DA3`             | `#2A2F3B` / `#5F6676`             | Dividers, control borders                                                                        |
+| `gap` / `gap-fill` / `gap-strong`           | `#FFB020` / `#FFEFD2` / `#8F5B00` | `#FFB020` / `#2E2410` / `#FFB020` | Missing only                                                                                     |
+| `success` / `warning` / `critical` (+`-bg`) | see 5.1                           | see 5.1                           | Status states                                                                                    |
+| `void` (dark band)                          | `#0B0D12`                         | `#0B0D12`                         | Dark band in both themes                                                                         |
+| `void-accent`                               | `#80A7FF`                         | `#80A7FF`                         | Accent text on the dark band                                                                     |
+| `chart-*`                                   | see 5.1                           | see 5.1                           | Chart series: `chart-main`, `chart-second`, `chart-baseline`, `chart-highlight`, `chart-missing` |
 
 **Removed:** `accent` / `accent-text` (Coral `#FF7A59` / `#B8431A`) become `signal` / `signal-text`; `cyan` becomes `sky`. Violet `#6E5BFF` and Cyan `#00C2FF` are gone; violet survives only as the natural middle of the gradient.
+
+### 5.1 Dark mode reference
+
+Dark mode follows the visitor's OS setting (`prefers-color-scheme`), and `<html data-theme="light|dark">` overrides it. Dark surfaces are a cool black (`#0B0D12`), not navy: decided 16 Oct 2026, because navy read as "blue background" and competed with Pulse Blue. The dark band (`void`) uses the same black in both themes, so the band and dark mode look like one system. The brand colours themselves are unchanged. All ratios are calculated with the WCAG 2.x formula.
+
+**Status colours**
+
+| Token                      | Light                 | Dark                  | Dark ratio (page · card · own bg) |
+| -------------------------- | --------------------- | --------------------- | --------------------------------: |
+| `success` / `success-bg`   | `#0E7A55` / `#E6F7F0` | `#4FD1A1` / `#0F2A21` |               10.15 · 9.36 · 7.99 |
+| `warning` / `warning-bg`   | `#8A5300` / `#FFF6DB` | `#FFC857` / `#2E2610` |              12.63 · 11.65 · 9.74 |
+| `critical` / `critical-bg` | `#B4152B` / `#FDECEE` | `#FF8A94` / `#331519` |                8.62 · 7.95 · 7.38 |
+
+**Dark band and dark surfaces**
+
+| Token              | Value     | Use                                 |                               Ratio |
+| ------------------ | --------- | ----------------------------------- | ----------------------------------: |
+| `void`             | `#0B0D12` | Dark band, dark-mode page           |                                   — |
+| `void-elevated`    | `#14171F` | Cards and panels on the band        |                                   — |
+| `surface-1` (dark) | `#1B1F29` | Raised wells, table headers         |                                   — |
+| `void-line`        | `#2A2F3B` | Dividers, table rules, card borders |                          decorative |
+| `void-line-strong` | `#5F6676` | Control borders (buttons, inputs)   |   3.38 on `void` · 3.11 on elevated |
+| `void-text`        | `#EEF0F5` | Text on the band                    | 17.05 on `void` · 15.71 on elevated |
+| `void-muted`       | `#A3A9B8` | Secondary text on the band          |   8.26 on `void` · 7.61 on elevated |
+| `void-accent`      | `#80A7FF` | Accent text, links, labels          |                      8.23 on `void` |
+
+**Chart colours**
+
+Pulse Blue `#2552FF` as a chart mark is 3.45 on the dark page but only 2.93 on a raised dark surface, below the 3:1 graphics need, so charts switch series colours in dark mode.
+
+| Series                                   | Light     | Dark      | Dark ratio (page · card · surface-1) |
+| ---------------------------------------- | --------- | --------- | -----------------------------------: |
+| Main (`chart-main`)                      | `#2552FF` | `#80A7FF` |                   8.23 · 7.58 · 6.97 |
+| Second (`chart-second`)                  | `#893FF2` | `#B18CFF` |                   7.46 · 6.88 · 6.33 |
+| Comparison / baseline (`chart-baseline`) | `#868DA3` | `#868DA3` |                   5.88 · 5.42 · 4.98 |
+| Highlight, #1 only (`chart-highlight`)   | `#F84840` | `#F84840` |                   5.55 · 5.11 · 4.70 |
+| Missing (`chart-missing`)                | `#FFB020` | `#FFB020` |                  10.63 · 9.80 · 9.01 |
+
+**Gradient and logo in dark mode**
+
+- The Signal gradient keeps the same colours in both themes. White text on it stays large-text only (lowest point 3.50).
+- The logo uses the reversed variant in dark mode and on the dark band: gradient P, white wordmark. On the website this follows both the OS setting and `data-theme` (header, hero demo and footer; see §7).
+
+**Two reds, kept apart**
+
+Red Text (`signal-text`, "fix this first") and `critical` (errors) are close in both themes: OKLab distance 0.052 in light (`#C8261F` vs `#B4152B`) and 0.073 in dark (`#FF6B63` vs `#FF8A94`); about 0.1 reads as clearly different. Colour alone cannot separate them, so:
+
+- Errors always carry an error icon plus a word ("Error", "Couldn't upload").
+- The #1 priority always carries the priority ring and a rank number.
+- Never place the two side by side in the same component.
 
 ## 6. Colour rules and contrast
 
@@ -182,18 +237,21 @@ Only the brand-colour tokens change; neutrals, Gap and status tokens keep their 
 | Signal Red on White                              |               3.50 | Graphics and large text only |
 | Sky Blue on White · Mist (focus ring, icons)     |        3.35 · 3.16 | Pass, graphics only          |
 | Ink · Muted on White                             |       17.04 · 6.27 | Pass, text                   |
-| Dark: `#80A7FF` on page · card                   |        7.78 · 7.11 | Pass, text                   |
-| Dark: Night text on `#80A7FF` button             |               7.78 | Pass, text                   |
-| Dark: Night text on hover `#93BBFF`              |               9.45 | Pass, text                   |
-| Dark: `#80A7FF` on tint `#162448`                |               6.44 | Pass, text                   |
-| Dark: `#FF6B63` on page · card                   |        6.60 · 6.03 | Pass, text                   |
-| Dark: `#FF6B63` on tint `#3A1A22`                |               5.58 | Pass, text                   |
-| Dark: Signal Red on page                         |               5.25 | Pass, text                   |
-| Dark: Sky `#7DB8F2` on page                      |               8.76 | Pass, text                   |
-| Dark: Pulse Blue on page                         |               3.27 | Graphics only                |
-| White on dark band                               |              18.39 | Pass, text                   |
+| Dark: `#80A7FF` on page · card                   |        8.23 · 7.58 | Pass, text                   |
+| Dark: page text `#0B0D12` on `#80A7FF` button    |               8.23 | Pass, text                   |
+| Dark: page text on hover `#93BBFF`               |               9.99 | Pass, text                   |
+| Dark: `#80A7FF` on tint `#142140`                |               6.73 | Pass, text                   |
+| Dark: `#FF6B63` on page · card                   |        6.97 · 6.43 | Pass, text                   |
+| Dark: `#FF6B63` on tint `#2E1517`                |               6.10 | Pass, text                   |
+| Dark: Signal Red on page                         |               5.55 | Pass, text                   |
+| Dark: Sky `#7DB8F2` on page                      |               9.26 | Pass, text                   |
+| Dark: focus `#93BBFF` on page                    |               9.99 | Pass                         |
+| Dark: Pulse Blue on page                         |               3.45 | Graphics only                |
+| White on dark band                               |              19.43 | Pass, text                   |
 
-Ratios for neutrals, Gap and status tokens are unchanged from v2 section 3.6. The remaining v2 failures (faded step numbers on the demo tabs, inactive scroll-spy links) are opacity issues, not palette values, and still need fixing.
+Light ratios for neutrals, Gap and status tokens are unchanged from v2 (section 3.6 of the v2 guide, in git history); every dark ratio is in §5.1 and this table. The v2 opacity failures (faded step numbers, inactive scroll-spy links) are fixed (QA, §11).
+
+**Soft washes** (worst point, `muted` text, light · dark): hero background at rest 4.57 · 6.26; soft gradient 4.66 · 5.97; How it works card wash (6% Pulse Blue) 5.78 · 7.07. Dark band gradient at its brightest (Sky glow): white 13.88, `void-muted` 5.90. All pass AA.
 
 ## 7. Logo
 
@@ -205,8 +263,10 @@ Keep the logo's shape; retune its two colours to Signal. The change is small eno
 | ------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------- |
 | P gradient                      | `#F3423E` → `#9E4197` → `#4841E9`, top to bottom (measured) | Signal gradient `#F84840` → `#2552FF`, top to bottom, OKLCH stops | Logo, gradient and palette become one system              |
 | Wordmark "ulse" (light)         | `#4641EF` (indigo, measured)                                | Pulse Blue `#2552FF` (5.63 on white)                              | A small step: Pulse Blue already leans toward this indigo |
-| Wordmark (dark mode, dark band) | Off-white `#F1F0FF` (`logo-white.webp`)                     | White `#FFFFFF`                                                   | Unchanged; Pulse Blue on Night is only 3.27               |
+| Wordmark (dark mode, dark band) | Off-white `#F1F0FF` (`logo-white.webp`)                     | White `#FFFFFF` (19.43 on Night `#0B0D12`)                        | Pulse Blue on Night is only 3.45                          |
 | Symbol (favicon, avatar)        | Gradient P in a circle                                      | Same, Signal gradient                                             | Matches social and OG image                               |
+
+**On the website (19 Oct 2026):** the logo is two images, the full-colour one and the reversed one; whichever matches the theme shows (OS dark mode or `<html data-theme="dark">`, and the dark band), in the header, the hero demo and the footer. A `<picture>` with `prefers-color-scheme` alone is not enough, because it ignores `data-theme`.
 
 **Variants to produce (from one SVG master):** full colour on light · reversed (white wordmark) on dark and on the gradient · symbol only · one-colour Ink · one-colour White.
 
@@ -214,26 +274,31 @@ Keep the logo's shape; retune its two colours to Signal. The change is small eno
 
 **Don't:** stretch, rotate, recolour outside the variants above, add shadows or glows, place the full-colour logo on the gradient, or redraw it from a screenshot.
 
-## 8. Typography — Inter (unchanged)
+## 8. Typography — Geist + Geist Mono (final)
 
-Inter stays: it is neutral enough to let the colour carry the brand, it is self-hosted, and it covers every Vietnamese letter for the coming `vi` site.
+Geist replaces Inter. It was chosen on 19 Oct 2026 from three pairings rendered with real Pulse components (the laptop audit table, the ranked list, the "94 → 31" stat) in English and Vietnamese. Geist stays neutral enough to let the colour carry the brand; Geist Mono gives the data its own clear voice. Both are open source (SIL OFL), self-hosted, cover every Vietnamese letter for the coming `vi` site, and have tabular figures.
 
-| Role                  | Font                                             | Weights |
-| --------------------- | ------------------------------------------------ | ------- |
-| Headings, big numbers | Inter Display (optical size, automatic at 32px+) | 550–600 |
-| Body, UI, tables      | Inter text, `tabular-nums` on for numbers        | 400–600 |
+| Role                                   | Font                                 | Weights |
+| -------------------------------------- | ------------------------------------ | ------- |
+| Headings, big numbers                  | Geist                                | 500–600 |
+| Body, UI, labels, numbers in sentences | Geist, `tabular-nums` on for numbers | 400–600 |
+| Data: table values, numeric readouts   | Geist Mono (fixed-width digits)      | 400–600 |
+
+Geist Mono is only for data: the values in tables and readouts such as bit values. Never for headings, prose or labels. Product names in tables and the Missing flag stay in Geist.
 
 | Style    | Size            | Line-height | Weight  |
 | -------- | --------------- | ----------- | ------- |
 | Display  | 40 → 60px fluid | 1.1         | 600     |
 | Headline | 36 → 48px fluid | 1.12        | 600     |
-| Title    | 30 → 36px fluid | 1.18        | 550     |
+| Title    | 28 → 32px fluid | 1.18        | 550     |
 | Lead     | 18px            | 1.6         | 400     |
 | Body     | 16px            | 1.6         | 400     |
 | Data     | 14px            | 1.5         | 400–600 |
 | Caption  | 12px            | 1.4         | 500     |
 
-One new rule for colour in type: **one red word or number per headline, at most.** The key number in a stat ("**94** of 216") may use `signal-text`; the rest of the headline stays Ink. Letter-spacing, stylistic set 03, fallbacks and the Vietnamese line-height rule (1.1 or above) are unchanged from v2.
+**Headlines and titles never end with a full stop** (decided 19 Oct 2026): "Know which product data to fix first", not "…first.". A full stop between two sentences in one heading stays.
+
+One new rule for colour in type: **one red word or number per headline, at most.** The key number in a stat ("**94** of 216") may use `signal-text`; the rest of the headline stays Ink. Letter-spacing and the Vietnamese line-height rule (1.1 or above) are unchanged from v2. Fallbacks are metric-matched Arial (Geist) and Courier New (Geist Mono), so lines do not re-wrap when the fonts load. Inter's stylistic set 03 no longer applies.
 
 ## 9. Visual identity, UI and charts
 
@@ -257,17 +322,19 @@ One new rule for colour in type: **one red word or number per headline, at most.
 | Focus              | 2px `focus` outline, 2px offset                                                                                |
 | Badge              | `primary-tint` + `primary-hover` text; priority badge `signal-tint` + `signal-text`                            |
 | Data table         | `card` fill, `line` rules, `surface-1` header, `tabular-nums`; #1 row gets `signal-tint` and the priority ring |
-| Announcement bar   | Night `#0A1230` with white text and a `#80A7FF` link (replaces any coloured bar)                               |
+| Announcement bar   | Night `#0B0D12` with white text and a `#80A7FF` link (replaces any coloured bar)                               |
 
 **Chart colours**
 
-| Series                      | Colour                               |    Ratio on white |
-| --------------------------- | ------------------------------------ | ----------------: |
-| Main series                 | Pulse Blue `#2552FF`                 |              5.63 |
-| Second series               | Violet `#893FF2` (gradient 75% stop) |              5.18 |
-| Comparison / baseline       | Slate `#868DA3`                      |              3.31 |
-| Highlight (the #1 bar only) | Signal Red `#F84840`                 |              3.50 |
-| Missing                     | Gap Amber `#FFB020` with hatch       | graphic, labelled |
+| Series                      | Token             | Light                                | Dark      |    Ratio on white |
+| --------------------------- | ----------------- | ------------------------------------ | --------- | ----------------: |
+| Main series                 | `chart-main`      | Pulse Blue `#2552FF`                 | `#80A7FF` |              5.63 |
+| Second series               | `chart-second`    | Violet `#893FF2` (gradient 75% stop) | `#B18CFF` |              5.18 |
+| Comparison / baseline       | `chart-baseline`  | Slate `#868DA3`                      | same      |              3.31 |
+| Highlight (the #1 bar only) | `chart-highlight` | Signal Red `#F84840`                 | same      |              3.50 |
+| Missing                     | `chart-missing`   | Gap Amber `#FFB020` with hatch       | same      | graphic, labelled |
+
+Charts always use the `chart-*` tokens, never `primary`, `signal` or a hard-coded colour, so they switch correctly in dark mode (dark ratios in §5.1). Every series keeps a direct text label.
 
 Example from the site: in "The emptiest field is usually the wrong one to fix", _Fix the emptiest field_ (162 touched, 6 helped) is Slate, and _Fix the deciding field_ (80 touched, 94 helped) is Signal Red with a direct label.
 
@@ -278,7 +345,7 @@ Example from the site: in "The emptiest field is usually the wrong one to fix", 
 **Social (LinkedIn, Facebook, GitHub)**
 
 - Avatar: the symbol (gradient P) centred, safe area for circular crops. On Facebook the gradient makes Pulse stand out from the blue interface around it.
-- Post template A, "one number": Mist background, headline in Inter Display 600 Ink, the key number in Red Text, a Pulse line along the bottom, small logo in a corner.
+- Post template A, "one number": Mist background, headline in Geist 600 Ink, the key number in Red Text, a Pulse line along the bottom, small logo in a corner.
 - Post template B, "brand moment": Signal gradient background, white headline (large text only), reversed logo.
 - Sizes: 1080×1080, 1080×1350, 1080×1920; LinkedIn and Facebook cover images as each platform currently specifies.
 
@@ -296,20 +363,23 @@ Example from the site: in "The emptiest field is usually the wrong one to fix", 
 
 **Token migration (Aurora → Signal)** — update the COLOURS block in `src/input.css`.
 
-| Token                         | Aurora light / dark   | Signal light / dark                  |
-| ----------------------------- | --------------------- | ------------------------------------ |
-| `primary`                     | `#4F3DF0` / `#A79CFF` | `#2552FF` / `#80A7FF`                |
-| `primary-hover`               | `#3A2BC4` / `#BDB5FF` | `#1D43D9` / `#93BBFF`                |
-| `primary-tint`                | `#EFEDFE` / `#211F55` | `#EAF2FF` / `#162448`                |
-| `link`                        | `#4F3DF0` / `#A79CFF` | `#2552FF` / `#80A7FF`                |
-| `on-primary`                  | `#FFFFFF` / `#0A1230` | `#FFFFFF` / `#0A1230` (unchanged)    |
-| `accent` → `signal`           | `#FF7A59`             | `#F84840`                            |
-| `accent-text` → `signal-text` | `#B8431A` / `#FF7A59` | `#C8261F` / `#FF6B63`                |
-| `accent-tint` → `signal-tint` | `#FFEFE9` / `#3A2219` | `#FFECEB` / `#3A1A22`                |
-| `cyan` → `sky`                | `#00C2FF`             | `#3990E2` / `#7DB8F2`                |
-| `focus` (new)                 | uses `primary`        | `#3990E2` / `#93BBFF`                |
-| `void-accent`                 | `#A79CFF`             | `#80A7FF`                            |
-| Brand gradient                | Violet → Cyan → Coral | Signal Red → Pulse Blue, 112°, OKLCH |
+| Token                                                                                     | Aurora light / dark                           | Signal light / dark                            |
+| ----------------------------------------------------------------------------------------- | --------------------------------------------- | ---------------------------------------------- |
+| `primary`                                                                                 | `#4F3DF0` / `#A79CFF`                         | `#2552FF` / `#80A7FF`                          |
+| `primary-hover`                                                                           | `#3A2BC4` / `#BDB5FF`                         | `#1D43D9` / `#93BBFF`                          |
+| `primary-tint`                                                                            | `#EFEDFE` / `#211F55`                         | `#EAF2FF` / `#142140`                          |
+| `link`                                                                                    | `#4F3DF0` / `#A79CFF`                         | `#2552FF` / `#80A7FF`                          |
+| `on-primary`                                                                              | `#FFFFFF` / `#0A1230`                         | `#FFFFFF` / `#0B0D12`                          |
+| `accent` → `signal`                                                                       | `#FF7A59`                                     | `#F84840`                                      |
+| `accent-text` → `signal-text`                                                             | `#B8431A` / `#FF7A59`                         | `#C8261F` / `#FF6B63`                          |
+| `accent-tint` → `signal-tint`                                                             | `#FFEFE9` / `#3A2219`                         | `#FFECEB` / `#2E1517`                          |
+| `cyan` → `sky`                                                                            | `#00C2FF`                                     | `#3990E2` / `#7DB8F2`                          |
+| `focus` (new)                                                                             | uses `primary`                                | `#3990E2` / `#93BBFF`                          |
+| `void-accent`                                                                             | `#A79CFF`                                     | `#80A7FF`                                      |
+| Dark surfaces: `surface-0` / `card` / `surface-1`, `void` / `void-elevated`               | `#0A1230` / `#121B3D` / `#172046` (navy)      | `#0B0D12` / `#14171F` / `#1B1F29` (cool black) |
+| Dark lines and text: `line` / `line-control`, `ink` / `muted`                             | `#252F57` / `#626C91`, `#EEF0F7` / `#A9B3CC`  | `#2A2F3B` / `#5F6676`, `#EEF0F5` / `#A3A9B8`   |
+| Dark status and gap backgrounds: `success-bg` / `warning-bg` / `critical-bg` / `gap-fill` | `#0F3330` / `#3A2E10` / `#3D1A2B` / `#3A2A10` | `#0F2A21` / `#2E2610` / `#331519` / `#2E2410`  |
+| Brand gradient                                                                            | Violet → Cyan → Coral                         | Signal Red → Pulse Blue, 112°, OKLCH           |
 
 **QA checklist**
 
@@ -322,15 +392,21 @@ Example from the site: in "The emptiest field is usually the wrong one to fix", 
 - [x] "Why PULSE" heading changed to "Why Pulse" (the heading reads "Why ecommerce brands should choose Pulse"; other "PULSE" mentions in body copy are unchanged)
 - [x] SVG logo master with the Signal gradient and Pulse Blue wordmark (traced from the raster, see §7)
 - [x] Fix the faded demo step numbers and inactive scroll-spy links (still below 4.5) — measured 16 Oct 2026: both are `muted` with no opacity (step numbers 5.91 light / 8.76 dark, step links 8.76; the scroll-spy method section no longer exists)
+- [x] Final dark tokens match §5.1: contrast script, all 59 pairs in §5.1 and §6 match within ±0.01 (19 Oct 2026)
+- [x] No navy left: no hard-coded `#0A1230` / `#121B3D` / `#172046` in the site or tokens (only in history: the migration table and Night's "was" note)
+- [x] Chart series use `chart-*` tokens on every page (home, Decision Audit, `components.html`, the payoff grid in `src/main.js`)
+- [x] Reversed logo in every dark context, OS or `data-theme`, footer included
+- [x] Two reds: every error carries the error icon and a word; every #1 carries the ring and its rank number; no component shows both
 
 **Decisions**
 
-| Decision                             | Value                                   | Status                         |
-| ------------------------------------ | --------------------------------------- | ------------------------------ |
-| Colour palette                       | Signal: `#2552FF`, `#F84840`, `#3990E2` | Approved by owner, 16 Oct 2026 |
-| Aurora palette                       | Replaced                                | 16 Oct 2026                    |
-| Missing in the hero demo             | Amber, no red exception                 | Proposed                       |
-| Logo colours                         | Signal gradient P, Pulse Blue wordmark  | Applied, 16 Oct 2026           |
-| Fonts                                | Inter / Inter Display                   | Kept                           |
-| Dark mode                            | Follows the OS, no toggle               | Kept                           |
-| Mission, vision, values, brand owner | Section 2                               | Open                           |
+| Decision                             | Value                                                                        | Status                         |
+| ------------------------------------ | ---------------------------------------------------------------------------- | ------------------------------ |
+| Colour palette                       | Signal: `#2552FF`, `#F84840`, `#3990E2`                                      | Approved by owner, 16 Oct 2026 |
+| Aurora palette                       | Replaced                                                                     | 16 Oct 2026                    |
+| Missing in the hero demo             | Amber, no red exception                                                      | Proposed                       |
+| Logo colours                         | Signal gradient P, Pulse Blue wordmark                                       | Applied, 16 Oct 2026           |
+| Fonts                                | Geist + Geist Mono (replaces Inter)                                          | Changed, 19 Oct 2026           |
+| Dark mode                            | Follows the OS, no toggle; cool black surfaces `#0B0D12`, dark band included | Approved 16 Oct 2026           |
+| Chart colours                        | `chart-*` tokens, own dark values                                            | Applied, 19 Oct 2026           |
+| Mission, vision, values, brand owner | Section 2                                                                    | Open                           |

@@ -17,7 +17,7 @@
     />
     <link
       rel="preload"
-      href="./src/assets/fonts/InterVariable.woff2"
+      href="./src/assets/fonts/geist/geist-latin.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -29,6 +29,21 @@
   <body class="overflow-x-clip">
     <!-- icons for the DEAL specimen's pause button (the pages share the full sprite from index.html) -->
     <svg class="hidden" aria-hidden="true">
+      <symbol
+        id="i-triangle-alert"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
+        />
+        <path d="M12 9v4" />
+        <path d="M12 17h.01" />
+      </symbol>
       <symbol
         id="i-pause"
         viewBox="0 0 24 24"
@@ -197,7 +212,11 @@
                 <td class="px-4 py-3">16 GB</td>
                 <td class="px-4 py-3">512 GB</td>
                 <td class="px-4 py-3 text-right">
-                  <span class="badge-critical">Blocker</span>
+                  <span class="badge-critical"
+                    ><svg class="size-3 shrink-0" aria-hidden="true">
+                      <use href="#i-triangle-alert" /></svg
+                    >Blocker</span
+                  >
                 </td>
               </tr>
               <tr class="divide-x divide-line">
@@ -261,7 +280,7 @@
             >No new data purchased</span
           >
           <span class="scan-track block h-1.5 w-40 overflow-hidden rounded-full"
-            ><span class="block h-full w-2/3 rounded-full bg-primary"></span
+            ><span class="block h-full w-2/3 rounded-full bg-chart-main"></span
           ></span>
         </div>
       </section>
@@ -273,7 +292,9 @@
             <h2 class="text-h2">Decision Attribute Ranking</h2>
           </div>
           <div class="card space-y-5">
-            <div>
+            <div
+              class="rounded-lg border border-signal bg-signal-tint p-3 ring-1 ring-signal"
+            >
               <div
                 class="flex items-center justify-between tabular-nums text-data"
               >
@@ -283,7 +304,9 @@
                 <span class="text-signal-text">100%</span>
               </div>
               <div class="mt-2 h-2 rounded-full bg-surface-1">
-                <div class="h-full w-full rounded-full bg-signal"></div>
+                <div
+                  class="h-full w-full rounded-full bg-chart-highlight"
+                ></div>
               </div>
             </div>
             <div>
@@ -297,7 +320,7 @@
                 <span class="text-muted">70%</span>
               </div>
               <div class="mt-2 h-2 rounded-full bg-surface-1">
-                <div class="h-full w-7/10 rounded-full bg-baseline"></div>
+                <div class="h-full w-7/10 rounded-full bg-chart-baseline"></div>
               </div>
             </div>
             <div>
@@ -311,7 +334,7 @@
                 <span class="text-muted">50%</span>
               </div>
               <div class="mt-2 h-2 rounded-full bg-surface-1">
-                <div class="h-full w-1/2 rounded-full bg-baseline"></div>
+                <div class="h-full w-1/2 rounded-full bg-chart-baseline"></div>
               </div>
             </div>
             <div>
@@ -325,7 +348,7 @@
                 <span class="text-muted">35%</span>
               </div>
               <div class="mt-2 h-2 rounded-full bg-surface-1">
-                <div class="h-full w-7/20 rounded-full bg-baseline"></div>
+                <div class="h-full w-7/20 rounded-full bg-chart-baseline"></div>
               </div>
             </div>
             <div>
@@ -339,7 +362,7 @@
                 <span class="text-muted">20%</span>
               </div>
               <div class="mt-2 h-2 rounded-full bg-surface-1">
-                <div class="h-full w-1/5 rounded-full bg-baseline"></div>
+                <div class="h-full w-1/5 rounded-full bg-chart-baseline"></div>
               </div>
             </div>
             <p class="border-t border-line pt-4 text-xs text-muted">
@@ -431,6 +454,61 @@
             </div>
             <p class="text-xs text-muted">
               Low-emphasis utilities in toolbars and tables.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Story pause (How it works cards) and skip link (every page) -->
+      <section id="pause" class="scroll-mt-24">
+        <div class="mb-6 flex items-center gap-3 border-b border-line pb-4">
+          <h2 class="text-h2">Story Pause &amp; Skip Link</h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="card space-y-4">
+            <span class="eyebrow">.how-pause</span>
+            <h3 class="text-h3">Story pause</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="relative h-20 rounded-xl border border-line bg-surface-1"
+              >
+                <div class="how-pause">
+                  <span class="how-pause-icon" aria-hidden="true"
+                    ><svg class="size-3.5"><use href="#i-pause" /></svg
+                  ></span>
+                  <span class="how-pause-label" role="status"></span>
+                </div>
+              </div>
+              <div
+                class="relative h-20 rounded-xl border border-line bg-surface-1"
+                data-held
+              >
+                <div class="how-pause">
+                  <span class="how-pause-icon" aria-hidden="true"
+                    ><svg class="size-3.5"><use href="#i-pause" /></svg
+                  ></span>
+                  <span class="how-pause-label" role="status">Paused</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-muted">
+              Top-right corner of each How it works card: hidden while the story
+              plays (left), shown while the pointer is on the card and the story
+              is paused (right). A signal only: not a button, not focusable, no
+              hover style. Status text "Paused". JS and motion only.
+            </p>
+          </div>
+          <div class="card space-y-4">
+            <span class="eyebrow">.skip-link</span>
+            <h3 class="text-h3">Skip to content</h3>
+            <span
+              class="inline-flex rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary"
+              >Skip to content</span
+            >
+            <p class="text-xs text-muted">
+              The first Tab stop on every page (shell:header), visible only
+              while focused, pointing at main#main. Shown here in its focused
+              state.
             </p>
           </div>
         </div>

@@ -242,6 +242,46 @@ function createMegaMenu(nav) {
   }
   viewport.addEventListener("click", (e) => e.target.closest("a") && close());
 
+  // Keyboard order (WCAG 2.4.3): the contents live in the shared viewport after the nav list, so Tab is routed by
+  // hand — from an open menu's trigger into its links, from its last link on to the next top-level item, and
+  // Shift+Tab from its first link back to the trigger. Focus leaving the nav closes the menu.
+  const focusables = (root) =>
+    [...root.querySelectorAll("a[href], button:not([disabled])")].filter(
+      (el) => el.offsetParent !== null,
+    );
+  const topLevel = () =>
+    [...nav.querySelectorAll(":scope > ul > li")]
+      .map((li) => li.querySelector("summary, a[href]"))
+      .filter(Boolean);
+  items.forEach((item) => {
+    const summary = item.details.querySelector("summary");
+    summary.addEventListener("keydown", (e) => {
+      if (e.key !== "Tab" || e.shiftKey || active !== item) return;
+      const first = focusables(item.content)[0];
+      if (!first) return;
+      e.preventDefault();
+      first.focus();
+    });
+    item.content.addEventListener("keydown", (e) => {
+      if (e.key !== "Tab") return;
+      const links = focusables(item.content);
+      if (e.shiftKey && document.activeElement === links[0]) {
+        e.preventDefault();
+        summary.focus();
+      } else if (!e.shiftKey && document.activeElement === links.at(-1)) {
+        const order = topLevel();
+        const next = order[order.indexOf(summary) + 1];
+        if (!next) return;
+        e.preventDefault();
+        close();
+        next.focus();
+      }
+    });
+  });
+  nav.addEventListener("focusout", (e) => {
+    if (active && !nav.contains(e.relatedTarget)) close();
+  });
+
   return {
     close,
     isOpen: () => active !== null,
@@ -389,7 +429,7 @@ if (demo) {
     for (let i = 0; i < total; i++) {
       const cell = document.createElement("span");
       if (i < before)
-        cell.className = "aspect-square rounded-xs bg-primary sm:rounded-sm";
+        cell.className = "aspect-square rounded-xs bg-chart-main sm:rounded-sm";
       else if (i < after) {
         cell.className = "demo-fill aspect-square rounded-xs sm:rounded-sm";
         cell.style.transitionDelay = `${1000 + (i - before) * 13}ms`; // one after another, as on thepulseapi.com
@@ -407,10 +447,27 @@ if (demo) {
     groups.forEach((list) => list[index]?.setAttribute("data-active", ""));
     tabs.forEach((tab, i) => {
       tab.setAttribute("aria-selected", String(i === index));
+      tab.tabIndex = i === index ? 0 : -1; // one Tab stop for the tab list (roving tabindex)
       tab.toggleAttribute("data-done", i < index); // earlier steps stay full on the timeline
     });
     groups[1][index].querySelectorAll("[data-demo-count]").forEach(countUp);
   };
+  // ARIA tab pattern: Left / Right move between the steps (wrapping), Home / End jump to the first / last
+  tabs.forEach((tab, i) => {
+    tab.tabIndex = tab.hasAttribute("data-active") ? 0 : -1;
+    tab.addEventListener("keydown", (e) => {
+      const to = {
+        ArrowRight: (i + 1) % tabs.length,
+        ArrowLeft: (i - 1 + tabs.length) % tabs.length,
+        Home: 0,
+        End: tabs.length - 1,
+      }[e.key];
+      if (to === undefined) return;
+      e.preventDefault();
+      go(to);
+      tabs[to].focus();
+    });
+  });
   tabs.forEach((tab, i) => {
     tab.addEventListener("click", () => go(i));
     tab
@@ -439,6 +496,7 @@ document.querySelectorAll("[data-pause]").forEach((button) => {
 // Why PULSE orbit: the ring of five circles turns slowly (--why-angle, one turn every 2 minutes; not with
 // reduced motion, and only while on screen). Clicking a circle turns it to 3 o'clock and opens the card beside it
 // with its reason; clicking it again, the card's × or Esc closes the card and the ring turns on. "Next" moves on.
+// The ring also holds still while the pointer or keyboard focus is on the orbit.
 const why = document.querySelector("[data-why]");
 if (why) {
   const spin = why.querySelector("[data-why-spin]");
@@ -452,18 +510,48 @@ if (why) {
   let last = performance.now();
   const setAngle = () => spin.style.setProperty("--why-angle", `${angle}deg`);
 
+  // the ring stops while the pointer or keyboard focus is on the orbit (so the circles hold still to be picked),
+  // while a card is open, and off screen; the animation loop only runs while it turns
+  let hovered = false;
+  let frame = 0;
+  // touch screens have no hover to hold it still, so there the ring does not turn by itself (WCAG 2.2.2)
+  const noHover = window.matchMedia("(hover: none)").matches;
+  const turning = () =>
+    open < 0 && onScreen && !hovered && !reduceMotion && !noHover;
   const tick = (now) => {
-    if (open < 0 && onScreen && !reduceMotion) {
-      angle = (angle + (now - last) * speed) % 360;
-      setAngle();
-    }
+    angle = (angle + (now - last) * speed) % 360;
+    setAngle();
     last = now;
-    requestAnimationFrame(tick);
+    frame = turning() ? requestAnimationFrame(tick) : 0;
   };
-  new IntersectionObserver(
-    ([entry]) => (onScreen = entry.isIntersecting),
-  ).observe(why);
-  requestAnimationFrame(tick);
+  const wake = () => {
+    if (frame || !turning()) return;
+    last = performance.now();
+    frame = requestAnimationFrame(tick);
+  };
+  // watch the orbit itself, not the section: hidden on phones (no box) or scrolled away, it does not turn
+  const orbit = why.querySelector("[data-why-orbit]");
+  new IntersectionObserver(([entry]) => {
+    onScreen = entry.isIntersecting;
+    wake();
+  }).observe(orbit ?? why);
+  const setHover = (on) => {
+    hovered = on;
+    wake();
+  };
+  orbit?.addEventListener(
+    "pointerenter",
+    (e) => e.pointerType !== "touch" && setHover(true),
+  );
+  orbit?.addEventListener(
+    "pointerleave",
+    (e) => e.pointerType !== "touch" && setHover(false),
+  );
+  orbit?.addEventListener("focusin", () => setHover(true));
+  orbit?.addEventListener(
+    "focusout",
+    (e) => !orbit.contains(e.relatedTarget) && setHover(false),
+  );
 
   // Switching reasons: the card fades out (250ms), the ring turns, then the card fades back in with the new
   // reason (CSS why-card waits 600ms after data-show, so it appears as the 900ms turn ends).
@@ -497,6 +585,7 @@ if (why) {
   const close = () => {
     const was = open;
     open = -1;
+    wake(); // the ring turns on again
     clearTimeout(swap);
     why.removeAttribute("data-open");
     why.removeAttribute("data-show");
@@ -529,40 +618,49 @@ if (why) {
 // past (CSS: how-progress). The active card — once it is on screen — plays its story on a loop: a "beat"
 // timeline on its [data-scene] (CSS: how-scene, pre-N / at-N variants). data-play starts it, data-b2 …
 // arrive at the times in data-beats; the last frame holds, the scene fades out, resets instantly and plays
-// again. "Pause animation" freezes the current frame. Without JS, or with reduced motion (never data-play),
+// again. A scene that loses focus (another card becomes active, or it leaves the screen) pauses on its current
+// beat and carries on from there when it comes back. Hovering the active card (mouse or pen) pauses its story the
+// same way, and a "Paused" sign fades in at the card's corner (CSS: how-pause; a signal only, not a control).
+// A scene that has never played shows its final frame. Without JS, or with reduced motion (never data-play),
 // every scene simply shows its final frame.
 const how = document.querySelector("[data-how]");
 if (how) {
   const steps = [...how.querySelectorAll("[data-how-step]")];
   const cards = [...how.querySelectorAll("[data-how-card]")];
   const scenes = cards.map((card) => card.querySelector("[data-scene]"));
-  const pauseButton = how.querySelector("[data-how-pause]");
   const HOLD = 2600; // ms the final frame stays before the loop restarts
   const FADE = 400; // ms, matches how-scene's opacity transition
+  const elapsed = new Map(); // scene → ms into its loop when it was last paused
   let timers = [];
-  let playing = null; // the scene currently looping
-  let paused = false;
+  let playing = null; // the scene that should be playing (the active, on-screen one)
+  let running = null; // the scene whose timers are running
+  let startedAt = 0; // performance.now() minus the elapsed time of the running scene
+  let held = null; // the card under the pointer: its story pauses while it is there
 
   const clearTimers = () => {
     timers.forEach(clearTimeout);
     timers = [];
   };
-  // jump a scene back to its first beat (or, with keep = false, out of play mode) without transitions
-  const reset = (scene, keep = true) => {
+  // jump a scene back to its first beat without transitions
+  const reset = (scene) => {
     scene.setAttribute("data-instant", "");
     for (let b = 2; b <= 9; b++) scene.removeAttribute(`data-b${b}`);
-    scene.toggleAttribute("data-play", keep);
+    scene.removeAttribute("data-fade");
+    scene.setAttribute("data-play", "");
     void scene.offsetWidth; // apply the jump before transitions come back
     scene.removeAttribute("data-instant");
   };
-  const run = (scene) => {
+  // play `scene` from `from` ms into its loop; beats already reached stay as they are
+  const resume = (scene, from = 0) => {
     clearTimers();
-    reset(scene);
+    if (from === 0) reset(scene);
+    startedAt = performance.now() - from;
     const beats = scene.dataset.beats.split(" ").map(Number);
+    const end = beats[beats.length - 1] + HOLD;
     beats.forEach((t, i) => {
-      if (i > 0)
+      if (i > 0 && t > from)
         timers.push(
-          setTimeout(() => scene.setAttribute(`data-b${i + 1}`, ""), t),
+          setTimeout(() => scene.setAttribute(`data-b${i + 1}`, ""), t - from),
         );
     });
     timers.push(
@@ -571,35 +669,61 @@ if (how) {
           scene.setAttribute("data-fade", "");
           timers.push(
             setTimeout(() => {
-              scene.removeAttribute("data-fade");
-              run(scene);
+              elapsed.delete(scene);
+              resume(scene, 0);
             }, FADE),
           );
         },
-        beats[beats.length - 1] + HOLD,
+        Math.max(0, end - from),
       ),
     );
   };
+  // freeze `scene` on its current beat and remember how far it got
+  const hold = (scene) => {
+    clearTimers();
+    const beats = scene.dataset.beats.split(" ").map(Number);
+    const end = beats[beats.length - 1] + HOLD;
+    const at = performance.now() - startedAt;
+    if (at >= end) {
+      // paused while fading out: the loop is over, so the next play starts at the first beat
+      scene.removeAttribute("data-fade");
+      elapsed.delete(scene);
+    } else elapsed.set(scene, at);
+  };
+  // run the scene that should play (the active one, unless its card is hovered); hold any other
+  const sync = () => {
+    const card = cards[scenes.indexOf(playing)];
+    const want = playing && !reduceMotion && card !== held ? playing : null;
+    cards.forEach((c, i) => {
+      const on = scenes[i] === playing && !reduceMotion && c === held;
+      c.toggleAttribute("data-held", on);
+      const status = c.querySelector("[data-how-status]");
+      if (status && status.textContent !== (on ? "Paused" : ""))
+        status.textContent = on ? "Paused" : ""; // role=status: announced when it changes
+    });
+    if (running === want) return;
+    if (running) hold(running);
+    running = want;
+    if (want) resume(want, elapsed.get(want) ?? 0);
+  };
   const play = (scene) => {
     if (playing === scene) return;
-    if (playing) reset(playing, false);
     playing = scene;
-    if (scene && !paused && !reduceMotion) run(scene);
-    else clearTimers();
+    sync();
   };
 
-  pauseButton?.addEventListener("click", () => {
-    paused = !paused;
-    pauseButton.setAttribute("aria-pressed", String(paused));
-    pauseButton.querySelector("[data-how-pause-label]").textContent = paused
-      ? "Play animation"
-      : "Pause animation";
-    pauseButton
-      .querySelector("[data-how-pause-icon]")
-      .setAttribute("href", paused ? "#i-play" : "#i-pause");
-    if (paused)
-      clearTimers(); // freeze on the current frame
-    else if (playing) run(playing);
+  // Hovering a card (mouse and pen) pauses its story while the pointer is on it; the "Paused" sign shows meanwhile.
+  cards.forEach((card) => {
+    card.addEventListener("pointerenter", (e) => {
+      if (e.pointerType === "touch") return;
+      held = card;
+      sync();
+    });
+    card.addEventListener("pointerleave", (e) => {
+      if (e.pointerType === "touch" || held !== card) return;
+      held = null;
+      sync();
+    });
   });
 
   // Clicking a step scrolls smoothly to its card (centred) instead of jumping; reduced motion jumps
@@ -620,24 +744,24 @@ if (how) {
   const update = () => {
     ticking = false;
     const middle = innerHeight / 2;
+    // read every card's position first, then write: no layout is forced between the two
+    const rects = cards.map((card) => card.getBoundingClientRect());
     let index = 0;
-    cards.forEach((card, i) => {
-      if (card.getBoundingClientRect().top <= middle) index = i;
+    rects.forEach((r, i) => {
+      if (r.top <= middle) index = i;
     });
-    const box = cards[index].getBoundingClientRect();
+    const box = rects[index];
     const p = Math.min(1, Math.max(0, (middle - box.top) / box.height));
+    const live =
+      box.top < innerHeight * 0.8 && box.bottom > 0 ? scenes[index] : null;
     steps.forEach((step, i) => {
       step.toggleAttribute("data-active", i === index);
       step.style.setProperty("--how-p", i === index ? p.toFixed(3) : "0");
     });
-    // the active card brightens and plays its story — only once it is on screen
-    let live = null;
-    cards.forEach((card, i) => {
-      const r = card.getBoundingClientRect();
-      const on = i === index && r.top < innerHeight * 0.8 && r.bottom > 0;
-      card.toggleAttribute("data-active", on);
-      if (on) live = scenes[i];
-    });
+    // the active, on-screen card plays its story; its Missing stripes run only then (CSS missing-flag)
+    cards.forEach((card, i) =>
+      card.toggleAttribute("data-active", live === scenes[i]),
+    );
     play(live);
   };
   addEventListener(
@@ -779,24 +903,30 @@ function initDeal(deal) {
 
 // Background video (product heroes). data-bg-video is the file stem: "<stem>-light|dark.av1.mp4" (AV1, smaller) and
 // ".h264.mp4" (fallback) plus "<stem>-light|dark.webp" (poster, the <picture> behind it). The theme follows the OS
-// or <html data-theme>. It plays only while on screen and never with reduced motion (the poster stays). There is no
+// or <html data-theme>. It plays only while on screen and fades in once a frame is playing. The poster is only a
+// fallback: reduced motion and no JS (CSS), autoplay blocked, or no frame after 3s. There is no
 // pause button (decided 16 Oct 2026): reduced motion is the opt-out.
 document.querySelectorAll("[data-bg-video]").forEach((video) => {
-  if (reduceMotion) return;
+  if (reduceMotion) return; // the CSS shows the poster instead
   const stem = video.dataset.bgVideo;
   const section = video.closest("section");
   const poster = section.querySelector("[data-bg-poster]");
   const osDark = matchMedia("(prefers-color-scheme: dark)");
+  const STALL = 3000; // ms without a playing frame before the poster stands in
   let visible = false;
   let theme = null;
+  let stall;
 
   const currentTheme = () =>
     document.documentElement.dataset.theme ??
     (osDark.matches ? "dark" : "light");
+  // the poster is only a fallback: shown when the video cannot play (blocked autoplay, very slow connection)
+  const fallback = () => poster.setAttribute("data-fallback", "");
   const load = () => {
     const next = currentTheme();
     if (next === theme) return;
     theme = next;
+    video.removeAttribute("data-playing"); // the old theme's video fades out, the new one fades in
     video.replaceChildren(
       Object.assign(document.createElement("source"), {
         src: `${stem}-${theme}.av1.mp4`,
@@ -813,10 +943,22 @@ document.querySelectorAll("[data-bg-video]").forEach((video) => {
       poster.querySelector("img").src = `${stem}-${theme}.webp`;
     }
     video.load();
+    clearTimeout(stall);
+    stall = setTimeout(
+      () => video.hasAttribute("data-playing") || fallback(),
+      STALL,
+    );
     update();
   };
+  video.addEventListener("playing", () => {
+    clearTimeout(stall);
+    video.setAttribute("data-playing", ""); // fades the video in (hero-video-media)
+    // a poster that stood in goes once the video has faded in over it
+    setTimeout(() => poster.removeAttribute("data-fallback"), 700);
+  });
   const update = () => {
-    if (visible) video.play().catch(() => {});
+    if (visible)
+      video.play().catch((e) => e.name === "NotAllowedError" && fallback()); // autoplay blocked
     else video.pause();
   };
 

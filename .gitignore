@@ -1,3 +1,8 @@
 node_modules/
 dist/
 .DS_Store
+
+# Design-skill working files (Impeccable, Taste): local state, never committed
+.impeccable/
+.taste-skill/
+PRODUCT.md

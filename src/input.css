@@ -3,32 +3,108 @@
 @source "../product/*.html"; /* one line per page folder */
 @source "./*.js";
 
-/* Inter 4.1 (rsms/inter, SIL OFL — src/assets/fonts/OFL.txt), self-hosted because the Google Fonts copy has its
-   stylistic sets stripped. One variable file: wght 100–900 + opsz 14–32 (Inter Display at large sizes), trimmed
-   to Latin, Latin Extended and Vietnamese with every OpenType feature kept. The url is relative to dist/output.css. */
+/* Geist and Geist Mono (Vercel, SIL OFL — src/assets/fonts/geist/OFL.txt), self-hosted: variable wght 100–900, one
+   file per subset (Latin, Latin Extended, Vietnamese; the browser loads only the subsets a page uses). Geist sets
+   headings and body; Geist Mono sets data (table values, bit values). Chosen 19 Oct 2026 from a three-pairing test (final brand guide §8).
+   The urls are relative to dist/output.css. */
 @font-face {
-  font-family: "Inter";
+  font-family: "Geist";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("../src/assets/fonts/InterVariable.woff2") format("woff2");
+  src: url("../src/assets/fonts/geist/geist-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../src/assets/fonts/geist/geist-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../src/assets/fonts/geist/geist-vietnamese.woff2") format("woff2");
+  unicode-range:
+    U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+    U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
+    U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../src/assets/fonts/geist/geist-mono-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../src/assets/fonts/geist/geist-mono-latin-ext.woff2")
+    format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../src/assets/fonts/geist/geist-mono-vietnamese.woff2")
+    format("woff2");
+  unicode-range:
+    U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+    U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
+    U+1EA0-1EF9, U+20AB;
+}
+/* Arial / Courier New scaled to Geist's metrics (measured with fontTools): shown until Geist has loaded
+   (font-display: swap), so lines do not re-wrap when it arrives. */
+@font-face {
+  font-family: "Geist Fallback";
+  src: local("Arial");
+  size-adjust: 101.9%;
+  ascent-override: 98.62%;
+  descent-override: 28.95%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Geist Mono Fallback";
+  src: local("Courier New");
+  size-adjust: 99.98%;
+  ascent-override: 100.52%;
+  descent-override: 29.5%;
+  line-gap-override: 0%;
 }
 
 /* ------------------------------------------------------------------ */
 /* Design tokens — the single source of truth for colour, type, motion */
 /* ------------------------------------------------------------------ */
 @theme {
-  /* Typography: Inter, self-hosted (@font-face above), set like linear.app / attio.com: stylistic set 03
-     (round quotes and commas), slightly tight body tracking, lighter and tighter headings. */
-  /* Inter Display = Inter's optical-size axis (opsz 14–32). With the default
-     font-optical-sizing: auto, text at 32px and up is drawn with the Display design (tighter, finer);
-     smaller text gets the text design. One family for everything; font-display keeps headings' role. */
-  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: initial; /* no monospace font: data uses Inter + tabular-nums */
-  --default-mono-font-family: var(
-    --font-sans
-  ); /* <code>, <pre>, <kbd> also use Inter */
+  /* Typography: Geist for headings and body, Geist Mono for data (self-hosted, @font-face above). Slightly tight
+     body tracking, lighter and tighter headings; font-display keeps the headings' role. */
+  --font-display:
+    "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace; /* data: table values, bit values */
 
   /* Type scale (size / line-height / weight from the spec) */
   --text-h1: 2.5rem;
@@ -45,11 +121,18 @@
   --text-h3--letter-spacing: -0.01em;
   --text-body: 1rem; /* 16px (v2 §4, up from 14px) */
   --text-body--line-height: 1.6;
+  --text-body--letter-spacing: -0.011em;
   --text-data: 0.875rem; /* 14px (v2 §4, up from 13px) */
   --text-data--line-height: 1.5;
+  --text-data--letter-spacing: -0.006em;
   --text-caption: 0.75rem; /* 12px — the smallest text size (v2 §4) */
   --text-caption--line-height: 1.4;
   --text-caption--font-weight: 500;
+  --text-caption--letter-spacing: 0;
+  /* Body tracking is −0.011em at 16px; smaller text is set a little looser so it stays open
+     (a common recommendation for grotesques): Tailwind's 14px and 12px sizes get the same values as text-data and text-caption. */
+  --text-sm--letter-spacing: -0.006em;
+  --text-xs--letter-spacing: 0;
 
   /* Fluid display sizes: scale smoothly with the viewport (min, preferred, max).
      Use these instead of sm:/lg: text sizes in the HTML. */
@@ -63,7 +146,11 @@
   --text-display--letter-spacing: -0.022em; /* as linear.app: −0.022em at display sizes */
   /* Home hero title: always two lines, sized to its column (the parent is an @container). The longer line,
      "Uncover Shoppers’ Intent", is 10.98em wide, so 9cqi keeps it inside; at most 34px (1440px screens). */
-  --text-hero: min(2.125rem, 9cqi);
+  --text-hero: min(
+    2.125rem,
+    max(8.6cqi, 1.75rem)
+  ); /* rem floor: grows with text zoom. 8.6cqi: the longer line ("Uncover shoppers’ intent") is 11.42em in Geist,
+        so it fills 98% of the column */
   --text-hero--line-height: 1.15;
   --text-hero--font-weight: 600;
   --text-hero--letter-spacing: -0.022em;
@@ -76,10 +163,11 @@
   --text-headline--font-weight: 600;
   --text-headline--letter-spacing: -0.02em;
   --text-title: clamp(
-    1.875rem,
-    1.6rem + 1vw,
-    2.25rem
-  ); /* 30px → 36px: section intros */
+    1.75rem,
+    2.15vw,
+    2rem
+  ); /* 28px → 32px: section intros. Grows with the viewport at the same pace as the home hero h1, so the h1
+        (text-hero) stays the largest heading at every width from 1280px (checked in Python: 29.3 vs 28.8 at 1280) */
   --text-title--line-height: 1.18;
   --text-title--font-weight: 550;
   --text-title--letter-spacing: -0.02em;
@@ -102,15 +190,16 @@
      32px at 768px, 80px at 1280px, 160px at 1440px and 288px at 1920px. */
   --container-frame: 70rem;
   --container-frame-wide: 84rem;
-  /* Feature band (max-w-band): a near full-width dark card, 8px from the window edge, up to 1536px */
+  /* Feature band (max-w-band), up to 1536px: the column of the header, the home hero and the How it works card
+     (+ px-6 lg:px-8, so all three line up: 24px margin, 32px from lg) */
   --container-band: 96rem;
-  /* Navbar column (max-w-nav): 85.5rem = 1368px, so at a 1440px viewport the header content (+ px-6)
-     sits 60px from the window edge, matching thepulseapi.com — the header keeps this width. */
-  --container-nav: 85.5rem;
+  /* Container size for the hero demo's step 3 on phones (@rank-inline:): from 16.75rem (268px, the ranking grid at a
+     375px screen) the rank square sits beside the attribute name; narrower, it sits above it so long names fit. */
+  --container-rank-inline: 16.75rem;
 
   /* ================================================================ */
   /* COLOURS — the ONLY place colours are defined.                     */
-  /* Source of truth: docs/pulse_brand_guidelines_v3.md (Signal).    */
+  /* Source of truth: docs/pulse_brand_guidelines_final.md (Signal).    */
   /*                                                                   */
   /* 1. BRAND PALETTE (§3): base colours. Never used directly in HTML.  */
   /* 2. ROLES (§5): what pages use. Every TEXT and                      */
@@ -152,23 +241,23 @@
 
   /* 2. Roles — light-dark(light, dark) (§5) */
   /* Text */
-  --color-ink: light-dark(#0b1b3a, #eef0f7); /* main text, headings */
-  --color-muted: light-dark(#56607a, #a9b3cc); /* secondary text */
+  --color-ink: light-dark(#0b1b3a, #eef0f5); /* main text, headings */
+  --color-muted: light-dark(#56607a, #a3a9b8); /* secondary text */
   --color-link: light-dark(#2552ff, #80a7ff); /* links */
   /* Surfaces */
-  --color-surface-0: light-dark(#f7f8fc, #0a1230); /* page background */
-  --color-card: light-dark(#ffffff, #121b3d); /* cards, panels, header */
+  --color-surface-0: light-dark(#f7f8fc, #0b0d12); /* page background */
+  --color-card: light-dark(#ffffff, #14171f); /* cards, panels, header */
   --color-surface-1: light-dark(
     #eef0f7,
-    #172046
+    #1b1f29
   ); /* wells, tracks, table headers — dark derived */
   --color-line: light-dark(
     #e3e6ef,
-    #252f57
+    #2a2f3b
   ); /* decorative hairlines — dark derived */
   --color-line-control: light-dark(
     #868da3,
-    #626c91
+    #5f6676
   ); /* input, checkbox, dropdown borders (>= 3:1) */
   /* Primary — Pulse Blue in light, soft blue in dark */
   --color-primary: light-dark(
@@ -181,7 +270,7 @@
   ); /* hover / pressed (Deep Blue) */
   --color-primary-tint: light-dark(
     #eaf2ff,
-    #162448
+    #142140
   ); /* badge and chip backgrounds */
   --color-primary-line: color-mix(
     in oklab,
@@ -190,7 +279,7 @@
   ); /* chip/badge border (decorative) — derived */
   --color-on-primary: light-dark(
     #ffffff,
-    #0a1230
+    #0b0d12
   ); /* text/icons on a primary fill */
   /* Signal — Signal Red, the #1 priority: graphic only on light; signal-text for red text */
   --color-signal: #f84840; /* the #1 ring, bar, dot (graphic only on light; text allowed in dark) */
@@ -200,7 +289,7 @@
   ); /* red text: the "#1" label, a key number */
   --color-signal-tint: light-dark(
     #ffeceb,
-    #3a1a22
+    #2e1517
   ); /* background behind the #1 row or badge */
   --color-signal-line: color-mix(
     in oklab,
@@ -217,7 +306,7 @@
   --color-gap: #ffb020; /* dots, bars, dashed borders (decorative on light; text allowed in dark) */
   --color-gap-fill: light-dark(
     #ffefd2,
-    #3a2a10
+    #2e2410
   ); /* Missing cell background — dark derived */
   --color-gap-strong: light-dark(
     #8f5b00,
@@ -230,34 +319,41 @@
   ); /* missing-flag stripes (decorative) */
   /* Status — success is never a button; it always carries a check icon + text */
   --color-success: light-dark(#0e7a55, #4fd1a1);
-  --color-success-bg: light-dark(#e6f7f0, #0f3330); /* dark derived */
+  --color-success-bg: light-dark(#e6f7f0, #0f2a21); /* dark derived */
   --color-success-line: color-mix(
     in oklab,
     var(--color-success) 30%,
     var(--color-card)
   ); /* badge border (decorative) — derived */
   --color-warning: light-dark(#8a5300, #ffc857);
-  --color-warning-bg: light-dark(#fff6db, #3a2e10); /* dark derived */
+  --color-warning-bg: light-dark(#fff6db, #2e2610); /* dark derived */
   --color-warning-line: color-mix(
     in oklab,
     var(--color-warning) 30%,
     var(--color-card)
   ); /* badge border (decorative) — derived */
   --color-critical: light-dark(#b4152b, #ff8a94); /* blocking errors only */
-  --color-critical-bg: light-dark(#fdecee, #3d1a2b); /* dark derived */
+  --color-critical-bg: light-dark(#fdecee, #331519); /* dark derived */
   --color-critical-line: color-mix(
     in oklab,
     var(--color-critical) 25%,
     var(--color-card)
   ); /* badge border (decorative) — derived */
   /* Dark band (void) — always dark, in both themes (§3.3) */
-  --color-void: #0a1230; /* dark band background */
-  --color-void-elevated: #121b3d; /* cards on the dark band — derived (= dark card) */
-  --color-void-line: #252f57; /* hairlines on the dark band — derived (= dark line) */
-  --color-void-line-strong: #626c91; /* accent rules on the dark band — derived (= dark line-control) */
-  --color-void-text: #eef0f7; /* body text on the dark band — derived (= dark text) */
-  --color-void-muted: #a9b3cc; /* captions on the dark band */
+  --color-void: #0b0d12; /* dark band background: cool black, the same in both themes */
+  --color-void-elevated: #14171f; /* cards on the dark band — derived (= dark card) */
+  --color-void-line: #2a2f3b; /* hairlines on the dark band — derived (= dark line) */
+  --color-void-line-strong: #5f6676; /* accent rules on the dark band — derived (= dark line-control) */
+  --color-void-text: #eef0f5; /* body text on the dark band — derived (= dark text) */
+  --color-void-muted: #a3a9b8; /* captions on the dark band */
   --color-void-accent: #80a7ff; /* accent text and links on the dark band */
+  /* Chart series (guide §5.1 / §9): every chart and comparison bar uses these, never the role colours directly.
+     Dark switches the blue and violet series so marks keep 3:1 on raised dark surfaces. */
+  --color-chart-main: light-dark(#2552ff, #80a7ff); /* main series */
+  --color-chart-second: light-dark(#893ff2, #b18cff); /* second series */
+  --color-chart-baseline: #868da3; /* comparison / baseline, both themes */
+  --color-chart-highlight: #f84840; /* the #1 bar only, both themes */
+  --color-chart-missing: #ffb020; /* missing data, both themes, with a label or hatch */
   --color-on-void: #ffffff; /* headings/numbers on the dark band */
 
   /* 3. Decoration — the hero demo timeline (never text on light) */
@@ -275,8 +371,8 @@
     transparent
   ); /* hero demo audit sweep */
   /* Blueprint grid lines */
-  --color-grid-line: light-dark(rgb(11 27 58 / 0.04), rgb(238 240 247 / 0.05));
-  --color-grid-line-dark: rgb(238 240 247 / 0.05);
+  --color-grid-line: light-dark(rgb(11 27 58 / 0.04), rgb(238 240 245 / 0.05));
+  --color-grid-line-dark: rgb(238 240 245 / 0.05);
 
   /* Motion (modelled on attio.com: short, eased, never bouncy) */
   --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
@@ -372,10 +468,14 @@
 /* Base                                                                */
 /* ------------------------------------------------------------------ */
 @layer base {
+  /* The canvas outside the page (seen when the page bounces past its top or bottom) takes the header and footer
+     colour, so pulling down at the top never shows a strip of page colour above the sticky navbar. */
+  html {
+    @apply bg-card;
+  }
   body {
     @apply bg-surface-0 font-sans text-ink antialiased selection:bg-primary-hover selection:text-on-primary;
-    /* linear.app / attio.com: round quotes and commas (ss03), body tracking −0.011em; headings set their own */
-    font-feature-settings: "ss03";
+    /* body tracking −0.011em; headings set their own */
     letter-spacing: -0.011em;
   }
   /* Theme: follow the OS by default; <html data-theme="light|dark"> overrides it.
@@ -393,6 +493,15 @@
   h2,
   h3 {
     @apply font-display text-ink;
+  }
+  /* Data tables: values in Geist Mono with tabular figures; the first column (product names) and the Missing
+     flags stay in Geist. :where() keeps this at zero specificity, so utilities still win. */
+  :where(table) {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+  :where(table) :where(td:first-child, th:first-child) {
+    font-family: var(--font-sans);
   }
   /* Focus (§9): 2px Sky outline, 2px offset, on every interactive element; components only add outline-2 */
   :focus-visible {
@@ -421,6 +530,13 @@
     position: absolute;
     inset-block: min(0px, calc((100% - 2.75rem) / 2));
     inset-inline: min(0px, calc((100% - 2.75rem) / 2));
+  }
+}
+/* "Skip to content": the first stop on every page (shell:header), visible only while focused (WCAG 2.4.1) */
+@utility skip-link {
+  @apply sr-only;
+  &:focus {
+    @apply not-sr-only fixed top-3 left-3 z-50 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary;
   }
 }
 @utility btn {
@@ -457,7 +573,11 @@
 
 /* Labels & badges */
 @utility eyebrow {
-  @apply tabular-nums text-xs font-medium tracking-wider text-muted uppercase;
+  @apply tabular-nums text-xs font-semibold tracking-wider text-muted uppercase;
+}
+/* The same label in Pulse Blue (step labels such as "You do this once") */
+@utility eyebrow-primary {
+  @apply tabular-nums text-xs font-semibold tracking-wider text-primary uppercase;
 }
 /* Form fields (input, select, textarea): 44px tall, line-control border (≥ 3:1), focus ring */
 @utility field {
@@ -490,7 +610,7 @@
 /* Hero demo (thepulseapi.com): a missing value in the catalogue table — the Missing cell (amber, dashed, with a
    warning icon), hatched */
 @utility missing-flag {
-  @apply inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-bold text-gap-strong;
+  @apply inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 font-sans text-xs font-bold text-gap-strong; /* Geist, also inside data tables */
   outline: 1.5px dashed var(--color-gap); /* drawn inside, so the flag keeps its size */
   outline-offset: -1.5px;
   background-color: var(--color-gap-fill);
@@ -501,7 +621,17 @@
   );
   animation: var(
     --animate-missing-drift
-  ); /* the stripes slide sideways, endlessly */
+  ); /* the stripes slide sideways while their demo or story plays */
+  /* …and stop with it: the hero demo paused (button, hover, off screen) or a How it works card that is not the
+     active one or is held (src/main.js sets data-paused / data-held / data-active) */
+  [data-demo][data-paused] &,
+  [data-demo][data-held] &,
+  [data-demo]:has([data-demo-window]:hover) &,
+  [data-demo]:has(:focus-visible) &,
+  [data-how-card]:not([data-active]) &,
+  [data-how-card][data-held] & {
+    animation-play-state: paused;
+  }
   @media (prefers-reduced-motion: reduce) {
     animation: none;
   }
@@ -514,7 +644,7 @@
 /* ------------------------------------------------------------------ */
 /* Utilities                                                           */
 /* ------------------------------------------------------------------ */
-/* Signal gradient (docs/pulse_brand_guidelines_v3.md §4): Signal Red → Pulse Blue in OKLCH. Text on it: white,
+/* Signal gradient (docs/pulse_brand_guidelines_final.md §4): Signal Red → Pulse Blue in OKLCH. Text on it: white,
    large text only (24px+, or 18.5px+ bold) — never body text or small labels. */
 @utility bg-signal-gradient {
   background-image: var(--gradient-signal);
@@ -536,7 +666,7 @@
   }
 }
 /* Dark band gradient: the void base lit by a soft Pulse Blue glow (top left) and a Sky glow (bottom right).
-   Text on it stays AA at the brightest point (white 12.82, void-muted 6.11 on the Sky glow). */
+   Text on it stays AA at the brightest point (white 13.88, void-muted 5.90 on the Sky glow). */
 @utility bg-void-gradient {
   background-color: var(--color-void);
   background-image:
@@ -662,15 +792,73 @@
   }
 }
 /* The visual card of a step: dimmed until its step is active (desktop only) */
+/* How it works card background (chosen in Impeccable live mode, "Blue field", 18 Oct 2026): a flat 6% Pulse Blue
+   tint of the card colour, with a primary-line border. Follows the theme (light-dark tokens). */
+@utility bg-primary-wash {
+  background-color: color-mix(
+    in oklab,
+    var(--color-primary) 6%,
+    var(--color-card)
+  );
+}
+/* Focus pull (chosen in Impeccable live mode, 18 Oct 2026): a card is a little soft and small away from the middle
+   of the screen and comes into focus as it reaches it, driven by scroll position (no JS). Its text is never dimmed.
+   Without scroll-driven animations or with reduced motion, cards simply show sharp. */
 @utility how-card {
-  transition: opacity 500ms var(--ease-out-soft);
-  @media (scripting: enabled) and (width >= 64rem) {
-    &:not([data-active]) {
-      opacity: 0.4;
+  & > .how-glow {
+    @supports (animation-timeline: view()) {
+      @media (prefers-reduced-motion: no-preference) {
+        animation: how-focus linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+      }
     }
+  }
+}
+/* Pause sign in the top-right corner of a How it works card (JS + motion only): while the pointer is on the card its
+   story pauses and this pill fades in with a pause icon and "Paused" (src/main.js sets data-held on the card and the
+   status text). It is only a signal: not a button, not focusable, no hover style, clicks pass through. */
+@utility how-pause {
+  @apply pointer-events-none absolute top-4 right-4 z-10 hidden h-8 items-center rounded-full border border-line bg-card text-xs font-medium text-ink opacity-0 shadow-sm transition-opacity duration-200 ease-out-soft select-none;
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    display: inline-flex;
+  }
+  [data-held] > & {
+    opacity: 1;
+  }
+}
+@utility how-pause-icon {
+  @apply grid size-8 place-items-center;
+}
+@utility how-pause-label {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transition:
+    max-width 250ms var(--ease-out-soft),
+    opacity 200ms var(--ease-out-soft),
+    padding 250ms var(--ease-out-soft);
+  [data-held] > .how-pause > & {
+    max-width: 5rem;
+    padding-right: 0.75rem;
+    opacity: 1;
   }
   @media (prefers-reduced-motion: reduce) {
     transition: none;
+  }
+}
+@keyframes how-focus {
+  0%,
+  100% {
+    filter: blur(4px);
+    scale: 0.92;
+  }
+  35%,
+  65% {
+    filter: blur(0);
+    scale: 1;
   }
 }
 /* Soft glow behind a card's panel (decorative): the primary colour, faded out */
@@ -693,6 +881,18 @@
    Elements are written in their FINAL state; the variants below describe earlier beats:
      pre-N:  before beat N has been reached        at-N:  during beat N only
    So without JS, with reduced motion (never data-play), or on an inactive card, the final frame shows. */
+/* `theme-dark:` — the page is dark: OS dark (unless <html data-theme="light">) or <html data-theme="dark">. Only for
+   things light-dark() tokens cannot switch, such as choosing the reversed logo image. */
+@custom-variant theme-dark {
+  &:where([data-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+}
 @custom-variant pre-2 (&:where([data-play]:not([data-b2]) *));
 @custom-variant pre-3 (&:where([data-play]:not([data-b3]) *));
 @custom-variant pre-4 (&:where([data-play]:not([data-b4]) *));
@@ -768,6 +968,26 @@
   max-width: none;
   aspect-ratio: 16 / 9;
   mask-image: linear-gradient(to right, transparent, black 30%);
+}
+/* The video comes first: it fades in once a frame is playing ([data-playing], set by src/main.js). Without JS it never
+   plays, so it is only hidden while JS can still start it. */
+@utility hero-video-fade {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    transition: opacity 600ms var(--ease-out-soft);
+    &[data-playing] {
+      opacity: 1;
+    }
+  }
+}
+/* The poster is a fallback only: always shown with reduced motion or without JS; otherwise only when src/main.js
+   marks it [data-fallback] (autoplay blocked, or no frame after 3s). */
+@utility hero-video-poster {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    &:not([data-fallback]) {
+      display: none;
+    }
+  }
 }
 
 /* Background-video hero (product pages, [data-bg-video]): the title and the description under it sit top left, so the
@@ -1126,7 +1346,7 @@
 }
 /* Soft background: page colour with a faint Sky wash (top right) and Pulse Blue wash (bottom left), plus a
    small, clear primary light at --hero-x / --hero-y (solid core, soft edge) with a two-part tail that only
-   shows while the cursor moves. At rest: light 14% + wash 4% keeps text AA (muted 4.57 light / 6.44 dark). */
+   shows while the cursor moves. At rest: light 14% + wash 4% keeps text AA (muted 4.57 light / 6.26 dark). */
 @utility hero-bg {
   --hero-light: color-mix(in oklab, var(--color-primary) 14%, transparent);
   background-color: var(--color-surface-0);
@@ -1175,7 +1395,7 @@
     --hero-tail 500ms ease-out;
 }
 /* Soft gradient section background (Why Pulse): page colour with a faint Pulse Blue wash from the top left and a
-   Sky wash from the bottom right. 10% each keeps muted text AA even where they overlap (4.66 light / 6.18 dark). */
+   Sky wash from the bottom right. 10% each keeps muted text AA even where they overlap (4.66 light / 5.97 dark). */
 @utility bg-soft-gradient {
   background-color: var(--color-surface-0);
   background-image:
@@ -1414,7 +1634,7 @@
   background-color: var(--color-line);
   transition: background-color 400ms var(--ease-out-soft);
   [data-demo-step][data-active] & {
-    background-color: var(--color-primary);
+    background-color: var(--color-chart-main);
   }
   @media (prefers-reduced-motion: reduce) {
     transition: none;
@@ -1458,6 +1678,7 @@
     scale: 1 1; /* steps already played stay full on the timeline */
   }
   [data-demo]:has([data-demo-window]:hover) &, /* only over the app window, not the timeline */
+  [data-demo]:has(:focus-visible) &, /* keyboard focus inside the demo holds it (WCAG 2.2.2) */
   [data-demo][data-paused] &,
   [data-demo][data-held] & {
     animation-play-state: paused;
@@ -1469,4 +1690,26 @@
       scale: 1 1;
     }
   }
+}
+
+/* Hero demo: its spinner and the audit bars' shimmer stop with the demo (paused by the button, by hovering the app
+   window, or off screen), so nothing keeps animating where nobody is looking (WCAG 2.2.2; no idle repaints) */
+[data-demo]:has(:focus-visible) :is(.animate-spin, .demo-bar-scan),
+[data-demo]:has(:focus-visible) .demo-bar-scan::after,
+[data-demo][data-paused] :is(.animate-spin, .demo-bar-scan),
+[data-demo][data-held] :is(.animate-spin, .demo-bar-scan),
+[data-demo]:has([data-demo-window]:hover) :is(.animate-spin, .demo-bar-scan),
+[data-demo][data-paused] .demo-bar-scan::after,
+[data-demo][data-held] .demo-bar-scan::after,
+[data-demo]:has([data-demo-window]:hover) .demo-bar-scan::after {
+  animation-play-state: paused;
+}
+
+/* Menu items whose page does not exist yet (Blog, Sign In, categories …): <a role="link" aria-disabled="true">
+   without href. Not focusable, announced as an unavailable link, muted, and with no hover or click. Unlayered so
+   it wins over the item's own colour and hover utilities. */
+a[aria-disabled="true"],
+a[aria-disabled="true"] * {
+  pointer-events: none;
+  color: var(--color-muted);
 }

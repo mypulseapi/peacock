@@ -128,7 +128,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <html
       lang={locale}
-      data-theme="light"
       suppressHydrationWarning
     >
       <head>

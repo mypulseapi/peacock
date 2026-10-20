@@ -1,4 +1,4 @@
-import { useLocale } from "next-intl";
+
 import { reasons } from "@/content/home";
 import { Section, SectionHead } from "./Section";
 
@@ -12,8 +12,13 @@ import { Section, SectionHead } from "./Section";
  * The three USP chips lead because they are the part a reader repeats to
  * somebody else; the five reasons are the detail they forward.
  */
-export function ReasonsSection() {
-  const locale = useLocale();
+/*
+ * The locale arrives as a prop. `useLocale()` resolves to English inside a Server Component under
+ * `output: "export"`, so `pick()` fell through to its English fallback and this rendered English
+ * under `<html lang="vi">`. Nothing threw: falling back is what `pick` is for, which is exactly
+ * what hid it. The page has the locale from its params and hands it down.
+ */
+export function ReasonsSection({ locale }: { locale: string }) {
   const R = reasons(locale);
   return (
     <Section tone="tint">

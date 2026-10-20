@@ -41,7 +41,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <>
       <PageSchema locale={locale} path="/why" nodes={[faq]} />
-      <WhyContent />
+      <WhyContent locale={locale} />
     </>
   );
 }

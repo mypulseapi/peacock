@@ -21,7 +21,7 @@ export default function RootNotFound() {
   setRequestLocale("en");
 
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

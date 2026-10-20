@@ -9,7 +9,7 @@ export const DECISION_VERIFICATION: StoryContent = {
       "Re-export the repaired catalogue and we recompute the same measurement, so you can show exactly what moved. No traffic, no waiting, no test to design.",
   },
   eyebrow: "Decision Verification",
-  title: "Prove the enrichment work actually paid off.",
+  title: "Verify every fix against what shoppers need",
   lede:
     "You populated the top attribute. Send the repaired catalogue back and we recompute the same measurement, so you can show exactly what moved. No traffic, no waiting, no test to design.",
 
@@ -83,7 +83,7 @@ export const DECISION_VERIFICATION_VI: StoryContent = {
       "Xuất lại danh mục đã sửa và chúng tôi chạy lại đúng phép đo đó, để bạn chỉ rõ chính xác điều gì đã dịch chuyển. Không cần lưu lượng, không phải chờ đợi.",
   },
   eyebrow: "Decision Verification",
-  title: "Chứng minh công sức làm giàu dữ liệu thực sự có kết quả.",
+  title: "Kiểm chứng mọi thay đổi theo đúng thứ người mua cần",
   lede:
     "Bạn đã điền xong thuộc tính đứng đầu bảng. Gửi lại danh mục đã sửa và chúng tôi chạy lại đúng phép đo đó, để bạn chỉ ra chính xác điều gì đã dịch chuyển. Không cần lưu lượng, không phải chờ, không phải thiết kế thử nghiệm nào.",
 

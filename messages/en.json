@@ -429,20 +429,20 @@
       "title": "Frequently Asked Questions",
       "items": [
         {
-          "question": "How long does integration take?",
-          "answer": "Most native integrations (Shopify, WooCommerce, etc.) take under 30 minutes. Custom API integrations typically take 1-2 days."
+          "question": "How long does the first audit take?",
+          "answer": "Forty-eight hours from the moment your export lands. There is nothing to integrate first, because the audit reads a file rather than your website. Most teams get the export out of their PIM or platform in under an hour."
         },
         {
-          "question": "Do you offer a free trial?",
-          "answer": "Yes. Our Free tier gives you 1,000 API calls and 100 entities per month with no card required. Paid plans include a 14-day trial so you can validate ROI before committing."
+          "question": "Is the first audit really free?",
+          "answer": "Yes. One category, one export, no account and no card. We would rather you judged the method on your own products than on somebody else's case study. What comes after is priced per cycle, and nobody has to decide that on day one."
         },
         {
-          "question": "What's the typical response time?",
-          "answer": "Sales inquiries are typically answered within 2-4 hours during business hours. Support tickets are addressed within 24 hours."
+          "question": "How quickly will someone reply?",
+          "answer": "Usually the same working day. The inbox is read by the people who do the work rather than by a queue, so the reply comes from someone who can actually open your catalogue."
         },
         {
-          "question": "Do you work with agencies?",
-          "answer": "Yes! We have a partner program for agencies and consultants. Reach out to partners@thepulseapi.com for more information."
+          "question": "Do you work with agencies and consultants?",
+          "answer": "Yes. We are building a partner programme for agencies, consultants and systems integrators who run catalogue work for their clients, and we are talking to the first partners now. An audit takes the same single export whether it comes from you or from your client. Write to partners@thepulseapi.com and tell us whose catalogue it is."
         }
       ]
     },

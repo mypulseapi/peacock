@@ -429,20 +429,20 @@
       "title": "Câu hỏi Thường gặp",
       "items": [
         {
-          "question": "Tích hợp mất bao lâu?",
-          "answer": "Hầu hết các tích hợp gốc (Shopify, WooCommerce, v.v.) mất dưới 30 phút. Tích hợp API tùy chỉnh thường mất 1-2 ngày."
+          "question": "Bản kiểm tra đầu tiên mất bao lâu?",
+          "answer": "Bốn mươi tám giờ kể từ lúc tệp xuất của bạn tới nơi. Không cần tích hợp gì trước, vì bản kiểm tra đọc một tệp chứ không đọc website của bạn. Phần lớn các đội lấy được tệp xuất từ PIM hoặc nền tảng của họ trong chưa đầy một giờ."
         },
         {
-          "question": "Bạn có cung cấp dùng thử miễn phí không?",
-          "answer": "Có. Gói Miễn phí của chúng tôi cho 1,000 cuộc gọi API và 100 đối tượng mỗi tháng mà không cần thẻ. Các gói trả phí có dùng thử 14 ngày để bạn kiểm chứng ROI trước khi cam kết."
+          "question": "Bản kiểm tra đầu tiên có thực sự miễn phí không?",
+          "answer": "Có. Một ngành hàng, một tệp xuất, không cần tài khoản và không cần thẻ. Chúng tôi muốn bạn đánh giá phương pháp trên chính sản phẩm của mình hơn là trên một nghiên cứu điển hình của người khác. Phần sau đó được tính phí theo chu kỳ, và không ai phải quyết định điều đó ngay ngày đầu."
         },
         {
-          "question": "Thời gian phản hồi thông thường là bao lâu?",
-          "answer": "Yêu cầu bán hàng thường được trả lời trong vòng 2-4 giờ trong giờ làm việc. Yêu cầu hỗ trợ được xử lý trong vòng 24 giờ."
+          "question": "Bao lâu thì có người trả lời?",
+          "answer": "Thường là trong cùng ngày làm việc. Hộp thư được đọc bởi chính những người làm việc chứ không phải một hàng đợi, nên câu trả lời đến từ người thực sự có thể mở danh mục của bạn."
         },
         {
-          "question": "Bạn có làm việc với các agency không?",
-          "answer": "Có! Chúng tôi có chương trình đối tác cho các agency và tư vấn. Liên hệ partners@thepulseapi.com để biết thêm thông tin."
+          "question": "Các bạn có làm việc với agency và đơn vị tư vấn không?",
+          "answer": "Có. Chúng tôi đang xây dựng chương trình đối tác cho các agency, đơn vị tư vấn và nhà tích hợp hệ thống đang làm công việc danh mục cho khách hàng của họ, và chúng tôi đang trao đổi với những đối tác đầu tiên. Một bản kiểm tra vẫn chỉ cần một tệp xuất, dù nó đến từ bạn hay từ khách hàng của bạn. Hãy viết cho partners@thepulseapi.com và cho chúng tôi biết đó là danh mục của ai."
         }
       ]
     },

@@ -1,4 +1,4 @@
-import { useLocale } from "next-intl";
+
 import { Check, X } from "lucide-react";
 import { Section, SectionHead } from "./Section";
 import { ControlScene } from "./Scenes";
@@ -13,8 +13,13 @@ import { ui } from "@/content/locale";
  * section makes the constraint the argument. It is also the page a sceptical buyer
  * sends to their boss.
  */
-export function HonestySection() {
-  const locale = useLocale();
+/*
+ * The locale arrives as a prop. `useLocale()` resolves to English inside a Server Component under
+ * `output: "export"`, so `pick()` fell through to its English fallback and this rendered English
+ * under `<html lang="vi">`. Nothing threw: falling back is what `pick` is for, which is exactly
+ * what hid it. The page has the locale from its params and hands it down.
+ */
+export function HonestySection({ locale }: { locale: string }) {
   const HONESTY = honesty(locale);
   const t = ui(locale);
   return (

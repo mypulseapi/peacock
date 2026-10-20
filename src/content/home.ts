@@ -57,14 +57,14 @@ export const HERO = {
   // what an audit tool sells, and one of those is free. What is actually
   // different is that the engine can say the shelf cannot be resolved at all.
   // See ODIN/business/POSITIONING.md §1.
-  title: "Know when your catalogue cannot answer the question.",
+  title: "Uncover shoppers’ intent and catalogue gaps",
   // Two lines, not four. The hero's job is to get the product on screen; three
   // sentences of explanation pushed the demonstration below the fold.
   // Three lines, not one. The 2026-10 review asked the hero to say what Pulse
   // is, where it sits, and what you get, because a first-time reader met the
   // offer before they met the product.
   lede:
-    "Every search and recommendation tool answers, because answering is all they can do. Pulse measures whether an answer is supported at all, and when it is not, tells you what is missing and what it would cost to record it. One category export in, a ranked repair list back in 48 hours. Not a PIM, and it replaces nothing.",
+    "Pulse ranks the product data your catalogue is missing by how many shoppers need it, not by how empty a field is.",
   primary: { label: "Request a Decision Audit", href: "/contact" },
   secondary: { label: "See how it works", href: "/product" },
   reassure: "Product data only. No customer records, no integration, no commitment.",

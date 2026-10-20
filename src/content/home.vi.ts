@@ -8,9 +8,9 @@
  */
 export const HERO_VI = {
   eyebrow: "Trí tuệ dữ liệu sản phẩm",
-  title: "Biết khi nào danh mục của bạn không trả lời nổi câu hỏi.",
+  title: "Khám phá ý định của người mua và lỗ hổng danh mục",
   lede:
-    "Mọi công cụ tìm kiếm và gợi ý đều trả lời, vì trả lời là tất cả những gì chúng làm được. Pulse đo xem câu trả lời có cơ sở hay không, và khi không có, chỉ ra thứ đang thiếu cùng chi phí để ghi lại nó. Gửi vào một tệp xuất ngành hàng, nhận lại danh sách sửa đã xếp hạng trong 48 giờ. Không phải PIM, và không thay thế gì cả.",
+    "Pulse xếp hạng dữ liệu sản phẩm mà danh mục của bạn còn thiếu theo số người mua cần đến nó, chứ không theo mức độ trống của một trường dữ liệu.",
   primary: { label: "Yêu cầu Decision Audit", href: "/contact" },
   secondary: { label: "Xem cách hoạt động", href: "/product" },
   reassure: "Chỉ dữ liệu sản phẩm. Không hồ sơ khách hàng, không tích hợp, không ràng buộc.",

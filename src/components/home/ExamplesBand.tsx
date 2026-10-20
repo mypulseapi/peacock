@@ -1,4 +1,4 @@
-import { useLocale } from "next-intl";
+
 import { examples } from "@/content/home";
 import { Section, SectionHead } from "./Section";
 
@@ -14,8 +14,13 @@ import { Section, SectionHead } from "./Section";
  * was never recorded, and what it costs. Repeating the structure is what lets a
  * reader see that these are one problem wearing two coats.
  */
-export function ExamplesBand() {
-  const locale = useLocale();
+/*
+ * The locale arrives as a prop. `useLocale()` resolves to English inside a Server Component under
+ * `output: "export"`, so `pick()` fell through to its English fallback and this rendered English
+ * under `<html lang="vi">`. Nothing threw: falling back is what `pick` is for, which is exactly
+ * what hid it. The page has the locale from its params and hands it down.
+ */
+export function ExamplesBand({ locale }: { locale: string }) {
   const EX = examples(locale);
   return (
     <Section tone="raise" className="border-y border-[color:var(--ed-line)]">

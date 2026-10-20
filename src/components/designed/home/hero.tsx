@@ -854,14 +854,14 @@ export function HeroSection() {
                                         <img
                                           src="/assets/brand/logo.webp"
                                           alt="Pulse"
-                                          width="54"
-                                          height="18"
+                                          width={54}
+                                          height={18}
                                           className="h-4.5 w-auto theme-dark:hidden"
                                         /><img
                                           src="/assets/brand/logo-white.webp"
                                           alt=""
-                                          width="54"
-                                          height="18"
+                                          width={54}
+                                          height={18}
                                           className="hidden h-4.5 w-auto theme-dark:inline"
                                           aria-hidden="true"
                                         />
@@ -1165,14 +1165,14 @@ export function HeroSection() {
                                       <img
                                         src="/assets/brand/logo.webp"
                                         alt="Pulse"
-                                        width="54"
-                                        height="18"
+                                        width={54}
+                                        height={18}
                                         className="h-4.5 w-auto theme-dark:hidden"
                                       /><img
                                         src="/assets/brand/logo-white.webp"
                                         alt=""
-                                        width="54"
-                                        height="18"
+                                        width={54}
+                                        height={18}
                                         className="hidden h-4.5 w-auto theme-dark:inline"
                                         aria-hidden="true"
                                       />

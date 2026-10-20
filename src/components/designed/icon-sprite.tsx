@@ -1,19 +1,16 @@
 /**
  * The icon sprite: 41 symbols, defined once and referenced by `<use href="#i-name" />`.
  *
- * This is the designer's own sprite from afedfc1, lifted out of the page shell. It belongs in the
- * layout rather than in a page: there are 98 `<use>` references across the home page alone, and
- * copying 15 KB of symbol geometry into every page that needs an arrow would be the opposite of
- * what a sprite is for.
+ * The designer's own sprite from afedfc1, lifted out of the page shell. It belongs in the layout
+ * rather than in a page: there are 98 `<use>` references on the home page alone, and copying 15 KB
+ * of symbol geometry into every page that needs an arrow is the opposite of what a sprite is for.
  *
- * On the question of whether these should be separate `.svg` files for SEO: they should not.
- * Search engines do not index icon geometry, and an external file per icon trades one request for
- * forty. External SVGs earn their keep for *content* images that can rank in image search -- the
- * logo, the OG image -- and those are already files in `public/assets/brand`. What does matter for
- * accessibility is already right here: every instance is `aria-hidden`, because an icon beside a
- * label is decoration and naming it twice is worse than not naming it.
- *
- * Hidden from layout and from the accessibility tree; only `<use>` reaches inside it.
+ * On whether these should be separate `.svg` files for SEO: they should not. Search engines do not
+ * index icon geometry, and a file per icon trades one request for forty. External SVGs earn their
+ * keep for *content* images that can rank in image search -- the logo, the OG card -- and those
+ * are already files in `public/assets/brand`. What does matter is already right: every instance is
+ * `aria-hidden`, because an icon beside its own label is decoration, and naming it twice is worse
+ * than not naming it.
  */
 export function IconSprite() {
   return (
@@ -628,10 +625,9 @@ export type IconName = (typeof ICON_NAMES)[number];
 /**
  * One icon. `<Icon name="i-arrow-right" className="size-4" />`.
  *
- * The designer's markup writes the `<svg><use/></svg>` pair out by hand, which is correct HTML and
- * repeated 98 times. New code should use this instead: one place to fix if the sprite moves to an
- * external file, and `name` is typed against the sprite so a missing icon is a build error rather
- * than an empty box nobody notices.
+ * The designer's markup writes the `<svg><use/></svg>` pair by hand, which is correct HTML and
+ * repeated 98 times. New code uses this: one place to change if the sprite ever moves to an
+ * external file, and `name` is typed against the sprite.
  */
 export function Icon({ name, className = "size-4" }: { name: IconName; className?: string }) {
   return (

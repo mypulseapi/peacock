@@ -1,0 +1,32 @@
+/**
+ * Converted from `contact.html` at afedfc1 by scripts/html-to-jsx.mjs.
+ *
+ * The markup is the designer's. Change it here only for things the converter cannot do; anything
+ * structural should go back to the source page so the two do not drift.
+ *
+ * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
+ */
+export function Section3Section() {
+  return (
+    <section className="border-b border-line">
+            <div className="frame py-20 lg:py-24">
+              <div
+                className="reveal bg-soft-gradient rounded-3xl border border-line px-8 py-14 lg:px-16 lg:py-20"
+              >
+                <h2 className="max-w-2xl text-title text-balance">
+                  Would you rather see it live?
+                </h2>
+                <p className="mt-5 max-w-xl text-lg text-pretty text-muted">
+                  We walk through an audit on a real catalogue, answer the awkward
+                  questions, and show you where the method stops.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a href="mailto:sales@thepulseapi.com" className="btn-primary"
+                    >Book a demo</a
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+  );
+}

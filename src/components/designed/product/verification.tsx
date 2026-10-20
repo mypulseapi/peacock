@@ -36,7 +36,7 @@ export function VerificationSection() {
                     >
                     The repaired catalogue, re-exported.
                   </p>
-                  <Link                 href="/en/decision-verification"
+                  <Link                 href="/en/product/decision-verification"
                     className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                     >Read about Decision Verification<svg
                       className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"

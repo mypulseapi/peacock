@@ -42,7 +42,7 @@ export function ApiSection() {
                     >
                     One script tag, and a pilot before any money changes hands.
                   </p>
-                  <Link                 href="/en/decision-api"
+                  <Link                 href="/en/product/decision-api"
                     className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                     >Read about Decision API<svg
                       className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"

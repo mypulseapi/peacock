@@ -23,11 +23,10 @@ export function RequestSection() {
               <div
                 className="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200"
               >
-                <Link href="/en/../contact" className="btn-primary"
+                <Link href="/en/contact" className="btn-primary"
                   >Request a Decision Audit</Link>
-                <a href="../index.html#method" className="btn-secondary"
-                  >Read the method first</a
-                >
+                <Link href="/en#method" className="btn-secondary"
+                  >Read the method first</Link>
               </div>
             </div>
           </section>

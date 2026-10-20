@@ -27,9 +27,9 @@ export function Section1Section() {
                   it is the one nobody was asked to fill in.
                 </p>
                 <div className="reveal mt-8 flex flex-wrap gap-3 delay-200">
-                  <Link href="/en/../contact" className="btn-primary"
+                  <Link href="/en/contact" className="btn-primary"
                     >Request a Decision Audit</Link>
-                  <Link href="/en/../product/decision-audit" className="btn-secondary"
+                  <Link href="/en/product/decision-audit" className="btn-secondary"
                     >See what you get</Link>
                 </div>
                 <p className="reveal mt-6 text-sm text-muted delay-300">

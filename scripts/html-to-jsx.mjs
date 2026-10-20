@@ -19,7 +19,7 @@
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
-import { join, basename } from "node:path";
+import { join, basename, posix } from "node:path";
 
 const args = process.argv.slice(2);
 const file = args.find((a) => !a.startsWith("--"));
@@ -52,6 +52,9 @@ if (!file) {
   console.error("usage: node scripts/html-to-jsx.mjs <page.html> [--ref <git-ref>] [--out <dir>]");
   process.exit(2);
 }
+
+/** The source page's directory, so `../x.html` resolves the way the browser would. */
+const PAGE_DIR = posix.dirname(file);
 
 const warnings = [];
 /** Set when any component ends up needing next/link, so only those files import it. */
@@ -233,14 +236,32 @@ function convertComments(html) {
  * Anchors, mailto, tel and absolute URLs are left exactly as they are.
  */
 function rewriteLinks(html, locale) {
+  /*
+   * Resolve against the page's own directory, and keep any #fragment.
+   *
+   * Two bugs lived here. Only a leading `./` was stripped, so `../contact.html` on a page under
+   * `product/` became `/en/../contact` -- which a browser normalises to `/contact`, a route that
+   * does not exist. That was 31 links. And the `.html` test ran against the whole href, so
+   * `../index.html#method` failed it and shipped as a raw relative link; that was 4 more.
+   *
+   * `posix.resolve` from the page's directory does what the browser would do, before the locale
+   * prefix goes on.
+   */
   return html.replace(/href="([^"]+)"/g, (whole, href) => {
     if (/^(#|https?:|mailto:|tel:|\/)/.test(href)) return whole;
-    const clean = href.replace(/^\.\//, "");
-    if (!clean.endsWith(".html")) return whole;
+    const [path, hash = ""] = splitHash(href);
+    if (!path.endsWith(".html")) return whole;
+    const abs = posix.resolve("/", PAGE_DIR, path).slice(1);
     // index.html is the locale root; careers/index.html is /careers.
-    const route = clean.replace(/(^|\/)index\.html$/, "").replace(/\.html$/, "");
-    return `href="/${locale}${route ? "/" + route : ""}"`;
+    const route = abs.replace(/(^|\/)index\.html$/, "").replace(/\.html$/, "");
+    return `href="/${locale}${route ? "/" + route : ""}${hash}"`;
   });
+}
+
+/** `a.html#b` -> `["a.html", "#b"]`. A query string counts as part of the tail. */
+function splitHash(href) {
+  const i = href.search(/[#?]/);
+  return i === -1 ? [href, ""] : [href.slice(0, i), href.slice(i)];
 }
 
 /** The designer's pages load assets from `./src/assets`; here they are served from `/assets`. */

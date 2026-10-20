@@ -25,9 +25,9 @@ export function Section6Section() {
               <div
                 className="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200"
               >
-                <Link href="/en/../contact" className="btn-primary"
+                <Link href="/en/contact" className="btn-primary"
                   >Request a Decision Audit</Link>
-                <Link href="/en/../pricing" className="btn-secondary">View pricing</Link>
+                <Link href="/en/pricing" className="btn-secondary">View pricing</Link>
               </div>
               <p
                 className="reveal mx-auto mt-6 max-w-md text-sm text-pretty text-muted delay-300"

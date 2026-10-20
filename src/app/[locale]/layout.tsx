@@ -182,7 +182,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             each other by @id. A layout cannot know the page's own nodes, so the whole graph is
             built per page through <PageSchema />. See src/lib/schema.ts. */}
       </head>
-      <body className="antialiased bg-grid min-h-screen">
+      <body className={`antialiased min-h-screen${designed ? "" : " bg-grid"}`}>
         {/*
             `locale` is passed explicitly. Without it next-intl resolves the locale on the server
             through `getLocale()`, which reads the request config and ends at `headers()`. A

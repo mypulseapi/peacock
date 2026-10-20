@@ -1,4 +1,4 @@
-import { useLocale } from "next-intl";
+
 import { Check, ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { Section } from "@/components/home/Section";
@@ -13,8 +13,13 @@ import { pricingHero, tiers } from "@/content/pricing";
  * twice, and the note argued a point the fixed fee on the first card already
  * makes.
  */
-export default function PricingContent() {
-  const locale = useLocale();
+/*
+ * The locale arrives as a prop. `useLocale()` resolves to English inside a Server Component under
+ * `output: "export"`, so `pick()` fell through to its English fallback and this rendered English
+ * under `<html lang="vi">`. Nothing threw: falling back is what `pick` is for, which is exactly
+ * what hid it. The page has the locale from its params and hands it down.
+ */
+export default function PricingContent({ locale }: { locale: string }) {
   const PRICING_HERO = pricingHero(locale);
   const TIERS = tiers(locale);
   return (

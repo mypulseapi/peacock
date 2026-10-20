@@ -17,8 +17,8 @@ export const DECISION_AUDIT: StoryContent = {
       "Send one category export. In 48 hours, a ranked list of the attributes worth recording, the products missing each, and where each fact already lives.",
   },
   eyebrow: "Decision Audit",
-  title: "Find out which missing product data is actually costing you.",
-  lede: "Send one category export. In 48 hours you get a ranked list of the attributes worth recording, the products missing each one, and where each missing fact already lives. No code, no tag, no customer data, and nothing to install.",
+  title: "Fix the product data shoppers decide on",
+  lede: "Identify, prioritise and verify the product-information fixes that matter most to buying decisions.",
 
   chainBlock: {
     eyebrow: "Why nobody else can tell you this",
@@ -87,8 +87,8 @@ export const DECISION_AUDIT_VI: StoryContent = {
       "Gửi một tệp xuất ngành hàng. Trong 48 giờ, nhận danh sách xếp hạng các thuộc tính đáng ghi, sản phẩm còn thiếu, và nơi từng dữ kiện đang nằm.",
   },
   eyebrow: "Decision Audit",
-  title: "Biết chính xác dữ liệu sản phẩm nào đang khiến bạn mất tiền.",
-  lede: "Gửi một tệp xuất ngành hàng. Trong 48 giờ bạn nhận được danh sách xếp hạng các thuộc tính đáng ghi lại, những sản phẩm còn thiếu từng thuộc tính, và nơi mỗi dữ kiện còn thiếu đang nằm sẵn. Không mã nguồn, không thẻ theo dõi, không dữ liệu khách hàng, và không phải cài đặt gì.",
+  title: "Sửa đúng dữ liệu sản phẩm mà người mua dựa vào để quyết định",
+  lede: "Xác định, ưu tiên và kiểm chứng những chỗ cần sửa trong thông tin sản phẩm có ảnh hưởng lớn nhất tới quyết định mua.",
 
   chainBlock: {
     eyebrow: "Vì sao không ai khác nói được điều này",

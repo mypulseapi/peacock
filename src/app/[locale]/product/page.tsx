@@ -38,7 +38,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <>
       <PageSchema locale={locale} path="/product" nodes={[jsonLd]} />
-      <ProductContent />
+      <ProductContent locale={locale} />
     </>
   );
 }

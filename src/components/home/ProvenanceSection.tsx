@@ -1,4 +1,4 @@
-import { useLocale } from "next-intl";
+
 import { Section, SectionHead } from "./Section";
 import { FileText, Link2, Search, type LucideIcon } from "lucide-react";
 import { ExtractScene } from "./Scenes";
@@ -13,8 +13,13 @@ const ICONS: LucideIcon[] = [FileText, Link2, Search];
 import { provenance } from "@/content/home";
 
 /** Extractable / mappable / needs acquisition. The cost question, answered. */
-export function ProvenanceSection() {
-  const locale = useLocale();
+/*
+ * The locale arrives as a prop. `useLocale()` resolves to English inside a Server Component under
+ * `output: "export"`, so `pick()` fell through to its English fallback and this rendered English
+ * under `<html lang="vi">`. Nothing threw: falling back is what `pick` is for, which is exactly
+ * what hid it. The page has the locale from its params and hands it down.
+ */
+export function ProvenanceSection({ locale }: { locale: string }) {
   const PROVENANCE = provenance(locale);
   // These were --brand-indigo and --brand-indigo-soft, which on the light
   // theme resolve to the signal lime and its dim step: 1.05:1 and 1.50:1

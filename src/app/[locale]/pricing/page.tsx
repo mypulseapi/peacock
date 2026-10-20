@@ -26,7 +26,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <>
       <PageSchema locale={locale} path="/pricing" />
-      <PricingContent />
+      <PricingContent locale={locale} />
     </>
   );
 }

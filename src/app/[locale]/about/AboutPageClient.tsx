@@ -1,4 +1,4 @@
-import { useLocale } from "next-intl";
+
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
@@ -12,8 +12,13 @@ import { aboutHero, beliefs, honestState, story, aboutArt } from "@/content/abou
 /** One per belief, in the order they are written. */
 const BELIEF_ICONS = [Terminal, FlaskConical, ShieldAlert, KeyRound];
 
-export default function AboutPage() {
-  const locale = useLocale();
+/*
+ * The locale arrives as a prop. `useLocale()` resolves to English inside a Server Component under
+ * `output: "export"`, so `pick()` fell through to its English fallback and this rendered English
+ * under `<html lang="vi">`. Nothing threw: falling back is what `pick` is for, which is exactly
+ * what hid it. The page has the locale from its params and hands it down.
+ */
+export default function AboutPage({ locale }: { locale: string }) {
   const ABOUT_HERO = aboutHero(locale);
   const ART = aboutArt(locale);
   const BELIEFS = beliefs(locale);
@@ -33,7 +38,7 @@ export default function AboutPage() {
         }
       />
 
-      <AboutSections />
+      <AboutSections locale={locale} />
 
       <Section>
         <div className="grid gap-16 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">

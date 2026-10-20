@@ -10,7 +10,7 @@ export const DECISION_MONITOR: StoryContent = {
       "Catalogues decay as unrecorded products arrive. Monitor re-measures on your cadence and tells you when a shelf slips, naming the attribute and the cause.",
   },
   eyebrow: "Decision Monitor",
-  title: "Catch a category slipping before a buyer does.",
+  title: "Know the week a shelf stopped being decidable",
   lede:
     "Catalogues decay. New products arrive unrecorded, supplier feeds change shape, and a shelf that was ready last quarter quietly stops being ready. Monitor re-measures as your catalogue changes and tells you when one slips, naming the cause.",
 
@@ -73,7 +73,7 @@ export const DECISION_MONITOR_VI: StoryContent = {
       "Danh mục xuống cấp khi sản phẩm mới về mà không được ghi. Monitor đo lại theo nhịp bạn đặt và báo khi một kệ tụt, kèm thuộc tính và nguyên nhân.",
   },
   eyebrow: "Decision Monitor",
-  title: "Phát hiện một ngành hàng tụt dốc trước khi người mua nhận ra.",
+  title: "Biết chính xác tuần nào một kệ hàng thôi quyết định được",
   lede:
     "Danh mục nào rồi cũng xuống cấp. Sản phẩm mới về mà không được ghi thuộc tính, nguồn dữ liệu nhà cung cấp đổi cấu trúc, và một kệ hàng quý trước còn sẵn sàng thì lặng lẽ thôi sẵn sàng. Monitor đo lại khi danh mục của bạn thay đổi và báo cho bạn biết khi một kệ tụt, kèm nguyên nhân.",
 

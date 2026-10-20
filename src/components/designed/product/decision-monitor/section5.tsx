@@ -1,0 +1,87 @@
+/**
+ * Converted from `decision-monitor.html` at afedfc1 by scripts/html-to-jsx.mjs.
+ *
+ * The markup is the designer's. Change it here only for things the converter cannot do; anything
+ * structural should go back to the source page so the two do not drift.
+ *
+ * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
+ */
+export function Section5Section() {
+  return (
+    <section className="bg-soft-gradient scroll-mt-16 border-b border-line">
+            <div className="frame py-20 lg:py-28">
+              <div className="mx-auto max-w-2xl text-center">
+                <h2 className="reveal text-title text-balance">
+                  What your business gains from Decision Monitor
+                </h2>
+              </div>
+              <ul className="mt-14 grid gap-5 md:grid-cols-3">
+                <li
+                  className="reveal flex min-w-0 flex-col items-center rounded-2xl border border-line bg-card px-6 pt-4 pb-8 text-center shadow-sm delay-100 sm:px-8"
+                >
+                  <div
+                    className="relative grid size-40 max-w-full place-items-center sm:size-60"
+                    aria-hidden="true"
+                  >
+                    <div className="icon-grid absolute inset-0"></div>
+                    <div className="relative grid size-12 place-items-center">
+                      <svg className="size-7 text-ink">
+                        <use href="#i-user-round" />
+                      </svg>
+                    </div>
+                  </div>
+                  <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
+                    Catch decay before a buyer does
+                  </h3>
+                  <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
+                    See a shelf slipping while it is still a backlog item, rather
+                    than after it has become a project.
+                  </p>
+                </li>
+                <li
+                  className="reveal flex min-w-0 flex-col items-center rounded-2xl border border-line bg-card px-6 pt-4 pb-8 text-center shadow-sm delay-200 sm:px-8"
+                >
+                  <div
+                    className="relative grid size-40 max-w-full place-items-center sm:size-60"
+                    aria-hidden="true"
+                  >
+                    <div className="icon-grid absolute inset-0"></div>
+                    <div className="relative grid size-12 place-items-center">
+                      <svg className="size-7 text-ink">
+                        <use href="#i-trending-up" />
+                      </svg>
+                    </div>
+                  </div>
+                  <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
+                    Know the cause, not just the number
+                  </h3>
+                  <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
+                    Every alert names the shelf, the attribute and what caused the
+                    drop, so the fix is obvious before anyone opens a dashboard.
+                  </p>
+                </li>
+                <li
+                  className="reveal flex min-w-0 flex-col items-center rounded-2xl border border-line bg-card px-6 pt-4 pb-8 text-center shadow-sm delay-300 sm:px-8"
+                >
+                  <div
+                    className="relative grid size-40 max-w-full place-items-center sm:size-60"
+                    aria-hidden="true"
+                  >
+                    <div className="icon-grid absolute inset-0"></div>
+                    <div className="relative grid size-12 place-items-center">
+                      <svg className="size-7 text-ink"><use href="#i-chart-pie" /></svg>
+                    </div>
+                  </div>
+                  <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
+                    Compare quarters, not snapshots
+                  </h3>
+                  <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
+                    The same method on every run, so the trend per category means
+                    something and a regression is visible as a regression.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </section>
+  );
+}

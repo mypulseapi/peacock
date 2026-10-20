@@ -1867,3 +1867,1863 @@ html[data-theme="light"] {
 html[data-theme="dark"] {
   color-scheme: dark;
 }
+
+
+/* ====================================================================== */
+/* THE DESIGN SYSTEM, ported from the HTML site (commit afedfc1).          */
+/*                                                                        */
+/* This is PTan2505's `src/input.css`: the @theme tokens and all 89        */
+/* @utility blocks -- btn-*, card, eyebrow, badge-*, missing-cell,        */
+/* blueprint-grid, bg-signal-gradient, pricing-glow and the rest -- plus   */
+/* its @layer base. 1,834 lines. The earlier port brought over only the    */
+/* 60 lines of colour and type tokens, which is why the site had the right */
+/* paint and entirely different layouts.                                  */
+/*                                                                        */
+/* Two things are deliberately NOT carried over:                          */
+/*                                                                        */
+/*   - `--color-*: initial`, which switched Tailwind's default palette off.*/
+/*     That is right for a site whose markup only uses these tokens, and   */
+/*     wrong here: this app's own components use `text-amber-500` and the  */
+/*     like, and killing the palette breaks them for no gain.              */
+/*   - The @font-face rules, already ported above and pointing at          */
+/*     /fonts/geist rather than at a relative dist/ path.                  */
+/*                                                                        */
+/* It sits last so its @layer base wins. Pages still written against the   */
+/* old vocabulary keep working, because those rules are still above; they  */
+/* are converted to this system page by page. See DESIGN.md.               */
+/* ====================================================================== */
+
+@theme {
+  /* Typography: Geist for headings and body, Geist Mono for data (self-hosted, @font-face above). Slightly tight
+     body tracking, lighter and tighter headings; font-display keeps the headings' role. */
+  --font-display:
+    "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace; /* data: table values, bit values */
+
+  /* Type scale (size / line-height / weight from the spec) */
+  --text-h1: 2.5rem;
+  --text-h1--line-height: 1.18;
+  --text-h1--font-weight: 600;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h2: 1.5rem;
+  --text-h2--line-height: 1.25;
+  --text-h2--font-weight: 550;
+  --text-h2--letter-spacing: -0.015em;
+  --text-h3: 1.125rem;
+  --text-h3--line-height: 1.35;
+  --text-h3--font-weight: 550;
+  --text-h3--letter-spacing: -0.01em;
+  --text-body: 1rem; /* 16px (v2 §4, up from 14px) */
+  --text-body--line-height: 1.6;
+  --text-body--letter-spacing: -0.011em;
+  --text-data: 0.875rem; /* 14px (v2 §4, up from 13px) */
+  --text-data--line-height: 1.5;
+  --text-data--letter-spacing: -0.006em;
+  --text-caption: 0.75rem; /* 12px — the smallest text size (v2 §4) */
+  --text-caption--line-height: 1.4;
+  --text-caption--font-weight: 500;
+  --text-caption--letter-spacing: 0;
+  /* Body tracking is −0.011em at 16px; smaller text is set a little looser so it stays open
+     (a common recommendation for grotesques): Tailwind's 14px and 12px sizes get the same values as text-data and text-caption. */
+  --text-sm--letter-spacing: -0.006em;
+  --text-xs--letter-spacing: 0;
+
+  /* Fluid display sizes: scale smoothly with the viewport (min, preferred, max).
+     Use these instead of sm:/lg: text sizes in the HTML. */
+  --text-display: clamp(
+    2.5rem,
+    1.75rem + 3vw,
+    3.75rem
+  ); /* 40px → 60px: page h1, dark-band statement */
+  --text-display--line-height: 1.1;
+  --text-display--font-weight: 600;
+  --text-display--letter-spacing: -0.022em; /* as linear.app: −0.022em at display sizes */
+  /* Home hero title: always two lines, sized to its column (the parent is an @container). The longer line,
+     "Uncover Shoppers’ Intent", is 10.98em wide, so 9cqi keeps it inside; at most 34px (1440px screens). */
+  --text-hero: min(
+    2.125rem,
+    max(8.6cqi, 1.75rem)
+  ); /* rem floor: grows with text zoom. 8.6cqi: the longer line ("Uncover shoppers’ intent") is 11.42em in Geist,
+        so it fills 98% of the column */
+  --text-hero--line-height: 1.15;
+  --text-hero--font-weight: 600;
+  --text-hero--letter-spacing: -0.022em;
+  --text-headline: clamp(
+    2.25rem,
+    1.75rem + 2vw,
+    3rem
+  ); /* 36px → 48px: closing CTA */
+  --text-headline--line-height: 1.12;
+  --text-headline--font-weight: 600;
+  --text-headline--letter-spacing: -0.02em;
+  --text-title: clamp(
+    1.75rem,
+    2.15vw,
+    2rem
+  ); /* 28px → 32px: section intros. Grows with the viewport at the same pace as the home hero h1, so the h1
+        (text-hero) stays the largest heading at every width from 1280px (checked in Python: 29.3 vs 28.8 at 1280) */
+  --text-title--line-height: 1.18;
+  --text-title--font-weight: 550;
+  --text-title--letter-spacing: -0.02em;
+  /* DEAL acronym block (About page): the finished column is 28px, 36px from md (768px); the "DEAL" row it starts
+     from is drawn 2.7× larger with a transform (about 76 / 97px), so only these two sizes exist */
+  --text-deal: 1.75rem; /* 28px */
+  --text-deal-md: 2.25rem; /* 36px */
+
+  /* Navigation (15px, as the thepulseapi.com navbar) */
+  --text-nav: 0.9375rem; /* 15px */
+  --text-nav--line-height: 1.5;
+  /* Small uppercase labels (table badges, dropdown section labels): 12px, tracked out */
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.05em;
+  --radius-control: 0.625rem; /* 10px: nav links, nav buttons */
+
+  /* Page column (frame), as on lovable.dev: content 70rem (1120px) wide, 84rem (1344px) from 2xl; the frame
+     adds the side margin itself (16px → 32px from md → 80px from lg). So the margin is 16px at 375px,
+     32px at 768px, 80px at 1280px, 160px at 1440px and 288px at 1920px. */
+  --container-frame: 70rem;
+  --container-frame-wide: 84rem;
+  /* Container size for the hero demo's step 3 on phones (@rank-inline:): from 16.75rem (268px, the ranking grid at a
+     375px screen) the rank square sits beside the attribute name; narrower, it sits above it so long names fit. */
+  --container-rank-inline: 16.75rem;
+
+  /* ================================================================ */
+  /* COLOURS — the ONLY place colours are defined.                     */
+  /* Source of truth: docs/pulse_brand_guidelines_final.md (Signal).    */
+  /*                                                                   */
+  /* 1. BRAND PALETTE (§3): base colours. Never used directly in HTML.  */
+  /* 2. ROLES (§5): what pages use. Every TEXT and                      */
+  /*    surface role is an exact, contrast-checked hex — no color-mix — */
+  /*    written as light-dark(<light>, <dark>). The page follows the    */
+  /*    OS theme; [data-theme] on <html> overrides it (see Base).       */
+  /*    Values marked "derived" are not in the palette doc; they were   */
+  /*    chosen and contrast-checked for this project (v2 §3.4).         */
+  /* 3. DECORATION: gradient stops, never text on light backgrounds.    */
+  /* ================================================================ */
+
+  /* 1. Brand palette — Signal (§3) */
+  --brand-blue: #2552ff; /* Pulse Blue: buttons, links, active states, gradient end */
+  --brand-red: #f84840; /* Signal Red: the #1 highlight, gradient start (graphic only on light) */
+  --brand-sky: #3990e2; /* Sky Blue: illustrations, icon accents, focus ring, calm gradient */
+  --brand-ink: #0b1b3a; /* text, dark band */
+  --brand-mist: #f7f8fc; /* page background */
+  /* Blended in OKLCH so Red → Blue passes through pink and violet instead of a grey middle (sRGB default).
+     Browsers without OKLCH interpolation get the sRGB fallback with the OKLCH stops written out (§4). */
+  --gradient-signal: linear-gradient(
+    112deg in oklch,
+    var(--brand-red) 0%,
+    var(--brand-blue) 100%
+  ); /* big brand moments: closing CTA, OG image, the blurred glow behind the hero demo */
+  --gradient-calm: linear-gradient(
+    112deg in oklch,
+    var(--brand-sky) 0%,
+    var(--brand-blue) 100%
+  ); /* product screens where red would look like an error: progress lines, onboarding headers */
+  --gradient-signal-fallback: linear-gradient(
+    112deg,
+    #f84840 0%,
+    #e7318a 25%,
+    #c134c6 50%,
+    #893ff2 75%,
+    #2552ff 100%
+  ); /* the OKLCH path in sRGB stops, for browsers without "in oklch" (see bg-signal-gradient) */
+
+  /* 2. Roles — light-dark(light, dark) (§5) */
+  /* Text */
+  --color-ink: light-dark(#0b1b3a, #eef0f5); /* main text, headings */
+  --color-muted: light-dark(#56607a, #a3a9b8); /* secondary text */
+  --color-link: light-dark(#2552ff, #80a7ff); /* links */
+  /* Surfaces */
+  --color-surface-0: light-dark(#f7f8fc, #0b0d12); /* page background */
+  --color-card: light-dark(#ffffff, #14171f); /* cards, panels, header */
+  --color-surface-1: light-dark(
+    #eef0f7,
+    #1b1f29
+  ); /* wells, tracks, table headers — dark derived */
+  --color-line: light-dark(
+    #e3e6ef,
+    #2a2f3b
+  ); /* decorative hairlines — dark derived */
+  --color-line-control: light-dark(
+    #868da3,
+    #5f6676
+  ); /* input, checkbox, dropdown borders (>= 3:1) */
+  /* Primary — Pulse Blue in light, soft blue in dark */
+  --color-primary: light-dark(
+    #2552ff,
+    #80a7ff
+  ); /* buttons, links, active states */
+  --color-primary-hover: light-dark(
+    #1d43d9,
+    #93bbff
+  ); /* hover / pressed (Deep Blue) */
+  --color-primary-tint: light-dark(
+    #eaf2ff,
+    #142140
+  ); /* badge and chip backgrounds */
+  --color-primary-line: color-mix(
+    in oklab,
+    var(--color-primary) 22%,
+    var(--color-card)
+  ); /* chip/badge border (decorative) — derived */
+  --color-on-primary: light-dark(
+    #ffffff,
+    #0b0d12
+  ); /* text/icons on a primary fill */
+  /* Signal — Signal Red, the #1 priority: graphic only on light; signal-text for red text */
+  --color-signal: #f84840; /* the #1 ring, bar, dot (graphic only on light; text allowed in dark) */
+  --color-signal-text: light-dark(
+    #c8261f,
+    #ff6b63
+  ); /* red text: the "#1" label, a key number */
+  --color-signal-tint: light-dark(
+    #ffeceb,
+    #2e1517
+  ); /* background behind the #1 row or badge */
+  --color-signal-line: color-mix(
+    in oklab,
+    var(--color-signal) 35%,
+    var(--color-card)
+  ); /* #1 badge border (decorative) — derived */
+  /* Sky Blue — supporting blue: illustrations, icon accents (graphic only on light) */
+  --color-sky: light-dark(#3990e2, #7db8f2);
+  /* Slate — every other rank and comparison baseline next to the #1 (graphic; label it in text) */
+  --color-baseline: #868da3;
+  /* Focus — 2px outline, 2px offset, on every interactive element */
+  --color-focus: light-dark(#3990e2, #93bbff);
+  /* Gap — Missing data (amber). Never shares a colour with critical. */
+  --color-gap: #ffb020; /* dots, bars, dashed borders (decorative on light; text allowed in dark) */
+  --color-gap-fill: light-dark(
+    #ffefd2,
+    #2e2410
+  ); /* Missing cell background — dark derived */
+  --color-gap-strong: light-dark(
+    #8f5b00,
+    #ffb020
+  ); /* Missing text and dashed border */
+  --color-gap-hatch: color-mix(
+    in oklab,
+    var(--color-gap) 22%,
+    transparent
+  ); /* missing-flag stripes (decorative) */
+  /* Status — success is never a button; it always carries a check icon + text */
+  --color-success: light-dark(#0e7a55, #4fd1a1);
+  --color-success-bg: light-dark(#e6f7f0, #0f2a21); /* dark derived */
+  --color-success-line: color-mix(
+    in oklab,
+    var(--color-success) 30%,
+    var(--color-card)
+  ); /* badge border (decorative) — derived */
+  --color-warning: light-dark(#8a5300, #ffc857);
+  --color-warning-bg: light-dark(#fff6db, #2e2610); /* dark derived */
+  --color-warning-line: color-mix(
+    in oklab,
+    var(--color-warning) 30%,
+    var(--color-card)
+  ); /* badge border (decorative) — derived */
+  --color-critical: light-dark(#b4152b, #ff8a94); /* blocking errors only */
+  --color-critical-bg: light-dark(#fdecee, #331519); /* dark derived */
+  --color-critical-line: color-mix(
+    in oklab,
+    var(--color-critical) 25%,
+    var(--color-card)
+  ); /* badge border (decorative) — derived */
+  /* Dark band (void) — always dark, in both themes (§3.3) */
+  --color-void: #0b0d12; /* dark band background: cool black, the same in both themes */
+  --color-void-elevated: #14171f; /* cards on the dark band — derived (= dark card) */
+  --color-void-line: #2a2f3b; /* hairlines on the dark band — derived (= dark line) */
+  --color-void-line-strong: #5f6676; /* accent rules on the dark band — derived (= dark line-control) */
+  --color-void-text: #eef0f5; /* body text on the dark band — derived (= dark text) */
+  --color-void-muted: #a3a9b8; /* captions on the dark band */
+  --color-void-accent: #80a7ff; /* accent text and links on the dark band */
+  /* Chart series (guide §5.1 / §9): every chart and comparison bar uses these, never the role colours directly.
+     Dark switches the blue and violet series so marks keep 3:1 on raised dark surfaces. */
+  --color-chart-main: light-dark(#2552ff, #80a7ff); /* main series */
+  --color-chart-second: light-dark(#893ff2, #b18cff); /* second series */
+  --color-chart-baseline: #868da3; /* comparison / baseline, both themes */
+  --color-chart-highlight: #f84840; /* the #1 bar only, both themes */
+  --color-chart-missing: #ffb020; /* missing data, both themes, with a label or hatch */
+  --color-on-void: #ffffff; /* headings/numbers on the dark band */
+
+  /* 3. Decoration — the hero demo timeline (never text on light) */
+  /* Hero demo step tabs: the 4px timer segments run along the Signal gradient — its 0 / 25 / 50 / 75 / 100% stops
+     (§4), same in both themes. Graphics only: the tab labels sit beside them in ink / muted. */
+  --color-step-1: var(--brand-red);
+  --color-step-2: #e7318a;
+  --color-step-3: #c134c6;
+  --color-step-4: #893ff2;
+  --color-step-5: var(--brand-blue);
+  --color-on-step: #0b1b3a; /* Ink, fixed in both themes: text on a signal fill (4.86) */
+  --color-scan-band: color-mix(
+    in oklab,
+    var(--color-primary) 22%,
+    transparent
+  ); /* hero demo audit sweep */
+  /* Blueprint grid lines */
+  --color-grid-line: light-dark(rgb(11 27 58 / 0.04), rgb(238 240 245 / 0.05));
+  --color-grid-line-dark: rgb(238 240 245 / 0.05);
+
+  /* Motion (modelled on attio.com: short, eased, never bouncy) */
+  --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in-out-cubic: cubic-bezier(
+    0.65,
+    0,
+    0.35,
+    1
+  ); /* nav dropdown (attio.com) */
+  --ease-scan: cubic-bezier(
+    0.34,
+    0.68,
+    0.28,
+    1
+  ); /* hero demo progress bars (thepulseapi.com) */
+
+  /* Floating panels (nav dropdown): hairline ring + soft drop shadow, built from tokens */
+  --shadow-nav:
+    0 0 0 1px var(--color-line),
+    0 12px 32px -12px color-mix(in oklab, var(--color-ink) 20%, transparent);
+  /* Soft primary halo: the selected circle and the centre orb of the #why orbit */
+  --shadow-glow:
+    0 0 0 6px color-mix(in oklab, var(--color-primary) 14%, transparent),
+    0 0 32px 6px color-mix(in oklab, var(--color-primary) 30%, transparent);
+  --animate-caret: caret 1s step-end infinite;
+  --animate-ring: ring 3.6s ease-in-out infinite;
+  --animate-dropdown: dropdown 150ms var(--ease-out-soft);
+  /* Hero workflow demo: one step lasts as long as its tab timer runs; the scan sweeps the audit step once;
+     the shimmer runs along the audit's progress bars */
+  --animate-demo-timer: demo-timer 6s linear;
+  --animate-demo-scan: demo-scan 3.4s ease-in-out both;
+  --animate-demo-shimmer: demo-shimmer 1.05s linear infinite;
+  /* missing-flag stripes: one 10px stripe period per loop, so it never jumps */
+  --animate-missing-drift: missing-drift 1s linear infinite;
+  @keyframes dropdown {
+    from {
+      opacity: 0;
+      translate: 0 -0.25rem;
+    }
+  }
+
+  @keyframes demo-timer {
+    from {
+      scale: 0 1;
+    }
+    to {
+      scale: 1 1;
+    }
+  }
+  @keyframes demo-scan {
+    from {
+      translate: -110% 0;
+    }
+    to {
+      translate: 260% 0;
+    }
+  }
+  @keyframes missing-drift {
+    to {
+      /* 135° stripes repeat every 10px across the stripes = 10px / sin(45°) ≈ 14.142px along the x-axis */
+      background-position-x: calc(10px / sin(45deg));
+    }
+  }
+  @keyframes demo-shimmer {
+    from {
+      translate: -100% 0;
+    }
+    to {
+      translate: 100% 0;
+    }
+  }
+
+  @keyframes caret {
+    50% {
+      opacity: 0;
+    }
+  }
+  @keyframes ring {
+    0%,
+    100% {
+      opacity: 0.35;
+      scale: 0.96;
+    }
+    50% {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+}
+
+@layer base {
+  /* The canvas outside the page (seen when the page bounces past its top or bottom) takes the header and footer
+     colour, so pulling down at the top never shows a strip of page colour above the sticky navbar. */
+  html {
+    @apply bg-card;
+  }
+  body {
+    @apply bg-surface-0 font-sans text-ink antialiased selection:bg-primary-hover selection:text-on-primary;
+    /* body tracking −0.011em; headings set their own */
+    letter-spacing: -0.011em;
+  }
+  /* Theme: follow the OS by default; <html data-theme="light|dark"> overrides it.
+     Every role token is light-dark(), so this one property switches the whole palette. */
+  :root {
+    color-scheme: light dark;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display text-ink;
+  }
+  /* Data tables: values in Geist Mono with tabular figures; the first column (product names) and the Missing
+     flags stay in Geist. :where() keeps this at zero specificity, so utilities still win. */
+  :where(table) {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+  :where(table) :where(td:first-child, th:first-child) {
+    font-family: var(--font-sans);
+  }
+  /* Focus (§9): 2px Sky outline, 2px offset, on every interactive element; components only add outline-2 */
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+  /* <details> dropdowns: hide the browser's disclosure triangle */
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Components (registered with @utility so they can be @apply-ed)      */
+/* ------------------------------------------------------------------ */
+/* Buttons */
+/* Invisible 44×44px minimum tap area (guideline §11) around a smaller control, without changing how it looks.
+   Needs room around the control and no overflow-hidden on it (a clipped area can't be clicked). */
+@utility hit-area {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset-block: min(0px, calc((100% - 2.75rem) / 2));
+    inset-inline: min(0px, calc((100% - 2.75rem) / 2));
+  }
+}
+/* "Skip to content": the first stop on every page (shell:header), visible only while focused (WCAG 2.4.1) */
+@utility skip-link {
+  @apply sr-only;
+  &:focus {
+    @apply not-sr-only fixed top-3 left-3 z-50 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary;
+  }
+}
+@utility btn {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:pointer-events-none disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn border border-primary bg-primary text-on-primary hover:border-primary-hover hover:bg-primary-hover;
+}
+@utility btn-secondary {
+  @apply btn border border-line bg-card text-ink hover:border-ink hover:bg-surface-1;
+}
+@utility btn-ghost {
+  @apply btn text-muted hover:bg-surface-1 hover:text-ink;
+}
+@utility btn-sm {
+  @apply hit-area min-h-0 px-3 py-1.5 text-xs;
+}
+
+/* Navigation */
+@utility nav-link {
+  @apply hit-area inline-flex items-center gap-1 rounded-control px-2 py-2 font-display text-nav font-medium whitespace-nowrap text-ink transition-colors duration-150 ease-out-soft hover:bg-surface-1 focus-visible:outline-2 focus-visible:outline-focus xl:px-3;
+  /* The page you are on (aria-current="page", set per page by scripts/sync-shell.py): the hover pill, kept */
+  &[aria-current="page"] {
+    @apply bg-surface-1;
+  }
+}
+@utility nav-icon-tile {
+  @apply flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary-tint text-primary;
+}
+
+/* Surfaces */
+@utility card {
+  @apply rounded-xl border border-line bg-card p-6 shadow-sm;
+}
+@utility card-dark {
+  @apply rounded-xl border border-void-line bg-void p-6 text-on-void;
+}
+
+/* Labels & badges */
+@utility eyebrow {
+  @apply tabular-nums text-xs font-semibold tracking-wider text-muted uppercase;
+}
+/* The same label in Pulse Blue (step labels such as "You do this once") */
+@utility eyebrow-primary {
+  @apply tabular-nums text-xs font-semibold tracking-wider text-primary uppercase;
+}
+/* Form fields (input, select, textarea): 44px tall, line-control border (≥ 3:1), focus ring */
+@utility field {
+  @apply block min-h-11 w-full rounded-control border border-line-control bg-card px-3.5 py-2.5 text-data text-ink placeholder:text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:cursor-not-allowed disabled:opacity-60;
+}
+/* Range slider (home revenue calculator): a 44px tap area around a 6px track. Pulse Blue fills up to the thumb
+   (--range-fill); line-control (≥ 3:1) marks the room the slider may still use; past --range-room the track is the
+   pale surface-1, the part another setting already takes (the thumb stops there). Both are set by src/main.js;
+   without JS the track is plain line-control. A slider with no room left is disabled and dimmed. */
+@utility range-control {
+  display: block;
+  width: 100%;
+  height: 2.75rem;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  --range-track: linear-gradient(
+    to right,
+    var(--color-primary) var(--range-fill, 0%),
+    var(--color-line-control) var(--range-fill, 0%) var(--range-room, 100%),
+    var(--color-surface-1) var(--range-room, 100%)
+  );
+  &::-webkit-slider-runnable-track {
+    height: 0.375rem;
+    border-radius: 9999px;
+    background: var(--range-track);
+  }
+  &::-moz-range-track {
+    height: 0.375rem;
+    border-radius: 9999px;
+    background: var(--range-track);
+  }
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: -0.4375rem;
+    border-radius: 9999px;
+    border: 3px solid var(--color-card);
+    background: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+  }
+  &::-moz-range-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 9999px;
+    border: 3px solid var(--color-card);
+    background: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+@utility badge {
+  @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 tabular-nums text-xs font-semibold;
+}
+@utility badge-primary {
+  @apply badge border-primary-line bg-primary-tint text-primary-hover;
+}
+@utility badge-signal {
+  @apply badge border-signal-line bg-signal-tint text-signal-text;
+}
+@utility badge-success {
+  @apply badge border-success-line bg-success-bg text-success;
+}
+@utility badge-warning {
+  @apply badge border-warning-line bg-warning-bg text-warning;
+}
+@utility badge-critical {
+  @apply badge border-critical-line bg-critical-bg text-critical;
+}
+
+/* Signature motif: "The Missing Cell" */
+@utility missing-cell {
+  border: 1.5px dashed var(--color-gap);
+  @apply bg-gap-fill tabular-nums text-gap-strong;
+}
+/* Hero demo (thepulseapi.com): a missing value in the catalogue table — the Missing cell (amber, dashed, with a
+   warning icon), hatched */
+@utility missing-flag {
+  @apply inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 font-sans text-xs font-bold text-gap-strong; /* Geist, also inside data tables */
+  outline: 1.5px dashed var(--color-gap); /* drawn inside, so the flag keeps its size */
+  outline-offset: -1.5px;
+  background-color: var(--color-gap-fill);
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-gap-hatch) 0 5px,
+    transparent 5px 10px
+  );
+  animation: var(
+    --animate-missing-drift
+  ); /* the stripes slide sideways while their demo or story plays */
+  /* …and stop with it: the hero demo paused (button, hover, off screen) or a How it works card that is not the
+     active one or is held (src/main.js sets data-paused / data-held / data-active) */
+  [data-demo][data-paused] &,
+  [data-demo][data-held] &,
+  [data-demo]:has([data-demo-window]:hover) &,
+  [data-demo]:has(:focus-visible) &,
+  [data-how-card]:not([data-active]) &,
+  [data-how-card][data-held] & {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+/* Hero demo: status pill in a step's title bar (add colours: critical, running, done) */
+@utility demo-pill {
+  @apply inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 tabular-nums text-xs font-semibold;
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilities                                                           */
+/* ------------------------------------------------------------------ */
+/* Signal gradient (docs/pulse_brand_guidelines_final.md §4): Signal Red → Pulse Blue in OKLCH. Text on it: white,
+   large text only (24px+, or 18.5px+ bold) — never body text or small labels. */
+@utility bg-signal-gradient {
+  background-image: var(--gradient-signal);
+  @supports not (background: linear-gradient(in oklch, red, blue)) {
+    background-image: var(--gradient-signal-fallback);
+  }
+}
+
+/* Pricing: the soft glow behind the free plan's header (after the owner's reference, 19 Oct 2026). The Signal gradient,
+   blurred and faded, the page's one use of it; masked out downwards so the list sits on plain card. */
+@utility pricing-glow {
+  background-image: var(--gradient-signal);
+  @supports not (background: linear-gradient(in oklch, red, blue)) {
+    background-image: var(--gradient-signal-fallback);
+  }
+  opacity: 0.16;
+  filter: blur(40px);
+  mask-image: linear-gradient(to bottom, black, transparent);
+  @variant theme-dark {
+    opacity: 0.12;
+  }
+}
+
+/* Calm gradient (§4): Sky → Pulse Blue, for product UI where red would read as an error (the How it works progress
+   line). Same text rule as the Signal gradient. */
+@utility bg-calm-gradient {
+  background-image: var(--gradient-calm);
+  @supports not (background: linear-gradient(in oklch, red, blue)) {
+    background-image: linear-gradient(
+      112deg,
+      var(--brand-sky),
+      var(--brand-blue)
+    );
+  }
+}
+/* Dark band gradient: the void base lit by a soft Pulse Blue glow (top left) and a Sky glow (bottom right).
+   Text on it stays AA at the brightest point (white 13.88, void-muted 5.90 on the Sky glow). */
+@utility bg-void-gradient {
+  background-color: var(--color-void);
+  background-image:
+    radial-gradient(
+      60% 80% at 0% 0%,
+      color-mix(in oklab, var(--brand-blue) 35%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      60% 80% at 100% 100%,
+      color-mix(in oklab, var(--brand-sky) 25%, transparent),
+      transparent
+    );
+}
+
+@utility blueprint-grid {
+  background-size: 24px 24px;
+  background-image:
+    linear-gradient(to right, var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-grid-line) 1px, transparent 1px);
+}
+
+/* Icon on a fading grid (feature cards, after the owner's reference, 20 Oct 2026): 48px cells in the line colour,
+   centred so the icon sits in the middle cell, fading out towards the edges. Pair with a 240px square (size-60). */
+@utility icon-grid {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center;
+  mask-image: radial-gradient(closest-side, black 45%, transparent);
+}
+
+@utility blueprint-grid-dark {
+  background-size: 24px 24px;
+  background-image:
+    linear-gradient(to right, var(--color-grid-line-dark) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-grid-line-dark) 1px, transparent 1px);
+}
+
+/* Page frame: the centred page column; sections add border-b between them */
+@utility frame {
+  margin-inline: auto;
+  box-sizing: content-box; /* max-width is the content; the side padding is the page margin */
+  max-width: var(--container-frame);
+  padding-inline: calc(var(--spacing) * 4);
+  @media (width >= 48rem) {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+  @media (width >= 64rem) {
+    padding-inline: calc(var(--spacing) * 20);
+  }
+  @media (width >= 96rem) {
+    max-width: var(--container-frame-wide);
+  }
+}
+@utility frame-dark {
+  @apply frame;
+}
+
+/* ------------------------------------------------------------------ */
+/* Scroll motion — src/main.js sets [data-shown] when an element enters  */
+/* the viewport. Stagger with Tailwind delay-* classes.                 */
+/* ------------------------------------------------------------------ */
+@utility reveal {
+  transition-property: opacity, translate;
+  transition-duration: 700ms;
+  transition-timing-function: var(--ease-out-soft);
+  /* Hidden only when JS can reveal it again and motion is welcome — content stays visible with JS off, and with
+     reduced motion it is simply there (the hiding rule is more specific than any plain override, so it must not
+     apply at all rather than be overridden) */
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    &:not([data-shown]) {
+      opacity: 0;
+      translate: 0 1rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+/* Bars that grow from the left edge */
+/* How it works (lovable.dev style): src/main.js marks the step — and its card — whose card has crossed
+   the middle of the screen with data-active, and sets --how-p (0 → 1) as that card scrolls past.
+   The active step's description slides open and its text rises in; a two-colour line fills under it.
+   The active card is bright, the others dimmed (from lg); its contents replay their entrance
+   (how-in, how-bar) every time it becomes active. Without JS everything is shown, nothing moves;
+   with reduced motion the states switch without animating. */
+@utility how-desc {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 400ms var(--ease-out-soft),
+    opacity 400ms var(--ease-out-soft);
+  & > * {
+    overflow: hidden;
+  }
+  & > * > * {
+    translate: 0 0.75rem;
+    transition: translate 500ms var(--ease-out-soft) 120ms;
+  }
+  [data-active] > & {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+  [data-active] > & > * > * {
+    translate: 0 0;
+  }
+  @media (scripting: none) {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    & > * > * {
+      translate: 0 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    & > * > * {
+      transition: none;
+    }
+  }
+}
+@utility how-progress {
+  transform-origin: left;
+  scale: var(--how-p, 0) 1;
+  opacity: 0;
+  [data-active] > & {
+    opacity: 1;
+  }
+  @media (scripting: none) {
+    display: none;
+  }
+}
+/* The visual card of a step: dimmed until its step is active (desktop only) */
+/* How it works card background (chosen in Impeccable live mode, "Blue field", 18 Oct 2026): a flat 6% Pulse Blue
+   tint of the card colour, with a primary-line border. Follows the theme (light-dark tokens). */
+@utility bg-primary-wash {
+  background-color: color-mix(
+    in oklab,
+    var(--color-primary) 6%,
+    var(--color-card)
+  );
+}
+/* Focus pull (chosen in Impeccable live mode, 18 Oct 2026): a card is a little soft and small away from the middle
+   of the screen and comes into focus as it reaches it, driven by scroll position (no JS). Its text is never dimmed.
+   Without scroll-driven animations or with reduced motion, cards simply show sharp. */
+@utility how-card {
+  & > .how-glow {
+    @supports (animation-timeline: view()) {
+      @media (prefers-reduced-motion: no-preference) {
+        animation: how-focus linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+      }
+    }
+  }
+}
+/* Pause sign in the top-right corner of a How it works card (JS + motion only): while the pointer is on the card its
+   story pauses and this pill fades in with a pause icon and "Paused" (src/main.js sets data-held on the card and the
+   status text). It is only a signal: not a button, not focusable, no hover style, clicks pass through. */
+@utility how-pause {
+  @apply pointer-events-none absolute top-4 right-4 z-10 hidden h-8 items-center rounded-full border border-line bg-card text-xs font-medium text-ink opacity-0 shadow-sm transition-opacity duration-200 ease-out-soft select-none;
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    display: inline-flex;
+  }
+  [data-held] > & {
+    opacity: 1;
+  }
+}
+@utility how-pause-icon {
+  @apply grid size-8 place-items-center;
+}
+@utility how-pause-label {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transition:
+    max-width 250ms var(--ease-out-soft),
+    opacity 200ms var(--ease-out-soft),
+    padding 250ms var(--ease-out-soft);
+  [data-held] > .how-pause > & {
+    max-width: 5rem;
+    padding-right: 0.75rem;
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+@keyframes how-focus {
+  0%,
+  100% {
+    filter: blur(4px);
+    scale: 0.92;
+  }
+  35%,
+  65% {
+    filter: blur(0);
+    scale: 1;
+  }
+}
+/* Soft glow behind a card's panel (decorative): the primary colour, faded out */
+@utility how-glow {
+  background-image:
+    radial-gradient(
+      70% 60% at 50% 110%,
+      color-mix(in oklab, var(--color-primary) 35%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      50% 50% at 0% 0%,
+      color-mix(in oklab, var(--color-sky) 12%, transparent),
+      transparent
+    );
+}
+/* How it works — story scenes (a "beat" timeline). src/main.js plays the active card's [data-scene]:
+   it sets data-play, then data-b2, data-b3 … at the times listed in data-beats, holds the last frame,
+   fades out (data-fade), resets instantly (data-instant) and plays again — until the visitor pauses.
+   Elements are written in their FINAL state; the variants below describe earlier beats:
+     pre-N:  before beat N has been reached        at-N:  during beat N only
+   So without JS, with reduced motion (never data-play), or on an inactive card, the final frame shows. */
+/* `theme-dark:` — the page is dark: OS dark (unless <html data-theme="light">) or <html data-theme="dark">. Only for
+   things light-dark() tokens cannot switch, such as choosing the reversed logo image. */
+@custom-variant theme-dark {
+  &:where([data-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+}
+@custom-variant pre-2 (&:where([data-play]:not([data-b2]) *));
+@custom-variant pre-3 (&:where([data-play]:not([data-b3]) *));
+@custom-variant pre-4 (&:where([data-play]:not([data-b4]) *));
+@custom-variant pre-5 (&:where([data-play]:not([data-b5]) *));
+@custom-variant pre-6 (&:where([data-play]:not([data-b6]) *));
+@custom-variant pre-7 (&:where([data-play]:not([data-b7]) *));
+@custom-variant pre-8 (&:where([data-play]:not([data-b8]) *));
+@custom-variant at-2 (&:where([data-play][data-b2]:not([data-b3]) *));
+@custom-variant at-3 (&:where([data-play][data-b3]:not([data-b4]) *));
+@custom-variant at-4 (&:where([data-play][data-b4]:not([data-b5]) *));
+@custom-variant at-5 (&:where([data-play][data-b5]:not([data-b6]) *));
+@custom-variant at-6 (&:where([data-play][data-b6]:not([data-b7]) *));
+@custom-variant at-7 (&:where([data-play][data-b7]:not([data-b8]) *));
+@utility how-scene {
+  transition: opacity 400ms var(--ease-out-soft);
+  &[data-fade] {
+    opacity: 0;
+  }
+  /* jumping to a beat state (start / reset) happens without transitions */
+  &[data-instant],
+  &[data-instant] * {
+    transition: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &,
+    & * {
+      transition: none;
+    }
+  }
+}
+@utility reveal-bar {
+  transform-origin: left;
+  transition-property: scale;
+  transition-duration: 1100ms;
+  transition-timing-function: var(--ease-emphasized);
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    &:not([data-shown]) {
+      scale: 0 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+/* `pre-shown:` — the state before a .reveal ancestor is shown (src/main.js sets data-shown). Only with JS and
+   motion allowed, so without JS or with reduced motion the final state shows at once. Stagger with delay-*. */
+@custom-variant pre-shown {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    &:where(.reveal:not([data-shown]) *) {
+      @slot;
+    }
+  }
+}
+
+/* Comparison card, "old way" column (product/decision-audit.html): a hairline strikethrough — 0.5px is a true
+   hairline on high-density screens; 1x screens round it up to 1px */
+@utility strike-hairline {
+  text-decoration-line: line-through;
+  text-decoration-thickness: 0.5px;
+}
+
+/* Background-video hero media (the video and its poster): always the full height of the hero and pinned to the right,
+   so the top and the bottom of the video are never cut; wide screens show page colour on the left, where the video
+   fades in (behind the title), narrow screens trim the blurred left side. */
+/* About team card: the top half of a second copy of the portrait, laid over the round frame. At rest it lines up
+   with the circle-clipped photo exactly; when both zoom on hover the head rises over the ring (3D "step out"). */
+@utility team-pop {
+  clip-path: inset(-50% -50% 50% -50%);
+}
+/* …and the circle-clipped copy shows only the bottom half, so the two halves meet at the middle and no soft hair edge
+   is drawn twice */
+@utility team-base {
+  clip-path: inset(calc(50% - 1px) 0 0 0);
+}
+
+@utility hero-video-media {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  aspect-ratio: 16 / 9;
+  mask-image: linear-gradient(to right, transparent, black 30%);
+}
+/* The video comes first: it fades in once a frame is playing ([data-playing], set by src/main.js). Without JS it never
+   plays, so it is only hidden while JS can still start it. */
+@utility hero-video-fade {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    transition: opacity 600ms var(--ease-out-soft);
+    &[data-playing] {
+      opacity: 1;
+    }
+  }
+}
+/* The poster is a fallback only: always shown with reduced motion or without JS; otherwise only when src/main.js
+   marks it [data-fallback] (autoplay blocked, or no frame after 3s). */
+@utility hero-video-poster {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    &:not([data-fallback]) {
+      display: none;
+    }
+  }
+}
+
+/* Background-video hero (product pages, [data-bg-video]): the title and the description under it sit top left, so the
+   page colour fades in from that corner only and the rest of the video stays clear.
+   Every text element is checked frame by frame across the loop. */
+@utility hero-video-scrim {
+  /* the title and description span the width below xl: fade down from the top */
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--color-surface-0) 95%, transparent) 0%,
+    color-mix(in oklab, var(--color-surface-0) 92%, transparent) 55%,
+    transparent 85%
+  );
+  /* phones: the description runs to four or five lines, so the fade holds stronger and longer (muted text stays AA
+     over the busiest frames: the Decision Monitor segments card sits right behind it at 375px) */
+  @media (width < 40rem) {
+    background-image: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-surface-0) 97%, transparent) 0%,
+      color-mix(in oklab, var(--color-surface-0) 97%, transparent) 66%,
+      transparent 92%
+    );
+  }
+  /* from xl the fade is only as large as the title block (top left), so the top right of the video stays clear */
+  @media (width >= 80rem) {
+    background-image: radial-gradient(
+      78% 96% at 0% 0%,
+      color-mix(in oklab, var(--color-surface-0) 95%, transparent) 0%,
+      color-mix(in oklab, var(--color-surface-0) 92%, transparent) 66%,
+      transparent 100%
+    );
+  }
+}
+
+/* DEAL acronym (About page, [data-deal]): "DEAL" in one big Ink row → the letters drop into a Pulse Blue column
+   (FLIP: the column is the real layout; each initial starts from --deal-from, a translate + scale to its place in
+   the big row) → each line opens into its word. The markup is the FINAL state, so without JS or with reduced
+   motion the expanded column shows at once. src/main.js measures once and loops data-state:
+     hold → stack → expand → (2s) → collapse (words close, bottom first) → return (letters fly back into the big
+     row, Blue → Ink) → hold … ; "done" is the still final state (paused, off screen, resized).
+   Only transform, opacity and max-width move (plus the Ink ↔ Blue colour). */
+@utility deal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* centred on the EXPANDED width (src/main.js pins it while the words are collapsed) */
+  width: var(--deal-w, fit-content);
+  margin-inline: auto;
+  font-family: var(--font-display);
+  font-size: var(--text-deal);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  @media (width >= 48rem) {
+    font-size: var(--text-deal-md);
+  }
+  /* JS + motion: stay invisible until src/main.js has measured and set the hold state (no flash of the column) */
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    &:not([data-state]) {
+      opacity: 0;
+    }
+  }
+  & > span {
+    display: flex;
+    white-space: nowrap;
+  }
+}
+@utility deal-initial {
+  display: inline-block;
+  color: var(--color-primary);
+  transform-origin: 0 0;
+  [data-state="hold"] & {
+    color: var(--color-ink);
+    transform: var(--deal-from);
+  }
+  [data-state="stack"] & {
+    transition:
+      transform 0.9s cubic-bezier(0.65, 0, 0.35, 1) calc(var(--i) * 70ms),
+      color 0.6s var(--ease-out-soft) calc(var(--i) * 70ms);
+  }
+  /* the way back: last letter first, into the same big row (--deal-from) */
+  [data-state="return"] & {
+    color: var(--color-ink);
+    transform: var(--deal-from);
+    transition:
+      transform 0.7s cubic-bezier(0.65, 0, 0.35, 1) calc(var(--ri) * 60ms),
+      color 0.5s var(--ease-out-soft) calc(var(--ri) * 60ms);
+  }
+}
+@utility deal-word {
+  display: inline-block;
+  overflow: hidden;
+  [data-state="hold"] &,
+  [data-state="stack"] &,
+  [data-state="collapse"] &,
+  [data-state="return"] & {
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(-0.5rem);
+  }
+  [data-state="expand"] & {
+    max-width: var(--w);
+    transition:
+      max-width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--i) * 150ms),
+      opacity 0.4s var(--ease-out-soft) calc(var(--i) * 150ms),
+      transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--i) * 150ms);
+  }
+  /* the way back: words close from the bottom line up */
+  [data-state="collapse"] & {
+    transition:
+      max-width 0.45s cubic-bezier(0.65, 0, 0.35, 1) calc(var(--ri) * 100ms),
+      opacity 0.3s var(--ease-out-soft) calc(var(--ri) * 100ms + 150ms),
+      transform 0.45s cubic-bezier(0.65, 0, 0.35, 1) calc(var(--ri) * 100ms);
+  }
+}
+
+/* Why PULSE orbit (#why). src/main.js turns the ring by setting --why-angle (one turn every 2 minutes); the
+   circles counter-turn so they stay upright. Picking a circle turns the ring (data-turning: a 900ms ease) until
+   that circle is at 3 o'clock and the card shows in the slot to the right ([data-why][data-show]). */
+@property --why-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@utility why-spin {
+  rotate: var(--why-angle);
+  &[data-turning] {
+    transition: --why-angle 900ms var(--ease-in-out-cubic);
+  }
+}
+@utility why-upright {
+  rotate: calc(var(--why-angle) * -1);
+}
+/* Orbit size: up to 32rem, but always leaves room for the card slot (20rem card + 3rem line) beside it */
+@utility why-orbit-size {
+  width: min(32rem, 100% - 23rem);
+}
+/* Card slot right of the orbit: always 23rem wide, so the orbit never moves when a reason opens */
+@utility why-slot {
+  display: flex;
+  align-items: center; /* the card centres on the circle at 3 o'clock */
+  width: 23rem;
+  align-self: stretch;
+}
+/* Hint in the empty slot: fades out when a card shows */
+@utility why-hint {
+  transition: opacity 250ms var(--ease-out-soft);
+  [data-why][data-show] & {
+    opacity: 0;
+  }
+}
+/* The card (and its line) fade in after the turn ([data-why][data-show]); hidden from everyone otherwise */
+@utility why-card {
+  transition-property: opacity, scale, visibility;
+  transition-duration: 250ms;
+  transition-timing-function: var(--ease-out-soft);
+  [data-why]:not([data-show]) & {
+    visibility: hidden;
+    opacity: 0;
+    scale: 0.96;
+  }
+  [data-why][data-show] & {
+    transition-delay: 600ms;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* Only the selected reason shows in the card */
+@utility why-panel {
+  &:not([data-active]) {
+    display: none;
+  }
+}
+
+/* `js:` variant — styles that only apply when JavaScript runs (e.g. hide a result until it's typed) */
+@custom-variant js (@media (scripting: enabled));
+
+/* Decision Monitor hero (product/decision-monitor.html): one story that plays once when the app window scrolls in
+   (its reveal wrapper gets [data-shown]), and ends on the catch. The blue line draws to week 2 (mon-line) and the
+   week-2 marker pops (mon-pop-early); the grey dashed "if nobody looks" line runs on to the quarter's end
+   (mon-line-rest) with its muted end marker and label (mon-pop-late / mon-in-late); last, the alert, the "Alert,
+   week 2" tag and "Monitor tells you in week 2" land (mon-in-final). Written in the final state: without JS or
+   with reduced motion the finished frame shows. */
+@utility mon-line {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    clip-path: inset(-8px 100% -8px -8px);
+    [data-shown] & {
+      animation: mon-draw 0.6s linear 0.9s forwards;
+    }
+  }
+}
+@utility mon-line-rest {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    clip-path: inset(-8px 83.4% -8px -8px);
+    [data-shown] & {
+      animation: mon-draw 1.6s linear 1.6s forwards;
+    }
+  }
+}
+@utility mon-pop-early {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    scale: 0.4;
+    [data-shown] & {
+      animation: mon-pop 400ms var(--ease-out-soft) 1.45s forwards;
+    }
+  }
+}
+@utility mon-pop-late {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    scale: 0.4;
+    [data-shown] & {
+      animation: mon-pop 400ms var(--ease-out-soft) 3.15s forwards;
+    }
+  }
+}
+@utility mon-in-late {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    translate: 0 0.25rem;
+    [data-shown] & {
+      animation: mon-in 500ms var(--ease-out-soft) 3.2s forwards;
+    }
+  }
+}
+@utility mon-in-final {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    translate: 0 0.25rem;
+    [data-shown] & {
+      animation: mon-in 500ms var(--ease-out-soft) 3.7s forwards;
+    }
+  }
+}
+@keyframes mon-draw {
+  to {
+    clip-path: inset(-8px -8px -8px -8px);
+  }
+}
+@keyframes mon-in {
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes mon-pop {
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Header mega-menu (Attio-style shared viewport).                     */
+/* src/main.js moves each dropdown's [data-nav-content] into one        */
+/* viewport, sizes it with --nav-viewport-width/height and sets         */
+/* data-state / data-dir on the contents. Without JS the <details>      */
+/* dropdowns work on their own.                                         */
+/* ------------------------------------------------------------------ */
+/* Ask Pulse chat (the shared shell, every page; owner's reference, 20 Oct 2026): a floating ink button in the
+   bottom-right corner opens a conversation panel (attio.com style). UI only for now: no backend, so every reply says
+   the assistant is not connected yet and points to the contact address. Hidden without JS (it could not work).
+   The panel is out of the tab order while closed (visibility); it rises 8px and grows from 96% as it opens (200ms),
+   only fades with reduced motion. data-expanded makes it wider and as tall as the screen allows. */
+@utility chat-panel {
+  position: fixed;
+  z-index: 60;
+  right: calc(var(--spacing) * 4);
+  bottom: calc(var(--spacing) * 22);
+  display: flex;
+  flex-direction: column;
+  width: min(26rem, calc(100vw - 2rem));
+  height: min(40rem, calc(100svh - 7.5rem));
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-3xl);
+  background: var(--color-card);
+  box-shadow: var(--shadow-nav);
+  transform-origin: bottom right;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 0.5rem;
+  scale: 0.96;
+  transition:
+    opacity 200ms var(--ease-out-soft),
+    translate 200ms var(--ease-out-soft),
+    scale 200ms var(--ease-out-soft),
+    visibility 0s linear 200ms;
+  &[data-open] {
+    opacity: 1;
+    visibility: visible;
+    translate: 0 0;
+    scale: 1;
+    transition-delay: 0s;
+  }
+  &[data-expanded] {
+    width: min(48rem, calc(100vw - 2rem));
+    height: calc(100svh - 7.5rem);
+  }
+  @media (width >= 40rem) {
+    right: calc(var(--spacing) * 6);
+    bottom: calc(var(--spacing) * 24);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    translate: none;
+    scale: none;
+  }
+}
+
+@utility nav-viewport {
+  position: absolute;
+  top: 100%;
+  left: var(--nav-viewport-x, 0);
+  margin-top: 0.5rem;
+  width: var(--nav-viewport-width, auto);
+  height: var(--nav-viewport-height, auto);
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-nav);
+  transition-property: width, height, left, translate, opacity, visibility;
+  transition-duration: 150ms, 150ms, 150ms, 150ms, 150ms, 0s;
+  transition-delay: 0s, 0s, 0s, 0s, 0s, 150ms;
+  transition-timing-function: var(--ease-in-out-cubic);
+  &:not([data-open]) {
+    opacity: 0;
+    translate: 0 -0.25rem;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  &[data-open] {
+    transition-delay: 0s;
+  }
+  /* first open: appear at the new size without animating width/height */
+  &[data-instant] {
+    transition-property: translate, opacity, visibility;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity, visibility;
+    translate: none;
+  }
+}
+
+/* All menu contents share one grid cell, so the old one can animate out while the new one animates in */
+@utility nav-viewport-stack {
+  display: grid;
+  & > * {
+    grid-area: 1 / 1;
+    align-self: start;
+    justify-self: start;
+  }
+}
+
+/* One column in a mega menu. Columns after the first get a light, inset divider
+   (shorter than the panel, so it doesn't run edge to edge). */
+@utility nav-column {
+  position: relative;
+  &:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    top: 1.25rem;
+    bottom: 1.25rem;
+    left: 0;
+    width: 1px;
+    background-color: color-mix(in oklab, var(--color-line) 60%, transparent);
+  }
+}
+
+@utility nav-content {
+  &[data-state="inactive"] {
+    display: none;
+  }
+  &[data-state="active"][data-dir="right"] {
+    animation: nav-enter-from-right 200ms var(--ease-in-out-cubic);
+  }
+  &[data-state="active"][data-dir="left"] {
+    animation: nav-enter-from-left 200ms var(--ease-in-out-cubic);
+  }
+  &[data-state="exiting"] {
+    pointer-events: none;
+  }
+  &[data-state="exiting"][data-dir="right"] {
+    animation: nav-exit-to-left 200ms var(--ease-in-out-cubic) forwards;
+  }
+  &[data-state="exiting"][data-dir="left"] {
+    animation: nav-exit-to-right 200ms var(--ease-in-out-cubic) forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &[data-state="active"][data-dir] {
+      animation: nav-fade-in 100ms var(--ease-out-soft);
+    }
+    &[data-state="exiting"][data-dir] {
+      animation: nav-fade-out 100ms var(--ease-out-soft) forwards;
+    }
+  }
+}
+
+@keyframes nav-enter-from-right {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    translate: 12.5rem 0;
+  }
+}
+@keyframes nav-enter-from-left {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    translate: -12.5rem 0;
+  }
+}
+@keyframes nav-exit-to-left {
+  to {
+    opacity: 0;
+    filter: blur(8px);
+    translate: -12.5rem 0;
+  }
+}
+@keyframes nav-exit-to-right {
+  to {
+    opacity: 0;
+    filter: blur(8px);
+    translate: 12.5rem 0;
+  }
+}
+@keyframes nav-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes nav-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero: headline left, product demo right, one screen tall, on a soft  */
+/* gradient that follows the cursor.                                    */
+/* ------------------------------------------------------------------ */
+/* Cursor position for the hero spotlight (src/main.js sets them on pointer move). Registered so they
+   can transition: a 100ms ease smooths the movement while the light stays on the cursor; the tail copies
+   take 300ms and 600ms, so while the cursor moves they stretch out behind it like a comet tail. */
+@property --hero-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 72%;
+}
+@property --hero-y {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 40%;
+}
+/* The tail: two fainter copies of the light that follow the same position more slowly. --hero-tail is 1
+   while the cursor moves and fades to 0 when it stops, so the tail only shows in motion. */
+@property --hero-tail {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+@property --hero-tx1 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 72%;
+}
+@property --hero-ty1 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 40%;
+}
+@property --hero-tx2 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 72%;
+}
+@property --hero-ty2 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 40%;
+}
+/* One screen tall below the sticky h-17 header (svh: the mobile address bar never cuts it) */
+@utility hero-screen {
+  min-height: calc(100svh - var(--spacing) * 17);
+}
+/* Soft background: page colour with a faint Sky wash (top right) and Pulse Blue wash (bottom left), plus a
+   small, clear primary light at --hero-x / --hero-y (solid core, soft edge) with a two-part tail that only
+   shows while the cursor moves. At rest: light 14% + wash 4% keeps text AA (muted 4.57 light / 6.26 dark). */
+@utility hero-bg {
+  --hero-light: color-mix(in oklab, var(--color-primary) 14%, transparent);
+  background-color: var(--color-surface-0);
+  background-image:
+    radial-gradient(
+      20rem circle at var(--hero-x) var(--hero-y),
+      var(--hero-light),
+      var(--hero-light) 20%,
+      transparent 70%
+    ),
+    radial-gradient(
+      17rem circle at var(--hero-tx1) var(--hero-ty1),
+      color-mix(
+        in oklab,
+        var(--color-primary) calc(var(--hero-tail) * 6%),
+        transparent
+      ),
+      transparent 70%
+    ),
+    radial-gradient(
+      14rem circle at var(--hero-tx2) var(--hero-ty2),
+      color-mix(
+        in oklab,
+        var(--color-primary) calc(var(--hero-tail) * 4%),
+        transparent
+      ),
+      transparent 70%
+    ),
+    radial-gradient(
+      55% 60% at 90% 10%,
+      color-mix(in oklab, var(--color-sky) 4%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      50% 60% at 5% 95%,
+      color-mix(in oklab, var(--color-primary) 4%, transparent),
+      transparent
+    );
+  transition:
+    --hero-x 100ms ease-out,
+    --hero-y 100ms ease-out,
+    --hero-tx1 300ms ease-out,
+    --hero-ty1 300ms ease-out,
+    --hero-tx2 600ms ease-out,
+    --hero-ty2 600ms ease-out,
+    --hero-tail 500ms ease-out;
+}
+/* Soft gradient section background (Why Pulse): page colour with a faint Pulse Blue wash from the top left and a
+   Sky wash from the bottom right. 10% each keeps muted text AA even where they overlap (4.66 light / 5.97 dark). */
+@utility bg-soft-gradient {
+  background-color: var(--color-surface-0);
+  background-image:
+    radial-gradient(
+      70% 60% at 0% 0%,
+      color-mix(in oklab, var(--color-primary) 10%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      70% 60% at 100% 100%,
+      color-mix(in oklab, var(--color-sky) 10%, transparent),
+      transparent
+    );
+}
+/* Call-to-action band (shared above the footer): a dot pattern that fades out towards the edges, and a layer of
+   primary dots that only shows inside a circle around the cursor (--cta-x / --cta-y, [data-lit], set by src/main.js).
+   The dots are 1.5–2px, so text over them keeps its contrast. Reduced motion or touch: static dots only. */
+@utility cta-dots {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color-surface-0);
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-size: 22px 22px;
+  }
+  &::before {
+    background-image: radial-gradient(
+      circle,
+      var(--color-line-control) 1.2px,
+      transparent 1.6px
+    );
+    opacity: 0.55;
+    mask-image: radial-gradient(70% 90% at 50% 50%, black 30%, transparent);
+  }
+  &::after {
+    background-image: radial-gradient(
+      circle,
+      var(--color-primary) 1.6px,
+      transparent 2.1px
+    );
+    mask-image: radial-gradient(
+      12rem circle at var(--cta-x, 50%) var(--cta-y, 50%),
+      black,
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 300ms var(--ease-out-soft);
+  }
+  &[data-lit]::after {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      display: none;
+    }
+  }
+}
+/* Coloured shadow behind the product demo: the Signal gradient, blurred, under the window */
+@utility hero-glow {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 10% 2% -2%;
+    z-index: -1;
+    border-radius: 2rem;
+    background-image: var(--gradient-signal);
+    @supports not (background: linear-gradient(in oklch, red, blue)) {
+      background-image: var(--gradient-signal-fallback);
+    }
+    filter: blur(72px);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero workflow demo (from thepulseapi.com): [data-demo] plays its     */
+/* steps in order. src/main.js sets data-active on the current tab,      */
+/* caption and step; each tab's timer bar sets the pace (when its        */
+/* animation ends, the next step starts). Without JS every step is shown */
+/* one under another; with reduced motion nothing plays by itself.       */
+/* ------------------------------------------------------------------ */
+@utility demo-stack {
+  @media (scripting: enabled) {
+    display: grid;
+    grid-template-columns: minmax(
+      0,
+      1fr
+    ); /* wide tables scroll inside their step instead of stretching it */
+  }
+}
+@utility demo-step {
+  @media (scripting: enabled) {
+    grid-area: 1 / 1;
+    transition-property: opacity, translate, visibility;
+    transition-duration: 400ms, 400ms, 0s;
+    transition-timing-function: var(--ease-out-soft);
+    transition-delay: 0s, 0s, 400ms;
+    &:not([data-active]) {
+      opacity: 0;
+      translate: 0 0.5rem;
+      visibility: hidden;
+    }
+    &[data-active] {
+      transition-delay: 150ms, 150ms, 0s; /* the old step fades first */
+    }
+  }
+  @media (scripting: none) {
+    & + & {
+      border-top: 1px solid var(--color-line);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* Parts of a step that enter one after another (stagger with delay-*);
+   they reset only after the step has faded out */
+@utility demo-in {
+  transition-property: opacity, translate;
+  transition-duration: 500ms;
+  transition-timing-function: var(--ease-out-soft);
+  @media (scripting: enabled) {
+    [data-demo-step]:not([data-active]) & {
+      opacity: 0;
+      translate: 0 0.5rem;
+      transition-duration: 0s;
+      transition-delay: 400ms;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* Bars that grow from the left when their step starts (real width as a fraction: w-161/216) */
+@utility demo-bar {
+  transform-origin: left;
+  transition-property: scale;
+  transition-duration: var(--demo-bar-duration, 1100ms);
+  transition-timing-function: var(--demo-bar-ease, var(--ease-emphasized));
+  @media (scripting: enabled) {
+    [data-demo-step]:not([data-active]) & {
+      scale: 0 1;
+      transition-duration: 0s;
+      transition-delay: 400ms;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+@utility demo-bar-slow {
+  --demo-bar-duration: 4s;
+}
+/* Audit progress bar: fills like thepulseapi.com's scanner, with a light shimmer running along it */
+@utility demo-bar-scan {
+  --demo-bar-duration: 1900ms;
+  --demo-bar-ease: var(--ease-scan);
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--color-card) 85%, transparent) 45% 55%,
+      transparent
+    );
+    translate: -100% 0;
+    animation: var(--animate-demo-shimmer);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      display: none;
+    }
+  }
+}
+/* Hatched track behind the demo's progress bars */
+@utility scan-track {
+  background-color: var(--color-surface-1);
+  background-image: repeating-linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--color-ink) 5%, transparent) 0 4px,
+    transparent 4px 8px
+  );
+}
+/* Opposite of demo-in: shown as the step starts, then fades away (after its delay-*).
+   Without JS only the end state is shown. */
+@utility demo-out {
+  transition: opacity 500ms var(--ease-out-soft);
+  @media (scripting: enabled) {
+    [data-demo-step][data-active] & {
+      opacity: 0;
+    }
+    [data-demo-step]:not([data-active]) & {
+      transition-duration: 0s;
+      transition-delay: 400ms;
+    }
+  }
+  @media (scripting: none) {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* SVG path (pathLength="1") drawn from start to end when its step starts */
+@utility demo-draw {
+  stroke-dasharray: 1;
+  transition-property: stroke-dashoffset;
+  transition-duration: 900ms;
+  transition-timing-function: var(--ease-emphasized);
+  @media (scripting: enabled) {
+    [data-demo-step]:not([data-active]) & {
+      stroke-dashoffset: 1;
+      transition-duration: 0s;
+      transition-delay: 400ms;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* Payoff grid cells that become separable after the repair (built by src/main.js) */
+@utility demo-fill {
+  background-color: var(--color-line);
+  transition: background-color 400ms var(--ease-out-soft);
+  [data-demo-step][data-active] & {
+    background-color: var(--color-chart-main);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+/* Translucent band sweeping once across the audit step when it starts (the step needs `relative`) */
+@utility demo-scan {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  &::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    width: 40%;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-scan-band),
+      transparent
+    );
+    translate: -110% 0;
+  }
+  [data-active] > &::after {
+    animation: var(--animate-demo-scan);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+}
+/* Timeline segment fill inside each step tab — the active one's animationend advances the demo */
+@utility demo-timer {
+  transform-origin: left;
+  scale: 0 1;
+  [data-active] & {
+    animation: var(--animate-demo-timer);
+  }
+  [data-done] & {
+    scale: 1 1; /* steps already played stay full on the timeline */
+  }
+  [data-demo]:has([data-demo-window]:hover) &, /* only over the app window, not the timeline */
+  [data-demo]:has(:focus-visible) &, /* keyboard focus inside the demo holds it (WCAG 2.2.2) */
+  [data-demo][data-paused] &,
+  [data-demo][data-held] & {
+    animation-play-state: paused;
+  }
+  /* Nothing advances by itself: the active segment simply shows full */
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+    [data-active] & {
+      scale: 1 1;
+    }
+  }
+}
+
+/* Hero demo: its spinner and the audit bars' shimmer stop with the demo (paused by the button, by hovering the app
+   window, or off screen), so nothing keeps animating where nobody is looking (WCAG 2.2.2; no idle repaints) */
+[data-demo]:has(:focus-visible) :is(.animate-spin, .demo-bar-scan),
+[data-demo]:has(:focus-visible) .demo-bar-scan::after,
+[data-demo][data-paused] :is(.animate-spin, .demo-bar-scan),
+[data-demo][data-held] :is(.animate-spin, .demo-bar-scan),
+[data-demo]:has([data-demo-window]:hover) :is(.animate-spin, .demo-bar-scan),
+[data-demo][data-paused] .demo-bar-scan::after,
+[data-demo][data-held] .demo-bar-scan::after,
+[data-demo]:has([data-demo-window]:hover) .demo-bar-scan::after {
+  animation-play-state: paused;
+}
+
+/* Menu items whose page does not exist yet (Blog, Sign In, categories …): <a role="link" aria-disabled="true">
+   without href. Not focusable, announced as an unavailable link, muted, and with no hover or click. Unlayered so
+   it wins over the item's own colour and hover utilities. */
+a[aria-disabled="true"],
+a[aria-disabled="true"] * {
+  pointer-events: none;
+  color: var(--color-muted);
+}

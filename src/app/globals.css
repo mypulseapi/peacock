@@ -3730,6 +3730,36 @@ a[aria-disabled="true"] * {
 
 
 /*
+ * Content becomes visible whether or not the script runs.
+ *
+ * The designer's `.reveal` is `opacity: 0` until `designed-motion.js` sets `[data-shown]`. On a
+ * folder of static HTML that is safe: the script always runs, immediately, against a DOM nothing
+ * else touches. In this app it is one failure away from a blank page -- a slow chunk, a client
+ * navigation, an extension that blocks the file, a hydration pass that replaces the nodes the
+ * observer was watching. Every one of those leaves real text at `opacity: 0`, which no test that
+ * reads the DOM can see.
+ *
+ * So the hidden state now expires. The animation runs once, 1.2s after paint, and is the only
+ * thing that can leave an element visible-by-default; the observer still does the real work and
+ * almost always wins, because it fires as soon as the element scrolls into view. This is a
+ * failsafe, not the mechanism.
+ *
+ * `forwards` matters: the element must stay visible after the animation ends, not snap back.
+ */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .reveal:not([data-shown]) {
+    animation: pulse-reveal-failsafe 400ms ease-out 1200ms forwards;
+  }
+}
+
+@keyframes pulse-reveal-failsafe {
+  to {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+/*
  * Grid items may shrink below their content.
  *
  * A grid item defaults to `min-width: auto`, so it refuses to be narrower than what is inside it.

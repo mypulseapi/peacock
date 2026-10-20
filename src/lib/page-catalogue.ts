@@ -69,6 +69,9 @@ export interface PageItem {
 export const PAGE_CATALOGUE: readonly PageItem[] = [
   // Entry
   { route: "/", audience: "any", area: "none", depth: "entry", decides: ["what-it-does", "does-it-fit-me"] },
+  // Temporary: the converted home page, rendered alongside the current one so the two can be
+  // compared before anything a visitor sees changes. noindex, and deleted once it lands on /.
+  { route: "/preview-home", audience: "any", area: "none", depth: "entry", decides: ["what-it-does", "does-it-fit-me"] },
 
   // Product
   { route: "/product", audience: "merchant", area: "none", depth: "explainer", decides: ["what-it-does"] },

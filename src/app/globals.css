@@ -3727,3 +3727,20 @@ a[aria-disabled="true"] * {
   pointer-events: none;
   color: var(--color-muted);
 }
+
+
+/*
+ * Standalone links clear the 24px tap target.
+ *
+ * WCAG 2.2 AA 2.5.8 wants 24x24 CSS pixels. The designer's CTA links -- `inline-flex` with a
+ * label and an arrow -- come out between 20px and 23px tall, so 52 of them across the converted
+ * pages were one to four pixels short. This is inherited from the source rather than introduced
+ * by the conversion: the same links measure the same in the original HTML.
+ *
+ * One rule rather than 52 edits, and it only reaches `a.inline-flex`, which is the CTA shape. A
+ * link inside a sentence is `display: inline` and untouched, which matters because 2.5.8 exempts
+ * those and padding them would break the line box of every paragraph that contains one.
+ */
+a.inline-flex {
+  min-height: 1.5rem;
+}

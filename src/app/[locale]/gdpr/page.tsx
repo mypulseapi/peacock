@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageSchema } from "@/components/PageSchema";
+import { DesignedGdpr } from "@/components/designed/gdpr";
 import { buildAlternates } from "@/lib/seo";
 import GDPRPage from "./GDPRPageClient";
 
@@ -30,7 +31,9 @@ export default async function Page({ params }: PageProps) {
   return (
     <>
       <PageSchema locale={locale} path="/gdpr" />
-      <GDPRPage />
+      {/* English gets the designer's converted page; Vietnamese keeps the translated one until
+          that conversion's text has been extracted and translated. See [locale]/page.tsx. */}
+      {locale === "en" ? <DesignedGdpr /> : <GDPRPage />}
     </>
   );
 }

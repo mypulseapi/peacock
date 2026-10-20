@@ -1,5 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import { PageSchema } from "@/components/PageSchema";
+import { designedSector } from "@/components/designed/industries";
 import { buildAlternates, fitDescription } from "@/lib/seo";
 import { setRequestLocale } from "next-intl/server";
 import { IndustryPageContent } from "@/components/IndustryPageContent";
@@ -54,6 +55,9 @@ export default async function IndustryPage({ params }: PageProps) {
   const s = sector(locale, slug);
   if (!s) notFound();
 
+  // An element, not a component: see the note in components/designed/industries.
+  const designed = locale === "en" ? designedSector(slug) : null;
+
   return (
     <>
       <PageSchema
@@ -61,7 +65,9 @@ export default async function IndustryPage({ params }: PageProps) {
         path={`/industries/${slug}`}
         leaf={sector(locale, slug)?.name ?? slug}
       />
-      <IndustryPageContent slug={slug} />
+      {/* English gets the designer's converted sector page where one exists; Vietnamese keeps
+          the translated one, as everywhere else. See [locale]/page.tsx. */}
+      {designed ?? <IndustryPageContent slug={slug} />}
     </>
   );
 }

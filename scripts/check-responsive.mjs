@@ -156,6 +156,24 @@ const PROBE = ({ minTap, minFont }) => {
       (tag === "input" && el.type !== "hidden");
     if (interactive && (r.height < minTap || r.width < minTap)) {
       /*
+       * An `::after` overlay that expands the target counts, and `getBoundingClientRect()` cannot
+       * see it. The design system's `hit-area` utility does exactly this -- absolutely positioned,
+       * with negative insets taking the clickable region out to 44px -- and without this check it
+       * reported 21 compliant buttons as failures. A checker that cannot be trusted on the pattern
+       * a design system uses deliberately is worse than no checker, because the real finding ends
+       * up buried in its noise.
+       */
+      const after = getComputedStyle(el, "::after");
+      const expands =
+        after.content !== "none" &&
+        after.position === "absolute" &&
+        ["top", "bottom", "left", "right"].some((side) => {
+          const v = parseFloat(after[side]);
+          return Number.isFinite(v) && v < 0;
+        });
+      if (expands) continue;
+
+      /*
        * WCAG 2.2 AA 2.5.8 exempts a link whose target is "in a sentence or block of text". That
        * exemption is the whole reason prose can contain links at all, so it is honoured here:
        * flagging every inline link in a legal page is noise that buries the real findings.

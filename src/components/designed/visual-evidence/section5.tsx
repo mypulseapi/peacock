@@ -12,7 +12,7 @@ export function Section5Section() {
             <div
               className="frame grid gap-10 py-20 lg:grid-cols-12 lg:gap-x-0 lg:py-28"
             >
-              <div className="lg:col-span-5 lg:pr-16">
+              <div className="min-w-0 lg:col-span-5 lg:pr-16">
                 <h2 className="text-title text-balance">
                   What does this change about the audit?
                 </h2>
@@ -21,7 +21,7 @@ export function Section5Section() {
                   one with the money in it.
                 </p>
               </div>
-              <div className="lg:col-span-7">
+              <div className="min-w-0 lg:col-span-7">
                 <p className="text-body leading-relaxed text-pretty text-muted">
                   A shopper can be told a fact in three ways: a field they can
                   filter on, a picture they can look at, or a sentence they will

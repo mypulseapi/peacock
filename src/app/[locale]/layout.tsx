@@ -13,6 +13,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { NavigationProgress } from "@/components/NavigationProgress";
 import { PulseAnalytics } from "@/components/PulseAnalytics";
 import { IntentPanel } from "@/components/IntentPanel";
+import { IconSprite } from "@/components/designed/icon-sprite";
 
 // The typeface, for body and headings alike. Inter above is only the fallback in
 // the stack: globals.css sets `--font-sans: var(--font-jakarta)` and every
@@ -167,6 +168,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             static export has no request, so every page in the site failed to prerender -- and the
             error names headers() rather than this line, which is why it reads as 139 unrelated
             failures instead of one. */}
+        {/* 41 symbols, defined once. Every designed page references them by `<use href="#i-...">`,
+            so this has to be in the document before any of them render. */}
+        <IconSprite />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider>
             <Suspense fallback={null}>

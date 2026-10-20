@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { buildAlternates } from "@/lib/seo";
 import { StoryPage, storyFaqSchema } from "@/components/StoryPage";
 import { PageSchema } from "@/components/PageSchema";
+import { DesignedDecisionVerification } from "@/components/designed/product/decision-verification";
 import { VerificationVisual } from "@/components/StoryVisual";
 import { ProofScene, ProofPathScene, FilledNotProvenScene } from "@/components/home/VerifyScenes";
 import { decisionVerification } from "@/content/pages/decision-verification";
@@ -30,7 +31,9 @@ export default async function Page({ params }: PageProps) {
           answers lead with a complete sentence, so an answer engine can lift and
           attribute one without the surrounding page. */}
       <PageSchema locale={locale} path="/product/decision-verification" nodes={[storyFaqSchema(decisionVerification(locale))]} />
-      <StoryPage layout={{ steps: "rail", gets: "showcase", limits: "ledger" }} visual={<VerificationVisual />} heroVisual={<ProofScene />} chainVisual={<ProofPathScene />} situationVisual={<FilledNotProvenScene />} c={decisionVerification(locale)} />
+      {/* English gets the designer's converted page; Vietnamese keeps the translated one until
+          that conversion's text has been extracted and translated. See [locale]/page.tsx. */}
+      {locale === "en" ? <DesignedDecisionVerification /> : <StoryPage layout={{ steps: "rail", gets: "showcase", limits: "ledger" }} visual={<VerificationVisual />} heroVisual={<ProofScene />} chainVisual={<ProofPathScene />} situationVisual={<FilledNotProvenScene />} c={decisionVerification(locale)} />}
     </>
   );
 }

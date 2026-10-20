@@ -11,7 +11,7 @@ export function Section3Section() {
     <section className="border-b border-line">
             <div className="frame py-20 lg:py-28">
               <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-0">
-                <div className="lg:col-span-5 lg:pr-16">
+                <div className="min-w-0 lg:col-span-5 lg:pr-16">
                   <h2 className="text-title text-balance">
                     On a laptop shelf, the two channels miss each other completely
                   </h2>
@@ -22,7 +22,7 @@ export function Section3Section() {
                     the catalogue tell you, and can the photograph tell you.
                   </p>
                 </div>
-                <div className="lg:col-span-7">
+                <div className="min-w-0 lg:col-span-7">
                   <div className="card overflow-x-auto">
                     <table className="w-full text-left text-body">
                       <caption className="sr-only">

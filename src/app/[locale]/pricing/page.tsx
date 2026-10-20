@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageSchema } from "@/components/PageSchema";
+import { DesignedPricing } from "@/components/designed/pricing";
 import { buildAlternates } from "@/lib/seo";
 import PricingContent from "./PricingContent";
 
@@ -26,7 +27,9 @@ export default async function Page({ params }: PageProps) {
   return (
     <>
       <PageSchema locale={locale} path="/pricing" />
-      <PricingContent locale={locale} />
+      {/* English gets the designer's converted page; Vietnamese keeps the translated one until
+          that conversion's text has been extracted and translated. See [locale]/page.tsx. */}
+      {locale === "en" ? <DesignedPricing /> : <PricingContent locale={locale} />}
     </>
   );
 }

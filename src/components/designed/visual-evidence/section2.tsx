@@ -12,12 +12,12 @@ export function Section2Section() {
             <div
               className="frame grid gap-10 py-20 lg:grid-cols-12 lg:gap-x-0 lg:py-28"
             >
-              <div className="lg:col-span-5 lg:pr-16">
+              <div className="min-w-0 lg:col-span-5 lg:pr-16">
                 <h2 className="text-title text-balance">
                   Why did we go looking for this?
                 </h2>
               </div>
-              <div className="lg:col-span-7">
+              <div className="min-w-0 lg:col-span-7">
                 <p className="text-body leading-relaxed text-pretty text-muted">
                   Because of something a colleague said about their own shopping,
                   which is the kind of remark that is unremarkable until you notice

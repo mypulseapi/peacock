@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageSchema } from "@/components/PageSchema";
+import { DesignedHome } from "@/components/designed/home";
 import { buildAlternates } from "@/lib/seo";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ExamplesBand } from "@/components/home/ExamplesBand";
@@ -34,6 +35,36 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+/*
+ * The Vietnamese home page, which is still the old composition.
+ *
+ * `DesignedHome` is the designer's markup converted from afedfc1, and that page is English only:
+ * `lang="en"`, no /vi tree, no translated copy. Rendering it under /vi would put English back on
+ * a Vietnamese page, which is the exact fault that was fixed two releases ago and is worse than a
+ * layout that does not match yet.
+ *
+ * So English gets the designer's design today and Vietnamese keeps working translated content.
+ * They converge when the conversion's text has been extracted and translated, which is the next
+ * piece of work rather than a thing to leave implied.
+ */
+function VietnameseHome({ locale }: { locale: string }) {
+  return (
+    <>
+      <HeroSection locale={locale} />
+      <ExamplesBand locale={locale} />
+      <ProofSection />
+      <ProblemSection />
+      <MarketSection />
+      <DisagreementSection />
+      <MidCtaSection />
+      <HowItWorksSection />
+      <ReasonsSection locale={locale} />
+      <PrivacySection />
+      <FinalCtaSection locale={locale} />
+    </>
+  );
+}
+
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   // Static rendering, and the locale the graph below declares. See [locale]/terms/page.tsx.
@@ -64,17 +95,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           this repo already pad for a fixed bar, a spacer is the one-line
           equivalent with no blast radius. */}
       <div className="h-[68px]" aria-hidden />
-      <HeroSection locale={locale} />
-      <ExamplesBand locale={locale} />
-      <ProofSection />
-      <ProblemSection />
-      <MarketSection />
-      <DisagreementSection />
-      <MidCtaSection />
-      <HowItWorksSection />
-      <ReasonsSection locale={locale} />
-      <PrivacySection />
-      <FinalCtaSection locale={locale} />
+      {locale === "en" ? <DesignedHome /> : <VietnameseHome locale={locale} />}
     </>
   );
 }

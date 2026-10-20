@@ -1530,5 +1530,11 @@
     "reopen": "Reopen it",
     "keepClosed": "Leave it closed",
     "matchedOn": "Matched on"
+  },
+  "visualEvidence": {
+    "meta": {
+      "title": "What the photograph already shows",
+      "description": "Across a 2,176-product catalogue, 52.6% of recorded attribute values duplicate the product photograph. What that leaves is the part worth recording."
+    }
   }
 }

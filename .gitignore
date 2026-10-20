@@ -1,8 +1,30 @@
 node_modules/
-dist/
 .DS_Store
+
+# Next.js
+/.next/
+/out/
+
+# The old Tailwind CLI output, from when this repo was hand-written HTML. Nothing writes here now.
+/dist/
+next-env.d.ts
+*.tsbuildinfo
+
+# Environment. `.env.example` is the documented list and is committed; nothing else is.
+.env*
+!.env.example
+
+# Site images live in R2 under the website/ prefix and are deleted after upload. public/images is
+# a staging area only: put a file there, run `pnpm assets:manifest`, upload, then remove it. The
+# manifest in src/lib is the record of what exists.
+public/images/
 
 # Design-skill working files (Impeccable, Taste): local state, never committed
 .impeccable/
 .taste-skill/
 PRODUCT.md
+
+# Internal planning docs — keep local, never publish
+ai/
+research/
+reference/

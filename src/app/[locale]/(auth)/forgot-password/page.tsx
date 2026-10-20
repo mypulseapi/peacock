@@ -1,0 +1,31 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildAlternates } from "@/lib/seo";
+import { ForgotPasswordForm } from "./ForgotPasswordForm";
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("auth.forgot");
+  return {
+    title: t("title"),
+    description: t("subtitle"),
+    alternates: buildAlternates(locale, "/forgot-password"),
+    // Auth screens have nothing to rank for, and an indexed password-reset page is a small gift to
+    // anyone scraping for live endpoints.
+    //
+    // `follow: true` rather than nofollow, per the standard's section 2.4: the page should still
+    // pass link equity onward to the footer and navigation it links to. Keeping it out of the
+    // index is the goal; stranding the links it contains is collateral.
+    robots: { index: false, follow: true },
+  };
+}
+
+export default async function Page({ params }: PageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  return <ForgotPasswordForm />;
+}

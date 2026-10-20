@@ -1,58 +1,94 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+# Build the Next.js site and publish the static export to GitHub Pages.
+#
+# This replaced a workflow that copied hand-written HTML into _site. The site is a Next app now, so
+# the artifact is `out/`, written by `next build` with `output: "export"`.
+#
+# Every public origin is read from the environment at BUILD time (NEXT_PUBLIC_* values are inlined
+# into the HTML; there is no runtime on Pages to read them later). They are repository variables
+# rather than literals here, so changing a domain is a settings change and not a commit. A missing
+# one fails the build on purpose -- see src/lib/site.ts.
+name: Deploy to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Never cancel a running production deploy; queue behind it.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: pnpm
-      # dist/ is git-ignored, so the CSS must be built here
-      - name: Build CSS
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build
+        # `vars.*` are repository variables (Settings > Secrets and variables > Actions >
+        # Variables). None of these is a secret: all of them are visible in the shipped HTML.
+        # The `||` fallbacks are the production hosts, so the site still builds correctly before
+        # anyone has set the variables.
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://thepulseapi.com' }}
+          NEXT_PUBLIC_DOCS_URL: ${{ vars.NEXT_PUBLIC_DOCS_URL || 'https://developer.thepulseapi.com' }}
+          NEXT_PUBLIC_APP_URL: ${{ vars.NEXT_PUBLIC_APP_URL || 'https://app.thepulseapi.com' }}
+          NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL || 'https://api.thepulseapi.com' }}
+          NEXT_PUBLIC_CDN_URL: ${{ vars.NEXT_PUBLIC_CDN_URL || 'https://cdn.thepulseapi.com' }}
+          NEXT_PUBLIC_DEMO_URL: ${{ vars.NEXT_PUBLIC_DEMO_URL || 'https://demo.thepulseapi.com' }}
+          NEXT_PUBLIC_AUTH_URL: ${{ vars.NEXT_PUBLIC_AUTH_URL || 'https://api.thepulseapi.com' }}
+          NEXT_PUBLIC_CDN_PREFIX: ${{ vars.NEXT_PUBLIC_CDN_PREFIX || 'website' }}
+          NEXT_PUBLIC_SDK_PATH: ${{ vars.NEXT_PUBLIC_SDK_PATH || '/sdk/v0/pulse.iife.js' }}
+          NEXT_PUBLIC_API_BASE_PATH: ${{ vars.NEXT_PUBLIC_API_BASE_PATH || '/api/v1' }}
+          NEXT_PUBLIC_APP_SIGNIN_PATH: ${{ vars.NEXT_PUBLIC_APP_SIGNIN_PATH || '/signin' }}
+          NEXT_PUBLIC_APP_SIGNUP_PATH: ${{ vars.NEXT_PUBLIC_APP_SIGNUP_PATH || '/register' }}
+          NEXT_PUBLIC_APP_API_KEY_PATH: ${{ vars.NEXT_PUBLIC_APP_API_KEY_PATH || '/settings/api' }}
+          NEXT_PUBLIC_GOOGLE_ENABLED: ${{ vars.NEXT_PUBLIC_GOOGLE_ENABLED || 'false' }}
+        run: pnpm build
+
+      - name: Write the custom domain
+        # Pages reads the custom domain from out/CNAME on every deploy. Without it, it drops the
+        # domain and the site answers on the github.io host instead.
+        #
+        # It is derived from PAGES_CUSTOM_DOMAIN, falling back to the host of NEXT_PUBLIC_SITE_URL,
+        # rather than committed as a file. That is what makes the production cutover a variable
+        # change: this repository serves staging.thepulseapi.com until the apex DNS is moved off
+        # Vercel, and pointing Pages at the apex before DNS follows would take staging down and
+        # serve nothing in its place.
+        env:
+          PAGES_CUSTOM_DOMAIN: ${{ vars.PAGES_CUSTOM_DOMAIN }}
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://thepulseapi.com' }}
         run: |
-          pnpm install --frozen-lockfile
-          pnpm build
-      - name: Assemble site
-        run: |
-          mkdir _site
-          cp -r *.html robots.txt sitemap.xml llms.txt CNAME dist src product careers industries _site/
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+          DOMAIN="${PAGES_CUSTOM_DOMAIN:-$(printf '%s' "$NEXT_PUBLIC_SITE_URL" | sed -E 's#^https?://##; s#/.*$##')}"
+          printf '%s\n' "$DOMAIN" > out/CNAME
+          echo "custom domain: $DOMAIN"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
         with:
-          path: _site
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+          path: out
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

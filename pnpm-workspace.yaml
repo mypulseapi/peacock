@@ -1,3 +1,28 @@
-# @parcel/watcher ships prebuilt binaries; its install script is only a node-gyp fallback
+# This repository installs on its own, so it needs its own build allowlist.
+#
+# pnpm 10+ blocks dependency postinstall scripts by default, because a postinstall is arbitrary
+# code execution at install time and the usual delivery route for a supply-chain attack. The
+# default is correct, so each entry below is a decision with a reason rather than a blanket
+# `pnpm approve-builds`. CI fails with ERR_PNPM_IGNORED_BUILDS when a package needs a decision
+# and has not got one here.
+#
+# `true` means the package cannot work without compiling or fetching a native binary. `false`
+# means its script does something we do not want, and declining it costs nothing.
 allowBuilds:
-  "@parcel/watcher": false
+  # --- required to function ------------------------------------------------
+  "@swc/core": true # native compiler behind the Next build
+  esbuild: true # native binary, linked at install (tsx)
+  sharp: true # native image pipeline Next uses to generate the OG images
+  unrs-resolver: true # native resolver behind the eslint import plugins
+
+  # --- declined ------------------------------------------------------------
+  #
+  # better-auth ships an adapter for every database it supports as a real dependency rather than
+  # an optional one, so these land in the tree whatever we do. This site never opens a database:
+  # it uses better-auth only for its browser client, which talks to the auth service over HTTP.
+  # Their build scripts buy nothing, and declining keeps a compiler off the install path.
+  "@prisma/client": false # generates a client from a schema.prisma we do not have
+  better-sqlite3: false # compiles a binding for a database we never open
+  "@parcel/watcher": false # ships prebuilt binaries; the script is only a node-gyp fallback
+  "@scarf/scarf": false # install-time analytics that phones home
+  core-js: false # postinstall prints a donation notice

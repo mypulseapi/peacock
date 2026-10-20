@@ -31,7 +31,15 @@ export default function WhyContent() {
       <Section id={METHOD.id}>
         <div className="grid gap-16 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
           <SectionHead eyebrow={METHOD.eyebrow} title={METHOD.title} />
-          <div>
+          {/*
+              `min-w-0` is load-bearing. A grid item defaults to `min-width: auto`, which means it
+              refuses to shrink below its content, and the content here is a <pre> holding an
+              unbreakable 90-character pnpm command. Without this the column sized itself to that
+              command and pushed the whole page to 822px in a 375px viewport: /why was the only
+              page on the site that actually scrolled sideways, and the <pre>'s own
+              `overflow-x-auto` could not help because the overflow was happening one level up.
+          */}
+          <div className="min-w-0">
             <div className="ed-stack max-w-[64ch]">
               {METHOD.paragraphs.map((p) => <p key={p.slice(0, 30)} className="ed-body">{p}</p>)}
             </div>

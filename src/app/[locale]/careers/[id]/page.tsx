@@ -256,7 +256,7 @@ export default async function JobPage({ params }: PageProps) {
         {/* Back Link */}
         <Link
           href="/careers"
-          className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-8 transition-colors"
+          className="inline-flex min-h-6 items-center gap-2 py-0.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-8 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           All Positions

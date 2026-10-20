@@ -102,7 +102,7 @@ export default function CookiePolicyPage() {
               {t("contact.content")}{" "}
               <a
                 href={`mailto:${t("contact.email")}`}
-                className="text-[var(--accent-primary-light)] hover:underline"
+                className="inline-flex min-h-6 items-center text-[var(--accent-primary-light)] hover:underline"
               >
                 {t("contact.email")}
               </a>

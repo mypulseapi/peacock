@@ -165,7 +165,7 @@ export default function IntegrationsPage() {
                   </span>
                   <Link
                     href="/docs"
-                    className="text-sm text-[var(--accent-primary-light)] hover:underline inline-flex items-center gap-1"
+                    className="text-sm text-[var(--accent-primary-light)] hover:underline inline-flex min-h-6 items-center gap-1 py-0.5"
                   >
                     View Docs
                     <ArrowRight className="w-3 h-3" />

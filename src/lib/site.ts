@@ -78,6 +78,9 @@ export const APP_PATHS = {
   apiKey: process.env.NEXT_PUBLIC_APP_API_KEY_PATH || "/settings/api",
 } as const;
 
+/** The API's version prefix, on its own so a page can show the URL's parts separately. */
+export const API_BASE_PATH = process.env.NEXT_PUBLIC_API_BASE_PATH || "/api/v1";
+
 /** The browser SDK, versioned by a path so a release does not need a code change. */
 export const SDK_SRC = `${SITE.cdn}${process.env.NEXT_PUBLIC_SDK_PATH || "/sdk/v0/pulse.iife.js"}`;
 
@@ -94,6 +97,4 @@ export const docsUrl = (path = "/") =>
 
 /** Versioned API endpoint, e.g. `apiUrl("/session")`. */
 export const apiUrl = (path = "") =>
-  `${SITE.api}${process.env.NEXT_PUBLIC_API_BASE_PATH || "/api/v1"}${
-    path && !path.startsWith("/") ? `/${path}` : path
-  }`;
+  `${SITE.api}${API_BASE_PATH}${path && !path.startsWith("/") ? `/${path}` : path}`;

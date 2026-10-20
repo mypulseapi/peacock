@@ -147,7 +147,13 @@ export function SubmitButton({
 
 export function AuthLink({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link href={href} className="text-[var(--accent-primary-light)] hover:underline">
+    /* min-h-6: WCAG 2.2 AA 2.5.8 wants a 24px target, and the line box alone was 19px. These sit
+       on their own line rather than inside a sentence, so the standard's in-text exemption does
+       not cover them. */
+    <Link
+      href={href}
+      className="inline-flex min-h-6 items-center text-[var(--accent-primary-light)] hover:underline"
+    >
       {children}
     </Link>
   );

@@ -79,7 +79,10 @@ export function Navbar() {
       className="sig-nav fixed top-0 right-0 left-0 z-50 border-b border-[color:var(--chrome-line)] bg-[color:var(--chrome)]/85 px-5 backdrop-blur-xl sm:px-6"
     >
       <div className="hero-rail -mx-5 px-5 sm:-mx-6 sm:px-6">
-        <p className="mx-auto flex max-w-shell items-center justify-center gap-2 py-2.5 text-center text-[0.8125rem] text-[color:var(--on-chrome-2)]">
+        {/* flex-wrap, so the CTA drops under the sentence at 320 rather than refusing to shrink and
+            pushing the fixed bar wider than the viewport. A flex row with no wrap is as wide as
+            its content, whatever the container says. */}
+        <p className="mx-auto flex max-w-shell flex-wrap items-center justify-center gap-x-2 gap-y-1 py-2.5 text-center text-[0.8125rem] text-[color:var(--on-chrome-2)]">
           {chrome.announce}
           <Link href="/contact" className="inline-flex min-h-[24px] items-center gap-1 font-semibold text-[color:var(--sig)] underline underline-offset-4 hover:no-underline">
             {chrome.announceCta}
@@ -89,7 +92,7 @@ export function Navbar() {
       </div>
 
       <div className="mx-auto max-w-shell">
-        <div className="flex h-[68px] items-center justify-between gap-4">
+        <div className="flex h-[68px] min-w-0 items-center justify-between gap-4">
           <Link href="/" className="group flex shrink-0 items-center" aria-label="Pulse home">
             {/* 600x200 is the asset's real size. It was declared 104x28, a 3.71 ratio
                 against the file's 3.00, so the browser reserved 104px of header and

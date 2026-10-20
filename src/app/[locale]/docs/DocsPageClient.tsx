@@ -4,6 +4,7 @@ import { NewsletterForm } from "@/components/NewsletterForm";
 import type { ReactNode } from "react";
 import Image from "next/image";
 import { img } from "@/lib/cdn";
+import { API_BASE_PATH, SDK_SRC, SITE, apiUrl } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/home/Section";
 import { useTranslations } from "next-intl";
@@ -32,6 +33,20 @@ const codeTag = {
     </code>
   ),
 };
+
+/*
+ * The API origin, split so the page can colour its parts. Parsed rather than written out, because
+ * the whole point is that NEXT_PUBLIC_API_URL decides it; a `new URL` here fails loudly on a
+ * malformed value instead of rendering half a hostname.
+ */
+const apiOrigin = (() => {
+  try {
+    const u = new URL(SITE.api);
+    return { protocol: u.protocol, host: u.host };
+  } catch {
+    return { protocol: "https:", host: SITE.api.replace(/^https?:\/\//, "") };
+  }
+})();
 
 export default function DocsPage() {
   const t = useTranslations("docs");
@@ -123,10 +138,14 @@ export default function DocsPage() {
             <Terminal className="w-5 h-5 text-[var(--accent-primary-light)]" />
             <h2 className="font-semibold text-[var(--text-primary)]">{t("baseUrl")}</h2>
           </div>
-          <div className="bg-[var(--bg-tertiary)] rounded-lg p-4 font-mono text-sm">
-            <span className="text-[var(--text-muted)]">https://</span>
-            <span className="text-[var(--accent-primary-light)]">api.thepulseapi.com</span>
-            <span className="text-[var(--text-muted)]">/api/v1</span>
+          {/* break-all: a URL has no spaces, so without it the whole string is one unbreakable
+              word. At 320px it was 27px wider than the viewport, and because the navbar is
+              `fixed left-0 right-0` it stretched to the new scroll width too -- which made this
+              read as a dozen navbar faults on one page rather than one URL that cannot wrap. */}
+          <div className="bg-[var(--bg-tertiary)] rounded-lg p-4 font-mono text-sm break-all">
+            <span className="text-[var(--text-muted)]">{`${apiOrigin.protocol}//`}</span>
+            <span className="text-[var(--accent-primary-light)]">{apiOrigin.host}</span>
+            <span className="text-[var(--text-muted)]">{API_BASE_PATH}</span>
           </div>
         </div>
 
@@ -195,7 +214,7 @@ export default function DocsPage() {
               {...copy}
               filename="index.html"
               code={`<!-- Add to your site's <head> -->
-<script src="https://cdn.thepulseapi.com/sdk/v0/pulse.iife.js" async></script>`}
+<script src="${SDK_SRC}" async></script>`}
             />
           </div>
 
@@ -275,7 +294,7 @@ export default function DocsPage() {
                 <span className="text-[var(--accent-secondary-light)]">curl</span>
                 <span className="text-[var(--text-secondary)]"> -X POST </span>
                 <span className="text-[var(--accent-highlight)]">
-                  &quot;https://api.thepulseapi.com/api/v1/session&quot;
+                  &quot;{apiUrl("/session")}&quot;
                 </span>
                 <span className="text-[var(--text-secondary)]"> \</span>
               </div>

@@ -1,21 +1,44 @@
-# Checks that run on a pull request, and whose job names are what the `main` branch ruleset
-# requires. A required status check naming a job that does not exist blocks every pull request
-# forever, so the `name:` of each job here and the ruleset's context strings are one contract.
+# Checks whose job names are what the branch rulesets require. A required status check naming a
+# job that does not exist blocks every pull request forever, so the `name:` of each job here and
+# the ruleset's context strings are one contract.
 #
-# The deploy workflow (static.yml) runs only on a push to main. This one never deploys.
+# `Lint` and `Type check` are required on develop and main; `Build site` and `Source branch` on
+# main. The deploy workflow (static.yml) runs only on a push to main. This one never deploys.
 name: CI
 
 on:
+  # Every pull request, whatever its base: the develop ruleset needs these contexts too, and a PR
+  # into develop that cannot report them would never be mergeable.
+  #
+  # `edited` matters: changing a pull request's base branch has to re-run Source branch, or a PR
+  # opened against develop and then retargeted at main keeps the pass it earned under the old base.
   pull_request:
-    branches: ["main"]
+    types: [opened, synchronize, reopened, edited]
+  push:
+    branches: [develop, main]
   workflow_dispatch:
 
-# A new push to a pull request makes the previous run's answer irrelevant.
+# A new push to a pull request makes the previous run's answer irrelevant. Runs on develop and main
+# always finish, because those are the ones a release is judged on.
 concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  source:
+    name: Source branch
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # `main` is the deploy. Letting a feature branch merge straight into it would publish work
+      # that never sat on develop, which is the whole point of having develop.
+      - name: Only develop may be merged into main
+        if: github.base_ref == 'main' && (github.head_ref != 'develop' || github.event.pull_request.head.repo.full_name != github.repository)
+        run: |
+          echo "::error::Pull requests into main must come from develop. Open this one against develop instead."
+          exit 1
+
   lint:
     name: Lint
     runs-on: ubuntu-latest

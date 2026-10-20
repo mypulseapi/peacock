@@ -200,12 +200,17 @@ Run this after **each** skill step, not only at the end of a plan.
 
 ## Git workflow
 
-- **`main` is protected** (20 Oct 2026). A branch ruleset blocks deletion and force-push, and
-  requires a pull request with review threads resolved and three checks green: `Lint`,
-  `Type check` and `Build site`. There are no bypass actors, so this applies to admins too.
-  This replaces "work directly on `main`" (15 Oct 2026), which the ruleset now makes impossible.
-- A `develop` ruleset exists and matches the handbook's, so that flow is available, but there is
-  no `develop` branch yet: today the flow is feature branch -> pull request -> `main`.
+- **Branching: feature branch -> `develop` -> `main`** (20 Oct 2026), the same flow as the
+  handbook. Work lands on `develop` first. **Merging `develop` into `main` is the release**: that
+  is what deploys. A push to `develop` deploys nothing, which is the point.
+- **Both branches are protected.** Rulesets block deletion and force-push and require a pull
+  request with review threads resolved. `develop` needs `Lint` and `Type check`; `main` needs
+  those plus `Build site` and `Source branch`. There are no bypass actors, so this applies to
+  admins too.
+- `Source branch` refuses a pull request into `main` from anything but `develop`. Without it a
+  feature branch could publish work that never sat on `develop`, which is the whole point of
+  having `develop`.
+- This replaces "work directly on `main`" (15 Oct 2026), which the rulesets now make impossible.
 - Every push to `main` deploys (GitHub Pages). The site answers on staging.thepulseapi.com until
   the apex DNS for thepulseapi.com is moved off Vercel; `PAGES_CUSTOM_DOMAIN` is what switches it.
 - **Never commit or push automatically.** After making changes, stop and let the user review them.

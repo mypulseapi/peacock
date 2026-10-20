@@ -88,9 +88,14 @@ to resolve who published what.
 
 ### Deployment
 
-A push to `main` builds and publishes to GitHub Pages. `main` is protected: deletion and
-force-push are blocked, a pull request is required, and `Lint`, `Type check` and `Build site` must
-pass. There are no bypass actors.
+**feature branch → `develop` → `main`.** Work lands on `develop` first. Merging `develop` into
+`main` is the release: that is what builds and publishes to GitHub Pages. A push to `develop`
+deploys nothing, which is the point.
+
+Both branches are protected. Deletion and force-push are blocked and a pull request is required
+with review threads resolved. `develop` requires `Lint` and `Type check`; `main` requires those
+plus `Build site` and `Source branch`, which refuses any pull request into `main` that does not
+come from `develop`. There are no bypass actors, so this applies to admins too.
 
 The custom domain comes from the `PAGES_CUSTOM_DOMAIN` variable and is written to `out/CNAME` at
 build time rather than committed, so moving the site between hostnames is a settings change.

@@ -1,0 +1,85 @@
+# Checks that run on a pull request, and whose job names are what the `main` branch ruleset
+# requires. A required status check naming a job that does not exist blocks every pull request
+# forever, so the `name:` of each job here and the ruleset's context strings are one contract.
+#
+# The deploy workflow (static.yml) runs only on a push to main. This one never deploys.
+name: CI
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+# A new push to a pull request makes the previous run's answer irrelevant.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+
+      # No `pnpm format:check` yet. This app arrived from the monorepo, where it was never
+      # Prettier-formatted, so the check fails on 161 files that this change does not touch.
+      # Running --write here would bury the migration in a reformat nobody can review. The
+      # reformat is worth doing as its own commit, on a quiet branch, and the gate goes in with it.
+
+  types:
+    name: Type check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm type-check
+
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build
+        # The same origins the deploy uses. A build with one missing fails by design, so this job
+        # also proves the deploy's environment is complete before the merge rather than after it.
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://thepulseapi.com' }}
+          NEXT_PUBLIC_DOCS_URL: ${{ vars.NEXT_PUBLIC_DOCS_URL || 'https://developer.thepulseapi.com' }}
+          NEXT_PUBLIC_APP_URL: ${{ vars.NEXT_PUBLIC_APP_URL || 'https://app.thepulseapi.com' }}
+          NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL || 'https://api.thepulseapi.com' }}
+          NEXT_PUBLIC_CDN_URL: ${{ vars.NEXT_PUBLIC_CDN_URL || 'https://cdn.thepulseapi.com' }}
+          NEXT_PUBLIC_DEMO_URL: ${{ vars.NEXT_PUBLIC_DEMO_URL || 'https://demo.thepulseapi.com' }}
+          NEXT_PUBLIC_AUTH_URL: ${{ vars.NEXT_PUBLIC_AUTH_URL || 'https://api.thepulseapi.com' }}
+          NEXT_PUBLIC_CDN_PREFIX: ${{ vars.NEXT_PUBLIC_CDN_PREFIX || 'website' }}
+          NEXT_PUBLIC_SDK_PATH: ${{ vars.NEXT_PUBLIC_SDK_PATH || '/sdk/v0/pulse.iife.js' }}
+          NEXT_PUBLIC_API_BASE_PATH: ${{ vars.NEXT_PUBLIC_API_BASE_PATH || '/api/v1' }}
+          NEXT_PUBLIC_APP_SIGNIN_PATH: ${{ vars.NEXT_PUBLIC_APP_SIGNIN_PATH || '/signin' }}
+          NEXT_PUBLIC_APP_SIGNUP_PATH: ${{ vars.NEXT_PUBLIC_APP_SIGNUP_PATH || '/register' }}
+          NEXT_PUBLIC_APP_API_KEY_PATH: ${{ vars.NEXT_PUBLIC_APP_API_KEY_PATH || '/settings/api' }}
+          NEXT_PUBLIC_GOOGLE_ENABLED: ${{ vars.NEXT_PUBLIC_GOOGLE_ENABLED || 'false' }}
+        run: pnpm build
+
+      - name: SEO and AEO gates
+        # Reads the exported HTML, because every rule in the standard is about what a crawler
+        # receives rather than what the source intended. See scripts/check-seo.mjs.
+        run: node scripts/check-seo.mjs

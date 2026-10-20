@@ -1,33 +1,107 @@
-# rainbow
+# Pulse — thepulseapi.com
 
-Plain HTML + Tailwind CSS v4 (via the Tailwind CLI), themed with the Pulse design system
-(brand colours from Figma "Pulse Design Work" › Branding › Pulse Color).
+The public website for **Pulse**, at [thepulseapi.com](https://thepulseapi.com).
 
-## Usage
+## About Pulse
 
-This project uses [pnpm](https://pnpm.io) (`brew install pnpm`). Don't use npm here —
-it would create a second lockfile.
+Pulse measures whether a merchant's product data is ready to support the buying decisions their
+shoppers are trying to make.
+
+Most tools in this space rank what a shopper sees. Pulse asks the question underneath that one:
+can the catalogue answer what the shopper came to find out at all? A shopper leaves without buying
+for one of two reasons — either they could not find the product, or the catalogue could not tell
+two products apart. The second is larger and almost nobody measures it.
+
+You send one category export and get back the attributes worth recording, ranked by how many
+shoppers need them rather than by how empty the column is. The same measurement then runs again on
+the repaired export, so a fix can be proved without waiting for traffic. Nothing has to go on the
+merchant's site for any of that, and no traffic history is needed.
+
+Two figures from our own measurements, each with the dataset it came from:
+
+- On a **216-product laptop shelf**, 94 products remain indistinguishable after every question a
+  shopper could answer, because the attributes that would separate them are recorded nowhere.
+- Across a **2,176-product catalogue**, 52.6% of recorded attribute values duplicate what the
+  product photograph already shows.
+
+**We publish no conversion or revenue uplift figure.** We have run no live revenue experiment, so
+we quote none, and any percentage attributed to us did not come from us. The reasoning is on the
+site, at [/why/limits](https://thepulseapi.com/en/why/limits).
+
+Pulse is built by **Resolve Labs**, a small team working on one question: which product
+information is worth paying to fix.
+
+| | |
+| --- | --- |
+| Website | [thepulseapi.com](https://thepulseapi.com) |
+| Developer handbook | [developer.thepulseapi.com](https://developer.thepulseapi.com) |
+| Dashboard | [app.thepulseapi.com](https://app.thepulseapi.com) |
+| SDK | [`@thepulseapi/sdk`](https://www.npmjs.com/package/@thepulseapi/sdk), MIT licensed |
+| LinkedIn | [thepulseapi](https://www.linkedin.com/company/thepulseapi/) |
+
+The site is published in **English and Vietnamese**. A bare URL resolves to Vietnamese, because
+Vietnam is the market being sold into; `/en` is the English tree.
+
+## This repository
+
+Next.js 16 (App Router) with Tailwind CSS v4 and next-intl, built as a **static export** and
+served by GitHub Pages.
 
 ```bash
 pnpm install
-pnpm dev        # watch HTML + src/input.css → dist/output.css
-pnpm build      # one-off minified build
+pnpm dev          # http://localhost:3003
+pnpm build        # checks, then a static export to ./out
+pnpm type-check
+pnpm lint
 ```
 
-Then open `index.html` (home) or `components.html` (component spec) in your browser.
+`pnpm build` runs five content guards before `next build`: the page catalogue against the
+filesystem, placeholder copy, intent ranking, the requirement parser and the semantic fallback. A
+page added without a catalogue entry fails the build rather than silently shipping unattributed.
 
-## Theme (`src/input.css`)
+### Configuration
 
-All colours, fonts and sizes are tokens in `@theme`. Colours use the **Signal** palette from
-`docs/pulse_brand_guidelines_final.md` §3–§6 (Pulse Blue, Signal Red, Sky Blue, Ink, Mist + the Signal Red → Pulse Blue gradient;
-cool black `#0B0D12` dark surfaces). Role tokens (`primary`, `signal`, `gap`, `void`, `ink`, `muted`, `card`, `line`,
-`success`/`warning`/`critical`, `chart-*` …)
-are exact hex values in `light-dark()`, so the site follows the visitor's light/dark setting. Tailwind's default
-palette is switched off.
+Every origin the site points at is read from the environment; none is hardcoded. See
+[`.env.example`](./.env.example) for the full list with the reasoning, and `src/lib/site.ts` for
+how it is read.
 
-Fonts: Geist (headings and body) and Geist Mono (data only: table values, numeric readouts), self-hosted in `src/assets/fonts/geist/` — `font-display` / `font-sans` (Geist), `font-mono` (Geist Mono); numbers use `tabular-nums`.
-Type: `text-display` / `text-headline` / `text-title` (fluid), `text-h1`, `text-h2`, `text-h3`, `text-body`, `text-data`.
+**A production build with a missing origin fails, naming the variable.** That is deliberate: a
+default that is a real production host keeps working when the variable is unset, so the variable
+never gets set and some deploy quietly ships the wrong domain. The only defaults in the code are
+localhost, for `pnpm dev`.
 
-Component classes: `btn-primary`, `btn-secondary`, `btn-ghost`, `btn-sm`, `card`, `card-dark`,
-`eyebrow`, `section-tag`, `badge-primary|signal|success|warning|critical`, `bg-brand-gradient`, `missing-cell`, `missing-cell-dark`,
-`blueprint-grid`, `frame`, `reveal`, `reveal-bar`. See `DESIGN.md` for the full rules.
+In CI the values come from repository variables (Settings → Secrets and variables → Actions →
+Variables). None of them is a secret; all of them are visible in the shipped HTML.
+
+### SEO and AEO
+
+`node scripts/check-seo.mjs` enforces the engineering standard against the **exported HTML** rather
+than the source, because every rule in it is about what a crawler receives: a canonical assembled
+correctly in TypeScript and dropped by a layout is still a missing canonical. It runs in CI and
+covers title and description length and uniqueness, canonicals, the single JSON-LD graph per page,
+breadcrumbs, heading flow, indexing policy and the crawl files.
+
+Structured data is built in `src/lib/schema.ts` and emitted once per page by `<PageSchema>`. The
+layout deliberately emits none: nodes in separate `ld+json` blocks cannot reference each other by
+`@id`, so a layout-level graph plus a page-level graph loses the relationships answer engines use
+to resolve who published what.
+
+### Deployment
+
+A push to `main` builds and publishes to GitHub Pages. `main` is protected: deletion and
+force-push are blocked, a pull request is required, and `Lint`, `Type check` and `Build site` must
+pass. There are no bypass actors.
+
+The custom domain comes from the `PAGES_CUSTOM_DOMAIN` variable and is written to `out/CNAME` at
+build time rather than committed, so moving the site between hostnames is a settings change.
+
+### What is not here
+
+GitHub Pages serves files and runs no server, so the four form-handling routes and the i18n
+middleware this app used to have are gone. [`legacy/README.md`](./legacy/README.md) records what
+each did and what replaced it, because each answers a question that will be asked again.
+
+## Licence
+
+The contents of this repository are © Resolve Labs. The published SDK is MIT licensed and lives in
+its own package.

@@ -1,0 +1,1534 @@
+{
+  "recaptcha": {
+    "notice": "Được bảo vệ bởi reCAPTCHA. Áp dụng <privacy>Chính sách quyền riêng tư</privacy> và <terms>Điều khoản</terms> của Google."
+  },
+  "common": {
+    "learnMore": "Tìm hiểu thêm",
+    "getStarted": "Bắt đầu",
+    "contactUs": "Liên hệ",
+    "viewAll": "Xem tất cả",
+    "backToHome": "Về trang chủ",
+    "tryAgain": "Thử lại",
+    "submit": "Gửi",
+    "sending": "Đang gửi...",
+    "loading": "Đang tải...",
+    "email": "Email",
+    "name": "Tên",
+    "company": "Công ty",
+    "message": "Tin nhắn",
+    "required": "Bắt buộc",
+    "optional": "Tùy chọn",
+    "copy": "Sao chép",
+    "copied": "Đã sao chép"
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "errorCode": "404",
+    "heading": "Ôi! Lạc trong dòng dữ liệu",
+    "description": "Trang bạn đang tìm kiếm dường như đã đi lạc vào khoảng không kỹ thuật số. Đừng lo, ngay cả những thuật toán tốt nhất đôi khi cũng mất phương hướng.",
+    "suggestion": "Hãy để chúng tôi đưa bạn trở lại đúng hướng:",
+    "homeButton": "Về trang chủ",
+    "productButton": "Khám phá sản phẩm",
+    "contactButton": "Liên hệ hỗ trợ",
+    "popularPages": "Trang phổ biến:",
+    "goBack": "Quay lại trang trước"
+  },
+  "nav": {
+    "product": "Sản phẩm",
+    "industries": "Ngành nghề",
+    "pricing": "Bảng giá",
+    "docs": "Tài liệu",
+    "blog": "Blog",
+    "about": "Giới thiệu",
+    "contact": "Liên hệ",
+    "careers": "Tuyển dụng",
+    "signIn": "Đăng nhập",
+    "getStarted": "Bắt đầu",
+    "tryDemo": "Xem Demo"
+  },
+  "footer": {
+    "product": "Sản phẩm",
+    "decisionAudit": "Decision Audit",
+    "decisionVerification": "Decision Verification",
+    "decisionMonitor": "Decision Monitor",
+    "pricing": "Bảng giá",
+    "company": "Công ty",
+    "aboutUs": "Về chúng tôi",
+    "contact": "Liên hệ",
+    "career": "Tuyển dụng",
+    "hiring": "Chúng tôi đang tuyển!",
+    "contactPoint": "Liên hệ",
+    "phone": "+65 0000 0000",
+    "email": "getintouch@thepulseapi.com",
+    "privacyPolicy": "Chính sách bảo mật",
+    "termsOfService": "Điều khoản dịch vụ",
+    "cookiePolicy": "Chính sách Cookie",
+    "gdpr": "GDPR",
+    "copyright": "© {year} Pulse. Bảo lưu mọi quyền."
+  },
+  "home": {
+    "hero": {
+      "title": "Danh mục của bạn<br></br>không trả lời được câu hỏi<br></br>khách hàng đang đặt ra.",
+      "description": "PULSE đo xem dữ liệu sản phẩm của bạn đã đủ để hỗ trợ những quyết định khách hàng đang cố đưa ra hay chưa, xếp hạng, trên chính danh mục của bạn, trong 48 giờ. Sau đó quyết định nên hiển thị gì, và khi nào một câu hỏi nữa đáng thời gian của họ.",
+      "ctaPrimary": "Yêu cầu Decision Audit",
+      "ctaSecondary": "Xem cách chúng tôi đo",
+      "illustrationAlt": ""
+    },
+    "problem": {
+      "eyebrow": "Đo được, không phải khẳng định suông",
+      "title": "47 trong số 216 laptop không ghi nhận bất kỳ thuộc tính nào để lọc.",
+      "body": "Chúng tôi lấy một danh mục thật của nhà bán hàng và xem xét đúng một kệ hàng. Không kích thước màn hình. Không RAM. Không dung lượng lưu trữ. Không CPU. Những thông số đó không dùng được với bất kỳ hệ thống nào dựa trên thuộc tính có cấu trúc, bộ lọc không dùng được, logic tư vấn không suy luận được trên chúng như các trường rõ ràng, và mọi hệ thống phía sau đều phải suy đoán lại điều mà danh mục lẽ ra đã phải ghi rõ.",
+      "caption": "Thông tin thường vẫn tồn tại, chỉ ở nơi kém hữu ích hơn. Ở đây nó nằm trong tên sản phẩm, không hệ thống nào truy vấn được. Đôi khi nó nằm trong feed nhà cung cấp mà không ai ánh xạ. Đôi khi nó chưa từng được ghi lại. Bản audit cho bạn biết đó là trường hợp nào."
+    },
+    "how": {
+      "eyebrow": "Cách vận hành",
+      "title": "Đo. Bổ sung. Rồi mới quyết định.",
+      "body": "Cá nhân hoá đặt trên một danh mục không ghi nhận gì thì không thể hoạt động. Chúng tôi bắt đầu sớm hơn mọi người một bước.",
+      "s1": {
+        "title": "Decision Audit",
+        "body": "Gửi một file xuất danh mục. Chúng tôi xếp hạng từng thuộc tính theo sức mạnh ra quyết định hiện tại, và theo mức nó sẽ đạt được nếu được ghi nhận đầy đủ. Khoảng cách đó chính là cái giá của dữ liệu còn thiếu.",
+        "meta": "48 giờ · không cần code · chỉ dữ liệu sản phẩm"
+      },
+      "s2": {
+        "title": "Bạn sửa đúng chỗ báo cáo chỉ ra",
+        "body": "Kèm danh sách sản phẩm cụ thể. Bạn có thể không cần đến chúng tôi cho bước này, nếu đội ngũ của bạn tự bổ sung được thuộc tính đứng đầu, bản audit đã hoàn vốn và bạn nên làm ngay.",
+        "meta": "Chúng tôi trả về cả phần khôi phục được từ tên sản phẩm hiện có"
+      },
+      "s3": {
+        "title": "PULSE ra quyết định",
+        "body": "Engine đọc phiên truy cập theo thời gian thực, suy luận điều khách đang cần và xếp hạng danh mục theo đó, chỉ hỏi khi câu trả lời thực sự làm thay đổi kết quả hiển thị. Nó chạy song song với website và công cụ tìm kiếm của bạn, không thay thế cái nào.",
+        "meta": "không cookie · không cần đăng nhập · chạy song song với website"
+      }
+    },
+    "audit": {
+      "eyebrow": "Bạn nhận được gì",
+      "title": "Danh sách xếp hạng những gì cần ghi nhận trước, trên chính sản phẩm của bạn.",
+      "body": "\"Hãy làm giàu danh mục\" là lời khuyên đúng nhưng vô dụng: một danh mục có hàng trăm trường dữ liệu và không ai nói được trường nào mới quan trọng. Thế là nó trở thành dự án không có điểm kết thúc, bị hạ ưu tiên, và mọi công cụ khám phá sản phẩm bên trên tiếp tục kém hiệu quả vì một lý do không ai gọi tên.",
+      "callout": "Hãy nhìn dòng CPU. Hiện tại nó gần như không đóng góp gì, chính vì vậy mà rà soát bằng mắt sẽ bỏ qua nó. Theo cùng mô hình quyết định, đây lại là hạng mục đáng sửa thứ ba, bởi 162 sản phẩm đang thiếu nó. Điều này rất dễ bị bỏ sót khi bạn chỉ xem tỷ lệ phần trăm độ đầy đủ.",
+      "table": {
+        "caption": "Decision Audit, laptop",
+        "attribute": "Thuộc tính",
+        "today": "Giá trị quyết định hiện tại",
+        "complete": "Tiềm năng nếu đầy đủ",
+        "gap": "Chênh lệch thông tin quyết định",
+        "missing": "Thiếu trên",
+        "foot": "Đo bằng bit thông tin quyết định, không phải doanh thu, không phải tỷ lệ chuyển đổi. Trên kệ hàng thật gồm 216 sản phẩm, tái lập được từ repository (ODIN/research/SPIKE-VOI.md §9.4)."
+      }
+    },
+    "proof": {
+      "eyebrow": "Những gì chúng tôi đo được",
+      "title": "Chọn đúng câu hỏi tốt hơn là hỏi tất cả.",
+      "m1": {
+        "unit": "câu hỏi",
+        "label": "PULSE, trung bình",
+        "foot": "So với 4,00 của bộ câu hỏi cố định, mô hình mà mọi sản phẩm guided selling đang dùng. Giảm 29%."
+      },
+      "m2": {
+        "unit": "trên 216",
+        "label": "Sản phẩm không thể hỏi",
+        "foot": "Không ghi nhận thuộc tính nào để lọc, nên sống sót qua mọi câu hỏi. Sau khi trả lời hết mọi câu hỏi kệ hàng này hỗ trợ, khách vẫn đang chọn giữa trung bình 94 sản phẩm."
+      },
+      "m3": {
+        "unit": "chiều",
+        "label": "Suy luận trực tiếp",
+        "foot": "Giới tính, độ tuổi, tông da, undertone, mỗi chiều là một phân phối đã hiệu chuẩn, suy ra từ thống kê danh mục chứ không gán sẵn."
+      },
+      "honesty": {
+        "title": "Những gì các con số này chưa chứng minh",
+        "body": "Đây là phép đo hiệu quả tìm kiếm với đáp án đã biết trước. Nó không nói gì về việc khách có chịu trả lời câu hỏi hay không, và không nói gì về doanh thu. Chúng tôi chưa có con số tăng trưởng thương mại nào đo được, vì chưa chạy pilot có nhóm đối chứng. Khi có, con số đó sẽ đến từ traffic của bạn, không phải cửa hàng của người khác."
+      }
+    },
+    "flow": {
+      "title": "Một quyết định<br></br><accent>được đưa ra thế nào.</accent>",
+      "description": "Pulse dựng hai vector, một cho khách đang đứng trước bạn, một cho từng sản phẩm bạn bán, rồi so khớp. Không bên nào cần lịch sử, nên nó hoạt động ngay từ lượt xem trang đầu tiên. Điều nó không làm được là bịa ra một thuộc tính mà danh mục của bạn chưa bao giờ ghi nhận.",
+      "cols": {
+        "send": "Gửi dữ liệu",
+        "build": "Dựng bản sao",
+        "get": "Nhận cá nhân hóa"
+      },
+      "session": {
+        "eyebrow": "Thời gian thực",
+        "title": "Phiên ẩn danh",
+        "meta": "1.000+ tín hiệu · mỗi request"
+      },
+      "catalogue": {
+        "eyebrow": "Đồng bộ một lần",
+        "title": "Danh mục của bạn",
+        "meta": "đồng bộ một lần, cập nhật khi thay đổi"
+      },
+      "notRequired": {
+        "title": "Không cần",
+        "items": [
+          "Cookie",
+          "Đăng nhập",
+          "Hồ sơ người dùng",
+          "Cổng đồng ý",
+          "Lịch sử mua hàng",
+          "Thời gian huấn luyện"
+        ]
+      },
+      "persona": {
+        "eyebrow": "Chân dung khách",
+        "title": "Chấm điểm Bayesian",
+        "meta": "mức sẵn sàng · phân khúc giá · sở thích danh mục · độ nóng",
+        "vector": "vector 384 chiều"
+      },
+      "twin": {
+        "eyebrow": "Bản sao sản phẩm",
+        "title": "Làm giàu theo chân dung",
+        "meta": "suits[] · persona_fit'{}' · một bản sao cho mỗi SKU",
+        "vector": "vector 384 chiều"
+      },
+      "match": {
+        "title": "Khớp vector",
+        "meta": "độ tương đồng cosine, xếp hạng theo điểm phù hợp",
+        "value": "mục tiêu <50ms",
+        "footnote": "ngân sách thiết kế, không phải số đo<br></br>0 cookie · 0 PII"
+      },
+      "outputs": [
+        "Trang chủ cá nhân hóa",
+        "Xếp hạng tìm kiếm & danh mục",
+        "Gợi ý sản phẩm",
+        "Upsell giỏ hàng & thanh toán",
+        "Sản phẩm tương tự",
+        "Email & giữ chân khách",
+        "Trang đích quảng cáo",
+        "Feed ứng dụng di động",
+        "Bất cứ đâu bạn hiển thị sản phẩm"
+      ]
+    },
+    "code": {
+      "title": "<accent>Một lệnh gọi. Mười dòng.</accent><br></br>Xong ngay chiều nay.",
+      "description": "REST và SDK cho JavaScript, Python, PHP và Go. Lý do xếp hạng được trả về cùng kết quả, nên bạn có thể giải thích cho khách vì sao, hoặc ghi lại để phản biện sau.",
+      "responseLabel": "Phản hồi · 200 OK",
+      "responseTime": "200 OK",
+      "langs": {
+        "js": "JavaScript",
+        "curl": "cURL",
+        "python": "Python"
+      }
+    },
+    "industries": {
+      "title": "Một engine.<br></br><accent>Mọi danh mục.</accent>",
+      "description": "Cùng một phép đo và cùng một cách suy luận, thích ứng theo từng bề mặt. Thứ thay đổi giữa các ngành là thuộc tính nào mang tính quyết định, và đó đúng là điều bản audit tìm ra.",
+      "more": "Xem thêm",
+      "ctaPrimary": "Xem demo trực tiếp",
+      "ctaSecondary": "Khám phá ngành này",
+      "prevSlide": "Ảnh trước",
+      "nextSlide": "Ảnh tiếp theo",
+      "slides": [
+        "Trang chủ được cá nhân hóa hoàn toàn",
+        "Gợi ý dành cho bạn",
+        "Đang thịnh hành"
+      ],
+      "tablistLabel": "Ngành nghề"
+    },
+    "privacy": {
+      "title": "Không có gì để rò rỉ,<br></br>vì <accent>không lưu gì cả.</accent>",
+      "description": "Pulse không cần biết ai đó là ai để biết họ muốn gì. Đó không phải là chính sách chúng tôi viết ra, mà là cách hệ thống được xây dựng, nghĩa là quá trình rà soát tuân thủ thường rất ngắn.",
+      "items": [
+        {
+          "title": "Không dữ liệu cá nhân",
+          "description": "Không thu thập, không yêu cầu và không lưu trữ tên, email, số điện thoại, địa chỉ hay thông tin thanh toán. Không có bảng người dùng, bởi không có người dùng nào, chỉ có phiên truy cập."
+        },
+        {
+          "title": "Không cookie, bên thứ nhất hay thứ ba",
+          "description": "Không ghi gì vào trình duyệt và không cần sự đồng ý giữa các lần truy cập. Những thay đổi về đồng ý cookie và các hạn chế theo dõi của trình duyệt không làm giảm chất lượng kết quả Pulse trả về."
+        },
+        {
+          "title": "Tuân thủ GDPR và Nghị định 13",
+          "description": "Được thiết kế theo GDPR, CCPA và Nghị định 13/2023 của Việt Nam về bảo vệ dữ liệu cá nhân. Tùy chọn lưu trú dữ liệu tại Singapore, Frankfurt và Virginia. Cung cấp đầy đủ DPA khi có yêu cầu."
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Gửi một ngành hàng.<br></br>Nhận báo cáo trong <accent>48 giờ.</accent>",
+      "description": "Chọn kệ hàng mà bạn nghi ngờ khách gặp khó khăn nhất. Chúng tôi chỉ cần một file xuất danh mục, không code, không gắn tag lên website, không dữ liệu khách hàng. Bạn sẽ nhận kết quả xếp hạng và một buổi trao đổi 30 phút.",
+      "ctaPrimary": "Yêu cầu Decision Audit",
+      "ctaSecondary": "Đọc tài liệu",
+      "illustrationAlt": ""
+    },
+    "useCases": {
+      "title": "Xem Pulse",
+      "titleHighlight": "Hoạt động",
+      "description": "Người bán hàng giỏi đọc được khách trong vài giây, và biết câu hỏi nào đáng hỏi. Pulse mang cả hai điều đó lên mọi bề mặt số.",
+      "showing": "Đang hiển thị {current} trong {total} trường hợp • Vuốt hoặc nhấn mũi tên để duyệt",
+      "allIndustries": "Tất cả ngành nghề"
+    },
+    "meta": {
+      "title": "Biết chính xác nên sửa dữ liệu sản phẩm nào trước",
+      "description": "Gửi một tệp xuất ngành hàng. Chúng tôi xếp hạng từng thuộc tính còn thiếu theo mức ảnh hưởng tới quyết định của người mua, trả kết quả trong 48 giờ."
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "Về Pulse: phép đo, và những gì nó chưa thể khẳng định",
+      "description": "Chúng tôi đo xem dữ liệu sản phẩm có trả lời được những câu người mua hỏi hay không. Mọi con số đều tái lập được từ kho mã, kể cả những lần chạy thất bại.",
+      "ogTitle": "Về Pulse: phép đo, và những gì nó chưa thể khẳng định",
+      "ogDescription": "Chúng tôi đo xem dữ liệu sản phẩm có trả lời được những câu người mua hỏi hay không. Mọi con số đều tái lập được từ kho mã, kể cả những lần chạy thất bại."
+    },
+    "badge": "Về PULSE",
+    "title": "Chúng tôi bắt đầu sớm hơn",
+    "titleHighlight": "một bước",
+    "titleEnd": "so với mọi người.",
+    "description": "Mọi nhà cung cấp công cụ khám phá sản phẩm đều mặc định rằng danh mục đã ghi nhận sản phẩm đó là gì. Chúng tôi đã kiểm chứng trên kệ hàng thật của một nhà bán hàng, và sự thật không phải vậy, nên chúng tôi xây phép đo chỉ ra trường dữ liệu thiếu nào tốn kém nhất, và bán nó trước mọi thứ khác.",
+    "mission": {
+      "title": "Chúng tôi tồn tại để làm gì",
+      "description": "PULSE giúp cửa hàng biết khi nào đã đủ thông tin để gợi ý, và khi nào một câu hỏi nữa thực sự xứng đáng với thời gian của khách. Trước cả hai điều đó, danh mục phải trả lời được câu hỏi đã, và gần như không ai kiểm tra xem nó có làm được hay không."
+    },
+    "story": {
+      "title": "Chúng tôi đã đi đến đây thế nào",
+      "problem": {
+        "title": "Điều chúng tôi phát hiện",
+        "description": "Chúng tôi hỏi: khách cần trả lời bao nhiêu câu hỏi trước khi có thể tự tin giới thiệu đúng chiếc laptop? Câu trả lời là: không bao giờ đủ. 47 trong số 216 sản phẩm trên kệ không ghi nhận bất kỳ thuộc tính nào để lọc, nên chúng sống sót qua mọi câu hỏi và kệ hàng không bao giờ thu hẹp được. Thông số không hề thiếu, chúng nằm ngay trong tên sản phẩm, nơi không bộ lọc nào chạm tới."
+      },
+      "solution": {
+        "title": "Thứ chúng tôi xây thay vào đó",
+        "description": "Chúng tôi vẫn có thể ra mắt engine đặt câu hỏi và trình diễn một bản demo đẹp. Thay vào đó, chúng tôi ghi nhận rằng chính danh mục đánh bại nó, rồi xây phép đo xếp hạng thuộc tính thiếu nào gây tốn kém nhất. Đó trở thành Decision Audit, thứ một nhà bán hàng có thể hành động ngay trong một tuần, không cần tích hợp, không cần code."
+      }
+    },
+    "values": {
+      "title": "Cách chúng tôi làm việc",
+      "privacy": {
+        "title": "Suy luận thay vì định danh",
+        "description": "Engine đọc phiên truy cập hiện tại. Không đăng nhập, không cookie, không hồ sơ để tra cứu, nên không có gì để rò rỉ và không cần xin đồng ý giữa các lần ghé thăm."
+      },
+      "innovation": {
+        "title": "Phép tính thay vì luật lệ",
+        "description": "Dữ liệu kém phải tự nó làm yếu tín hiệu, chứ không phải vì ai đó chỉnh một hệ số. Ngành hàng không có bằng chứng đóng góp đúng bằng không, và điều đó bật ra từ phép toán."
+      },
+      "results": {
+        "title": "Đo được hoặc ghi rõ là chưa đo",
+        "description": "Mọi con số chúng tôi công bố đều hoặc đã đo được kèm nguồn, hoặc ghi rõ là chưa đo. Chúng tôi chốt tiêu chí thành công trước khi chạy thử nghiệm, và khi tiêu chí hoá ra chưa đủ, chúng tôi nói thẳng thay vì viết lại chúng."
+      },
+      "customer": {
+        "title": "Hữu ích trước khi ký hợp đồng",
+        "description": "Bản audit được thiết kế để đáng hành động dù nhà bán hàng có làm việc với chúng tôi hay không. Nếu đội ngũ của họ tự bổ sung được thuộc tính quan trọng nhất, họ nên làm ngay."
+      }
+    },
+    "team": {
+      "title": "Đội ngũ",
+      "description": "Một đội ngũ nhỏ tại TP. Hồ Chí Minh. Engine được xây trên thị trường này trước, tỷ lệ dân số, tỷ lệ giới tính theo từng đô thị, khoảng giá VND, xử lý tiếng Việt đến cả việc chuẩn hoá ký hiệu đ, vì đó là lợi thế mà một đối thủ nước ngoài sẽ không xây đầu tiên.",
+      "stats": {
+        "members": "Thành viên sáng lập",
+        "countries": "Quốc gia",
+        "founded": "Thành lập",
+        "locationValue": "Trụ sở",
+        "location": "TP. Hồ Chí Minh"
+      },
+      "highlights": {
+        "ml": {
+          "title": "Suy luận",
+          "description": "Phân phối xác suất đã hiệu chuẩn trên các chiều có tên gọi rõ ràng, cập nhật theo tỷ số hợp lý từ thống kê danh mục chứ không gán bằng tay."
+        },
+        "engineering": {
+          "title": "Kỹ thuật",
+          "description": "Chín service chạy production sau một gateway, một storefront demo công khai, và danh mục 6.476 sản phẩm đang được quản lý."
+        },
+        "product": {
+          "title": "Đo lường",
+          "description": "Tiêu chí dừng viết trước khi thí nghiệm, nhóm đối chứng được giữ lại theo mặc định, và kết quả vẫn công bố ngay cả khi nó bất lợi cho câu chuyện bán hàng."
+        },
+        "global": {
+          "title": "Thị trường",
+          "description": "Việt Nam trước, vì engine được xây trên chính thị trường này, và thị trường thứ hai được chọn trước khi pilot đầu tiên kết thúc, không phải sau."
+        }
+      }
+    },
+    "numbers": {
+      "title": "Chúng tôi thực sự đang ở đâu",
+      "items": [
+        {
+          "value": "6.476",
+          "label": "Sản phẩm đang quản lý"
+        },
+        {
+          "value": "mục tiêu <50ms",
+          "label": "Ngân sách độ trễ suy luận"
+        },
+        {
+          "value": "0",
+          "label": "Cookie cần dùng"
+        },
+        {
+          "value": "Chưa có",
+          "label": "Nhà bán hàng trả phí"
+        }
+      ],
+      "foot": "Dòng cuối cùng nằm ở đây một cách có chủ đích. Chúng tôi đang ở giai đoạn pre-seed, chưa có con số tăng trưởng thương mại nào đo được, và một trang web giấu điều đó mới là thứ đầu tiên đáng bị nghi ngờ."
+    },
+    "cta": {
+      "title": "Gia nhập cùng chúng tôi",
+      "description": "Chúng tôi luôn quan tâm đến những người thà công bố con số bất lợi còn hơn chôn nó đi.",
+      "button": "Xem vị trí đang tuyển"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Yêu cầu Decision Audit, hoặc hỏi chúng tôi điều khó hơn",
+      "description": "Gửi một tệp xuất ngành hàng và nhận danh sách xếp hạng những gì cần ghi trước trong 48 giờ. Không mã nguồn, không thẻ theo dõi, không dữ liệu khách hàng, không ràng buộc.",
+      "ogTitle": "Yêu cầu Decision Audit, hoặc hỏi chúng tôi điều khó hơn",
+      "ogDescription": "Gửi một tệp xuất ngành hàng và nhận danh sách xếp hạng những gì cần ghi trước trong 48 giờ. Không mã nguồn, không thẻ theo dõi, không dữ liệu khách hàng, không ràng buộc."
+    },
+    "badge": "Yêu cầu Decision Audit",
+    "title": "Gửi một danh mục.",
+    "titleHighlight": "Nhận kết quả trong 48 giờ.",
+    "description": "Chọn ngành hàng mà bạn nghi ngờ khách gặp khó khăn nhất. Chúng tôi cần một file xuất sản phẩm, không code, không gắn tag lên website, không dữ liệu khách hàng, và sẽ trả lời bạn danh mục hiện chưa nói được điều gì với ai.",
+    "form": {
+      "title": "Gửi tin nhắn cho chúng tôi",
+      "name": "Họ và tên",
+      "namePlaceholder": "Nguyễn Văn A",
+      "email": "Email công việc",
+      "emailPlaceholder": "a@congty.com",
+      "company": "Tên công ty",
+      "companyPlaceholder": "Công ty ABC",
+      "companySize": "Quy mô công ty",
+      "inquiryType": "Chúng tôi có thể giúp gì cho bạn?",
+      "message": "Tin nhắn của bạn",
+      "messagePlaceholder": "Chúng tôi nên xem ngành hàng nào, và bạn nghĩ khách đang khó tìm thấy điều gì?",
+      "submit": "Gửi tin nhắn",
+      "submitting": "Đang gửi...",
+      "required": "*",
+      "characters": "ký tự",
+      "recaptchaNote": "Trang web này được bảo vệ bởi reCAPTCHA và",
+      "privacyPolicy": "Chính sách Bảo mật",
+      "and": "và",
+      "termsOfService": "Điều khoản Dịch vụ",
+      "apply": "của Google được áp dụng.",
+      "sector": "Bạn đang bán gì?",
+      "catalogue": "Tệp xuất danh mục (không bắt buộc)",
+      "catalogueHint": "CSV, JSON hoặc bảng tính, tối đa 15MB. Một ngành hàng là đủ. Gửi ngay bây giờ thì chúng tôi bắt đầu được mà không cần thêm một email nữa.",
+      "catalogueType": "Vui lòng đính kèm tệp CSV, JSON hoặc bảng tính",
+      "catalogueSize": "Tệp phải nhỏ hơn {mb}MB"
+    },
+    "inquiryTypes": {
+      "sales": "Yêu cầu Bán hàng",
+      "support": "Hỗ trợ Kỹ thuật",
+      "partnerships": "Hợp tác",
+      "press": "Báo chí & Truyền thông",
+      "general": "Yêu cầu Chung",
+      "audit": "Yêu cầu Decision Audit"
+    },
+    "companySizes": {
+      "select": "Chọn quy mô",
+      "1-10": "1-10 nhân viên",
+      "11-50": "11-50 nhân viên",
+      "51-200": "51-200 nhân viên",
+      "201-500": "201-500 nhân viên",
+      "500+": "500+ nhân viên"
+    },
+    "success": {
+      "title": "Đã gửi tin nhắn!",
+      "description": "Cảm ơn bạn, chúng tôi sẽ phản hồi trong một ngày làm việc. Nếu bạn yêu cầu Decision Audit, tin nhắn tiếp theo sẽ hướng dẫn chính xác cần xuất những gì.",
+      "backHome": "Về trang chủ"
+    },
+    "sidebar": {
+      "contactDirectly": "Liên hệ Trực tiếp"
+    },
+    "faq": {
+      "title": "Câu hỏi Thường gặp",
+      "items": [
+        {
+          "question": "Tích hợp mất bao lâu?",
+          "answer": "Hầu hết các tích hợp gốc (Shopify, WooCommerce, v.v.) mất dưới 30 phút. Tích hợp API tùy chỉnh thường mất 1-2 ngày."
+        },
+        {
+          "question": "Bạn có cung cấp dùng thử miễn phí không?",
+          "answer": "Có. Gói Miễn phí của chúng tôi cho 1,000 cuộc gọi API và 100 đối tượng mỗi tháng mà không cần thẻ. Các gói trả phí có dùng thử 14 ngày để bạn kiểm chứng ROI trước khi cam kết."
+        },
+        {
+          "question": "Thời gian phản hồi thông thường là bao lâu?",
+          "answer": "Yêu cầu bán hàng thường được trả lời trong vòng 2-4 giờ trong giờ làm việc. Yêu cầu hỗ trợ được xử lý trong vòng 24 giờ."
+        },
+        {
+          "question": "Bạn có làm việc với các agency không?",
+          "answer": "Có! Chúng tôi có chương trình đối tác cho các agency và tư vấn. Liên hệ partners@thepulseapi.com để biết thêm thông tin."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Muốn xem Demo Trực tiếp?",
+      "description": "Xem Pulse hoạt động với bản demo được cá nhân hóa của công cụ suy luận phù hợp với doanh nghiệp của bạn.",
+      "button": "Đặt lịch Demo"
+    },
+    "info": {
+      "email": {
+        "title": "Email",
+        "value": "getintouch@thepulseapi.com",
+        "description": "Cho các yêu cầu chung và hỗ trợ"
+      },
+      "demo": {
+        "title": "Đặt lịch Demo",
+        "value": "Cuộc gọi 30 phút",
+        "description": "Xem Pulse hoạt động với dữ liệu của bạn"
+      }
+    }
+  },
+  "careers": {
+    "meta": {
+      "title": "Tuyển dụng tại Pulse: xây phép đo, công bố giới hạn",
+      "description": "Chúng tôi là một đội nhỏ đo xem danh mục sản phẩm có hỗ trợ được quyết định của người mua hay không. Các vị trí đang tuyển và cách chúng tôi làm việc.",
+      "ogTitle": "Tuyển dụng tại Pulse: xây phép đo, công bố giới hạn",
+      "ogDescription": "Chúng tôi là một đội nhỏ đo xem danh mục sản phẩm có hỗ trợ được quyết định của người mua hay không. Các vị trí đang tuyển và cách chúng tôi làm việc."
+    },
+    "badge": "Đang tuyển dụng",
+    "title": "Xây dựng tương lai của",
+    "titleHighlight": "Thương mại điện tử",
+    "description": "Tham gia đội ngũ các kỹ sư, nhà thiết kế và chuyên gia kinh doanh đam mê, đang thay đổi cách các cửa hàng trực tuyến hiểu khách hàng.",
+    "benefits": {
+      "title": "Tại sao gia nhập Pulse?",
+      "description": "Chúng tôi đang xây dựng điều đặc biệt -công nghệ tôn trọng quyền riêng tư người dùng trong khi mang lại kết quả xuất sắc. Đây là những gì chúng tôi cung cấp:",
+      "remote": {
+        "title": "Ưu tiên làm việc từ xa",
+        "description": "Làm việc từ bất kỳ đâu tại Ấn Độ hoặc Việt Nam. Chúng tôi là đội ngũ phân tán khắp châu Á."
+      },
+      "health": {
+        "title": "Sức khỏe & Phúc lợi",
+        "description": "Bảo hiểm sức khỏe toàn diện cho bạn và gia đình."
+      },
+      "pto": {
+        "title": "Nghỉ phép linh hoạt",
+        "description": "Nghỉ ngơi khi cần. Chúng tôi tin tưởng bạn quản lý lịch trình của mình."
+      },
+      "learning": {
+        "title": "Ngân sách học tập",
+        "description": "Ngân sách hàng năm cho khóa học, hội thảo và phát triển chuyên môn."
+      },
+      "tech": {
+        "title": "Công nghệ mới nhất",
+        "description": "Thiết bị và công cụ hàng đầu để bạn làm việc tốt nhất."
+      },
+      "growth": {
+        "title": "Cơ hội phát triển",
+        "description": "Tham gia startup giai đoạn đầu với tiềm năng phát triển sự nghiệp lớn."
+      }
+    },
+    "culture": {
+      "title": "Văn hóa của chúng tôi",
+      "description": "Chúng tôi tin rằng công việc tốt nhất xảy ra khi những người tài năng có quyền tự chủ, mục tiêu rõ ràng và sự hỗ trợ cần thiết để thành công. Chúng tôi không về các cuộc họp bất tận hay quản lý vi mô.",
+      "async": "Giao tiếp ưu tiên async",
+      "focus": "Bảo vệ thời gian tập trung",
+      "results": "Kết quả hơn số giờ",
+      "transparent": "Quyết định minh bạch",
+      "stats": {
+        "teamMembers": "Thành viên",
+        "countries": "Quốc gia",
+        "stage": "Giai đoạn",
+        "founded": "Thành lập"
+      }
+    },
+    "positions": {
+      "title": "Vị trí đang tuyển",
+      "noMatch": "Không thấy vị trí phù hợp? Email cho chúng tôi tại",
+      "apply": "Ứng tuyển ngay"
+    },
+    "cta": {
+      "title": "Không thấy vị trí của bạn?",
+      "description": "Chúng tôi luôn quan tâm đến việc gặp gỡ những người xuất sắc. Gửi CV của bạn và cho chúng tôi biết bạn sẽ đóng góp gì cho Pulse.",
+      "button": "Liên hệ"
+    },
+    "heroAlt": "Một nhóm quanh bàn với laptop, cùng nhau xử lý một việc gì đó."
+  },
+  "blog": {
+    "meta": {
+      "title": "Ghi chép về dữ liệu sản phẩm, khả năng tìm thấy hàng và thương mại tác tử",
+      "description": "Nghiên cứu về cái giá của thuộc tính sản phẩm còn thiếu, mọi con số đều có nguồn. Các bài viết hiện chỉ có bản tiếng Anh.",
+      "ogTitle": "Ghi chép về dữ liệu sản phẩm, khả năng tìm thấy hàng và thương mại tác tử",
+      "ogDescription": "Nghiên cứu về cái giá của thuộc tính sản phẩm còn thiếu, mọi con số đều có nguồn. Các bài viết hiện chỉ có bản tiếng Anh."
+    },
+    "title": "Những gì chúng tôi đo được, và những gì người khác đo được.",
+    "titleHighlight": "Blog",
+    "description": "Thông tin chi tiết về cá nhân hóa thương mại điện tử, suy luận AI và xây dựng công nghệ ưu tiên quyền riêng tư mang lại kết quả.",
+    "featured": "Nổi bật",
+    "newsletter": {
+      "title": "Cập nhật thông tin",
+      "description": "Nhận thông tin chi tiết mới nhất về cá nhân hóa thương mại điện tử và AI vào hộp thư của bạn.",
+      "placeholder": "Nhập email của bạn",
+      "button": "Đăng ký",
+      "success": "Cảm ơn đã đăng ký! Kiểm tra hộp thư của bạn để xác nhận."
+    },
+    "eyebrow": "Ghi chép",
+    "lede": "Nghiên cứu về dữ liệu sản phẩm và khả năng tìm thấy hàng, mọi con số đều có nguồn. Con số nào của chúng tôi thì có ghi rõ, và câu lệnh tái lập nó nằm ở trang phương pháp. Các bài viết hiện chỉ có bản tiếng Anh.",
+    "read": "Đọc bài",
+    "subscribeTitle": "Thỉnh thoảng có bài mới.",
+    "subscribeBody": "Chúng tôi viết khi đo được điều gì đó đáng viết, và việc đó không theo lịch.",
+    "sources": "Nguồn",
+    "backToNotes": "Tất cả ghi chép",
+    "related": "Liên quan"
+  },
+  "status": {
+    "meta": {
+      "title": "Trạng thái hệ thống và độ trễ thời gian thực của Pulse API",
+      "description": "Tình trạng hoạt động hiện tại, lịch sử sự cố, và độ trễ p50 cùng p95 báo dưới dạng phân phối thay vì số trung vị.",
+      "ogTitle": "Trạng thái hệ thống và độ trễ thời gian thực của Pulse API",
+      "ogDescription": "Tình trạng hoạt động hiện tại, lịch sử sự cố, và độ trễ p50 cùng p95 báo dưới dạng phân phối thay vì số trung vị."
+    },
+    "title": "Trạng thái hệ thống",
+    "description": "Trạng thái thời gian thực của các dịch vụ và cơ sở hạ tầng Pulse",
+    "lastUpdated": "Cập nhật lần cuối:",
+    "allOperational": "Tất cả hệ thống hoạt động",
+    "allOperationalDesc": "Tất cả dịch vụ Pulse đang chạy bình thường không có vấn đề được báo cáo.",
+    "services": "Dịch vụ",
+    "regions": "Khu vực",
+    "uptime": "Uptime lịch sử",
+    "incidents": "Sự cố gần đây",
+    "subscribe": {
+      "title": "Cập nhật thông tin",
+      "description": "Đăng ký cập nhật trạng thái và nhận thông báo về sự cố và bảo trì."
+    },
+    "status": {
+      "operational": "Hoạt động",
+      "degraded": "Hiệu suất giảm",
+      "outage": "Ngừng dịch vụ"
+    }
+  },
+  "pricing": {
+    "meta": {
+      "title": "Bảng giá: phí cố định cho bản kiểm tra, phần còn lại theo từng chương trình",
+      "description": "Decision Audit có giá cố định cho mỗi danh mục. Bộ máy thời gian thực được định giá theo từng chương trình thử nghiệm, không bao giờ trước đó.",
+      "ogTitle": "Bảng giá: phí cố định cho bản kiểm tra, phần còn lại theo từng chương trình",
+      "ogDescription": "Decision Audit có giá cố định cho mỗi danh mục. Bộ máy thời gian thực được định giá theo từng chương trình thử nghiệm, không bao giờ trước đó."
+    },
+    "title": "Tính theo quyết định tạo ra.",
+    "titleHighlight": "Không tính theo dữ liệu lưu trữ.",
+    "description": "Ba dòng sản phẩm, theo đúng thứ tự bạn sẽ mua. Audit đứng đầu vì đây là phần duy nhất hoạt động độc lập, và vì nhà bán hàng không sẵn sàng trả cho một chẩn đoán thì cũng sẽ không hành động theo nó.",
+    "popular": "Bắt đầu ở đây",
+    "note": "Giá giai đoạn pre-seed được thoả thuận theo từng pilot. Chúng tôi muốn năm nhà bán hàng nhận được giá trị thật hơn là năm mươi nhà bán hàng dùng giá khuyến mãi, nên chưa có gói tự đăng ký và chưa có bảng giá công bố.",
+    "plans": {
+      "audit": {
+        "name": "Decision Audit",
+        "cadence": "Một lần, theo danh mục",
+        "description": "Điểm khởi đầu. Thông tin sản phẩm còn thiếu nào đang giới hạn nhiều nhất khả năng hỗ trợ quyết định mua của danh mục, xếp hạng, trên chính sản phẩm của bạn, kèm danh sách cụ thể.",
+        "cta": "Yêu cầu audit",
+        "features": [
+          "48 giờ kể từ khi nhận file",
+          "Chỉ cần một file xuất danh mục, không code, không gắn tag, không dữ liệu khách hàng",
+          "Danh sách thuộc tính xếp hạng kèm sản phẩm bị ảnh hưởng",
+          "Phần chúng tôi khôi phục được từ tên sản phẩm hiện có",
+          "Độ phủ theo từng kệ hàng, ngành nào đủ dữ liệu để khách tìm được sản phẩm",
+          "Buổi trao đổi 30 phút cùng người phụ trách ngành hàng"
+        ]
+      },
+      "api": {
+        "name": "Decision API",
+        "cadence": "Hàng tháng, theo số quyết định phục vụ",
+        "description": "Suy luận thời gian thực và xếp hạng danh mục. Chỉ bắt đầu sau một pilot, chúng tôi muốn bạn thấy kết quả đo được trước khi ký.",
+        "cta": "Liên hệ",
+        "features": [
+          "Suy luận phiên truy cập theo thời gian thực, không cần đăng nhập hay cookie",
+          "Danh mục được xếp hạng theo điều khách đang cần",
+          "Chỉ đặt câu hỏi khi câu trả lời làm thay đổi thứ hạng",
+          "Chạy song song với website và tìm kiếm hiện có, theo ngân sách thiết kế dưới 50ms",
+          "Cô lập theo tenant: danh mục của bạn không bao giờ được gộp chung hay bán đi",
+          "Mặc định giữ lại một nhóm đối chứng, để mọi con số đều là phép so sánh"
+        ]
+      },
+      "monitoring": {
+        "name": "Giám sát dữ liệu sản phẩm",
+        "cadence": "Tuỳ chọn, định kỳ",
+        "description": "Danh mục xuống cấp theo thời gian. Sản phẩm mới về mà không có thuộc tính, và một kệ hàng dùng tốt quý trước lặng lẽ không còn dùng được nữa.",
+        "cta": "Liên hệ",
+        "features": [
+          "Tính lại xếp hạng mỗi khi danh mục thay đổi",
+          "Cảnh báo khi một kệ hàng tụt xuống dưới ngưỡng dùng được",
+          "Trích xuất thuộc tính từ nội dung sản phẩm mới",
+          "Xếp hạng lại hàng quý những gì cần ghi nhận tiếp theo"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Câu hỏi nhà bán hàng thường đặt ra",
+      "items": [
+        {
+          "question": "Vì sao không có gói miễn phí hay bảng giá công bố?",
+          "answer": "Vì chúng tôi còn ở giai đoạn sớm và mỗi pilot đều được thiết kế riêng. Một bảng giá công bố sẽ ngụ ý một mô hình bán hàng lặp lại mà chúng tôi chưa xứng đáng có. Giá được thống nhất bằng văn bản theo từng pilot, trước khi bắt đầu."
+        },
+        {
+          "question": "Nếu audit không tìm ra gì thì tôi mất gì?",
+          "answer": "Một file xuất danh mục và một khoản phí cố định. Nếu danh mục của bạn ổn, báo cáo sẽ nói đúng như vậy, và bạn đã bỏ rất ít để biết rằng nút thắt không nằm ở khâu tìm sản phẩm. Đó là một câu trả lời có ích."
+        },
+        {
+          "question": "Chúng tôi đã có tìm kiếm và gợi ý sản phẩm. Cái này thay thế chúng à?",
+          "answer": "Không, hãy giữ nguyên. Chúng đọc đúng những trường dữ liệu mà chúng tôi đọc, nên bản audit cũng giúp cho chúng. Nếu kích thước màn hình không được ghi nhận, bộ lọc tìm kiếm của bạn cũng không thể đưa ra tiêu chí đó."
+        },
+        {
+          "question": "Đây có phải chỉ là dọn dẹp dữ liệu không?",
+          "answer": "Dọn dẹp dữ liệu là việc không có điểm dừng. Đây là một danh sách hữu hạn, đã xếp hạng, gồm những trường thực sự thay đổi kết quả, kèm sản phẩm cụ thể. Khác biệt nằm ở chỗ biết khi nào nên dừng."
+        },
+        {
+          "question": "Khác gì với một hệ thống PIM?",
+          "answer": "Hãy giữ nguyên PIM của bạn. PIM là nơi thông tin sản phẩm được quản trị, làm giàu và phân phối, đó không phải việc của chúng tôi. PULSE đặt một câu hỏi khác: với những quyết định mua mà danh mục của bạn phải hỗ trợ, bạn nên cải thiện điều gì trước? Chúng tôi trả danh sách ưu tiên đó về cho hệ thống đang quản lý dữ liệu sản phẩm của bạn. Nếu bạn dùng Akeneo, Salsify, Productsup hay hệ thống riêng, bản audit là đầu vào cho chúng, không phải thứ thay thế."
+        },
+        {
+          "question": "Các bạn có cam kết con số tăng trưởng không?",
+          "answer": "Không, trước khi đo được trên traffic của bạn. Chúng tôi chưa có kết quả doanh thu đo được từ một nhà bán hàng thật, và bất kỳ ai đưa bạn một con số trước khi chạy thử nghiệm đều đang trích dẫn cửa hàng của người khác."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Bắt đầu với một ngành hàng.",
+      "titleHighlight": "Ngành mà khách gặp khó khăn nhất.",
+      "description": "Gửi một file xuất danh mục, trong 48 giờ chúng tôi sẽ cho bạn biết sản phẩm của bạn hiện chưa nói được điều gì với ai.",
+      "button": "Yêu cầu Decision Audit"
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Không tìm thấy trang",
+      "description": "Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển. Hãy để chúng tôi đưa bạn trở lại đúng hướng.",
+      "popularPages": "Trang phổ biến:",
+      "goBack": "Quay lại trang trước"
+    },
+    "500": {
+      "title": "Đã xảy ra lỗi",
+      "description": "Chúng tôi gặp lỗi không mong muốn. Đội ngũ của chúng tôi đã được thông báo và đang xử lý. Vui lòng thử lại sau.",
+      "support": "Nếu vấn đề vẫn tiếp tục, vui lòng liên hệ đội hỗ trợ.",
+      "checkStatus": "Kiểm tra trạng thái hệ thống"
+    }
+  },
+  "language": {
+    "en": "English",
+    "vi": "Tiếng Việt",
+    "switchTo": "Đổi ngôn ngữ"
+  },
+  "docs": {
+    "meta": {
+      "title": "Tài liệu API: tích hợp trong mười dòng, hoặc không tích hợp gì",
+      "description": "Tài liệu tham chiếu cho SDK Pulse và Decision API, gồm các yếu tố xếp hạng, bản ghi quyết định và nhánh đối chứng. Bản kiểm tra không cần tới thứ nào cả.",
+      "ogTitle": "Tài liệu API: tích hợp trong mười dòng, hoặc không tích hợp gì",
+      "ogDescription": "Tài liệu tham chiếu cho SDK Pulse và Decision API, gồm các yếu tố xếp hạng, bản ghi quyết định và nhánh đối chứng. Bản kiểm tra không cần tới thứ nào cả."
+    },
+    "title": "Tài liệu API",
+    "description": "Mọi thứ bạn cần để tích hợp công cụ suy luận thời gian thực của Pulse vào nền tảng thương mại điện tử.",
+    "quickStart": {
+      "navTitle": "Bắt đầu nhanh",
+      "navDescription": "Thêm Pulse vào trang web của bạn trong 3 bước",
+      "title": "Bắt đầu nhanh",
+      "description": "Thêm Pulse vào trang web của bạn trong ba bước. SDK tải ngầm nên không bao giờ làm chậm trang, và chỉ đọc tín hiệu ẩn danh trong phiên. Không cookie, không lưu gì riêng tư.",
+      "step1Title": "1. Thêm SDK",
+      "step1Desc": "Chèn thẻ script này vào phần head của trang. Nó tải bất đồng bộ và không bao giờ chặn quá trình hiển thị.",
+      "step2Title": "2. Khởi tạo",
+      "step2Desc": "Khởi tạo Pulse bằng merchant ID và khóa công khai (pk_live_…) của bạn. Việc thu thập tín hiệu tự động bắt đầu ngay lập tức.",
+      "step3Title": "3. Gắn thẻ các phần tử chính (tùy chọn)",
+      "step3Desc": "Thêm thuộc tính data-pulse-track vào các menu sắp xếp, bộ lọc và nút CTA để tự động ghi nhận các tương tác có ý định cao.",
+      "doneTitle": "Vậy là xong, bạn đã hoạt động",
+      "doneDesc": "SDK gửi các tín hiệu ẩn danh (thiết bị, nguồn truy cập, cuộn trang, lượt nhấp) tới POST /v1/track và Pulse suy luận persona của khách ngay trong phiên. Gọi Inference API bên dưới từ backend của bạn để cá nhân hoá tìm kiếm, gợi ý và bố cục."
+    },
+    "nav": {
+      "authTitle": "Xác thực",
+      "authDesc": "Tìm hiểu cách xác thực các yêu cầu API của bạn",
+      "inferTitle": "API Suy luận",
+      "inferDesc": "Nhận dự đoán persona thời gian thực",
+      "personalizeTitle": "API Cá nhân hóa",
+      "personalizeDesc": "Sắp xếp lại cửa hàng của bạn theo thời gian thực",
+      "catalogTitle": "Đồng bộ Danh mục",
+      "catalogDesc": "Đồng bộ sản phẩm & danh mục theo thời gian thực",
+      "webhooksTitle": "Webhooks",
+      "webhooksDesc": "Nhận thông báo sự kiện thời gian thực"
+    },
+    "baseUrl": "URL cơ sở",
+    "overview": {
+      "title": "Cách hoạt động",
+      "intro": "Pulse cá nhân hóa cửa hàng của bạn qua ba bước: thu thập tín hiệu ẩn danh trong phiên, cho chúng tôi biết bạn bán gì, rồi hỏi chúng tôi cách sắp xếp sản phẩm cho khách đang truy cập. SDK trình duyệt xử lý bước đầu; backend của bạn xử lý hai bước còn lại qua một REST API đơn giản.",
+      "step1Title": "1. Thu thập tín hiệu",
+      "step1Desc": "Chèn SDK vào. Nó lặng lẽ truyền hành vi ẩn danh đến Pulse ở chế độ nền. Không cookie, không gì riêng tư.",
+      "step2Title": "2. Đồng bộ danh mục",
+      "step2Desc": "Đẩy sản phẩm và danh mục của bạn để Pulse biết những gì có thể đề xuất và xếp hạng.",
+      "step3Title": "3. Lấy dữ liệu cá nhân hóa",
+      "step3Desc": "Gọi API Cá nhân hóa để sắp xếp lại lưới sản phẩm và kết quả tìm kiếm cho khách đang truy cập."
+    },
+    "auth": {
+      "title": "Xác thực",
+      "signupNote": "Trước tiên bạn cần một tài khoản Pulse. Đăng ký để tạo tổ chức của bạn, sau đó tạo và quản lý các khóa API từ bảng điều khiển.",
+      "signupCta": "Đăng ký để nhận khóa API →",
+      "intro": "Tất cả các yêu cầu API đều cần xác thực bằng khóa API. Đưa khóa của bạn vào header <code>Authorization</code>.",
+      "securityLabel": "Lưu ý bảo mật",
+      "securityNote": "Không bao giờ để lộ khóa API bí mật của bạn trong mã phía client. Mọi yêu cầu suy luận và danh mục nên được thực hiện từ máy chủ backend của bạn. SDK trình duyệt sử dụng khóa công khai (pk_live_…) chỉ giới hạn cho việc thu thập sự kiện."
+    },
+    "inference": {
+      "title": "API Suy luận",
+      "desc": "Nhận suy luận persona thời gian thực cho một phiên truy cập. Trả về các thuộc tính persona, điểm tin cậy và thứ hạng sản phẩm được đề xuất.",
+      "latency": "Độ trễ mục tiêu: <50ms (p95)",
+      "requestBody": "Nội dung yêu cầu",
+      "response": "Phản hồi"
+    },
+    "catalog": {
+      "title": "Đồng bộ Danh mục, Sản phẩm & Danh mục",
+      "intro": "Đẩy sản phẩm và danh mục của bạn lên Pulse để công cụ biết những gì có thể cá nhân hóa. Gửi toàn bộ danh mục một lần, sau đó giữ đồng bộ bằng cách gửi từng thao tác tạo, cập nhật hoặc xóa ngay khi nó xảy ra trong cửa hàng của bạn.",
+      "async": "Làm giàu dữ liệu và gắn thẻ Digital Twin chạy bất đồng bộ trong pipeline nạp dữ liệu, lệnh upsert trả về <code>202 Accepted</code> ngay lập tức và webhook <code>products.tagged</code> kích hoạt khi sản phẩm sẵn sàng cho suy luận. Bản thân suy luận vẫn nằm trên đường request.",
+      "upsertDesc": "Tạo hoặc cập nhật sản phẩm. Lệnh này có tính bất biến (idempotent) theo <code>id</code>, gửi lại cùng một sản phẩm với các trường mới để cập nhật nó. Chấp nhận một sản phẩm hoặc một lô.",
+      "categoriesDesc": "Đồng bộ cây danh mục của bạn để Pulse hiểu mối quan hệ giữa các sản phẩm. Đặt <code>parent_id</code> để phản ánh cấu trúc phân cấp của cửa hàng. Được upsert giống như sản phẩm.",
+      "deleteDesc": "Xóa một sản phẩm khi nó bị xóa hoặc hết hàng vĩnh viễn. Nó sẽ ngừng xuất hiện trong các đề xuất ngay lập tức. Sử dụng cùng mẫu để xóa danh mục.",
+      "syncLabel": "Giữ đồng bộ",
+      "syncNote": "Hầu hết các nhà bán hàng kết nối các lệnh gọi này với sự kiện thay đổi sản phẩm/danh mục của cửa hàng (ví dụ: một webhook Shopify hoặc một save hook trong backend tùy chỉnh) để danh mục Pulse luôn phản ánh đúng những gì người mua nhìn thấy. Nên đồng bộ lại toàn bộ hằng đêm như một biện pháp dự phòng."
+    },
+    "personalize": {
+      "title": "API Cá nhân hóa",
+      "desc": "Khi SDK đã thu thập tín hiệu và danh mục của bạn đã được đồng bộ, hãy gọi các endpoint này để sắp xếp lại cửa hàng theo thời gian thực cho khách hiện tại. Gọi chúng từ backend của bạn bằng Bearer token, truyền session_id mà SDK đã tạo trong trình duyệt.",
+      "recommendDesc": "Trả về danh sách sản phẩm được xếp hạng và cá nhân hóa theo persona trực tiếp của khách, dùng cho lưới \"Dành cho bạn\", sản phẩm liên quan và các dải trên trang chủ.",
+      "searchDesc": "Xếp hạng lại kết quả tìm kiếm theo ý định. Gửi truy vấn của người mua và Pulse sắp xếp các sản phẩm phù hợp theo persona được suy luận trong phiên này. Kết quả được phân trang bằng con trỏ (cursor)."
+    },
+    "webhooks": {
+      "title": "Webhooks",
+      "intro": "Cấu hình webhooks để nhận thông báo thời gian thực cho các sự kiện như cập nhật persona, theo dõi chuyển đổi và cải tiến mô hình.",
+      "eventsTitle": "Sự kiện có sẵn",
+      "converted": "Chuyển đổi được ghi nhận cho Pulse",
+      "tagged": "Hoàn tất gắn thẻ sản phẩm",
+      "updated": "Mô hình suy luận được cải tiến"
+    },
+    "errors": {
+      "title": "Lỗi",
+      "intro": "Pulse sử dụng các mã trạng thái HTTP tiêu chuẩn và trả về lỗi theo định dạng RFC 7807 Problem Details, vì vậy mỗi lỗi đều bao gồm một type mà máy đọc được và một detail mà người đọc được.",
+      "codesTitle": "Các mã trạng thái phổ biến",
+      "codeCol": "Mã",
+      "meaningCol": "Ý nghĩa",
+      "e400": "Bad Request, payload không đúng định dạng hoặc thiếu trường bắt buộc.",
+      "e401": "Unauthorized, khóa API bị thiếu hoặc không hợp lệ.",
+      "e403": "Forbidden, khóa hợp lệ nhưng không được phép truy cập tài nguyên này.",
+      "e404": "Not Found, phiên, sản phẩm hoặc endpoint không tồn tại.",
+      "e422": "Unprocessable Entity, yêu cầu đúng định dạng nhưng không qua được kiểm tra hợp lệ.",
+      "e429": "Too Many Requests, bạn đã vượt quá giới hạn tần suất của gói.",
+      "e500": "Server Error, đã xảy ra lỗi từ phía chúng tôi; thử lại với backoff."
+    },
+    "rateLimits": {
+      "title": "Giới hạn tần suất",
+      "planCol": "Gói",
+      "inferCol": "API Suy luận",
+      "catalogCol": "API Danh mục",
+      "custom": "Tùy chỉnh"
+    },
+    "sdks": {
+      "title": "SDK & Thư viện"
+    },
+    "needHelp": "Cần trợ giúp?",
+    "helpDescription": "Đội ngũ kỹ sư giải pháp của chúng tôi sẵn sàng giúp bạn tích hợp Pulse thành công.",
+    "getSupport": "Nhận hỗ trợ tích hợp",
+    "contactSupport": "Liên hệ hỗ trợ",
+    "heroAlt": "Một lập trình viên bên laptop, với các tài nguyên API toả ra từ đó: lược đồ, thư mục, biểu đồ, webhook và giới hạn tần suất.",
+    "gateTitle": "Muốn nhận trọn bộ trong một tài liệu?",
+    "gateBody": "Để lại email và chúng tôi sẽ gửi toàn bộ hướng dẫn tích hợp, cả hai ví dụ mẫu và tài liệu tham chiếu endpoint, gói trong một tệp duy nhất để bạn chuyển cho người phải phê duyệt.",
+    "gateCta": "Gửi cho tôi",
+    "gateSuccess": "Đang gửi. Kiểm tra hộp thư của bạn để nhận tài liệu."
+  },
+  "integrations": {
+    "meta": {
+      "title": "Tích hợp: đọc chính tệp xuất bạn vốn đã tạo ra",
+      "description": "Pulse đọc một tệp CSV hoặc JSON và trả lại danh sách sửa đã xếp hạng. Bộ máy thời gian thực tuỳ chọn chỉ là một thẻ script chạy song song với hệ thống sẵn có.",
+      "ogTitle": "Tích hợp: đọc chính tệp xuất bạn vốn đã tạo ra",
+      "ogDescription": "Pulse đọc một tệp CSV hoặc JSON và trả lại danh sách sửa đã xếp hạng. Bộ máy thời gian thực tuỳ chọn chỉ là một thẻ script chạy song song với hệ thống sẵn có."
+    },
+    "title": "Tích hợp",
+    "description": "Kết nối Pulse với hệ thống thương mại điện tử hiện có. Tích hợp gốc cho tất cả các nền tảng chính, cùng với API linh hoạt cho cài đặt tùy chỉnh.",
+    "quickSetup": "Cài đặt nhanh",
+    "quickSetupDesc": "Hầu hết các tích hợp có thể hoàn thành trong dưới 30 phút",
+    "noCodeChanges": "Không cần thay đổi code",
+    "noCodeChangesDesc": "Tích hợp gốc không yêu cầu phát triển tùy chỉnh",
+    "instantValue": "Giá trị ngay lập tức",
+    "instantValueDesc": "Bắt đầu cá nhân hóa từ khách truy cập đầu tiên sau khi cài đặt",
+    "platforms": "Nền tảng thương mại điện tử",
+    "platformsDesc": "Tích hợp gốc cho các nền tảng bạn đang sử dụng",
+    "dataIntegrations": "Tích hợp dữ liệu & tiếp thị",
+    "dataIntegrationsDesc": "Kết nối thông tin Pulse với hệ thống phân tích và tiếp thị của bạn",
+    "howItWorks": "Cách tích hợp hoạt động",
+    "install": "Cài đặt",
+    "installDesc": "Thêm ứng dụng hoặc đoạn mã Pulse vào cửa hàng. Chỉ mất vài phút với tích hợp gốc.",
+    "connect": "Kết nối",
+    "connectDesc": "Pulse tự động đồng bộ danh mục sản phẩm và bắt đầu học kho hàng của bạn.",
+    "personalize": "Cá nhân hóa",
+    "personalizeDesc": "Suy luận thời gian thực bắt đầu ngay lập tức. Mỗi khách truy cập có trải nghiệm cá nhân hóa.",
+    "customIntegrations": "Xây dựng tích hợp tùy chỉnh",
+    "customIntegrationsDesc": "Cho thương mại headless, nền tảng tùy chỉnh hoặc yêu cầu đặc biệt, API REST cho bạn toàn quyền kiểm soát công cụ suy luận Pulse.",
+    "readyToIntegrate": "Sẵn sàng tích hợp?",
+    "readyToIntegrateDesc": "Đội ngũ kỹ sư giải pháp có thể giúp bạn thiết lập nhanh chóng. Hầu hết các tích hợp được hoàn thành trong một cuộc gọi.",
+    "getStarted": "Bắt đầu miễn phí",
+    "readDocs": "Đọc tài liệu"
+  },
+  "product": {
+    "meta": {
+      "title": "Sản phẩm: đo danh mục trước, rồi mới xếp hạng gian hàng",
+      "description": "Decision Audit, Verification và Monitor cho dữ liệu sản phẩm, cùng Tìm kiếm, Gợi ý, Trang danh mục và Merchandising Studio. Một cầu thang có lối ra ở mọi bậc.",
+      "ogTitle": "Sản phẩm: đo danh mục trước, rồi mới xếp hạng gian hàng",
+      "ogDescription": "Decision Audit, Verification và Monitor cho dữ liệu sản phẩm, cùng Tìm kiếm, Gợi ý, Trang danh mục và Merchandising Studio. Một cầu thang có lối ra ở mọi bậc."
+    },
+    "badge": "Engine",
+    "title": "Hệ thống biết rõ mình",
+    "titleHighlight": "chưa biết gì",
+    "titleEnd": "về một giao dịch mua.",
+    "description": "Mọi gợi ý sản phẩm đều là một phép cược trong điều kiện thiếu chắc chắn. Phần lớn engine giấu điều đó đi; engine của chúng tôi đo nó, chỉ rõ sự thiếu chắc chắn nằm ở đâu, và khép lại bằng cách rẻ nhất, đôi khi là một câu hỏi, và thường xuyên hơn là một trường dữ liệu sản phẩm không ai ghi lại.",
+    "cta": "Yêu cầu Decision Audit",
+    "viewPricing": "Xem mô hình kinh doanh",
+    "gaps": {
+      "title": "Ba khoảng trống, khép lại theo thứ tự",
+      "description": "Chúng không khó như nhau, và cũng không hoàn thiện như nhau. Bảng dưới nói rõ phần nào là phần nào, gồm cả hai phần chúng tôi chưa xây.",
+      "col": {
+        "gap": "Khoảng trống",
+        "how": "Cách chúng tôi khép lại",
+        "status": "Trạng thái"
+      },
+      "items": [
+        {
+          "gap": "Về sản phẩm",
+          "how": "Cho nhà bán hàng biết cần ghi nhận thuộc tính nào, xếp hạng theo tác động lên quyết định mua, kèm danh sách sản phẩm bị ảnh hưởng.",
+          "status": "Đã đo, dùng được",
+          "state": "ready"
+        },
+        {
+          "gap": "Về người mua",
+          "how": "Suy luận từ hành vi trong phiên hiện tại; chỉ hỏi khi câu trả lời làm thay đổi quyết định.",
+          "status": "Đã chứng minh cơ chế, chưa thành sản phẩm",
+          "state": "partial"
+        },
+        {
+          "gap": "Về tuyên bố sản phẩm",
+          "how": "Tách dữ kiện đã xác minh khỏi suy luận, kèm nguồn gốc, để một AI mua sắm có thể phân biệt hai loại.",
+          "status": "Đã có nền tảng, chưa thành sản phẩm",
+          "state": "planned"
+        }
+      ],
+      "foot": "Chúng tôi bán phần đầu tiên. Phần thứ hai và thứ ba là lý do phần đầu tiên không phải một hợp đồng tư vấn."
+    },
+    "pipeline": {
+      "title": "Điều diễn ra trong một phiên truy cập",
+      "description": "Không đăng nhập, không cookie, không hồ sơ để tra cứu. Năm bước, chạy song song với website chứ không chắn phía trước.",
+      "steps": [
+        {
+          "title": "Khách truy cập",
+          "desc": "Đến ẩn danh. Không có gì để tra cứu và không có gì để đối chiếu."
+        },
+        {
+          "title": "Tín hiệu",
+          "desc": "Cuộn trang, thời gian dừng, từ khoá tìm kiếm, ngành hàng mở ra và bộ lọc sử dụng, chỉ trong phiên hiện tại."
+        },
+        {
+          "title": "Phân phối xác suất",
+          "desc": "Mỗi chiều được cập nhật theo tỷ số hợp lý, khởi đầu từ chính quần thể của khách."
+        },
+        {
+          "title": "Xếp hạng",
+          "desc": "Danh mục của bạn được chấm điểm theo các phân phối đó, với độ phù hợp đối tượng là một thành phần có trọng số."
+        },
+        {
+          "title": "Quyết định",
+          "desc": "Hiển thị, xếp lại, hoặc hỏi, chỉ hỏi khi câu trả lời làm thay đổi thứ hạng."
+        }
+      ]
+    },
+    "inference": {
+      "title": "Suy luận bạn có thể phản biện",
+      "description": "Hãy nhìn nó thay đổi. Khung hình đầu tiên không phải phỏng đoán và cũng không phải tung đồng xu, đó là quần thể mà khách này thuộc về, và nhãn ghi rõ như vậy cho đến khi có bằng chứng thay thế.",
+      "points": [
+        {
+          "title": "Khởi đầu từ một quần thể thật",
+          "description": "Việt Nam ở mức 48,97% nam, thu hẹp theo thành phố khi request có thông tin đó. Không phải 50/50, vì 50/50 là một tuyên bố không ai đo cả."
+        },
+        {
+          "title": "Không có bằng chứng thì đóng góp đúng bằng không",
+          "description": "Một ngành hàng không có thống kê đối tượng sẽ dịch chuyển phân phối đúng 0,000, theo phép tính, không phải theo một hệ số giảm chấn do ai đó tinh chỉnh."
+        },
+        {
+          "title": "Tỷ lệ nền và số đo được tách bạch rõ ràng",
+          "description": "Mỗi phiên đều ghi lại chiều nào đã đo được và chiều nào vẫn là tỷ lệ nền. Dashboard hiển thị cả hai."
+        },
+        {
+          "title": "Luôn giữ lại một nhóm đối chứng",
+          "description": "Theo cơ chế tất định, mặc định bật, để khi chúng tôi công bố một mức tăng trưởng, luôn có thứ trung thực để so sánh."
+        }
+      ]
+    },
+    "running": {
+      "title": "Những gì đang chạy hôm nay",
+      "description": "Số liệu production, không phải lộ trình.",
+      "items": [
+        {
+          "value": "6.476",
+          "label": "Sản phẩm đang quản lý"
+        },
+        {
+          "value": "65",
+          "label": "Ngành hàng"
+        },
+        {
+          "value": "73",
+          "label": "Dòng thống kê đối tượng, suy ra từ dữ liệu danh mục"
+        },
+        {
+          "value": "4",
+          "label": "Chiều được suy luận"
+        }
+      ]
+    },
+    "developer": {
+      "badge": "Dành cho lập trình viên",
+      "title": "Một endpoint,",
+      "titleHighlight": "một quyết định.",
+      "description": "Gửi những tín hiệu phiên truy cập bạn vốn đã có. Nhận về danh mục đã xếp hạng, các phân phối đứng sau thứ hạng đó, và, khi thực sự đáng hỏi, đúng một câu hỏi làm thay đổi kết quả nhiều nhất.",
+      "points": [
+        "SDK JavaScript gắn thẳng vào site, hoặc gọi API trực tiếp",
+        "Không cookie, không đăng nhập, không bước định danh người dùng",
+        "Xây theo ngân sách dưới 50ms, là mục tiêu, chúng tôi chưa công bố số đo nào cho nó",
+        "Cô lập theo tenant: danh mục của bạn không huấn luyện mô hình của bên khác"
+      ],
+      "cta": "Đọc tài liệu"
+    },
+    "cta2": {
+      "title": "Xem nó chạy trên",
+      "titleHighlight": "danh mục của chính bạn.",
+      "description": "Bản audit chỉ cần một file xuất sản phẩm. Không tích hợp, không code, không dữ liệu khách hàng, và kết quả thuộc về bạn, dù sau đó bạn có làm việc với chúng tôi hay không.",
+      "button": "Yêu cầu Decision Audit"
+    }
+  },
+  "privacy": {
+    "meta": {
+      "title": "Quyền riêng tư: chỉ dữ liệu sản phẩm, không cookie và không danh tính",
+      "description": "Pulse thu thập gì, không bao giờ thu thập gì, và bản kiểm tra chạy ra sao mà không cần hồ sơ khách hàng, lịch sử đơn hàng hay bất kỳ dữ liệu cá nhân nào.",
+      "ogTitle": "Quyền riêng tư: chỉ dữ liệu sản phẩm, không cookie và không danh tính",
+      "ogDescription": "Pulse thu thập gì, không bao giờ thu thập gì, và bản kiểm tra chạy ra sao mà không cần hồ sơ khách hàng, lịch sử đơn hàng hay bất kỳ dữ liệu cá nhân nào."
+    },
+    "title": "Chính sách Bảo mật",
+    "description": "Tại Pulse, quyền riêng tư không phải là suy nghĩ sau - đó là nền tảng của chúng tôi. Chúng tôi đã xây dựng công nghệ để cung cấp cá nhân hóa mạnh mẽ mà không ảnh hưởng đến quyền riêng tư của người dùng.",
+    "lastUpdated": "Cập nhật lần cuối: Tháng 1, 2025",
+    "highlights": {
+      "title": "Điểm nổi bật về Bảo mật",
+      "noCookies": "Không cần cookie",
+      "noPII": "Không thu thập PII",
+      "gdprCcpa": "Tuân thủ GDPR & CCPA",
+      "soc2": "Chạy trên hạ tầng được chứng nhận SOC 2"
+    },
+    "sections": {
+      "collect": {
+        "title": "Thông tin Chúng tôi Thu thập",
+        "items": [
+          "Loại thiết bị và thông tin trình duyệt (không nhận dạng)",
+          "Website giới thiệu hoặc nguồn truy cập",
+          "Vị trí địa lý chung (cấp quốc gia/khu vực)",
+          "Mẫu hành vi trên trang (tìm kiếm, bộ lọc, duyệt web)",
+          "Thời gian truy cập và thời lượng phiên"
+        ],
+        "note": "Chúng tôi KHÔNG thu thập: tên, email, địa chỉ, thông tin thanh toán, hoặc bất kỳ thông tin nhận dạng cá nhân (PII) nào mà không có sự đồng ý rõ ràng."
+      },
+      "use": {
+        "title": "Cách Chúng tôi Sử dụng Thông tin",
+        "items": [
+          "Để cung cấp suy luận persona thời gian thực cho trải nghiệm cá nhân hóa",
+          "Để cải thiện thuật toán và độ chính xác suy luận",
+          "Để tạo phân tích tổng hợp, ẩn danh cho khách hàng",
+          "Để duy trì và cải thiện hiệu suất dịch vụ"
+        ]
+      },
+      "storage": {
+        "title": "Lưu trữ & Bảo mật Dữ liệu",
+        "items": [
+          "Tất cả dữ liệu được mã hóa khi truyền (TLS 1.3) và khi lưu trữ (AES-256)",
+          "Chúng tôi vận hành trên hạ tầng có chứng nhận SOC 2 Type II từ nhà cung cấp. Bản thân Pulse chưa được kiểm toán SOC 2.",
+          "Dữ liệu được lưu trữ trong các trung tâm dữ liệu an toàn, phân tán địa lý",
+          "Kiểm tra bảo mật và thử nghiệm xâm nhập định kỳ",
+          "Tự động xóa dữ liệu sau 90 ngày trừ khi có quy định khác"
+        ]
+      },
+      "dontDo": {
+        "title": "Những gì Chúng tôi KHÔNG làm",
+        "items": [
+          "Chúng tôi không sử dụng cookie để theo dõi",
+          "Chúng tôi không bán dữ liệu cá nhân cho bên thứ ba",
+          "Chúng tôi không tạo hồ sơ theo dõi xuyên trang",
+          "Chúng tôi không sử dụng kỹ thuật fingerprinting",
+          "Chúng tôi không chia sẻ dữ liệu người dùng cá nhân với nhà quảng cáo"
+        ]
+      }
+    },
+    "rights": {
+      "title": "Quyền của Bạn",
+      "description": "Tùy thuộc vào vị trí của bạn, bạn có thể có các quyền sau:",
+      "items": [
+        "Quyền truy cập dữ liệu của bạn",
+        "Quyền chỉnh sửa",
+        "Quyền xóa ('quyền được lãng quên')",
+        "Quyền hạn chế xử lý",
+        "Quyền di chuyển dữ liệu",
+        "Quyền phản đối xử lý"
+      ]
+    },
+    "contact": {
+      "title": "Câu hỏi về Bảo mật?",
+      "description": "Chúng tôi sẵn lòng trả lời bất kỳ câu hỏi nào về cách chúng tôi xử lý dữ liệu của bạn.",
+      "email": "privacy@thepulseapi.com"
+    }
+  },
+  "terms": {
+    "meta": {
+      "title": "Điều khoản dịch vụ",
+      "description": "Các điều khoản áp dụng cho việc sử dụng Pulse Decision Audit, Verification, Monitor và Decision API.",
+      "ogTitle": "Điều khoản dịch vụ",
+      "ogDescription": "Các điều khoản áp dụng cho việc sử dụng Pulse Decision Audit, Verification, Monitor và Decision API."
+    },
+    "title": "Điều khoản Dịch vụ",
+    "description": "Vui lòng đọc kỹ các điều khoản này trước khi sử dụng dịch vụ Pulse.",
+    "lastUpdated": "Cập nhật lần cuối: Tháng 1, 2025",
+    "sections": {
+      "agreement": {
+        "title": "1. Đồng ý với Điều khoản",
+        "content": "Bằng việc truy cập hoặc sử dụng Pulse (\"Dịch vụ\"), bạn đồng ý bị ràng buộc bởi các Điều khoản Dịch vụ này. Nếu bạn không đồng ý với bất kỳ phần nào của các điều khoản này, bạn không được truy cập Dịch vụ. Các Điều khoản này áp dụng cho tất cả khách truy cập, người dùng và những người khác truy cập hoặc sử dụng Dịch vụ."
+      },
+      "service": {
+        "title": "2. Mô tả Dịch vụ",
+        "content": "Pulse cung cấp công cụ suy luận persona thời gian thực cho các nền tảng thương mại điện tử. Dịch vụ của chúng tôi bao gồm:",
+        "items": [
+          "Suy luận persona khách truy cập thời gian thực",
+          "Gắn thẻ và phân loại sản phẩm Digital Twin",
+          "API và tích hợp cá nhân hóa",
+          "Bảng điều khiển phân tích và báo cáo"
+        ]
+      },
+      "responsibilities": {
+        "title": "3. Trách nhiệm của Người dùng",
+        "content": "Là người dùng Dịch vụ của chúng tôi, bạn đồng ý:",
+        "items": [
+          "Cung cấp thông tin chính xác và đầy đủ khi đăng ký",
+          "Duy trì bảo mật thông tin đăng nhập tài khoản",
+          "Sử dụng Dịch vụ tuân thủ luật pháp hiện hành",
+          "Không cố gắng dịch ngược hoặc khai thác Dịch vụ",
+          "Thông báo cho người dùng cuối về các thực hành thu thập dữ liệu"
+        ]
+      },
+      "payment": {
+        "title": "4. Điều khoản Thanh toán",
+        "items": [
+          "Phí đăng ký được tính hàng tháng hoặc hàng năm trước",
+          "Phí dựa trên sử dụng được tính hàng tháng sau",
+          "Tất cả phí không được hoàn trả trừ khi có quy định khác",
+          "Chúng tôi có quyền thay đổi giá với thông báo trước 30 ngày",
+          "Không thanh toán có thể dẫn đến tạm ngưng dịch vụ"
+        ]
+      },
+      "termination": {
+        "title": "5. Chấm dứt",
+        "content": "Chúng tôi có thể chấm dứt hoặc tạm ngưng tài khoản của bạn ngay lập tức, không cần thông báo trước hoặc trách nhiệm pháp lý, vì bất kỳ lý do nào, bao gồm vi phạm các Điều khoản này. Khi chấm dứt:",
+        "items": [
+          "Quyền sử dụng Dịch vụ của bạn sẽ chấm dứt ngay lập tức",
+          "Chúng tôi có thể xóa dữ liệu của bạn sau thời gian ân hạn 30 ngày",
+          "Bạn có thể yêu cầu xuất dữ liệu trước khi chấm dứt"
+        ]
+      },
+      "liability": {
+        "title": "6. Giới hạn Trách nhiệm",
+        "content": "Trong mọi trường hợp, Pulse, cũng như giám đốc, nhân viên, đối tác, đại lý, nhà cung cấp hoặc chi nhánh của nó, sẽ không chịu trách nhiệm về bất kỳ thiệt hại gián tiếp, ngẫu nhiên, đặc biệt, hậu quả hoặc trừng phạt nào, bao gồm nhưng không giới hạn, mất lợi nhuận, dữ liệu, sử dụng, uy tín, hoặc các tổn thất vô hình khác, phát sinh từ việc bạn truy cập hoặc sử dụng hoặc không thể truy cập hoặc sử dụng Dịch vụ."
+      },
+      "law": {
+        "title": "7. Luật Áp dụng",
+        "content": "Các Điều khoản này sẽ được điều chỉnh và giải thích theo luật của Bang Delaware, Hoa Kỳ, không tính đến các quy định xung đột pháp luật. Mọi tranh chấp phát sinh theo các Điều khoản này sẽ được giải quyết tại các tòa án ở Delaware."
+      },
+      "changes": {
+        "title": "8. Thay đổi Điều khoản",
+        "content": "Chúng tôi có quyền sửa đổi hoặc thay thế các Điều khoản này bất cứ lúc nào. Nếu việc sửa đổi là quan trọng, chúng tôi sẽ thông báo trước ít nhất 30 ngày trước khi các điều khoản mới có hiệu lực. Những gì cấu thành thay đổi quan trọng sẽ được xác định theo quyết định riêng của chúng tôi. Tiếp tục sử dụng Dịch vụ sau khi thay đổi đồng nghĩa với việc chấp nhận các điều khoản mới."
+      }
+    },
+    "contact": {
+      "title": "Câu hỏi về Điều khoản?",
+      "description": "Nếu bạn có bất kỳ câu hỏi nào về các Điều khoản này, vui lòng liên hệ với chúng tôi.",
+      "email": "legal@thepulseapi.com"
+    }
+  },
+  "cookies": {
+    "meta": {
+      "title": "Chính sách cookie: website này đặt gì, và sản phẩm thì không",
+      "description": "Website này dùng một số ít cookie. Bản thân bộ máy Pulse chạy mà không cần cookie nào, và đó là một lựa chọn sản phẩm chứ không phải một lựa chọn chính sách.",
+      "ogTitle": "Chính sách cookie: website này đặt gì, và sản phẩm thì không",
+      "ogDescription": "Website này dùng một số ít cookie. Bản thân bộ máy Pulse chạy mà không cần cookie nào, và đó là một lựa chọn sản phẩm chứ không phải một lựa chọn chính sách."
+    },
+    "title": "Chính sách Cookie",
+    "lastUpdated": "Cập nhật lần cuối: Tháng 1, 2025",
+    "approach": {
+      "title": "Phương pháp Không Cookie của Chúng tôi",
+      "description": "Tại Pulse, quyền riêng tư là cốt lõi của mọi thứ chúng tôi làm. Không giống như các nền tảng phân tích và cá nhân hóa truyền thống, chúng tôi đã xây dựng công nghệ hoạt động mà không cần dựa vào cookie."
+    },
+    "notice": {
+      "content": "Chúng tôi không sử dụng cookie để theo dõi hoặc lưu trữ dữ liệu của bạn. Bằng cách nhấp 'Chấp nhận', bạn xác nhận và đồng ý rằng không có cookie nào được thu thập, như được mô tả trong Chính sách Bảo mật của chúng tôi.",
+      "accept": "Chấp nhận",
+      "acknowledged": "Đã xác nhận"
+    },
+    "dontDo": {
+      "title": "Những gì Chúng tôi KHÔNG làm",
+      "items": [
+        "Chúng tôi không sử dụng cookie theo dõi",
+        "Chúng tôi không sử dụng cookie quảng cáo của bên thứ ba",
+        "Chúng tôi không bán hoặc chia sẻ dữ liệu cá nhân của bạn",
+        "Chúng tôi không tạo hồ sơ người dùng liên tục xuyên trang"
+      ]
+    },
+    "localStorage": {
+      "title": "Sử dụng Local Storage",
+      "content": "Chúng tôi chỉ sử dụng local storage của trình duyệt cho các chức năng thiết yếu như ghi nhớ tùy chọn giao diện của bạn (chế độ sáng/tối). Dữ liệu này không bao giờ rời khỏi thiết bị của bạn và không được sử dụng cho mục đích theo dõi."
+    },
+    "contact": {
+      "title": "Câu hỏi?",
+      "content": "Nếu bạn có bất kỳ câu hỏi nào về chính sách cookie của chúng tôi, vui lòng liên hệ với chúng tôi tại",
+      "email": "privacy@thepulseapi.com"
+    }
+  },
+  "gdpr": {
+    "meta": {
+      "title": "GDPR: Pulse xử lý dữ liệu thế nào, và vì sao có rất ít dữ liệu",
+      "description": "Bản kiểm tra chỉ chạy trên dữ liệu sản phẩm. Không hồ sơ khách hàng, không lịch sử đơn hàng, không hồ sơ cá nhân, và xoá tệp danh mục đã gửi khi được yêu cầu.",
+      "ogTitle": "GDPR: Pulse xử lý dữ liệu thế nào, và vì sao có rất ít dữ liệu",
+      "ogDescription": "Bản kiểm tra chỉ chạy trên dữ liệu sản phẩm. Không hồ sơ khách hàng, không lịch sử đơn hàng, không hồ sơ cá nhân, và xoá tệp danh mục đã gửi khi được yêu cầu."
+    },
+    "title": "Tuân thủ GDPR",
+    "description": "Pulse cam kết bảo vệ quyền riêng tư của các cá nhân trong Liên minh Châu Âu theo Quy định Bảo vệ Dữ liệu Chung (GDPR).",
+    "lastUpdated": "Cập nhật lần cuối: Tháng 1, 2025",
+    "badge": "Tuân thủ GDPR",
+    "badgeDescription": "Chúng tôi xử lý dữ liệu theo các yêu cầu GDPR và tôn trọng quyền của tất cả chủ thể dữ liệu EU.",
+    "approach": {
+      "title": "Phương pháp Ưu tiên Quyền riêng tư của Chúng tôi",
+      "description": "Pulse được xây dựng với quyền riêng tư là cốt lõi. Không giống như các giải pháp cá nhân hóa truyền thống dựa vào việc thu thập dữ liệu cá nhân rộng rãi, công cụ suy luận của chúng tôi hoạt động với tín hiệu dữ liệu tối thiểu, không nhận dạng.",
+      "principles": {
+        "minimization": {
+          "title": "Tối thiểu hóa Dữ liệu",
+          "description": "Chúng tôi chỉ thu thập dữ liệu thực sự cần thiết để cung cấp dịch vụ."
+        },
+        "purpose": {
+          "title": "Giới hạn Mục đích",
+          "description": "Dữ liệu chỉ được sử dụng cho các mục đích cụ thể mà nó được thu thập."
+        },
+        "storage": {
+          "title": "Giới hạn Lưu trữ",
+          "description": "Dữ liệu phiên không được giữ lại quá mức cần thiết cho việc suy luận."
+        },
+        "security": {
+          "title": "Tính toàn vẹn & Bảo mật",
+          "description": "Tất cả dữ liệu được mã hóa và bảo vệ bằng bảo mật tiêu chuẩn ngành."
+        }
+      }
+    },
+    "rights": {
+      "title": "Quyền của Bạn theo GDPR",
+      "items": [
+        {
+          "title": "Quyền Truy cập",
+          "description": "Bạn có thể yêu cầu bản sao dữ liệu cá nhân mà chúng tôi nắm giữ về bạn."
+        },
+        {
+          "title": "Quyền Chỉnh sửa",
+          "description": "Bạn có thể yêu cầu sửa chữa dữ liệu không chính xác hoặc không đầy đủ."
+        },
+        {
+          "title": "Quyền Xóa",
+          "description": "Bạn có thể yêu cầu xóa dữ liệu cá nhân của mình ('quyền được lãng quên')."
+        },
+        {
+          "title": "Quyền Hạn chế Xử lý",
+          "description": "Bạn có thể yêu cầu chúng tôi hạn chế cách sử dụng dữ liệu của bạn."
+        },
+        {
+          "title": "Quyền Di chuyển Dữ liệu",
+          "description": "Bạn có thể yêu cầu dữ liệu của mình ở định dạng máy đọc được."
+        },
+        {
+          "title": "Quyền Phản đối",
+          "description": "Bạn có thể phản đối việc xử lý dựa trên lợi ích hợp pháp."
+        }
+      ]
+    },
+    "legal": {
+      "title": "Cơ sở Pháp lý cho Xử lý",
+      "description": "Chúng tôi xử lý dữ liệu cá nhân theo các cơ sở pháp lý sau:",
+      "items": [
+        {
+          "label": "Cần thiết theo Hợp đồng",
+          "description": "Xử lý cần thiết để thực hiện các thỏa thuận dịch vụ với khách hàng."
+        },
+        {
+          "label": "Lợi ích Hợp pháp",
+          "description": "Xử lý để ngăn chặn gian lận và tối ưu hóa dịch vụ."
+        },
+        {
+          "label": "Sự Đồng ý",
+          "description": "Khi được cung cấp rõ ràng cho các hoạt động xử lý cụ thể."
+        }
+      ]
+    },
+    "dpa": {
+      "title": "Thỏa thuận Xử lý Dữ liệu (DPA)",
+      "description": "Đối với khách hàng doanh nghiệp, chúng tôi cung cấp Thỏa thuận Xử lý Dữ liệu toàn diện nêu rõ nghĩa vụ của chúng tôi với tư cách là bên xử lý dữ liệu. DPA của chúng tôi bao gồm:",
+      "items": [
+        "Điều khoản Hợp đồng Tiêu chuẩn (SCCs) cho chuyển giao quốc tế",
+        "Danh sách và thủ tục thông báo bên xử lý phụ",
+        "Biện pháp bảo mật kỹ thuật và tổ chức",
+        "Thủ tục thông báo vi phạm dữ liệu"
+      ]
+    },
+    "contact": {
+      "title": "Liên hệ Nhân viên Bảo vệ Dữ liệu",
+      "description": "Đối với bất kỳ câu hỏi liên quan đến GDPR hoặc để thực hiện quyền của bạn, vui lòng liên hệ DPO của chúng tôi.",
+      "email": "dpo@thepulseapi.com"
+    }
+  },
+  "industriesPage": {
+    "title": "Một công cụ.",
+    "titleHighlight": "Mọi ngành nghề.",
+    "description": "Pulse thích ứng công nghệ suy luận persona thời gian thực cho mọi trải nghiệm số. Cùng một công nghệ cốt lõi, trí tuệ chuyên biệt theo ngành.",
+    "cta": "Kiểm tra miễn phí",
+    "secondaryCta": "Xem bảng giá",
+    "metricLabel": "những gì chúng tôi chứng minh được hôm nay",
+    "viewPricing": "Xem mô hình kinh doanh",
+    "anyTitle": "Ngành của bạn không có trong danh sách này?",
+    "anyBody": "Bản kiểm tra chỉ đọc dữ liệu sản phẩm và không đọc gì khác, nên phương pháp không thay đổi theo ngành của bạn. Thứ thay đổi là những thuộc tính nào quan trọng, và đó chính là thứ chúng tôi đo thay vì phỏng đoán. Gửi một ngành hàng và chúng tôi sẽ cho biết việc này có đáng thời gian của bạn hay không.",
+    "anyCta": "Yêu cầu Decision Audit",
+    "meta": {
+      "title": "Giải pháp theo ngành: nơi dữ liệu sản phẩm quyết định đơn hàng",
+      "description": "Decision Audit cho thương mại điện tử, sàn thương mại, phân phối B2B, nguồn dữ liệu mua sắm, du lịch và tác tử mua sắm AI. Một tệp xuất ngành hàng, kết quả xếp hạng trong 48 giờ.",
+      "ogTitle": "Giải pháp theo ngành: nơi dữ liệu sản phẩm quyết định đơn hàng",
+      "ogDescription": "Decision Audit cho thương mại điện tử, sàn thương mại, phân phối B2B, nguồn dữ liệu mua sắm, du lịch và tác tử mua sắm AI. Một tệp xuất ngành hàng, kết quả xếp hạng trong 48 giờ."
+    }
+  },
+  "auth": {
+    "google": {
+      "label": "Tiếp tục với Google",
+      "pending": "Đang chuyển hướng…",
+      "or": "hoặc"
+    },
+    "errors": {
+      "generic": "Đã có lỗi xảy ra. Vui lòng thử lại.",
+      "tooManyAttempts": "Quá nhiều lần thử. Vui lòng đợi một lát rồi thử lại."
+    },
+    "signUp": {
+      "title": "Tạo tài khoản",
+      "subtitle": "Bắt đầu cá nhân hoá tìm kiếm cho cửa hàng của bạn. Không cần thẻ.",
+      "name": "Họ và tên",
+      "namePlaceholder": "Nguyễn Văn A",
+      "email": "Email công việc",
+      "emailPlaceholder": "an@congty.com",
+      "password": "Mật khẩu",
+      "submit": "Tạo tài khoản",
+      "submitting": "Đang tạo tài khoản…",
+      "haveAccount": "Đã có tài khoản?",
+      "signInLink": "Đăng nhập",
+      "rules": {
+        "length": "Từ 8 đến 128 ký tự",
+        "letter": "Có ít nhất một chữ cái",
+        "number": "Có ít nhất một chữ số"
+      },
+      "errors": {
+        "nameRequired": "Vui lòng cho chúng tôi biết tên của bạn.",
+        "emailInvalid": "Địa chỉ email không hợp lệ.",
+        "emailTaken": "Đã có tài khoản với địa chỉ này.",
+        "emailTakenLink": "Đăng nhập thay thế",
+        "passwordWeak": "Mật khẩu chưa đáp ứng các yêu cầu bên dưới."
+      }
+    },
+    "signIn": {
+      "title": "Chào mừng trở lại",
+      "subtitle": "Đăng nhập vào bảng điều khiển PULSE.",
+      "email": "Email công việc",
+      "emailPlaceholder": "an@congty.com",
+      "password": "Mật khẩu",
+      "forgot": "Quên mật khẩu?",
+      "submit": "Đăng nhập",
+      "submitting": "Đang đăng nhập…",
+      "noAccount": "Chưa dùng PULSE?",
+      "signUpLink": "Tạo tài khoản",
+      "errors": {
+        "invalid": "Email và mật khẩu không khớp với tài khoản nào."
+      }
+    },
+    "forgot": {
+      "title": "Đặt lại mật khẩu",
+      "subtitle": "Chúng tôi sẽ gửi email kèm liên kết để bạn đặt mật khẩu mới.",
+      "email": "Email công việc",
+      "emailPlaceholder": "an@congty.com",
+      "submit": "Gửi liên kết",
+      "submitting": "Đang gửi…",
+      "sentTitle": "Kiểm tra email của bạn",
+      "sentBody": "Nếu tồn tại tài khoản cho {email}, liên kết đặt lại đang được gửi đi.",
+      "backToSignIn": "Quay lại đăng nhập",
+      "errors": {
+        "emailInvalid": "Địa chỉ email không hợp lệ."
+      }
+    },
+    "reset": {
+      "title": "Đặt mật khẩu mới",
+      "subtitle": "Hãy chọn mật khẩu bạn chưa từng dùng.",
+      "newPassword": "Mật khẩu mới",
+      "confirmPassword": "Xác nhận mật khẩu mới",
+      "submit": "Đặt lại mật khẩu",
+      "submitting": "Đang lưu…",
+      "invalidTitle": "Liên kết không hợp lệ",
+      "invalidBody": "Có thể liên kết đã bị cắt bởi ứng dụng email, hoặc đã được sử dụng.",
+      "requestNew": "Yêu cầu liên kết mới",
+      "errors": {
+        "mismatch": "Hai mật khẩu không khớp.",
+        "invalidToken": "Liên kết này đã hết hạn hoặc đã được sử dụng."
+      }
+    },
+    "verify": {
+      "title": "Xác nhận email",
+      "subtitle": "Một bước nữa trước khi bạn có thể đăng nhập.",
+      "body": "Chúng tôi đã gửi cho bạn một liên kết xác nhận. Hãy nhấp vào để kích hoạt tài khoản.",
+      "bodyWithEmail": "Chúng tôi đã gửi liên kết xác nhận tới {email}. Hãy nhấp vào để kích hoạt tài khoản.",
+      "resend": "Gửi lại email",
+      "resending": "Đang gửi…",
+      "resent": "Đã gửi. Vui lòng kiểm tra lại hộp thư.",
+      "backToSignIn": "Quay lại đăng nhập"
+    }
+  },
+  "industryShell": {
+    "requestAudit": "Yêu cầu Decision Audit",
+    "seeWhatYouGet": "Xem bạn nhận được gì",
+    "viewPricing": "Xem bảng giá",
+    "problemsEyebrow": "Tình huống",
+    "problemsTitle": "Điều thường trục trặc trong ngành {sector}",
+    "stepsTitle": "Chúng tôi làm gì với điều đó",
+    "stepsBody": "Ba việc, và chỉ việc đầu tiên cần đến bạn.",
+    "step1Title": "Gửi một ngành hàng",
+    "step1Body": "Một tệp CSV hoặc JSON của một ngành hàng. Tên sản phẩm, mô tả, ngành hàng, giá, và bất kỳ thuộc tính nào bạn đã ghi.",
+    "step2Title": "Chúng tôi xếp hạng những gì cần ghi trước",
+    "step2Body": "Mọi thuộc tính còn thiếu đều được chấm theo mức thay đổi khả năng quyết định của người mua trong ngành của bạn, kèm danh sách sản phẩm bị ảnh hưởng.",
+    "step3Title": "Bạn sửa, rồi chúng tôi xác minh",
+    "step3Body": "Phần lớn việc sửa là công việc đội của bạn tự làm được. Khi xong, chúng tôi đo lại trên danh mục đã sửa và chỉ rõ điều gì đã dịch chuyển.",
+    "useCasesEyebrow": "Trên thực tế",
+    "useCasesTitle": "Điều này xuất hiện ở đâu trong danh mục của bạn",
+    "integrationEyebrow": "Cần những gì",
+    "integrationTitle": "Chúng tôi cần gì từ bạn",
+    "needCsv": "Một tệp xuất ngành hàng",
+    "needNoCode": "Không mã nguồn",
+    "needNoTag": "Không thẻ theo dõi trên website",
+    "needNoCustomerData": "Không dữ liệu khách hàng",
+    "otherIndustries": "Các ngành khác",
+    "ctaTitle": "Gửi cho chúng tôi một ngành hàng {sector}.",
+    "ctaBody": "Chọn nhóm hàng bạn nghi ngờ người mua gặp khó nhất. Bạn nhận được danh sách xếp hạng, các sản phẩm bị ảnh hưởng, và nửa giờ với người phụ trách trưng bày hàng hoá.",
+    "ctaNote": "Một mức phí cố định, không ràng buộc, và nếu danh mục của bạn vốn đã ổn, chúng tôi sẽ nói vậy.",
+    "situationEyebrow": "Điều diễn ra ở đây",
+    "figureCaption": "Minh hoạ cho hình dạng của ngành này. Các con số đã đo nằm ở trang phương pháp, kèm câu lệnh tái lập chúng.",
+    "decisionIntro": "Điều một người mua ở đây đang cố quyết định: {decision}",
+    "provenanceLabel": "Nơi nó thường đã nằm sẵn:",
+    "faqEyebrow": "Câu hỏi từ ngành này",
+    "faqTitle": "Các đội ngành {sector} hay hỏi chúng tôi điều gì",
+    "metricLabel": "từ một tệp xuất ngành hàng",
+    "contextEyebrow": "Thị trường",
+    "contextTitle": "Ngành {sector} hiện đang ra sao",
+    "chartTitle": "Độ phủ thuộc tính trên một danh mục {sector} điển hình",
+    "chartSource": "minh hoạ cho hình dạng của ngành này; các con số đã đo nằm ở trang phương pháp",
+    "chartNote": "Các dòng đỏ là những thuộc tính quyết định việc mua mà danh mục phần lớn không ghi. Đó là những dòng bản kiểm tra nêu ra và báo cáo độ phủ chôn vùi.",
+    "specTrapEyebrow": "Dữ kiện vốn đã nằm ở đâu",
+    "specTrapTitle": "Giá trị đó có tồn tại. Chỉ là bộ lọc không với tới được.",
+    "specTrapBody": "Không có gì ở đây thiếu khỏi danh mục cả. Nó thiếu khỏi lược đồ, và đó là một vấn đề khác với một cách sửa rẻ hơn.",
+    "specTrapProse": "Trong phần mô tả, dưới dạng văn xuôi",
+    "specTrapField": "Trong bộ lọc, dưới dạng một trường",
+    "specTrapNote": "Dòng cuối vốn đã là một trường, và đó là lý do chưa ai từng phàn nàn về nó.",
+    "transformEyebrow": "Trước và sau",
+    "transformTitle": "Vẫn kệ hàng đó, sau khi khoảng trống lớn nhất được lấp",
+    "beforeLabel": "Trước khi dùng Pulse",
+    "afterLabel": "Sau khi sửa",
+    "beforeDecision": "Người mua hỏi “{decision}” không có cách nào thu hẹp kệ hàng này.",
+    "beforeAttribute": "{attribute} quyết định việc mua mà chỉ được ghi trên khoảng {coverage}% danh mục, nên bộ lọc hoặc không tồn tại, hoặc giấu mất phần lớn hàng của bạn.",
+    "beforeWork": "Việc làm giàu dữ liệu bị báo giá như một dự án cho toàn bộ danh mục, vì không ai nói được nên bắt đầu từ trường nào.",
+    "afterDecision": "Cũng người mua đó thu hẹp theo {attribute} và tới được một danh sách ngắn mà họ chọn được.",
+    "afterAttribute": "{attribute} đứng đầu danh sách xếp hạng, đo theo điều người mua trong ngành này thực sự hỏi, không phải theo lượng dữ liệu còn thiếu.",
+    "afterWork": "Những khoảng trống còn lại vẫn được xếp hạng, nên đợt việc tiếp theo đã có sẵn thứ tự và chi phí.",
+    "transformNote": "Các con số độ phủ minh hoạ hình dạng danh mục trong ngành này. Kệ hàng duy nhất được đo thật trên trang này nằm ở trang phương pháp."
+  },
+  "nextBest": {
+    "pages": {
+      "/": "Trang chủ",
+      "/product": "Tổng quan sản phẩm",
+      "/product/decision-audit": "Decision Audit",
+      "/product/decision-verification": "Decision Verification",
+      "/product/decision-monitor": "Decision Monitor",
+      "/product/decision-api": "Decision API",
+      "/product/search": "Tìm kiếm",
+      "/product/recommendations": "Gợi ý sản phẩm",
+      "/product/pages": "Trang danh mục",
+      "/product/merchandising-studio": "Merchandising Studio",
+      "/why": "Vì sao hiệu quả",
+      "/why/method": "Phương pháp",
+      "/why/limits": "Những gì chưa làm được",
+      "/why/compare": "So sánh với giải pháp khác",
+      "/use-cases/seo-aeo": "SEO và công cụ trả lời",
+      "/use-cases/time-to-market": "Thời gian triển khai",
+      "/industries": "Ngành nghề",
+      "/pricing": "Bảng giá",
+      "/contact": "Liên hệ với chúng tôi",
+      "/docs": "Tài liệu",
+      "/integrations": "Tích hợp",
+      "/status": "Tình trạng dịch vụ",
+      "/about": "Giới thiệu",
+      "/blog": "Blog",
+      "/careers": "Tuyển dụng",
+      "/signin": "Đăng nhập",
+      "/signup": "Bắt đầu",
+      "/why/audit": "Tự kiểm tra"
+    },
+    "requirements": {
+      "what-it-does": "sản phẩm làm gì",
+      "does-it-fit-me": "có phù hợp với bạn không",
+      "how-it-works": "cách hoạt động",
+      "what-it-costs": "chi phí bao nhiêu",
+      "how-to-integrate": "cách tích hợp",
+      "is-it-proven": "đã được kiểm chứng chưa",
+      "is-it-safe": "dữ liệu được xử lý thế nào",
+      "who-are-they": "chúng tôi là ai",
+      "how-do-i-start": "bắt đầu thế nào"
+    }
+  },
+  "intentPanel": {
+    "open": "PULSE nghĩ bạn đang tìm gì",
+    "close": "Đóng",
+    "title": "PULSE nghĩ bạn đang tìm gì",
+    "intro": "Suy ra từ các trang bạn đã đọc trong lần truy cập này. Không có dữ liệu nào rời khỏi trình duyệt của bạn.",
+    "audienceLabel": "Đang đọc với vai trò",
+    "audienceUnknown": "Chưa đủ dữ liệu để xác định",
+    "audience": {
+      "merchant": "nhà bán hàng",
+      "developer": "lập trình viên",
+      "investor": "nhà đầu tư",
+      "candidate": "ứng viên",
+      "any": "khách tham quan"
+    },
+    "stillOpen": "Chưa được trả lời",
+    "answered": "Đã được trả lời",
+    "noneOpen": "Không còn câu hỏi nào trang này có thể trả lời.",
+    "noneAnswered": "Chưa có câu nào được trả lời.",
+    "markAnswered": "Tôi đã biết điều này",
+    "markOpen": "Tôi vẫn muốn biết điều này",
+    "yours": "bạn đã chỉnh",
+    "disagree": "Không đồng ý? Nhấp vào bất kỳ mục nào để chỉnh lại, các gợi ý bên dưới sẽ thay đổi theo.",
+    "reset": "Đặt lại chỉnh sửa"
+  },
+  "ourAudit": {
+    "meta": {
+      "title": "Decision Audit cho chính chúng tôi",
+      "description": "Chúng tôi chạy bài kiểm tra mình bán trên chính trang của mình và công bố kết quả. Mười trang giải thích sản phẩm làm gì; một trang nói về chi phí."
+    },
+    "eyebrow": "Tự kiểm tra",
+    "title": "Bài kiểm tra chúng tôi bán, chạy trên chính trang của mình",
+    "lede": "Decision Audit hỏi khách truy cập đang cần quyết định điều gì, rồi đo xem nội dung có trả lời được hay không. Đây là kết quả áp dụng cho chính trang này, tính từ danh mục trang lúc build chứ không viết tay.",
+    "tableHeading": "Những gì trang này trả lời được",
+    "colRequirement": "Điều khách truy cập cần làm rõ",
+    "colPages": "Số trang trả lời",
+    "colValue": "Giá trị thông tin",
+    "bits": "bit",
+    "findingHeading": "Kết quả, không tô vẽ",
+    "finding": "Phân bố này đúng với hình dạng của một trang do chính người làm ra sản phẩm viết: nhiều về điều tác giả thấy thú vị, ít về điều cần cho quyết định. Đó cũng chính là lỗi của một danh mục ghi màu sắc nhưng bỏ qua bộ vi xử lý.",
+    "methodHeading": "Cách đọc bảng này",
+    "method": "Giá trị thông tin là mức độ đáng giá khi trả lời được một câu hỏi, tính bằng bit: câu hỏi mà nhiều trang trả lời thì gần như không tốn gì, còn câu hỏi chỉ một trang trả lời là nút thắt của lần truy cập. Con số này được tính toán, không phải gán tùy ý.",
+    "caveatHeading": "Những gì bảng này không khẳng định",
+    "caveats": [
+      "Độ phủ không phải chất lượng. Một trang khai báo trả lời được câu hỏi vẫn có thể trả lời kém, và ở đây không đo điều đó.",
+      "Các con số thay đổi mỗi khi thêm trang mới, kể cả trang này. Chúng được tính lúc build chứ không trích từ một báo cáo cũ.",
+      "Câu hỏi mà không trang nào trả lời sẽ không xuất hiện ở đây, đúng với điểm mù sống sót mà chúng tôi vẫn cảnh báo khách hàng. Bộ câu hỏi được cố định trước chính vì lý do đó."
+    ]
+  },
+  "configurator": {
+    "prompt": "Hoặc cho chúng tôi biết bạn đang muốn tìm hiểu điều gì",
+    "placeholder": "ví dụ: chi phí bao nhiêu",
+    "submit": "Hỏi",
+    "nextQuestion": "Điều hữu ích nhất chưa được trả lời",
+    "goTo": "Đọc",
+    "refusedEmpty": "Hãy nhập câu hỏi trước.",
+    "refusedUnknown": "Chúng tôi không có trang nào trả lời điều đó. Thay vì đưa bạn tới một trang gần đúng, chúng tôi xin nói thẳng.",
+    "ambiguous": "Câu này có thể hiểu theo nhiều cách. Bạn muốn hỏi điều nào?",
+    "contradiction": "Bạn đã đánh dấu mục này là đã được trả lời. Mở lại chứ?",
+    "reopen": "Mở lại",
+    "keepClosed": "Giữ nguyên",
+    "matchedOn": "Khớp với"
+  }
+}

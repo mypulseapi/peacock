@@ -200,8 +200,14 @@ Run this after **each** skill step, not only at the end of a plan.
 
 ## Git workflow
 
-- Work directly on `main` (decided 15 Oct 2026): no feature or dev branches, never switch branches.
-- Every push to `main` deploys to staging (GitHub Pages, staging.thepulseapi.com).
+- **`main` is protected** (20 Oct 2026). A branch ruleset blocks deletion and force-push, and
+  requires a pull request with review threads resolved and three checks green: `Lint`,
+  `Type check` and `Build site`. There are no bypass actors, so this applies to admins too.
+  This replaces "work directly on `main`" (15 Oct 2026), which the ruleset now makes impossible.
+- A `develop` ruleset exists and matches the handbook's, so that flow is available, but there is
+  no `develop` branch yet: today the flow is feature branch -> pull request -> `main`.
+- Every push to `main` deploys (GitHub Pages). The site answers on staging.thepulseapi.com until
+  the apex DNS for thepulseapi.com is moved off Vercel; `PAGES_CUSTOM_DOMAIN` is what switches it.
 - **Never commit or push automatically.** After making changes, stop and let the user review them.
   Only run `git commit` / `git push` when the user explicitly says so.
 - Design sources: brand colours and typography from `docs/pulse_brand_guidelines_final.md` (Signal, 16 Oct 2026; the final version on 19 Oct 2026 replaced Inter with Geist + Geist Mono and navy dark surfaces with cool black `#0B0D12`; v2 Aurora and the earlier Figma "Pulse Color" palette are superseded);

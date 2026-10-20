@@ -21,11 +21,15 @@ Anchors to ids inside a shell region the page also has (#request, when the page 
 stay on the same page; otherwise they point at the home page.
 
 Sprite references (#i-...), placeholders (#), absolute URLs, mailto: and tel: are left alone.
+
+In the header, every link that points at the page itself gets aria-current="page" (the nav-link style shows it as
+the current page; screen readers announce it).
 Pages without markers (e.g. components.html) are skipped.
 
 Usage: python3 scripts/sync-shell.py        (then run pnpm format)
 """
 
+import os
 import pathlib
 import re
 import sys
@@ -64,6 +68,21 @@ def rewrite(text, depth, local_ids=frozenset()):
     return re.sub(r'\b(href|src|srcset)="([^"]*)"', fix, text)
 
 
+def mark_current(text, page_rel):
+    """Add aria-current="page" to links in `text` (already rewritten for the page) that point at the page."""
+    here = os.path.dirname(page_rel)
+
+    def fix(match):
+        tag, url = match.group(0), match.group(1)
+        if "aria-current=" in tag or url.startswith(("http:", "https:", "mailto:", "tel:", "#")):
+            return tag
+        if os.path.normpath(os.path.join(here, url)) != page_rel:
+            return tag
+        return tag[:-1] + ' aria-current="page">'
+
+    return re.sub(r'<a\b[^>]*?\bhref="([^"#]+)"[^>]*>', fix, text)
+
+
 def main():
     source = SOURCE.read_text()
     shell = {}
@@ -88,7 +107,13 @@ def main():
         local_ids = frozenset(re.findall(r'\bid="([^"]+)"', "".join(shell[n] for n in present)))
         new = text
         for name, block in shell.items():
-            new = region_pattern(name).sub(lambda _, b=block: rewrite(b, depth, local_ids), new)
+            rel = page.relative_to(ROOT).as_posix()
+            new = region_pattern(name).sub(
+                lambda _, b=block, n=name: (
+                    mark_current(rewrite(b, depth, local_ids), rel) if n == "header" else rewrite(b, depth, local_ids)
+                ),
+                new,
+            )
         if new != text:
             page.write_text(new)
             updated += 1

@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      About Pulse: the measurement, and what it cannot claim yet | Pulse
-    </title>
+    <title>About: the measurement, and what it cannot claim yet | Pulse</title>
     <!-- shell:head (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
     <link rel="icon" href="./src/assets/brand/favicon.ico" sizes="any" />
     <link
@@ -32,6 +30,20 @@
     <!-- shell:sprite (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
     <!-- Icon sprite (Lucide-style, stroke icons). Use: <svg><use href="#i-name" /></svg> -->
     <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+      <symbol
+        id="i-link"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+        <path
+          d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+        />
+      </symbol>
       <symbol
         id="i-chevron-down"
         viewBox="0 0 24 24"
@@ -212,6 +224,18 @@
         />
         <path d="M12 8v4" />
         <path d="M12 16h.01" />
+      </symbol>
+      <symbol
+        id="i-user-round"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="8" r="5" />
+        <path d="M20 21a8 8 0 0 0-16 0" />
       </symbol>
       <symbol
         id="i-key"
@@ -520,7 +544,11 @@
         <!-- Desktop menu -->
         <nav aria-label="Main" class="relative hidden lg:block" data-mega-nav>
           <ul class="flex items-center gap-0.5">
-            <li><a href="about.html" class="nav-link">About us</a></li>
+            <li>
+              <a href="about.html" class="nav-link" aria-current="page"
+                >About us</a
+              >
+            </li>
 
             <li class="relative">
               <details class="group" data-dropdown data-mega>
@@ -648,8 +676,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/ecommerce.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -664,8 +691,7 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/fmcg.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -687,8 +713,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/furniture.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -703,8 +728,7 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/cosmetics.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -726,8 +750,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/technology.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -742,8 +765,7 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/distribution.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -788,8 +810,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="https://developer.thepulseapi.com/"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -799,22 +820,6 @@
                             <span
                               class="mt-1 block text-sm text-pretty text-muted"
                               >Integrate in ten lines, or not at all</span
-                            >
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            role="link"
-                            aria-disabled="true"
-                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span
-                              class="flex items-center gap-2 text-sm font-semibold text-ink"
-                              >Notes</span
-                            >
-                            <span
-                              class="mt-1 block text-sm text-pretty text-muted"
-                              >What we measured, and got wrong</span
                             >
                           </a>
                         </li>
@@ -829,6 +834,7 @@
                           <a
                             href="about.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            aria-current="page"
                           >
                             <span
                               class="flex items-center gap-2 text-sm font-semibold text-ink"
@@ -857,21 +863,16 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="careers/index.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
                               class="flex items-center gap-2 text-sm font-semibold text-ink"
-                              >Career
-                              <span
-                                class="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase"
-                                >Hiring</span
-                              ></span
+                              >Career</span
                             >
                             <span
                               class="mt-1 block text-sm text-pretty text-muted"
-                              >We are hiring</span
+                              >How we work, and how to reach us</span
                             >
                           </a>
                         </li>
@@ -883,9 +884,6 @@
             </li>
 
             <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-            <li>
-              <a role="link" aria-disabled="true" class="nav-link">Blog</a>
-            </li>
           </ul>
           <div class="nav-viewport" data-nav-viewport>
             <div class="nav-viewport-stack" data-nav-stack></div>
@@ -935,7 +933,7 @@
               </div>
             </details>
           </div>
-          <a role="link" aria-disabled="true" class="nav-link">Sign In</a>
+          <a href="signin.html" class="nav-link">Sign In</a>
           <a
             href="./contact.html"
             class="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap"
@@ -969,6 +967,7 @@
             <a
               href="about.html"
               class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
+              aria-current="page"
               >About us</a
             >
 
@@ -1010,8 +1009,7 @@
             <ul class="mt-2">
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/ecommerce.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1021,8 +1019,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/fmcg.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1032,8 +1029,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/technology.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1043,8 +1039,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/furniture.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1054,8 +1049,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/cosmetics.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1065,8 +1059,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/distribution.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1080,24 +1073,12 @@
             <ul class="mt-2">
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="https://developer.thepulseapi.com/"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
                       <use href="#i-file-text" /></svg></span
                   >Documentation</a
-                >
-              </li>
-              <li>
-                <a
-                  role="link"
-                  aria-disabled="true"
-                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                  ><span class="nav-icon-tile size-9"
-                    ><svg class="size-4" aria-hidden="true">
-                      <use href="#i-pen" /></svg></span
-                  >Notes</a
                 >
               </li>
             </ul>
@@ -1108,15 +1089,9 @@
                 class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
                 >Pricing</a
               >
+
               <a
-                role="link"
-                aria-disabled="true"
-                class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
-                >Blog</a
-              >
-              <a
-                role="link"
-                aria-disabled="true"
+                href="signin.html"
                 class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
                 >Sign In</a
               >
@@ -1134,457 +1109,961 @@
     </header>
     <!-- /shell:header -->
     <main id="main">
-      <!-- Layout as on thepulseapi.com/en/about: hero with photo; "Who is behind this" accordions; where it came
-           from; four working rules; where we actually are, with the call to action under it. -->
-      <!-- DEAL acronym (deal / deal-initial / deal-word in src/input.css, [data-deal] in src/main.js): written in
-           its final, expanded state; screen readers hear the aria-label once, the animated letters are hidden.
-           HIDDEN for now (16 Oct 2026, not wanted on the page yet): remove the `hidden` attribute to show it. -->
-      <section class="border-b border-line" hidden>
-        <div class="frame flex flex-col items-center py-20 lg:py-24">
-          <p
-            class="deal"
-            role="img"
-            aria-label="DEAL: Decision, Engagement, Auditing and Agentic, Layer"
-            data-deal
-          >
-            <span aria-hidden="true"
-              ><span class="deal-initial">D</span
-              ><span class="deal-word">ecision</span></span
-            >
-            <span aria-hidden="true"
-              ><span class="deal-initial">E</span
-              ><span class="deal-word">ngagement</span></span
-            >
-            <span aria-hidden="true"
-              ><span class="deal-initial">A</span
-              ><span class="deal-word"
-                >uditing &amp; <span class="text-primary">A</span>gentic</span
-              ></span
-            >
-            <span aria-hidden="true"
-              ><span class="deal-initial">L</span
-              ><span class="deal-word">ayer</span></span
-            >
-          </p>
-          <button
-            type="button"
-            class="btn-ghost btn-sm hit-area mt-8 hidden motion-safe:js:inline-flex"
-            aria-pressed="false"
-            data-deal-pause
-          >
-            <svg class="size-4" aria-hidden="true">
-              <use href="#i-pause" data-deal-pause-icon /></svg
-            ><span data-deal-pause-label>Pause animation</span>
-          </button>
-        </div>
-      </section>
-      <section class="hero-bg border-b border-line">
-        <div
-          class="frame grid items-center gap-12 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24"
-        >
-          <div class="lg:col-span-6">
-            <p class="reveal eyebrow">About</p>
-            <h1 class="reveal mt-3 text-headline text-balance">
+      <!-- About, after dribbble.com/shots/27017149 (centred hero + bento, mission with figures, values, trust,
+           team) inside DESIGN.md: product visuals and real example figures instead of photos (guideline §9). -->
+      <section class="bg-soft-gradient border-b border-line">
+        <div class="frame pt-20 pb-20 lg:pt-28 lg:pb-24">
+          <div class="reveal mx-auto max-w-3xl text-center">
+            <h1 class="text-display text-balance">
               We measure whether product data can answer the questions shoppers
               ask
             </h1>
             <p
-              class="reveal mt-6 text-lg leading-relaxed text-pretty text-muted delay-100"
+              class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted"
             >
-              Pulse started from a narrow observation: a shopper cannot filter
-              on a field your catalogue never recorded, so the most valuable
-              gaps are invisible to every tool that learns from engagement.
-              Everything we have built since is an attempt to measure that
-              properly and to be honest about where the measurement stops.
+              Pulse measures your product data against what shoppers actually
+              decide on. Send one category export and get a ranked repair list
+              back within 48 hours.
             </p>
           </div>
-          <div class="reveal delay-200 lg:col-span-6">
-            <img
-              src="./src/assets/about/hero.webp"
-              alt="Four people around a table with laptops open, mid-discussion."
-              width="1800"
-              height="1200"
-              class="aspect-3/2 w-full rounded-3xl object-cover shadow-sm"
-            />
+
+          <div
+            class="reveal mt-14 grid grid-cols-1 gap-4 delay-200 lg:mt-16 lg:grid-cols-3"
+          >
+            <figure
+              id="ranking"
+              class="card flex min-w-0 scroll-mt-24 flex-col lg:col-span-2"
+            >
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <figcaption class="text-h3 text-ink">
+                  The same four gaps, ranked two ways
+                </figcaption>
+                <span class="badge border-line text-muted">Example data</span>
+              </div>
+              <div class="mt-6 mb-6 grid gap-8 md:grid-cols-2">
+                <div>
+                  <p class="text-sm text-muted">
+                    By how much is missing, of 216 products
+                  </p>
+                  <ol class="mt-3 space-y-4">
+                    <li>
+                      <div class="flex items-baseline gap-2 text-data">
+                        <span class="w-4 shrink-0 tabular-nums text-muted"
+                          >1</span
+                        ><span class="font-semibold text-ink">Processor</span
+                        ><span class="ml-auto tabular-nums text-muted"
+                          >162</span
+                        >
+                      </div>
+                      <div class="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
+                        <div
+                          class="reveal-bar h-full rounded-full bg-chart-baseline w-162/216"
+                        ></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-baseline gap-2 text-data">
+                        <span class="w-4 shrink-0 tabular-nums text-muted"
+                          >2</span
+                        ><span class="text-ink">Screen size</span
+                        ><span class="ml-auto tabular-nums text-muted">80</span>
+                      </div>
+                      <div class="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
+                        <div
+                          class="reveal-bar h-full rounded-full bg-chart-baseline w-80/216"
+                        ></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-baseline gap-2 text-data">
+                        <span class="w-4 shrink-0 tabular-nums text-muted"
+                          >3</span
+                        ><span class="text-ink">Memory</span
+                        ><span class="ml-auto tabular-nums text-muted">60</span>
+                      </div>
+                      <div class="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
+                        <div
+                          class="reveal-bar h-full rounded-full bg-chart-baseline w-60/216"
+                        ></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-baseline gap-2 text-data">
+                        <span class="w-4 shrink-0 tabular-nums text-muted"
+                          >4</span
+                        ><span class="text-ink">Storage</span
+                        ><span class="ml-auto tabular-nums text-muted">55</span>
+                      </div>
+                      <div class="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
+                        <div
+                          class="reveal-bar h-full rounded-full bg-chart-baseline w-55/216"
+                        ></div>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+                <div>
+                  <p class="text-sm text-muted">
+                    By what shoppers need, of 32 requirements
+                  </p>
+                  <ol class="mt-3 space-y-4">
+                    <li
+                      class="-mx-2 rounded-lg border border-signal bg-signal-tint px-2 py-1.5 ring-1 ring-signal"
+                    >
+                      <div class="flex items-baseline gap-2 text-data">
+                        <span
+                          class="w-4 shrink-0 tabular-nums font-semibold text-signal-text"
+                          >1</span
+                        ><span class="text-ink">Screen size</span
+                        ><span class="ml-auto tabular-nums text-muted"
+                          >15 of 32</span
+                        >
+                      </div>
+                      <div class="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
+                        <div
+                          class="reveal-bar h-full rounded-full bg-chart-highlight w-15/32"
+                        ></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-baseline gap-2 text-data">
+                        <span class="w-4 shrink-0 tabular-nums text-muted"
+                          >2</span
+                        ><span class="text-ink">Memory</span
+                        ><span class="ml-auto tabular-nums text-muted"
+                          >13 of 32</span
+                        >
+                      </div>
+                      <div class="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
+                        <div
+                          class="reveal-bar h-full rounded-full bg-chart-baseline w-13/32"
+                        ></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-baseline gap-2 text-data">
+                        <span class="w-4 shrink-0 tabular-nums text-muted"
+                          >3</span
+                        ><span class="text-ink">Storage</span
+                        ><span class="ml-auto tabular-nums text-muted"
+                          >10 of 32</span
+                        >
+                      </div>
+                      <div class="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
+                        <div
+                          class="reveal-bar h-full rounded-full bg-chart-baseline w-10/32"
+                        ></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="flex items-baseline gap-2 text-data">
+                        <span class="w-4 shrink-0 tabular-nums text-muted"
+                          >4</span
+                        ><span class="font-semibold text-ink">Processor</span
+                        ><span class="ml-auto tabular-nums text-muted"
+                          >2 of 32</span
+                        >
+                      </div>
+                      <div class="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
+                        <div
+                          class="reveal-bar h-full rounded-full bg-chart-baseline w-2/32"
+                        ></div>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="mt-auto border-t border-line pt-5">
+                <p class="max-w-xl text-body text-pretty text-ink">
+                  <span class="font-semibold"
+                    >Processor is missing from 162 products, but only 2 of 32
+                    shopper requirements mention it.</span
+                  >
+                  Ranked by absence it comes first; ranked by demand it comes
+                  last.
+                </p>
+              </div>
+              <p class="mt-2 text-caption text-muted">
+                A requirement is a need shoppers stated when choosing. This
+                shelf has 32.
+              </p>
+            </figure>
+            <div
+              class="card flex min-w-0 flex-col divide-y divide-line self-start"
+            >
+              <div class="pb-6">
+                <p
+                  class="font-display text-title font-semibold tabular-nums text-ink"
+                >
+                  48 hours
+                </p>
+                <p class="mt-1 text-sm text-pretty text-muted">
+                  From one category export to your ranked Decision Audit.
+                </p>
+              </div>
+              <div class="pt-6">
+                <p
+                  class="font-display text-title font-semibold tabular-nums text-ink"
+                >
+                  12 of 12
+                </p>
+                <p class="mt-1 text-sm text-pretty text-muted">
+                  reruns of the example ranking put screen size first. Ranks 2
+                  to 4 moved, and we say so.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="border-b border-line">
-        <div class="frame py-20 lg:py-24">
-          <p class="reveal eyebrow">About us</p>
-          <h2 class="reveal mt-3 text-title">Who is behind this</h2>
-          <div class="reveal mt-10 border-t border-line">
-            <details class="group border-b border-line">
-              <summary
-                class="flex cursor-pointer list-none items-center justify-between gap-6 py-6"
-              >
-                <span
-                  ><span class="block text-h3 text-ink">Management team</span
-                  ><span class="mt-1 block text-sm text-muted"
-                    >The founder and the technical team, with what each of them
-                    owns.</span
-                  ></span
-                >
-                <svg
-                  class="size-5 shrink-0 text-primary transition-transform duration-200 ease-out-soft group-open:rotate-45"
-                  aria-hidden="true"
-                >
-                  <use href="#i-plus" />
-                </svg>
-              </summary>
-              <div class="pb-8">
-                <!-- TODO-COPY: placeholder names, as on the live site -->
-                <ul class="grid gap-3 sm:grid-cols-3">
-                  <li
-                    class="flex items-center gap-4 rounded-2xl border border-line bg-card p-4"
-                  >
-                    <span
-                      class="grid size-12 shrink-0 place-items-center rounded-full bg-primary-tint text-sm font-semibold text-primary"
-                      >A</span
-                    ><span
-                      ><span class="block text-data font-semibold text-ink"
-                        >A. Placeholder</span
-                      ><span class="block text-sm text-muted"
-                        >Founder</span
-                      ></span
-                    >
-                  </li>
-                  <li
-                    class="flex items-center gap-4 rounded-2xl border border-line bg-card p-4"
-                  >
-                    <span
-                      class="grid size-12 shrink-0 place-items-center rounded-full bg-primary-tint text-sm font-semibold text-primary"
-                      >B</span
-                    ><span
-                      ><span class="block text-data font-semibold text-ink"
-                        >B. Placeholder</span
-                      ><span class="block text-sm text-muted"
-                        >Engineering lead</span
-                      ></span
-                    >
-                  </li>
-                  <li
-                    class="flex items-center gap-4 rounded-2xl border border-line bg-card p-4"
-                  >
-                    <span
-                      class="grid size-12 shrink-0 place-items-center rounded-full bg-primary-tint text-sm font-semibold text-primary"
-                      >C</span
-                    ><span
-                      ><span class="block text-data font-semibold text-ink"
-                        >C. Placeholder</span
-                      ><span class="block text-sm text-muted"
-                        >Head of merchandising research</span
-                      ></span
-                    >
-                  </li>
-                </ul>
-              </div>
-            </details>
-            <details class="group border-b border-line">
-              <summary
-                class="flex cursor-pointer list-none items-center justify-between gap-6 py-6"
-              >
-                <span
-                  ><span class="block text-h3 text-ink">Company</span
-                  ><span class="mt-1 block text-sm text-muted"
-                    >What we work on, and the question the product came
-                    from.</span
-                  ></span
-                >
-                <svg
-                  class="size-5 shrink-0 text-primary transition-transform duration-200 ease-out-soft group-open:rotate-45"
-                  aria-hidden="true"
-                >
-                  <use href="#i-plus" />
-                </svg>
-              </summary>
-              <div class="pb-8">
-                <dl class="divide-y divide-line">
-                  <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-                    <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                      Founded
-                    </dt>
-                    <dd class="text-data text-muted sm:col-span-9">
-                      March 2026.
-                    </dd>
-                  </div>
-                  <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-                    <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                      Our field
-                    </dt>
-                    <dd class="text-data text-muted sm:col-span-9">
-                      Product data measurement for commerce, using information
-                      theory rather than engagement analytics.
-                    </dd>
-                  </div>
-                  <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-                    <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                      What we make
-                    </dt>
-                    <dd class="text-data text-muted sm:col-span-9">
-                      The Decision Audit, which ranks the product attributes
-                      most worth recording, plus the verification and monitoring
-                      that follow it.
-                    </dd>
-                  </div>
-                  <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-                    <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                      Where it came from
-                    </dt>
-                    <dd class="text-data text-muted sm:col-span-9">
-                      One shelf of 216 laptops, where ranking the gaps by how
-                      much data was absent produced almost the opposite order to
-                      ranking them by what shoppers said they needed. That gap
-                      is the company.
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-            </details>
-            <details class="group border-b border-line">
-              <summary
-                class="flex cursor-pointer list-none items-center justify-between gap-6 py-6"
-              >
-                <span
-                  ><span class="block text-h3 text-ink">Location</span
-                  ><span class="mt-1 block text-sm text-muted"
-                    >Where we are, and the merchants we work with.</span
-                  ></span
-                >
-                <svg
-                  class="size-5 shrink-0 text-primary transition-transform duration-200 ease-out-soft group-open:rotate-45"
-                  aria-hidden="true"
-                >
-                  <use href="#i-plus" />
-                </svg>
-              </summary>
-              <div class="pb-8">
-                <dl class="divide-y divide-line">
-                  <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-                    <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                      Headquarters
-                    </dt>
-                    <dd class="text-data text-muted sm:col-span-9">
-                      Singapore.
-                    </dd>
-                  </div>
-                  <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-                    <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                      Engineering
-                    </dt>
-                    <dd class="text-data text-muted sm:col-span-9">
-                      A branch in Vietnam, in Ho Chi Minh City, on GMT+7.
-                    </dd>
-                  </div>
-                  <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-                    <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                      Who we work with
-                    </dt>
-                    <dd class="text-data text-muted sm:col-span-9">
-                      Merchants in Vietnam and across Southeast Asia, starting
-                      with one category each.
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <section class="border-b border-line bg-surface-1/50">
-        <div class="frame grid gap-12 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
-          <div class="lg:col-span-5">
-            <p class="reveal eyebrow">Where this came from</p>
-            <h2 class="reveal mt-3 text-title text-balance">
+        <div class="frame py-20 lg:py-28">
+          <div class="grid gap-8 lg:grid-cols-12 lg:gap-x-0">
+            <h2 class="text-title text-balance lg:col-span-5 lg:pr-16">
               It started with one shelf of laptops
             </h2>
-            <img
-              src="./src/assets/about/workspace.jpg"
-              alt="A workspace with a monitor showing product charts, a shelf of binders and a desk lamp."
-              width="612"
-              height="344"
-              class="reveal mt-10 w-full max-w-sm rounded-2xl"
-            />
+            <div
+              class="space-y-5 text-body leading-relaxed text-pretty text-muted lg:col-span-7"
+            >
+              <p>
+                We looked at a laptop shelf of 216 products to answer a simple
+                question: if a shopper had to choose, could this catalogue help
+                them? It could not.
+              </p>
+              <p>
+                The surprise was not the missing data. It was that the usual way
+                of choosing what to fix, emptiest field first, would have spent
+                the effort where it helped shoppers least. That gap between what
+                is missing and what shoppers need is the whole company.
+              </p>
+            </div>
           </div>
           <div
-            class="space-y-5 text-body leading-relaxed text-muted lg:col-span-7"
+            class="mt-16 grid gap-8 border-t border-line pt-10 lg:mt-20 lg:grid-cols-12 lg:gap-x-0"
           >
-            <p class="reveal">
-              We took a real electronics catalogue and looked at the laptop
-              shelf, 216 products, to answer what seemed like a simple question:
-              if a shopper had to choose, could this catalogue help them? It
-              could not. Forty-seven of the 216 recorded nothing anybody could
-              filter on. No screen size, no memory, no storage, no processor.
-            </p>
-            <p class="reveal">
-              The interesting part was not that the data was missing. It was
-              that the standard way of deciding what to fix would have got the
-              order wrong. Rank the gaps by how much data is absent and
-              processor comes third, because 162 products lack it. Rank them by
-              what shoppers actually said they needed and processor comes last,
-              because only 2 of 32 stated requirements mention one at all.
-            </p>
-            <p class="reveal">
-              That gap between absence and demand is the whole company. It is
-              measurable, it is reproducible, and as far as we can tell nobody
-              else is measuring it, because measuring it requires starting from
-              the decision rather than from the clickstream.
-            </p>
+            <div class="lg:col-span-5 lg:pr-16">
+              <p
+                class="font-display text-title font-semibold tabular-nums text-primary"
+              >
+                47 of 216
+              </p>
+              <p class="mt-2 max-w-xs text-sm text-pretty text-muted">
+                products on the example shelf recorded nothing a shopper could
+                filter on. A wider group, 94 of 216, could not be told apart on
+                what shoppers need:
+                <a
+                  href="index.html"
+                  class="text-link underline underline-offset-4 hover:text-primary-hover"
+                  >the figure on the home page</a
+                >.
+              </p>
+              <p class="mt-6">
+                <a
+                  href="product/decision-audit.html"
+                  class="hit-area font-medium text-link underline underline-offset-4 hover:text-primary-hover"
+                  >See how the Decision Audit ranks a catalogue</a
+                >
+              </p>
+            </div>
+            <div class="w-full max-w-lg lg:col-span-7 lg:justify-self-center">
+              <div class="card min-w-0">
+                <p class="text-sm font-semibold text-ink">
+                  357 fields are missing across the shelf
+                </p>
+                <table class="mt-3 w-full table-fixed text-sm">
+                  <thead class="font-sans text-caption text-muted">
+                    <tr>
+                      <th scope="col" class="w-1/2 py-1 text-left font-medium">
+                        Product
+                      </th>
+                      <th scope="col" class="py-1 text-left font-medium">
+                        Screen size
+                      </th>
+                      <th scope="col" class="py-1 text-left font-medium">
+                        Memory
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-line">
+                    <tr>
+                      <th
+                        scope="row"
+                        class="py-2 pr-2 text-left font-sans font-normal text-ink"
+                      >
+                        LG 16Z90TS-G
+                      </th>
+                      <td class="py-2 pr-2 text-ink">16.0"</td>
+                      <td class="py-2 pr-2">
+                        <span
+                          class="inline-block rounded px-1.5 py-0.5 font-sans text-caption missing-cell"
+                          >Missing</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <th
+                        scope="row"
+                        class="py-2 pr-2 text-left font-sans font-normal text-ink"
+                      >
+                        Spectre x360
+                      </th>
+                      <td class="py-2 pr-2">
+                        <span
+                          class="inline-block rounded px-1.5 py-0.5 font-sans text-caption missing-cell"
+                          >Missing</span
+                        >
+                      </td>
+                      <td class="py-2 pr-2 text-ink">16GB</td>
+                    </tr>
+                    <tr>
+                      <th
+                        scope="row"
+                        class="py-2 pr-2 text-left font-sans font-normal text-ink"
+                      >
+                        ThinkPad X1 Carbon Gen 9
+                      </th>
+                      <td class="py-2 pr-2">
+                        <span
+                          class="inline-block rounded px-1.5 py-0.5 font-sans text-caption missing-cell"
+                          >Missing</span
+                        >
+                      </td>
+                      <td class="py-2 pr-2 text-ink">32GB</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="border-b border-line">
-        <div class="frame py-20 lg:py-24">
-          <p class="reveal eyebrow">How we work</p>
-          <h2 class="reveal mt-3 text-title">Four things we hold to</h2>
-          <ul class="mt-12 grid gap-x-16 gap-y-12 sm:grid-cols-2">
-            <li class="reveal delay-0">
-              <div class="flex items-center gap-3">
-                <span
-                  class="grid size-8 place-items-center rounded-lg bg-primary-tint text-primary"
-                  ><svg class="size-4" aria-hidden="true">
-                    <use href="#i-terminal" /></svg></span
-                ><span class="text-sm font-semibold text-primary tabular-nums"
-                  >01</span
-                >
-              </div>
-              <h3 class="mt-4 text-h3 text-ink">
-                Show the working, not just the answer
-              </h3>
-              <p class="mt-2 text-data leading-relaxed text-muted">
-                Every number on this site can be reproduced from our own
-                repository with one command. If we cannot show you how a figure
-                was produced, we do not print it. That rule is the reason there
-                is no conversion statistic anywhere on this site.
+        <div
+          class="frame grid gap-10 py-20 lg:grid-cols-12 lg:gap-x-0 lg:py-28"
+        >
+          <div class="lg:col-span-5 lg:pr-16">
+            <h2 class="text-title text-balance">Four things we hold to</h2>
+            <p
+              class="mt-4 max-w-sm text-body leading-relaxed text-pretty text-muted"
+            >
+              How we work, and why there is no conversion figure anywhere on
+              this site.
+            </p>
+          </div>
+          <ul class="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:col-span-7">
+            <li class="border-t-2 border-primary pt-6">
+              <h3 class="text-h3 text-ink">Show the working</h3>
+              <p class="mt-2 text-body leading-relaxed text-pretty text-muted">
+                The figures on this site are example data, and we say so where
+                they appear. If we cannot show how a figure was produced, we do
+                not print it.
               </p>
             </li>
-            <li class="reveal delay-100">
-              <div class="flex items-center gap-3">
-                <span
-                  class="grid size-8 place-items-center rounded-lg bg-primary-tint text-primary"
-                  ><svg class="size-4" aria-hidden="true">
-                    <use href="#i-flask" /></svg></span
-                ><span class="text-sm font-semibold text-primary tabular-nums"
-                  >02</span
-                >
-              </div>
-              <h3 class="mt-4 text-h3 text-ink">
-                A negative result is still a result
-              </h3>
-              <p class="mt-2 text-data leading-relaxed text-muted">
-                Our own research log records a spike that failed its criteria, a
-                second run that passed for the wrong reason, and a third that
-                finally held. We kept all three. A company that only publishes
-                what worked is telling you less than it appears to.
+            <li class="border-t-2 border-primary pt-6">
+              <h3 class="text-h3 text-ink">Keep the negative results</h3>
+              <p class="mt-2 text-body leading-relaxed text-pretty text-muted">
+                We keep the attempt that failed its criteria, the one that
+                passed for the wrong reason, and the one that held.
               </p>
             </li>
-            <li class="reveal delay-0">
-              <div class="flex items-center gap-3">
-                <span
-                  class="grid size-8 place-items-center rounded-lg bg-primary-tint text-primary"
-                  ><svg class="size-4" aria-hidden="true">
-                    <use href="#i-shield-alert" /></svg></span
-                ><span class="text-sm font-semibold text-primary tabular-nums"
-                  >03</span
-                >
-              </div>
-              <h3 class="mt-4 text-h3 text-ink">
-                Say what the measurement cannot do
-              </h3>
-              <p class="mt-2 text-data leading-relaxed text-muted">
-                Our ranking is stable at the top and less stable below it, and
-                we print that next to the ranking rather than in a footnote.
-                Precision about your own limits is cheap to give and very hard
-                to fake.
+            <li class="border-t-2 border-primary pt-6">
+              <h3 class="text-h3 text-ink">Say what we cannot measure</h3>
+              <p class="mt-2 text-body leading-relaxed text-pretty text-muted">
+                Our ranking is steady at the top and less steady below it, and
+                we say so
+                <a
+                  href="#ranking"
+                  class="text-link underline underline-offset-4 hover:text-primary-hover"
+                  >next to the ranking</a
+                >, not in a footnote.
               </p>
             </li>
-            <li class="reveal delay-100">
-              <div class="flex items-center gap-3">
-                <span
-                  class="grid size-8 place-items-center rounded-lg bg-primary-tint text-primary"
-                  ><svg class="size-4" aria-hidden="true">
-                    <use href="#i-key" /></svg></span
-                ><span class="text-sm font-semibold text-primary tabular-nums"
-                  >04</span
-                >
-              </div>
-              <h3 class="mt-4 text-h3 text-ink">
-                Earn the integration, do not assume it
-              </h3>
-              <p class="mt-2 text-data leading-relaxed text-muted">
-                The first thing we sell needs no code, no tag and no access to
-                your systems. If the audit is not useful, you have lost a
-                catalogue export and an afternoon. Nothing about the runtime is
-                worth discussing until that part has proved itself.
+            <li class="border-t-2 border-primary pt-6">
+              <h3 class="text-h3 text-ink">Earn the integration</h3>
+              <p class="mt-2 text-body leading-relaxed text-pretty text-muted">
+                The first audit needs no code, no tag and no access to your
+                systems. If it is not useful, you have lost an export and an
+                afternoon.
               </p>
             </li>
           </ul>
         </div>
       </section>
 
-      <section class="border-b border-line bg-surface-1/50">
-        <div class="frame py-20 lg:py-24">
-          <p class="reveal eyebrow">Where we actually are</p>
-          <h2 class="reveal mt-3 text-title">Early, and specific about it</h2>
-          <dl class="reveal mt-10 divide-y divide-line border-y border-line">
-            <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-              <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                What is proven
-              </dt>
-              <dd class="text-data text-muted sm:col-span-9">
-                The measurement. The ranking is stable at the top across every
-                seed, weighting and imputation scope we have tested.
-              </dd>
+      <section class="border-b border-line">
+        <div
+          class="frame grid gap-10 py-20 lg:grid-cols-12 lg:gap-x-0 lg:py-28"
+        >
+          <div class="lg:col-span-5 lg:pr-16">
+            <h2 class="text-title text-balance">
+              Early, and specific about it
+            </h2>
+            <p
+              class="mt-4 max-w-sm text-body leading-relaxed text-pretty text-muted"
+            >
+              What we can show today, and what we cannot yet.
+            </p>
+          </div>
+          <div class="lg:col-span-7">
+            <div
+              class="grid gap-10 rounded-3xl border border-primary-line bg-primary-wash p-6 md:grid-cols-2 md:gap-0 md:divide-x md:divide-line lg:p-8"
+            >
+              <div class="md:pr-8">
+                <h3
+                  class="flex items-center gap-2 border-b-2 border-success pb-3 text-h3 text-ink"
+                >
+                  <svg class="size-5 shrink-0 text-success" aria-hidden="true">
+                    <use href="#i-circle-check" /></svg
+                  >What we can show
+                </h3>
+                <dl class="mt-4 divide-y divide-line">
+                  <div class="py-4 first:pt-0 last:pb-0">
+                    <dt class="text-sm font-semibold text-ink">
+                      What is proven
+                    </dt>
+                    <dd class="mt-1 text-body text-pretty text-muted">
+                      The measurement. When we rerun the ranking with different
+                      settings, the top of the list stays the same.
+                    </dd>
+                  </div>
+                  <div class="py-4 first:pt-0 last:pb-0">
+                    <dt class="text-sm font-semibold text-ink">
+                      What is built
+                    </dt>
+                    <dd class="mt-1 text-body text-pretty text-muted">
+                      The audit engine, and a live service that re-ranks a
+                      catalogue as it changes and explains every score.
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+              <div class="md:pl-8">
+                <h3
+                  class="flex items-center gap-2 border-b-2 border-warning pb-3 text-h3 text-ink"
+                >
+                  <svg class="size-5 shrink-0 text-warning" aria-hidden="true">
+                    <use href="#i-circle-alert" /></svg
+                  >What we cannot show yet
+                </h3>
+                <dl class="mt-4 divide-y divide-line">
+                  <div class="py-4 first:pt-0 last:pb-0">
+                    <dt class="text-sm font-semibold text-ink">
+                      What is not proven
+                    </dt>
+                    <dd class="mt-1 text-body text-pretty text-muted">
+                      Any effect on revenue or conversion. We have run no live
+                      experiment, so we have no number and will not offer one.
+                    </dd>
+                  </div>
+                  <div class="py-4 first:pt-0 last:pb-0">
+                    <dt class="text-sm font-semibold text-ink">
+                      What we are unsure about
+                    </dt>
+                    <dd class="mt-1 text-body text-pretty text-muted">
+                      How far the method carries beyond the categories we have
+                      measured. We will know when more merchants have run it.
+                    </dd>
+                  </div>
+                  <div class="py-4 first:pt-0 last:pb-0">
+                    <dt class="text-sm font-semibold text-ink">
+                      Customers we can name
+                    </dt>
+                    <dd class="mt-1 text-body text-pretty text-muted">
+                      None yet. The first audit asks for one export and nothing
+                      installed, and we will name customers here only with their
+                      permission.
+                    </dd>
+                  </div>
+                </dl>
+              </div>
             </div>
-            <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-              <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                What is built
-              </dt>
-              <dd class="text-data text-muted sm:col-span-9">
-                The audit engine, and a runtime that ranks a catalogue live and
-                explains every score it produces.
-              </dd>
+            <p class="mt-10 border-t border-line pt-6 text-body text-ink">
+              One export, nothing installed.
+              <a
+                href="contact.html"
+                class="hit-area font-medium text-link underline underline-offset-4 hover:text-primary-hover"
+                >Request a Decision Audit</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-b border-line">
+        <div class="frame py-20 lg:py-28">
+          <div class="grid gap-4 lg:grid-cols-12 lg:gap-x-0">
+            <h2 class="text-title text-balance lg:col-span-5 lg:pr-16">
+              Meet the team
+            </h2>
+            <p
+              class="text-body leading-relaxed text-pretty text-muted lg:col-span-7"
+            >
+              Eight people across Singapore and Ho Chi Minh City, building the
+              Decision Audit.
+            </p>
+          </div>
+          <!-- Team (names, roles and LinkedIn from team.md, 19 Oct 2026; photos in src/assets/team as 384px transparent PNGs,
+               backgrounds removed). Card after the owner's reference: round portrait, name and role, LinkedIn; on hover or
+               keyboard focus a half-circle dome (rounded-t-full: primary-tint → primary-line, the reference's shape in Pulse Blue) rises behind the text
+               and the portrait gets an ink ring; the LinkedIn link shows only then (always on touch screens), and the portrait zooms 20% from its base so the head steps out over the ring (team-pop: a second copy of the photo, clipped to its top half only). Order (owner's): Tracy, Rosie, Elena, Iris on the first row; Albert, Stephen, Eric, Stan on the second. -->
+          <ul
+            class="mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:mt-16 lg:grid-cols-4"
+            aria-label="Team"
+          >
+            <li
+              class="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+            >
+              <div
+                class="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
+              >
+                <div
+                  class="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                >
+                  <div class="team-base size-full">
+                    <img
+                      src="./src/assets/team/tracy-bui.png"
+                      alt=""
+                      width="384"
+                      height="384"
+                      loading="lazy"
+                      class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="team-pop pointer-events-none absolute inset-0"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="./src/assets/team/tracy-bui.png"
+                    alt=""
+                    width="384"
+                    height="384"
+                    loading="lazy"
+                    class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                  />
+                </div>
+              </div>
+              <h3 class="mt-5 text-h3 text-balance">Tracy Bui</h3>
+              <p class="mt-1 mb-1 text-sm text-pretty text-muted">
+                Product Owner
+              </p>
+              <a
+                href="https://www.linkedin.com/in/van-bui-work"
+                target="_blank"
+                rel="noopener"
+                class="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                aria-label="Tracy Bui on LinkedIn (opens in a new tab)"
+                ><svg class="size-5" aria-hidden="true">
+                  <use href="#i-linkedin" /></svg
+              ></a>
+            </li>
+            <li
+              class="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+            >
+              <div
+                class="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
+              >
+                <div
+                  class="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                >
+                  <div class="team-base size-full">
+                    <img
+                      src="./src/assets/team/rosie-tran.png"
+                      alt=""
+                      width="384"
+                      height="384"
+                      loading="lazy"
+                      class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="team-pop pointer-events-none absolute inset-0"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="./src/assets/team/rosie-tran.png"
+                    alt=""
+                    width="384"
+                    height="384"
+                    loading="lazy"
+                    class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                  />
+                </div>
+              </div>
+              <h3 class="mt-5 text-h3 text-balance">Rosie Tran</h3>
+              <p class="mt-1 mb-1 text-sm text-pretty text-muted">
+                Founder Associate
+              </p>
+              <a
+                href="https://www.linkedin.com/in/ynhii2309"
+                target="_blank"
+                rel="noopener"
+                class="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                aria-label="Rosie Tran on LinkedIn (opens in a new tab)"
+                ><svg class="size-5" aria-hidden="true">
+                  <use href="#i-linkedin" /></svg
+              ></a>
+            </li>
+            <li
+              class="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+            >
+              <div
+                class="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
+              >
+                <div
+                  class="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                >
+                  <div class="team-base size-full">
+                    <img
+                      src="./src/assets/team/elena-nguyen.png"
+                      alt=""
+                      width="384"
+                      height="384"
+                      loading="lazy"
+                      class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="team-pop pointer-events-none absolute inset-0"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="./src/assets/team/elena-nguyen.png"
+                    alt=""
+                    width="384"
+                    height="384"
+                    loading="lazy"
+                    class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                  />
+                </div>
+              </div>
+              <h3 class="mt-5 text-h3 text-balance">Elena Nguyen</h3>
+              <p class="mt-1 mb-1 text-sm text-pretty text-muted">
+                Founder Associate
+              </p>
+              <a
+                href="https://www.linkedin.com/in/b%E1%BA%A3o-nguy%C3%AAn-nguy%E1%BB%85n"
+                target="_blank"
+                rel="noopener"
+                class="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                aria-label="Elena Nguyen on LinkedIn (opens in a new tab)"
+                ><svg class="size-5" aria-hidden="true">
+                  <use href="#i-linkedin" /></svg
+              ></a>
+            </li>
+            <li
+              class="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+            >
+              <div
+                class="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
+              >
+                <div
+                  class="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                >
+                  <div class="team-base size-full">
+                    <img
+                      src="./src/assets/team/iris-le.png"
+                      alt=""
+                      width="384"
+                      height="384"
+                      loading="lazy"
+                      class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="team-pop pointer-events-none absolute inset-0"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="./src/assets/team/iris-le.png"
+                    alt=""
+                    width="384"
+                    height="384"
+                    loading="lazy"
+                    class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                  />
+                </div>
+              </div>
+              <h3 class="mt-5 text-h3 text-balance">Iris Le</h3>
+              <p class="mt-1 mb-1 text-sm text-pretty text-muted">
+                Quality Assurance / Control
+              </p>
+              <a
+                href="https://www.linkedin.com/in/ngocle123/"
+                target="_blank"
+                rel="noopener"
+                class="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                aria-label="Iris Le on LinkedIn (opens in a new tab)"
+                ><svg class="size-5" aria-hidden="true">
+                  <use href="#i-linkedin" /></svg
+              ></a>
+            </li>
+            <li
+              class="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+            >
+              <div
+                class="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
+              >
+                <div
+                  class="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                >
+                  <div class="team-base size-full">
+                    <img
+                      src="./src/assets/team/albert-bui.png"
+                      alt=""
+                      width="384"
+                      height="384"
+                      loading="lazy"
+                      class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="team-pop pointer-events-none absolute inset-0"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="./src/assets/team/albert-bui.png"
+                    alt=""
+                    width="384"
+                    height="384"
+                    loading="lazy"
+                    class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                  />
+                </div>
+              </div>
+              <h3 class="mt-5 text-h3 text-balance">Albert Bui</h3>
+              <p class="mt-1 mb-1 text-sm text-pretty text-muted">
+                Software Engineer
+              </p>
+              <a
+                href="https://www.linkedin.com/in/quy-bui-quang"
+                target="_blank"
+                rel="noopener"
+                class="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                aria-label="Albert Bui on LinkedIn (opens in a new tab)"
+                ><svg class="size-5" aria-hidden="true">
+                  <use href="#i-linkedin" /></svg
+              ></a>
+            </li>
+            <li
+              class="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+            >
+              <div
+                class="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
+              >
+                <div
+                  class="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                >
+                  <div class="team-base size-full">
+                    <img
+                      src="./src/assets/team/stephen-le.png"
+                      alt=""
+                      width="384"
+                      height="384"
+                      loading="lazy"
+                      class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="team-pop pointer-events-none absolute inset-0"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="./src/assets/team/stephen-le.png"
+                    alt=""
+                    width="384"
+                    height="384"
+                    loading="lazy"
+                    class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                  />
+                </div>
+              </div>
+              <h3 class="mt-5 text-h3 text-balance">Stephen Le</h3>
+              <p class="mt-1 mb-1 text-sm text-pretty text-muted">
+                Mobile Developer
+              </p>
+              <a
+                href="https://www.linkedin.com/in/truongthole"
+                target="_blank"
+                rel="noopener"
+                class="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                aria-label="Stephen Le on LinkedIn (opens in a new tab)"
+                ><svg class="size-5" aria-hidden="true">
+                  <use href="#i-linkedin" /></svg
+              ></a>
+            </li>
+            <li
+              class="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+            >
+              <div
+                class="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
+              >
+                <div
+                  class="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                >
+                  <div class="team-base size-full">
+                    <img
+                      src="./src/assets/team/eric-pham.png"
+                      alt=""
+                      width="384"
+                      height="384"
+                      loading="lazy"
+                      class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="team-pop pointer-events-none absolute inset-0"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="./src/assets/team/eric-pham.png"
+                    alt=""
+                    width="384"
+                    height="384"
+                    loading="lazy"
+                    class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                  />
+                </div>
+              </div>
+              <h3 class="mt-5 text-h3 text-balance">Eric Pham</h3>
+              <p class="mt-1 mb-1 text-sm text-pretty text-muted">
+                DevOps Engineer
+              </p>
+              <a
+                href="https://www.linkedin.com/in/phamtradev/"
+                target="_blank"
+                rel="noopener"
+                class="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                aria-label="Eric Pham on LinkedIn (opens in a new tab)"
+                ><svg class="size-5" aria-hidden="true">
+                  <use href="#i-linkedin" /></svg
+              ></a>
+            </li>
+            <li
+              class="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+            >
+              <div
+                class="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
+              >
+                <div
+                  class="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                >
+                  <div class="team-base size-full">
+                    <img
+                      src="./src/assets/team/stan-nguyen.png"
+                      alt=""
+                      width="384"
+                      height="384"
+                      loading="lazy"
+                      class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="team-pop pointer-events-none absolute inset-0"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="./src/assets/team/stan-nguyen.png"
+                    alt=""
+                    width="384"
+                    height="384"
+                    loading="lazy"
+                    class="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
+                  />
+                </div>
+              </div>
+              <h3 class="mt-5 text-h3 text-balance">Stan Nguyen</h3>
+              <p class="mt-1 mb-1 text-sm text-pretty text-muted">
+                Front-end Developer
+              </p>
+              <a
+                href="https://www.linkedin.com/in/ptannguyen"
+                target="_blank"
+                rel="noopener"
+                class="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                aria-label="Stan Nguyen on LinkedIn (opens in a new tab)"
+                ><svg class="size-5" aria-hidden="true">
+                  <use href="#i-linkedin" /></svg
+              ></a>
+            </li>
+          </ul>
+          <dl
+            class="mt-16 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 lg:grid-cols-4"
+          >
+            <div>
+              <dt class="text-sm text-muted">Founded</dt>
+              <dd class="mt-1 text-data text-ink">March 2026</dd>
             </div>
-            <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-              <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                What is not proven
-              </dt>
-              <dd class="text-data text-muted sm:col-span-9">
-                Any effect on revenue or conversion. We have run no live
-                experiment, so we have no number and will not offer one.
-              </dd>
+            <div>
+              <dt class="text-sm text-muted">Headquarters</dt>
+              <dd class="mt-1 text-data text-ink">Singapore</dd>
             </div>
-            <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-              <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                What we are unsure about
-              </dt>
-              <dd class="text-data text-muted sm:col-span-9">
-                How far the method generalises beyond the categories we have
-                measured. We will know when more merchants have run it.
-              </dd>
+            <div>
+              <dt class="text-sm text-muted">Engineering</dt>
+              <dd class="mt-1 text-data text-ink">Ho Chi Minh City, Vietnam</dd>
             </div>
-            <div class="grid gap-1 py-4 sm:grid-cols-12 sm:gap-6">
-              <dt class="text-sm font-semibold text-ink sm:col-span-3">
-                Customers we can name
-              </dt>
-              <dd class="text-data text-muted sm:col-span-9">
-                None yet. When that changes we will say so here, with their
-                permission.
+            <div>
+              <dt class="text-sm text-muted">Built for</dt>
+              <dd class="mt-1 text-data text-pretty text-ink">
+                Merchants in Vietnam and Southeast Asia
               </dd>
             </div>
           </dl>
-          <a
-            href="mailto:getintouch@thepulseapi.com"
-            class="reveal group btn-primary mt-10 gap-2"
-            >Send us a category and judge for yourself<svg
-              class="size-4 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
-              aria-hidden="true"
+        </div>
+      </section>
+
+      <section id="request" class="cta-dots scroll-mt-16" data-cta>
+        <div class="frame py-24 text-center lg:py-32">
+          <h2 class="reveal mx-auto max-w-3xl text-headline text-balance">
+            Send us a category and judge for yourself
+          </h2>
+          <div class="reveal mt-8 flex justify-center delay-100">
+            <a href="contact.html" class="btn-primary"
+              >Request a Decision Audit</a
             >
-              <use href="#i-arrow-right" /></svg
-          ></a>
+          </div>
         </div>
       </section>
     </main>
@@ -1663,15 +2142,11 @@
                   >Contact</a
                 >
               </li>
-              <li class="flex items-center gap-2">
+              <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="careers/index.html"
                   class="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                   >Career</a
-                ><span
-                  class="inline-flex shrink-0 items-center rounded bg-primary px-1.5 py-0.5 text-caption font-semibold whitespace-nowrap text-on-primary"
-                  >We are hiring</span
                 >
               </li>
             </ul>
@@ -1680,19 +2155,19 @@
             <h2 class="text-nav font-semibold">Contact point</h2>
             <div class="mt-6 flex gap-3">
               <a
-                href="https://www.linkedin.com/company/thepulseapi"
+                href="https://www.linkedin.com/company/108237732/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
+                aria-label="Pulse on LinkedIn (opens in a new tab)"
                 class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
                 ><svg class="size-5" aria-hidden="true">
                   <use href="#i-linkedin" /></svg
               ></a>
               <a
-                href="https://www.facebook.com/thepulseapi"
+                href="https://www.facebook.com/people/The-Pulse-API/61591908084667/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Facebook"
+                aria-label="Pulse on Facebook (opens in a new tab)"
                 class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
                 ><svg class="size-5" aria-hidden="true">
                   <use href="#i-facebook" /></svg
@@ -1701,7 +2176,7 @@
                 href="https://github.com/thepulseapi"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="GitHub"
+                aria-label="Pulse on GitHub (opens in a new tab)"
                 class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
                 ><svg class="size-5" aria-hidden="true">
                   <use href="#i-github" /></svg
@@ -1711,7 +2186,7 @@
               <li>
                 <a
                   href="mailto:getintouch@thepulseapi.com"
-                  class="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                  class="-my-2.5 inline-flex min-h-11 items-center wrap-anywhere transition-colors duration-200 ease-out-soft hover:text-ink"
                   >getintouch@thepulseapi.com</a
                 >
               </li>

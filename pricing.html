@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Pricing: a fixed fee for the audit, everything else per pilot | Pulse
+      Pricing: the audit is free, everything else per cycle or per decision |
+      Pulse
     </title>
+    <meta
+      name="description"
+      content="The Decision Audit is free for one category, one export, no account. Repair plans and verification are priced per cycle, the Decision API per decision after a pilot."
+    />
     <!-- shell:head (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
     <link rel="icon" href="./src/assets/brand/favicon.ico" sizes="any" />
     <link
@@ -32,6 +37,20 @@
     <!-- shell:sprite (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
     <!-- Icon sprite (Lucide-style, stroke icons). Use: <svg><use href="#i-name" /></svg> -->
     <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+      <symbol
+        id="i-link"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+        <path
+          d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+        />
+      </symbol>
       <symbol
         id="i-chevron-down"
         viewBox="0 0 24 24"
@@ -212,6 +231,18 @@
         />
         <path d="M12 8v4" />
         <path d="M12 16h.01" />
+      </symbol>
+      <symbol
+        id="i-user-round"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="8" r="5" />
+        <path d="M20 21a8 8 0 0 0-16 0" />
       </symbol>
       <symbol
         id="i-key"
@@ -648,8 +679,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/ecommerce.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -664,8 +694,7 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/fmcg.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -687,8 +716,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/furniture.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -703,8 +731,7 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/cosmetics.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -726,8 +753,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/technology.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -742,8 +768,7 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/distribution.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -788,8 +813,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="https://developer.thepulseapi.com/"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -799,22 +823,6 @@
                             <span
                               class="mt-1 block text-sm text-pretty text-muted"
                               >Integrate in ten lines, or not at all</span
-                            >
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            role="link"
-                            aria-disabled="true"
-                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span
-                              class="flex items-center gap-2 text-sm font-semibold text-ink"
-                              >Notes</span
-                            >
-                            <span
-                              class="mt-1 block text-sm text-pretty text-muted"
-                              >What we measured, and got wrong</span
                             >
                           </a>
                         </li>
@@ -857,21 +865,16 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="careers/index.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
                               class="flex items-center gap-2 text-sm font-semibold text-ink"
-                              >Career
-                              <span
-                                class="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase"
-                                >Hiring</span
-                              ></span
+                              >Career</span
                             >
                             <span
                               class="mt-1 block text-sm text-pretty text-muted"
-                              >We are hiring</span
+                              >How we work, and how to reach us</span
                             >
                           </a>
                         </li>
@@ -882,9 +885,10 @@
               </details>
             </li>
 
-            <li><a href="pricing.html" class="nav-link">Pricing</a></li>
             <li>
-              <a role="link" aria-disabled="true" class="nav-link">Blog</a>
+              <a href="pricing.html" class="nav-link" aria-current="page"
+                >Pricing</a
+              >
             </li>
           </ul>
           <div class="nav-viewport" data-nav-viewport>
@@ -935,7 +939,7 @@
               </div>
             </details>
           </div>
-          <a role="link" aria-disabled="true" class="nav-link">Sign In</a>
+          <a href="signin.html" class="nav-link">Sign In</a>
           <a
             href="./contact.html"
             class="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap"
@@ -1010,8 +1014,7 @@
             <ul class="mt-2">
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/ecommerce.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1021,8 +1024,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/fmcg.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1032,8 +1034,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/technology.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1043,8 +1044,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/furniture.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1054,8 +1054,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/cosmetics.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1065,8 +1064,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/distribution.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1080,24 +1078,12 @@
             <ul class="mt-2">
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="https://developer.thepulseapi.com/"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
                       <use href="#i-file-text" /></svg></span
                   >Documentation</a
-                >
-              </li>
-              <li>
-                <a
-                  role="link"
-                  aria-disabled="true"
-                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                  ><span class="nav-icon-tile size-9"
-                    ><svg class="size-4" aria-hidden="true">
-                      <use href="#i-pen" /></svg></span
-                  >Notes</a
                 >
               </li>
             </ul>
@@ -1106,17 +1092,12 @@
               <a
                 href="pricing.html"
                 class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
+                aria-current="page"
                 >Pricing</a
               >
+
               <a
-                role="link"
-                aria-disabled="true"
-                class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
-                >Blog</a
-              >
-              <a
-                role="link"
-                aria-disabled="true"
+                href="signin.html"
                 class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
                 >Sign In</a
               >
@@ -1134,281 +1115,280 @@
     </header>
     <!-- /shell:header -->
     <main id="main">
+      <!-- Pricing (19 Oct 2026, after the owner's card reference): three separate cards, rows aligned across cards (subgrid); the
+           free audit carries the soft edge glow (pricing-glow) and the one btn-primary. The plans sit on the first screen from
+           1280 × 800. -->
       <section class="hero-bg border-b border-line">
-        <div class="frame py-20 lg:py-24">
-          <p class="reveal eyebrow">Pricing</p>
-          <h1 class="reveal mt-3 max-w-3xl text-headline text-balance">
-            A fixed fee for the audit, everything else per pilot
-          </h1>
-        </div>
-      </section>
-
-      <section class="border-b border-line">
-        <div class="frame py-20 lg:py-24">
-          <!-- each card is a 5-row subgrid (title, description, price, list, button), so the rows line up across cards -->
-          <ul class="grid gap-x-6 gap-y-6 lg:grid-cols-3">
-            <li
-              class="reveal row-span-5 grid grid-rows-subgrid gap-y-0 rounded-3xl border bg-card p-7 border-primary shadow-lg delay-0"
+        <div class="frame pt-12 pb-16 lg:pb-20">
+          <div class="flex flex-col items-center gap-3 text-center">
+            <h1 class="reveal text-headline text-balance">
+              Stop fixing the wrong fields
+            </h1>
+            <p
+              class="reveal max-w-xl text-body text-pretty text-muted delay-100"
             >
-              <div class="flex items-center justify-between gap-3">
-                <h2 class="text-h2 text-ink">Decision Audit</h2>
-                <span
-                  class="rounded-full bg-primary px-2.5 py-0.5 text-xs font-semibold text-on-primary"
-                  >Start here</span
+              One category export. The ranked Decision Audit back within 48
+              hours.
+            </p>
+          </div>
+          <ul
+            class="reveal mt-12 grid grid-cols-1 gap-5 delay-100 lg:grid-cols-3"
+            aria-label="Plans"
+          >
+            <li
+              class="relative isolate grid min-w-0 overflow-hidden rounded-3xl border border-line bg-card shadow-sm lg:row-span-4 lg:grid-rows-subgrid lg:gap-y-0"
+            >
+              <div
+                class="pricing-glow pointer-events-none absolute inset-x-0 top-0 -z-10 h-24"
+                aria-hidden="true"
+              ></div>
+              <div class="px-6 pt-6 lg:px-7">
+                <p class="text-sm text-muted">Start here</p>
+                <h2
+                  class="mt-1 text-h2 text-balance wrap-break-word hyphens-auto text-ink"
+                >
+                  Decision Audit
+                </h2>
+                <p class="mt-2 max-w-xs text-data text-pretty text-muted">
+                  The ranked list of what to record first, in your own products.
+                </p>
+              </div>
+              <div class="px-6 pt-5 lg:px-7">
+                <div class="flex flex-col gap-1">
+                  <p class="font-display text-h3 font-semibold text-ink">
+                    Free
+                  </p>
+                  <p class="text-sm leading-snug text-muted">
+                    One category, one export, no account
+                  </p>
+                </div>
+              </div>
+              <div class="px-6 pt-6 pb-6 lg:px-7">
+                <a href="contact.html" class="btn-primary w-full justify-center"
+                  >Request an audit</a
                 >
               </div>
-              <p class="mt-2 text-data text-muted">
-                The ranked list of what to record first, in your own products.
-              </p>
-              <p class="mt-6 border-t border-line pt-6">
-                <span
-                  class="block text-3xl font-semibold tracking-tight text-ink"
-                  >Fixed fee</span
-                ><span class="text-sm text-muted">per catalogue, one off</span>
-              </p>
-              <ul class="mt-6 space-y-3 text-data text-ink">
-                <li class="flex gap-3">
+              <ul
+                class="space-y-2.5 border-t border-line px-6 pt-5 pb-6 text-data text-ink lg:px-7"
+              >
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span>Attributes ranked by decision-information gap</span>
+                  ><span>Attributes ranked by decision gap</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span
-                    >The specific products missing each one, as a working
-                    list</span
-                  >
+                  ><span>The products missing each one</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span
-                    >Where each missing fact lives: extractable, mappable, or
-                    genuinely absent</span
-                  >
+                  ><span>Where each missing fact lives</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span
-                    >What we already recovered from your existing titles and
-                    descriptions</span
-                  >
+                  ><span>What we recovered from your titles</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
                   ><span>Your decision-readiness number</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span
-                    >A 30 minute walkthrough with whoever owns
-                    merchandising</span
-                  >
+                  ><span>A 30-minute merchandising walkthrough</span>
                 </li>
               </ul>
-              <div class="mt-8">
-                <a
-                  href="mailto:getintouch@thepulseapi.com"
-                  class="btn-primary w-full justify-center"
-                  >Request a Decision Audit</a
-                >
-              </div>
             </li>
             <li
-              class="reveal row-span-5 grid grid-rows-subgrid gap-y-0 rounded-3xl border bg-card p-7 border-line shadow-sm delay-100"
+              class="relative isolate grid min-w-0 overflow-hidden rounded-3xl border border-line bg-card shadow-sm lg:row-span-4 lg:grid-rows-subgrid lg:gap-y-0"
             >
-              <div class="flex items-center justify-between gap-3">
-                <h2 class="text-h2 text-ink">Verification and Monitor</h2>
-              </div>
-              <p class="mt-2 text-data text-muted">
-                Confirm the repair landed, then get told when a shelf slips
-                again.
-              </p>
-              <p class="mt-6 border-t border-line pt-6">
-                <span
-                  class="block text-3xl font-semibold tracking-tight text-ink"
-                  >Per recompute</span
-                ><span class="text-sm text-muted"
-                  >or recurring for Monitor</span
+              <div
+                class="pricing-glow pointer-events-none absolute inset-x-0 top-0 -z-10 h-24"
+                aria-hidden="true"
+              ></div>
+              <div class="px-6 pt-6 lg:px-7">
+                <p class="text-sm text-muted">Then</p>
+                <h2
+                  class="mt-1 text-h2 text-balance wrap-break-word hyphens-auto text-ink"
                 >
-              </p>
-              <ul class="mt-6 space-y-3 text-data text-ink">
-                <li class="flex gap-3">
+                  Repair plan and verification
+                </h2>
+                <p class="mt-2 max-w-xs text-data text-pretty text-muted">
+                  Which fix is worth your team&#x27;s week, and whether it
+                  worked.
+                </p>
+              </div>
+              <div class="px-6 pt-5 lg:px-7">
+                <div class="flex flex-col gap-1">
+                  <p class="font-display text-h3 font-semibold text-ink">
+                    Per cycle
+                  </p>
+                  <p class="text-sm leading-snug text-muted">
+                    By catalogue size, or recurring with Monitor
+                  </p>
+                </div>
+              </div>
+              <div class="px-6 pt-6 pb-6 lg:px-7">
+                <a href="contact.html" class="btn-primary w-full justify-center"
+                  >Talk to us<span class="sr-only">
+                    about the repair plan and verification</span
+                  ></a
+                >
+              </div>
+              <ul
+                class="space-y-2.5 px-6 pt-5 pb-6 text-data text-ink border-t border-line lg:px-7"
+              >
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span>Recompute on the repaired catalogue</span>
+                  ><span>A ranked plan with evidence and effort</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span
-                    >Coverage, gap closed and readiness, before and after</span
-                  >
+                  ><span>Before and after: coverage, gap, readiness</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span
-                    >No traffic and no waiting: it is a property of your
-                    catalogue</span
-                  >
+                  ><span>Regressions reported first</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-check" /></svg
+                  ><span>Figures use only products in both exports</span>
+                </li>
+                <li class="flex gap-2.5">
+                  <svg
+                    class="mt-0.5 size-4 shrink-0 text-ink"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-check" /></svg
+                  ><span>We say when a repair is not worth it</span>
+                </li>
+                <li class="flex gap-2.5">
+                  <svg
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
                   ><span>Monitor re-runs as the catalogue changes</span>
                 </li>
-                <li class="flex gap-3">
-                  <svg
-                    class="mt-1 size-4 shrink-0 text-success"
-                    aria-hidden="true"
-                  >
-                    <use href="#i-check" /></svg
-                  ><span
-                    >An alert naming the shelf, the attribute and the
-                    cause</span
-                  >
-                </li>
               </ul>
-              <div class="mt-8">
+            </li>
+            <li
+              class="relative isolate grid min-w-0 overflow-hidden rounded-3xl border border-line bg-card shadow-sm lg:row-span-4 lg:grid-rows-subgrid lg:gap-y-0"
+            >
+              <div class="px-6 pt-6 lg:px-7">
+                <p class="text-sm text-muted">After a pilot</p>
+                <h2
+                  class="mt-1 text-h2 text-balance wrap-break-word hyphens-auto text-ink"
+                >
+                  Decision API
+                </h2>
+                <p class="mt-2 max-w-xs text-data text-pretty text-muted">
+                  The live engine, once you have a reason to want it.
+                </p>
+              </div>
+              <div class="px-6 pt-5 lg:px-7">
+                <div class="flex flex-col gap-1">
+                  <p class="font-display text-h3 font-semibold text-ink">
+                    Per decision
+                  </p>
+                  <p class="text-sm leading-snug text-muted">
+                    Served after a pilot, never before
+                  </p>
+                </div>
+              </div>
+              <div class="px-6 pt-6 pb-6 lg:px-7">
                 <a
                   href="contact.html"
                   class="btn-secondary w-full justify-center"
-                  >Talk to us</a
+                  >Talk to us<span class="sr-only">
+                    about the Decision API</span
+                  ></a
                 >
               </div>
-            </li>
-            <li
-              class="reveal row-span-5 grid grid-rows-subgrid gap-y-0 rounded-3xl border bg-card p-7 border-line shadow-sm delay-200"
-            >
-              <div class="flex items-center justify-between gap-3">
-                <h2 class="text-h2 text-ink">Decision API</h2>
-                <span
-                  class="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase"
-                  >Optional</span
-                >
-              </div>
-              <p class="mt-2 text-data text-muted">
-                The live engine, once you have a reason to want it.
-              </p>
-              <p class="mt-6 border-t border-line pt-6">
-                <span
-                  class="block text-3xl font-semibold tracking-tight text-ink"
-                  >Per decision served</span
-                ><span class="text-sm text-muted"
-                  >after a pilot, never before</span
-                >
-              </p>
-              <ul class="mt-6 space-y-3 text-data text-ink">
-                <li class="flex gap-3">
+              <ul
+                class="space-y-2.5 px-6 pt-5 pb-6 text-data text-ink border-t border-line lg:px-7"
+              >
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span>Ranking against what the session implies</span>
+                  ><span>Ranking by what the session implies</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
                   ><span>A held-back control group, always</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span>Per-factor breakdown on every ranked product</span>
+                  ><span>A per-factor breakdown per product</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span
-                    >Fallback to your own order if anything is slow or
-                    down</span
-                  >
+                  ><span>Falls back to your order if slow or down</span>
                 </li>
-                <li class="flex gap-3">
+                <li class="flex gap-2.5">
                   <svg
-                    class="mt-1 size-4 shrink-0 text-success"
+                    class="mt-0.5 size-4 shrink-0 text-ink"
                     aria-hidden="true"
                   >
                     <use href="#i-check" /></svg
-                  ><span
-                    >Priced on decisions served, agreed after the pilot</span
-                  >
+                  ><span>Priced on decisions, agreed after the pilot</span>
                 </li>
               </ul>
-              <div class="mt-8">
-                <a
-                  href="contact.html"
-                  class="btn-secondary w-full justify-center"
-                  >Talk to us</a
-                >
-              </div>
             </li>
           </ul>
-        </div>
-      </section>
-      <section class="border-b border-line">
-        <div class="frame py-20 lg:py-24">
-          <div
-            class="reveal bg-soft-gradient rounded-3xl border border-line px-8 py-14 lg:px-16 lg:py-20"
-          >
-            <h2 class="max-w-2xl text-title text-balance">
-              Start with one category
-            </h2>
-            <p class="mt-5 max-w-xl text-lg text-pretty text-muted">
-              The audit is the only step you have to buy, and it is useful
-              whether or not you ever take the next one.
-            </p>
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="mailto:getintouch@thepulseapi.com" class="btn-primary"
-                >Request a Decision Audit</a
-              >
-            </div>
-          </div>
         </div>
       </section>
     </main>
@@ -1487,15 +1467,11 @@
                   >Contact</a
                 >
               </li>
-              <li class="flex items-center gap-2">
+              <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="careers/index.html"
                   class="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                   >Career</a
-                ><span
-                  class="inline-flex shrink-0 items-center rounded bg-primary px-1.5 py-0.5 text-caption font-semibold whitespace-nowrap text-on-primary"
-                  >We are hiring</span
                 >
               </li>
             </ul>
@@ -1504,19 +1480,19 @@
             <h2 class="text-nav font-semibold">Contact point</h2>
             <div class="mt-6 flex gap-3">
               <a
-                href="https://www.linkedin.com/company/thepulseapi"
+                href="https://www.linkedin.com/company/108237732/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
+                aria-label="Pulse on LinkedIn (opens in a new tab)"
                 class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
                 ><svg class="size-5" aria-hidden="true">
                   <use href="#i-linkedin" /></svg
               ></a>
               <a
-                href="https://www.facebook.com/thepulseapi"
+                href="https://www.facebook.com/people/The-Pulse-API/61591908084667/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Facebook"
+                aria-label="Pulse on Facebook (opens in a new tab)"
                 class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
                 ><svg class="size-5" aria-hidden="true">
                   <use href="#i-facebook" /></svg
@@ -1525,7 +1501,7 @@
                 href="https://github.com/thepulseapi"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="GitHub"
+                aria-label="Pulse on GitHub (opens in a new tab)"
                 class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
                 ><svg class="size-5" aria-hidden="true">
                   <use href="#i-github" /></svg
@@ -1535,7 +1511,7 @@
               <li>
                 <a
                   href="mailto:getintouch@thepulseapi.com"
-                  class="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                  class="-my-2.5 inline-flex min-h-11 items-center wrap-anywhere transition-colors duration-200 ease-out-soft hover:text-ink"
                   >getintouch@thepulseapi.com</a
                 >
               </li>

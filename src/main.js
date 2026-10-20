@@ -5,7 +5,7 @@
 //   [data-type="text"]     → types the text, then sets [data-typed] on the closest [data-type-root]
 //   [data-shelf]           → draws a grid of product squares (data-total, data-ready)
 //   [data-demo]            → plays the hero workflow demo (tabs, steps, captions — see DESIGN.md §6)
-//   [data-spy] links       → highlight the section currently in view (sets [data-active])
+//   [data-spy] links       → highlight the section currently in view (sets [data-active], aria-current)
 //   [data-hero]            → hero background light (and its tail) follows the cursor (--hero-x / --hero-y …)
 //   [data-cta]             → call-to-action band: dots light up around the cursor (--cta-x / --cta-y)
 //   [data-why]             → Why PULSE orbit: turning ring; a circle turns to the top and opens its reason
@@ -104,26 +104,49 @@ document
   )
   .forEach((el) => revealObserver.observe(el));
 
-// Scroll-spy for the sticky step navigation
+// Scroll-spy for the sticky step navigation. Sets [data-active] and aria-current="location" on the link for the
+// last section whose heading has passed 40% of the viewport (so fast scrolling or a jump never skips one), clears it
+// above the first section, and marks the last section once the page is scrolled to the bottom.
 const spyLinks = [...document.querySelectorAll("[data-spy]")];
-const spyObserver = new IntersectionObserver(
-  (entries) => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      spyLinks.forEach((link) =>
-        link.toggleAttribute(
-          "data-active",
-          link.dataset.spy === entry.target.id,
-        ),
-      );
+function setSpy(id) {
+  spyLinks.forEach((link) => {
+    const on = link.dataset.spy === id;
+    link.toggleAttribute("data-active", on);
+    if (on) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+}
+const spySections = spyLinks
+  .map((link) => document.getElementById(link.dataset.spy))
+  .filter(Boolean);
+if (spySections.length) {
+  let queued = false;
+  const update = () => {
+    queued = false;
+    const el = document.documentElement;
+    if (scrollY + innerHeight >= el.scrollHeight - 2) {
+      setSpy(spySections[spySections.length - 1].id);
+      return;
     }
-  },
-  { rootMargin: "-45% 0px -50% 0px" },
-);
-spyLinks.forEach((link) => {
-  const section = document.getElementById(link.dataset.spy);
-  if (section) spyObserver.observe(section);
-});
+    const line = innerHeight * 0.4;
+    let current = null;
+    for (const section of spySections)
+      if (section.getBoundingClientRect().top <= line) current = section.id;
+    setSpy(current);
+  };
+  addEventListener(
+    "scroll",
+    () => {
+      if (!queued) {
+        queued = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true },
+  );
+  addEventListener("resize", update, { passive: true });
+  update();
+}
 
 // Header dropdowns are native <details> (they work without JS). Enhancements:
 // - Mega menus ([data-mega]) share one Attio-style viewport that resizes between menus while the

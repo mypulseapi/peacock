@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @source "../*.html";
 @source "../product/*.html"; /* one line per page folder */
+@source "../careers/*.html";
+@source "../industries/*.html";
 @source "./*.js";
 
 /* Geist and Geist Mono (Vercel, SIL OFL — src/assets/fonts/geist/OFL.txt), self-hosted: variable wght 100–900, one
@@ -558,6 +560,10 @@
 /* Navigation */
 @utility nav-link {
   @apply hit-area inline-flex items-center gap-1 rounded-control px-2 py-2 font-display text-nav font-medium whitespace-nowrap text-ink transition-colors duration-150 ease-out-soft hover:bg-surface-1 focus-visible:outline-2 focus-visible:outline-focus xl:px-3;
+  /* The page you are on (aria-current="page", set per page by scripts/sync-shell.py): the hover pill, kept */
+  &[aria-current="page"] {
+    @apply bg-surface-1;
+  }
 }
 @utility nav-icon-tile {
   @apply flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary-tint text-primary;
@@ -653,6 +659,21 @@
   }
 }
 
+/* Pricing: the soft glow behind the free plan's header (after the owner's reference, 19 Oct 2026). The Signal gradient,
+   blurred and faded, the page's one use of it; masked out downwards so the list sits on plain card. */
+@utility pricing-glow {
+  background-image: var(--gradient-signal);
+  @supports not (background: linear-gradient(in oklch, red, blue)) {
+    background-image: var(--gradient-signal-fallback);
+  }
+  opacity: 0.16;
+  filter: blur(40px);
+  mask-image: linear-gradient(to bottom, black, transparent);
+  @variant theme-dark {
+    opacity: 0.12;
+  }
+}
+
 /* Calm gradient (§4): Sky → Pulse Blue, for product UI where red would read as an error (the How it works progress
    line). Same text rule as the Signal gradient. */
 @utility bg-calm-gradient {
@@ -724,16 +745,16 @@
   transition-property: opacity, translate;
   transition-duration: 700ms;
   transition-timing-function: var(--ease-out-soft);
-  /* Hidden only when JS can reveal it again — content stays visible with JS off */
-  @media (scripting: enabled) {
+  /* Hidden only when JS can reveal it again and motion is welcome — content stays visible with JS off, and with
+     reduced motion it is simply there (the hiding rule is more specific than any plain override, so it must not
+     apply at all rather than be overridden) */
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
     &:not([data-shown]) {
       opacity: 0;
       translate: 0 1rem;
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    opacity: 1;
-    translate: none;
     transition: none;
   }
 }
@@ -928,13 +949,12 @@
   transition-property: scale;
   transition-duration: 1100ms;
   transition-timing-function: var(--ease-emphasized);
-  @media (scripting: enabled) {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
     &:not([data-shown]) {
       scale: 0 1;
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    scale: 1 1;
     transition: none;
   }
 }
@@ -959,6 +979,17 @@
 /* Background-video hero media (the video and its poster): always the full height of the hero and pinned to the right,
    so the top and the bottom of the video are never cut; wide screens show page colour on the left, where the video
    fades in (behind the title), narrow screens trim the blurred left side. */
+/* About team card: the top half of a second copy of the portrait, laid over the round frame. At rest it lines up
+   with the circle-clipped photo exactly; when both zoom on hover the head rises over the ring (3D "step out"). */
+@utility team-pop {
+  clip-path: inset(-50% -50% 50% -50%);
+}
+/* …and the circle-clipped copy shows only the bottom half, so the two halves meet at the middle and no soft hair edge
+   is drawn twice */
+@utility team-base {
+  clip-path: inset(calc(50% - 1px) 0 0 0);
+}
+
 @utility hero-video-media {
   position: absolute;
   inset-block: 0;
@@ -1161,6 +1192,82 @@
 
 /* `js:` variant — styles that only apply when JavaScript runs (e.g. hide a result until it's typed) */
 @custom-variant js (@media (scripting: enabled));
+
+/* Decision Monitor hero (product/decision-monitor.html): one story that plays once when the app window scrolls in
+   (its reveal wrapper gets [data-shown]), and ends on the catch. The blue line draws to week 2 (mon-line) and the
+   week-2 marker pops (mon-pop-early); the grey dashed "if nobody looks" line runs on to the quarter's end
+   (mon-line-rest) with its muted end marker and label (mon-pop-late / mon-in-late); last, the alert, the "Alert,
+   week 2" tag and "Monitor tells you in week 2" land (mon-in-final). Written in the final state: without JS or
+   with reduced motion the finished frame shows. */
+@utility mon-line {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    clip-path: inset(-8px 100% -8px -8px);
+    [data-shown] & {
+      animation: mon-draw 0.6s linear 0.9s forwards;
+    }
+  }
+}
+@utility mon-line-rest {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    clip-path: inset(-8px 83.4% -8px -8px);
+    [data-shown] & {
+      animation: mon-draw 1.6s linear 1.6s forwards;
+    }
+  }
+}
+@utility mon-pop-early {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    scale: 0.4;
+    [data-shown] & {
+      animation: mon-pop 400ms var(--ease-out-soft) 1.45s forwards;
+    }
+  }
+}
+@utility mon-pop-late {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    scale: 0.4;
+    [data-shown] & {
+      animation: mon-pop 400ms var(--ease-out-soft) 3.15s forwards;
+    }
+  }
+}
+@utility mon-in-late {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    translate: 0 0.25rem;
+    [data-shown] & {
+      animation: mon-in 500ms var(--ease-out-soft) 3.2s forwards;
+    }
+  }
+}
+@utility mon-in-final {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    translate: 0 0.25rem;
+    [data-shown] & {
+      animation: mon-in 500ms var(--ease-out-soft) 3.7s forwards;
+    }
+  }
+}
+@keyframes mon-draw {
+  to {
+    clip-path: inset(-8px -8px -8px -8px);
+  }
+}
+@keyframes mon-in {
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes mon-pop {
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
 
 /* ------------------------------------------------------------------ */
 /* Header mega-menu (Attio-style shared viewport).                     */

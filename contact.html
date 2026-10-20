@@ -31,6 +31,20 @@
     <!-- Icon sprite (Lucide-style, stroke icons). Use: <svg><use href="#i-name" /></svg> -->
     <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
       <symbol
+        id="i-link"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+        <path
+          d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+        />
+      </symbol>
+      <symbol
         id="i-chevron-down"
         viewBox="0 0 24 24"
         fill="none"
@@ -210,6 +224,18 @@
         />
         <path d="M12 8v4" />
         <path d="M12 16h.01" />
+      </symbol>
+      <symbol
+        id="i-user-round"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="8" r="5" />
+        <path d="M20 21a8 8 0 0 0-16 0" />
       </symbol>
       <symbol
         id="i-key"
@@ -646,8 +672,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/ecommerce.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -662,8 +687,7 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/fmcg.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -685,8 +709,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/furniture.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -701,8 +724,7 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/cosmetics.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -724,8 +746,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/technology.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -740,8 +761,7 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="industries/distribution.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -786,8 +806,7 @@
                       <ul class="space-y-1">
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="https://developer.thepulseapi.com/"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
@@ -797,22 +816,6 @@
                             <span
                               class="mt-1 block text-sm text-pretty text-muted"
                               >Integrate in ten lines, or not at all</span
-                            >
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            role="link"
-                            aria-disabled="true"
-                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span
-                              class="flex items-center gap-2 text-sm font-semibold text-ink"
-                              >Notes</span
-                            >
-                            <span
-                              class="mt-1 block text-sm text-pretty text-muted"
-                              >What we measured, and got wrong</span
                             >
                           </a>
                         </li>
@@ -842,6 +845,7 @@
                           <a
                             href="contact.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            aria-current="page"
                           >
                             <span
                               class="flex items-center gap-2 text-sm font-semibold text-ink"
@@ -855,21 +859,16 @@
                         </li>
                         <li>
                           <a
-                            role="link"
-                            aria-disabled="true"
+                            href="careers/index.html"
                             class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span
                               class="flex items-center gap-2 text-sm font-semibold text-ink"
-                              >Career
-                              <span
-                                class="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase"
-                                >Hiring</span
-                              ></span
+                              >Career</span
                             >
                             <span
                               class="mt-1 block text-sm text-pretty text-muted"
-                              >We are hiring</span
+                              >How we work, and how to reach us</span
                             >
                           </a>
                         </li>
@@ -881,9 +880,6 @@
             </li>
 
             <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-            <li>
-              <a role="link" aria-disabled="true" class="nav-link">Blog</a>
-            </li>
           </ul>
           <div class="nav-viewport" data-nav-viewport>
             <div class="nav-viewport-stack" data-nav-stack></div>
@@ -933,10 +929,11 @@
               </div>
             </details>
           </div>
-          <a role="link" aria-disabled="true" class="nav-link">Sign In</a>
+          <a href="signin.html" class="nav-link">Sign In</a>
           <a
             href="./contact.html"
             class="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap"
+            aria-current="page"
           >
             Request an audit
             <svg
@@ -1008,8 +1005,7 @@
             <ul class="mt-2">
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/ecommerce.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1019,8 +1015,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/fmcg.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1030,8 +1025,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/technology.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1041,8 +1035,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/furniture.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1052,8 +1045,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/cosmetics.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1063,8 +1055,7 @@
               </li>
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="industries/distribution.html"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
@@ -1078,24 +1069,12 @@
             <ul class="mt-2">
               <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="https://developer.thepulseapi.com/"
                   class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                   ><span class="nav-icon-tile size-9"
                     ><svg class="size-4" aria-hidden="true">
                       <use href="#i-file-text" /></svg></span
                   >Documentation</a
-                >
-              </li>
-              <li>
-                <a
-                  role="link"
-                  aria-disabled="true"
-                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                  ><span class="nav-icon-tile size-9"
-                    ><svg class="size-4" aria-hidden="true">
-                      <use href="#i-pen" /></svg></span
-                  >Notes</a
                 >
               </li>
             </ul>
@@ -1106,21 +1085,16 @@
                 class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
                 >Pricing</a
               >
+
               <a
-                role="link"
-                aria-disabled="true"
-                class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
-                >Blog</a
-              >
-              <a
-                role="link"
-                aria-disabled="true"
+                href="signin.html"
                 class="block rounded-control px-4 py-3 text-lg font-medium text-ink"
                 >Sign In</a
               >
               <a
                 href="./contact.html"
                 class="btn-primary mt-4 w-full rounded-control text-nav"
+                aria-current="page"
                 >Request a Decision Audit
                 <svg class="size-3.5" aria-hidden="true">
                   <use href="#i-arrow-right" /></svg
@@ -1354,8 +1328,7 @@
         <div class="frame py-20 lg:py-24">
           <div class="grid gap-10 lg:grid-cols-12">
             <div class="lg:col-span-4">
-              <p class="reveal eyebrow">Questions</p>
-              <h2 class="reveal mt-3 text-title">Frequently Asked Questions</h2>
+              <h2 class="reveal text-title">Frequently Asked Questions</h2>
             </div>
             <div class="reveal border-t border-line lg:col-span-8">
               <details class="group border-b border-line">
@@ -1534,15 +1507,11 @@
                   >Contact</a
                 >
               </li>
-              <li class="flex items-center gap-2">
+              <li>
                 <a
-                  role="link"
-                  aria-disabled="true"
+                  href="careers/index.html"
                   class="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                   >Career</a
-                ><span
-                  class="inline-flex shrink-0 items-center rounded bg-primary px-1.5 py-0.5 text-caption font-semibold whitespace-nowrap text-on-primary"
-                  >We are hiring</span
                 >
               </li>
             </ul>
@@ -1551,19 +1520,19 @@
             <h2 class="text-nav font-semibold">Contact point</h2>
             <div class="mt-6 flex gap-3">
               <a
-                href="https://www.linkedin.com/company/thepulseapi"
+                href="https://www.linkedin.com/company/108237732/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
+                aria-label="Pulse on LinkedIn (opens in a new tab)"
                 class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
                 ><svg class="size-5" aria-hidden="true">
                   <use href="#i-linkedin" /></svg
               ></a>
               <a
-                href="https://www.facebook.com/thepulseapi"
+                href="https://www.facebook.com/people/The-Pulse-API/61591908084667/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Facebook"
+                aria-label="Pulse on Facebook (opens in a new tab)"
                 class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
                 ><svg class="size-5" aria-hidden="true">
                   <use href="#i-facebook" /></svg
@@ -1572,7 +1541,7 @@
                 href="https://github.com/thepulseapi"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="GitHub"
+                aria-label="Pulse on GitHub (opens in a new tab)"
                 class="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
                 ><svg class="size-5" aria-hidden="true">
                   <use href="#i-github" /></svg
@@ -1582,7 +1551,7 @@
               <li>
                 <a
                   href="mailto:getintouch@thepulseapi.com"
-                  class="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                  class="-my-2.5 inline-flex min-h-11 items-center wrap-anywhere transition-colors duration-200 ease-out-soft hover:text-ink"
                   >getintouch@thepulseapi.com</a
                 >
               </li>

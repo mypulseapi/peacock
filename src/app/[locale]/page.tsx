@@ -91,11 +91,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <PageSchema locale={locale} nodes={[jsonLd]} />
-      {/* Clears the fixed navbar. The prototype uses `sticky`, but 15 pages in
-          this repo already pad for a fixed bar, a spacer is the one-line
-          equivalent with no blast radius. */}
-      <div className="h-[68px]" aria-hidden />
-      {locale === "en" ? <DesignedHome /> : <VietnameseHome locale={locale} />}
+      {/* Clears the fixed legacy navbar, and only that one. The designer's header is sticky and
+          takes its own space, so on the designed pages this spacer was 68px of empty gradient
+          between the header and the hero -- the one element on the home page that did not match
+          the reference build. */}
+      {locale === "en" ? (
+        <DesignedHome />
+      ) : (
+        <>
+          <div className="h-[68px]" aria-hidden />
+          <VietnameseHome locale={locale} />
+        </>
+      )}
     </>
   );
 }

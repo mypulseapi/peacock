@@ -31,7 +31,7 @@ export function Section3Section() {
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
                         The product packaging shows whether it&rsquo;s
-                        fragrance-free, but this information
+                        fragrance-free, but this information{" "}
                         <strong
                           className="font-semibold whitespace-nowrap text-gap-strong"
                           >isn&rsquo;t recorded</strong
@@ -45,8 +45,8 @@ export function Section3Section() {
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
                         Without this attribute, shoppers can&rsquo;t filter for
-                        fragrance-free options and must browse all
-                        <strong className="font-semibold tabular-nums">40</strong>
+                        fragrance-free options and must browse all{" "}
+                        <strong className="font-semibold tabular-nums">40</strong>{" "}
                         products to find a suitable one.
                       </dd>
                     </div>
@@ -68,11 +68,11 @@ export function Section3Section() {
                         Never recorded
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
-                        Screen size appears in
+                        Screen size appears in{" "}
                         <strong className="font-semibold tabular-nums"
                           >136 of 216</strong
                         >
-                        product titles, but
+                        product titles, but{" "}
                         <strong
                           className="font-semibold whitespace-nowrap text-gap-strong"
                           >isn&rsquo;t recorded</strong
@@ -86,7 +86,7 @@ export function Section3Section() {
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
                         Without clear product attributes, shoppers struggle to see
-                        the differences between
+                        the differences between{" "}
                         <strong className="font-semibold tabular-nums"
                           >94 of the 216</strong
                         >

@@ -24,7 +24,7 @@ export function ContactSection() {
                   >Get in touch</a
                 >
                 <p className="mt-4 text-sm text-muted">
-                  or write to
+                  or write to{" "}
                   <a
                     href="mailto:careers@thepulseapi.com"
                     className="font-medium text-link underline-offset-2 hover:underline"

@@ -36,10 +36,10 @@ export function Section7Section() {
                   either of those out early, and we will publish it here when we do.
                 </p>
                 <p className="mt-6 text-body leading-relaxed text-pretty text-ink">
-                  Measured in October 2026. Nothing on this page is for sale.
+                  Measured in October 2026. Nothing on this page is for sale.{" "}
                   <Link                 href="/en/about"
                     className="hit-area font-medium text-link underline underline-offset-4 hover:text-primary-hover"
-                    >What we can and cannot claim</Link>
+                    >What we can and cannot claim</Link>{" "}
                   is the rest of it.
                 </p>
               </div>

@@ -1257,7 +1257,7 @@ export function HeroSection() {
                                   >
                                   is missing from 162 products, so a traditional
                                   audit ranks it first. But only 2 of 32 shopper
-                                  requirements mention it, so Pulse ranks it last.
+                                  requirements mention it, so Pulse ranks it last.{" "}
                                   <strong className="font-bold text-ink"
                                     >Fixing it first could waste time and resources
                                     with little impact on shoppers.</strong
@@ -1301,7 +1301,7 @@ export function HeroSection() {
                                     <use href="#i-sparkles" />
                                   </svg>
                                   <span
-                                    >Currently, Pulse identifies
+                                    >Currently, Pulse identifies{" "}
                                     <strong className="font-bold text-primary"
                                       >Screen size</strong
                                     >
@@ -1331,7 +1331,7 @@ export function HeroSection() {
                                   <p
                                     className="max-w-56 text-data leading-relaxed text-pretty text-muted"
                                   >
-                                    The other
+                                    The other{" "}
                                     <strong className="tabular-nums font-bold text-ink"
                                       >55</strong
                                     >
@@ -1489,7 +1489,7 @@ export function HeroSection() {
                                   <p
                                     className="max-w-md font-display text-lg font-semibold text-pretty text-ink"
                                   >
-                                    Adding one attribute helped shoppers distinguish
+                                    Adding one attribute helped shoppers distinguish{" "}
                                     <span className="whitespace-nowrap text-primary"
                                       >63 more products</span
                                     >.

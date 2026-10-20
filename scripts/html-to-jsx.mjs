@@ -440,7 +440,29 @@ function toJsx(html, locale = LOCALE) {
   out = closeVoids(out);
   const linked = anchorsToLinks(out);
   usesLink ||= linked.converted > 0;
-  return linked.html;
+  return preserveInlineSpace(linked.html);
+}
+
+/**
+ * Put back the space JSX throws away either side of an inline tag.
+ *
+ * HTML collapses a newline to one space, so `for sale.\n<a ...>What we can...` renders with a gap
+ * before the link. JSX does not: whitespace that touches a tag boundary and contains a newline is
+ * removed outright, so the same markup rendered `for sale.What we can...`. The browser then has
+ * one unbreakable token to place, which pushed a 224px link onto its own line at 605px wide and
+ * moved everything after it.
+ *
+ * The source is Prettier-formatted HTML, and Prettier is whitespace-aware in exactly this spot:
+ * where it must not introduce a space it writes `</a\n>` instead of breaking before the tag. So a
+ * newline between text and an inline tag in the source really does mean a space belongs there.
+ */
+function preserveInlineSpace(jsx) {
+  const INLINE = "(?:Link|a|em|strong|code|span|b|i|abbr|sup|sub)";
+  return jsx
+    // text, newline, opening inline tag
+    .replace(new RegExp(`([^\\s>}])(\\n\\s*)(<${INLINE}[\\s/>])`, "g"), '$1{" "}$2$3')
+    // closing inline tag, newline, text
+    .replace(new RegExp(`(</${INLINE}>)(\\n\\s*)([^\\s<{])`, "g"), '$1{" "}$2$3');
 }
 
 /* ------------------------------------------------------------------ */

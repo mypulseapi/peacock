@@ -15,7 +15,7 @@ export function AuditSection() {
               <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
                 <div className="lg:col-span-6">
                   <h2 className="reveal text-title text-balance">
-                    Decision Audit.
+                    Decision Audit.{" "}
                     <span className="text-muted">What should we record first?</span>
                   </h2>
                   <p className="reveal mt-5 text-body leading-relaxed text-muted">

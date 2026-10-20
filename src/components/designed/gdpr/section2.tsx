@@ -140,7 +140,7 @@ export function Section2Section() {
                         className="grid size-6 shrink-0 place-items-center rounded-full bg-primary-tint text-xs font-semibold text-primary"
                         >3</span
                       ><span
-                        ><strong className="font-semibold text-ink">Consent:</strong>
+                        ><strong className="font-semibold text-ink">Consent:</strong>{" "}
                         When explicitly provided for specific processing
                         activities.</span
                       >

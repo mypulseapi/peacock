@@ -140,7 +140,7 @@ export function Section1Section() {
                     <label
                       htmlFor="f-type"
                       className="mb-1.5 block text-sm font-medium text-ink"
-                      >What can we help you with?
+                      >What can we help you with?{" "}
                       <span className="text-critical">*</span></label
                     ><select id="f-type" name="inquiryType" required className="field">
                       <option>Sales enquiry</option>
@@ -192,7 +192,7 @@ export function Section1Section() {
                     Send Message
                   </button>
                   <p id="form-note" className="mt-4 text-sm text-pretty text-muted">
-                    The form is not connected yet. For now, email
+                    The form is not connected yet. For now, email{" "}
                     <a
                       href="mailto:getintouch@thepulseapi.com"
                       className="font-semibold text-primary underline decoration-primary-line underline-offset-4"

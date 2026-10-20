@@ -41,7 +41,7 @@ export function Section3Section() {
                   <h3 className="text-h3 text-ink">Say what we cannot measure</h3>
                   <p className="mt-2 text-body leading-relaxed text-pretty text-muted">
                     Our ranking is steady at the top and less steady below it, and
-                    we say so
+                    we say so{" "}
                     <a
                       href="#ranking"
                       className="text-link underline underline-offset-4 hover:text-primary-hover"

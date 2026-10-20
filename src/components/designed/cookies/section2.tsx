@@ -24,7 +24,7 @@ export function Section2Section() {
                   </p>
                   <p className="mt-4 text-body leading-relaxed text-muted">
                     We do not use cookies to track or store your data, as described
-                    in our
+                    in our{" "}
                     <Link                   href="/en/privacy"
                       className="font-semibold text-primary underline decoration-primary-line underline-offset-4"
                       >Privacy Policy</Link>.

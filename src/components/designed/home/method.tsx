@@ -151,7 +151,7 @@ export function MethodSection() {
                         >
                           <p className="eyebrow">Your store</p>
                           <p className="mt-1 font-semibold text-ink">
-                            Laptops
+                            Laptops{" "}
                             <span className="font-normal text-muted tabular-nums"
                               >· 216 products</span
                             >

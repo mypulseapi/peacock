@@ -88,7 +88,7 @@ export function Section2Section() {
                       consultants and systems integrators who run catalogue work for
                       their clients, and we are talking to the first partners now.
                       An audit takes the same single export whether it comes from
-                      you or from your client. Write to
+                      you or from your client. Write to{" "}
                       <a
                         href="mailto:partners@thepulseapi.com"
                         className="font-semibold text-primary underline decoration-primary-line underline-offset-4"

@@ -1333,14 +1333,47 @@ document.querySelectorAll("[data-chat]").forEach((chat) => {
  * their `[data-shown]`, and `observe` on an element already being       *
  * observed is a no-op, so calling it repeatedly is safe.                *
  * ==================================================================== */
+const UNSHOWN =
+  ".reveal:not([data-shown]), [data-count]:not([data-shown]), [data-type]:not([data-shown]), [data-shelf]:not([data-shown])";
+
 window.__pulseMotionRescan = function rescan() {
-  document
-    .querySelectorAll(".reveal:not([data-shown]), [data-count]:not([data-shown]), [data-type]:not([data-shown]), [data-shelf]:not([data-shown])")
-    .forEach((el) => revealObserver.observe(el));
+  document.querySelectorAll(UNSHOWN).forEach((el) => revealObserver.observe(el));
   document.querySelectorAll(".reveal-bar").forEach((bar) => {
     const track = bar.parentElement;
     if (!track || barsByTrack.has(track)) return;
     barsByTrack.set(track, [bar]);
     revealObserver.observe(track);
   });
+  // A navigation brings a fresh set of hidden elements, and `sweep` removes itself once a page
+  // has none left. Re-adding the same function reference is a no-op if it is still attached.
+  window.addEventListener("scroll", sweep, { passive: true });
 };
+
+/*
+ * Keep rescanning while anything is still hidden.
+ *
+ * One rescan per navigation is not enough. The observer above is created once, observes what is
+ * in the document at that moment, and `unobserve`s each element as it shows. React then renders,
+ * and the nodes it puts on screen are not always the nodes that were observed: on
+ * /en/product/decision-audit only 6 of 25 `.reveal` elements ever received `[data-shown]`, so
+ * nineteen of them arrived through the CSS failsafe instead of animating. The page looked
+ * complete and moved wrongly, which is harder to notice than a blank page.
+ *
+ * Scroll is the right trigger because it is exactly when a reveal is supposed to happen, and the
+ * listener removes itself once nothing is left to show, so a settled page costs nothing.
+ */
+let queued = false;
+function sweep() {
+  if (queued) return;
+  queued = true;
+  requestAnimationFrame(() => {
+    queued = false;
+    if (document.querySelector(UNSHOWN) === null) {
+      window.removeEventListener("scroll", sweep);
+      return;
+    }
+    window.__pulseMotionRescan();
+  });
+}
+window.addEventListener("scroll", sweep, { passive: true });
+window.__pulseMotionSweep = sweep;

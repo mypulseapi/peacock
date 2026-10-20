@@ -15,7 +15,7 @@ export function MonitorSection() {
               <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
                 <div className="lg:col-span-6">
                   <h2 className="reveal text-title text-balance">
-                    Decision Monitor.
+                    Decision Monitor.{" "}
                     <span className="text-muted">When did this shelf get worse?</span>
                   </h2>
                   <p className="reveal mt-5 text-body leading-relaxed text-muted">

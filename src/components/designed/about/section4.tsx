@@ -104,7 +104,7 @@ export function Section4Section() {
                           they will actually read. We measure the first one. On the
                           laptop shelf we use for our own research the first two do
                           not overlap at all, so a catalogue can score well here and
-                          still leave a buyer unable to see what they came for.
+                          still leave a buyer unable to see what they came for.{" "}
                           <Link                         href="/en/visual-evidence"
                             className="text-link underline underline-offset-4 hover:text-primary-hover"
                             >We published the measurement</Link>.
@@ -114,7 +114,7 @@ export function Section4Section() {
                   </div>
                 </div>
                 <p className="mt-10 border-t border-line pt-6 text-body text-ink">
-                  One export, nothing installed.
+                  One export, nothing installed.{" "}
                   <Link                 href="/en/contact"
                     className="hit-area font-medium text-link underline underline-offset-4 hover:text-primary-hover"
                     >Request a Decision Audit</Link>

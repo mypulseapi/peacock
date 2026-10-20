@@ -22,4 +22,3 @@
 export { DesignedSkipLink } from "./designed-skip-link";
 export { DesignedHeader } from "./designed-header";
 export { DesignedFooter } from "./designed-footer";
-export { DesignedChatLauncher } from "./designed-chat-launcher";

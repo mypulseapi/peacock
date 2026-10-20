@@ -26,3 +26,9 @@ allowBuilds:
   "@parcel/watcher": false # ships prebuilt binaries; the script is only a node-gyp fallback
   "@scarf/scarf": false # install-time analytics that phones home
   core-js: false # postinstall prints a donation notice
+  #
+  # transformers pulls onnxruntime-node for server-side inference. The assistant runs entirely in
+  # the browser on onnxruntime-web, so the native build is 113 MB of download that nothing loads,
+  # and protobufjs only regenerates descriptors we never read.
+  onnxruntime-node: false # native runtime for a server path this site does not take
+  protobufjs: false # regenerates descriptors nothing here reads

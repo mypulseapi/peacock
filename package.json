@@ -15,7 +15,8 @@
     "check:intent": "tsx scripts/check-intent-ranking.ts",
     "check:parser": "tsx scripts/check-requirement-parser.ts",
     "check:fallback": "tsx scripts/check-semantic-fallback.ts",
-    "check:placeholders": "node scripts/check-placeholders.mjs"
+    "check:placeholders": "node scripts/check-placeholders.mjs",
+    "build:search-index": "node scripts/build-search-index.mjs"
   },
   "dependencies": {
     "better-auth": "^1.7.5",
@@ -27,7 +28,8 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "tailwind-merge": "^3.4.0",
-    "zod": "^4.3.5"
+    "zod": "^4.3.5",
+    "@huggingface/transformers": "^4.3.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

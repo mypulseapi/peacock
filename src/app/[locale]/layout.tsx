@@ -10,12 +10,12 @@ import "../globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { AssistantPanel } from "@/components/assistant/assistant-panel";
 import { NavigationProgress } from "@/components/NavigationProgress";
 import { PulseAnalytics } from "@/components/PulseAnalytics";
 import { IntentPanel } from "@/components/IntentPanel";
 import { IconSprite } from "@/components/designed/icon-sprite";
 import {
-  DesignedChatLauncher,
   DesignedFooter,
   DesignedHeader,
   DesignedSkipLink,
@@ -214,7 +214,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             {/* B4: ordered by what this visit has not answered. Renders nothing when nothing is. */}
             <Suspense fallback={null}></Suspense>
             {designed ? <DesignedFooter /> : <Footer />}
-            {designed ? <DesignedChatLauncher /> : null}
+            {/* Ask Pulse, on every page and in both languages. This replaces the designer's
+                static chat shell from chat.html, which had the panel but nothing behind it. */}
+            <AssistantPanel lang={locale === "vi" ? "vi" : "en"} />
             {/* The motion the designer's markup declares through data attributes. Without it every
                 `.reveal` stays at opacity 0, which is 363 elements across the converted pages. */}
             {designed ? <DesignedMotion /> : null}

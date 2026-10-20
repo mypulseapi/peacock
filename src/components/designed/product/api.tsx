@@ -1,0 +1,114 @@
+/**
+ * Converted from `index.html` at afedfc1 by scripts/html-to-jsx.mjs.
+ *
+ * The markup is the designer's. Change it here only for things the converter cannot do; anything
+ * structural should go back to the source page so the two do not drift.
+ *
+ * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
+ */
+export function ApiSection() {
+  return (
+    <section
+            id="api"
+            className="scroll-mt-16 border-b border-line bg-surface-1/50"
+          >
+            <div className="frame py-20 lg:py-28">
+              <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+                <div className="lg:col-span-6">
+                  <h2 className="reveal text-title text-balance">
+                    Decision API.
+                    <span
+                      className="rounded bg-primary-tint px-1.5 py-0.5 align-middle text-label font-semibold text-primary uppercase"
+                      >Optional</span
+                    >
+                    <span className="text-muted"
+                      >What should we show this visitor?</span
+                    >
+                  </h2>
+                  <p className="reveal mt-5 text-body leading-relaxed text-muted">
+                    The runtime reads the live session, what someone browses,
+                    searches and filters, and ranks your catalogue against what it
+                    can infer. It asks a question only when the answer would change
+                    what it shows. It runs alongside your existing store and search,
+                    and it replaces neither.
+                  </p>
+                  <p
+                    className="reveal mt-6 border-t border-line pt-5 text-sm text-muted"
+                  >
+                    <strong className="font-semibold text-ink"
+                      >What it needs from you:</strong
+                    >
+                    One script tag, and a pilot before any money changes hands.
+                  </p>
+                  <a
+                    href="decision-api.html"
+                    className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
+                    >Read about Decision API<svg
+                      className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    >
+                      <use href="#i-arrow-right" /></svg
+                  ></a>
+                </div>
+                <div className="reveal delay-200 lg:col-span-6">
+                  <ul
+                    className="space-y-3 rounded-2xl border border-line bg-card p-6 text-data text-ink shadow-sm"
+                  >
+                    <li className="flex gap-3">
+                      <svg
+                        className="mt-0.5 size-4 shrink-0 text-success"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-check" /></svg
+                      ><span
+                        >Ranks your catalogue against what the session implies</span
+                      >
+                    </li>
+                    <li className="flex gap-3">
+                      <svg
+                        className="mt-0.5 size-4 shrink-0 text-success"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-check" /></svg
+                      ><span
+                        >A per-factor breakdown on every product, so nothing is a
+                        black box</span
+                      >
+                    </li>
+                    <li className="flex gap-3">
+                      <svg
+                        className="mt-0.5 size-4 shrink-0 text-success"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-check" /></svg
+                      ><span
+                        >A held-back share of traffic that never sees it,
+                        always</span
+                      >
+                    </li>
+                    <li className="flex gap-3">
+                      <svg
+                        className="mt-0.5 size-4 shrink-0 text-success"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-check" /></svg
+                      ><span
+                        >Falls back to your own order if anything is slow or
+                        unavailable</span
+                      >
+                    </li>
+                    <li className="flex gap-3">
+                      <svg
+                        className="mt-0.5 size-4 shrink-0 text-success"
+                        aria-hidden="true"
+                      >
+                        <use href="#i-check" /></svg
+                      ><span>No cookie, no login, no identity required</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+  );
+}

@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function Section2Section() {
   return (
     <section className="border-b border-line">
@@ -23,11 +25,9 @@ export function Section2Section() {
                   <p className="mt-4 text-body leading-relaxed text-muted">
                     We do not use cookies to track or store your data, as described
                     in our
-                    <a
-                      href="privacy.html"
+                    <Link                   href="/en/privacy"
                       className="font-semibold text-primary underline decoration-primary-line underline-offset-4"
-                      >Privacy Policy</a
-                    >.
+                      >Privacy Policy</Link>.
                   </p>
                 </section>
                 <section

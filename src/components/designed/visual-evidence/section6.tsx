@@ -12,7 +12,7 @@ export function Section6Section() {
             <div
               className="frame grid gap-10 py-20 lg:grid-cols-12 lg:gap-x-0 lg:py-28"
             >
-              <div className="min-w-0 lg:col-span-5 lg:pr-16">
+              <div className="lg:col-span-5 lg:pr-16">
                 <h2 className="text-title text-balance">
                   Where is the line on generating an image?
                 </h2>
@@ -22,7 +22,7 @@ export function Section6Section() {
                   write the line down in public than negotiate it later.
                 </p>
               </div>
-              <div className="min-w-0 lg:col-span-7">
+              <div className="lg:col-span-7">
                 <ol className="divide-y divide-line">
                   <li className="py-5 first:pt-0">
                     <h3 className="text-h3 text-ink">Crop an existing photograph</h3>

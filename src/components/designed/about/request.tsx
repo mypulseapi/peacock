@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function RequestSection() {
   return (
     <section id="request" className="cta-dots scroll-mt-16" data-cta>
@@ -14,9 +16,8 @@ export function RequestSection() {
                 Send us a category and judge for yourself
               </h2>
               <div className="reveal mt-8 flex justify-center delay-100">
-                <a href="contact.html" className="btn-primary"
-                  >Request a Decision Audit</a
-                >
+                <Link href="/en/contact" className="btn-primary"
+                  >Request a Decision Audit</Link>
               </div>
             </div>
           </section>

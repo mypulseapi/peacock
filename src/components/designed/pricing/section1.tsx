@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function Section1Section() {
   return (
     <section className="hero-bg border-b border-line">
@@ -54,9 +56,8 @@ export function Section1Section() {
                     </div>
                   </div>
                   <div className="px-6 pt-6 pb-6 lg:px-7">
-                    <a href="contact.html" className="btn-primary w-full justify-center"
-                      >Request an audit</a
-                    >
+                    <Link href="/en/contact" className="btn-primary w-full justify-center"
+                      >Request an audit</Link>
                   </div>
                   <ul
                     className="space-y-2.5 border-t border-line px-6 pt-5 pb-6 text-data text-ink lg:px-7"
@@ -141,11 +142,10 @@ export function Section1Section() {
                     </div>
                   </div>
                   <div className="px-6 pt-6 pb-6 lg:px-7">
-                    <a href="contact.html" className="btn-primary w-full justify-center"
+                    <Link href="/en/contact" className="btn-primary w-full justify-center"
                       >Talk to us<span className="sr-only">
                         about the repair plan and verification</span
-                      ></a
-                    >
+                      ></Link>
                   </div>
                   <ul
                     className="space-y-2.5 px-6 pt-5 pb-6 text-data text-ink border-t border-line lg:px-7"
@@ -225,13 +225,11 @@ export function Section1Section() {
                     </div>
                   </div>
                   <div className="px-6 pt-6 pb-6 lg:px-7">
-                    <a
-                      href="contact.html"
+                    <Link                   href="/en/contact"
                       className="btn-secondary w-full justify-center"
                       >Talk to us<span className="sr-only">
                         about the Decision API</span
-                      ></a
-                    >
+                      ></Link>
                   </div>
                   <ul
                     className="space-y-2.5 px-6 pt-5 pb-6 text-data text-ink border-t border-line lg:px-7"

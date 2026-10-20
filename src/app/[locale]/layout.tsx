@@ -14,6 +14,13 @@ import { NavigationProgress } from "@/components/NavigationProgress";
 import { PulseAnalytics } from "@/components/PulseAnalytics";
 import { IntentPanel } from "@/components/IntentPanel";
 import { IconSprite } from "@/components/designed/icon-sprite";
+import {
+  DesignedChatLauncher,
+  DesignedFooter,
+  DesignedHeader,
+  DesignedSkipLink,
+} from "@/components/designed/shell";
+import { DesignedMotion } from "@/components/designed/motion";
 
 // The typeface, for body and headings alike. Inter above is only the fallback in
 // the stack: globals.css sets `--font-sans: var(--font-jakarta)` and every
@@ -83,7 +90,15 @@ export const metadata: Metadata = {
  */
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  /*
+   * `'unsafe-eval'` in development only.
+   *
+   * Next's dev runtime compiles with eval, so without it HMR dies and the console fills with
+   * "eval() is not supported in this environment". It is never emitted in a production build --
+   * the old header-based CSP made the same exception for the same reason, and it was lost in the
+   * move to a meta tag.
+   */
+  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   `img-src 'self' data: blob: https://images.unsplash.com ${SITE.cdn}`,
   "font-src 'self' data:",
@@ -125,6 +140,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // next-intl resolves `requestLocale` from `headers()`, and a static export has no request:
   // every page then fails to prerender with `dynamic = "error"`, naming headers() and not this.
   const messages = await getMessages({ locale });
+
+  /*
+   * The designer's shell is English-only markup, like the page bodies it wraps. One flag so the
+   * two can never disagree about which half of the site a visitor is on.
+   */
+  const designed = locale === "en";
 
   return (
     <html
@@ -176,11 +197,27 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             <Suspense fallback={null}>
               <NavigationProgress />
             </Suspense>
-            <Navbar />
-            <main>{children}</main>
+            {/*
+                English gets the designer's shell; Vietnamese keeps the app's own.
+
+                The page converter reads <main> only, so the shell was never part of it: the
+                converted bodies rendered inside this app's dark navbar and footer while being
+                the designer's light design themselves. That mismatch is most of why the rebuild
+                looked nothing like staging even once the pages were faithful.
+
+                Vietnamese stays on Navbar and Footer because those are translated and the
+                designer's shell is English markup, the same reason the page bodies split.
+            */}
+            {designed ? <DesignedSkipLink /> : null}
+            {designed ? <DesignedHeader /> : <Navbar />}
+            <main id="main">{children}</main>
             {/* B4: ordered by what this visit has not answered. Renders nothing when nothing is. */}
             <Suspense fallback={null}></Suspense>
-            <Footer />
+            {designed ? <DesignedFooter /> : <Footer />}
+            {designed ? <DesignedChatLauncher /> : null}
+            {/* The motion the designer's markup declares through data attributes. Without it every
+                `.reveal` stays at opacity 0, which is 363 elements across the converted pages. */}
+            {designed ? <DesignedMotion /> : null}
             {/* B6: shows the inference and lets the visitor correct it. */}
             <Suspense fallback={null}>
               <IntentPanel />

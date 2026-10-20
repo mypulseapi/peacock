@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function Section1Section() {
   return (
     <section className="hero-bg border-b border-line">
@@ -26,12 +28,10 @@ export function Section1Section() {
                   missing. It is sitting inside an image nobody can search.
                 </p>
                 <div className="reveal mt-8 flex flex-wrap gap-3 delay-200">
-                  <a href="../contact.html" className="btn-primary"
-                    >Request a Decision Audit</a
-                  >
-                  <a href="../product/decision-audit.html" className="btn-secondary"
-                    >See what you get</a
-                  >
+                  <Link href="/en/../contact" className="btn-primary"
+                    >Request a Decision Audit</Link>
+                  <Link href="/en/../product/decision-audit" className="btn-secondary"
+                    >See what you get</Link>
                 </div>
                 <p className="reveal mt-6 text-sm text-muted delay-300">
                   <span className="font-semibold text-ink"

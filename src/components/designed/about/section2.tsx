@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function Section2Section() {
   return (
     <section className="border-b border-line">
@@ -44,11 +46,9 @@ export function Section2Section() {
                     filter on, and 94 could not be told apart on what shoppers need.
                   </p>
                   <p className="mt-6">
-                    <a
-                      href="product/decision-audit.html"
+                    <Link                   href="/en/product/decision-audit"
                       className="hit-area font-medium text-link underline underline-offset-4 hover:text-primary-hover"
-                      >See how the Decision Audit ranks a catalogue</a
-                    >
+                      >See how the Decision Audit ranks a catalogue</Link>
                   </p>
                 </div>
                 <div className="w-full max-w-lg lg:col-span-7 lg:justify-self-center">

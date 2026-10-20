@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function RequestSection() {
   return (
     <section
@@ -21,9 +23,8 @@ export function RequestSection() {
               <div
                 className="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200"
               >
-                <a href="./contact.html" className="btn-primary"
-                  >Request a Decision Audit</a
-                >
+                <Link href="/en/contact" className="btn-primary"
+                  >Request a Decision Audit</Link>
                 <a href="#method" className="btn-secondary">Read the method first</a>
               </div>
             </div>

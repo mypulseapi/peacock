@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function Section1Section() {
   return (
     <section className="relative isolate overflow-hidden border-b border-line">
@@ -53,9 +55,8 @@ export function Section1Section() {
                 </p>
                 {/* "Ask AI" is a placeholder, hidden until the AI assistant exists: remove "hidden" and wire it up then */}
                 <div className="reveal mt-8 flex flex-wrap gap-3 delay-200">
-                  <a href="../contact.html" className="btn-primary"
-                    >Request a Decision Audit</a
-                  >
+                  <Link href="/en/../contact" className="btn-primary"
+                    >Request a Decision Audit</Link>
                   <button type="button" className="btn-secondary hidden" data-ask-ai>
                     <svg className="size-4 text-primary" aria-hidden="true">
                       <use href="#i-sparkles" /></svg

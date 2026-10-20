@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function Section6Section() {
   return (
     <section className="cta-dots" data-cta>
@@ -23,10 +25,9 @@ export function Section6Section() {
               <div
                 className="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200"
               >
-                <a href="../contact.html" className="btn-primary"
-                  >Request a Decision Audit</a
-                >
-                <a href="../pricing.html" className="btn-secondary">View pricing</a>
+                <Link href="/en/../contact" className="btn-primary"
+                  >Request a Decision Audit</Link>
+                <Link href="/en/../pricing" className="btn-secondary">View pricing</Link>
               </div>
               <p
                 className="reveal mx-auto mt-6 max-w-md text-sm text-pretty text-muted delay-300"

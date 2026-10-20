@@ -12,7 +12,7 @@ export function Section4Section() {
             <div
               className="frame grid gap-10 py-20 lg:grid-cols-12 lg:gap-x-0 lg:py-28"
             >
-              <div className="min-w-0 lg:col-span-5 lg:pr-16">
+              <div className="lg:col-span-5 lg:pr-16">
                 <h2 className="text-title text-balance">
                   Then we checked our own catalogue, and it was worse
                 </h2>
@@ -24,7 +24,7 @@ export function Section4Section() {
                   answers it.
                 </p>
               </div>
-              <div className="min-w-0 lg:col-span-7">
+              <div className="lg:col-span-7">
                 <div className="card">
                   <dl className="divide-y divide-line">
                     <div

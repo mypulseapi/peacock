@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function HeroSection() {
   return (
     <section
@@ -32,9 +34,8 @@ export function HeroSection() {
                     many shoppers need it, not by how empty a field is.
                   </p>
                   <div className="reveal mt-8 flex flex-wrap gap-3 delay-300">
-                    <a href="./contact.html" className="btn-primary"
-                      >Request a Decision Audit</a
-                    >
+                    <Link href="/en/contact" className="btn-primary"
+                      >Request a Decision Audit</Link>
                     <a href="#method" className="btn-secondary">See how it works</a>
                   </div>
                 </div>

@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function AuditSection() {
   return (
     <section id="audit" className="scroll-mt-16 border-b border-line">
@@ -31,15 +33,14 @@ export function AuditSection() {
                     >
                     One CSV or JSON export. No code, no tag, no system access.
                   </p>
-                  <a
-                    href="decision-audit.html"
+                  <Link                 href="/en/decision-audit"
                     className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                     >Read about Decision Audit<svg
                       className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
                       aria-hidden="true"
                     >
                       <use href="#i-arrow-right" /></svg
-                  ></a>
+                  ></Link>
                 </div>
                 <div className="reveal delay-200 lg:col-span-6">
                   <ul

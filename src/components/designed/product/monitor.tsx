@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function MonitorSection() {
   return (
     <section id="monitor" className="scroll-mt-16 border-b border-line">
@@ -31,15 +33,14 @@ export function MonitorSection() {
                     >
                     A recurring export, or a feed.
                   </p>
-                  <a
-                    href="decision-monitor.html"
+                  <Link                 href="/en/decision-monitor"
                     className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                     >Read about Decision Monitor<svg
                       className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
                       aria-hidden="true"
                     >
                       <use href="#i-arrow-right" /></svg
-                  ></a>
+                  ></Link>
                 </div>
                 <div className="reveal delay-200 lg:col-span-6">
                   <ul

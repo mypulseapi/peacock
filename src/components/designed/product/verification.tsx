@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Link from "next/link";
+
 export function VerificationSection() {
   return (
     <section
@@ -34,15 +36,14 @@ export function VerificationSection() {
                     >
                     The repaired catalogue, re-exported.
                   </p>
-                  <a
-                    href="decision-verification.html"
+                  <Link                 href="/en/decision-verification"
                     className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                     >Read about Decision Verification<svg
                       className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
                       aria-hidden="true"
                     >
                       <use href="#i-arrow-right" /></svg
-                  ></a>
+                  ></Link>
                 </div>
                 <div className="reveal delay-200 lg:col-span-6">
                   <ul

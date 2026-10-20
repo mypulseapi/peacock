@@ -163,6 +163,20 @@ const PROBE = ({ minTap, minFont }) => {
        * a design system uses deliberately is worse than no checker, because the real finding ends
        * up buried in its noise.
        */
+      /*
+       * Screen-reader-only elements are not tap targets until they are focused.
+       *
+       * The skip link is `sr-only` -- clipped to a 1px box -- and becomes a full-size button on
+       * focus, which is the correct pattern for WCAG 2.4.1 and what every well-built site does.
+       * Measuring it unfocused reported 232 failures across every page for markup that is right.
+       * 2.5.8 only applies to a target that is actually presented.
+       */
+      const clipped =
+        style.clipPath === "inset(50%)" ||
+        style.clip === "rect(0px, 0px, 0px, 0px)" ||
+        (r.width <= 1 && r.height <= 1);
+      if (clipped) continue;
+
       const after = getComputedStyle(el, "::after");
       const expands =
         after.content !== "none" &&

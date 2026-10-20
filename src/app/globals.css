@@ -3730,6 +3730,24 @@ a[aria-disabled="true"] * {
 
 
 /*
+ * Grid items may shrink below their content.
+ *
+ * A grid item defaults to `min-width: auto`, so it refuses to be narrower than what is inside it.
+ * On `visual-evidence` that is a wide table in a card: at 320px the column grew to 312px inside a
+ * 288px content box and pushed the whole page to 328. The table has its own `overflow-x: auto`
+ * and copes perfectly well once the column stops expanding to fit it.
+ *
+ * Scoped to the elements the designer marks as grid children, and it only ever *permits*
+ * shrinking -- nothing is forced narrower than it would otherwise be.
+ *
+ * It lives here rather than as `min-w-0` in the converted markup because that markup is
+ * regenerated from the designer's HTML and a hand-edit to it is lost on the next run. Mine was.
+ */
+[class*="col-span"] {
+  min-width: 0;
+}
+
+/*
  * Standalone links clear the 24px tap target.
  *
  * WCAG 2.2 AA 2.5.8 wants 24x24 CSS pixels. The designer's CTA links -- `inline-flex` with a

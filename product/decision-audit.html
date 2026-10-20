@@ -498,6 +498,34 @@
         />
       </symbol>
       <symbol
+        id="i-user-search"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="10" cy="7" r="4" />
+        <path d="M10.3 15H7a4 4 0 0 0-4 4v2" />
+        <circle cx="17" cy="17" r="3" />
+        <path d="m21 21-1.9-1.9" />
+      </symbol>
+      <symbol
+        id="i-chart-pie"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"
+        />
+        <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+      </symbol>
+      <symbol
         id="i-file"
         viewBox="0 0 24 24"
         stroke-width="1.5"
@@ -1119,15 +1147,15 @@
             <img
               src="../src/assets/product/decision-audit-light.webp"
               alt=""
-              width="1920"
-              height="1080"
+              width="2560"
+              height="1440"
               class="hero-video-media"
             />
           </picture>
           <video
             class="hero-video-media hero-video-fade"
-            width="1920"
-            height="1080"
+            width="2560"
+            height="1440"
             muted
             loop
             playsinline
@@ -1150,9 +1178,12 @@
               Identify, prioritize, and verify the product-information fixes
               that matter most to buying decisions.
             </p>
-            <!-- Placeholder: not wired up yet (connect it to the AI assistant when it exists) -->
-            <div class="reveal mt-8 delay-200">
-              <button type="button" class="btn-secondary" data-ask-ai>
+            <!-- "Ask AI" is a placeholder, hidden until the AI assistant exists: remove "hidden" and wire it up then -->
+            <div class="reveal mt-8 flex flex-wrap gap-3 delay-200">
+              <a href="../contact.html" class="btn-primary"
+                >Request a Decision Audit</a
+              >
+              <button type="button" class="btn-secondary hidden" data-ask-ai>
                 <svg class="size-4 text-primary" aria-hidden="true">
                   <use href="#i-sparkles" /></svg
                 >Ask AI
@@ -1164,370 +1195,1332 @@
 
       <section class="scroll-mt-16 border-b border-line">
         <div class="frame py-20 lg:py-28">
-          <div class="grid gap-6 lg:grid-cols-12 lg:items-end">
-            <div class="lg:col-span-7">
-              <h2 class="reveal text-title text-balance">
-                One session, and the two ways of finding out where it broke
-              </h2>
-            </div>
-            <p class="reveal text-lg text-pretty text-muted lg:col-span-5">
-              A shopper leaves without buying. Working out why is the whole
-              business, and there are only two ways to do it.
-            </p>
-          </div>
-          <ol class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            <li
-              class="reveal rounded-2xl border p-4 border-line bg-card delay-0"
-            >
-              <div class="flex items-center gap-2 text-muted">
-                <svg class="size-4 text-primary" aria-hidden="true">
-                  <use href="#i-globe" /></svg
-                ><span class="text-xs tabular-nums">01</span>
-              </div>
-              <p class="mt-3 text-data font-semibold text-ink">Arrived</p>
-              <p class="text-xs text-muted">from a price comparison page</p>
-            </li>
-            <li
-              class="reveal rounded-2xl border p-4 border-line bg-card delay-75"
-            >
-              <div class="flex items-center gap-2 text-muted">
-                <svg class="size-4 text-primary" aria-hidden="true">
-                  <use href="#i-sparkles" /></svg
-                ><span class="text-xs tabular-nums">02</span>
-              </div>
-              <p class="mt-3 text-data font-semibold text-ink">Searched</p>
-              <p class="text-xs text-muted">&ldquo;lightweight&rdquo;</p>
-            </li>
-            <li
-              class="reveal rounded-2xl border p-4 border-critical-line bg-critical-bg delay-150"
-            >
-              <div class="flex items-center gap-2 text-muted">
-                <svg class="size-4 text-critical" aria-hidden="true">
-                  <use href="#i-triangle-alert" /></svg
-                ><span class="text-xs tabular-nums">03</span>
-              </div>
-              <p class="mt-3 text-data font-semibold text-ink">Filtered</p>
-              <p class="text-xs text-muted">nothing to filter on</p>
-              <span
-                class="mt-3 inline-block rounded-md bg-critical px-2 py-0.5 text-xs font-semibold text-on-primary"
-                >Chain breaks here</span
-              >
-            </li>
-            <li
-              class="reveal rounded-2xl border p-4 border-line bg-card delay-225"
-            >
-              <div class="flex items-center gap-2 text-muted">
-                <svg class="size-4 text-primary" aria-hidden="true">
-                  <use href="#i-file" /></svg
-                ><span class="text-xs tabular-nums">04</span>
-              </div>
-              <p class="mt-3 text-data font-semibold text-ink">Opened</p>
-              <p class="text-xs text-muted">three products, then two more</p>
-            </li>
-            <li
-              class="reveal rounded-2xl border p-4 border-line bg-card delay-300"
-            >
-              <div class="flex items-center gap-2 text-muted">
-                <svg class="size-4 text-primary" aria-hidden="true">
-                  <use href="#i-arrow-right" /></svg
-                ><span class="text-xs tabular-nums">05</span>
-              </div>
-              <p class="mt-3 text-data font-semibold text-ink">Left</p>
-              <p class="text-xs text-muted">without choosing one</p>
-            </li>
-          </ol>
-          <!-- Comparison: one card, two columns split by a hairline. Left (the usual way) is struck through in muted;
-               right (the Decision Audit) is ticked in ink. -->
+          <!-- the home page's How it works card: a flat 6% Pulse Blue tint, rounded-3xl, primary-line border -->
           <div
-            class="reveal mt-10 grid divide-y divide-line overflow-hidden rounded-2xl border border-line bg-card md:grid-cols-2 md:divide-x md:divide-y-0"
+            class="bg-primary-wash grid gap-10 rounded-3xl border border-primary-line px-5 py-14 sm:px-10 lg:grid-cols-12 lg:gap-x-12 lg:px-14 lg:py-20"
           >
-            <div class="p-6 lg:p-10">
-              <p
-                class="flex items-center gap-3 text-xs font-medium tracking-widest text-muted uppercase"
-              >
-                <svg class="size-5" aria-hidden="true">
-                  <use href="#i-circle-alert" /></svg
-                >Every engagement-ranked tool
-              </p>
-              <ul class="mt-8 space-y-5 text-base leading-relaxed text-pretty">
-                <li class="flex gap-4">
-                  <span
-                    class="mt-3 h-px w-3 shrink-0 scale-y-50 bg-muted"
-                    aria-hidden="true"
-                  ></span
-                  ><span class="text-muted strike-hairline"
-                    >Has to wait for the chain to run, and still cannot see the
-                    gap</span
-                  >
-                </li>
-                <li class="flex gap-4">
-                  <span
-                    class="mt-3 h-px w-3 shrink-0 scale-y-50 bg-muted"
-                    aria-hidden="true"
-                  ></span
-                  ><span class="text-muted strike-hairline"
-                    >Click and conversion models weigh the fields that already
-                    exist</span
-                  >
-                </li>
-                <li class="flex gap-4">
-                  <span
-                    class="mt-3 h-px w-3 shrink-0 scale-y-50 bg-muted"
-                    aria-hidden="true"
-                  ></span
-                  ><span class="text-muted strike-hairline"
-                    >A field nobody recorded generates no clicks, so it scores
-                    zero and stays invisible no matter how much traffic you send
-                    at it</span
-                  >
-                </li>
-                <li class="flex gap-4">
-                  <span
-                    class="mt-3 h-px w-3 shrink-0 scale-y-50 bg-muted"
-                    aria-hidden="true"
-                  ></span
-                  ><span class="text-muted strike-hairline"
-                    >Needs months of traffic. Never surfaces the missing
-                    field</span
-                  >
-                </li>
-              </ul>
+            <div class="min-w-0 lg:col-span-4">
+              <div class="lg:sticky lg:top-28">
+                <h2 class="reveal text-title text-balance">
+                  One shelf, from the gap to the fix
+                </h2>
+                <p class="reveal mt-5 text-lg text-pretty text-muted delay-100">
+                  The example laptop shelf through the four steps of an audit:
+                  what is missing, what shoppers need, what to fix first, and
+                  the repair.
+                </p>
+              </div>
             </div>
-            <div class="p-6 lg:p-10">
-              <p
-                class="flex items-center gap-3 text-xs font-medium tracking-widest text-ink uppercase"
+            <!-- Shelf board (Decision Audit page): the home demo's first four steps on a shelf of 216 squares, one per laptop
+     (data-story, src/main.js). Problem: 94 amber squares cannot be told apart → audit: a scan sweeps the shelf and
+     the need bars fill → priority: ranks appear, screen size #1 → repair: 63 squares turn blue (122 → 185) and screen
+     size reads 216 of 216. Written in the final frame; earlier beats are pre-N: / at-N: classes, so without JS or
+     with reduced motion the repaired, ranked board shows. -->
+            <div class="reveal min-w-0 delay-100 lg:col-span-8">
+              <div
+                class="rounded-2xl border border-line bg-card shadow-sm"
+                data-story
+                data-pausable
               >
-                <svg class="size-5" aria-hidden="true">
-                  <use href="#i-circle-check" /></svg
-                >The Decision Audit
-              </p>
-              <ul class="mt-8 space-y-5 text-base leading-relaxed text-pretty">
-                <li class="flex gap-4">
-                  <svg class="mt-1 size-4 shrink-0 text-ink" aria-hidden="true">
-                    <use href="#i-check" /></svg
-                  ><span class="text-ink"
-                    >Computes the break point before a single session runs</span
+                <div
+                  class="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-3"
+                >
+                  <p class="text-sm font-semibold text-ink">
+                    Laptop shelf, <span class="tabular-nums">216</span> products
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="rounded-full border border-line px-2 py-0.5 text-xs font-medium whitespace-nowrap text-muted"
+                      >Example data</span
+                    >
+                    <button
+                      type="button"
+                      class="hit-area hidden size-6 items-center justify-center rounded-full text-muted transition-colors duration-150 ease-out-soft hover:bg-surface-1 hover:text-ink focus-visible:outline-2 focus-visible:outline-focus motion-safe:js:inline-flex"
+                      aria-label="Pause animation"
+                      aria-pressed="false"
+                      data-pause
+                    >
+                      <svg class="size-3.5" aria-hidden="true">
+                        <use href="#i-pause" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="how-scene p-5 sm:p-6"
+                  data-scene
+                  data-beats="0 2800 5600 8400"
+                  role="img"
+                  aria-label="Example: a laptop shelf of 216 products. 1, the problem: 357 fields are missing and 94 products cannot be told apart. 2, the audit: each attribute is scored against 32 shopper requirements. 3, the priority: ranked by bits of decision information, screen size comes first and processor is only third, although 162 products miss it. 4, the repair: screen size is recorded on all 216 products, and 185 of 216 can now be told apart, up from 122."
+                >
+                  <ol
+                    class="grid grid-cols-4 gap-2 border-b border-line pb-4 text-xs font-medium"
+                    aria-hidden="true"
                   >
-                </li>
-                <li class="flex gap-4">
-                  <svg class="mt-1 size-4 shrink-0 text-ink" aria-hidden="true">
-                    <use href="#i-check" /></svg
-                  ><span class="text-ink"
-                    >Where the chain breaks is a property of your catalogue, not
-                    of your visitors, so it can be measured from an export</span
+                    <li
+                      class="flex items-center gap-2 transition-colors duration-300 ease-out-soft text-muted pre-2:text-ink"
+                    >
+                      <span
+                        class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line pre-2:bg-primary"
+                      ></span
+                      ><span class="tabular-nums">01</span
+                      ><span class="max-sm:sr-only">The problem</span>
+                    </li>
+                    <li
+                      class="flex items-center gap-2 transition-colors duration-300 ease-out-soft text-muted at-2:text-ink"
+                    >
+                      <span
+                        class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line at-2:bg-primary"
+                      ></span
+                      ><span class="tabular-nums">02</span
+                      ><span class="max-sm:sr-only">The audit</span>
+                    </li>
+                    <li
+                      class="flex items-center gap-2 transition-colors duration-300 ease-out-soft text-muted at-3:text-ink"
+                    >
+                      <span
+                        class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line at-3:bg-primary"
+                      ></span
+                      ><span class="tabular-nums">03</span
+                      ><span class="max-sm:sr-only">The priority</span>
+                    </li>
+                    <li
+                      class="flex items-center gap-2 transition-colors duration-300 ease-out-soft text-ink pre-4:text-muted"
+                    >
+                      <span
+                        class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-primary pre-4:bg-line"
+                      ></span
+                      ><span class="tabular-nums">04</span
+                      ><span class="max-sm:sr-only">The repair</span>
+                    </li>
+                  </ol>
+
+                  <div
+                    class="mt-6 grid gap-6 sm:grid-cols-5"
+                    aria-hidden="true"
                   >
-                </li>
-                <li class="flex gap-4">
-                  <svg class="mt-1 size-4 shrink-0 text-ink" aria-hidden="true">
-                    <use href="#i-check" /></svg
-                  ><span class="text-ink"
-                    >Works on a new category, a new market or a launch range
-                    with no history at all</span
+                    <div class="min-w-0 sm:col-span-3">
+                      <div class="relative overflow-hidden rounded-lg">
+                        <div class="grid grid-cols-18 gap-0.5 sm:gap-1">
+                          <span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-0 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-15 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-30 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-45 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-60 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-75 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-90 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-105 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-120 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-135 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-150 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-165 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-180 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-195 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-210 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-225 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-240 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-255 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-270 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-285 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-300 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-315 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-330 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-345 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-360 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-375 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-390 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-405 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-420 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-435 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-450 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-465 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-480 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-495 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-510 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-525 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-540 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-555 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-570 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-585 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-600 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-615 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-630 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-645 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-660 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-675 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-690 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-705 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-720 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-735 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-750 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-765 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-780 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-795 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-810 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-825 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-840 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-855 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-870 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-885 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-900 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-915 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main transition-colors duration-300 ease-out-soft delay-930 pre-4:bg-chart-missing sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span
+                          ><span
+                            class="aspect-square rounded-xs bg-chart-main sm:rounded-sm"
+                          ></span>
+                        </div>
+                        <span
+                          class="pointer-events-none absolute inset-y-0 left-0 w-1/4 translate-x-5/1 bg-linear-to-r from-transparent via-scan-band to-transparent transition-transform duration-1000 ease-in-out-cubic pre-2:-translate-x-full"
+                        ></span>
+                      </div>
+                      <div
+                        class="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-caption text-muted"
+                      >
+                        <span class="flex items-center gap-1.5"
+                          ><span class="size-2 rounded-xs bg-chart-main"></span
+                          ><span class="font-semibold tabular-nums text-ink"
+                            ><span class="grid"
+                              ><span
+                                class="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft opacity-0 pre-4:opacity-100"
+                                >122</span
+                              ><span
+                                class="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft pre-4:opacity-0"
+                                >185</span
+                              ></span
+                            ></span
+                          >can be told apart</span
+                        >
+                        <span class="flex items-center gap-1.5"
+                          ><span
+                            class="size-2 rounded-xs bg-chart-missing"
+                          ></span
+                          ><span class="font-semibold tabular-nums text-ink"
+                            ><span class="grid"
+                              ><span
+                                class="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft opacity-0 pre-4:opacity-100"
+                                >94</span
+                              ><span
+                                class="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft pre-4:opacity-0"
+                                >31</span
+                              ></span
+                            ></span
+                          >cannot</span
+                        >
+                      </div>
+                    </div>
+                    <div class="min-w-0 sm:col-span-2">
+                      <p class="grid text-caption text-muted">
+                        <span
+                          class="col-start-1 row-start-1 opacity-0 transition-opacity duration-300 ease-out-soft pre-3:opacity-100"
+                          >Products missing each attribute, of 216</span
+                        ><span
+                          class="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft pre-3:opacity-0"
+                          >Ranked by bits of decision information</span
+                        >
+                      </p>
+                      <ol class="mt-2">
+                        <li
+                          class="relative isolate flex items-center gap-2.5 border-b border-line bg-card px-2 py-2 transition-transform duration-700 ease-in-out-cubic pre-3:translate-y-full"
+                        >
+                          <span
+                            class="absolute inset-0 -z-10 rounded-lg border border-signal bg-signal-tint ring-1 ring-signal transition-opacity duration-300 ease-out-soft pre-3:opacity-0"
+                          ></span>
+                          <span
+                            class="grid size-5 shrink-0 place-items-center rounded bg-signal text-caption font-semibold tabular-nums text-on-step transition-opacity duration-300 ease-out-soft pre-3:opacity-0"
+                            >1</span
+                          >
+                          <span class="min-w-0 flex-1">
+                            <span
+                              class="flex flex-wrap items-baseline justify-between gap-x-2"
+                              ><span class="text-sm font-semibold text-ink"
+                                >Screen size</span
+                              ><span
+                                class="text-caption tabular-nums text-muted transition-opacity duration-300 ease-out-soft delay-0 pre-2:opacity-0"
+                                >1.067 bits</span
+                              ></span
+                            >
+                            <span
+                              class="mt-1 block h-1 rounded-full bg-surface-1"
+                              ><span
+                                class="block h-full w-full origin-left rounded-full bg-chart-main transition-transform duration-700 ease-emphasized delay-0 pre-2:scale-x-0"
+                              ></span
+                            ></span>
+                            <span
+                              class="mt-1 block text-caption tabular-nums text-muted"
+                              ><span class="grid"
+                                ><span
+                                  class="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft opacity-0 pre-4:opacity-100"
+                                  >80 missing</span
+                                ><span
+                                  class="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft pre-4:opacity-0"
+                                  ><span
+                                    class="inline-flex items-center gap-1 font-medium text-success"
+                                    ><svg class="size-3" aria-hidden="true">
+                                      <use href="#i-circle-check" /></svg
+                                    >216 of 216</span
+                                  ></span
+                                ></span
+                              ></span
+                            >
+                          </span>
+                        </li>
+                        <li
+                          class="relative isolate flex items-center gap-2.5 border-b border-line bg-card px-2 py-2 transition-transform duration-700 ease-in-out-cubic pre-3:translate-y-full"
+                        >
+                          <span
+                            class="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption font-semibold tabular-nums text-on-step transition-opacity duration-300 ease-out-soft pre-3:opacity-0"
+                            >2</span
+                          >
+                          <span class="min-w-0 flex-1">
+                            <span
+                              class="flex flex-wrap items-baseline justify-between gap-x-2"
+                              ><span class="text-sm font-semibold text-ink"
+                                >Memory</span
+                              ><span
+                                class="text-caption tabular-nums text-muted transition-opacity duration-300 ease-out-soft delay-100 pre-2:opacity-0"
+                                >1.012 bits</span
+                              ></span
+                            >
+                            <span
+                              class="mt-1 block h-1 rounded-full bg-surface-1"
+                              ><span
+                                class="block h-full w-1012/1067 origin-left rounded-full bg-chart-main transition-transform duration-700 ease-emphasized delay-100 pre-2:scale-x-0"
+                              ></span
+                            ></span>
+                            <span
+                              class="mt-1 block text-caption tabular-nums text-muted"
+                              >60 missing</span
+                            >
+                          </span>
+                        </li>
+                        <li
+                          class="relative isolate z-10 flex items-center gap-2.5 border-b border-line bg-card px-2 py-2 transition-transform duration-700 ease-in-out-cubic pre-3:-translate-y-2/1"
+                        >
+                          <span
+                            class="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption font-semibold tabular-nums text-on-step transition-opacity duration-300 ease-out-soft pre-3:opacity-0"
+                            >3</span
+                          >
+                          <span class="min-w-0 flex-1">
+                            <span
+                              class="flex flex-wrap items-baseline justify-between gap-x-2"
+                              ><span class="text-sm font-semibold text-ink"
+                                >Processor</span
+                              ><span
+                                class="text-caption tabular-nums text-muted transition-opacity duration-300 ease-out-soft delay-200 pre-2:opacity-0"
+                                >0.747 bits</span
+                              ></span
+                            >
+                            <span
+                              class="mt-1 block h-1 rounded-full bg-surface-1"
+                              ><span
+                                class="block h-full w-747/1067 origin-left rounded-full bg-chart-main transition-transform duration-700 ease-emphasized delay-200 pre-2:scale-x-0"
+                              ></span
+                            ></span>
+                            <span
+                              class="mt-1 block text-caption tabular-nums text-muted"
+                              >162 missing</span
+                            >
+                          </span>
+                        </li>
+                        <li
+                          class="relative isolate flex items-center gap-2.5 border-b border-line bg-card px-2 py-2 transition-transform duration-700 ease-in-out-cubic"
+                        >
+                          <span
+                            class="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption font-semibold tabular-nums text-on-step transition-opacity duration-300 ease-out-soft pre-3:opacity-0"
+                            >4</span
+                          >
+                          <span class="min-w-0 flex-1">
+                            <span
+                              class="flex flex-wrap items-baseline justify-between gap-x-2"
+                              ><span class="text-sm font-semibold text-ink"
+                                >Storage</span
+                              ><span
+                                class="text-caption tabular-nums text-muted transition-opacity duration-300 ease-out-soft delay-300 pre-2:opacity-0"
+                                >0.688 bits</span
+                              ></span
+                            >
+                            <span
+                              class="mt-1 block h-1 rounded-full bg-surface-1"
+                              ><span
+                                class="block h-full w-688/1067 origin-left rounded-full bg-chart-main transition-transform duration-700 ease-emphasized delay-300 pre-2:scale-x-0"
+                              ></span
+                            ></span>
+                            <span
+                              class="mt-1 block text-caption tabular-nums text-muted"
+                              >55 missing</span
+                            >
+                          </span>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                  <p
+                    class="mt-5 grid border-t border-line pt-4 text-sm text-pretty text-ink"
+                    aria-hidden="true"
                   >
-                </li>
-                <li class="flex gap-4">
-                  <svg class="mt-1 size-4 shrink-0 text-ink" aria-hidden="true">
-                    <use href="#i-check" /></svg
-                  ><span class="text-ink"
-                    >Needs one CSV. Works on day one, with zero traffic</span
-                  >
-                </li>
-              </ul>
+                    <span
+                      class="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft opacity-0 pre-2:opacity-100"
+                      >216 laptops: 94 of them cannot be told apart. 357 fields
+                      are missing.</span
+                    ><span
+                      class="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft opacity-0 at-2:opacity-100"
+                      >Every attribute is scored against 32 shopper
+                      requirements.</span
+                    ><span
+                      class="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft opacity-0 at-3:opacity-100"
+                      >Screen size comes first. Processor, the emptiest, is only
+                      third.</span
+                    ><span
+                      class="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft pre-4:opacity-0"
+                      >Screen size recorded on all 216: 185 laptops can now be
+                      told apart, up from 122.</span
+                    >
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="scroll-mt-16 border-b border-line bg-surface-1/50">
+      <section class="bg-soft-gradient scroll-mt-16 border-b border-line">
         <div class="frame py-20 lg:py-28">
-          <div class="grid items-center gap-12 lg:grid-cols-12">
-            <div class="lg:col-span-5">
-              <h2 class="reveal text-title">The list you actually receive</h2>
-              <p class="reveal mt-5 text-lg text-pretty text-muted">
-                Ranked by bits of decision information, with the affected
-                products attached to each row.
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="reveal text-title text-balance">
+              The list you actually receive
+            </h2>
+            <p class="reveal mt-5 text-lg text-pretty text-muted delay-100">
+              Ranked by bits of decision information, with the affected products
+              attached to each row.
+            </p>
+          </div>
+          <!-- The repair list at full width: the audit's real output, the spine of the page. Bars are fractions of the
+               bit values (1.067 is the longest); the #1 row carries the priority ring. -->
+          <div
+            class="reveal mt-14 rounded-2xl border border-line bg-card p-3 shadow-sm delay-200 sm:p-4 lg:mt-16"
+          >
+            <div
+              class="flex flex-wrap items-center justify-between gap-3 px-2 pt-1 pb-3 sm:px-3"
+            >
+              <p class="text-data font-semibold text-ink">
+                Your ranked repair list
               </p>
-            </div>
-            <div class="reveal delay-200 lg:col-span-7">
-              <div
-                class="overflow-hidden rounded-2xl border border-line bg-card shadow-sm"
+              <span
+                class="rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-semibold text-primary-hover"
+                >Back within 48 hours</span
               >
-                <div
-                  class="flex items-center justify-between border-b border-line bg-surface-0 px-5 py-3.5"
-                >
-                  <p class="text-data font-semibold text-ink">
-                    Your ranked repair list
-                  </p>
-                  <span
-                    class="rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-semibold text-primary"
-                    >48 hours</span
-                  >
-                </div>
-                <ol class="divide-y divide-line">
-                  <li class="grid grid-cols-12 items-center gap-4 px-5 py-4">
-                    <span class="col-span-5"
-                      ><span class="block text-data font-semibold text-ink"
-                        >1. Screen size</span
-                      ><span class="block text-xs text-muted tabular-nums"
-                        >80 products missing it</span
-                      ></span
-                    >
-                    <span
-                      class="col-span-5 h-2 overflow-hidden rounded-full bg-surface-1"
-                      ><span
-                        class="reveal-bar block h-full rounded-full bg-chart-main w-full"
-                      ></span
-                    ></span>
-                    <span
-                      class="col-span-2 text-right font-mono text-data font-semibold text-primary tabular-nums"
-                      >1.067</span
-                    >
-                  </li>
-                  <li class="grid grid-cols-12 items-center gap-4 px-5 py-4">
-                    <span class="col-span-5"
-                      ><span class="block text-data font-semibold text-ink"
-                        >2. Memory</span
-                      ><span class="block text-xs text-muted tabular-nums"
-                        >60 products missing it</span
-                      ></span
-                    >
-                    <span
-                      class="col-span-5 h-2 overflow-hidden rounded-full bg-surface-1"
-                      ><span
-                        class="reveal-bar block h-full rounded-full bg-chart-main w-95/100"
-                      ></span
-                    ></span>
-                    <span
-                      class="col-span-2 text-right font-mono text-data font-semibold text-primary tabular-nums"
-                      >1.012</span
-                    >
-                  </li>
-                  <li class="grid grid-cols-12 items-center gap-4 px-5 py-4">
-                    <span class="col-span-5"
-                      ><span class="block text-data font-semibold text-ink"
-                        >3. Processor</span
-                      ><span class="block text-xs text-muted tabular-nums"
-                        >162 products missing it</span
-                      ></span
-                    >
-                    <span
-                      class="col-span-5 h-2 overflow-hidden rounded-full bg-surface-1"
-                      ><span
-                        class="reveal-bar block h-full rounded-full bg-chart-main w-70/100"
-                      ></span
-                    ></span>
-                    <span
-                      class="col-span-2 text-right font-mono text-data font-semibold text-primary tabular-nums"
-                      >0.747</span
-                    >
-                  </li>
-                  <li class="grid grid-cols-12 items-center gap-4 px-5 py-4">
-                    <span class="col-span-5"
-                      ><span class="block text-data font-semibold text-ink"
-                        >4. Storage</span
-                      ><span class="block text-xs text-muted tabular-nums"
-                        >55 products missing it</span
-                      ></span
-                    >
-                    <span
-                      class="col-span-5 h-2 overflow-hidden rounded-full bg-surface-1"
-                      ><span
-                        class="reveal-bar block h-full rounded-full bg-chart-main w-64/100"
-                      ></span
-                    ></span>
-                    <span
-                      class="col-span-2 text-right font-mono text-data font-semibold text-primary tabular-nums"
-                      >0.688</span
-                    >
-                  </li>
-                </ol>
-                <p class="border-t border-line px-5 py-3.5 text-xs text-muted">
-                  Ranked by bits of decision information, not by how much is
-                  absent. Example data.
-                </p>
-              </div>
             </div>
+            <div
+              class="hidden grid-cols-12 gap-x-4 px-5 pb-2 text-caption text-muted sm:grid"
+              aria-hidden="true"
+            >
+              <span class="col-span-4">Attribute</span>
+              <span class="col-span-2">Products missing it</span>
+              <span class="col-span-4">Decision information</span>
+              <span class="col-span-2 text-right">Bits</span>
+            </div>
+            <ol class="space-y-2">
+              <li
+                class="reveal flex flex-wrap items-center gap-x-4 gap-y-2 sm:grid sm:grid-cols-12 rounded-xl border px-4 py-4 delay-100 sm:px-5 border-signal bg-signal-tint ring-1 ring-signal"
+              >
+                <span
+                  class="col-span-8 flex min-w-0 flex-1 items-center gap-3 sm:col-span-4"
+                  ><span
+                    class="grid size-7 shrink-0 place-items-center rounded-md bg-signal text-sm font-semibold text-on-step tabular-nums"
+                    >1</span
+                  ><span class="text-h3 text-ink">Screen size</span></span
+                >
+                <span
+                  class="col-span-4 ml-auto text-right font-mono text-h3 font-semibold text-primary tabular-nums sm:order-last sm:col-span-2"
+                  >1.067</span
+                >
+                <span
+                  class="col-span-12 flex basis-full items-center gap-1.5 text-sm font-medium text-gap-strong tabular-nums sm:col-span-2"
+                  ><svg class="size-3.5 shrink-0" aria-hidden="true">
+                    <use href="#i-triangle-alert" /></svg
+                  >80 of 216</span
+                >
+                <span
+                  class="col-span-12 h-2.5 basis-full overflow-hidden rounded-full bg-surface-1 sm:col-span-4"
+                  ><span
+                    class="reveal-bar block h-full rounded-full bg-chart-main delay-300 w-full"
+                  ></span
+                ></span>
+              </li>
+              <li
+                class="reveal flex flex-wrap items-center gap-x-4 gap-y-2 sm:grid sm:grid-cols-12 rounded-xl border px-4 py-4 delay-200 sm:px-5 border-transparent"
+              >
+                <span
+                  class="col-span-8 flex min-w-0 flex-1 items-center gap-3 sm:col-span-4"
+                  ><span
+                    class="grid size-7 shrink-0 place-items-center rounded-md bg-baseline text-sm font-semibold text-on-step tabular-nums"
+                    >2</span
+                  ><span class="text-h3 text-ink">Memory</span></span
+                >
+                <span
+                  class="col-span-4 ml-auto text-right font-mono text-h3 font-semibold text-primary tabular-nums sm:order-last sm:col-span-2"
+                  >1.012</span
+                >
+                <span
+                  class="col-span-12 flex basis-full items-center gap-1.5 text-sm font-medium text-gap-strong tabular-nums sm:col-span-2"
+                  ><svg class="size-3.5 shrink-0" aria-hidden="true">
+                    <use href="#i-triangle-alert" /></svg
+                  >60 of 216</span
+                >
+                <span
+                  class="col-span-12 h-2.5 basis-full overflow-hidden rounded-full bg-surface-1 sm:col-span-4"
+                  ><span
+                    class="reveal-bar block h-full rounded-full bg-chart-main delay-400 w-1012/1067"
+                  ></span
+                ></span>
+              </li>
+              <li
+                class="reveal flex flex-wrap items-center gap-x-4 gap-y-2 sm:grid sm:grid-cols-12 rounded-xl border px-4 py-4 delay-300 sm:px-5 border-transparent"
+              >
+                <span
+                  class="col-span-8 flex min-w-0 flex-1 items-center gap-3 sm:col-span-4"
+                  ><span
+                    class="grid size-7 shrink-0 place-items-center rounded-md bg-baseline text-sm font-semibold text-on-step tabular-nums"
+                    >3</span
+                  ><span class="text-h3 text-ink">Processor</span></span
+                >
+                <span
+                  class="col-span-4 ml-auto text-right font-mono text-h3 font-semibold text-primary tabular-nums sm:order-last sm:col-span-2"
+                  >0.747</span
+                >
+                <span
+                  class="col-span-12 flex basis-full items-center gap-1.5 text-sm font-medium text-gap-strong tabular-nums sm:col-span-2"
+                  ><svg class="size-3.5 shrink-0" aria-hidden="true">
+                    <use href="#i-triangle-alert" /></svg
+                  >162 of 216</span
+                >
+                <span
+                  class="col-span-12 h-2.5 basis-full overflow-hidden rounded-full bg-surface-1 sm:col-span-4"
+                  ><span
+                    class="reveal-bar block h-full rounded-full bg-chart-main delay-500 w-747/1067"
+                  ></span
+                ></span>
+              </li>
+              <li
+                class="reveal flex flex-wrap items-center gap-x-4 gap-y-2 sm:grid sm:grid-cols-12 rounded-xl border px-4 py-4 delay-400 sm:px-5 border-transparent"
+              >
+                <span
+                  class="col-span-8 flex min-w-0 flex-1 items-center gap-3 sm:col-span-4"
+                  ><span
+                    class="grid size-7 shrink-0 place-items-center rounded-md bg-baseline text-sm font-semibold text-on-step tabular-nums"
+                    >4</span
+                  ><span class="text-h3 text-ink">Storage</span></span
+                >
+                <span
+                  class="col-span-4 ml-auto text-right font-mono text-h3 font-semibold text-primary tabular-nums sm:order-last sm:col-span-2"
+                  >0.688</span
+                >
+                <span
+                  class="col-span-12 flex basis-full items-center gap-1.5 text-sm font-medium text-gap-strong tabular-nums sm:col-span-2"
+                  ><svg class="size-3.5 shrink-0" aria-hidden="true">
+                    <use href="#i-triangle-alert" /></svg
+                  >55 of 216</span
+                >
+                <span
+                  class="col-span-12 h-2.5 basis-full overflow-hidden rounded-full bg-surface-1 sm:col-span-4"
+                  ><span
+                    class="reveal-bar block h-full rounded-full bg-chart-main delay-600 w-688/1067"
+                  ></span
+                ></span>
+              </li>
+            </ol>
+            <p class="px-2 pt-4 pb-1 text-xs text-muted sm:px-3">
+              Ranked by bits of decision information, not by how much is absent.
+              Example data.
+            </p>
           </div>
         </div>
       </section>
 
       <section class="scroll-mt-16 border-b border-line">
         <div class="frame py-20 lg:py-28">
-          <div class="grid gap-6 lg:grid-cols-12 lg:items-end">
-            <div class="lg:col-span-7">
-              <h2 class="reveal text-title text-balance">
-                How does the audit work?
-              </h2>
+          <h2 class="reveal text-title text-balance">
+            How does the audit work?
+          </h2>
+          <!-- Timeline: the calm line grows across the three stops as the section scrolls in (reveal-bar); on phones the
+               stops stack along a static line on the left. -->
+          <div class="relative mt-14">
+            <div
+              class="absolute top-2 inset-x-0 hidden h-1 overflow-hidden rounded-full bg-surface-1 md:block"
+              aria-hidden="true"
+            >
+              <span
+                class="reveal-bar block h-full w-full rounded-full bg-calm-gradient delay-150"
+              ></span>
             </div>
-            <p class="reveal text-lg text-pretty text-muted lg:col-span-5">
-              Three things happen, and only the first one needs anything from
-              you.
-            </p>
+            <div
+              class="absolute top-2 bottom-0 left-2 w-1 rounded-full bg-primary-line md:hidden"
+              aria-hidden="true"
+            ></div>
+            <ol class="relative grid gap-12 md:grid-cols-3 md:gap-10">
+              <li class="reveal relative pl-9 delay-150 md:pl-0">
+                <span
+                  class="absolute top-0.5 left-0 size-5 rounded-full border-4 border-card bg-primary ring-1 ring-primary-line md:static md:block"
+                  aria-hidden="true"
+                ></span>
+                <p class="text-data font-semibold text-primary md:mt-8">You</p>
+                <p class="text-sm text-muted">once</p>
+                <h3 class="mt-6 text-h3 text-ink">Send one category</h3>
+                <p
+                  class="mt-2 text-body leading-relaxed text-pretty text-muted"
+                >
+                  Provide a CSV or JSON file containing product names,
+                  descriptions, categories, prices, and existing attributes.
+                  Choose a category where shoppers struggle to find the right
+                  product.
+                </p>
+              </li>
+              <li class="reveal relative pl-9 delay-500 md:pl-0">
+                <span
+                  class="absolute top-0.5 left-0 size-5 rounded-full border-4 border-card bg-primary ring-1 ring-primary-line md:static md:block"
+                  aria-hidden="true"
+                ></span>
+                <p class="text-data font-semibold text-primary md:mt-8">We</p>
+                <p class="text-sm text-muted">within 48 hours</p>
+                <h3 class="mt-6 text-h3 text-ink">We measure it</h3>
+                <p
+                  class="mt-2 text-body leading-relaxed text-pretty text-muted"
+                >
+                  Within 48 hours, we measure how much each attribute helps tell
+                  products apart, and what it would be worth if recorded across
+                  the category, in bits rather than clicks.
+                </p>
+              </li>
+              <li class="reveal relative pl-9 delay-850 md:pl-0">
+                <span
+                  class="absolute top-0.5 left-0 size-5 rounded-full border-4 border-card bg-primary ring-1 ring-primary-line md:static md:block"
+                  aria-hidden="true"
+                ></span>
+                <p class="text-data font-semibold text-primary md:mt-8">
+                  30 minutes
+                </p>
+                <p class="text-sm text-muted">with your team</p>
+                <h3 class="mt-6 text-h3 text-ink">We walk you through it</h3>
+                <p
+                  class="mt-2 text-body leading-relaxed text-pretty text-muted"
+                >
+                  Receive a ranked list of attributes and supporting files. We
+                  walk you through the findings and discuss what it would take
+                  to act on them.
+                </p>
+              </li>
+            </ol>
           </div>
-          <ol class="mt-12 grid gap-6 md:grid-cols-3">
+        </div>
+      </section>
+
+      <section class="border-b border-line">
+        <div class="frame py-20 lg:py-28">
+          <h2 class="reveal max-w-2xl text-title text-balance">
+            What your business gains from the Decision Audit
+          </h2>
+          <ul class="mt-14 space-y-5">
             <li
-              class="reveal rounded-2xl border border-line bg-card p-6 shadow-sm delay-100"
+              class="reveal grid gap-8 rounded-2xl border border-line bg-card p-6 shadow-sm delay-100 sm:p-8 md:grid-cols-2 md:gap-x-12 lg:p-10"
             >
-              <div class="flex items-center gap-3">
-                <span
-                  class="grid size-9 place-items-center rounded-full bg-primary text-sm font-semibold text-on-primary tabular-nums"
-                  >01</span
+              <div class="min-w-0">
+                <p
+                  class="font-display text-display font-semibold text-gap-strong tabular-nums"
                 >
-                <span
-                  class="rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-semibold text-primary uppercase"
-                  >You, once</span
+                  <span data-count="357">357</span>
+                </p>
+                <p class="mt-1 text-sm text-muted">
+                  missing fields found on the example laptop shelf
+                </p>
+                <span class="block"
+                  ><span
+                    class="mt-5 flex h-2.5 gap-0.5 overflow-hidden rounded-full"
+                    aria-hidden="true"
+                    ><span
+                      class="reveal-bar h-full bg-chart-missing delay-300 w-80/357"
+                    ></span
+                    ><span
+                      class="reveal-bar h-full bg-chart-missing delay-400 w-60/357"
+                    ></span
+                    ><span
+                      class="reveal-bar h-full bg-chart-missing delay-500 w-162/357"
+                    ></span
+                    ><span
+                      class="reveal-bar h-full bg-chart-missing delay-600 w-55/357"
+                    ></span></span
+                  ><span
+                    class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-caption text-muted tabular-nums"
+                    aria-hidden="true"
+                    ><span class="flex items-center gap-1.5"
+                      ><span class="size-2 rounded-xs bg-chart-missing"></span
+                      >Screen size 80</span
+                    ><span class="flex items-center gap-1.5"
+                      ><span class="size-2 rounded-xs bg-chart-missing"></span
+                      >Memory 60</span
+                    ><span class="flex items-center gap-1.5"
+                      ><span class="size-2 rounded-xs bg-chart-missing"></span
+                      >Processor 162</span
+                    ><span class="flex items-center gap-1.5"
+                      ><span class="size-2 rounded-xs bg-chart-missing"></span
+                      >Storage 55</span
+                    ></span
+                  ></span
                 >
               </div>
-              <h3 class="mt-5 text-h3 text-ink">Send one category</h3>
-              <p class="mt-2 text-data leading-relaxed text-muted">
-                A CSV or JSON export of a single category. Product name,
-                description, category, price, and whatever attributes you
-                already record. Pick the shelf where you most suspect shoppers
-                struggle.
-              </p>
+              <div class="min-w-0 md:pt-3">
+                <h3 class="text-h3 text-ink">Identify catalogue gaps</h3>
+                <p
+                  class="mt-2 text-body leading-relaxed text-pretty text-muted"
+                >
+                  Discover missing product attributes that make it difficult for
+                  shoppers to compare products and find the right fit.
+                </p>
+              </div>
             </li>
             <li
-              class="reveal rounded-2xl border border-line bg-card p-6 shadow-sm delay-200"
+              class="reveal grid gap-8 rounded-2xl border border-line bg-card p-6 shadow-sm delay-200 sm:p-8 md:grid-cols-2 md:gap-x-12 lg:p-10"
             >
-              <div class="flex items-center gap-3">
-                <span
-                  class="grid size-9 place-items-center rounded-full bg-primary text-sm font-semibold text-on-primary tabular-nums"
-                  >02</span
+              <div class="min-w-0">
+                <p
+                  class="font-display text-display font-semibold text-ink tabular-nums"
                 >
-                <span
-                  class="rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-semibold text-primary uppercase"
-                  >Us, 48 hours</span
-                >
+                  <span class="text-primary" data-count="15">15</span
+                  ><span class="text-muted"> of 32</span>
+                </p>
+                <p class="mt-1 text-sm text-muted">
+                  shopper requirements need screen size, so it ranks first
+                </p>
+                <span class="reveal mt-5 block delay-300" aria-hidden="true"
+                  ><span class="grid grid-cols-32 gap-0.5"
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-chart-main"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span
+                    ><span class="h-2.5 rounded-xs bg-surface-1"></span></span
+                ></span>
               </div>
-              <h3 class="mt-5 text-h3 text-ink">We measure it</h3>
-              <p class="mt-2 text-data leading-relaxed text-muted">
-                We work out how much each attribute contributes to telling your
-                products apart today, and how much it would contribute if it
-                were recorded everywhere. The difference is what that field is
-                worth, measured in bits rather than guessed from clicks.
-              </p>
-            </li>
-            <li
-              class="reveal rounded-2xl border border-line bg-card p-6 shadow-sm delay-300"
-            >
-              <div class="flex items-center gap-3">
-                <span
-                  class="grid size-9 place-items-center rounded-full bg-primary text-sm font-semibold text-on-primary tabular-nums"
-                  >03</span
+              <div class="min-w-0 md:pt-3">
+                <h3 class="text-h3 text-ink">
+                  Identify decisive product attributes
+                </h3>
+                <p
+                  class="mt-2 text-body leading-relaxed text-pretty text-muted"
                 >
-                <span
-                  class="rounded-full bg-primary-tint px-2.5 py-0.5 text-xs font-semibold text-primary uppercase"
-                  >30 minutes</span
-                >
+                  Understand which product attributes matter most to shoppers,
+                  helping businesses prioritise essential product information.
+                </p>
               </div>
-              <h3 class="mt-5 text-h3 text-ink">We walk you through it</h3>
-              <p class="mt-2 text-data leading-relaxed text-muted">
-                You get the ranked list and the working files, then half an hour
-                with whoever owns merchandising to go through what it found and
-                what it would take to act on it.
-              </p>
             </li>
-          </ol>
+          </ul>
         </div>
       </section>
 
@@ -1540,7 +2533,7 @@
             <div class="reveal border-t border-line lg:col-span-8">
               <details class="group border-b border-line">
                 <summary
-                  class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink"
+                  class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink transition-colors duration-200 ease-out-soft group-open:text-primary hover:text-primary"
                 >
                   What exactly do I need to send you?
                   <svg
@@ -1561,7 +2554,7 @@
               </details>
               <details class="group border-b border-line">
                 <summary
-                  class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink"
+                  class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink transition-colors duration-200 ease-out-soft group-open:text-primary hover:text-primary"
                 >
                   Do I need a technical coordinator to use the product?
                   <svg
@@ -1579,7 +2572,7 @@
               </details>
               <details class="group border-b border-line">
                 <summary
-                  class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink"
+                  class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink transition-colors duration-200 ease-out-soft group-open:text-primary hover:text-primary"
                 >
                   How long does it take to receive the result?
                   <svg

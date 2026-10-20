@@ -710,6 +710,17 @@
     linear-gradient(to bottom, var(--color-grid-line) 1px, transparent 1px);
 }
 
+/* Icon on a fading grid (feature cards, after the owner's reference, 20 Oct 2026): 48px cells in the line colour,
+   centred so the icon sits in the middle cell, fading out towards the edges. Pair with a 240px square (size-60). */
+@utility icon-grid {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center;
+  mask-image: radial-gradient(closest-side, black 45%, transparent);
+}
+
 @utility blueprint-grid-dark {
   background-size: 24px 24px;
   background-image:
@@ -1032,6 +1043,16 @@
     color-mix(in oklab, var(--color-surface-0) 92%, transparent) 55%,
     transparent 85%
   );
+  /* phones: the description runs to four or five lines, so the fade holds stronger and longer (muted text stays AA
+     over the busiest frames: the Decision Monitor segments card sits right behind it at 375px) */
+  @media (width < 40rem) {
+    background-image: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-surface-0) 97%, transparent) 0%,
+      color-mix(in oklab, var(--color-surface-0) 97%, transparent) 66%,
+      transparent 92%
+    );
+  }
   @media (width >= 80rem) {
     background-image:
       radial-gradient(

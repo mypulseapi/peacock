@@ -503,6 +503,95 @@ if (demo) {
   go(0);
 }
 
+// Story board (Decision Audit page): one [data-story] figure plays its [data-scene] beat timeline, the same model
+// as How it works (data-play, then data-b2 … at the ms in data-beats; pre-N / at-N variants in CSS). It loops
+// while on screen; its pause button (data-held) holds it on the current beat, and it carries on from there
+// (hovering does not pause it, owner's choice 20 Oct 2026). With data-once it plays one time and rests on its last beat (the Verification before/after
+// meter). Without JS or with reduced motion it never starts, so the board shows its final frame.
+document.querySelectorAll("[data-story]").forEach((story) => {
+  const scene = story.querySelector("[data-scene]");
+  if (!scene || reduceMotion) return;
+  const HOLD = 2600; // ms the final frame stays before the loop restarts
+  const FADE = 400; // ms, matches how-scene's opacity transition
+  const beats = scene.dataset.beats.split(" ").map(Number);
+  const end = beats[beats.length - 1] + HOLD;
+  const once = story.hasAttribute("data-once"); // plays one time and rests on its last beat (no fade, no loop)
+  let done = false;
+  let timers = [];
+  let at = 0; // ms into the loop where it was paused
+  let startedAt = 0;
+  let running = false;
+  let onScreen = false;
+
+  const clear = () => {
+    timers.forEach(clearTimeout);
+    timers = [];
+  };
+  const run = () => {
+    clear();
+    if (at === 0) {
+      // jump back to the first beat without transitions
+      scene.setAttribute("data-instant", "");
+      for (let b = 2; b <= 9; b++) scene.removeAttribute(`data-b${b}`);
+      scene.removeAttribute("data-fade");
+      scene.setAttribute("data-play", "");
+      void scene.offsetWidth;
+      scene.removeAttribute("data-instant");
+    }
+    startedAt = performance.now() - at;
+    beats.forEach((t, i) => {
+      if (i > 0 && t > at)
+        timers.push(
+          setTimeout(() => {
+            scene.setAttribute(`data-b${i + 1}`, "");
+            if (once && i === beats.length - 1) done = true;
+          }, t - at),
+        );
+    });
+    if (once) return;
+    timers.push(
+      setTimeout(
+        () => {
+          scene.setAttribute("data-fade", "");
+          timers.push(
+            setTimeout(() => {
+              at = 0;
+              run();
+            }, FADE),
+          );
+        },
+        Math.max(0, end - at),
+      ),
+    );
+  };
+  const sync = () => {
+    if (done) return;
+    const want = onScreen && !story.hasAttribute("data-held");
+    if (want === running) return;
+    running = want;
+    if (want) return run();
+    clear();
+    at = performance.now() - startedAt;
+    if (at >= end) {
+      // paused while fading out: the next play starts at the first beat
+      scene.removeAttribute("data-fade");
+      at = 0;
+    }
+  };
+
+  new MutationObserver(sync).observe(story, {
+    attributes: true,
+    attributeFilter: ["data-held"],
+  });
+  new IntersectionObserver(
+    ([entry]) => {
+      onScreen = entry.isIntersecting;
+      sync();
+    },
+    { threshold: 0.4 },
+  ).observe(story);
+});
+
 // Pause buttons for content that moves by itself (WCAG 2.2.2): [data-pause] toggles data-held on its
 // [data-pausable] wrapper (CSS stops the hero demo timer); aria-pressed and the icon follow.
 document.querySelectorAll("[data-pause]").forEach((button) => {
@@ -535,7 +624,6 @@ if (why) {
 
   // the ring stops while the pointer or keyboard focus is on the orbit (so the circles hold still to be picked),
   // while a card is open, and off screen; the animation loop only runs while it turns
-  let hovered = false;
   let frame = 0;
   // touch screens have no hover to hold it still, so there the ring does not turn by itself (WCAG 2.2.2)
   const noHover = window.matchMedia("(hover: none)").matches;

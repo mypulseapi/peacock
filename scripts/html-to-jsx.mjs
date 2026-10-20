@@ -350,6 +350,42 @@ function anchorsToLinks(html) {
   return { html: out, converted };
 }
 
+/**
+ * `<template>` content has to be opaque to React.
+ *
+ * A template's children are inert markup, cloned later by script. React renders them as real
+ * children and then cannot match them on hydration, which fails the whole tree: "Hydration
+ * failed because the server rendered HTML didn't match the client", and everything below the
+ * boundary is thrown away and re-rendered. On a page whose content is revealed by that same
+ * script, the result is a blank page.
+ *
+ * Passing the content as `dangerouslySetInnerHTML` tells React to leave it alone, which is what
+ * the designer's plain HTML does anyway.
+ */
+function templatesToInnerHtml(html) {
+  return html.replace(/<template\b([^>]*)>([\s\S]*?)<\/template>/g, (_m, attrs, inner) => {
+    const content = JSON.stringify(inner);
+    return `<template${attrs} dangerouslySetInnerHTML={{ __html: ${content} }} />`;
+  });
+}
+
+/**
+ * `value` on a field React would call controlled becomes `defaultValue`.
+ *
+ * In HTML `value` is the initial value. In React it makes a controlled input, and without an
+ * `onChange` the field is read-only and React warns on every one. The designer's sliders and
+ * number inputs are plain HTML with their initial value in the markup, so `defaultValue` is the
+ * faithful translation.
+ *
+ * `<option value>` is left alone: there it means what React means by it.
+ */
+function valueToDefaultValue(html) {
+  return html.replace(/<(input|textarea|select)\b([^>]*)>/gi, (whole, tag, attrs) => {
+    if (/\bonChange=/.test(attrs) || !/\bvalue=/.test(attrs)) return whole;
+    return `<${tag}${attrs.replace(/\bvalue=/, "defaultValue=")}>`;
+  });
+}
+
 function toJsx(html, locale = LOCALE) {
   let out = html;
   /*
@@ -365,9 +401,20 @@ function toJsx(html, locale = LOCALE) {
   out = convertComments(out);
   out = rewriteAssetPaths(out);
   out = rewriteLinks(out, locale);
+  /*
+   * Before the JSX transforms, not after.
+   *
+   * A template's content is raw HTML handed to `dangerouslySetInnerHTML`, so it must keep
+   * `class=` and its original attribute names. Extracting it after `renameAttributes` baked
+   * `className=` into a string the browser parses as HTML, where className means nothing and the
+   * element would render unstyled. Link and asset rewriting still has to happen first, because
+   * those apply to the template's content too.
+   */
+  out = templatesToInnerHtml(out);
   out = renameAttributes(out);
   out = convertStyles(out);
   out = numericAttributes(out);
+  out = valueToDefaultValue(out);
   out = stripInlineHandlers(out);
   out = closeVoids(out);
   const linked = anchorsToLinks(out);

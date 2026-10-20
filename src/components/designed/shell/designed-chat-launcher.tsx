@@ -6,8 +6,6 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import Link from "next/link";
-
 export function DesignedChatLauncher() {
   return (
     <div data-chat>
@@ -124,23 +122,7 @@ export function DesignedChatLauncher() {
                 </div>
               </div>
             </form>
-            <template data-chat-reply>
-              <div
-                className="mr-10 w-fit rounded-2xl bg-surface-1 px-4 py-3 text-data text-pretty text-ink"
-              >
-                Thanks. The assistant is not connected yet, so it cannot answer
-                this. For now, write to
-                <a
-                  href="mailto:getintouch@thepulseapi.com"
-                  className="font-semibold text-primary underline decoration-primary-line underline-offset-4"
-                  >getintouch@thepulseapi.com</a
-                >
-                or use the
-                <Link               href="/en/contact"
-                  className="font-semibold text-primary underline decoration-primary-line underline-offset-4"
-                  >contact page</Link>.
-              </div>
-            </template>
+            <template data-chat-reply dangerouslySetInnerHTML={{ __html: "\n          <div\n            class=\"mr-10 w-fit rounded-2xl bg-surface-1 px-4 py-3 text-data text-pretty text-ink\"\n          >\n            Thanks. The assistant is not connected yet, so it cannot answer\n            this. For now, write to\n            <a\n              href=\"mailto:getintouch@thepulseapi.com\"\n              class=\"font-semibold text-primary underline decoration-primary-line underline-offset-4\"\n              >getintouch@thepulseapi.com</a\n            >\n            or use the\n            <a\n              href=\"/en/contact\"\n              class=\"font-semibold text-primary underline decoration-primary-line underline-offset-4\"\n              >contact page</a\n            >.\n          </div>\n        " }} />
           </section>
         </div>
   );

@@ -125,7 +125,7 @@ export function RevenueSection() {
                         min="0"
                         max="100000000"
                         step="1000"
-                        value="100000"
+                        defaultValue="100000"
                         className="field mt-2 tabular-nums"
                       />
                     </div>
@@ -141,7 +141,7 @@ export function RevenueSection() {
                         min="0"
                         max="100000"
                         step="0.01"
-                        value="50"
+                        defaultValue="50"
                         className="field mt-2 tabular-nums"
                       />
                     </div>
@@ -165,7 +165,7 @@ export function RevenueSection() {
                         min="0"
                         max="100"
                         step="0.1"
-                        value="10"
+                        defaultValue="10"
                         className="range-control mt-1"
                       />
                     </div>
@@ -191,7 +191,7 @@ export function RevenueSection() {
                         min="0"
                         max="100"
                         step="0.1"
-                        value="2.2"
+                        defaultValue="2.2"
                         className="range-control mt-1"
                       />
                       <p data-out="relative" className="text-caption text-muted">

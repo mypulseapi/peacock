@@ -88,21 +88,32 @@ function show(el) {
   }
 }
 
+// A .reveal-bar starts at scale 0, a zero-width box at the edge of its clipped track; when the page is zoomed
+// (90%, 80% …) such a box can fall just outside the clip and never count as visible, so the bar would never grow.
+// Bars are therefore watched through their track (the parent, which always has a width) and shown with it.
+const REVEALS = ".reveal, [data-count], [data-type], [data-shelf]";
+const barsByTrack = new Map();
 const revealObserver = new IntersectionObserver(
   (entries) => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
-      show(entry.target);
+      const bars = barsByTrack.get(entry.target);
+      if (bars) bars.forEach(show);
+      if (!bars || entry.target.matches(REVEALS)) show(entry.target);
       revealObserver.unobserve(entry.target);
     }
   },
   { rootMargin: "0px 0px -10% 0px" },
 );
-document
-  .querySelectorAll(
-    ".reveal, .reveal-bar, [data-count], [data-type], [data-shelf]",
-  )
-  .forEach((el) => revealObserver.observe(el));
+document.querySelectorAll(REVEALS).forEach((el) => revealObserver.observe(el));
+document.querySelectorAll(".reveal-bar").forEach((bar) => {
+  const track = bar.parentElement;
+  if (!barsByTrack.has(track)) {
+    barsByTrack.set(track, []);
+    revealObserver.observe(track);
+  }
+  barsByTrack.get(track).push(bar);
+});
 
 // Scroll-spy for the sticky step navigation. Sets [data-active] and aria-current="location" on the link for the
 // last section whose heading has passed 40% of the viewport (so fast scrolling or a jump never skips one), clears it
@@ -508,9 +519,34 @@ if (demo) {
 // while on screen; its pause button (data-held) holds it on the current beat, and it carries on from there
 // (hovering does not pause it, owner's choice 20 Oct 2026). With data-once it plays one time and rests on its last beat (the Verification before/after
 // meter). Without JS or with reduced motion it never starts, so the board shows its final frame.
+// Step buttons ([data-story-step="N"], disabled in the HTML so they do nothing without JS) jump to beat N: the
+// earlier beats are set at once, beat N's own transition plays, and the story carries on from there (or stays put
+// while paused). With reduced motion they still switch steps, instantly and without autoplay.
 document.querySelectorAll("[data-story]").forEach((story) => {
   const scene = story.querySelector("[data-scene]");
-  if (!scene || reduceMotion) return;
+  if (!scene) return;
+  const steps = story.querySelectorAll("[data-story-step]");
+  const mark = (n) =>
+    steps.forEach((step) =>
+      step.toggleAttribute(
+        "aria-current",
+        Number(step.dataset.storyStep) === n,
+      ),
+    );
+  if (reduceMotion) {
+    steps.forEach((step) => {
+      step.disabled = false;
+      step.addEventListener("click", () => {
+        const n = Number(step.dataset.storyStep);
+        scene.setAttribute("data-instant", "");
+        scene.setAttribute("data-play", "");
+        for (let b = 2; b <= 9; b++)
+          scene.toggleAttribute(`data-b${b}`, b <= n);
+        mark(n);
+      });
+    });
+    return;
+  }
   const HOLD = 2600; // ms the final frame stays before the loop restarts
   const FADE = 400; // ms, matches how-scene's opacity transition
   const beats = scene.dataset.beats.split(" ").map(Number);
@@ -537,6 +573,7 @@ document.querySelectorAll("[data-story]").forEach((story) => {
       scene.setAttribute("data-play", "");
       void scene.offsetWidth;
       scene.removeAttribute("data-instant");
+      mark(1);
     }
     startedAt = performance.now() - at;
     beats.forEach((t, i) => {
@@ -544,6 +581,7 @@ document.querySelectorAll("[data-story]").forEach((story) => {
         timers.push(
           setTimeout(() => {
             scene.setAttribute(`data-b${i + 1}`, "");
+            mark(i + 1);
             if (once && i === beats.length - 1) done = true;
           }, t - at),
         );
@@ -579,6 +617,26 @@ document.querySelectorAll("[data-story]").forEach((story) => {
     }
   };
 
+  const goTo = (n) => {
+    clear();
+    scene.setAttribute("data-instant", "");
+    scene.removeAttribute("data-fade");
+    scene.setAttribute("data-play", "");
+    for (let b = 2; b <= 9; b++) scene.toggleAttribute(`data-b${b}`, b < n);
+    void scene.offsetWidth;
+    scene.removeAttribute("data-instant");
+    if (n > 1) scene.setAttribute(`data-b${n}`, "");
+    mark(n);
+    at = beats[n - 1];
+    done = once && n === beats.length;
+    startedAt = performance.now() - at;
+    if (running && !done) run();
+  };
+  steps.forEach((step) => {
+    step.disabled = false;
+    step.addEventListener("click", () => goTo(Number(step.dataset.storyStep)));
+  });
+
   new MutationObserver(sync).observe(story, {
     attributes: true,
     attributeFilter: ["data-held"],
@@ -590,6 +648,95 @@ document.querySelectorAll("[data-story]").forEach((story) => {
     },
     { threshold: 0.4 },
   ).observe(story);
+});
+
+// Revenue calculator (home, [data-calc]), as the owner specified:
+//   maxIncrease   = 100 − currentCR
+//   validIncrease = max(0, min(expectedIncrease, maxIncrease))
+//   projectedCR   = currentCR + validIncrease
+// Current revenue = visits × currentCR × order value; the potential addition is the projected revenue minus the
+// current one (visits × validIncrease × order value). Both sliders keep a fixed 0–100 scale and share 100%: the one
+// being dragged stops at the room the other leaves (it never pushes the other thumb), the used-up part of its track
+// is pale, and a slider with no room left is disabled; so validIncrease always equals the chosen increase. Number fields are clamped to their min/max (shown back when the field is left). Results of a million or
+// more use the short form ($55M). The HTML holds the result for the default inputs, so it reads without JavaScript.
+document.querySelectorAll("[data-calc]").forEach((calc) => {
+  const field = (name) => calc.querySelector(`[name="${name}"]`);
+  const out = (name) => calc.querySelector(`[data-out="${name}"]`);
+  const full = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
+  const short = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    notation: "compact",
+    maximumFractionDigits: 1,
+  });
+  const money = (v) => (v >= 1e6 ? short : full).format(v);
+  const round = (v) => Math.round(v * 10) / 10;
+  const pct = (v) => `${round(v)}%`;
+  const clamp = (input) => {
+    const v = Number(input.value);
+    const lo = Number(input.min),
+      hi = Number(input.max);
+    return Math.min(Math.max(Number.isFinite(v) ? v : 0, lo), hi);
+  };
+  const conv = field("conv"),
+    uplift = field("uplift");
+  const update = () => {
+    const visits = clamp(field("visits"));
+    const aov = clamp(field("aov"));
+    const currentCR = Number(conv.value);
+    const expectedIncrease = Number(uplift.value);
+    const maxIncrease = round(100 - currentCR);
+    const validIncrease = Math.max(0, Math.min(expectedIncrease, maxIncrease));
+    const projectedCR = round(currentCR + validIncrease);
+    // sliders: fill to the thumb; the uplift track turns pale past maxIncrease
+    // each track is pale past the room the other slider leaves; a slider with no room left is disabled
+    const convRoom = round(100 - expectedIncrease);
+    conv.style.setProperty("--range-fill", `${currentCR}%`);
+    conv.style.setProperty("--range-room", `${convRoom}%`);
+    conv.disabled = convRoom <= 0 && currentCR <= 0;
+    uplift.style.setProperty("--range-fill", `${validIncrease}%`);
+    uplift.style.setProperty("--range-room", `${maxIncrease}%`);
+    uplift.disabled = maxIncrease <= 0 && expectedIncrease <= 0;
+    out("conv").textContent = pct(currentCR);
+    out("uplift").textContent = `+${validIncrease.toFixed(1)} points`;
+    conv.setAttribute("aria-valuetext", pct(currentCR));
+    uplift.setAttribute(
+      "aria-valuetext",
+      `plus ${validIncrease.toFixed(1)} percentage points`,
+    );
+    out("relative").textContent =
+      expectedIncrease > maxIncrease
+        ? `Projected conversion rate ${pct(projectedCR)}. The increase is capped at ${maxIncrease.toFixed(1)} points, because a conversion rate cannot pass 100%.`
+        : `Projected conversion rate ${pct(projectedCR)} (${pct(currentCR)} now + ${validIncrease.toFixed(1)} points).`;
+    const currentRevenue = (visits * currentCR * aov) / 100;
+    const projectedRevenue = (visits * projectedCR * aov) / 100;
+    out("current").textContent = money(currentRevenue);
+    out("extra").textContent = `+${money(projectedRevenue - currentRevenue)}`;
+  };
+  calc.addEventListener("input", (e) => {
+    // the slider being dragged stops at the room the other one leaves (never pushes the other thumb)
+    const stop = (moved, other) => {
+      const room = round(100 - Number(other.value));
+      if (Number(moved.value) > room) moved.value = String(room);
+    };
+    if (e.target === conv) stop(conv, uplift);
+    if (e.target === uplift) stop(uplift, conv);
+    update();
+  });
+  // when a number field is left, show the value the calculation used (clamped, never empty)
+  calc.addEventListener("change", (e) => {
+    if (!e.target.matches?.('input[type="number"]')) return;
+    e.target.value = String(clamp(e.target));
+    update();
+  });
+  calc
+    .querySelector("form")
+    ?.addEventListener("submit", (e) => e.preventDefault());
+  update();
 });
 
 // Pause buttons for content that moves by itself (WCAG 2.2.2): [data-pause] toggles data-held on its

@@ -723,7 +723,7 @@
       data-nav
     >
       <div
-        class="mx-auto flex h-17 max-w-band items-center justify-between gap-4 px-6 lg:gap-2 lg:px-8 xl:gap-4"
+        class="frame flex h-17 items-center justify-between gap-4 lg:gap-2 xl:gap-4"
       >
         <a
           href="./index.html"
@@ -1179,7 +1179,7 @@
             </svg>
           </summary>
           <div
-            class="fixed inset-x-0 top-17 bottom-0 animate-dropdown overflow-y-auto border-t border-line bg-card px-6 pt-4 pb-10 motion-reduce:animate-none"
+            class="fixed inset-x-0 top-17 bottom-0 animate-dropdown overflow-y-auto border-t border-line bg-card pt-4 pb-10 motion-reduce:animate-none md:px-4"
           >
             <a
               href="about.html"
@@ -1336,32 +1336,62 @@
     </header>
     <!-- /shell:header -->
     <main id="main">
+      <!-- Contact (layout after the owner's reference, 20 Oct 2026): one hero section. Left: heading, intro, three
+           facts taken from this page, then the card with the direct addresses. Right: the
+           form, spanning both rows on desktop. -->
       <section class="hero-bg border-b border-line">
-        <div class="frame py-20 lg:py-24">
-          <h1 class="reveal mt-3 max-w-3xl text-headline text-balance">
-            Send one catalogue. Get the findings in 48 hours
-          </h1>
-          <p
-            class="reveal mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted delay-100"
-          >
-            Pick the category where you most suspect shoppers struggle. We need
-            a product export, no code, no tag on your site, no customer data,
-            and we come back with what your catalogue cannot currently tell
-            anyone.
-          </p>
-        </div>
-      </section>
-
-      <section class="border-b border-line">
-        <div class="frame grid gap-10 py-20 lg:grid-cols-12 lg:py-24">
-          <!-- Layout only for now: the form is not connected to anything yet (static site, no backend) -->
+        <div
+          class="frame grid gap-10 py-16 lg:grid-cols-12 lg:gap-x-12 lg:gap-y-12 lg:py-24"
+        >
+          <div class="lg:col-span-6">
+            <h1 class="reveal text-headline text-balance">
+              Send one catalogue. Get the findings in 48 hours
+            </h1>
+            <p
+              class="reveal mt-6 text-lg leading-relaxed text-pretty text-muted delay-100"
+            >
+              Pick the category where you most suspect shoppers struggle. We
+              need a product export, no code, no tag on your site, no customer
+              data, and we come back with what your catalogue cannot currently
+              tell anyone.
+            </p>
+            <ul class="reveal mt-8 space-y-4 text-body text-ink delay-150">
+              <li class="flex items-start gap-3">
+                <svg
+                  class="mt-0.5 size-5 shrink-0 text-primary"
+                  aria-hidden="true"
+                >
+                  <use href="#i-circle-check" />
+                </svg>
+                One category, one export, no account and no card
+              </li>
+              <li class="flex items-start gap-3">
+                <svg
+                  class="mt-0.5 size-5 shrink-0 text-primary"
+                  aria-hidden="true"
+                >
+                  <use href="#i-circle-check" />
+                </svg>
+                Findings within 48 hours of your export landing
+              </li>
+              <li class="flex items-start gap-3">
+                <svg
+                  class="mt-0.5 size-5 shrink-0 text-primary"
+                  aria-hidden="true"
+                >
+                  <use href="#i-circle-check" />
+                </svg>
+                No code, no tag on your site, no customer data
+              </li>
+            </ul>
+          </div>
           <form
-            class="reveal rounded-3xl border border-line bg-card p-6 shadow-sm lg:col-span-8 lg:p-10"
+            class="reveal rounded-3xl border border-line bg-card p-6 shadow-sm delay-200 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:p-8"
             onsubmit="return false;"
             aria-describedby="form-note"
           >
             <h2 class="text-h2 text-ink">Send us a message</h2>
-            <div class="mt-8 grid gap-5 sm:grid-cols-2">
+            <div class="mt-6 grid gap-5 sm:grid-cols-2">
               <div>
                 <label
                   for="f-name"
@@ -1488,11 +1518,11 @@
                 </p>
               </div>
             </div>
-            <div class="mt-8 flex flex-wrap items-center gap-4">
-              <button type="submit" class="btn-primary" disabled>
+            <div class="mt-8">
+              <button type="submit" class="btn-primary w-full" disabled>
                 Send Message
               </button>
-              <p id="form-note" class="text-sm text-muted">
+              <p id="form-note" class="mt-4 text-sm text-pretty text-muted">
                 The form is not connected yet. For now, email
                 <a
                   href="mailto:getintouch@thepulseapi.com"
@@ -1502,17 +1532,15 @@
               </p>
             </div>
           </form>
-          <aside class="reveal delay-200 lg:col-span-4">
-            <div
-              class="rounded-3xl border border-line bg-surface-1/50 p-6 lg:p-8"
-            >
-              <h3 class="text-h3 text-ink">Or contact us directly</h3>
-              <ul class="mt-6 space-y-5">
+          <div class="reveal grid content-end gap-5 delay-300 lg:col-span-6">
+            <div class="rounded-2xl border border-line bg-card p-6 shadow-sm">
+              <h2 class="text-h3 text-ink">Or contact us directly</h2>
+              <ul class="mt-4 grid gap-x-6 gap-y-3 sm:grid-cols-2">
                 <li>
                   <p class="text-sm text-muted">Sales enquiry</p>
                   <a
                     href="mailto:sales@thepulseapi.com"
-                    class="text-data font-semibold text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
+                    class="text-data font-semibold break-all text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
                     >sales@thepulseapi.com</a
                   >
                 </li>
@@ -1520,7 +1548,7 @@
                   <p class="text-sm text-muted">Technical support</p>
                   <a
                     href="mailto:support@thepulseapi.com"
-                    class="text-data font-semibold text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
+                    class="text-data font-semibold break-all text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
                     >support@thepulseapi.com</a
                   >
                 </li>
@@ -1528,7 +1556,7 @@
                   <p class="text-sm text-muted">Partnerships</p>
                   <a
                     href="mailto:partners@thepulseapi.com"
-                    class="text-data font-semibold text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
+                    class="text-data font-semibold break-all text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
                     >partners@thepulseapi.com</a
                   >
                 </li>
@@ -1536,7 +1564,7 @@
                   <p class="text-sm text-muted">Press and media</p>
                   <a
                     href="mailto:press@thepulseapi.com"
-                    class="text-data font-semibold text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
+                    class="text-data font-semibold break-all text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
                     >press@thepulseapi.com</a
                   >
                 </li>
@@ -1544,13 +1572,13 @@
                   <p class="text-sm text-muted">General enquiry</p>
                   <a
                     href="mailto:getintouch@thepulseapi.com"
-                    class="text-data font-semibold text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
+                    class="text-data font-semibold break-all text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
                     >getintouch@thepulseapi.com</a
                   >
                 </li>
               </ul>
             </div>
-          </aside>
+          </div>
         </div>
       </section>
 

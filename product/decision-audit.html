@@ -727,7 +727,7 @@
       data-nav
     >
       <div
-        class="mx-auto flex h-17 max-w-band items-center justify-between gap-4 px-6 lg:gap-2 lg:px-8 xl:gap-4"
+        class="frame flex h-17 items-center justify-between gap-4 lg:gap-2 xl:gap-4"
       >
         <a
           href="../index.html"
@@ -1182,7 +1182,7 @@
             </svg>
           </summary>
           <div
-            class="fixed inset-x-0 top-17 bottom-0 animate-dropdown overflow-y-auto border-t border-line bg-card px-6 pt-4 pb-10 motion-reduce:animate-none"
+            class="fixed inset-x-0 top-17 bottom-0 animate-dropdown overflow-y-auto border-t border-line bg-card pt-4 pb-10 motion-reduce:animate-none md:px-4"
           >
             <a
               href="../about.html"
@@ -1456,54 +1456,73 @@
                   class="how-scene p-5 sm:p-6"
                   data-scene
                   data-beats="0 2800 5600 8400"
-                  role="img"
-                  aria-label="Example: a laptop shelf of 216 products. 1, the problem: 357 fields are missing and 94 products cannot be told apart. 2, the audit: each attribute is scored against 32 shopper requirements. 3, the priority: ranked by bits of decision information, screen size comes first and processor is only third, although 162 products miss it. 4, the repair: screen size is recorded on all 216 products, and 185 of 216 can now be told apart, up from 122."
                 >
                   <ol
                     class="grid grid-cols-4 gap-2 border-b border-line pb-4 text-xs font-medium"
-                    aria-hidden="true"
+                    aria-label="Steps of the audit"
                   >
-                    <li
-                      class="flex items-center gap-2 transition-colors duration-300 ease-out-soft text-muted pre-2:text-ink"
-                    >
-                      <span
-                        class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line pre-2:bg-primary"
-                      ></span
-                      ><span class="tabular-nums">01</span
-                      ><span class="max-sm:sr-only">The problem</span>
+                    <li>
+                      <button
+                        type="button"
+                        class="hit-area flex w-full cursor-pointer items-center gap-2 rounded text-left transition-colors duration-300 ease-out-soft text-muted pre-2:text-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-focus disabled:cursor-default"
+                        data-story-step="1"
+                        disabled
+                      >
+                        <span
+                          class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line pre-2:bg-primary"
+                        ></span
+                        ><span class="tabular-nums">01</span
+                        ><span class="max-sm:sr-only">The problem</span>
+                      </button>
                     </li>
-                    <li
-                      class="flex items-center gap-2 transition-colors duration-300 ease-out-soft text-muted at-2:text-ink"
-                    >
-                      <span
-                        class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line at-2:bg-primary"
-                      ></span
-                      ><span class="tabular-nums">02</span
-                      ><span class="max-sm:sr-only">The audit</span>
+                    <li>
+                      <button
+                        type="button"
+                        class="hit-area flex w-full cursor-pointer items-center gap-2 rounded text-left transition-colors duration-300 ease-out-soft text-muted at-2:text-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-focus disabled:cursor-default"
+                        data-story-step="2"
+                        disabled
+                      >
+                        <span
+                          class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line at-2:bg-primary"
+                        ></span
+                        ><span class="tabular-nums">02</span
+                        ><span class="max-sm:sr-only">The audit</span>
+                      </button>
                     </li>
-                    <li
-                      class="flex items-center gap-2 transition-colors duration-300 ease-out-soft text-muted at-3:text-ink"
-                    >
-                      <span
-                        class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line at-3:bg-primary"
-                      ></span
-                      ><span class="tabular-nums">03</span
-                      ><span class="max-sm:sr-only">The priority</span>
+                    <li>
+                      <button
+                        type="button"
+                        class="hit-area flex w-full cursor-pointer items-center gap-2 rounded text-left transition-colors duration-300 ease-out-soft text-muted at-3:text-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-focus disabled:cursor-default"
+                        data-story-step="3"
+                        disabled
+                      >
+                        <span
+                          class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line at-3:bg-primary"
+                        ></span
+                        ><span class="tabular-nums">03</span
+                        ><span class="max-sm:sr-only">The priority</span>
+                      </button>
                     </li>
-                    <li
-                      class="flex items-center gap-2 transition-colors duration-300 ease-out-soft text-ink pre-4:text-muted"
-                    >
-                      <span
-                        class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-primary pre-4:bg-line"
-                      ></span
-                      ><span class="tabular-nums">04</span
-                      ><span class="max-sm:sr-only">The repair</span>
+                    <li>
+                      <button
+                        type="button"
+                        class="hit-area flex w-full cursor-pointer items-center gap-2 rounded text-left transition-colors duration-300 ease-out-soft text-ink pre-4:text-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-focus disabled:cursor-default"
+                        data-story-step="4"
+                        disabled
+                      >
+                        <span
+                          class="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-primary pre-4:bg-line"
+                        ></span
+                        ><span class="tabular-nums">04</span
+                        ><span class="max-sm:sr-only">The repair</span>
+                      </button>
                     </li>
                   </ol>
 
                   <div
                     class="mt-6 grid gap-6 sm:grid-cols-5"
-                    aria-hidden="true"
+                    role="img"
+                    aria-label="Example: a laptop shelf of 216 products. 1, the problem: 357 fields are missing and 94 products cannot be told apart. 2, the audit: each attribute is scored against 32 shopper requirements. 3, the priority: ranked by bits of decision information, screen size comes first and processor is only third, although 162 products miss it. 4, the repair: screen size is recorded on all 216 products, and 185 of 216 can now be told apart, up from 122."
                   >
                     <div class="min-w-0 sm:col-span-3">
                       <div class="relative overflow-hidden rounded-lg">

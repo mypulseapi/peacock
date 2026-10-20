@@ -735,7 +735,7 @@
       data-nav
     >
       <div
-        class="mx-auto flex h-17 max-w-band items-center justify-between gap-4 px-6 lg:gap-2 lg:px-8 xl:gap-4"
+        class="frame flex h-17 items-center justify-between gap-4 lg:gap-2 xl:gap-4"
       >
         <a
           href="../index.html"
@@ -1190,7 +1190,7 @@
             </svg>
           </summary>
           <div
-            class="fixed inset-x-0 top-17 bottom-0 animate-dropdown overflow-y-auto border-t border-line bg-card px-6 pt-4 pb-10 motion-reduce:animate-none"
+            class="fixed inset-x-0 top-17 bottom-0 animate-dropdown overflow-y-auto border-t border-line bg-card pt-4 pb-10 motion-reduce:animate-none md:px-4"
           >
             <a
               href="../about.html"
@@ -1453,7 +1453,7 @@
                   aria-label="Fields filled on the example shelf: 71% before, 93% after, up 22 percentage points."
                 >
                   <div
-                    class="flex flex-wrap gap-x-12 gap-y-6"
+                    class="flex flex-wrap justify-between gap-x-12 gap-y-6"
                     aria-hidden="true"
                   >
                     <div class="min-w-0">
@@ -1465,7 +1465,7 @@
                       </p>
                       <p class="text-sm text-muted">Fields filled</p>
                     </div>
-                    <div class="min-w-0">
+                    <div class="ml-auto min-w-0 text-right">
                       <p class="text-sm text-muted">After</p>
                       <p
                         class="mt-1 font-display text-display font-semibold text-ink tabular-nums"
@@ -1478,16 +1478,16 @@
                       <p class="text-sm text-muted">Fields filled</p>
                     </div>
                   </div>
-                  <p class="mt-5" aria-hidden="true">
+                  <div class="relative mt-6 h-7" aria-hidden="true">
                     <span
-                      class="inline-flex origin-left items-center gap-1 rounded-full border border-primary-line bg-primary-tint px-2 py-0.5 text-xs font-semibold text-primary-hover tabular-nums transition duration-300 ease-out-soft pre-3:translate-y-1 pre-3:scale-95 pre-3:opacity-0"
+                      class="absolute bottom-1 left-82/100 inline-flex w-max origin-bottom -translate-x-1/2 items-center gap-1 text-xs font-semibold text-primary tabular-nums transition duration-300 ease-out-soft pre-3:translate-y-1 pre-3:scale-95 pre-3:opacity-0"
                       ><svg class="size-3.5" aria-hidden="true">
                         <use href="#i-trending-up" /></svg
                       >+22 points</span
                     >
-                  </p>
+                  </div>
                   <!-- the meter: 71% already filled (grey), the 22 new points grow out of the 71 marker (blue) -->
-                  <div class="relative mt-4" aria-hidden="true">
+                  <div class="relative" aria-hidden="true">
                     <div
                       class="relative h-3 overflow-hidden rounded-full bg-surface-1"
                     >

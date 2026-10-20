@@ -1663,3 +1663,207 @@ html[data-theme="dark"] mark.fact { background: rgb(var(--sig-rgb) / .18); color
 .logo-dark { display: none; }
 html[data-theme="dark"] .logo-light { display: none; }
 html[data-theme="dark"] .logo-dark { display: block; }
+
+/* ==================================================================== */
+/* SIGNAL — the brand, ported from the HTML site (19 Oct 2026).          */
+/*                                                                      */
+/* Source of truth: docs/pulse_brand_guidelines_final.md, via the        */
+/* `src/input.css` that styled the hand-written site this app replaced.  */
+/*                                                                      */
+/* It is appended rather than merged because everything above is five    */
+/* accumulated `:root` blocks that already override each other (the      */
+/* live `--sig` was a lime `#cdff5e`, four blocks deep). Untangling      */
+/* 1,600 lines to change a palette is a bigger risk than one            */
+/* authoritative block that wins on source order, and this way the port  */
+/* is one diff that can be read and reverted.                           */
+/*                                                                      */
+/* The page follows the OS via `light-dark()`; `[data-theme]` on <html>  */
+/* overrides it, which is the mechanism ThemeToggle already drives.      */
+/* ==================================================================== */
+
+/* Self-hosted, one file per subset, so a page loads only what it uses and a
+   Vietnamese page gets its diacritics without the Latin pages paying for them.
+   Variable weight 100-900: one file covers every weight the site uses. */
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/geist/geist-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/geist/geist-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+    U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/geist/geist-vietnamese.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169,
+    U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323,
+    U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/geist/geist-mono-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/geist/geist-mono-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+    U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/geist/geist-mono-vietnamese.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169,
+    U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323,
+    U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+/* Arial and Courier New scaled to Geist's metrics, measured with fontTools. Shown while Geist
+   loads (font-display: swap), so lines do not re-wrap when it arrives: without these the whole
+   page shifts on first paint, which is the most visible thing a self-hosted font can get wrong. */
+@font-face {
+  font-family: "Geist Fallback";
+  src: local("Arial");
+  size-adjust: 101.9%;
+  ascent-override: 98.62%;
+  descent-override: 28.95%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Geist Mono Fallback";
+  src: local("Courier New");
+  size-adjust: 99.98%;
+  ascent-override: 100.52%;
+  descent-override: 29.5%;
+  line-gap-override: 0%;
+}
+
+:root,
+html[data-theme="light"],
+html[data-theme="dark"] {
+  /* Type. The variable NAMES stay as they were so the 180 files that reference
+     `var(--font-jakarta)` need no edit; what they resolve to is now Geist. */
+  --font-geist: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-geist-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --font-jakarta: var(--font-geist);
+  --font-inter: var(--font-geist);
+  --font-mono-brand: var(--font-geist-mono);
+  --font-sans: var(--font-geist);
+  --font-display: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+
+  /* Brand palette (guidelines section 3). Never used directly by a page. */
+  --brand-blue: #2552ff; /* Pulse Blue: buttons, links, active states */
+  --brand-red: #f84840; /* Signal Red: the #1 highlight, gradient start */
+  --brand-sky: #3990e2; /* Sky Blue: illustrations, focus ring */
+  --brand-ink-raw: #0b1b3a; /* text, and the dark band */
+  --brand-mist: #f7f8fc; /* page background */
+
+  /* Text */
+  --text-primary: light-dark(#0b1b3a, #eef0f5);
+  --text-secondary: light-dark(#56607a, #a3a9b8);
+  --text-muted: light-dark(#6c7489, #8e95a5);
+  --ed-ink: light-dark(#0b1b3a, #eef0f5);
+  --ed-ink-2: light-dark(#56607a, #a3a9b8);
+  --ed-ink-3: light-dark(#7a8296, #868da3);
+
+  /* Surfaces */
+  --bg-primary: light-dark(#f7f8fc, #0b0d12);
+  --bg-secondary: light-dark(#eef0f7, #14171f);
+  --bg-tertiary: light-dark(#ffffff, #1b1f29);
+  --ed-raise: light-dark(#ffffff, #14171f);
+  --surface-border: light-dark(#e3e6ef, #2a2f3b);
+  --ed-line: light-dark(#e3e6ef, #2a2f3b);
+
+  /* Accent. `--sig-deep` is what `--accent-primary` resolves through, so Pulse
+     Blue goes there; `--sig` is the #1 highlight, which is Signal Red. */
+  --sig-deep: light-dark(#2552ff, #80a7ff);
+  --sig: #f84840;
+  --sig-tint: light-dark(#eef2ff, #16203f);
+  --sig-tint-2: light-dark(#e2e8ff, #1b2a52);
+  --sig-line: light-dark(#c7d2fe, #2b3a6b);
+  --on-sig: #ffffff;
+  --accent-primary: light-dark(#2552ff, #80a7ff);
+  --accent-primary-light: light-dark(#2552ff, #80a7ff);
+  --accent-primary-dark: light-dark(#1b3fd1, #5e8dff);
+  --accent-secondary: #f84840;
+  --accent-secondary-light: light-dark(#f84840, #ff8a84);
+  --accent-highlight: #f84840;
+  --accent-tertiary: var(--brand-sky);
+  --accent-tertiary-light: light-dark(#3990e2, #7cc0f5);
+  --brand-indigo: light-dark(#2552ff, #80a7ff);
+  --brand-indigo-deep: light-dark(#1b3fd1, #5e8dff);
+  --brand-on-indigo: #ffffff;
+  --brand-lav-100: light-dark(#eef2ff, #16203f);
+  --brand-lav-50: light-dark(#f5f7ff, #121a33);
+  --state-off: light-dark(#cdd2de, #3a404d);
+
+  /* The dark band: header, footer and the panels that stay dark in both themes.
+     Brand ink rather than a neutral black, which is what makes the band read as
+     the brand rather than as an absence of colour. */
+  --chrome: #0b1b3a;
+  --chrome-2: #0e2046;
+  --chrome-line: #1d2d50;
+  --on-chrome: #eef0f5;
+  --on-chrome-2: #a9b3c9;
+  --panel-0: #0b1b3a;
+  --panel-1: #0e2046;
+  --panel-2: #122a52;
+  --panel-line: #1d2d50;
+  --on-panel: #eef0f5;
+  --on-panel-2: #a9b3c9;
+  --on-panel-3: #78839c;
+
+  /* Gradients. Blended in OKLCH so red to blue passes through pink and violet
+     rather than a dead grey middle, with the sRGB stops written out for
+     browsers that cannot interpolate in OKLCH. */
+  --gradient-signal: linear-gradient(112deg in oklch, var(--brand-red) 0%, var(--brand-blue) 100%);
+  --gradient-signal-fallback: linear-gradient(
+    112deg,
+    #f84840 0%,
+    #e7318a 25%,
+    #c134c6 50%,
+    #893ff2 75%,
+    #2552ff 100%
+  );
+  --gradient-calm: linear-gradient(112deg in oklch, var(--brand-sky) 0%, var(--brand-blue) 100%);
+}
+
+/* `light-dark()` only resolves when the element declares which schemes it supports. Without this
+   every token above would fall back to its light value in dark mode and nothing would invert. */
+:root {
+  color-scheme: light dark;
+}
+html[data-theme="light"] {
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+}

@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import "./globals.css";
@@ -9,12 +8,6 @@ import { NotFoundContent } from "@/components/NotFoundContent";
 
 // Import English messages for the root 404 page
 import enMessages from "../../messages/en.json";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 // Root-level not-found with the same layout as other pages
 export default function RootNotFound() {
@@ -28,7 +21,7 @@ export default function RootNotFound() {
   setRequestLocale("en");
 
   return (
-    <html lang="en" className={inter.variable} data-theme="light" suppressHydrationWarning>
+    <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

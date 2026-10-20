@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
-import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { THEME_SCRIPT } from "@/lib/theme-script";
@@ -15,28 +14,10 @@ import { NavigationProgress } from "@/components/NavigationProgress";
 import { PulseAnalytics } from "@/components/PulseAnalytics";
 import { IntentPanel } from "@/components/IntentPanel";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 // The typeface, for body and headings alike. Inter above is only the fallback in
 // the stack: globals.css sets `--font-sans: var(--font-jakarta)` and every
 // font-family rule lists jakarta first.
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 // Monospace for code/terminal panels.
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono-brand",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.www),
   title: {
@@ -147,7 +128,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <html
       lang={locale}
-      className={`${inter.variable} ${jakarta.variable} ${jetbrainsMono.variable}`}
       data-theme="light"
       suppressHydrationWarning
     >

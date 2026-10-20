@@ -1,0 +1,107 @@
+{
+  "streaming": {
+    "url": "player / personalized",
+    "hue": 268,
+    "slides": [
+      { "kind": "grid", "title": "Fully personalised home page", "badge": "AUTOPLAY",
+        "items": ["S2 · E1 — Continue", "Because you watched", "Trending in drama", "New this week", "Award winners", "Short films"],
+        "meta": ["12 min left", "Drama · 2024", "Top 10 today", "Added Friday", "Critics' pick", "Under 30 min"] },
+      { "kind": "feature", "title": "Recommendation for you", "badge": "FOR YOU",
+        "items": ["Late-night thriller", "Docuseries · S1", "Comedy special"],
+        "meta": ["94% match", "88% match", "81% match"] },
+      { "kind": "cards", "title": "Popular right now", "badge": "TRENDING",
+        "items": ["Finale week", "Live sports", "K-drama hits", "Family night"],
+        "meta": ["2.4M watching", "Live now", "Trending #2", "Trending #6"] }
+    ]
+  },
+  "marketing": {
+    "url": "campaign / personalized",
+    "hue": 210,
+    "slides": [
+      { "kind": "grid", "title": "Fully personalised home page", "badge": "BID ×2",
+        "items": ["Raise bid ×2.0", "Add to retarget", "Lookalike seed", "Case-study ad", "Sequenced creative", "Suppress list"],
+        "meta": ["High intent", "Warm segment", "1.2M reach", "Mid funnel", "3-step flow", "Low value"] },
+      { "kind": "feature", "title": "Recommendation for you", "badge": "MATCHED",
+        "items": ["Enterprise buyers", "SMB evaluators", "Returning trials"],
+        "meta": ["CPA −24%", "CPA −18%", "CPA −11%"] },
+      { "kind": "cards", "title": "Popular right now", "badge": "TOP",
+        "items": ["Retarget cart", "Bundle offer", "Free-trial push", "Winback flow"],
+        "meta": ["ROAS 4.1", "ROAS 3.6", "ROAS 3.2", "ROAS 2.8"] }
+    ]
+  },
+  "blogs": {
+    "url": "blog / personalized",
+    "hue": 24,
+    "slides": [
+      { "kind": "list", "title": "Fully personalised home page", "badge": "RELATED",
+        "items": ["The deep-dive guide", "Part 2 of the series", "From this author", "Cited sources", "Editor's note"],
+        "meta": ["12 min read", "8 min read", "Anna Reid", "4 references", "Updated today"] },
+      { "kind": "feature", "title": "Recommendation for you", "badge": "FOR YOU",
+        "items": ["Long-form essay", "Weekly roundup", "Reader favourite"],
+        "meta": ["18 min read", "Every Friday", "2.1k saves"] },
+      { "kind": "cards", "title": "Popular right now", "badge": "TRENDING",
+        "items": ["Most shared", "Most saved", "Newest series", "Staff picks"],
+        "meta": ["1.8k shares", "940 saves", "3 parts", "Curated"] }
+    ]
+  },
+  "edtech": {
+    "url": "course / personalized",
+    "hue": 158,
+    "slides": [
+      { "kind": "list", "title": "Fully personalised home page", "badge": "ADAPTIVE",
+        "items": ["Remedial lesson", "Guided hints on", "Extra practice set", "Concept review", "Checkpoint quiz"],
+        "meta": ["Recommended", "Step-by-step", "12 questions", "5 min recap", "Unlocks unit 4"] },
+      { "kind": "feature", "title": "Recommendation for you", "badge": "NEXT UP",
+        "items": ["Fractions, revisited", "Word problems", "Timed drill"],
+        "meta": ["Mastery 62%", "Mastery 71%", "Mastery 80%"] },
+      { "kind": "cards", "title": "Popular right now", "badge": "POPULAR",
+        "items": ["Exam prep", "Study streaks", "Peer sessions", "Flashcards"],
+        "meta": ["4.8 ★", "12-day streak", "Live at 7pm", "240 cards"] }
+    ]
+  },
+  "ai-tools": {
+    "url": "assistant / personalized",
+    "hue": 288,
+    "slides": [
+      { "kind": "list", "title": "Fully personalised home page", "badge": "TAILORED",
+        "items": ["Code examples first", "API references", "Concise answers", "Cite sources", "Show reasoning"],
+        "meta": ["Developer mode", "v2 docs", "Preferred", "Always on", "On request"] },
+      { "kind": "feature", "title": "Recommendation for you", "badge": "SUGGESTED",
+        "items": ["Refactor this module", "Write the tests", "Explain the diff"],
+        "meta": ["From your repo", "Jest detected", "12 files"] },
+      { "kind": "cards", "title": "Popular right now", "badge": "TOP",
+        "items": ["Prompt library", "Agent recipes", "Eval templates", "Team presets"],
+        "meta": ["48 prompts", "12 recipes", "6 templates", "Shared"] }
+    ]
+  },
+  "advertising": {
+    "url": "ad-slot / personalized",
+    "hue": 344,
+    "slides": [
+      { "kind": "grid", "title": "Fully personalised home page", "badge": "MATCHED",
+        "items": ["Coupon creative", "Flash-sale ad", "Retarget cart", "Bundle offer", "Loyalty tier", "New arrival"],
+        "meta": ["CTR 3.8%", "Ends in 4h", "Warm cart", "Save 20%", "Gold member", "Just landed"] },
+      { "kind": "feature", "title": "Recommendation for you", "badge": "BEST FIT",
+        "items": ["Price-led creative", "Value bundle", "Free shipping"],
+        "meta": ["Fit 0.94", "Fit 0.89", "Fit 0.77"] },
+      { "kind": "cards", "title": "Popular right now", "badge": "TOP SLOT",
+        "items": ["Above the fold", "In-feed native", "Checkout upsell", "Exit intent"],
+        "meta": ["vCPM 12", "vCPM 9", "vCPM 15", "vCPM 7"] }
+    ]
+  },
+  "social-networking": {
+    "url": "feed / personalized",
+    "hue": 196,
+    "slides": [
+      { "kind": "list", "title": "Fully personalised home page", "badge": "FOR YOU",
+        "items": ["Trending clip", "Group you'd like", "Creator to follow", "Late-night reel", "From your circle"],
+        "meta": ["2.4M views", "18k members", "Posts daily", "42s", "6 friends"] },
+      { "kind": "feature", "title": "Recommendation for you", "badge": "RANKED",
+        "items": ["Creators like these", "Topic: street food", "Local meetups"],
+        "meta": ["Rank 0.93", "Rank 0.88", "Rank 0.74"] },
+      { "kind": "cards", "title": "Popular right now", "badge": "TRENDING",
+        "items": ["Rising audio", "Challenge tag", "Live rooms", "Weekend recap"],
+        "meta": ["#1 today", "820k posts", "3 live now", "Sunday"] }
+    ]
+  }
+}

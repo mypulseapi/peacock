@@ -1,0 +1,1665 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ============================================================================
+   PULSE DESIGN TOKENS
+   ----------------------------------------------------------------------------
+   One place. Previously this file carried SEVEN separate :root blocks and four
+   dark-theme blocks, appended over successive passes, each silently overriding
+   the last. Nothing was wrong with any individual value; the problem was that
+   you could not tell which one won without reading 1,400 lines in order.
+
+   Structure, and it is worth keeping:
+
+     1. PRIMITIVES   raw scales. Never referenced by a component directly.
+     2. SEMANTIC     what a component asks for: surface, ink, accent, border.
+                     Light here, dark in the one block below.
+     3. FIXED        brand surfaces that are identical in both themes.
+     4. SCOPED       always-dark surfaces re-point the semantic tokens locally.
+
+   Rule for adding anything: a component uses a SEMANTIC token. If the one it
+   needs does not exist, add it here rather than reaching for a primitive or a
+   hex value in a className.
+   ========================================================================== */
+
+/* --- 1. PRIMITIVES ------------------------------------------------------- */
+:root {
+  --brand-ink: #10101a;
+  --brand-muted: #63637a;
+  --brand-faint: #9a9aae;
+  --brand-indigo: var(--sig);
+  --brand-indigo-deep: var(--sig-dim);
+  --brand-indigo-soft: var(--sig-dim);
+  --brand-coral: #f5453c;
+  --brand-coral-ink: #d8342c;
+  /* Ink on the accent surface. Follows the variant: dark on a pale accent,
+     white on a mid one. */
+  --brand-on-indigo: var(--on-sig);
+  --brand-coral-solid: #d8342c;
+  --brand-lav-50: #f8f7ff;
+  --brand-lav-100: #f2f0fd;
+  --brand-lav-200: #e8e4fb;
+  --brand-lav-300: #d4ccf6;
+  --brand-blush-50: var(--sig-tint);
+  --brand-blush-100: var(--sig-tint-2);
+  --brand-band-lav: #edebfb;
+  --brand-band-rail: #eae8fb;
+  --brand-band-blush: #fdf3f3;
+  --brand-card: #ffffff;
+  --brand-node: #f4f3fa;
+  --brand-hairline: #e6e3f7;
+  --brand-step1-tint: #fdedec;
+  --brand-step2-tint: #f5e8ee;
+  --brand-step3-tint: #f6edfd;
+  --brand-step4-tint: #ebeafb;
+  --shadow-sm: 0 1px 2px rgba(16, 16, 26, 0.04);
+  --shadow-md: 0 4px 14px -4px rgba(16, 16, 26, 0.1), 0 2px 4px -2px rgba(16, 16, 26, 0.06);
+  --shadow-lg: 0 16px 40px -12px rgba(16, 16, 26, 0.16), 0 4px 8px -4px rgba(16, 16, 26, 0.08);
+  --radius: 0.625rem;
+  /* Display scale.
+     d2 used to reach 3.25rem against d1's 3.125rem, so every section heading
+     rendered larger than the page headline: 52px against 48px, measured. A
+     scale that inverts at the top is not a scale.
+     Brought down as well as ordered. The page now carries its weight in charts,
+     icons and colour, and a 52px heading competing with those is noise. */
+  /* One headline, then a quiet scale.
+     The page carries its weight in charts, icons and colour now, so only the
+     h1 is display sized. Section headings sit where an h3 normally would:
+     large enough to lead, small enough that the figure beside them is the
+     thing the eye lands on. d2 previously reached 3.25rem, above d1's 3.125,
+     so every section heading outranked the page headline. */
+  /* Raised 2026-10. The review asked twice for section headings to be larger
+     and more prominent, and d2 is the section heading: at 1.5rem it was only
+     1.6x the lede beside it, so a new section did not announce itself. The
+     floor moves more than the ceiling, because the complaint was about reading
+     the page on a laptop, not on a 27 inch display. */
+  --d1: clamp(2.375rem, 1.8rem + 2.1vw, 3.25rem);
+  --d2: clamp(1.625rem, 1.35rem + 1.1vw, 2.125rem);
+  --d3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --d4: 1.125rem;
+  --lede: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+  --tr-tight: -0.035em;
+  --tr-snug: -0.02em;
+  --n-0: #ffffff;
+  --n-50: #faf9ff;
+  --n-100: #f4f2fe;
+  --n-200: #e9e5fb;
+  --n-300: #d5cef6;
+  --n-400: #aaa2cc;
+  --n-500: #6f6893;
+  --n-600: #4a4374;
+  --n-700: #2a2359;
+  --n-800: #15103f;
+  --n-900: #0b0830;
+  --pad-xs: 64px;
+  --pad-sm: 80px;
+  --pad-md: 100px;
+  --pad-lg: 120px;
+  --pad-xl: 150px;
+  --r-1: 4px;
+  --r-2: 8px;
+  --r-3: 16px;
+  --r-4: 24px;
+  --r-5: 32px;
+  --r-6: 40px;
+  --r-pill: 300px;
+  --d5: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+  --d6: clamp(1.25rem,  1.15rem + 0.4vw, 1.5rem);
+  --d7: clamp(1.5rem,   1.3rem + 0.8vw,  1.875rem);
+  --sig-2: #67e8f9;
+}
+
+/* ============================================================================
+   0. THEME VARIANT  <-- the only block you edit to re-skin the site
+   ----------------------------------------------------------------------------
+   A variant is two lists of the same token names: one for light, one for dark.
+   Nothing outside this section names a colour, so a variant is the whole skin.
+
+     --sig*      THE ACCENT. --sig is a FILL (buttons, chips, the active rail)
+                 and --on-sig is the ink that sits on top of it, so the pair
+                 moves together: a pale accent wants dark ink, a mid one wants
+                 white. --sig-deep is the accent as TEXT, and it differs per
+                 mode because a fill value is rarely legible as small text.
+     --chrome*   The header and the footer.
+     --panel*    Every other surface: page, cards, story panels, the hero rail.
+                 -0 is the base, -1 a raised card, -2/-3 hover and inset steps.
+
+   THE RULE THIS FILE NOW KEEPS: light mode has no dark surfaces and dark mode
+   has no light ones. The panels used to be fixed dark in both, so the light
+   theme shipped black slabs mid-page; they follow the mode now.
+
+   TO SWITCH:  comment the active variant, uncomment another.
+   TO ADD ONE: copy both blocks, rename the banner, fill in the same names.
+   MEASURE IT: every ratio below is computed. Text needs 4.5:1 on the surface
+               it sits on, 3:1 if it is large or a non-text UI mark.
+   ========================================================================== */
+
+/* ----- ACTIVE: Facebook blue ---------------------------------------------- */
+:root {
+  /* Accent. #1977F2 is the brand value, used as a fill in both modes so the
+     button is the same blue whichever theme you are in. */
+  --sig: #1977F2;
+  /* The same colour as a bare triplet, for rgb() tints. CSS cannot derive one
+     from the other, so keep it in step with --sig by hand. */
+  --sig-rgb: 25 119 242;
+  --sig-dim: #1257b5;
+  /* Accent TEXT on light. 6.87:1, where --sig itself is 4.23:1 and would miss
+     AA at body size. */
+  --sig-deep: #1257b5;
+  /* White on the fill is 4.23:1: clears the 3:1 for large text and UI marks,
+     just under the 4.5 for body. Move the fill to #1670e0 (4.74:1) if a small
+     CTA label has to clear AA outright. */
+  --on-sig: #ffffff;
+
+  --chrome: #ffffff;
+  --chrome-2: #f5f6f7;
+  --chrome-line: #dadde1;
+  --chrome-line-soft: #e9ebee;
+  --on-chrome: #050505;    /* 20.38:1 on chrome */
+  --on-chrome-2: #65676b;  /*  5.67:1 */
+  --on-chrome-3: #6e7276;  /*  4.85:1 */
+
+  --panel-0: #f0f2f5;
+  --panel-1: #ffffff;
+  --panel-2: #f5f6f7;
+  --panel-3: #e4e6eb;
+  --panel-line: #ced0d4;
+  --panel-line-soft: #e4e6eb;
+  --on-panel: #050505;     /* 18.17:1 on --panel-0 */
+  --on-panel-2: #65676b;   /*  5.05:1 */
+  --on-panel-3: #6e7276;   /*  4.32:1 on --panel-0, 4.85:1 on a card. Labels
+                               only; body text takes --on-panel-2. */
+  /* Hover and inset veils. Black on light, white on dark: a white veil is
+     invisible on a white card, which is how the nav hovers disappeared the
+     first time the chrome went light. */
+  --veil-rgb: 0 0 0;
+  /* Nav icon tiles: the icon colour, and a 14% wash of it behind. Five slots so
+     a variant CAN make them categorical; this one does not, because one blue is
+     the point. Give them five hues in a new variant if you want them to differ. */
+  --tone-1: var(--sig);
+  --tone-2: var(--sig);
+  --tone-3: var(--sig);
+  --tone-4: var(--sig);
+  --tone-5: var(--sig);
+  /* The raised surface as a triplet, for the frosted cards that sit over a
+     scene at partial alpha. Distinct from --veil-rgb: a veil DARKENS what is
+     behind it, this REPLACES it. Confusing the two turned a white pill button
+     into a black one. */
+  --raise-rgb: 255 255 255;
+  /* The UNRESOLVED half of a two-state figure: a cell not yet separable, a step
+     not yet done. It is an ABSENCE, so it is neutral and recedes. It must never
+     be a second accent: the payoff grid once drew both halves in blue and the
+     figure stopped saying anything. Distinct from the accent by hue as well as
+     lightness, so it survives greyscale. */
+  --state-off: #d6d9de;
+  /* Pale washes OF the accent, for the "this one is good / done / recovered"
+     panels. Two steps because the figures use a faint ground and a stronger
+     chip. They were lime tints (var(--sig-tint), var(--sig-tint-2)) left behind by the old
+     accent, which is why pale green kept reappearing on a blue page. */
+  --sig-tint: #eaf2fd;
+  --sig-tint-2: #d3e4fb;
+  /* The border or rule that edges an accent tint. */
+  --sig-line: #b6d4f8;
+
+  /* Code syntax. The panel used to be a fixed dark #1b1240, so the palette was
+     pale by design: peach strings, pink keywords. On a light panel those are
+     invisible. Measured against the panel they sit on, all >= 4.5:1. The three
+     token hues separate by HUE rather than lightness, which is how code themes
+     work and is fine here because the glyphs are the content, not an encoding. */
+  --code-ink: #1f2328;      /* 15.80:1 */
+  --code-comment: #6e7276;  /*  4.85:1 */
+  --code-string: #9a3412;   /*  7.31:1 */
+  --code-keyword: #a21caf;  /*  6.32:1 */
+  --code-number: #0f4a9c;   /*  8.47:1 */
+}
+
+html[data-theme="dark"] {
+  --sig: #1977F2;
+  --sig-rgb: 25 119 242;
+  --sig-dim: #1257b5;
+  /* Accent TEXT on dark lifts to 5.09:1 on the page and 4.44:1 on a card.
+     #1977F2 itself would be 4.16:1 and 3.63:1, so it does not carry text here. */
+  --sig-deep: #2d88ff;
+  --on-sig: #ffffff;
+
+  --chrome: #242526;
+  --chrome-2: #3a3b3c;
+  --chrome-line: #3e4042;
+  --chrome-line-soft: #303132;
+  --on-chrome: #e4e6eb;    /* 12.30:1 on chrome */
+  --on-chrome-2: #b0b3b8;  /*  7.30:1 */
+  --on-chrome-3: #8a8d91;  /*  4.61:1 */
+
+  --panel-0: #18191a;
+  --panel-1: #242526;
+  --panel-2: #3a3b3c;
+  --panel-3: #4e4f50;
+  --panel-line: #3e4042;
+  --panel-line-soft: #303132;
+  --on-panel: #e4e6eb;     /* 14.10:1 on --panel-0 */
+  --on-panel-2: #b0b3b8;   /*  8.37:1 */
+  --on-panel-3: #8a8d91;   /*  5.28:1 */
+  --veil-rgb: 255 255 255;
+  /* On dark the tile sits on --panel-1, where the fill value reads well. */
+  --tone-1: var(--sig-deep);
+  --tone-2: var(--sig-deep);
+  --tone-3: var(--sig-deep);
+  --tone-4: var(--sig-deep);
+  --tone-5: var(--sig-deep);
+  --raise-rgb: 36 37 38;
+  --state-off: #5c5e60;
+  --sig-tint: #16283f;
+  --sig-tint-2: #1c3a5c;
+  --sig-line: #2a4d78;
+
+  --code-ink: #e4e6eb;      /* 12.30:1 on the dark panel */
+  --code-comment: #aab7c6;  /*  7.53:1 */
+  --code-string: #ffd9b0;   /* 11.56:1 */
+  --code-keyword: #ffa3c4;  /*  8.25:1 */
+  --code-number: #ffe6a3;   /* 12.50:1 */
+}
+
+/* ----- VARIANT: Lime on ink (the original) -------------------------------
+   Uncomment both blocks and comment the two above to restore it. This variant
+   predates the light/dark split: it was fixed dark everywhere, which is why
+   both lists below carry the same surfaces.
+
+:root, html[data-theme="dark"] {
+  --sig: #cdff5e;
+  --sig-rgb: 205 255 94;
+  --sig-dim: #a9d93d;
+  --sig-deep: #46560f;
+  --on-sig: #10140a;
+
+  --chrome: #08090d;
+  --chrome-2: #0c0e14;
+  --chrome-line: #232834;
+  --chrome-line-soft: #171b24;
+  --on-chrome: #f4f6f8;
+  --on-chrome-2: #a8b0bd;
+  --on-chrome-3: #6f7785;
+
+  --panel-0: #08090d;
+  --panel-1: #0c0e14;
+  --panel-2: #12151d;
+  --panel-3: #1a1e28;
+  --panel-line: #232834;
+  --panel-line-soft: #171b24;
+  --on-panel: #f4f6f8;
+  --on-panel-2: #a8b0bd;
+  --on-panel-3: #6f7785;
+
+  --veil-rgb: 255 255 255;
+  --tone-1: #cdff5e;
+  --tone-2: #7aa2ff;
+  --tone-3: #ffc95c;
+  --tone-4: #5fe3c0;
+  --tone-5: #ff9d7a;
+  --raise-rgb: 255 255 255;
+  --state-off: #d6d9de;
+}
+html[data-theme="dark"] { --sig-deep: #cdff5e; }
+   ------------------------------------------------------------------------- */
+
+/* Derived from the variant. Do not set these per-variant: they follow --sig. */
+:root {
+  --sig-glow: rgb(var(--sig-rgb) / 0.14);
+  /* Only the two gradients in the hero glow need the dim tint as a triplet. */
+  --sig-dim-rgb: 18 87 181;
+}
+
+/* --- 2. SEMANTIC, light -------------------------------------------------- */
+:root {
+  --bg-primary: var(--n-0);
+  --bg-secondary: var(--n-50);
+  --bg-tertiary: var(--n-100);
+  --bg-elevated: var(--n-0);
+  --accent-primary: var(--sig-deep);
+  --accent-primary-light: var(--sig-deep);
+  --accent-primary-dark: var(--sig-deep);
+  --accent-secondary: #f5453c;
+  --accent-secondary-light: #f76a63;
+  /* Third accent. Was #a81b8e magenta, which is the purple that kept turning
+     up across twenty-one files: docs, integrations, status, the legal pages
+     and every auth form. Retiring it here rather than in each of them is the
+     point of having the token. The replacement is the blue already used for
+     work-in-progress states in the hero animation and the story figures, so
+     the site has one blue rather than a blue and a magenta. On the light
+     surface it measures 6.40:1 as text and 5.50:1 on its own 10% tint, both
+     better than the magenta it replaces. */
+  --accent-tertiary: var(--sig-deep);
+  --accent-tertiary-light: var(--sig-deep);
+  --accent-highlight: #f5453c;
+  --text-primary: var(--n-900);
+  --text-secondary: var(--n-600);
+  --text-muted: var(--n-500);
+  --surface-bg: rgba(16, 16, 26, 0.02);
+  --surface-border: var(--n-200);
+  --surface-hover: rgba(16, 16, 26, 0.03);
+  --glass-bg: color-mix(in srgb, var(--n-0) 85%, transparent);
+  --glass-border: var(--n-200);
+  --grid-color: rgba(61, 27, 219, 0.045);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.404 0.267 274.5);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.404 0.267 274.5);
+  --chart-1: oklch(0.404 0.267 274.5);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.404 0.267 274.5);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.404 0.267 274.5);
+  --ed-canvas: var(--n-50);
+  --ed-raise: var(--n-0);
+  --ed-line: var(--n-200);
+  --ed-line-soft: var(--n-100);
+  --ed-ink: var(--n-900);
+  --ed-ink-2: var(--n-600);
+  --ed-ink-3: var(--n-500);
+  color-scheme: light;
+}
+
+/* --- 2b. SEMANTIC, dark -------------------------------------------------- */
+html[data-theme="dark"] {
+  --brand-ink: #f4f3fb;
+  --brand-muted: #a8a4c4;
+  --brand-faint: #7d7a99;
+  --brand-indigo: #8f7cff;
+  --brand-indigo-deep: #7059ff;
+  --brand-indigo-soft: #a493ff;
+  --brand-coral: #ff6a62;
+  --brand-coral-ink: #ff8880;
+  --brand-on-indigo: var(--on-sig);
+  --brand-lav-50: rgb(255 255 255 / .028);
+  --brand-lav-100: rgb(255 255 255 / .05);
+  --brand-lav-200: rgb(255 255 255 / .09);
+  --brand-lav-300: rgb(255 255 255 / .17);
+  --brand-blush-50: rgb(var(--sig-rgb) / .05);
+  --brand-blush-100: rgb(var(--sig-rgb) / .10);
+  --brand-band-lav: #171232;
+  --brand-band-rail: #141029;
+  --brand-band-blush: #1e1319;
+  --brand-card: #1c1740;
+  --brand-node: #1c1738;
+  --brand-hairline: #322a5c;
+  --brand-step1-tint: #2a1210;
+  --brand-step2-tint: #26121b;
+  --brand-step3-tint: #1e1230;
+  --brand-step4-tint: #17133a;
+  --bg-primary: var(--panel-0);
+  --bg-secondary: var(--panel-1);
+  --bg-tertiary: var(--panel-2);
+  --bg-elevated: var(--panel-1);
+  --accent-primary: var(--sig);
+  --accent-primary-light: var(--sig);
+  --accent-primary-dark: var(--sig-dim);
+  --accent-secondary: #ff6a62;
+  --accent-secondary-light: #ff8880;
+  --accent-tertiary: #7aa2ff;
+  --accent-tertiary-light: #93b4ff;
+  --accent-highlight: #ff6a62;
+  --text-primary: var(--on-panel);
+  --text-secondary: var(--on-panel-2);
+  --text-muted: var(--on-panel-3);
+  --surface-bg: rgba(255, 255, 255, 0.03);
+  --surface-border: var(--panel-line);
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --glass-bg: color-mix(in srgb, var(--panel-0) 85%, transparent);
+  --glass-border: var(--panel-line);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 14px -4px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 4px 8px -4px rgba(0, 0, 0, 0.5);
+  --grid-color: rgba(143, 124, 255, 0.07);
+  --ed-canvas: var(--panel-0);
+  --ed-raise: var(--panel-1);
+  --ed-line: var(--panel-line);
+  --ed-line-soft: var(--panel-line-soft);
+  --ed-ink: var(--on-panel);
+  --ed-ink-2: var(--on-panel-2);
+  --ed-ink-3: var(--on-panel-3);
+  color-scheme: dark;
+}
+
+/* --- 4. SCOPED: surfaces that are dark in BOTH themes --------------------
+   The bug this fixes, because it shipped: .ed-ink-panel is dark in light mode
+   too, but its children read --ed-ink-2, which in light mode is the violet-navy
+   #4a4374. That rendered purple body copy on a near-black panel.
+
+   An always-dark surface must re-point the semantic ink tokens for its subtree,
+   so anything nested inside it is correct without knowing where it sits. */
+.ed-ink-panel,
+.hero-stage,
+/* The story panels and the hero rail are the always-dark brand surfaces, so they
+   keep reading --ink-*. The nav and the footer moved out of this list: they are
+   chrome, they follow the variant, and on a light variant every token below
+   would have painted white text onto a white bar. */
+.sig-panel,
+.sig-panel-2,
+.hero-rail {
+  --ed-ink:       var(--on-panel);
+  --ed-ink-2:     var(--on-panel-2);
+  --ed-ink-3:     var(--on-panel-3);
+  --ed-line:      var(--panel-line);
+  --ed-line-soft: var(--panel-line-soft);
+  --ed-raise:     var(--panel-1);
+  --ed-canvas:    var(--panel-0);
+  --text-primary:   var(--on-panel);
+  --text-secondary: var(--on-panel-2);
+  --text-muted:     var(--on-panel-3);
+  --surface-border: var(--panel-line);
+  --accent-primary:       var(--sig);
+  --accent-primary-light: var(--sig);
+  --brand-lav-50:  rgb(var(--veil-rgb) / .03);
+  --brand-lav-100: rgb(var(--veil-rgb) / .05);
+  --brand-lav-200: rgb(var(--veil-rgb) / .09);
+  --brand-lav-300: rgb(var(--veil-rgb) / .17);
+}
+
+/* Chrome. Same shape as the block above, pointed at the variant's chrome family
+   instead of the fixed ink one. --accent-primary stays --sig-deep rather than
+   --sig because on a light chrome the fill value is not a legible text colour;
+   the dark block in 2b flips it back. */
+.sig-nav,
+footer {
+  --ed-ink:       var(--on-chrome);
+  --ed-ink-2:     var(--on-chrome-2);
+  --ed-ink-3:     var(--on-chrome-3);
+  --ed-line:      var(--chrome-line);
+  --ed-line-soft: var(--chrome-line-soft);
+  --ed-raise:     var(--chrome-2);
+  --ed-canvas:    var(--chrome);
+  --text-primary:   var(--on-chrome);
+  --text-secondary: var(--on-chrome-2);
+  --text-muted:     var(--on-chrome-3);
+  --surface-border: var(--chrome-line);
+  --accent-primary:       var(--sig-deep);
+  --accent-primary-light: var(--sig-deep);
+}
+
+html[data-theme="dark"] .sig-nav,
+html[data-theme="dark"] footer {
+  --accent-primary:       var(--sig);
+  --accent-primary-light: var(--sig);
+}
+
+/* The product screen is light in both themes, so it re-points the other way. */
+.screen {
+  --ed-ink:       #16181d;
+  --ed-ink-2:     #4c5563;
+  --ed-ink-3:     #9aa1ad;
+  --ed-line:      #e9ebef;
+  --text-primary:   #16181d;
+  --text-secondary: #4c5563;
+  --text-muted:     #9aa1ad;
+}
+
+/* Point the `dark:` variant at the selector the app actually sets. It was
+   wired to `.dark`, which ThemeContext never applies, so every `dark:` utility
+   was silently dead. */
+@custom-variant dark (&:is(html[data-theme="dark"] *));
+
+/* PULSE Design System - Brand Light Theme (Default) */
+/* Palette: indigo primary (#3D1BDB) + coral accent (#F5453C) on white, over
+   lavender/blush tint bands. Set in Plus Jakarta Sans throughout. */
+
+/* PULSE Design System - Brand Dark Theme (deep violet-ink)
+   The prototype is light-only, so this is derived. Rule applied: the SATURATED
+   brand surfaces (hero gradient, footer gradient, step art panels, the #1B1240
+   code panels) stay identical in both themes, they're brand, not chrome. Only
+   the light tint bands and the ink/paper relationship invert. */
+
+@theme inline {
+  /* Body is Plus Jakarta Sans throughout (matches the prototype). Inter stays
+     loaded and is still available via --font-inter if a page wants it. */
+  --font-sans: var(--font-jakarta);
+  --font-mono: var(--font-mono-brand);
+
+  /* Shell container. Widened from 1180px to 1320px in the 2026 redesign: the
+     product window in the hero does not fit 1180, and per-block measures keep
+     prose readable regardless. Use `max-w-shell`. */
+  --container-shell: 1320px;
+
+  /* Brand scale -> text-brand-*, bg-brand-*, border-brand-* utilities */
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-faint: var(--brand-faint);
+  --color-brand-indigo: var(--brand-indigo);
+  --color-brand-indigo-deep: var(--brand-indigo-deep);
+  --color-brand-indigo-soft: var(--brand-indigo-soft);
+  --color-brand-coral: var(--brand-coral);
+  --color-brand-coral-ink: var(--brand-coral-ink);
+  --color-brand-on-indigo: var(--brand-on-indigo);
+  --color-brand-coral-solid: var(--brand-coral-solid);
+  --color-brand-lav-50: var(--brand-lav-50);
+  --color-brand-lav-100: var(--brand-lav-100);
+  --color-brand-lav-200: var(--brand-lav-200);
+  --color-brand-lav-300: var(--brand-lav-300);
+  --color-brand-blush-50: var(--brand-blush-50);
+  --color-brand-blush-100: var(--brand-blush-100);
+  --color-brand-band-lav: var(--brand-band-lav);
+  --color-brand-band-rail: var(--brand-band-rail);
+  --color-brand-band-blush: var(--brand-band-blush);
+  --color-brand-card: var(--brand-card);
+  --color-brand-node: var(--brand-node);
+  --color-brand-hairline: var(--brand-hairline);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-jakarta), var(--font-inter), system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.5;
+  /* Guard against horizontal scroll from decorative/absolute elements on small
+     screens. `clip` (not `hidden`) keeps position: sticky working. */
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Brand rule: never render italic anywhere (incl. markdown <em>/<i> in blog
+   content). Emphasis stays upright. */
+em, i {
+  font-style: normal;
+}
+
+/* Display font utility, for big stat numbers / metrics (Plus Jakarta Sans). */
+.font-display {
+  font-family: var(--font-jakarta), var(--font-inter), system-ui, sans-serif;
+}
+
+/* ============================================================
+   Prototype utilities (reference/PUlSE Landing Page -Prototype.html)
+   ============================================================ */
+
+/* Display headline treatment, tighter than the global h1-h6 rule below it.
+   MUST stay unlayered: inside @layer components it would lose to the
+   unlayered `h1,h2,...` element selector and silently do nothing. */
+.display {
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  font-weight: 700;
+}
+
+/* Hero: diagonal brand gradient + faint isometric grid masked out at the
+   bottom. Saturated brand surface, identical in light and dark. */
+.hero-grad {
+  background: linear-gradient(
+    103deg,
+    #e4323f 0%,
+    #cb2c5e 22%,
+    #9a24a0 48%,
+    #6318c6 76%,
+    #4b14be 100%
+  );
+}
+
+.hero-grid {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 78px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 78px);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 85%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 85%);
+}
+
+/* Alternating coral / indigo vertical rules behind the closing CTA. */
+.cta-lines {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(247, 66, 59, 0.13) 0 1px, transparent 1px 96px),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 48px,
+      rgba(69, 64, 240, 0.12) 48px 49px,
+      transparent 49px 96px
+    );
+}
+
+/* Gradient wordmark used inside headings. */
+.grad {
+  background: linear-gradient(95deg, #f7423b 0%, #c4288b 55%, #a21c9e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Flow-diagram connectors: static wire + a travelling comet dash. */
+.flow-wire {
+  fill: none;
+  stroke-width: 1.1;
+  stroke-opacity: 0.5;
+}
+
+.flow-comet {
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 70 1000;
+  animation: comet 2.9s linear infinite;
+}
+
+@keyframes comet {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1070;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-wire {
+    stroke-opacity: 0.85;
+  }
+  .flow-comet {
+    display: none;
+  }
+}
+
+/* Strikethrough for the "not required" list in the flow diagram. */
+.strike {
+  text-decoration: line-through;
+  text-decoration-color: var(--brand-faint);
+}
+
+/* Code/terminal font (JetBrains Mono). */
+.font-code {
+  font-family: var(--font-mono-brand), ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* Terminal surface. Was a fixed #1b1240 in both themes; it follows the mode now
+   so the light page has no dark slab in it. A code panel is the one place you
+   might reasonably want to keep dark in a light theme, so if that is the call,
+   this rule is where to pin it. */
+.terminal-surface {
+  background: var(--panel-1);
+  border: 1px solid var(--panel-line);
+}
+
+html[data-theme="dark"] .terminal-surface {
+  border-color: rgb(var(--veil-rgb) / .16);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), var(--shadow-lg);
+}
+
+/* Stat badge, always a dark surface so the gradient metric pops; toggles to a
+   lighter elevated navy in dark theme so it separates from the page. */
+.stat-badge {
+  background: #1b1240;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+html[data-theme="dark"] .stat-badge {
+  background: #241a52;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Headings: Plus Jakarta Sans (brand display font), weight 600, tight tracking.
+   Inline tracking-/leading- utilities still override per-heading. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-jakarta), var(--font-inter), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+/* Card Styles - flat paper card with hairline border */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.glass-card:hover {
+  border-color: rgba(61, 27, 219, 0.22);
+  box-shadow: var(--shadow-md);
+}
+
+/* Glow Effects. The three names are one effect: they were already aliases, and
+   the old shadow was the retired indigo rgba(61,27,219). Neutral now, so a card
+   lifts off the surface without tinting it. */
+.glow-blue,
+.glow-green,
+.glow-purple {
+  box-shadow: 0 4px 24px rgb(22 24 29 / 0.08), 0 8px 48px rgb(22 24 29 / 0.05);
+}
+
+html[data-theme="dark"] .glow-blue,
+html[data-theme="dark"] .glow-green,
+html[data-theme="dark"] .glow-purple {
+  box-shadow: 0 4px 24px rgb(0 0 0 / 0.4), 0 8px 48px rgb(0 0 0 / 0.25);
+}
+
+/* Text accents.
+   These three names were already aliases of one coral -> magenta -> violet
+   gradient, and that gradient was the last large purple on the site: it painted
+   headline text on status, careers and the use-case band. Gradient text is also
+   off-pattern now, since every other heading is flat --ed-ink with the signal
+   carrying the accent. So they resolve to the signal colour rather than to a
+   ramp. The names stay because the markup that uses them does. */
+.text-gradient-blue,
+.text-gradient-green,
+.text-gradient-purple {
+  color: var(--accent-primary);
+}
+
+/* Background Grid */
+.bg-grid {
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Primary Button - Bold and clickable */
+.btn-primary {
+  background: var(--accent-primary);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--accent-primary-dark);
+  box-shadow: 0 6px 22px rgba(61, 27, 219, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+  border: 1px solid var(--surface-border);
+  cursor: pointer;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary-light);
+  box-shadow: var(--shadow-md);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Subtle diagonal light sweep for icon tiles. */
+@keyframes shine {
+  0% {
+    transform: translateX(-160%) skewX(-12deg);
+  }
+  60%,
+  100% {
+    transform: translateX(160%) skewX(-12deg);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Code Block Styling */
+.code-block {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', monospace;
+  font-size: 13px;
+  overflow-x: auto;
+}
+
+/* Selection */
+::selection {
+  background: rgba(61, 27, 219, 0.18);
+  color: var(--text-primary);
+}
+
+/* Scrollbar: native.
+   The custom one was 8px wide with an --bg-elevated thumb on an
+   --bg-secondary track, which is a two-step contrast difference and read as
+   no scrollbar at all. The 2026-10 review logged it as hidden. The platform
+   draws a visible one; let it. */
+
+/* Form Inputs */
+input, select, textarea {
+  font-family: inherit;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Focus States. Mouse clicks get no ring; keyboard navigation always does.
+   Previously `button:focus { outline: none }` with no replacement, i.e.
+   keyboard focus was invisible site-wide. */
+input:focus, select:focus, textarea:focus, button:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@layer base {
+  /* Hand cursor on everything interactive (Tailwind v4's preflight sets buttons to `default`).
+   *
+   * Widened beyond a/button/[role=button]: role-based widgets, `label[for]`, `summary` and
+   * anything focusable were still showing an arrow. Identical to the other three apps.
+   *
+   * Inside `@layer base` and WITHOUT `!important` on purpose. Unlayered `!important` would beat
+   * Tailwind's own `cursor-*` utilities, so a deliberate `cursor-wait` or `cursor-grab` in markup
+   * would be silently ignored, the same trap the note below this block describes for colours.
+   */
+  a,
+  button,
+  select,
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"],
+  label[for],
+  summary,
+  [role="button"],
+  [role="link"],
+  [role="tab"],
+  [role="menuitem"],
+  [role="option"],
+  [role="switch"],
+  [tabindex]:not([tabindex="-1"]) {
+    cursor: pointer;
+  }
+
+  /* A hand cursor on a control that does nothing is a promise the UI cannot keep. */
+  button:disabled,
+  select:disabled,
+  input:disabled,
+  [aria-disabled="true"],
+  [data-disabled] {
+    cursor: not-allowed;
+  }
+}
+
+/* Inside @layer base so Tailwind's `text-*` utilities still win. Unlayered,
+   this rule beats every utility (unlayered CSS outranks any @layer), which
+   silently turned `text-white` on an <a> back into the inherited ink colour. */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* Footer card floating on the brand gradient band. Light in light theme,
+   deep violet in dark, the band underneath stays brand in both. */
+.footer-card {
+  background: linear-gradient(102deg, #f2f7ff 0%, #eaf2fd 40%, #e4eefc 70%, #dce9fb 100%);
+}
+
+html[data-theme="dark"] .footer-card {
+  background: linear-gradient(102deg, #1d1218 0%, #1a1320 40%, #171436 70%, #141130 100%);
+}
+
+/* Utility for accent colors in components */
+.accent-rose { color: var(--accent-primary-light); }
+.accent-emerald { color: var(--accent-secondary-light); }
+.accent-violet { color: var(--accent-tertiary-light); } /* name kept: the hue is blue now, the class is referenced in content */
+
+.bg-accent-rose { background-color: rgba(245, 69, 60, 0.1); }
+.bg-accent-emerald { background-color: rgba(168, 27, 142, 0.1); }
+.bg-accent-violet { background-color: rgba(61, 27, 219, 0.1); }
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.62 0.2 285);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.62 0.2 285);
+  --chart-1: oklch(0.62 0.2 285);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.62 0.2 285);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.62 0.2 285);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ============================================================================
+   REDESIGN 2026-09, editorial system
+   ----------------------------------------------------------------------------
+   The old hero was a full-bleed red-to-violet gradient carrying an isometric
+   illustration on the same surface, so figure and ground collapsed and the
+   sub-headline sat at roughly 3:1 on mid-magenta. This replaces it with a light
+   editorial ground and spends saturation deliberately, in two places only.
+
+   Positioning note, because it drives the visual choices: the competitor set
+   leads with claimed percentages over violet gradients. We cannot print those
+   numbers (ODIN/demo/DEMO.md §1.1) and would lose that fight anyway. Calm,
+   typographic and evidence-forward is both differentiated and the only register
+   our own honesty constraints permit.
+   ========================================================================== */
+
+
+.ed-canvas { background: var(--ed-canvas); }
+.ed-raise  { background: var(--ed-raise); }
+/* The third band. The review asked for blue, white and grey alternating between
+   sections; canvas and raise were the grey and the white, and this is the blue.
+   A tint rather than a fill, because the ink on it is the same body colour as
+   everywhere else and has to keep its contrast. */
+.ed-tint   { background: var(--sig-tint); }
+
+.ed-d1 { font-size: var(--d1); line-height: 1.12; letter-spacing: var(--tr-tight); font-weight: 700; }
+.ed-d2 { font-size: var(--d2); line-height: 1.35; letter-spacing: var(--tr-tight); font-weight: 700; }
+.ed-d3 { font-size: var(--d3); line-height: 1.3; letter-spacing: var(--tr-snug); font-weight: 650; }
+.ed-d4 { font-size: var(--d4); line-height: 1.45;  letter-spacing: var(--tr-snug); font-weight: 650; }
+.ed-lede { font-size: var(--lede); line-height: 1.75; color: var(--ed-ink-2); }
+
+/* Eyebrow. Small caps tracking, never below 12px, never lighter than ink-3. */
+.ed-eyebrow {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.11em;
+  text-transform: uppercase; color: var(--ed-ink-3);
+}
+
+/* Hairline rule that reads as a typographic device rather than a border. */
+.ed-rule { border-top: 1px solid var(--ed-line); }
+
+/* Tabular figures. Every measured number on this site is tabular so columns
+   align and a changing value does not reflow its row. */
+.ed-num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: -0.01em;
+}
+
+/* The one saturated surface, used for a single section, not the hero. */
+.ed-ink-panel {
+  background:
+    radial-gradient(120% 140% at 12% 0%, #3d1bdb 0%, #2a0f9e 48%, #1b0a6b 100%);
+  color: #fff;
+}
+
+/* Gap bar in the audit table. Width is set inline from the measured value. */
+.ed-bar { height: 6px; border-radius: 999px; background: var(--brand-lav-200); overflow: hidden; }
+.ed-bar > i { display: block; height: 100%; border-radius: 999px; background: var(--brand-indigo); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ed-rise { animation: edRise .5s cubic-bezier(.22,.61,.36,1) both; }
+  @keyframes edRise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+}
+
+/* Body copy rhythm. 1.75 rather than the 1.5 default: these are long
+   explanatory paragraphs, not UI labels, and they were reading dense. */
+.ed-body { font-size: 0.875rem; line-height: 1.75; color: var(--ed-ink-2); }
+.ed-stack > * + * { margin-top: 1.75rem; }
+
+/* ============================================================================
+   TOKEN UPGRADE, informed by a line-by-line read of the competitor's stylesheet
+   ----------------------------------------------------------------------------
+   Three things in their system are genuinely good and worth matching:
+
+   1. THEIR NEUTRALS ARE NOT GREY. The ramp runs white, #f8f6ff, #ebe7ff,
+      #dad2fd, #b8b1d8, #40406a, #262572, #0d0c54. Every step carries the brand
+      hue, and the darkest "text" colour is a violet-navy rather than near-black.
+      That single choice is most of why their page reads as one system. Ours was
+      #10101a, a neutral near-black that sat slightly apart from the lavender
+      tints around it. Now tinted toward our own indigo.
+   2. A TEN-STEP DISPLAY SCALE with per-breakpoint values, not four.
+   3. A NAMED SECTION-PADDING SCALE (64 to 180px) so vertical rhythm is chosen
+      from a set rather than typed per section.
+
+   Where we deliberately differ: their line heights are tight (1.08 / 1.25 /
+   1.5em). We go looser on purpose. Denser type is the house style we are trying
+   to beat, not match.
+   ========================================================================== */
+
+
+/* Full display scale. Kept fluid rather than the competitor's three fixed
+   breakpoints: fewer values to maintain and no jump at the boundary. */
+.ed-d5 { font-size: var(--d5); line-height: 1.5;  letter-spacing: -0.01em; font-weight: 600; }
+.ed-d6 { font-size: var(--d6); line-height: 1.42; letter-spacing: -0.015em; font-weight: 650; }
+.ed-d7 { font-size: var(--d7); line-height: 1.34; letter-spacing: -0.02em;  font-weight: 650; }
+
+/* Their container is 84.125rem (1346px). Ours stays narrower on purpose: the
+   measure on a text-led page matters more than filling a 27-inch display. */
+
+/* ============================================================================
+   LEGACY TOKEN BRIDGE
+   ----------------------------------------------------------------------------
+   Fifteen routes still render against the pre-redesign variables: --text-primary
+   appears in 23 files, --accent-primary in 26, .glass-card in 20. Rewriting each
+   one to the new class names would be fifteen risky diffs across legal copy and
+   a contact form, to arrive at the same pixels.
+
+   Re-pointing the tokens instead puts every one of those pages on the tinted
+   ramp in a single edit, and they stay consistent as the ramp evolves. The old
+   names survive as aliases; new work should use --ed-* and --n-*.
+   ========================================================================== */
+
+
+/* The card the old pages use. Backdrop blur is dropped: it cost a compositing
+   layer on every card and did nothing visible against an opaque section. */
+.glass-card {
+  background: var(--ed-raise);
+  backdrop-filter: none;
+  border: 1px solid var(--ed-line);
+  border-radius: var(--r-3);
+  box-shadow: 0 1px 2px rgb(11 8 48 / 0.04);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.glass-card:hover {
+  border-color: var(--brand-lav-300);
+  box-shadow: 0 1px 2px rgb(11 8 48 / .04), 0 18px 40px -24px rgb(61 27 219 / .28);
+  transform: none;
+}
+
+/* Legacy pages set their own h1/h2 sizes inline. Give the shared elements the
+   looser leading the brief asks for, so an un-rewritten page still breathes. */
+.glass-card h2, .glass-card h3 { line-height: 1.35; }
+
+/* The navbar is fixed at 68px, so an anchor target scrolled its own heading
+   underneath it. Applies to every in-page link: /product and /why both use them. */
+:where(section[id], article[id], h2[id], h3[id]) { scroll-margin-top: 6.5rem; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ============================================================================
+   SIGNAL: the 2026 identity
+   ----------------------------------------------------------------------------
+   Every company in product-data tooling is violet on white, the competitor at
+   #6145ff and us at #3d1bdb. Matching that field means competing on polish
+   inside someone else's visual language.
+
+   So: a deep ink canvas with one electric accent, and light sections reserved
+   for long-form reading. Dark reads as instrumentation rather than brochure,
+   which is the correct register for a product whose entire pitch is "we
+   measured this", and the contrast between ink and paper sections gives the
+   page a rhythm that an all-white page cannot.
+
+   The accent is whatever section 0 says it is, and it is used for data and one
+   CTA only. It is never body text: an accent strong enough to mark a number is
+   exhausting at paragraph length whichever hue the variant picks.
+   ========================================================================== */
+
+.sig-panel   { background: var(--panel-0); color: var(--on-panel); }
+.sig-panel-2 { background: var(--panel-1); color: var(--on-panel); }
+
+/* Accent that survives a light section too. */
+.sig-accent  { color: var(--sig-deep); }
+.sig-panel .sig-accent, .sig-panel-2 .sig-accent { color: var(--sig); }
+
+/* A single hairline grid, very low contrast, so the ink never reads as a slab. */
+.sig-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / .028) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / .028) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Product-window chrome. The hero shows software, not a styled table. */
+.sig-window {
+  background: var(--panel-1);
+  border: 1px solid var(--panel-line);
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / .4),
+    0 40px 80px -32px rgb(0 0 0 / .7),
+    0 0 90px -40px var(--sig-glow);
+}
+.sig-window-bar {
+  border-bottom: 1px solid var(--panel-line-soft);
+  background: linear-gradient(to bottom, rgb(255 255 255 / .026), transparent);
+}
+
+/* Data bar inside the product window. */
+.sig-bar { height: 5px; border-radius: 999px; background: var(--panel-3); overflow: hidden; }
+.sig-bar > i { display: block; height: 100%; border-radius: 999px; background: var(--sig); }
+.sig-bar.is-muted > i { background: var(--on-panel-3); }
+
+/* Buttons on ink. */
+.sig-cta {
+  background: var(--sig); color: var(--on-sig); font-weight: 640;
+  transition: filter .18s ease, transform .18s ease;
+}
+.sig-cta:hover { filter: brightness(1.06); }
+.sig-ghost {
+  border: 1px solid var(--panel-line); color: var(--on-panel);
+  transition: border-color .18s ease, background .18s ease;
+}
+.sig-ghost:hover { border-color: var(--on-panel-3); background: rgb(255 255 255 / .04); }
+
+/* Eyebrow on ink. */
+.sig-eyebrow {
+  font-size: .75rem; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--sig);
+}
+
+/* A live dot, used once, next to the readout. Motion is the only animation on
+   the page and it stops for reduced-motion. */
+.sig-live { position: relative; }
+.sig-live::before {
+  content: ""; position: absolute; inset: -4px; border-radius: 999px;
+  background: var(--sig); opacity: .28;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sig-live::before { animation: sigPulse 2.4s ease-in-out infinite; }
+  @keyframes sigPulse { 0%,100% { opacity: .1; transform: scale(.8);} 50% { opacity: .34; transform: scale(1.25);} }
+}
+
+/* Kept as an alias so the hero keeps working; it now matches max-w-shell. */
+.max-w-hero { max-width: 1320px; }
+
+/* ============================================================================
+   TWO THEMES, ONE IDENTITY
+   ----------------------------------------------------------------------------
+   The first pass at ink re-pointed :root unconditionally, which killed the light
+   theme outright: the toggle still moved and nothing changed. Corrected here.
+
+   :root is light. html[data-theme="dark"] is ink. The hero stage and the story
+   panels stay dark in both, because they are brand surfaces and this app's
+   CLAUDE.md is explicit that saturated brand surfaces do not invert. That is
+   also why the hero works in light mode: a dark stage carrying a light product
+   screen is the composition either way.
+
+   The header and footer are NOT in that set. They read --chrome-* (section 0),
+   which the dark block below overrides, so they follow the theme instead of
+   staying fixed.
+
+   The accent cannot be one value in both. As a FILL it is --sig with --on-sig
+   on top; as accent TEXT on a light surface it drops to --sig-deep, because the
+   fill value is chosen to carry ink and is rarely legible as text on white.
+   ========================================================================== */
+
+
+body { background: var(--ed-canvas); color: var(--ed-ink); }
+
+.glass-card { background: var(--ed-raise); border-color: var(--ed-line); }
+.glass-card:hover { border-color: var(--brand-lav-300); }
+
+/* The argument panel. It used to be a fixed ink gradient in both themes, which
+   is what put a black slab in the middle of the light page. It now follows the
+   mode and keeps its shape by raising --panel-1 out of --panel-0. */
+.ed-ink-panel {
+  background: radial-gradient(120% 140% at 10% 0%, var(--panel-1) 0%, var(--panel-0) 60%, var(--panel-0) 100%);
+  color: var(--on-panel);
+  border-top: 1px solid rgb(var(--sig-rgb) / .16);
+  border-bottom: 1px solid var(--panel-line);
+}
+
+/* The navbar sits on the ink stage at the top of every page, so it does not
+   invert either. */
+.sig-eyebrow { color: var(--sig-deep); }
+.sig-panel .sig-eyebrow,
+.sig-panel-2 .sig-eyebrow,
+.hero-stage .sig-eyebrow,
+html[data-theme="dark"] .sig-eyebrow { color: var(--sig); }
+/* The footer follows its chrome: --sig is a fill value and is not guaranteed to
+   be legible as small text on whatever surface the variant gives the footer. */
+footer .sig-eyebrow { color: var(--accent-primary); }
+
+/* Inline highlight, used where a fact is buried in a product title. */
+mark.fact {
+  background: rgb(var(--sig-rgb) / .28);
+  color: var(--ed-ink);
+  border-radius: 4px;
+  padding: 0 .25rem;
+  box-decoration-break: clone;
+}
+html[data-theme="dark"] mark.fact { background: rgb(var(--sig-rgb) / .18); color: var(--sig); }
+
+/* ============================================================================
+   THE SCREEN PERFORMS THE AUDIT
+   ----------------------------------------------------------------------------
+   The competitor's hero screen is not a screenshot, it is a demonstration: every
+   cell reads "Searching… / Analyzing… / Generating…" under an "Enriching…"
+   button, so a merchant watches the selling point happen. Ours was a finished
+   table, which shows the output and hides the product.
+
+   This runs the audit on a loop: the catalogue sits there with holes in it, the
+   scorer runs, the ranks land, the fix-first column lights and the
+   recommendation writes itself. CSS only, no JavaScript, so it still ships from
+   a server component. One 11s cycle, and it stops entirely for reduced motion.
+   ========================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  .run     { animation: runFade 11s var(--d, 0s) infinite both; }
+  .run-in  { animation: runIn   11s var(--d, 0s) infinite both; }
+  .run-out { animation: runOut  11s var(--d, 0s) infinite both; }
+  .run-tint{ animation: runTint 11s var(--d, 0s) infinite both; }
+  .run-spin{ animation: runSpin 1s linear infinite; }
+
+  /* visible only while the scorer is working */
+  @keyframes runOut {
+    0%, 26% { opacity: 1; }
+    32%, 100% { opacity: 0; }
+  }
+  /* the resolved state: ranks, chips, recommendation */
+  @keyframes runIn {
+    0%, 30% { opacity: 0; transform: translateY(4px); }
+    38%, 94% { opacity: 1; transform: none; }
+    100% { opacity: 0; transform: translateY(4px); }
+  }
+  @keyframes runFade {
+    0%, 28% { opacity: .35; }
+    36%, 94% { opacity: 1; }
+    100% { opacity: .35; }
+  }
+  @keyframes runTint {
+    0%, 32% { background-color: transparent; }
+    42%, 94% { background-color: rgb(var(--sig-rgb) / .16); }
+    100% { background-color: transparent; }
+  }
+  @keyframes runSpin { to { transform: rotate(360deg); } }
+}
+
+/* Reduced motion, and the no-animation fallback, land on the resolved state. */
+@media (prefers-reduced-motion: reduce) {
+  .run-out { display: none; }
+  .col-lead { background: rgb(var(--sig-rgb) / .16); }
+}
+
+/* The working pill in the screen's title bar. */
+.run-pill {
+  background: #eef1f5; color: #4c5563;
+  border: 1px solid #e2e6eb;
+}
+.run-pill-done { background: var(--sig); color: var(--on-sig); border-color: var(--sig); }
+
+/* ============================================================================
+   HERO STAGE  (restored)
+   ----------------------------------------------------------------------------
+   Lost when the theme block was rewritten: the rewrite truncated the file from
+   its own marker onward and took this section with it, which left .screen with
+   no background. The product screen rendered transparent over the ink stage, so
+   its white header row carried inherited white text and became invisible. That
+   is the light-theme breakage in the report.
+
+   Everything here is a brand surface and stays constant in both themes: the ink
+   stage, and a light product screen standing on it. That contrast is the whole
+   composition, so inverting either would destroy it.
+   ========================================================================== */
+.hero-stage {
+  background: var(--panel-0);
+  color: var(--on-panel);
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+@media (max-width: 640px) { .hero-stage { border-radius: 0 0 24px 24px; } }
+
+.hero-rail { background: var(--panel-1); border-bottom: 1px solid var(--panel-line); }
+
+.hero-aurora {
+  background:
+    radial-gradient(52% 44% at 50% 82%, rgb(var(--sig-rgb) / .40) 0%, rgb(var(--sig-rgb) / 0) 68%),
+    radial-gradient(38% 34% at 32% 74%, rgb(103 232 249 / .16) 0%, rgb(103 232 249 / 0) 70%),
+    radial-gradient(44% 38% at 69% 76%, rgb(var(--sig-dim-rgb) / .22) 0%, rgb(var(--sig-dim-rgb) / 0) 72%);
+  filter: blur(22px);
+}
+
+/* The product screen. `color` is set explicitly so nothing inherits the stage's
+   white text, which is exactly how the header row went invisible. */
+.screen {
+  position: relative;
+  background: #ffffff;
+  color: #16181d;
+  border-radius: 14px 14px 0 0;
+  box-shadow:
+    0 -40px 120px -30px rgb(var(--sig-rgb) / .26),
+    0 -10px 60px -20px rgb(0 0 0 / .55),
+    0 40px 120px -40px rgb(0 0 0 / .9);
+}
+.screen table { background: #ffffff; }
+.screen-bar   { background: #f7f8fa; border-bottom: 1px solid #e9ebef; }
+.screen-row   { border-top: 1px solid #f0f2f5; }
+.screen-ink   { color: #16181d; }
+.screen-ink-2 { color: #4c5563; }
+.screen-muted { color: #9aa1ad; }
+
+.rank-chip { background: var(--sig); color: var(--on-sig); font-weight: 700; }
+.col-lead  { background: rgb(var(--sig-rgb) / .16); }
+
+/* The scan. A lime sweep crosses the table while the scorer runs, so the work
+   is visible rather than implied by a spinner in the corner. */
+.screen-scan {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  border-radius: inherit;
+}
+.screen-scan::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 42%;
+  background: linear-gradient(90deg, transparent, rgb(var(--sig-rgb) / .30), transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .screen-scan::after { animation: scanSweep 11s infinite both; }
+  @keyframes scanSweep {
+    0%   { transform: translateX(-100%); opacity: 0; }
+    4%   { opacity: 1; }
+    26%  { transform: translateX(240%); opacity: 1; }
+    30%, 100% { transform: translateX(240%); opacity: 0; }
+  }
+}
+@media (prefers-reduced-motion: reduce) { .screen-scan { display: none; } }
+
+/* One-shot scan, used while the story is on its scoring step. */
+.screen-scan-once { position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: inherit; }
+.screen-scan-once::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 40%;
+  background: linear-gradient(90deg, transparent, rgb(var(--sig-rgb) / .34), transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .screen-scan-once::after { animation: scanOnce 3.4s ease-in-out both; }
+  @keyframes scanOnce { from { transform: translateX(-110%); } to { transform: translateX(260%); } }
+}
+
+/* A field being scored. Fills once, then holds, so a staggered grid of them
+   reads as a sweep finishing rather than a set of loops out of phase. */
+.scan-fill { width: 0%; }
+@media (prefers-reduced-motion: no-preference) {
+  .scan-fill { animation: scanFill 1.6s cubic-bezier(.32,.72,.32,1) forwards; }
+  @keyframes scanFill { from { width: 0%; } to { width: 100%; } }
+}
+@media (prefers-reduced-motion: reduce) { .scan-fill { width: 100%; } }
+
+/* A bar that looks like it is working, not just growing.
+   Three things together sell it: the fill eases rather than moving linearly, a
+   highlight travels along the filled part, and the track carries a faint stripe
+   so there is texture to move against. A plain linear fill reads as a timer. */
+.scan-fill {
+  width: 0%;
+  position: relative;
+  overflow: hidden;
+}
+.scan-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgb(255 255 255 / .85) 45%,
+    rgb(255 255 255 / .85) 55%,
+    transparent 100%);
+  transform: translateX(-100%);
+}
+.scan-track {
+  background-image: repeating-linear-gradient(
+    135deg, rgb(0 0 0 / .05) 0 4px, transparent 4px 8px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .scan-fill  { animation: scanFill 1.9s cubic-bezier(.34,.68,.28,1) forwards; }
+  .scan-fill::after { animation: scanShimmer 1.05s linear infinite; }
+  @keyframes scanFill    { from { width: 4%; } to { width: 100%; } }
+  @keyframes scanShimmer { to { transform: translateX(100%); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scan-fill { width: 100%; }
+  .scan-fill::after { display: none; }
+}
+
+/* Staggered arrival for the repair rows, and a pop for the value landing. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { animation: revealRow .5s cubic-bezier(.22,.9,.3,1) both; }
+  .pop    { animation: popIn .42s cubic-bezier(.34,1.56,.44,1) both; }
+  @keyframes revealRow { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes popIn     { from { opacity: 0; transform: scale(.82); } to { opacity: 1; transform: scale(1); } }
+}
+
+
+/* Orbit rings for the blind-spot illustration. Text never rides these, so a
+   continuous rotation is safe; the hook that mounts the scene disables it
+   under reduced motion. */
+@keyframes orbit-cw  { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
+@keyframes orbit-ccw { from { transform: rotate(360deg); } to { transform: rotate(0deg);    } }
+
+
+/* Traffic flowing through the engine arm.
+   A repeating diagonal that never settles, because the thing it stands for
+   never settles either: sessions keep arriving and keep being split. The
+   element carrying it is decorative and aria-hidden, and the media query below
+   stops it outright rather than slowing it down. */
+@keyframes lane-flow { from { background-position: 0 0; } to { background-position: 56px 0; } }
+
+.lane-flow {
+  background-image: repeating-linear-gradient(
+    115deg,
+    rgb(255 255 255 / 0.22) 0 10px,
+    transparent 10px 28px
+  );
+  background-size: 56px 100%;
+  animation: lane-flow 1.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lane-flow { animation: none; }
+}
+
+
+/* Staggered reveal, applied to a container's own children so no wrapper div is
+   inserted between a grid and its items. Ten steps is enough for any grid on
+   the site; anything beyond arrives with the tenth. */
+.reveal > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 520ms cubic-bezier(.22,.61,.36,1), transform 520ms cubic-bezier(.22,.61,.36,1);
+}
+.reveal.is-in > * { opacity: 1; transform: translateY(0); }
+.reveal.is-in > *:nth-child(1) { transition-delay: 0ms; }
+.reveal.is-in > *:nth-child(2) { transition-delay: 90ms; }
+.reveal.is-in > *:nth-child(3) { transition-delay: 180ms; }
+.reveal.is-in > *:nth-child(4) { transition-delay: 270ms; }
+.reveal.is-in > *:nth-child(5) { transition-delay: 360ms; }
+.reveal.is-in > *:nth-child(6) { transition-delay: 450ms; }
+.reveal.is-in > *:nth-child(n+7) { transition-delay: 540ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal > * { opacity: 1; transform: none; transition: none; }
+}
+
+
+/* A live session. The ring keeps breathing because the thing it stands for is
+   happening right now; it stops outright under reduced motion. */
+@keyframes session-pulse {
+  0%   { transform: scale(0.82); opacity: .28; }
+  70%  { transform: scale(1.12); opacity: 0;   }
+  100% { transform: scale(1.12); opacity: 0;   }
+}
+.session-pulse { animation: session-pulse 2.4s ease-out infinite; }
+@media (prefers-reduced-motion: reduce) { .session-pulse { animation: none; } }
+
+
+/* The session's signal, travelling toward the shelf. Continuous: a live session
+   does not pause to be looked at. Light surface, so the stripe is the brand
+   blue rather than the white used by .lane-flow on ink. */
+@keyframes beam-flow { from { background-position: 0 0; } to { background-position: 28px 0; } }
+.beam-flow {
+  background-image: repeating-linear-gradient(90deg, var(--sig-deep) 0 8px, transparent 8px 28px);
+  background-size: 28px 100%;
+  animation: beam-flow 1.1s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) { .beam-flow { animation: none; } }
+
+
+/* Route transition skeleton. Used by the segment `loading.tsx`, which Next
+   mounts while a page streams and unmounts when it commits. */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.45; }
+}
+.skeleton {
+  /* Not --ed-line. That is a hairline token and measured 1.18:1 against the
+     canvas, so the whole skeleton rendered as a blank page: the boundary was
+     firing correctly and showing nothing. These read at 2.33:1 on light and
+     2.71:1 on dark, visible as a placeholder without posing as content. */
+  background: #a9a0cf;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+[data-theme="dark"] .skeleton { background: #565c6d; }
+
+/* Indeterminate, because the wait genuinely is: nothing here knows how long
+   the server will take, and a bar that pretends to is a lie with a gradient. */
+@keyframes route-bar {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+.route-bar {
+  background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+  animation: route-bar 1.1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; opacity: 0.8; }
+  .route-bar { animation: none; width: 100%; opacity: 0.6; }
+}
+
+/* ----------------------------------------------------------------------------
+   The wordmark is two files, not one recoloured file: it carries a colour mark
+   that cannot be inverted with a filter. Swapped in CSS rather than from React
+   state so it is correct in the first paint and never flashes the wrong one. */
+.logo-dark { display: none; }
+html[data-theme="dark"] .logo-light { display: none; }
+html[data-theme="dark"] .logo-dark { display: block; }

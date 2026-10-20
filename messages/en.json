@@ -1,0 +1,1534 @@
+{
+  "recaptcha": {
+    "notice": "Protected by reCAPTCHA. Google <privacy>Privacy Policy</privacy> and <terms>Terms</terms> apply."
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "contactUs": "Contact Us",
+    "viewAll": "View All",
+    "backToHome": "Back to Home",
+    "tryAgain": "Try Again",
+    "submit": "Submit",
+    "sending": "Sending...",
+    "loading": "Loading...",
+    "email": "Email",
+    "name": "Name",
+    "company": "Company",
+    "message": "Message",
+    "required": "Required",
+    "optional": "Optional",
+    "copy": "Copy",
+    "copied": "Copied"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "errorCode": "404",
+    "heading": "Oops! Lost in the data stream",
+    "description": "The page you're looking for seems to have wandered off into the digital void. Don't worry, even the best algorithms occasionally lose their way.",
+    "suggestion": "Let's get you back on track:",
+    "homeButton": "Back to Home",
+    "productButton": "Explore Product",
+    "contactButton": "Contact Support",
+    "popularPages": "Popular pages:",
+    "goBack": "Go back to previous page"
+  },
+  "nav": {
+    "product": "Product",
+    "industries": "Industries",
+    "pricing": "Pricing",
+    "docs": "Documentation",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "careers": "Careers",
+    "signIn": "Sign In",
+    "getStarted": "Get Started",
+    "tryDemo": "Try Demo"
+  },
+  "footer": {
+    "product": "Product",
+    "decisionAudit": "Decision Audit",
+    "decisionVerification": "Decision Verification",
+    "decisionMonitor": "Decision Monitor",
+    "pricing": "Pricing",
+    "company": "Company",
+    "aboutUs": "About us",
+    "contact": "Contact",
+    "career": "Career",
+    "hiring": "We are hiring!",
+    "contactPoint": "Contact point",
+    "phone": "+65 0000 0000",
+    "email": "getintouch@thepulseapi.com",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "gdpr": "GDPR",
+    "copyright": "© {year} Pulse. All rights reserved."
+  },
+  "home": {
+    "hero": {
+      "title": "Your catalogue can't<br></br>answer the question<br></br>your shoppers are asking.",
+      "description": "PULSE measures whether your product data is ready to support the decisions your shoppers are trying to make, ranked, in your own catalogue, in 48 hours. Then it decides what to show, and when one more question is worth their time.",
+      "ctaPrimary": "Request a Decision Audit",
+      "ctaSecondary": "See how we measured it",
+      "illustrationAlt": ""
+    },
+    "problem": {
+      "eyebrow": "Measured, not asserted",
+      "title": "47 of 216 laptops record nothing a shopper could filter on.",
+      "body": "We took one real merchant catalogue and looked at a single shelf. No screen size. No memory. No storage. No processor. Those specifications are unavailable to anything that depends on structured catalogue attributes, filters cannot use them, guided selling cannot reason over them as explicit fields, and every system downstream has to re-infer what the catalogue should already state.",
+      "caption": "Often the fact exists, somewhere less useful. Here it is in the title, queryable by nothing. Sometimes it is in a supplier feed nobody mapped. Sometimes it was never recorded at all. The audit tells you which."
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "Audit. Enrich. Then decide.",
+      "body": "Personalisation sold on top of a catalogue that records nothing is personalisation that cannot work. We start one step earlier than everyone else.",
+      "s1": {
+        "title": "Decision Audit",
+        "body": "Send one catalogue export. We rank every attribute by how much deciding power it carries today, and how much it would carry if it were recorded everywhere. The gap is what the missing data costs you.",
+        "meta": "48 hours · no code · product data only"
+      },
+      "s2": {
+        "title": "You fix what it points at",
+        "body": "With the specific products listed. You may not need us for this at all, if your team can populate the top attribute, the audit has paid for itself and you should go and do that.",
+        "meta": "We also return what we could recover from your existing titles"
+      },
+      "s3": {
+        "title": "PULSE decides",
+        "body": "The engine reads the live session, infers what the visitor appears to need, and ranks your catalogue against it, asking a question only when the answer would change what it shows. It runs alongside your store and search; it replaces neither.",
+        "meta": "no cookies · no login required · runs alongside your store"
+      }
+    },
+    "audit": {
+      "eyebrow": "What you get",
+      "title": "A ranked list of what to record first, in your own products.",
+      "body": "\"Enrich your catalogue\" is correct and useless: a catalogue has hundreds of possible fields and nobody can tell you which ones matter. So it becomes an unbounded project, it gets deprioritised, and every discovery tool on top of it keeps underperforming for a reason nobody names.",
+      "callout": "Look at Processor. It contributes almost nothing today, which is exactly why a catalogue review by eye would dismiss it. Under the same decision model it is the third-highest repair priority, because 162 products are missing it. That is easy to miss when you are reviewing completeness percentages alone.",
+      "table": {
+        "caption": "Decision Audit, laptops",
+        "attribute": "Attribute",
+        "today": "Decision value today",
+        "complete": "Potential if complete",
+        "gap": "Decision-information gap",
+        "missing": "Missing on",
+        "foot": "Measured in bits of decision information, not revenue, not conversions. On a real 216-product shelf, reproducible from the repository (ODIN/research/SPIKE-VOI.md §9.4)."
+      }
+    },
+    "proof": {
+      "eyebrow": "What we measured",
+      "title": "Choosing the question beats asking every question.",
+      "m1": {
+        "unit": "questions",
+        "label": "PULSE, mean",
+        "foot": "Against 4.00 for a fixed questionnaire, the model every guided-selling product uses. A 29% reduction."
+      },
+      "m2": {
+        "unit": "of 216",
+        "label": "Unaskable products",
+        "foot": "Record no attribute a shopper could filter on, so they survive every question. After every question this shelf can support, a shopper is still choosing between 94 products on average."
+      },
+      "m3": {
+        "unit": "dimensions",
+        "label": "Inferred live",
+        "foot": "Gender, age, skin tone, undertone, each a calibrated distribution, derived from catalogue statistics rather than assigned."
+      },
+      "honesty": {
+        "title": "What these numbers do not establish",
+        "body": "This is a search-efficiency measurement against a known answer. It says nothing about whether shoppers would answer a question, and nothing about revenue. We have no measured commercial uplift, because we have not run a pilot with a control group yet. When we have one, it will be from your traffic, not someone else's store."
+      }
+    },
+    "flow": {
+      "title": "How a decision<br></br><accent>gets made.</accent>",
+      "description": "Pulse builds two vectors, one for the shopper in front of you, one for every product you sell, and matches them. Neither side needs a history, which is why it works on the first page view. What it cannot do is invent an attribute your catalogue never recorded.",
+      "cols": {
+        "send": "Send data",
+        "build": "Build the twin",
+        "get": "Get personalization"
+      },
+      "session": {
+        "eyebrow": "Real-time",
+        "title": "Anonymous session",
+        "meta": "1,000+ signals · every request"
+      },
+      "catalogue": {
+        "eyebrow": "Once at sync",
+        "title": "Your catalogue",
+        "meta": "synced once, updated on change"
+      },
+      "notRequired": {
+        "title": "Not required",
+        "items": [
+          "Cookies",
+          "Login",
+          "User Profile",
+          "Consent gate",
+          "Purchase History",
+          "Training Window"
+        ]
+      },
+      "persona": {
+        "eyebrow": "Visitor persona",
+        "title": "Bayesian scoring",
+        "meta": "readiness · price band · category affinity · temp",
+        "vector": "384-dim vector"
+      },
+      "twin": {
+        "eyebrow": "Product twin",
+        "title": "Persona-fit enrichment",
+        "meta": "suits[] · persona_fit'{}' · one twin per SKU",
+        "vector": "384-dim vector"
+      },
+      "match": {
+        "title": "Vector match",
+        "meta": "cosine similarity ranked by fit score",
+        "value": "target <50ms",
+        "footnote": "design budget, not a measurement<br></br>0 cookies · 0 PII"
+      },
+      "outputs": [
+        "Personalised homepage",
+        "Search & category ranking",
+        "Product Recommendation",
+        "Cart & Checkout upsell",
+        "Similar Products",
+        "Email & retention",
+        "Paid landing pages",
+        "Mobile app feed",
+        "Anywhere you render products"
+      ]
+    },
+    "code": {
+      "title": "<accent>One call. Ten lines.</accent><br></br>Same afternoon.",
+      "description": "REST and SDKs for JavaScript, Python, PHP, and Go. The reasoning comes back with the ranking, so you can show a shopper why, or log it and argue with it later.",
+      "responseLabel": "Response · 200 OK",
+      "responseTime": "200 OK",
+      "langs": {
+        "js": "JavaScript",
+        "curl": "cURL",
+        "python": "Python"
+      }
+    },
+    "industries": {
+      "title": "One engine.<br></br><accent>Every catalogue.</accent>",
+      "description": "The same measurement and the same inference, adapted to the surface. What changes between industries is which attributes carry the decision, and that is exactly what the audit works out.",
+      "more": "More",
+      "ctaPrimary": "See the live demo",
+      "ctaSecondary": "Explore this industry",
+      "prevSlide": "Previous slide",
+      "nextSlide": "Next slide",
+      "slides": [
+        "Fully personalised home page",
+        "Recommendation for you",
+        "Popular right now"
+      ],
+      "tablistLabel": "Industries"
+    },
+    "privacy": {
+      "title": "Nothing to leak,<br></br>because <accent>nothing is kept.</accent>",
+      "description": "Pulse doesn't need to know who someone is to know what they want. That isn't a policy we wrote, it's how the system is built, which means compliance review tends to be short.",
+      "items": [
+        {
+          "title": "Zero personal data",
+          "description": "No names, emails, phone numbers, addresses, or payment details are collected, requested, or stored. There is no user table, because there are no users, only sessions."
+        },
+        {
+          "title": "No cookies, first or third party",
+          "description": "Nothing is written to the browser and nothing needs consent between visits. Cookie-consent changes and browser tracking restrictions don't degrade what Pulse returns."
+        },
+        {
+          "title": "GDPR and Decree 13 aligned",
+          "description": "Designed against GDPR, CCPA, and Vietnam's Decree 13/2023 on personal data protection. Data residency options in Singapore, Frankfurt, and Virginia. Full DPA available on request."
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Send one category.<br></br>Get the audit in <accent>48 hours.</accent>",
+      "description": "Pick the shelf where you most suspect shoppers struggle. A catalogue export is all we need, no code, no tag on your site, no customer data. You'll get the ranked findings and a 30-minute walkthrough.",
+      "ctaPrimary": "Request a Decision Audit",
+      "ctaSecondary": "Read the documentation",
+      "illustrationAlt": ""
+    },
+    "useCases": {
+      "title": "See Pulse",
+      "titleHighlight": "In Action",
+      "description": "Great salespeople read customers in seconds, and know which question is worth asking. Pulse brings both to any digital surface.",
+      "showing": "Showing {current} of {total} use cases • Swipe or tap arrows to browse",
+      "allIndustries": "All Industries"
+    },
+    "meta": {
+      "title": "Know which product data to fix first",
+      "description": "Send one category export. We rank every missing attribute by how much it changes what a shopper is able to decide, and hand the list back in 48 hours."
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About Pulse: the measurement, and its limits",
+      "description": "We measure whether product data can answer the questions shoppers ask. Every figure is reproducible from our repository, including the runs that failed.",
+      "ogTitle": "About Pulse: the measurement, and its limits",
+      "ogDescription": "We measure whether product data can answer the questions shoppers ask. Every figure is reproducible from our repository, including the runs that failed."
+    },
+    "badge": "About PULSE",
+    "title": "We start one step",
+    "titleHighlight": "earlier",
+    "titleEnd": "than everyone else.",
+    "description": "Every discovery vendor assumes the catalogue already records what the product is. We checked, on a real merchant's shelf, and it does not, so we built the measurement that says which missing field costs the most, and we sell that before we sell anything else.",
+    "mission": {
+      "title": "What we are for",
+      "description": "PULSE helps stores decide when they know enough to recommend, and when one more question is worth the shopper's time. Before either is possible, the catalogue has to be able to answer the question at all, and almost nobody checks whether it can."
+    },
+    "story": {
+      "title": "How we got here",
+      "problem": {
+        "title": "What we found",
+        "description": "We asked how many questions a shopper would need to answer before we could confidently show them the right laptop. The answer was none, ever: 47 of the 216 products on the shelf record nothing a shopper could filter on, so they survive every question and the shelf can never be narrowed. The specifications were not missing, they were sitting inside the product titles, where no filter can reach them."
+      },
+      "solution": {
+        "title": "What we built instead",
+        "description": "We could have shipped the question engine anyway and shown a good demo. Instead we recorded that the catalogue defeats it, and built the measurement that ranks which missing attribute costs the most decisions. That became the Decision Audit, the thing a merchant can act on in a week, with no integration and no code."
+      }
+    },
+    "values": {
+      "title": "How we work",
+      "privacy": {
+        "title": "Inference over identity",
+        "description": "The engine reads the current visit. No login, no cookie, no profile to look up, so there is nothing to leak and nothing to get consent for between visits."
+      },
+      "innovation": {
+        "title": "Arithmetic over rules",
+        "description": "Poor data should weaken a signal by itself, not because someone tuned a constant. A category with no evidence contributes exactly zero, and that falls out of the maths."
+      },
+      "results": {
+        "title": "Measured or labelled",
+        "description": "Every number we publish is either measured, with a source, or marked as not measured. We fixed our success criteria before running the spike, and when they turned out to be insufficient we said so rather than rewriting them."
+      },
+      "customer": {
+        "title": "Useful before contracted",
+        "description": "The audit is designed to be worth acting on whether or not the merchant ever works with us. If their own team can populate the top attribute, they should go and do that."
+      }
+    },
+    "team": {
+      "title": "The team",
+      "description": "A small team in Ho Chi Minh City. The engine is built on this market first, population priors, urban sex ratios by city, VND price bands, Vietnamese text handling down to đ normalisation, because that is a head start a foreign entrant would not build first.",
+      "stats": {
+        "members": "Founding Member",
+        "countries": "Country",
+        "founded": "Founded",
+        "locationValue": "HQ",
+        "location": "Ho Chi Minh City"
+      },
+      "highlights": {
+        "ml": {
+          "title": "Inference",
+          "description": "Calibrated probability distributions over named dimensions, updated by likelihood ratio from catalogue-derived statistics rather than assigned by hand."
+        },
+        "engineering": {
+          "title": "Engineering",
+          "description": "Nine services in production behind one gateway, a public demo storefront, and a catalogue of 6,476 products under management."
+        },
+        "product": {
+          "title": "Measurement",
+          "description": "Kill criteria written before the experiment, a control group held back by default, and findings published even when they undercut the pitch."
+        },
+        "global": {
+          "title": "Market",
+          "description": "Vietnam first because the engine is built on it, and the second market is chosen before the first pilot closes, not after."
+        }
+      }
+    },
+    "numbers": {
+      "title": "Where we actually are",
+      "items": [
+        {
+          "value": "6,476",
+          "label": "Products under management"
+        },
+        {
+          "value": "target <50ms",
+          "label": "Inference latency budget"
+        },
+        {
+          "value": "0",
+          "label": "Cookies required"
+        },
+        {
+          "value": "None yet",
+          "label": "Paying merchants"
+        }
+      ],
+      "foot": "The last one is on the list deliberately. We are pre-seed, we have no measured commercial uplift, and a page that hid that would be the first thing worth distrusting."
+    },
+    "cta": {
+      "title": "Join us",
+      "description": "We are always interested in people who would rather publish the inconvenient number than bury it.",
+      "button": "View open positions"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Request a Decision Audit, or ask us something harder",
+      "description": "Send one category export and get back a ranked list of what to record first, inside 48 hours. No code, no tag, no customer data and no obligation.",
+      "ogTitle": "Request a Decision Audit, or ask us something harder",
+      "ogDescription": "Send one category export and get back a ranked list of what to record first, inside 48 hours. No code, no tag, no customer data and no obligation."
+    },
+    "badge": "Request a Decision Audit",
+    "title": "Send one catalogue.",
+    "titleHighlight": "Get the findings in 48 hours.",
+    "description": "Pick the category where you most suspect shoppers struggle. We need a product export, no code, no tag on your site, no customer data, and we come back with what your catalogue cannot currently tell anyone.",
+    "form": {
+      "title": "Send us a Message",
+      "name": "Your Name",
+      "namePlaceholder": "John Smith",
+      "email": "Work Email",
+      "emailPlaceholder": "john@company.com",
+      "company": "Company Name",
+      "companyPlaceholder": "Acme Inc.",
+      "companySize": "Company Size",
+      "inquiryType": "What can we help you with?",
+      "message": "Your Message",
+      "messagePlaceholder": "Which category should we look at, and what do you suspect shoppers are struggling to find?",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "required": "*",
+      "characters": "characters",
+      "recaptchaNote": "This site is protected by reCAPTCHA and the Google",
+      "privacyPolicy": "Privacy Policy",
+      "and": "and",
+      "termsOfService": "Terms of Service",
+      "apply": "apply.",
+      "sector": "What do you sell?",
+      "catalogue": "Catalogue export (optional)",
+      "catalogueHint": "CSV, JSON or a spreadsheet, up to 15MB. One category is enough. Send it now and we can start without a second email.",
+      "catalogueType": "Please attach a CSV, JSON or spreadsheet file",
+      "catalogueSize": "File must be smaller than {mb}MB"
+    },
+    "inquiryTypes": {
+      "sales": "Sales Inquiry",
+      "support": "Technical Support",
+      "partnerships": "Partnerships",
+      "press": "Press & Media",
+      "general": "General Inquiry",
+      "audit": "Decision Audit request"
+    },
+    "companySizes": {
+      "select": "Select size",
+      "1-10": "1-10 employees",
+      "11-50": "11-50 employees",
+      "51-200": "51-200 employees",
+      "201-500": "201-500 employees",
+      "500+": "500+ employees"
+    },
+    "success": {
+      "title": "Message Sent!",
+      "description": "Thanks, we'll come back within one business day. If you asked for a Decision Audit, the next message will tell you exactly what to export.",
+      "backHome": "Back to Home"
+    },
+    "sidebar": {
+      "contactDirectly": "Contact Directly"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "How long does integration take?",
+          "answer": "Most native integrations (Shopify, WooCommerce, etc.) take under 30 minutes. Custom API integrations typically take 1-2 days."
+        },
+        {
+          "question": "Do you offer a free trial?",
+          "answer": "Yes. Our Free tier gives you 1,000 API calls and 100 entities per month with no card required. Paid plans include a 14-day trial so you can validate ROI before committing."
+        },
+        {
+          "question": "What's the typical response time?",
+          "answer": "Sales inquiries are typically answered within 2-4 hours during business hours. Support tickets are addressed within 24 hours."
+        },
+        {
+          "question": "Do you work with agencies?",
+          "answer": "Yes! We have a partner program for agencies and consultants. Reach out to partners@thepulseapi.com for more information."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Prefer a Live Demo?",
+      "description": "See Pulse in action with a personalized demo of our inference engine tailored to your business.",
+      "button": "Schedule a Demo"
+    },
+    "info": {
+      "email": {
+        "title": "Email Us",
+        "value": "getintouch@thepulseapi.com",
+        "description": "For general inquiries and support"
+      },
+      "demo": {
+        "title": "Book a Demo",
+        "value": "30 min call",
+        "description": "See Pulse in action with your own data"
+      }
+    }
+  },
+  "careers": {
+    "meta": {
+      "title": "Careers at Pulse: build it, publish the limits",
+      "description": "We are a small team measuring whether product catalogues can support the decisions buyers are trying to make. The open roles, and how we actually work.",
+      "ogTitle": "Careers at Pulse: build it, publish the limits",
+      "ogDescription": "We are a small team measuring whether product catalogues can support the decisions buyers are trying to make. The open roles, and how we actually work."
+    },
+    "badge": "We're Hiring",
+    "title": "Build the Future of",
+    "titleHighlight": "E-commerce",
+    "description": "Join a team of passionate engineers, designers, and business minds working to transform how online stores understand their customers.",
+    "benefits": {
+      "title": "Why Join Pulse?",
+      "description": "We're building something special -technology that respects user privacy while delivering exceptional results. Here's what we offer:",
+      "remote": {
+        "title": "Remote-First",
+        "description": "Work from anywhere in India or Vietnam. We're a distributed team across Asia."
+      },
+      "health": {
+        "title": "Health & Wellness",
+        "description": "Comprehensive health coverage for you and your family."
+      },
+      "pto": {
+        "title": "Flexible PTO",
+        "description": "Take the time you need. We trust you to manage your own schedule."
+      },
+      "learning": {
+        "title": "Learning Budget",
+        "description": "Annual budget for courses, conferences, and professional development."
+      },
+      "tech": {
+        "title": "Latest Tech",
+        "description": "Top-of-the-line equipment and tools to do your best work."
+      },
+      "growth": {
+        "title": "Growth Opportunities",
+        "description": "Join an early-stage startup with huge potential for career growth."
+      }
+    },
+    "culture": {
+      "title": "Our Culture",
+      "description": "We believe the best work happens when talented people have autonomy, clear goals, and the support they need to succeed. We're not about endless meetings or micromanagement.",
+      "async": "Async-first communication",
+      "focus": "Focus time protected",
+      "results": "Results over hours",
+      "transparent": "Transparent decision-making",
+      "stats": {
+        "teamMembers": "Team Members",
+        "countries": "Countries",
+        "stage": "Stage",
+        "founded": "Founded"
+      }
+    },
+    "positions": {
+      "title": "Open Positions",
+      "noMatch": "Don't see a perfect fit? Email us at",
+      "apply": "Apply Now"
+    },
+    "cta": {
+      "title": "Don't See Your Role?",
+      "description": "We're always interested in meeting exceptional people. Send us your resume and tell us how you'd contribute to Pulse.",
+      "button": "Get in Touch"
+    },
+    "heroAlt": "A team around a table with laptops, working through something together."
+  },
+  "blog": {
+    "meta": {
+      "title": "Notes on product data and agentic commerce",
+      "description": "Research on what missing product attributes cost, every figure attributed. Baymard on filtering, Adobe on machine readability, Akeneo on frustration.",
+      "ogTitle": "Notes on product data and agentic commerce",
+      "ogDescription": "Research on what missing product attributes cost, every figure attributed. Baymard on filtering, Adobe on machine readability, Akeneo on frustration."
+    },
+    "title": "What we measured, and what other people measured.",
+    "titleHighlight": "Blog",
+    "description": "Insights on e-commerce personalization, AI inference, and building privacy-first technology that drives results.",
+    "featured": "Featured",
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get the latest insights on e-commerce personalization and AI delivered to your inbox.",
+      "placeholder": "Enter your email",
+      "button": "Subscribe",
+      "success": "Thanks for subscribing! Check your inbox for confirmation."
+    },
+    "eyebrow": "Notes",
+    "lede": "Research on product data and discovery, with every figure attributed. Where a number is ours it says so, and the command that reproduces it is on the method page.",
+    "read": "Read the piece",
+    "subscribeTitle": "New pieces, occasionally.",
+    "subscribeBody": "We write when we have measured something worth writing about, which is not on a schedule.",
+    "sources": "Sources",
+    "backToNotes": "All notes",
+    "related": "Related"
+  },
+  "status": {
+    "meta": {
+      "title": "System status and live latency for the Pulse API",
+      "description": "Current availability and incident history, with p50 and p95 latency reported as a distribution rather than a median that hides the slowest requests.",
+      "ogTitle": "System status and live latency for the Pulse API",
+      "ogDescription": "Current availability and incident history, with p50 and p95 latency reported as a distribution rather than a median that hides the slowest requests."
+    },
+    "title": "System Status",
+    "description": "Real-time status of Pulse services and infrastructure",
+    "lastUpdated": "Last updated:",
+    "allOperational": "All Systems Operational",
+    "allOperationalDesc": "All Pulse services are running normally with no reported issues.",
+    "services": "Services",
+    "regions": "Regions",
+    "uptime": "Historical Uptime",
+    "incidents": "Recent Incidents",
+    "subscribe": {
+      "title": "Stay Informed",
+      "description": "Subscribe to status updates and get notified about incidents and maintenance."
+    },
+    "status": {
+      "operational": "Operational",
+      "degraded": "Degraded Performance",
+      "outage": "Service Outage"
+    }
+  },
+  "pricing": {
+    "meta": {
+      "title": "Pricing: a fixed fee for the audit",
+      "description": "The Decision Audit has a fixed price per catalogue. The runtime is priced per pilot, never before one, and this page explains why there is no rate card.",
+      "ogTitle": "Pricing: a fixed fee for the audit",
+      "ogDescription": "The Decision Audit has a fixed price per catalogue. The runtime is priced per pilot, never before one, and this page explains why there is no rate card."
+    },
+    "title": "Priced on what it decides.",
+    "titleHighlight": "Not on what it stores.",
+    "description": "Three lines, in the order you would actually buy them. The audit comes first because it is the only one that works without the other two, and because a merchant who will not pay for a diagnosis will not act on it.",
+    "popular": "Start here",
+    "note": "Pre-seed pricing is negotiated per pilot. We would rather have five merchants who got real value than fifty on a discount, so there is no self-serve tier and no published rate card yet.",
+    "plans": {
+      "audit": {
+        "name": "Decision Audit",
+        "cadence": "One-off, per catalogue",
+        "description": "The entry point. Which missing product information most limits your catalogue's ability to support buying decisions, ranked, in your own products, with the specific items listed.",
+        "cta": "Request an audit",
+        "features": [
+          "48 hours from receiving your file",
+          "A catalogue export is all we need, no code, no tag, no customer data",
+          "Ranked attribute list with the products affected",
+          "What we could already recover from your existing titles",
+          "Shelf-level coverage, which categories can support discovery today",
+          "A 30-minute walkthrough with whoever owns merchandising"
+        ]
+      },
+      "api": {
+        "name": "Decision API",
+        "cadence": "Monthly, priced on decisions served",
+        "description": "Live inference and catalogue ranking. Begins only after a pilot, we would rather you saw a measured result than a signature.",
+        "cta": "Talk to us",
+        "features": [
+          "Real-time session inference, no login or cookie required",
+          "Catalogue ranked against what the visitor appears to need",
+          "Questions asked only when the answer changes the ranking",
+          "Runs alongside your existing store and search, to a sub-50ms design budget",
+          "Tenant-isolated: your catalogue is never pooled and never sold",
+          "A control group held back by default, so any number is a comparison"
+        ]
+      },
+      "monitoring": {
+        "name": "Enrichment monitoring",
+        "cadence": "Optional, recurring",
+        "description": "Catalogues decay. New products arrive unrecorded, and a shelf that was usable last quarter quietly stops being usable.",
+        "cta": "Talk to us",
+        "features": [
+          "Re-scores the ranking whenever the catalogue changes",
+          "Alerts when a shelf drops below usable coverage",
+          "Attribute extraction from new product text",
+          "Quarterly re-ranking of what to record next"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Questions merchants actually ask",
+      "items": [
+        {
+          "question": "Why is there no free tier or price list?",
+          "answer": "Because we are early and every pilot is scoped by hand. A published rate card would imply a repeatable product motion we have not earned yet. Pricing is agreed per pilot, in writing, before anything starts."
+        },
+        {
+          "question": "What does the audit actually cost me if it finds nothing?",
+          "answer": "A catalogue export and a fixed fee. If the audit says your catalogue is fine, it says so, and you have spent very little to learn that discovery is not your bottleneck. That is a useful answer."
+        },
+        {
+          "question": "We already have search and recommendations. Does this replace them?",
+          "answer": "No, keep them. They read the same catalogue fields we do, which is why the audit helps them too. If screen size is not recorded, your search facets cannot offer it either."
+        },
+        {
+          "question": "Isn't this just data cleanup?",
+          "answer": "Data cleanup is unbounded. This is a ranked, finite list of the fields that change outcomes, with the products attached. The difference is knowing when to stop."
+        },
+        {
+          "question": "How is this different from a PIM?",
+          "answer": "Keep your PIM. A PIM is where product information is governed, enriched and distributed, that is not what we do. PULSE adds a different question: given the buying decisions your catalogue has to support, what should you improve first? We hand that priority list back to whatever already manages your product data. If you run Akeneo, Salsify, Productsup or your own system, the audit is an input to it, not a replacement for it."
+        },
+        {
+          "question": "Will you quote us an uplift percentage?",
+          "answer": "Not before we have measured one on your traffic. We do not have a measured revenue result from a live merchant yet, and anyone who gives you a number before running the test is quoting someone else's store."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Start with one category.",
+      "titleHighlight": "The one where shoppers struggle.",
+      "description": "Send a catalogue export and we will come back within 48 hours with what your products cannot currently tell anyone.",
+      "button": "Request a Decision Audit"
+    }
+  },
+  "industriesPage": {
+    "title": "One Engine.",
+    "titleHighlight": "Every Industry.",
+    "description": "Pulse adapts its real-time persona inference to any digital experience. Same core technology, industry-specific intelligence.",
+    "cta": "Try Live Demo",
+    "secondaryCta": "View Pricing",
+    "metricLabel": "what we can show today",
+    "viewPricing": "See the business model",
+    "anyTitle": "Your sector is not on this list?",
+    "anyBody": "The audit reads product data and nothing else, so the method does not change with your sector. What changes is which attributes matter, and that is the thing we measure rather than assume. Send one category and we will tell you whether it is worth your time.",
+    "anyCta": "Request a Decision Audit",
+    "meta": {
+      "title": "Solutions by sector: where data decides the sale",
+      "description": "Decision Audits for ecommerce, marketplaces, B2B distribution, shopping feeds, travel and AI shopping agents. One category export, ranked findings in 48 hours.",
+      "ogTitle": "Solutions by sector: where data decides the sale",
+      "ogDescription": "Decision Audits for ecommerce, marketplaces, B2B distribution, shopping feeds, travel and AI shopping agents. One category export, ranked findings in 48 hours."
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Page Not Found",
+      "description": "The page you're looking for doesn't exist or has been moved. Let's get you back on track.",
+      "popularPages": "Popular pages:",
+      "goBack": "Go back to previous page"
+    },
+    "500": {
+      "title": "Something Went Wrong",
+      "description": "We encountered an unexpected error. Our team has been notified and is working on it. Please try again in a moment.",
+      "support": "If the problem persists, please contact our support team.",
+      "checkStatus": "Check system status"
+    }
+  },
+  "language": {
+    "en": "English",
+    "vi": "Tiếng Việt",
+    "switchTo": "Switch language"
+  },
+  "docs": {
+    "meta": {
+      "title": "API documentation: ten lines, or none at all",
+      "description": "Reference for the Pulse SDK and Decision API, including the ranking factors, the decision record and the holdback arm. The audit needs none of it.",
+      "ogTitle": "API documentation: ten lines, or none at all",
+      "ogDescription": "Reference for the Pulse SDK and Decision API, including the ranking factors, the decision record and the holdback arm. The audit needs none of it."
+    },
+    "title": "API Documentation",
+    "description": "Everything you need to integrate Pulse's real-time inference engine into your platform.",
+    "quickStart": {
+      "navTitle": "Quick Start",
+      "navDescription": "Add Pulse to your site in 3 steps",
+      "title": "Quick Start",
+      "description": "Add Pulse to your website in three steps. The SDK loads in the background, so it never slows your page down, and it only reads anonymous in-session signals. No cookies, nothing personal.",
+      "step1Title": "1. Add the SDK",
+      "step1Desc": "Drop this script tag into the head of your page. It loads asynchronously and never blocks rendering.",
+      "step2Title": "2. Initialize",
+      "step2Desc": "Initialize Pulse with your merchant ID and publishable key (pk_live_…). Automatic signal capture begins immediately.",
+      "step3Title": "3. Tag key elements (optional)",
+      "step3Desc": "Add a data-pulse-track attribute to sort dropdowns, filters, and CTAs to capture high-intent interactions automatically.",
+      "doneTitle": "That's it, you're live",
+      "doneDesc": "The SDK streams anonymous signals (device, referrer, scroll, clicks) to POST /v1/track and Pulse infers the visitor's persona in-session. Call the Inference API below from your backend to personalize search, recommendations, and layout."
+    },
+    "nav": {
+      "authTitle": "Authentication",
+      "authDesc": "Learn how to authenticate your API requests",
+      "inferTitle": "Inference API",
+      "inferDesc": "Get real-time persona predictions",
+      "personalizeTitle": "Personalization API",
+      "personalizeDesc": "Reorder your storefront in real time",
+      "catalogTitle": "Catalog Sync",
+      "catalogDesc": "Sync products & categories in real time",
+      "webhooksTitle": "Webhooks",
+      "webhooksDesc": "Receive real-time event notifications"
+    },
+    "baseUrl": "Base URL",
+    "overview": {
+      "title": "How It Works",
+      "intro": "Pulse personalizes your storefront in three moves: capture anonymous in-session signals, tell us what you sell, then ask us how to order it for the visitor in front of you. The browser SDK handles the first; your backend handles the other two over a simple REST API.",
+      "step1Title": "1. Capture signals",
+      "step1Desc": "Drop in the SDK. It quietly streams anonymous behavior to Pulse in the background. No cookies, nothing personal.",
+      "step2Title": "2. Sync your catalog",
+      "step2Desc": "Push your products and categories so Pulse knows what it can recommend and rank.",
+      "step3Title": "3. Fetch personalization",
+      "step3Desc": "Call the Personalization API to reorder grids and search results for the live visitor."
+    },
+    "auth": {
+      "title": "Authentication",
+      "signupNote": "You'll need a Pulse account first. Sign up to create your organization, then generate and manage your API keys from the dashboard.",
+      "signupCta": "Sign up to get your API keys →",
+      "intro": "All API requests require authentication using an API key. Include your key in the <code>Authorization</code> header.",
+      "securityLabel": "Security Note",
+      "securityNote": "Never expose your secret API key in client-side code. All inference and catalog requests should be made from your backend servers. The browser SDK uses a publishable key (pk_live_…) scoped to event ingestion only."
+    },
+    "inference": {
+      "title": "Inference API",
+      "desc": "Get real-time persona inference for a visitor session. Returns persona attributes, confidence scores, and recommended product rankings.",
+      "latency": "Target latency: <50ms (p95)",
+      "requestBody": "Request Body",
+      "response": "Response"
+    },
+    "catalog": {
+      "title": "Catalog Sync, Products & Categories",
+      "intro": "Push your products and categories to Pulse so the engine knows what it can personalize. Send a full catalog once, then keep it in sync by sending each create, update, or delete as it happens in your store.",
+      "async": "Enrichment and Digital Twin tagging run asynchronously in the ingestion pipeline, the upsert call returns <code>202 Accepted</code> immediately and the <code>products.tagged</code> webhook fires when a product becomes available for inference. Inference itself stays on the request path.",
+      "upsertDesc": "Create or update products. The call is idempotent on <code>id</code>, send the same product again with new fields to update it. Accepts one product or a batch.",
+      "categoriesDesc": "Sync your category tree so Pulse understands how products relate. Set <code>parent_id</code> to mirror your store's hierarchy. Upserted the same way as products.",
+      "deleteDesc": "Remove a product when it is deleted or permanently out of stock. It stops appearing in recommendations immediately. Use the same pattern to delete categories.",
+      "syncLabel": "Keeping in sync",
+      "syncNote": "Most merchants wire these calls to their store's product/category change events (e.g. a Shopify webhook or a save hook in a custom backend) so the Pulse catalog always mirrors what shoppers see. A nightly full re-sync is recommended as a safety net."
+    },
+    "personalize": {
+      "title": "Personalization API",
+      "desc": "Once the SDK is capturing signals and your catalog is synced, call these endpoints to reorder your storefront in real time for the current visitor. Call them from your backend with a Bearer token, passing the session_id the SDK created in the browser.",
+      "recommendDesc": "Return a ranked list of products personalized to the visitor's live persona, use it for \"For You\" grids, related products, and homepage rails.",
+      "searchDesc": "Re-rank your search results by intent. Send the shopper's query and Pulse orders the matching products by the persona inferred this session. Results are cursor-paginated."
+    },
+    "webhooks": {
+      "title": "Webhooks",
+      "intro": "Configure webhooks to receive real-time notifications for events like persona updates, conversion tracking, and model improvements.",
+      "eventsTitle": "Available Events",
+      "converted": "Conversion attributed to Pulse",
+      "tagged": "Product tagging completed",
+      "updated": "Inference model improved"
+    },
+    "errors": {
+      "title": "Errors",
+      "intro": "Pulse uses standard HTTP status codes and returns errors in the RFC 7807 Problem Details format, so every error includes a machine-readable type and a human-readable detail.",
+      "codesTitle": "Common Status Codes",
+      "codeCol": "Code",
+      "meaningCol": "Meaning",
+      "e400": "Bad Request, the payload is malformed or a required field is missing.",
+      "e401": "Unauthorized, the API key is missing or invalid.",
+      "e403": "Forbidden, the key is valid but not permitted for this resource.",
+      "e404": "Not Found, the session, product, or endpoint does not exist.",
+      "e422": "Unprocessable Entity, the request is well-formed but fails validation.",
+      "e429": "Too Many Requests, you have exceeded your plan's rate limit.",
+      "e500": "Server Error, something went wrong on our side; retry with backoff."
+    },
+    "rateLimits": {
+      "title": "Rate Limits",
+      "planCol": "Plan",
+      "inferCol": "Inference API",
+      "catalogCol": "Catalog API",
+      "custom": "Custom"
+    },
+    "sdks": {
+      "title": "SDKs & Libraries"
+    },
+    "needHelp": "Need Help?",
+    "helpDescription": "Our solutions engineering team is here to help you integrate Pulse successfully.",
+    "getSupport": "Get Integration Support",
+    "contactSupport": "Contact Support",
+    "heroAlt": "A developer at a laptop, with API resources flowing out of it: a schema, a folder, a chart, a webhook and a rate limit.",
+    "gateTitle": "Want the whole thing as one document?",
+    "gateBody": "Leave an email and we will send the full integration guide, both worked examples and the endpoint reference, in a single file you can forward to whoever has to approve it.",
+    "gateCta": "Send it to me",
+    "gateSuccess": "On its way. Check your inbox for the documentation."
+  },
+  "integrations": {
+    "meta": {
+      "title": "Integrations: read the export you already produce",
+      "description": "Pulse reads a CSV or JSON category export and hands back a ranked repair list. The optional runtime is one script tag alongside your existing stack.",
+      "ogTitle": "Integrations: read the export you already produce",
+      "ogDescription": "Pulse reads a CSV or JSON category export and hands back a ranked repair list. The optional runtime is one script tag alongside your existing stack."
+    },
+    "title": "Integrations",
+    "description": "Connect Pulse with your existing tech stack. Native integrations for all major platforms, plus flexible APIs for custom setups.",
+    "quickSetup": "Quick Setup",
+    "quickSetupDesc": "Most integrations can be completed in under 30 minutes",
+    "noCodeChanges": "No Code Changes",
+    "noCodeChangesDesc": "Native integrations require zero custom development",
+    "instantValue": "Instant Value",
+    "instantValueDesc": "Start personalizing from the first visitor after setup",
+    "platforms": "Supported Platforms",
+    "platformsDesc": "Native integrations for the platforms you already use",
+    "dataIntegrations": "Data & Marketing Integrations",
+    "dataIntegrationsDesc": "Connect Pulse insights to your analytics and marketing stack",
+    "howItWorks": "How Integration Works",
+    "install": "Install",
+    "installDesc": "Add the Pulse app or snippet to your store. Takes just minutes with our native integrations.",
+    "connect": "Connect",
+    "connectDesc": "Pulse automatically syncs your product catalog and begins learning your inventory.",
+    "personalize": "Personalize",
+    "personalizeDesc": "Real-time inference begins immediately. Every visitor gets a personalized experience.",
+    "customIntegrations": "Build Custom Integrations",
+    "customIntegrationsDesc": "For headless commerce, custom platforms, or unique requirements, our REST API gives you full control over the Pulse inference engine.",
+    "readyToIntegrate": "Ready to Integrate?",
+    "readyToIntegrateDesc": "Our solutions engineers can help you get set up in no time. Most integrations are completed within a single call.",
+    "getStarted": "Get Started Free",
+    "readDocs": "Read the Docs"
+  },
+  "product": {
+    "meta": {
+      "title": "Product: measure, then rank the storefront",
+      "description": "Decision Audit, Verification and Monitor for product data, plus Search, Recommendations, Pages and the Studio. A staircase with an exit at each step.",
+      "ogTitle": "Product: measure, then rank the storefront",
+      "ogDescription": "Decision Audit, Verification and Monitor for product data, plus Search, Recommendations, Pages and the Studio. A staircase with an exit at each step."
+    },
+    "badge": "The engine",
+    "title": "The system that knows what it",
+    "titleHighlight": "doesn't know",
+    "titleEnd": "about a purchase.",
+    "description": "Every recommendation is a bet made under uncertainty. Most engines hide that; ours measures it, names where the uncertainty lives, and closes the gap the cheapest way available, which is sometimes a question, and more often a product field nobody recorded.",
+    "cta": "Request a Decision Audit",
+    "viewPricing": "See the business model",
+    "gaps": {
+      "title": "Three gaps, closed in order",
+      "description": "They are not equally hard, and they are not equally finished. The table says which is which, including the two we have not built yet.",
+      "col": {
+        "gap": "The gap",
+        "how": "How we close it",
+        "status": "Status"
+      },
+      "items": [
+        {
+          "gap": "About the product",
+          "how": "Tell the merchant which attributes to record, ranked by decision impact, with the affected products listed.",
+          "status": "Measured, shippable",
+          "state": "ready"
+        },
+        {
+          "gap": "About the shopper",
+          "how": "Infer from behaviour in the current visit; ask only when the answer would change the decision.",
+          "status": "Mechanism proven, product not built",
+          "state": "partial"
+        },
+        {
+          "gap": "About the claim",
+          "how": "Separate verified fact from inference, with provenance, so an AI shopping agent can tell them apart.",
+          "status": "Substrate exists, product not built",
+          "state": "planned"
+        }
+      ],
+      "foot": "We sell the first. The second and third are why the first is not a consulting engagement."
+    },
+    "pipeline": {
+      "title": "What happens in a visit",
+      "description": "No login, no cookie, no profile to look up. Five steps, running alongside your store rather than in front of it.",
+      "steps": [
+        {
+          "title": "Visitor",
+          "desc": "Arrives anonymously. There is nothing to look up and nothing to match against."
+        },
+        {
+          "title": "Signals",
+          "desc": "Scroll, dwell, search terms, category opens and filter use, the current visit only."
+        },
+        {
+          "title": "Distributions",
+          "desc": "Each named dimension updated by likelihood ratio, starting from the visitor's own population."
+        },
+        {
+          "title": "Ranking",
+          "desc": "Your catalogue scored against the distributions, with audience fit as one weighted term."
+        },
+        {
+          "title": "Decision",
+          "desc": "Show, re-rank, or ask, a question only when its answer would change the ranking."
+        }
+      ]
+    },
+    "inference": {
+      "title": "Inference you can argue with",
+      "description": "Watch it move. The first frame is not a guess and not a coin flip, it is the population this visitor is drawn from, and the label says so until evidence replaces it.",
+      "points": [
+        {
+          "title": "Starts from a real population",
+          "description": "Vietnam at 48.97% male, narrowing by city where the request carries one. Not 50/50, because 50/50 is a claim nobody measured."
+        },
+        {
+          "title": "No evidence contributes exactly zero",
+          "description": "A category with no recorded audience statistics moves the distribution by 0.000, by arithmetic, not by a damping rule someone tuned."
+        },
+        {
+          "title": "Base rate and measurement are labelled apart",
+          "description": "Every session records which dimensions were measured and which are still population priors. The dashboard shows both."
+        },
+        {
+          "title": "A control group is held back",
+          "description": "Deterministically, by default, so that when we do claim a lift, there is something honest to compare it against."
+        }
+      ]
+    },
+    "running": {
+      "title": "What is running today",
+      "description": "Production numbers, not a roadmap.",
+      "items": [
+        {
+          "value": "6,476",
+          "label": "Products under management"
+        },
+        {
+          "value": "65",
+          "label": "Categories"
+        },
+        {
+          "value": "73",
+          "label": "Audience statistic rows, derived from catalogue data"
+        },
+        {
+          "value": "4",
+          "label": "Inferred dimensions"
+        }
+      ]
+    },
+    "developer": {
+      "badge": "For developers",
+      "title": "One endpoint,",
+      "titleHighlight": "one decision.",
+      "description": "Send the session signals you already have. Get back a ranked catalogue, the distributions behind the ranking, and, when it is worth asking, the single question that would change the answer most.",
+      "points": [
+        "Drop-in JavaScript SDK, or call the API directly",
+        "No cookie, no login, no identity resolution step",
+        "Built to a sub-50ms budget, a target we have not yet published a measurement against",
+        "Tenant-isolated: your catalogue never trains another merchant's model"
+      ],
+      "cta": "Read the documentation"
+    },
+    "cta2": {
+      "title": "See it against",
+      "titleHighlight": "your own catalogue.",
+      "description": "The audit runs on a product export alone. No integration, no code, no customer data, and the finding is yours whether or not you ever work with us again.",
+      "button": "Request a Decision Audit"
+    }
+  },
+  "privacy": {
+    "meta": {
+      "title": "Privacy: product data only, no identity",
+      "description": "What Pulse collects and what it never collects, and how the Decision Audit runs without customer records, order history or any personal data at all.",
+      "ogTitle": "Privacy: product data only, no identity",
+      "ogDescription": "What Pulse collects and what it never collects, and how the Decision Audit runs without customer records, order history or any personal data at all."
+    },
+    "title": "Privacy Policy",
+    "description": "At Pulse, privacy isn't an afterthought -it's our foundation. We've built our technology to deliver powerful personalization without compromising user privacy.",
+    "lastUpdated": "Last updated: January 2025",
+    "highlights": {
+      "title": "Privacy Highlights",
+      "noCookies": "No cookies required",
+      "noPII": "No PII collection",
+      "gdprCcpa": "GDPR & CCPA compliant",
+      "soc2": "Runs on SOC 2 certified infrastructure"
+    },
+    "sections": {
+      "collect": {
+        "title": "Information We Collect",
+        "items": [
+          "Device type and browser information (non-identifying)",
+          "Referring website or traffic source",
+          "General geographic location (country/region level)",
+          "On-site behavior patterns (searches, filters, browsing)",
+          "Time of visit and session duration"
+        ],
+        "note": "We do NOT collect: names, emails, addresses, payment information, or any personally identifiable information (PII) without explicit consent."
+      },
+      "use": {
+        "title": "How We Use Information",
+        "items": [
+          "To provide real-time persona inference for personalized experiences",
+          "To improve our inference algorithms and accuracy",
+          "To generate aggregated, anonymized analytics for our clients",
+          "To maintain and improve our service performance"
+        ]
+      },
+      "storage": {
+        "title": "Data Storage & Security",
+        "items": [
+          "All data is encrypted in transit (TLS 1.3) and at rest (AES-256)",
+          "We run on infrastructure whose providers hold SOC 2 Type II attestations. Pulse itself is not yet SOC 2 audited.",
+          "Data is stored in secure, geographically distributed data centers",
+          "Regular security audits and penetration testing",
+          "Automatic data deletion after 90 days unless otherwise specified"
+        ]
+      },
+      "dontDo": {
+        "title": "What We Don't Do",
+        "items": [
+          "We don't use cookies for tracking",
+          "We don't sell personal data to third parties",
+          "We don't create cross-site tracking profiles",
+          "We don't use fingerprinting techniques",
+          "We don't share individual user data with advertisers"
+        ]
+      }
+    },
+    "rights": {
+      "title": "Your Rights",
+      "description": "Depending on your location, you may have the following rights:",
+      "items": [
+        "Right to access your data",
+        "Right to rectification",
+        "Right to erasure ('right to be forgotten')",
+        "Right to restrict processing",
+        "Right to data portability",
+        "Right to object to processing"
+      ]
+    },
+    "contact": {
+      "title": "Questions About Privacy?",
+      "description": "We're happy to answer any questions about how we handle your data.",
+      "email": "privacy@thepulseapi.com"
+    }
+  },
+  "terms": {
+    "meta": {
+      "title": "Terms of service",
+      "description": "The terms covering use of the Pulse Decision Audit, Decision Verification, Decision Monitor and the Decision API, and what each of them does not promise.",
+      "ogTitle": "Terms of service",
+      "ogDescription": "The terms covering use of the Pulse Decision Audit, Decision Verification, Decision Monitor and the Decision API, and what each of them does not promise."
+    },
+    "title": "Terms of Service",
+    "description": "Please read these terms carefully before using Pulse services.",
+    "lastUpdated": "Last updated: January 2025",
+    "sections": {
+      "agreement": {
+        "title": "1. Agreement to Terms",
+        "content": "By accessing or using Pulse (\"the Service\"), you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access the Service. These Terms apply to all visitors, users, and others who access or use the Service."
+      },
+      "service": {
+        "title": "2. Description of Service",
+        "content": "Pulse provides a real-time persona inference engine for e-commerce platforms. Our services include:",
+        "items": [
+          "Real-time visitor persona inference",
+          "Product Digital Twin tagging and categorization",
+          "Personalization APIs and integrations",
+          "Analytics and reporting dashboards"
+        ]
+      },
+      "responsibilities": {
+        "title": "3. User Responsibilities",
+        "content": "As a user of our Service, you agree to:",
+        "items": [
+          "Provide accurate and complete information when registering",
+          "Maintain the security of your account credentials",
+          "Use the Service in compliance with applicable laws",
+          "Not attempt to reverse engineer or exploit the Service",
+          "Inform your end users about data collection practices"
+        ]
+      },
+      "payment": {
+        "title": "4. Payment Terms",
+        "items": [
+          "Subscription fees are billed monthly or annually in advance",
+          "Usage-based charges are billed monthly in arrears",
+          "All fees are non-refundable unless otherwise stated",
+          "We reserve the right to modify pricing with 30 days notice",
+          "Failure to pay may result in service suspension"
+        ]
+      },
+      "termination": {
+        "title": "5. Termination",
+        "content": "We may terminate or suspend your account immediately, without prior notice or liability, for any reason, including breach of these Terms. Upon termination:",
+        "items": [
+          "Your right to use the Service will immediately cease",
+          "We may delete your data after a 30-day grace period",
+          "You may request data export before termination"
+        ]
+      },
+      "liability": {
+        "title": "6. Limitation of Liability",
+        "content": "In no event shall Pulse, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service."
+      },
+      "law": {
+        "title": "7. Governing Law",
+        "content": "These Terms shall be governed by and construed in accordance with the laws of the State of Delaware, United States, without regard to its conflict of law provisions. Any disputes arising under these Terms shall be resolved in the courts located in Delaware."
+      },
+      "changes": {
+        "title": "8. Changes to Terms",
+        "content": "We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion. Continued use of the Service after changes constitutes acceptance of the new terms."
+      }
+    },
+    "contact": {
+      "title": "Questions About Our Terms?",
+      "description": "If you have any questions about these Terms, please contact us.",
+      "email": "legal@thepulseapi.com"
+    }
+  },
+  "cookies": {
+    "meta": {
+      "title": "Cookie policy: what this site sets",
+      "description": "This site sets a small number of cookies, listed here in full. The Pulse engine itself runs without a single one, which is a product decision not a policy.",
+      "ogTitle": "Cookie policy: what this site sets",
+      "ogDescription": "This site sets a small number of cookies, listed here in full. The Pulse engine itself runs without a single one, which is a product decision not a policy."
+    },
+    "title": "Cookie Policy",
+    "lastUpdated": "Last updated: January 2025",
+    "approach": {
+      "title": "Our Cookie-Free Approach",
+      "description": "At Pulse, privacy is at the core of everything we do. Unlike traditional analytics and personalization platforms, we've built our technology to work without relying on cookies."
+    },
+    "notice": {
+      "content": "We do not use cookies to track or store your data. By clicking 'Accept', you acknowledge and agree that no cookies are being collected, as described in our Privacy Policy.",
+      "accept": "Accept",
+      "acknowledged": "Acknowledged"
+    },
+    "dontDo": {
+      "title": "What We Don't Do",
+      "items": [
+        "We don't use tracking cookies",
+        "We don't use third-party advertising cookies",
+        "We don't sell or share your personal data",
+        "We don't create persistent user profiles across sites"
+      ]
+    },
+    "localStorage": {
+      "title": "Local Storage Usage",
+      "content": "We use browser local storage only for essential functionality like remembering your theme preference (light/dark mode). This data never leaves your device and is not used for tracking purposes."
+    },
+    "contact": {
+      "title": "Questions?",
+      "content": "If you have any questions about our cookie policy, please contact us at",
+      "email": "privacy@thepulseapi.com"
+    }
+  },
+  "gdpr": {
+    "meta": {
+      "title": "GDPR: how Pulse handles data, and how little",
+      "description": "The audit runs on product data alone. No customer records, no order history, no profiles, and deletion of a submitted catalogue export on request.",
+      "ogTitle": "GDPR: how Pulse handles data, and how little",
+      "ogDescription": "The audit runs on product data alone. No customer records, no order history, no profiles, and deletion of a submitted catalogue export on request."
+    },
+    "title": "GDPR Compliance",
+    "description": "Pulse is committed to protecting the privacy rights of individuals in the European Union under the General Data Protection Regulation (GDPR).",
+    "lastUpdated": "Last updated: January 2025",
+    "badge": "GDPR Compliant",
+    "badgeDescription": "We process data in accordance with GDPR requirements and respect the rights of all EU data subjects.",
+    "approach": {
+      "title": "Our Privacy-First Approach",
+      "description": "Pulse was built with privacy at its core. Unlike traditional personalization solutions that rely on extensive personal data collection, our inference engine works with minimal, non-identifying data signals.",
+      "principles": {
+        "minimization": {
+          "title": "Data Minimization",
+          "description": "We only collect data that is strictly necessary for providing our services."
+        },
+        "purpose": {
+          "title": "Purpose Limitation",
+          "description": "Data is only used for the specific purposes for which it was collected."
+        },
+        "storage": {
+          "title": "Storage Limitation",
+          "description": "Session data is not retained beyond what is necessary for inference."
+        },
+        "security": {
+          "title": "Integrity & Security",
+          "description": "All data is encrypted and protected with industry-standard security."
+        }
+      }
+    },
+    "rights": {
+      "title": "Your Rights Under GDPR",
+      "items": [
+        {
+          "title": "Right to Access",
+          "description": "You can request a copy of the personal data we hold about you."
+        },
+        {
+          "title": "Right to Rectification",
+          "description": "You can request correction of inaccurate or incomplete data."
+        },
+        {
+          "title": "Right to Erasure",
+          "description": "You can request deletion of your personal data ('right to be forgotten')."
+        },
+        {
+          "title": "Right to Restrict Processing",
+          "description": "You can request that we limit how we use your data."
+        },
+        {
+          "title": "Right to Data Portability",
+          "description": "You can request your data in a machine-readable format."
+        },
+        {
+          "title": "Right to Object",
+          "description": "You can object to processing based on legitimate interests."
+        }
+      ]
+    },
+    "legal": {
+      "title": "Legal Basis for Processing",
+      "description": "We process personal data under the following legal bases:",
+      "items": [
+        {
+          "label": "Contractual Necessity",
+          "description": "Processing necessary to fulfill our service agreements with clients."
+        },
+        {
+          "label": "Legitimate Interest",
+          "description": "Processing for fraud prevention and service optimization."
+        },
+        {
+          "label": "Consent",
+          "description": "When explicitly provided for specific processing activities."
+        }
+      ]
+    },
+    "dpa": {
+      "title": "Data Processing Agreement (DPA)",
+      "description": "For our business clients, we offer a comprehensive Data Processing Agreement that outlines our obligations as a data processor. Our DPA includes:",
+      "items": [
+        "Standard Contractual Clauses (SCCs) for international transfers",
+        "Sub-processor list and notification procedures",
+        "Technical and organizational security measures",
+        "Data breach notification procedures"
+      ]
+    },
+    "contact": {
+      "title": "Contact Our Data Protection Officer",
+      "description": "For any GDPR-related inquiries or to exercise your rights, please contact our DPO.",
+      "email": "dpo@thepulseapi.com"
+    }
+  },
+  "auth": {
+    "google": {
+      "label": "Continue with Google",
+      "pending": "Redirecting…",
+      "or": "or"
+    },
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "tooManyAttempts": "Too many attempts. Please wait a moment and try again."
+    },
+    "signUp": {
+      "title": "Create your account",
+      "subtitle": "Start personalising search for your store. No card required.",
+      "name": "Your name",
+      "namePlaceholder": "John Smith",
+      "email": "Work email",
+      "emailPlaceholder": "john@company.com",
+      "password": "Password",
+      "submit": "Create account",
+      "submitting": "Creating your account…",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "rules": {
+        "length": "Between 8 and 128 characters",
+        "letter": "At least one letter",
+        "number": "At least one number"
+      },
+      "errors": {
+        "nameRequired": "Please tell us your name.",
+        "emailInvalid": "That does not look like an email address.",
+        "emailTaken": "An account already exists for this address.",
+        "emailTakenLink": "Sign in instead",
+        "passwordWeak": "Your password does not meet the rules below."
+      }
+    },
+    "signIn": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your PULSE dashboard.",
+      "email": "Work email",
+      "emailPlaceholder": "john@company.com",
+      "password": "Password",
+      "forgot": "Forgot password?",
+      "submit": "Sign in",
+      "submitting": "Signing you in…",
+      "noAccount": "New to PULSE?",
+      "signUpLink": "Create an account",
+      "errors": {
+        "invalid": "That email and password do not match an account."
+      }
+    },
+    "forgot": {
+      "title": "Reset your password",
+      "subtitle": "We will email you a link to set a new one.",
+      "email": "Work email",
+      "emailPlaceholder": "john@company.com",
+      "submit": "Send reset link",
+      "submitting": "Sending…",
+      "sentTitle": "Check your email",
+      "sentBody": "If an account exists for {email}, a reset link is on its way.",
+      "backToSignIn": "Back to sign in",
+      "errors": {
+        "emailInvalid": "That does not look like an email address."
+      }
+    },
+    "reset": {
+      "title": "Set a new password",
+      "subtitle": "Choose something you have not used before.",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm new password",
+      "submit": "Reset password",
+      "submitting": "Saving…",
+      "invalidTitle": "This link is not valid",
+      "invalidBody": "It may have been truncated by your email client, or already used.",
+      "requestNew": "Request a new link",
+      "errors": {
+        "mismatch": "The two passwords do not match.",
+        "invalidToken": "This reset link has expired or has already been used."
+      }
+    },
+    "verify": {
+      "title": "Confirm your email",
+      "subtitle": "One more step before you can sign in.",
+      "body": "We have sent you a confirmation link. Click it to activate your account.",
+      "bodyWithEmail": "We have sent a confirmation link to {email}. Click it to activate your account.",
+      "resend": "Resend the email",
+      "resending": "Sending…",
+      "resent": "Sent. Check your inbox again.",
+      "backToSignIn": "Back to sign in"
+    }
+  },
+  "industryShell": {
+    "requestAudit": "Request a Decision Audit",
+    "seeWhatYouGet": "See what you get",
+    "viewPricing": "View pricing",
+    "problemsEyebrow": "The situation",
+    "problemsTitle": "What usually goes wrong in {sector}",
+    "stepsTitle": "What we do about it",
+    "stepsBody": "Three things, and only the first one needs anything from you.",
+    "step1Title": "Send one category",
+    "step1Body": "A CSV or JSON export of a single category. Product name, description, category, price, and whatever attributes you already record.",
+    "step2Title": "We rank what to record first",
+    "step2Body": "Every missing attribute scored by how much recording it would change what a buyer in your sector can decide, with the affected products attached.",
+    "step3Title": "You fix it, then we verify",
+    "step3Body": "Most of the repair is work your own team can do. When it is done we recompute on the repaired catalogue and show you exactly what moved.",
+    "useCasesEyebrow": "In practice",
+    "useCasesTitle": "Where this shows up in your catalogue",
+    "integrationEyebrow": "What it takes",
+    "integrationTitle": "What we need from you",
+    "needCsv": "One category export",
+    "needNoCode": "No code",
+    "needNoTag": "No tag on your site",
+    "needNoCustomerData": "No customer data",
+    "otherIndustries": "Other sectors",
+    "ctaTitle": "Send us one {sector} category.",
+    "ctaBody": "Pick the shelf where you most suspect buyers struggle. You get a ranked list, the affected products, and half an hour with whoever owns merchandising.",
+    "ctaNote": "A fixed fee, no obligation, and if your catalogue is already fine we will say so.",
+    "situationEyebrow": "What happens here",
+    "figureCaption": "Illustrative of this sector's shape. The measured figures are on the method page, with the command that reproduces them.",
+    "decisionIntro": "What a buyer here is trying to decide: {decision}",
+    "provenanceLabel": "Where it usually already lives:",
+    "faqEyebrow": "Questions from this sector",
+    "faqTitle": "What {sector} teams ask us",
+    "metricLabel": "from one category export",
+    "contextEyebrow": "The market",
+    "contextTitle": "What {sector} looks like right now",
+    "chartTitle": "Attribute coverage on a typical {sector} catalogue",
+    "chartSource": "illustrative of this sector's shape; the measured figures are on the method page",
+    "chartNote": "Red rows are the ones a purchase turns on and the catalogue mostly does not record. Those are the rows an audit surfaces and a coverage report buries.",
+    "specTrapEyebrow": "Where the fact already is",
+    "specTrapTitle": "The value exists. A filter cannot reach it.",
+    "specTrapBody": "Nothing here is missing from the catalogue. It is missing from the schema, which is a different problem with a cheaper fix.",
+    "specTrapProse": "In the description, as prose",
+    "specTrapField": "In the filters, as a field",
+    "specTrapNote": "The last row is already a field, which is why nobody ever files a complaint about it.",
+    "transformEyebrow": "Before and after",
+    "transformTitle": "The same shelf, once the top gap is closed",
+    "beforeLabel": "Before Pulse",
+    "afterLabel": "After the repair",
+    "beforeDecision": "A buyer asking “{decision}” has no way to narrow this shelf.",
+    "beforeAttribute": "{attribute} decides the purchase and is recorded on about {coverage}% of the catalogue, so the filter either does not exist or hides most of your range.",
+    "beforeWork": "Enrichment gets quoted as a whole-catalogue project, because nobody can say which field to start with.",
+    "afterDecision": "The same buyer narrows on {attribute} and reaches a shortlist they can choose from.",
+    "afterAttribute": "{attribute} came first on the ranked list, measured against what buyers in this sector actually ask, not against how much data was missing.",
+    "afterWork": "The remaining gaps are still ranked, so the next round of work is already ordered and costed.",
+    "transformNote": "Coverage figures illustrate the shape of a catalogue in this sector. The only measured shelf on this site is on the method page."
+  },
+  "nextBest": {
+    "pages": {
+      "/": "Home",
+      "/product": "Product overview",
+      "/product/decision-audit": "Decision Audit",
+      "/product/decision-verification": "Decision Verification",
+      "/product/decision-monitor": "Decision Monitor",
+      "/product/decision-api": "Decision API",
+      "/product/search": "Search",
+      "/product/recommendations": "Recommendations",
+      "/product/pages": "Pages",
+      "/product/merchandising-studio": "Merchandising Studio",
+      "/why": "Why it works",
+      "/why/method": "The method",
+      "/why/limits": "What it cannot do",
+      "/why/compare": "How we compare",
+      "/use-cases/seo-aeo": "SEO and answer engines",
+      "/use-cases/time-to-market": "Time to market",
+      "/industries": "Industries",
+      "/pricing": "Pricing",
+      "/contact": "Talk to us",
+      "/docs": "Documentation",
+      "/integrations": "Integrations",
+      "/status": "Service status",
+      "/about": "About us",
+      "/blog": "Blog",
+      "/careers": "Careers",
+      "/signin": "Sign in",
+      "/signup": "Get started",
+      "/why/audit": "Our own audit"
+    },
+    "requirements": {
+      "what-it-does": "what it does",
+      "does-it-fit-me": "whether it fits you",
+      "how-it-works": "how it works",
+      "what-it-costs": "what it costs",
+      "how-to-integrate": "how to integrate it",
+      "is-it-proven": "whether it is proven",
+      "is-it-safe": "how your data is handled",
+      "who-are-they": "who we are",
+      "how-do-i-start": "how to start"
+    }
+  },
+  "intentPanel": {
+    "open": "What PULSE thinks you want",
+    "close": "Close",
+    "title": "What PULSE thinks you want",
+    "intro": "Inferred from the pages you have read this visit. Nothing here leaves your browser.",
+    "audienceLabel": "Reading as",
+    "audienceUnknown": "Not enough to say yet",
+    "audience": {
+      "merchant": "a merchant",
+      "developer": "a developer",
+      "investor": "an investor",
+      "candidate": "a candidate",
+      "any": "a general visitor"
+    },
+    "stillOpen": "Still open",
+    "answered": "Answered so far",
+    "noneOpen": "Nothing outstanding that this site can answer.",
+    "noneAnswered": "Nothing answered yet.",
+    "markAnswered": "I already know this",
+    "markOpen": "I still want this",
+    "yours": "your correction",
+    "disagree": "Disagree? Click any item to correct it, and the suggestions below will change.",
+    "reset": "Reset corrections"
+  },
+  "ourAudit": {
+    "meta": {
+      "title": "Our own Decision Audit",
+      "description": "We run the audit we sell against our own site and publish whatever it finds. Ten pages explain what the product does; exactly one says what it costs."
+    },
+    "eyebrow": "Auditing ourselves",
+    "title": "The audit we sell, run on our own site",
+    "lede": "A Decision Audit asks what a visitor is trying to decide, then measures whether the content can resolve it. Here is that measurement applied to this site, computed from the page catalogue at build time rather than written by hand.",
+    "tableHeading": "What this site can answer",
+    "colRequirement": "What a visitor needs settled",
+    "colPages": "Pages that resolve it",
+    "colValue": "Information value",
+    "bits": "bits",
+    "findingHeading": "What it found, unflattered",
+    "finding": "The distribution is the shape of a site written by the people who built the product: heavy on what the authors find interesting, thin on what the decision needs. That is the same failure as a catalogue that records colour and omits the processor.",
+    "methodHeading": "How to read it",
+    "method": "Information value is how much resolving a requirement is worth, in bits: a requirement that many pages answer is nearly free to satisfy, and one that a single page answers is the bottleneck of the visit. It is computed, not assigned.",
+    "caveatHeading": "What this does not claim",
+    "caveats": [
+      "Coverage is not quality. A page that declares it resolves a requirement may still resolve it badly, and nothing here measures that.",
+      "The counts move whenever a page is added, including this one. They are derived at build time rather than quoted from a report.",
+      "A requirement no page resolves would not appear at all, which is the same survivorship blind spot we warn merchants about. The vocabulary is fixed in advance for exactly that reason."
+    ]
+  },
+  "configurator": {
+    "prompt": "Or tell us what you are trying to find out",
+    "placeholder": "e.g. how much does it cost",
+    "submit": "Ask",
+    "nextQuestion": "Most useful thing still unanswered",
+    "goTo": "Read",
+    "refusedEmpty": "Type a question first.",
+    "refusedUnknown": "We have no page that answers that. Rather than send you somewhere close, we would rather say so.",
+    "ambiguous": "That could mean more than one thing. Which did you mean?",
+    "contradiction": "You marked this as already answered. Reopen it?",
+    "reopen": "Reopen it",
+    "keepClosed": "Leave it closed",
+    "matchedOn": "Matched on"
+  }
+}

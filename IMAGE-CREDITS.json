@@ -1,0 +1,45 @@
+{
+  "_note": "Unsplash requires attribution for photos fetched through their API. Written by scripts/unsplash.mjs. Kept outside public/ because that directory is a staging area that gets emptied after an upload, which deleted this file once already.",
+  "images/industries/ecommerce.webp": {
+    "photographer": "Jack Lee",
+    "photographerUrl": "https://unsplash.com/@jack19992011?utm_source=pulse&utm_medium=referral",
+    "source": "Unsplash",
+    "sourceUrl": "https://unsplash.com/photos/a-grocery-store-aisle-filled-with-lots-of-food-IH65r4HEQWQ?utm_source=pulse&utm_medium=referral",
+    "licence": "Unsplash License"
+  },
+  "images/industries/travel.webp": {
+    "photographer": "Aquilion Property",
+    "photographerUrl": "https://unsplash.com/@aquilionproperty?utm_source=pulse&utm_medium=referral",
+    "source": "Unsplash",
+    "sourceUrl": "https://unsplash.com/photos/a-hotel-room-with-a-bed-desk-chairs-and-a-television-1EJXSLUfqU0?utm_source=pulse&utm_medium=referral",
+    "licence": "Unsplash License"
+  },
+  "images/industries/marketplaces.webp": {
+    "photographer": "Minseok Kwak",
+    "photographerUrl": "https://unsplash.com/@te_rua?utm_source=pulse&utm_medium=referral",
+    "source": "Unsplash",
+    "sourceUrl": "https://unsplash.com/photos/people-walking-between-stores-kuQ74DICYMY?utm_source=pulse&utm_medium=referral",
+    "licence": "Unsplash License"
+  },
+  "images/industries/ai-tools.webp": {
+    "photographer": "Zulfugar Karimov",
+    "photographerUrl": "https://unsplash.com/@zulfugarkarimov?utm_source=pulse&utm_medium=referral",
+    "source": "Unsplash",
+    "sourceUrl": "https://unsplash.com/photos/person-typing-on-smartphone-with-ai-chatbot-on-screen-CaRba5ZXJTQ?utm_source=pulse&utm_medium=referral",
+    "licence": "Unsplash License"
+  },
+  "images/about/hero.webp": {
+    "photographer": "Mapbox",
+    "photographerUrl": "https://unsplash.com/@mapbox?utm_source=pulse&utm_medium=referral",
+    "source": "Unsplash",
+    "sourceUrl": "https://unsplash.com/photos/four-people-all-on-laptops-two-men-and-two-women-listen-to-person-talking-in-a-board-meeting-ZT5v0puBjZI?utm_source=pulse&utm_medium=referral",
+    "licence": "Unsplash License"
+  },
+  "images/careers/hero.webp": {
+    "photographer": "Creatopy",
+    "photographerUrl": "https://unsplash.com/@creatopy?utm_source=pulse&utm_medium=referral",
+    "source": "Unsplash",
+    "sourceUrl": "https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-with-laptops-E3LsanLgkLM?utm_source=pulse&utm_medium=referral",
+    "licence": "Unsplash License"
+  }
+}

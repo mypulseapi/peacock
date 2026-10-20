@@ -274,6 +274,57 @@
         <path d="m6 6 12 12" />
       </symbol>
       <symbol
+        id="i-message-circle"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+      </symbol>
+      <symbol
+        id="i-arrow-up"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m5 12 7-7 7 7" />
+        <path d="M12 19V5" />
+      </symbol>
+      <symbol
+        id="i-maximize"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M15 3h6v6" />
+        <path d="m21 3-7 7" />
+        <path d="m3 21 7-7" />
+        <path d="M9 21H3v-6" />
+      </symbol>
+      <symbol
+        id="i-minimize"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m14 10 7-7" />
+        <path d="M20 10h-6V4" />
+        <path d="m3 21 7-7" />
+        <path d="M4 14h6v6" />
+      </symbol>
+      <symbol
         id="i-triangle-alert"
         viewBox="0 0 24 24"
         fill="none"
@@ -1674,6 +1725,142 @@
         </div>
       </div>
     </footer>
+    <!-- Ask Pulse chat (src/input.css chat-panel, src/main.js [data-chat]): UI only, not connected to any AI yet -->
+    <div data-chat>
+      <button
+        type="button"
+        class="group fixed right-4 bottom-4 z-60 hidden size-14 items-center justify-center rounded-full bg-ink text-card shadow-nav transition-colors duration-200 ease-out-soft hover:bg-ink/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus js:inline-flex sm:right-6 sm:bottom-6"
+        aria-label="Ask Pulse"
+        aria-expanded="false"
+        aria-controls="chat-panel"
+        data-chat-toggle
+      >
+        <svg class="size-6 group-aria-expanded:hidden" aria-hidden="true">
+          <use href="#i-message-circle" />
+        </svg>
+        <svg class="hidden size-6 group-aria-expanded:block" aria-hidden="true">
+          <use href="#i-chevron-down" />
+        </svg>
+      </button>
+      <section
+        id="chat-panel"
+        class="chat-panel"
+        role="dialog"
+        aria-labelledby="chat-title"
+        data-chat-panel
+      >
+        <div class="flex items-center gap-3 border-b border-line px-4 py-3">
+          <img
+            src="./src/assets/brand/apple-touch-icon.png"
+            alt=""
+            width="32"
+            height="32"
+            class="size-8 rounded-full"
+          />
+          <div class="min-w-0 flex-1">
+            <h2 id="chat-title" class="text-sm font-semibold text-ink">
+              Ask Pulse
+            </h2>
+            <p class="text-xs text-muted">Not connected yet</p>
+          </div>
+          <button
+            type="button"
+            class="hit-area hidden size-8 items-center justify-center rounded-full text-muted transition-colors duration-200 ease-out-soft hover:bg-surface-1 hover:text-ink sm:inline-flex"
+            aria-label="Expand chat"
+            aria-pressed="false"
+            data-chat-expand
+          >
+            <svg class="size-4" aria-hidden="true" data-chat-expand-icon>
+              <use href="#i-maximize" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="hit-area inline-flex size-8 items-center justify-center rounded-full text-muted transition-colors duration-200 ease-out-soft hover:bg-surface-1 hover:text-ink"
+            aria-label="Close chat"
+            data-chat-close
+          >
+            <svg class="size-4" aria-hidden="true"><use href="#i-x" /></svg>
+          </button>
+        </div>
+        <div class="relative min-h-0 flex-1">
+          <div
+            class="h-full space-y-3 overflow-y-auto overscroll-contain px-4 py-5"
+            role="log"
+            aria-label="Conversation"
+            data-chat-log
+          >
+            <p class="pb-2 text-center text-xs text-muted">
+              Ask about Pulse and its products.
+            </p>
+            <div
+              class="mr-10 w-fit rounded-2xl bg-surface-1 px-4 py-3 text-data text-pretty text-ink"
+            >
+              Hi. This is where you will be able to ask about Pulse and its
+              products. The assistant is not connected yet, so for now it cannot
+              answer.
+            </div>
+          </div>
+          <button
+            type="button"
+            class="absolute bottom-3 left-1/2 hidden size-8 -translate-x-1/2 items-center justify-center rounded-full border border-line bg-card text-ink shadow-sm transition-colors duration-200 ease-out-soft hover:bg-surface-1 data-show:inline-flex"
+            aria-label="Jump to the latest message"
+            data-chat-latest
+          >
+            <svg class="size-4" aria-hidden="true">
+              <use href="#i-chevron-down" />
+            </svg>
+          </button>
+        </div>
+        <form class="p-3" data-chat-form>
+          <div
+            class="rounded-2xl border border-line-control bg-card focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-focus"
+          >
+            <label for="chat-input" class="sr-only">Message</label>
+            <textarea
+              id="chat-input"
+              rows="1"
+              maxlength="2000"
+              placeholder="Message…"
+              class="block max-h-32 w-full resize-none bg-transparent px-4 pt-3 text-data text-ink placeholder:text-muted focus-visible:outline-none"
+              data-chat-input
+            ></textarea>
+            <div class="flex justify-end px-2 pb-2">
+              <button
+                type="submit"
+                class="inline-flex size-8 items-center justify-center rounded-full bg-ink text-card transition-colors duration-200 ease-out-soft hover:bg-ink/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:bg-surface-1 disabled:text-muted"
+                aria-label="Send message"
+                disabled
+                data-chat-send
+              >
+                <svg class="size-4" aria-hidden="true">
+                  <use href="#i-arrow-up" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+        <template data-chat-reply>
+          <div
+            class="mr-10 w-fit rounded-2xl bg-surface-1 px-4 py-3 text-data text-pretty text-ink"
+          >
+            Thanks. The assistant is not connected yet, so it cannot answer
+            this. For now, write to
+            <a
+              href="mailto:getintouch@thepulseapi.com"
+              class="font-semibold text-primary underline decoration-primary-line underline-offset-4"
+              >getintouch@thepulseapi.com</a
+            >
+            or use the
+            <a
+              href="./contact.html"
+              class="font-semibold text-primary underline decoration-primary-line underline-offset-4"
+              >contact page</a
+            >.
+          </div>
+        </template>
+      </section>
+    </div>
     <!-- /shell:footer -->
   </body>
 </html>

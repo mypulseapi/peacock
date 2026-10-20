@@ -1227,3 +1227,91 @@ document.querySelectorAll("[data-bg-video]").forEach((video) => {
   }).observe(section);
   osDark.addEventListener("change", () => theme && load());
 });
+
+// Ask Pulse chat (shell, every page; UI only, 20 Oct 2026): the corner button opens and closes the panel
+// (aria-expanded, data-open), Esc closes it and returns focus to the button, the expand button widens it. Sending
+// adds the visitor's message and, after a short pause, the "not connected yet" reply from the <template> (its links
+// are already rewritten for the page's folder by sync-shell.py). Enter sends, Shift+Enter starts a new line. The jump
+// button shows when the conversation is scrolled away from the latest message.
+document.querySelectorAll("[data-chat]").forEach((chat) => {
+  const toggle = chat.querySelector("[data-chat-toggle]");
+  const panel = chat.querySelector("[data-chat-panel]");
+  const log = chat.querySelector("[data-chat-log]");
+  const form = chat.querySelector("[data-chat-form]");
+  const input = chat.querySelector("[data-chat-input]");
+  const send = chat.querySelector("[data-chat-send]");
+  const latest = chat.querySelector("[data-chat-latest]");
+  const expand = chat.querySelector("[data-chat-expand]");
+  const reply = chat.querySelector("[data-chat-reply]");
+
+  const setOpen = (open) => {
+    panel.toggleAttribute("data-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close Ask Pulse" : "Ask Pulse");
+    if (open) setTimeout(() => input.focus(), 50);
+  };
+  toggle.addEventListener("click", () =>
+    setOpen(!panel.hasAttribute("data-open")),
+  );
+  chat.querySelector("[data-chat-close]").addEventListener("click", () => {
+    setOpen(false);
+    toggle.focus();
+  });
+  chat.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && panel.hasAttribute("data-open")) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+  expand.addEventListener("click", () => {
+    const on = !panel.hasAttribute("data-expanded");
+    panel.toggleAttribute("data-expanded", on);
+    expand.setAttribute("aria-pressed", String(on));
+    expand.setAttribute("aria-label", on ? "Shrink chat" : "Expand chat");
+    expand
+      .querySelector("use")
+      .setAttribute("href", on ? "#i-minimize" : "#i-maximize");
+  });
+
+  const nearBottom = () =>
+    log.scrollHeight - log.scrollTop - log.clientHeight < 24;
+  const toBottom = () =>
+    log.scrollTo({
+      top: log.scrollHeight,
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+  log.addEventListener("scroll", () =>
+    latest.toggleAttribute("data-show", !nearBottom()),
+  );
+  latest.addEventListener("click", toBottom);
+
+  const grow = () => {
+    input.style.height = "auto";
+    input.style.height = `${input.scrollHeight}px`;
+    send.disabled = !input.value.trim();
+  };
+  input.addEventListener("input", grow);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    const mine = document.createElement("div");
+    mine.className =
+      "ml-auto w-fit max-w-5/6 rounded-2xl bg-ink px-4 py-3 text-data text-pretty wrap-anywhere whitespace-pre-line text-card";
+    mine.textContent = text;
+    log.append(mine);
+    input.value = "";
+    grow();
+    toBottom();
+    setTimeout(() => {
+      log.append(reply.content.cloneNode(true));
+      toBottom();
+    }, 600);
+  });
+});

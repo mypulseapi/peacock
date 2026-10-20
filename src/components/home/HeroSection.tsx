@@ -1,4 +1,3 @@
-import { useLocale } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { hero } from "@/content/home";
@@ -18,8 +17,18 @@ import { AuditStory } from "./AuditStory";
  * headers. A competitor can show you a catalogue full of holes. Ranking those
  * holes needs the measurement.
  */
-export function HeroSection() {
-  const locale = useLocale();
+/*
+ * The locale arrives as a prop rather than from `useLocale()`.
+ *
+ * `useLocale()` and `getLocale()` both resolve to English inside a Server Component during
+ * `output: "export"`, so `pick()` fell through to its English fallback and the Vietnamese home
+ * page served English copy under `<html lang="vi">`. Nothing failed: `pick` is designed to fall
+ * back rather than throw, which is correct for an untranslated module and exactly what hides this.
+ *
+ * The page has the locale from its params and is the only place that reliably does, so it hands
+ * it down. A prop cannot silently resolve to the wrong value.
+ */
+export function HeroSection({ locale }: { locale: string }) {
   const HERO = hero(locale);
   return (
     <section className="hero-stage relative overflow-hidden">

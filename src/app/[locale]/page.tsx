@@ -64,17 +64,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           this repo already pad for a fixed bar, a spacer is the one-line
           equivalent with no blast radius. */}
       <div className="h-[68px]" aria-hidden />
-      <HeroSection />
-      <ExamplesBand />
+      <HeroSection locale={locale} />
+      <ExamplesBand locale={locale} />
       <ProofSection />
       <ProblemSection />
       <MarketSection />
       <DisagreementSection />
       <MidCtaSection />
       <HowItWorksSection />
-      <ReasonsSection />
+      <ReasonsSection locale={locale} />
       <PrivacySection />
-      <FinalCtaSection />
+      <FinalCtaSection locale={locale} />
     </>
   );
 }

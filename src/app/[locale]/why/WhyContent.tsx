@@ -1,11 +1,16 @@
-import { useLocale } from "next-intl";
+
 import { PageHero } from "@/components/PageHero";
 import { Scene } from "@/components/story/Scenes";
 import { Section, SectionHead } from "@/components/home/Section";
 import { whyCompare, whyHero, whyLimits, whyMethod, whyArt } from "@/content/why";
 
-export default function WhyContent() {
-  const locale = useLocale();
+/*
+ * The locale arrives as a prop. `useLocale()` resolves to English inside a Server Component under
+ * `output: "export"`, so `pick()` fell through to its English fallback and this rendered English
+ * under `<html lang="vi">`. Nothing threw: falling back is what `pick` is for, which is exactly
+ * what hid it. The page has the locale from its params and hands it down.
+ */
+export default function WhyContent({ locale }: { locale: string }) {
   const WHY_HERO = whyHero(locale);
   const METHOD = whyMethod(locale);
   const COMPARE = whyCompare(locale);

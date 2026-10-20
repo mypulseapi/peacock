@@ -1,4 +1,4 @@
-import { useLocale } from "next-intl";
+
 import { aboutSections } from "@/content/about";
 import { Section, SectionHead } from "@/components/home/Section";
 import { Linkedin } from "lucide-react";
@@ -13,8 +13,13 @@ import { Linkedin } from "lucide-react";
  * it: keyboard accessible and findable by in-page search for free, with the
  * content in the DOM whether or not it is open, so a crawler reads all three.
  */
-export function AboutSections() {
-  const locale = useLocale();
+/*
+ * The locale arrives as a prop. `useLocale()` resolves to English inside a Server Component under
+ * `output: "export"`, so `pick()` fell through to its English fallback and this rendered English
+ * under `<html lang="vi">`. Nothing threw: falling back is what `pick` is for, which is exactly
+ * what hid it. The page has the locale from its params and hands it down.
+ */
+export function AboutSections({ locale }: { locale: string }) {
   const S = aboutSections(locale);
 
   /*

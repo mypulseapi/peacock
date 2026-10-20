@@ -3,7 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pulse — Uncover Shoppers&rsquo; Intent and Catalogue Gaps</title>
+    <title>Pulse: find the product data your shoppers are missing</title>
+    <!-- seo:page -->
+    <meta
+      name="description"
+      content="Pulse ranks the product data your catalogue is missing by how many shoppers need it, not by how empty the field is. One category, free, back in 48 hours."
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://thepulseapi.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pulse" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:title"
+      content="Pulse: find the product data your shoppers are missing"
+    />
+    <meta
+      property="og:description"
+      content="Pulse ranks the product data your catalogue is missing by how many shoppers need it, not by how empty the field is. One category, free, back in 48 hours."
+    />
+    <meta property="og:url" content="https://thepulseapi.com/" />
+    <meta
+      property="og:image"
+      content="https://thepulseapi.com/src/assets/brand/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pulse, product data intelligence" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Pulse: find the product data your shoppers are missing"
+    />
+    <meta
+      name="twitter:description"
+      content="Pulse ranks the product data your catalogue is missing by how many shoppers need it, not by how empty the field is. One category, free, back in 48 hours."
+    />
+    <meta
+      name="twitter:image"
+      content="https://thepulseapi.com/src/assets/brand/og-image.png"
+    />
+    <meta name="twitter:image:alt" content="Pulse, product data intelligence" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://thepulseapi.com/#organization",
+            "name": "Pulse",
+            "legalName": "Resolve Labs",
+            "url": "https://thepulseapi.com/",
+            "description": "Pulse measures whether a product catalogue can answer the questions shoppers ask, and ranks the missing data by how many shoppers need it.",
+            "email": "getintouch@thepulseapi.com",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://thepulseapi.com/#logo",
+              "url": "https://thepulseapi.com/src/assets/brand/logo.svg",
+              "contentUrl": "https://thepulseapi.com/src/assets/brand/logo.svg"
+            },
+            "image": {
+              "@id": "https://thepulseapi.com/#logo"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/108237732/",
+              "https://www.facebook.com/people/The-Pulse-API/61591908084667/",
+              "https://github.com/thepulseapi"
+            ],
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "contactType": "sales",
+                "email": "getintouch@thepulseapi.com",
+                "availableLanguage": ["en", "vi"]
+              }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://thepulseapi.com/#website",
+            "name": "Pulse",
+            "url": "https://thepulseapi.com/",
+            "publisher": {
+              "@id": "https://thepulseapi.com/#organization"
+            },
+            "inLanguage": "en-US"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://thepulseapi.com/#webpage",
+            "url": "https://thepulseapi.com/",
+            "name": "Pulse: find the product data your shoppers are missing",
+            "description": "Pulse ranks the product data your catalogue is missing by how many shoppers need it, not by how empty the field is. One category, free, back in 48 hours.",
+            "isPartOf": {
+              "@id": "https://thepulseapi.com/#website"
+            },
+            "about": {
+              "@id": "https://thepulseapi.com/#organization"
+            },
+            "inLanguage": "en-US",
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://thepulseapi.com/src/assets/brand/og-image.png"
+            }
+          }
+        ]
+      }
+    </script>
+    <!-- /seo:page -->
     <!-- shell:head (shared by every page: edit here, then run python3 scripts/sync-shell.py) -->
     <link rel="icon" href="./src/assets/brand/favicon.ico" sizes="any" />
     <link
@@ -848,6 +958,21 @@
                             >
                           </a>
                         </li>
+                        <li>
+                          <a
+                            href="visual-evidence.html"
+                            class="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span
+                              class="flex items-center gap-2 text-sm font-semibold text-ink"
+                              >Research</span
+                            >
+                            <span
+                              class="mt-1 block text-sm text-pretty text-muted"
+                              >What we measured about product photographs</span
+                            >
+                          </a>
+                        </li>
                       </ul>
                     </div>
                     <div class="nav-column w-76 p-3">
@@ -953,7 +1078,7 @@
                     <use href="#i-check" />
                   </svg>
                 </a>
-                <!-- Tiếng Việt: add back (with hreflang) when the Vietnamese page exists — guideline §9 -->
+                <!-- Tiếng Việt: add back (with hreflang) when the Vietnamese page exists, guideline §9 -->
               </div>
             </details>
           </div>
@@ -1102,6 +1227,16 @@
                     ><svg class="size-4" aria-hidden="true">
                       <use href="#i-file-text" /></svg></span
                   >Documentation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="visual-evidence.html"
+                  class="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  ><span class="nav-icon-tile size-9"
+                    ><svg class="size-4" aria-hidden="true">
+                      <use href="#i-flask" /></svg></span
+                  >Research</a
                 >
               </li>
             </ul>

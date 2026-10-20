@@ -46,7 +46,7 @@ jobs:
       - name: Assemble site
         run: |
           mkdir _site
-          cp -r *.html CNAME dist src product careers industries _site/
+          cp -r *.html robots.txt sitemap.xml llms.txt CNAME dist src product careers industries _site/
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

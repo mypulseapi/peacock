@@ -1,0 +1,11 @@
+# Pulse
+User-agent: *
+Allow: /
+
+# Sign-in flows carry nothing worth indexing.
+Disallow: /signin
+Disallow: /signup
+Disallow: /forgot-password
+Disallow: /components.html
+
+Sitemap: https://thepulseapi.com/sitemap.xml

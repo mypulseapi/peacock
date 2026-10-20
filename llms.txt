@@ -1,0 +1,40 @@
+# Pulse
+
+> Pulse measures whether a product catalogue can answer the questions shoppers ask,
+> then ranks the missing product data by how many shoppers need it rather than by how
+> empty the field is. Run by Resolve Labs. The first audit is free: one category
+> export, no account, findings back in 48 hours.
+
+Key facts, each reproducible from the catalogue named beside it:
+
+- On a 216-product laptop shelf, 94 products remain indistinguishable after every
+  question a shopper can answer. The catalogue, not the shopper, is the larger gap.
+- Ranking a repair by how empty a field is inverts the correct order. Processor is
+  missing on 162 of 216 products and ranks last by decision value; screen size is
+  missing on 80 and ranks first.
+- 161 of 216 missing screen-size values were recoverable from the merchant's own
+  product titles before anyone recorded anything new.
+- On a 2,176-product catalogue, 52.6% of recorded attribute values duplicate what the
+  product photograph already shows. The average product carries 0.90 facts a shopper
+  cannot get by looking.
+- Pulse has no customers to name and no measured conversion result. It has run no live
+  experiment and does not quote an uplift figure.
+
+## Products
+
+- [Decision Audit](https://thepulseapi.com/product/decision-audit): a ranked list of
+  which missing product data to record first, from one category export.
+- [Decision Verification](https://thepulseapi.com/product/decision-verification):
+  re-measure the repaired catalogue and see what moved.
+- [Decision Monitor](https://thepulseapi.com/product/decision-monitor): re-measure on a
+  schedule and get told when a shelf slips, with the cause.
+
+## Research
+
+- [Half of what your catalogue records, the photograph already said](https://thepulseapi.com/visual-evidence)
+
+## Company
+
+- [About, including what we cannot claim](https://thepulseapi.com/about)
+- [Pricing](https://thepulseapi.com/pricing)
+- [Contact](https://thepulseapi.com/contact)

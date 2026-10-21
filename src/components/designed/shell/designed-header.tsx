@@ -42,8 +42,20 @@ export function DesignedHeader() {
                 aria-hidden="true" priority />
             </Link>
 
-            {/* Desktop menu */}
-            <nav aria-label="Main" className="relative hidden lg:block" data-mega-nav>
+            {/*
+              Desktop from `xl`, not `lg`.
+              
+              The row does not fit at 1024: measured 1068px in English and 1171px in Vietnamese,
+              so every page scrolled sideways between 1024 and 1171, which is most tablets in
+              landscape and every small laptop. Five nav items, two switches, a link and a CTA
+              need the room, and Vietnamese needs 147px more of it than English.
+              
+              Tightening gaps was the first instinct and it cannot work: clawing back 147px means
+              dropping items, and a nav that differs by language is worse than a compact menu for
+              one breakpoint band. Below `xl` the mobile sheet carries the same links, which is
+              what it is for.
+            */}
+            <nav aria-label="Main" className="relative hidden xl:block" data-mega-nav>
               <ul className="flex items-center gap-0.5">
                 {/* About us is deliberately not a top-level item. It lives once, under
                      Resources > Company. Two entry points to /about read as two destinations. */}
@@ -358,7 +370,7 @@ export function DesignedHeader() {
             </nav>
 
             {/* Desktop actions */}
-            <div className="hidden items-center gap-2 lg:flex">
+            <div className="hidden items-center gap-2 xl:flex">
               <DesignedThemeSwitch
                 heading={t('theme')}
                 labels={{ light: t('themeLight'), dark: t('themeDark'), system: t('themeSystem') }}
@@ -379,7 +391,7 @@ export function DesignedHeader() {
             </div>
 
             {/* Mobile menu */}
-            <details className="group lg:hidden" data-mobile-menu>
+            <details className="group xl:hidden" data-mobile-menu>
               <summary
                 className="hit-area flex size-9 cursor-pointer items-center justify-center rounded-control text-ink"
                 aria-label="Open menu"

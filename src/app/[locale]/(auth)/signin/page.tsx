@@ -9,7 +9,7 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("auth.signIn");
+  const t = await getTranslations({ locale, namespace: "auth.signIn" });
   return {
     title: t("title"),
     description: t("subtitle"),

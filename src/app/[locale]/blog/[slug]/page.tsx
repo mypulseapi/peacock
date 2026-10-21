@@ -8,7 +8,7 @@ import { Link } from "@/i18n/routing";
 import { ArrowLeft, ArrowRight, Clock, ExternalLink } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/home/Section";
-import { articleBySlug, articleSlugs, ARTICLES, type Block } from "@/content/blog";
+import { articleBySlug, articleSlugs, articles, type Block } from "@/content/blog";
 import { BarChart, Dumbbell, Waffle, Trend, Figure } from "@/components/charts/Charts";
 import { ArticleArt } from "@/components/ArticleArt";
 import { sector } from "@/content/industries";
@@ -23,7 +23,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug, locale } = await params;
-  const a = articleBySlug(slug);
+  const a = articleBySlug(slug, locale);
   if (!a) return {};
   /*
    * The SERP forms, falling back to the headline and the excerpt. See the Article interface: a
@@ -115,12 +115,12 @@ export default async function ArticlePage({ params }: PageProps) {
   // sitemap, so they go to the index rather than 404.
   if (RETIRED_BLOG_SLUGS.includes(slug)) redirect(`/${locale}/blog`);
 
-  const a = articleBySlug(slug);
+  const a = articleBySlug(slug, locale);
   if (!a) notFound();
 
   const t = await getTranslations("blog");
   const s = a.sector ? sector(locale, a.sector) : undefined;
-  const more = ARTICLES.filter((x) => x.slug !== a.slug).slice(0, 3);
+  const more = articles(locale).filter((x) => x.slug !== a.slug).slice(0, 3);
 
   const jsonLd = {
     "@type": "Article",

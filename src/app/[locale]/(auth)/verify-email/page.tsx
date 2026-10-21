@@ -11,7 +11,7 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("auth.verify");
+  const t = await getTranslations({ locale, namespace: "auth.verify" });
   return {
     title: t("title"),
     description: t("subtitle"),

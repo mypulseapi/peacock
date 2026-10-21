@@ -289,7 +289,7 @@ export default function DocsPage() {
             <p className="text-[var(--text-secondary)] mb-4">{t.rich("auth.intro", codeTag)}</p>
 
             <div className="bg-[var(--bg-tertiary)] rounded-lg p-4 font-mono text-sm overflow-x-auto">
-              <div className="text-[var(--text-muted)]"># Example request with authentication</div>
+              <div className="text-[var(--text-muted)]">{t("exampleAuthRequest")}</div>
               <div className="mt-2">
                 <span className="text-[var(--accent-secondary-light)]">curl</span>
                 <span className="text-[var(--text-secondary)]"> -X POST </span>
@@ -423,10 +423,10 @@ export default function DocsPage() {
               because the page previously implied one key opened everything. */}
           <div className="glass-card p-5 mb-4 border border-amber-500/30">
             <p className="text-sm text-[var(--text-secondary)]">
-              <strong className="text-amber-400">Different credential:</strong> catalogue writes are
-              authenticated as a signed-in dashboard session, not with the publishable
+              <strong className="text-amber-400">{t("differentCredential")}</strong>{" "}
+              {t("catalogueWriteAuth")}
               <code className="mx-1 font-mono text-[var(--text-primary)]">pk_live_</code>
-              key used for the calls above.
+              {t("keyUsedAbove")}
             </p>
           </div>
 

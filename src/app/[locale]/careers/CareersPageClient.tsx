@@ -1,6 +1,8 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { JOBS_VI } from "@/content/jobs.vi";
+import { contactEmail } from "@/lib/contact-emails";
 import Image from "next/image";
 import { img } from "@/lib/cdn";
 import { PageHero } from "@/components/PageHero";
@@ -17,6 +19,10 @@ const benefitKeys = [
   { icon: Rocket, key: "growth" },
 ];
 
+/**
+ * The index's own, shorter summaries. Translated through the same lookup the detail pages use, so
+ * the two cannot drift: see `content/jobs.vi.ts`.
+ */
 const openings = [
   {
     id: "senior-ml-engineer",
@@ -92,6 +98,10 @@ const openings = [
 
 export default function CareersPage() {
   const t = useTranslations("careers");
+  // Department, location and contract type are translated; the role title is not, deliberately.
+  // See content/jobs.vi.ts.
+  const isVi = useLocale() === "vi";
+  const tr = (value: string) => (isVi ? (JOBS_VI[value] ?? value) : value);
 
   return (
     <>
@@ -210,17 +220,17 @@ export default function CareersPage() {
                           {job.title}
                         </h3>
                         <span className="px-2 py-0.5 rounded-full bg-[var(--accent-primary)]/10 text-[var(--accent-primary-light)] text-xs">
-                          {job.department}
+                          {tr(job.department)}
                         </span>
                       </div>
                       <div className="flex items-center gap-4 text-sm text-[var(--text-muted)]">
                         <span className="flex items-center gap-1">
                           <MapPin className="w-3.5 h-3.5" />
-                          {job.location}
+                          {tr(job.location)}
                         </span>
                         <span className="flex items-center gap-1">
                           <Clock className="w-3.5 h-3.5" />
-                          {job.type}
+                          {tr(job.type)}
                         </span>
                       </div>
                     </div>
@@ -241,7 +251,7 @@ export default function CareersPage() {
             {t("cta.description")}
           </p>
           <a
-            href="mailto:careers@thepulseapi.com"
+            href={`mailto:${contactEmail("careers")}`}
             className="btn-primary inline-flex items-center gap-2"
           >
             {t("cta.button")}

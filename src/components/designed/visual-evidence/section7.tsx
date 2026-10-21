@@ -29,11 +29,11 @@ export function Section7Section() {
                   {t('3')}
                 </p>
                 <p className="mt-6 text-body leading-relaxed text-pretty text-ink">
-                  Measured in October 2026. Nothing on this page is for sale.{" "}
+                  {t('measuredIn')}{" "}
                   <Link                 href={designedHref("/en/about")}
                     className="hit-area font-medium text-link underline underline-offset-4 hover:text-primary-hover"
                     >{t('4')}</Link>{" "}
-                  is the rest of it.
+                  {t('isTheRest')}
                 </p>
               </div>
             </div>

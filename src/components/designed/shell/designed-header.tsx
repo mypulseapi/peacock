@@ -346,7 +346,9 @@ export function DesignedHeader() {
                      not something to go hunting for behind a menu. It stays an <a> rather than a
                      <Link>, because it leaves this site for the handbook. */}
                 <li>
-                  <a href="https://developer.thepulseapi.com/" className="nav-link">{t('31')}</a>
+                  <a href="https://developer.thepulseapi.com/"
+                      target="_blank"
+                      rel="noopener noreferrer" className="nav-link">{t('31')}</a>
                 </li>
                 <li><Link href={designedHref("/en/pricing")} className="nav-link">{t('42')}</Link></li>
               </ul>
@@ -499,6 +501,8 @@ export function DesignedHeader() {
                 <div className="mt-6 border-t border-line pt-6">
                   <a
                     href="https://developer.thepulseapi.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
                     >{t('60')}</a
                   >

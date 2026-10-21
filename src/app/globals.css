@@ -3975,71 +3975,136 @@ a.inline-flex {
  * It runs once and stops. A hero that keeps moving competes with the sentence beside it, which
  * is what the video did.
  */
-.hero-scene {
-  /*
-   * Full bleed, and sized in CSS pixels rather than scaled.
-   *
-   * The SVG has no viewBox on purpose, so one user unit is one pixel and the tiled cells stay
-   * 20px apart at every width. The previous version set `height: 100%; width: auto` against a
-   * 276 by 156 viewBox, which made the cell size a function of the hero's height: cells came out
-   * around 55px on a desktop and the left column was sliced through its middle.
-   */
-  position: absolute;
-  inset: 0;
+.hero-figure {
+  /* Sits in the hero's own column now, not behind the words. The field it replaces was a
+     background because it had nothing to say; a figure that carries the argument belongs beside
+     the argument, where it can be read. */
+  margin: 0;
   width: 100%;
-  height: 100%;
+}
 
-  /*
-   * Fade it out under the words. The headline and the paragraph sit top left, so the texture is
-   * cleared from the left 40% and only reaches full strength on the right, where there is nothing
-   * but space. Without this it is legible enough to fight the text it sits behind.
-   */
-  mask-image: linear-gradient(to right, transparent 12%, black 55%);
+.hero-figure-card {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-2xl, 1rem);
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+  box-shadow: var(--shadow-sm);
 }
 
 /*
- * The field: present, not noticeable. `--color-ink` at 5% rather than a surface token, so it
- * carries the same hue as the page in both themes and needs no second value for dark.
- */
-.hero-scene-cell {
-  fill: color-mix(in oklab, var(--color-ink) 5%, transparent);
-}
-
-/*
- * The two accents, in the designed palette.
+ * The product's plate.
  *
- * `--color-gap` is the amber this site uses for a missing attribute and `--color-primary` is
- * Pulse Blue. Both are mixed well down: at full strength a dozen saturated squares behind a
- * headline is the noise this replaced. The amber reads slightly stronger than the blue because
- * amber at equal opacity disappears against a light surface.
+ * A light background pinned in both themes, because all three photographs are shot on white with
+ * no alpha: on the dark theme an unplated shot is a white rectangle with a laptop in it. A plate
+ * is also how a storefront shows a pack shot, which is the comparison being invited here.
  */
-.hero-scene-gap {
-  fill: color-mix(in oklab, var(--color-gap) 38%, transparent);
+.hero-figure-product {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #fdfdfd;
 }
 
-.hero-scene-filled {
-  fill: color-mix(in oklab, var(--color-primary) 26%, transparent);
+.hero-figure-rows {
+  display: grid;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-/* One fade for the whole accent layer, then still. A single composited property on a single
-   element, which is as cheap as motion gets. */
-.hero-scene-accents {
-  animation: hero-scene-settle 900ms var(--ease-out-soft, ease-out) 200ms both;
+.hero-figure-row {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr auto;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  /* Each row arrives a beat after the one above, then stops. Opacity and a short slide only, so
+     the compositor does all of it and nothing reflows. */
+  animation: hero-figure-row-in 420ms var(--ease-out-soft, ease-out) both;
+  animation-delay: calc(240ms + var(--i) * 110ms);
 }
 
-@keyframes hero-scene-settle {
+/* The row the decision turns on, and the one nobody recorded. Signal, as everywhere else. */
+.hero-figure-row-gap {
+  border-color: var(--color-signal-line);
+  background: var(--color-signal-tint);
+}
+
+/* The same decisive row, once the fix has been verified: recorded, and shown to be. */
+.hero-figure-row-done {
+  border-color: color-mix(in oklab, var(--color-success) 35%, transparent);
+  background: color-mix(in oklab, var(--color-success) 10%, transparent);
+}
+
+.hero-figure-row-done .hero-figure-rank {
+  background: var(--color-success);
+  color: var(--color-card);
+}
+
+.hero-figure-row-done .hero-figure-value {
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+.hero-figure-rank {
+  display: grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 0.25rem;
+  background: var(--color-baseline);
+  color: var(--color-card);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-figure-row-gap .hero-figure-rank {
+  background: var(--color-signal);
+  color: var(--color-on-step);
+}
+
+.hero-figure-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+.hero-figure-value {
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The missing value is the point of the whole page, so it is the one thing drawn in Signal. */
+.hero-figure-row-gap .hero-figure-value {
+  color: var(--color-signal-text);
+  font-weight: 700;
+}
+
+@keyframes hero-figure-row-in {
   from {
     opacity: 0;
+    translate: 0 0.375rem;
   }
   to {
     opacity: 1;
+    translate: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-scene-accents {
+  .hero-figure-row {
     animation: none;
-    opacity: 1;
   }
 }
 

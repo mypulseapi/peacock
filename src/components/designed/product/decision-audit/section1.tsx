@@ -6,6 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { asset, assetStem } from "@/lib/cdn";
 import { designedHref, designedText } from "../../t";
 import Image from "next/image";
 
@@ -18,11 +19,11 @@ export function Section1Section() {
             <div className="absolute inset-0 -z-10" aria-hidden="true">
               <picture className="hero-video-poster" data-bg-poster>
                 <source
-                  srcSet="/assets/product/decision-audit-dark.webp"
+                  srcSet={asset("product/decision-audit-dark.webp")}
                   media="(prefers-color-scheme: dark)"
                 />
                 <Image
-                  src="/assets/product/decision-audit-light.webp"
+                  src={asset("product/decision-audit-light.webp")}
                   alt=""
                   width={2560}
                   height={1440}
@@ -36,7 +37,7 @@ export function Section1Section() {
                 loop
                 playsInline
                 preload="none"
-                data-bg-video="/assets/product/decision-audit"
+                data-bg-video={assetStem("product/decision-audit")}
               ></video>
               <div className="absolute inset-0 hero-video-scrim"></div>
             </div>

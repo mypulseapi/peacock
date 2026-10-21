@@ -19,7 +19,7 @@ import { createHash } from "crypto";
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from "fs";
 import { join, relative } from "path";
 
-const ROOT = "public/images";
+const ROOTS = ["public/images", "public/assets"];
 const OUT = "src/lib/asset-manifest.json";
 
 function walk(dir) {
@@ -37,10 +37,16 @@ const previous = existsSync(OUT) ? JSON.parse(readFileSync(OUT, "utf8")) : {};
 const manifest = { ...previous };
 
 let staged = 0;
-for (const file of walk(ROOT).sort()) {
-  const key = relative(ROOT, file).split("\\").join("/");
+for (const root of ROOTS) {
+ if (!existsSync(root)) continue;
+ for (const file of walk(root).sort()) {
+  // `public/images` is keyed without its root, because that is the layout already in the
+  // bucket. `public/assets` keeps its segment, so the two trees cannot collide there.
+  const rel = relative(root, file).split("\\").join("/");
+  const key = root === "public/assets" ? `assets/${rel}` : rel;
   manifest[key] = createHash("md5").update(readFileSync(file)).digest("hex").slice(0, 8);
   staged++;
+ }
 }
 
 const sorted = Object.fromEntries(Object.keys(manifest).sort().map((k) => [k, manifest[k]]));

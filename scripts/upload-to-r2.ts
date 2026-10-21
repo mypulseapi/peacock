@@ -270,6 +270,11 @@ async function main() {
   // --clean is scoped to this site's own prefixes and NEVER the bucket root.
   // The bucket is shared with the product: an unprefixed clear would delete
   // demo/, originals/ and avatars/ along with the site.
+  //
+  // DO NOT pass --clean from this repository as things stand. `public/images`
+  // was deleted locally once its contents were already in R2, so a clear of
+  // `<prefix>/` removes the only copy of those images and the upload that
+  // follows cannot put them back. Only `public/assets` could be restored.
   if (process.argv.includes("--clean")) {
     await clearBucket("_next");
     await clearBucket(`${SITE_PREFIX}/`);
@@ -309,10 +314,20 @@ async function main() {
     `Website images (public/images -> ${SITE_PREFIX}/)`,
   );
 
+  // Upload public/assets -> website/assets/. The designer's tree: the hero videos, their
+  // posters and the brand marks. It keeps its own segment so it cannot collide with the
+  // older `public/images` layout, which sits directly under the prefix.
+  const assetStats = await uploadDirectory(
+    "public/assets",
+    `${SITE_PREFIX}/assets`,
+    `Designed assets (public/assets -> ${SITE_PREFIX}/assets/)`,
+  );
+
   // Combine stats
-  totalStats.uploaded = nextStaticStats.uploaded + publicStats.uploaded;
-  totalStats.failed = nextStaticStats.failed + publicStats.failed;
-  totalStats.totalSize = nextStaticStats.totalSize + publicStats.totalSize;
+  totalStats.uploaded = nextStaticStats.uploaded + publicStats.uploaded + assetStats.uploaded;
+  totalStats.failed = nextStaticStats.failed + publicStats.failed + assetStats.failed;
+  totalStats.totalSize =
+    nextStaticStats.totalSize + publicStats.totalSize + assetStats.totalSize;
 
   // Summary
   const duration = ((Date.now() - startTime) / 1000).toFixed(2);

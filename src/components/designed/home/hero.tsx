@@ -6,6 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { asset } from "@/lib/cdn";
 import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
@@ -853,12 +854,12 @@ export function HeroSection() {
                                     <div>
                                       <p className="flex h-4.5 items-center">
                                         <Image
-                                          src="/assets/brand/logo.webp"
+                                          src={asset("brand/logo.webp")}
                                           alt="Pulse"
                                           width={54}
                                           height={18}
                                           className="h-4.5 w-auto theme-dark:hidden" priority /><Image
-                                          src="/assets/brand/logo-white.webp"
+                                          src={asset("brand/logo-white.webp")}
                                           alt=""
                                           width={54}
                                           height={18}
@@ -1162,12 +1163,12 @@ export function HeroSection() {
                                   <div className="min-w-0 flex-1">
                                     <p className="flex h-4.5 items-center">
                                       <Image
-                                        src="/assets/brand/logo.webp"
+                                        src={asset("brand/logo.webp")}
                                         alt="Pulse"
                                         width={54}
                                         height={18}
                                         className="h-4.5 w-auto theme-dark:hidden" priority /><Image
-                                        src="/assets/brand/logo-white.webp"
+                                        src={asset("brand/logo-white.webp")}
                                         alt=""
                                         width={54}
                                         height={18}

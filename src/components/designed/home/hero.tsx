@@ -224,7 +224,7 @@ export function HeroSection() {
                                 <p className="text-data leading-snug text-gap-strong">
                                   <strong className="font-bold"
                                     >{t('14')}</strong
-                                  >
+                                  >{" "}
                                   {t('15')}
                                 </p>
                               </div>
@@ -1250,7 +1250,7 @@ export function HeroSection() {
                                 >
                                   <strong className="font-bold text-ink"
                                     >{t('122')}</strong
-                                  >
+                                  >{" "}
                                   is missing from 162 products, so a traditional
                                   audit ranks it first. But only 2 of 32 shopper
                                   requirements mention it, so Pulse ranks it last.{" "}
@@ -1299,7 +1299,7 @@ export function HeroSection() {
                                     >Currently, Pulse identifies{" "}
                                     <strong className="font-bold text-primary"
                                       >{t('126')}</strong
-                                    >
+                                    >{" "}
                                     {t('127')}</span
                                   >
                                 </p>
@@ -1327,7 +1327,7 @@ export function HeroSection() {
                                     The other{" "}
                                     <strong className="tabular-nums font-bold text-ink"
                                       >55</strong
-                                    >
+                                    >{" "}
                                     {t('129')}
                                   </p>
                                 </div>
@@ -1515,7 +1515,7 @@ export function HeroSection() {
                                             data-from="136"
                                             data-delay="1000"
                                             >216</span
-                                          >
+                                          >{" "}
                                           / 216</span
                                         >
                                       </div>

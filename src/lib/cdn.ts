@@ -31,3 +31,26 @@ export function img(path: string): string {
   const v = HASHES[clean];
   return v ? `${base}?v=${v}` : base;
 }
+
+/**
+ * The designer's assets: the hero videos, their posters, the brand marks.
+ *
+ * A sibling of `img()` rather than a call into it, because the two trees sit at different
+ * depths on the CDN. `img()` maps `about/hero.webp` to `<prefix>/about/hero.webp`, with no
+ * `images/` segment, and that layout is already in the bucket. The designed tree keeps its own
+ * `assets/` segment so the two cannot collide.
+ *
+ * Both read `NEXT_PUBLIC_CDN_URL`. Nothing here knows the hostname: with the variable unset,
+ * this returns the local path and Next serves `public/assets` exactly as it does today, which
+ * is what makes `pnpm dev` work without any CDN at all.
+ *
+ *   asset("product/decision-audit-light.webp")
+ *     -> https://cdn.example.com/website/assets/product/decision-audit-light.webp?v=2c1d3be9
+ *     -> /assets/product/decision-audit-light.webp?v=2c1d3be9      (CDN unset)
+ */
+export function asset(path: string): string {
+  const clean = `assets/${trim(path)}`;
+  const base = CDN ? (PREFIX ? `${CDN}/${PREFIX}/${clean}` : `${CDN}/${clean}`) : `/${clean}`;
+  const v = HASHES[clean];
+  return v ? `${base}?v=${v}` : base;
+}

@@ -153,7 +153,7 @@ export function Section1Section() {
                     <label
                       htmlFor="f-type"
                       className="mb-1.5 block text-sm font-medium text-ink"
-                      >What can we help you with?{" "}
+                      >{t('helpLabel')}{" "}
                       <span className="text-critical">*</span></label
                     ><FormSelect
                       id="f-type"
@@ -210,7 +210,7 @@ export function Section1Section() {
                     {t('16')}
                   </button>
                   <p id="form-note" className="mt-4 text-sm text-pretty text-muted">
-                    The form is not connected yet. For now, email{" "}
+                    {t('formNote')}{" "}
                     <a
                       href="mailto:getintouch@thepulseapi.com"
                       className="font-semibold text-primary underline decoration-primary-line underline-offset-4"

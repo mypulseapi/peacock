@@ -28,7 +28,7 @@ export function MonitorSection() {
                   >
                     <strong className="font-semibold text-ink"
                       >{t('3')}</strong
-                    >
+                    >{" "}
                     {t('4')}
                   </p>
                   <Link                 href={designedHref("/en/product/decision-monitor")}

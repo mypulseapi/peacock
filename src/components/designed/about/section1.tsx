@@ -173,7 +173,7 @@ export function Section1Section() {
                     <p className="max-w-xl text-body text-pretty text-ink">
                       <span className="font-semibold"
                         >{t('19')}</span
-                      >
+                      >{" "}
                       {t('20')}
                     </p>
                   </div>

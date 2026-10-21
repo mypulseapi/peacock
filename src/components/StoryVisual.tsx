@@ -10,7 +10,7 @@
  * All of them render on the light product surface, which does not invert with
  * the theme, so one set of values is correct in both.
  */
-import { useLocale } from "next-intl";
+import { renderLocale } from "@/i18n/render-locale";
 import { ui } from "@/content/locale";
 import { Check, X } from "lucide-react";
 
@@ -25,7 +25,7 @@ function Frame({ title, badge, badgeTone = "good", children }: {
 }) {
   const tone = badgeTone === "warn" ? [WARN_BG, WARN] : badgeTone === "work" ? ["#eef3fe", WORK] : [GOOD_BG, GOOD];
   return (
-    <figure className="screen overflow-hidden rounded-xl">
+    <figure className="reveal screen overflow-hidden rounded-xl">
       <div className="screen-bar flex items-center gap-3 px-4 py-3">
         <span className="text-[0.875rem] font-bold" style={{ color: INK }}>{title}</span>
         {badge && (
@@ -58,7 +58,7 @@ const Bar = ({ pct, color = GOOD, w = "5rem" }: { pct: number; color?: string; w
 
 /** The ranked list an audit hands back. */
 export function AuditVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   // Sorted and measured from the gain itself. The rows used to carry a
   // hand-set bar width alongside the number, and the two had drifted: storage
   // sat at #3 on 0.688 while processor sat at #4 on 0.747, under a caption
@@ -89,7 +89,7 @@ export function AuditVisual() {
 
 /** Before and after, which is the whole of verification. */
 export function VerificationVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   const rows = [
     { a: t.screenSize, before: 63, after: 100 },
     { a: t.memory, before: 72, after: 72 },
@@ -115,7 +115,7 @@ export function VerificationVisual() {
 
 /** The alert monitoring actually sends. */
 export function MonitorVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   return (
     <Frame title={t.shelfAlert} badge={t.laptops} badgeTone="warn">
       <div className="rounded-lg p-3" style={{ background: WARN_BG }}>
@@ -138,7 +138,7 @@ export function MonitorVisual() {
 
 /** A ranked product with its breakdown, which is the runtime's promise. */
 export function ApiVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   const f = [
     { k: t.baseRelevance, v: 42 },
     { k: t.personaFit, v: 28 },
@@ -167,7 +167,7 @@ export function ApiVisual() {
 
 /** What a bit is, drawn. */
 export function MethodVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   const steps = [216, 108, 54, 27];
   return (
     <Frame title={t.whatOneBit} badge={t.products216}>
@@ -189,7 +189,7 @@ export function MethodVisual() {
 
 /** The disagreement, compact. */
 export function CompareVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   return (
     <Frame title={t.whereDiffer} badge={t.processor} badgeTone="warn">
       <div className="grid grid-cols-2 gap-3">
@@ -220,7 +220,7 @@ export function CompareVisual() {
 
 /** Stability, honestly. */
 export function LimitsVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   return (
     <Frame title={t.stability} badge={t.topOnly} badgeTone="warn">
       <div className="space-y-2.5">
@@ -252,7 +252,7 @@ export function LimitsVisual() {
 
 /** Two arms of the same query, which is the only honest way to draw ranking. */
 export function SearchVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   const engine = ["ThinkPad X1 Carbon", "MacBook Pro 14", "Dell XPS 15"];
   const control = ["MSI GS66 Stealth", "ThinkPad X1 Carbon", "Razer Blade 15"];
   return (
@@ -286,7 +286,7 @@ export function SearchVisual() {
 
 /** The cold-start case, drawn as the signals available with no history at all. */
 export function RecommendationsVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   const f = [
     { k: t.baseRelevance, v: 34 },
     { k: t.personaFit, v: 31 },
@@ -313,7 +313,7 @@ export function RecommendationsVisual() {
 
 /** A grid, with the arrival context that ordered it sitting above. */
 export function PagesVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   return (
     <Frame title={t.gridFor} badge={t.fromCampaign} badgeTone="work">
       <div className="grid grid-cols-4 gap-2" aria-hidden>
@@ -341,7 +341,7 @@ export function PagesVisual() {
  * page says, and it is the more persuasive of the two.
  */
 export function StudioVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   return (
     <Frame title={t.consoleTitle} badge={t.verified}>
       <div className="grid grid-cols-2 gap-3">
@@ -385,7 +385,7 @@ export function StudioVisual() {
  * would make them look like the same job.
  */
 export function SeoAeoVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   const bands = [
     { k: t.markedUp, v: 21, c: GOOD, bg: GOOD_BG },
     { k: t.heldNotExpressed, v: 42, c: WORK, bg: "#eef3fe" },
@@ -420,7 +420,7 @@ export function SeoAeoVisual() {
  * job; two bars make it a choice.
  */
 export function TimeToMarketVisual() {
-  const t = ui(useLocale());
+  const t = ui(renderLocale());
   const rows = [
     { k: t.fullEnrichment, fields: 86, weeks: 11, c: MUTE },
     { k: t.minimumSet, fields: 9, weeks: 1, c: GOOD },

@@ -37,7 +37,7 @@ export function ApiSection() {
                   >
                     <strong className="font-semibold text-ink"
                       >{t('4')}</strong
-                    >
+                    >{" "}
                     {t('5')}
                   </p>
                   <Link                 href={designedHref("/en/product/decision-api")}

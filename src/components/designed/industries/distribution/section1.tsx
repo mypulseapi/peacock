@@ -34,7 +34,7 @@ export function Section1Section() {
                 <p className="reveal mt-6 text-sm text-muted delay-300">
                   <span className="font-semibold text-ink"
                     >{t('5')}</span
-                  >
+                  >{" "}
                   {t('6')}
                 </p>
               </div>

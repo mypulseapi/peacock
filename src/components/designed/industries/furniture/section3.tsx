@@ -77,7 +77,7 @@ export function Section3Section() {
                     <p className="text-body text-pretty text-muted">
                       <span className="font-semibold text-ink"
                         >{t('8')}</span
-                      >
+                      >{" "}
                       {t('9')}
                     </p>
                   </div>

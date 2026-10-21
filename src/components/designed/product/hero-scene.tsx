@@ -82,6 +82,15 @@ export function HeroScene({
   // the figure can carry data at all without a second catalogue.
   const values = ['15.6"', "16 GB", "512 GB", "i7"];
 
+  /*
+   * Ranked order, which means the decisive row is the first row.
+   *
+   * The first version kept the catalogue's order and only moved the rank number, so Monitor read
+   * 2, 3, 1, 4 down the list with rank 1 sitting third. A ranked list whose numbers do not
+   * descend is not a ranked list, it is a mistake the reader has to explain to themselves.
+   */
+  const order = [gap, ...labels.map((_, i) => i).filter((i) => i !== gap)];
+
   return (
     <figure className="hero-figure" aria-hidden="true">
       <div className="hero-figure-card">
@@ -99,7 +108,8 @@ export function HeroScene({
         </div>
 
         <ul className="hero-figure-rows">
-          {labels.map((label, i) => {
+          {order.map((i, position) => {
+            const label = labels[i];
             const missing = i === gap;
             return (
               <li
@@ -117,9 +127,9 @@ export function HeroScene({
                       : "hero-figure-row hero-figure-row-gap"
                     : "hero-figure-row"
                 }
-                style={{ "--i": i } as React.CSSProperties}
+                style={{ "--i": position } as React.CSSProperties}
               >
-                <span className="hero-figure-rank">{missing ? 1 : i + (i < gap ? 1 : 0) + 1}</span>
+                <span className="hero-figure-rank">{position + 1}</span>
                 <span className="hero-figure-label" lang={locale}>
                   {label}
                 </span>

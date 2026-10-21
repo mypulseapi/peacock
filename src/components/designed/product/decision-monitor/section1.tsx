@@ -27,7 +27,14 @@ export function Section1Section() {
                    like every other designed hero; the padding and the small-screen minimum stay. */}
               <div className="min-h-135 py-14 lg:py-20">
                 <h1 className="reveal max-w-2xl text-headline text-balance">
-                  <span className="sm:block">{t('1')}</span>
+                  {/*
+                    `sm:block` only breaks the line from 640px up. Below that the two spans are
+                    inline, and JSX drops the newline between them, so the headline rendered as
+                    "productdata", "fixagainst" and "shelfstopped" on every phone. The explicit
+                    space is the fix: it separates them when they are inline and collapses
+                    harmlessly at the end of a line once they are blocks.
+                  */}
+                  <span className="sm:block">{t('1')}</span>{" "}
                   <span className="sm:block">{t('2')}</span>
                 </h1>
                 <p

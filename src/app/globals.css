@@ -3976,48 +3976,68 @@ a.inline-flex {
  * is what the video did.
  */
 .hero-scene {
+  /*
+   * Full bleed, and sized in CSS pixels rather than scaled.
+   *
+   * The SVG has no viewBox on purpose, so one user unit is one pixel and the tiled cells stay
+   * 20px apart at every width. The previous version set `height: 100%; width: auto` against a
+   * 276 by 156 viewBox, which made the cell size a function of the hero's height: cells came out
+   * around 55px on a desktop and the left column was sliced through its middle.
+   */
   position: absolute;
-  inset-block: 0;
-  right: 0;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  width: auto;
-  max-width: none;
-  margin-block: auto;
-  padding: 3rem 2rem 3rem 0;
-  mask-image: linear-gradient(to right, transparent, black 30%);
+
+  /*
+   * Fade it out under the words. The headline and the paragraph sit top left, so the texture is
+   * cleared from the left 40% and only reaches full strength on the right, where there is nothing
+   * but space. Without this it is legible enough to fight the text it sits behind.
+   */
+  mask-image: linear-gradient(to right, transparent 12%, black 55%);
 }
 
-.hero-scene-shelf rect {
-  fill: var(--surface-2, color-mix(in oklab, currentColor 8%, transparent));
+/*
+ * The field: present, not noticeable. `--color-ink` at 5% rather than a surface token, so it
+ * carries the same hue as the page in both themes and needs no second value for dark.
+ */
+.hero-scene-cell {
+  fill: color-mix(in oklab, var(--color-ink) 5%, transparent);
 }
 
-.hero-scene-gap rect {
-  fill: var(--warn, #f0a93b);
-  opacity: 0.55;
+/*
+ * The two accents, in the designed palette.
+ *
+ * `--color-gap` is the amber this site uses for a missing attribute and `--color-primary` is
+ * Pulse Blue. Both are mixed well down: at full strength a dozen saturated squares behind a
+ * headline is the noise this replaced. The amber reads slightly stronger than the blue because
+ * amber at equal opacity disappears against a light surface.
+ */
+.hero-scene-gap {
+  fill: color-mix(in oklab, var(--color-gap) 38%, transparent);
 }
 
-.hero-scene-fill rect {
-  fill: var(--primary);
-  opacity: 0;
-  /* 120ms apart: fast enough to read as one gesture, slow enough to read as a sequence. */
-  animation: hero-scene-resolve 520ms var(--ease-out-soft, ease-out) forwards;
-  animation-delay: calc(360ms + var(--i) * 120ms);
+.hero-scene-filled {
+  fill: color-mix(in oklab, var(--color-primary) 26%, transparent);
 }
 
-@keyframes hero-scene-resolve {
+/* One fade for the whole accent layer, then still. A single composited property on a single
+   element, which is as cheap as motion gets. */
+.hero-scene-accents {
+  animation: hero-scene-settle 900ms var(--ease-out-soft, ease-out) 200ms both;
+}
+
+@keyframes hero-scene-settle {
+  from {
+    opacity: 0;
+  }
   to {
     opacity: 1;
   }
 }
 
-/*
- * Reduced motion gets the finished state, not the empty one.
- *
- * Stopping the animation without this would leave every resolved cell at `opacity: 0`, so the
- * shelf would read as permanently broken. The point of the picture is the resolution.
- */
 @media (prefers-reduced-motion: reduce) {
-  .hero-scene-fill rect {
+  .hero-scene-accents {
     animation: none;
     opacity: 1;
   }

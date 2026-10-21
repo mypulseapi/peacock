@@ -7,6 +7,7 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { designedText } from "../../t";
+import { Figure } from "../figures/figure";
 export function Section3Section() {
   const t = designedText("product.decision-monitor.section3");
   return (
@@ -24,110 +25,15 @@ export function Section3Section() {
                   {t('2')}
                 </p>
               </div>
-              <div className="reveal lg:col-span-8">
-                <div>
-                  <div className="card">
-                    <div
-                      className="flex flex-wrap items-baseline justify-between gap-2"
-                    >
-                      <p className="text-sm font-semibold text-ink">
-                        {t('3')}
-                      </p>
-                      <span className="badge border-line text-muted">{t('4')}</span>
-                    </div>
-                    <ol className="mt-6 divide-y divide-line">
-                      <li
-                        className="grid grid-cols-1 gap-2 py-5 first:pt-0 last:pb-0 sm:grid-cols-12 sm:items-center sm:gap-6"
-                      >
-                        <p className="text-sm font-semibold text-muted sm:col-span-2">
-                          {t('5')}
-                        </p>
-                        <div className="flex items-center gap-4 sm:col-span-6">
-                          <div className="h-3 flex-1 rounded-full bg-surface-1">
-                            <div
-                              className="reveal-bar h-full rounded-full bg-chart-main w-26/680"
-                            ></div>
-                          </div>
-                          <p
-                            className="w-14 text-right font-display text-h2 font-semibold tabular-nums text-ink"
-                          >
-                            26
-                          </p>
-                        </div>
-                        <p className="text-sm text-pretty text-muted sm:col-span-4">
-                          {t('6')}
-                        </p>
-                      </li>
-                      <li
-                        className="grid grid-cols-1 gap-2 py-5 first:pt-0 last:pb-0 sm:grid-cols-12 sm:items-center sm:gap-6"
-                      >
-                        <p className="text-sm font-semibold text-muted sm:col-span-2">
-                          {t('7')}
-                        </p>
-                        <div className="flex items-center gap-4 sm:col-span-6">
-                          <div className="h-3 flex-1 rounded-full bg-surface-1">
-                            <div
-                              className="reveal-bar h-full rounded-full bg-chart-main w-105/680"
-                            ></div>
-                          </div>
-                          <p
-                            className="w-14 text-right font-display text-h2 font-semibold tabular-nums text-ink"
-                          >
-                            105
-                          </p>
-                        </div>
-                        <p className="text-sm text-pretty text-muted sm:col-span-4">
-                          {t('8')}
-                        </p>
-                      </li>
-                      <li
-                        className="grid grid-cols-1 gap-2 py-5 first:pt-0 last:pb-0 sm:grid-cols-12 sm:items-center sm:gap-6"
-                      >
-                        <p className="text-sm font-semibold text-muted sm:col-span-2">
-                          {t('9')}
-                        </p>
-                        <div className="flex items-center gap-4 sm:col-span-6">
-                          <div className="h-3 flex-1 rounded-full bg-surface-1">
-                            <div
-                              className="reveal-bar h-full rounded-full bg-chart-main w-340/680"
-                            ></div>
-                          </div>
-                          <p
-                            className="w-14 text-right font-display text-h2 font-semibold tabular-nums text-ink"
-                          >
-                            340
-                          </p>
-                        </div>
-                        <p className="text-sm text-pretty text-muted sm:col-span-4">
-                          {t('10')}
-                        </p>
-                      </li>
-                      <li
-                        className="grid grid-cols-1 gap-2 py-5 first:pt-0 last:pb-0 sm:grid-cols-12 sm:items-center sm:gap-6"
-                      >
-                        <p className="text-sm font-semibold text-muted sm:col-span-2">
-                          {t('11')}
-                        </p>
-                        <div className="flex items-center gap-4 sm:col-span-6">
-                          <div className="h-3 flex-1 rounded-full bg-surface-1">
-                            <div
-                              className="reveal-bar h-full rounded-full bg-chart-main w-full"
-                            ></div>
-                          </div>
-                          <p
-                            className="w-14 text-right font-display text-h2 font-semibold tabular-nums text-ink"
-                          >
-                            680
-                          </p>
-                        </div>
-                        <p className="text-sm text-pretty text-muted sm:col-span-4">
-                          {t('12')}
-                        </p>
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
+              {/*
+                The designer's exported figure, in place of the hand-converted rows. Same four
+                week notes, localized from `text.json`.
+              */}
+              <Figure
+                product="decision-monitor"
+                name="decision-monitor-gap-grows"
+                className="reveal lg:col-span-8"
+              />
             </div>
           </section>
   );

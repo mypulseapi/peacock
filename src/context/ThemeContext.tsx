@@ -70,8 +70,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
    */
   useEffect(() => {
     const root = document.documentElement;
-    if (preference) root.setAttribute("data-theme", preference);
-    else root.removeAttribute("data-theme");
+    const next = preference;
+    // On first mount the inline theme script has already stamped the attribute, so there is
+    // nothing to change and nothing to animate. Without this guard every page load would open
+    // with a cross-fade of one frame against an identical frame.
+    if (root.getAttribute("data-theme") === next) return;
+
+    const apply = () => {
+      if (next) root.setAttribute("data-theme", next);
+      else root.removeAttribute("data-theme");
+    };
+
+    // The cross-fade itself is styled in globals.css. Browsers without the API just swap.
+    if (document.startViewTransition) document.startViewTransition(apply);
+    else apply();
   }, [preference]);
 
   const setTheme = (next: Theme) => {

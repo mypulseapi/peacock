@@ -187,6 +187,21 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         />
         {/* Shared with src/lib/theme-script.ts: why it is inline, and why that is survivable. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        {/*
+            Fetch the motion script in parallel with hydration, not after it.
+
+            `DesignedMotion` loads it with `afterInteractive`, so the browser does not even ask
+            for the file until React has hydrated. On a warm cache that is invisible; on a first
+            visit it is the reported bug, that the animations, the revenue calculator and the
+            hero only run after a refresh. A refresh is exactly the case where the file is
+            already cached and therefore runs at once.
+
+            A preload does not change when the script executes, only when it arrives, so the
+            ordering `DesignedMotion` depends on is untouched. By the time `afterInteractive`
+            runs it, the bytes are already here. */}
+        {designed ? (
+          <link rel="preload" as="script" href="/designed-motion.js" fetchPriority="low" />
+        ) : null}
         {/* No JSON-LD here, deliberately. The standard requires exactly one ld+json block per
             document holding a single @graph, because nodes in separate blocks cannot reference
             each other by @id. A layout cannot know the page's own nodes, so the whole graph is

@@ -25,6 +25,15 @@ export interface SectorAttribute {
   label: string;
   /** Share of the shelf that records it, as an illustration of the shape. */
   coverage: number;
+  /**
+   * A mark for the attribute, as a CDN path under `icons/`.
+   *
+   * Optional, because not every sector has one drawn yet and a row without a mark should read as
+   * a row, not as a gap. Drawn as black line art on transparent, so the page uses it as a mask
+   * and fills it with `currentColor`: as an `<img>` it would stay black and disappear against
+   * the dark theme.
+   */
+  icon?: string;
   /** Whether a decision in this sector commonly turns on it. */
   decisive: boolean;
 }
@@ -103,9 +112,9 @@ const EN: Sector[] = [
       "Most of it is already in your product titles. On the laptop shelf we measured, 161 of 216 missing values were recoverable from text the merchant already owned.",
     attributes: [
       { label: "Screen size", coverage: 63, decisive: true },
-      { label: "Memory", coverage: 72, decisive: true },
-      { label: "Storage", coverage: 74, decisive: true },
-      { label: "Processor", coverage: 25, decisive: false },
+      { label: "Memory", coverage: 72, icon: "icons/product-attribute-memory-ram.webp", decisive: true },
+      { label: "Storage", coverage: 74, icon: "icons/product-attribute-storage.webp", decisive: true },
+      { label: "Processor", coverage: 25, icon: "icons/product-attribute-processor.webp", decisive: false },
     ],
     facts: [
       { value: 6.88, unit: "T", label: "global retail ecommerce sales forecast for 2026, 21.1% of all retail", source: "industry forecast, 2026" },
@@ -171,9 +180,9 @@ const EN: Sector[] = [
       "Mostly your own titles. On the laptop shelf we measured, 161 of 216 missing values were recoverable from text the merchant already owned, with no new data purchased.",
     attributes: [
       { label: "Screen size", coverage: 63, decisive: true },
-      { label: "Memory", coverage: 72, decisive: true },
-      { label: "Storage", coverage: 74, decisive: true },
-      { label: "Processor", coverage: 25, decisive: false },
+      { label: "Memory", coverage: 72, icon: "icons/product-attribute-memory-ram.webp", decisive: true },
+      { label: "Storage", coverage: 74, icon: "icons/product-attribute-storage.webp", decisive: true },
+      { label: "Processor", coverage: 25, icon: "icons/product-attribute-processor.webp", decisive: false },
     ],
     facts: [
       { value: 38, unit: "%", label: "of tested retailers offer no filter for information they already display", source: "Baymard Institute" },
@@ -236,10 +245,10 @@ const EN: Sector[] = [
     provenance:
       "Ingredient lists and supplier data you already hold for compliance. The audit usually finds this is a structuring job rather than an acquisition one.",
     attributes: [
-      { label: "Skin type", coverage: 29, decisive: true },
-      { label: "Key ingredient", coverage: 41, decisive: true },
-      { label: "Concern addressed", coverage: 24, decisive: true },
-      { label: "Volume", coverage: 88, decisive: false },
+      { label: "Skin type", coverage: 29, icon: "icons/product-attribute-skin-type.webp", decisive: true },
+      { label: "Key ingredient", coverage: 41, icon: "icons/product-attribute-key-ingredients.webp", decisive: true },
+      { label: "Concern addressed", coverage: 24, icon: "icons/product-attribute-concern-addressed.webp", decisive: true },
+      { label: "Volume", coverage: 88, icon: "icons/product-attribute-volume.webp", decisive: false },
     ],
     facts: [
       { value: 34, unit: "%", label: "of consumers frustrated by incomplete product information, up from 28%", source: "Akeneo PX Pulse 2025" },
@@ -315,9 +324,9 @@ const VI: Sector[] = [
       "Phần lớn đã nằm sẵn trong tiêu đề sản phẩm của bạn. Trên kệ laptop chúng tôi đo, 161 trên 216 giá trị còn thiếu lấy lại được từ chính văn bản nhà bán đang có.",
     attributes: [
       { label: "Kích thước màn hình", coverage: 63, decisive: true },
-      { label: "RAM", coverage: 72, decisive: true },
-      { label: "Dung lượng", coverage: 74, decisive: true },
-      { label: "Vi xử lý", coverage: 25, decisive: false },
+      { label: "RAM", coverage: 72, icon: "icons/product-attribute-memory-ram.webp", decisive: true },
+      { label: "Dung lượng", coverage: 74, icon: "icons/product-attribute-storage.webp", decisive: true },
+      { label: "Vi xử lý", coverage: 25, icon: "icons/product-attribute-processor.webp", decisive: false },
     ],
     facts: [
       { value: 6.88, unit: "T", label: "doanh số thương mại điện tử bán lẻ toàn cầu dự báo cho 2026, chiếm 21,1% toàn bộ bán lẻ", source: "dự báo ngành, 2026" },
@@ -383,9 +392,9 @@ const VI: Sector[] = [
       "Chủ yếu nằm trong chính tiêu đề của bạn. Trên kệ laptop chúng tôi đo, 161 trên 216 giá trị còn thiếu lấy lại được từ văn bản nhà bán vốn đã có, không phải mua thêm dữ liệu nào.",
     attributes: [
       { label: "Kích thước màn hình", coverage: 63, decisive: true },
-      { label: "RAM", coverage: 72, decisive: true },
-      { label: "Dung lượng", coverage: 74, decisive: true },
-      { label: "Vi xử lý", coverage: 25, decisive: false },
+      { label: "RAM", coverage: 72, icon: "icons/product-attribute-memory-ram.webp", decisive: true },
+      { label: "Dung lượng", coverage: 74, icon: "icons/product-attribute-storage.webp", decisive: true },
+      { label: "Vi xử lý", coverage: 25, icon: "icons/product-attribute-processor.webp", decisive: false },
     ],
     facts: [
       { value: 38, unit: "%", label: "nhà bán lẻ được kiểm tra không có bộ lọc cho thông tin họ vốn đã hiển thị", source: "Baymard Institute" },
@@ -448,10 +457,10 @@ const VI: Sector[] = [
     provenance:
       "Danh sách thành phần và dữ liệu nhà cung cấp bạn vốn đã giữ để tuân thủ quy định. Bản kiểm tra thường cho thấy đây là việc cấu trúc lại dữ liệu chứ không phải đi thu thập mới.",
     attributes: [
-      { label: "Loại da", coverage: 29, decisive: true },
-      { label: "Thành phần chính", coverage: 41, decisive: true },
-      { label: "Vấn đề xử lý", coverage: 24, decisive: true },
-      { label: "Dung tích", coverage: 88, decisive: false },
+      { label: "Loại da", coverage: 29, icon: "icons/product-attribute-skin-type.webp", decisive: true },
+      { label: "Thành phần chính", coverage: 41, icon: "icons/product-attribute-key-ingredients.webp", decisive: true },
+      { label: "Vấn đề xử lý", coverage: 24, icon: "icons/product-attribute-concern-addressed.webp", decisive: true },
+      { label: "Dung tích", coverage: 88, icon: "icons/product-attribute-volume.webp", decisive: false },
     ],
     facts: [
       { value: 34, unit: "%", label: "người mua thấy khó chịu vì thông tin sản phẩm thiếu, tăng từ 28%", source: "Akeneo PX Pulse 2025" },

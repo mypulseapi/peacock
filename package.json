@@ -10,6 +10,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "assets:manifest": "node scripts/gen-asset-manifest.mjs",
+    "deploy:r2": "tsx scripts/upload-to-r2.ts",
     "type-check": "tsc --noEmit",
     "check:pages": "node scripts/check-page-catalogue.mjs",
     "check:intent": "tsx scripts/check-intent-ranking.ts",

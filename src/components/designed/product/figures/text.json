@@ -1,0 +1,264 @@
+{
+  "decision-audit/decision-audit-gains": {
+    "card-1-title": {
+      "en": "Identify catalogue gaps",
+      "vi": "Xác định lỗ hổng danh mục"
+    },
+    "card-1-body": {
+      "en": "Discover missing product attributes that make it difficult for shoppers to compare products and find the right fit.",
+      "vi": "Phát hiện những thuộc tính sản phẩm còn thiếu khiến người mua khó so sánh sản phẩm và tìm được lựa chọn phù hợp."
+    },
+    "card-1-caption": {
+      "en": "missing fields found on the example laptop shelf",
+      "vi": "trường dữ liệu còn thiếu được tìm thấy trên kệ laptop ví dụ"
+    },
+    "card-1-legend-1": {
+      "en": "Screen size 80",
+      "vi": "Kích thước màn hình 80"
+    },
+    "card-1-legend-2": {
+      "en": "Memory 60",
+      "vi": "RAM 60"
+    },
+    "card-1-legend-3": {
+      "en": "Processor 162",
+      "vi": "Vi xử lý 162"
+    },
+    "card-1-legend-4": {
+      "en": "Storage 55",
+      "vi": "Lưu trữ 55"
+    },
+    "card-2-title": {
+      "en": "Identify decisive product attributes",
+      "vi": "Xác định những thuộc tính mang tính quyết định"
+    },
+    "card-2-body": {
+      "en": "Understand which product attributes matter most to shoppers, helping businesses prioritise essential product information.",
+      "vi": "Hiểu thuộc tính sản phẩm nào quan trọng nhất với người mua, giúp doanh nghiệp ưu tiên những thông tin sản phẩm thiết yếu."
+    },
+    "card-2-caption": {
+      "en": "shopper requirements need screen size, so it ranks first",
+      "vi": "yêu cầu của người mua cần đến kích thước màn hình, nên nó xếp đầu tiên"
+    }
+  },
+  "decision-audit/decision-audit-how-it-works": {
+    "step-1-label": {
+      "en": "You",
+      "vi": "Bạn"
+    },
+    "step-1-title": {
+      "en": "Send one category",
+      "vi": "Gửi một ngành hàng"
+    },
+    "step-1-body": {
+      "en": "Provide a CSV or JSON file containing product names, descriptions, categories, prices, and existing attributes. Choose a category where shoppers struggle to find the right product.",
+      "vi": "Cung cấp một tệp CSV hoặc JSON chứa tên sản phẩm, mô tả, danh mục, giá và các thuộc tính hiện có. Hãy chọn ngành hàng mà người mua khó tìm được sản phẩm phù hợp."
+    },
+    "step-2-label": {
+      "en": "Us",
+      "vi": "Chúng tôi"
+    },
+    "step-2-title": {
+      "en": "We measure it",
+      "vi": "Chúng tôi đo nó"
+    },
+    "step-2-body": {
+      "en": "Within 48 hours, we measure how much each attribute helps tell products apart, and what it would be worth if recorded across the category, in bits rather than clicks.",
+      "vi": "Trong vòng 48 giờ, chúng tôi đo xem mỗi thuộc tính giúp phân biệt sản phẩm đến đâu, và nó sẽ đáng giá bao nhiêu nếu được ghi nhận trên toàn ngành hàng, tính bằng bit chứ không phải bằng lượt nhấp."
+    },
+    "step-3-label": {
+      "en": "Both",
+      "vi": "Cả hai"
+    },
+    "step-3-title": {
+      "en": "We walk you through it",
+      "vi": "Chúng tôi cùng bạn đi qua kết quả"
+    },
+    "step-3-body": {
+      "en": "Receive a ranked list of attributes and supporting files. We walk you through the findings and discuss what it would take to act on them.",
+      "vi": "Nhận một danh sách thuộc tính đã xếp hạng cùng các tệp kèm theo. Chúng tôi sẽ đi qua kết quả cùng bạn và trao đổi xem cần gì để hành động dựa trên đó."
+    }
+  },
+  "decision-monitor/decision-monitor-gains": {
+    "card-1-title": {
+      "en": "Catch decay before a buyer does",
+      "vi": "Bắt được sự xuống cấp trước khi người mua nhận ra"
+    },
+    "card-1-body": {
+      "en": "See a shelf slipping while it is still a backlog item, rather than after it has become a project.",
+      "vi": "Thấy một kệ hàng đang tụt khi nó vẫn còn là một đầu việc tồn đọng, thay vì sau khi nó đã thành một dự án."
+    },
+    "card-2-title": {
+      "en": "Know the cause, not just the number",
+      "vi": "Biết nguyên nhân, không chỉ con số"
+    },
+    "card-2-body": {
+      "en": "Every alert names the shelf, the attribute and what caused the drop, so the fix is obvious before anyone opens a dashboard.",
+      "vi": "Mỗi cảnh báo đều nêu rõ kệ hàng, thuộc tính và nguyên nhân khiến nó tụt, nên cách sửa đã rõ trước cả khi có ai mở bảng điều khiển."
+    },
+    "card-3-title": {
+      "en": "Compare quarters, not snapshots",
+      "vi": "So sánh theo quý, không phải theo ảnh chụp rời rạc"
+    },
+    "card-3-body": {
+      "en": "The same method on every run, so the trend per category means something and a regression is visible as a regression.",
+      "vi": "Cùng một phương pháp ở mọi lần chạy, nên xu hướng của từng ngành hàng có ý nghĩa và một bước thụt lùi hiện ra đúng là một bước thụt lùi."
+    }
+  },
+  "decision-monitor/decision-monitor-gap-grows": {
+    "row-1-note": {
+      "en": "One export to remap. Nobody to ask.",
+      "vi": "Một bản xuất cần ánh xạ lại. Không phải hỏi ai."
+    },
+    "row-2-note": {
+      "en": "A backlog item, done inside a sprint.",
+      "vi": "Một đầu việc tồn đọng, làm xong trong một sprint."
+    },
+    "row-3-note": {
+      "en": "A project, and a conversation about it.",
+      "vi": "Một dự án, và một cuộc họp về nó."
+    },
+    "row-4-note": {
+      "en": "A second budget request for work already paid for once.",
+      "vi": "Một đề nghị ngân sách thứ hai cho công việc đã từng được trả tiền một lần."
+    }
+  },
+  "decision-monitor/decision-monitor-how-it-works": {
+    "step-1-label": {
+      "en": "Once",
+      "vi": "Một lần"
+    },
+    "step-1-title": {
+      "en": "Set the cadence",
+      "vi": "Đặt nhịp chạy"
+    },
+    "step-1-body": {
+      "en": "Weekly or monthly, matched to how often your catalogue changes. It reads the same export the audit read, so there is nothing new to build and no integration to maintain.",
+      "vi": "Hằng tuần hoặc hằng tháng, khớp với tần suất danh mục của bạn thay đổi. Nó đọc đúng bản xuất mà bản kiểm tra đã đọc, nên không có gì mới phải xây và không có tích hợp nào phải bảo trì."
+    },
+    "step-2-label": {
+      "en": "Ongoing",
+      "vi": "Liên tục"
+    },
+    "step-2-title": {
+      "en": "Monitor re-measures",
+      "vi": "Monitor đo lại"
+    },
+    "step-2-body": {
+      "en": "The same method on every run, so the numbers are comparable over time rather than a series of unrelated snapshots.",
+      "vi": "Cùng một phương pháp ở mọi lần chạy, nên các con số so sánh được theo thời gian chứ không phải một chuỗi ảnh chụp rời rạc."
+    },
+    "step-3-label": {
+      "en": "When it matters",
+      "vi": "Khi thực sự cần"
+    },
+    "step-3-title": {
+      "en": "You get told, with the reason",
+      "vi": "Bạn được báo, kèm lý do"
+    },
+    "step-3-body": {
+      "en": "Not a dashboard you have to remember to open. An alert naming the shelf, the attribute and what caused the drop.",
+      "vi": "Không phải một bảng điều khiển mà bạn phải nhớ để mở. Một cảnh báo nêu rõ kệ hàng, thuộc tính và nguyên nhân khiến nó tụt."
+    }
+  },
+  "decision-monitor/decision-monitor-shelf-slips": {
+    "stat-caption": {
+      "en": "of 216 products a shopper still cannot tell apart, on the shelf we measured",
+      "vi": "trên 216 sản phẩm mà người mua vẫn không phân biệt được, trên kệ hàng chúng tôi đã đo"
+    },
+    "card-title": {
+      "en": "Requirements needing each attribute",
+      "vi": "Số yêu cầu cần đến từng thuộc tính"
+    },
+    "card-subtitle": {
+      "en": "Example data: the laptop shelf from the home page.",
+      "vi": "Dữ liệu ví dụ: kệ laptop từ trang chủ."
+    }
+  },
+  "decision-verification/decision-verification-gains": {
+    "card-1-title": {
+      "en": "Validate catalogue improvements",
+      "vi": "Xác nhận các cải thiện của danh mục"
+    },
+    "card-1-body": {
+      "en": "Verify whether updated product attributes meet real shopper needs.",
+      "vi": "Kiểm chứng xem những thuộc tính sản phẩm đã cập nhật có đáp ứng đúng nhu cầu thực của người mua hay không."
+    },
+    "card-2-title": {
+      "en": "See which repairs were not worth it",
+      "vi": "Thấy những sửa chữa nào là không đáng"
+    },
+    "card-2-body": {
+      "en": "Some repairs move nothing. We report those first, because a quarter spent on the wrong field is the expensive mistake.",
+      "vi": "Một số sửa chữa không thay đổi gì cả. Chúng tôi báo cáo những cái đó trước, vì một quý dành cho sai trường dữ liệu mới là sai lầm đắt giá."
+    },
+    "card-3-title": {
+      "en": "Evidence for whoever signed it off",
+      "vi": "Bằng chứng cho người đã phê duyệt"
+    },
+    "card-3-body": {
+      "en": "Before and after on the same measure, in the week the work finishes rather than the quarter after.",
+      "vi": "Trước và sau trên cùng một thước đo, ngay trong tuần công việc hoàn tất chứ không phải quý sau."
+    }
+  },
+  "decision-verification/decision-verification-how-it-works": {
+    "step-1-label": {
+      "en": "You",
+      "vi": "Bạn"
+    },
+    "step-1-title": {
+      "en": "Re-export the category",
+      "vi": "Xuất lại ngành hàng"
+    },
+    "step-1-body": {
+      "en": "Export your shelf with current progress. Partial data is saved and supported, no need to wait for a full completion.",
+      "vi": "Xuất kệ hàng của bạn với tiến độ hiện tại. Dữ liệu chưa hoàn chỉnh vẫn được lưu và hỗ trợ, không cần chờ hoàn thành toàn bộ."
+    },
+    "step-2-label": {
+      "en": "Us",
+      "vi": "Chúng tôi"
+    },
+    "step-2-title": {
+      "en": "Comparable before & after results",
+      "vi": "Kết quả trước và sau có thể so sánh được"
+    },
+    "step-2-body": {
+      "en": "We use the same method and product attributes in both audits, ensuring accurate and reliable before-and-after comparisons without changing the evaluation criteria.",
+      "vi": "Chúng tôi dùng cùng một phương pháp và cùng những thuộc tính sản phẩm trong cả hai lần kiểm tra, đảm bảo so sánh trước và sau chính xác và đáng tin cậy mà không thay đổi tiêu chí đánh giá."
+    },
+    "step-3-label": {
+      "en": "Both",
+      "vi": "Cả hai"
+    },
+    "step-3-title": {
+      "en": "See what has improved",
+      "vi": "Xem điều gì đã cải thiện"
+    },
+    "step-3-body": {
+      "en": "Track product attribute coverage, measure catalogue gap improvements, and assess your readiness score in a clear, shareable report for business decision-makers.",
+      "vi": "Theo dõi độ bao phủ thuộc tính sản phẩm, đo mức cải thiện của lỗ hổng danh mục, và đánh giá chỉ số sẵn sàng của bạn trong một báo cáo rõ ràng, dễ chia sẻ cho người ra quyết định."
+    }
+  },
+  "decision-verification/decision-verification-meter": {
+    "before-label": {
+      "en": "Before",
+      "vi": "Trước"
+    },
+    "before-caption": {
+      "en": "Fields filled",
+      "vi": "Trường đã điền"
+    },
+    "after-label": {
+      "en": "After",
+      "vi": "Sau"
+    },
+    "after-caption": {
+      "en": "Fields filled",
+      "vi": "Trường đã điền"
+    },
+    "caption": {
+      "en": "The catalogue is 22 percentage points fuller. Example data.",
+      "vi": "Danh mục đầy hơn 22 điểm phần trăm. Dữ liệu ví dụ."
+    }
+  }
+}

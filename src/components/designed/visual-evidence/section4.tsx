@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section4Section() {
+  const t = useTranslations("designed.visual-evidence.section4");
   return (
     <section className="border-b border-line">
             <div
@@ -14,14 +16,10 @@ export function Section4Section() {
             >
               <div className="lg:col-span-5 lg:pr-16">
                 <h2 className="text-title text-balance">
-                  Then we checked our own catalogue, and it was worse
+                  {t('1')}
                 </h2>
                 <p className="mt-4 text-body leading-relaxed text-pretty text-muted">
-                  2,176 products in the catalogue we use for our own demonstrations.
-                  We counted coverage per attribute, left out ratings and sales
-                  counts because those describe the listing rather than the product,
-                  and asked of each one whether a single product photograph already
-                  answers it.
+                  {t('2')}
                 </p>
               </div>
               <div className="lg:col-span-7">
@@ -30,49 +28,49 @@ export function Section4Section() {
                     <div
                       className="flex items-baseline justify-between gap-4 py-4 first:pt-0"
                     >
-                      <dt className="text-ink">Colour</dt>
+                      <dt className="text-ink">{t('3')}</dt>
                       <dd className="flex items-baseline gap-4">
                         <span className="tabular-nums text-ink">100.0%</span>
                         <span className="w-28 text-right text-sm text-muted"
-                          >photo shows it</span
+                          >{t('4')}</span
                         >
                       </dd>
                     </div>
                     <div className="flex items-baseline justify-between gap-4 py-4">
-                      <dt className="text-ink">Size</dt>
+                      <dt className="text-ink">{t('5')}</dt>
                       <dd className="flex items-baseline gap-4">
                         <span className="tabular-nums text-muted">45.2%</span>
-                        <span className="w-28 text-right text-sm text-muted">no</span>
+                        <span className="w-28 text-right text-sm text-muted">{t('6')}</span>
                       </dd>
                     </div>
                     <div className="flex items-baseline justify-between gap-4 py-4">
-                      <dt className="text-ink">Capacity</dt>
+                      <dt className="text-ink">{t('7')}</dt>
                       <dd className="flex items-baseline gap-4">
                         <span className="tabular-nums text-muted">21.3%</span>
-                        <span className="w-28 text-right text-sm text-muted">no</span>
+                        <span className="w-28 text-right text-sm text-muted">{t('8')}</span>
                       </dd>
                     </div>
                     <div className="flex items-baseline justify-between gap-4 py-4">
-                      <dt className="text-ink">Storage</dt>
+                      <dt className="text-ink">{t('9')}</dt>
                       <dd className="flex items-baseline gap-4">
                         <span className="tabular-nums text-muted">12.9%</span>
-                        <span className="w-28 text-right text-sm text-muted">no</span>
+                        <span className="w-28 text-right text-sm text-muted">{t('10')}</span>
                       </dd>
                     </div>
                     <div className="flex items-baseline justify-between gap-4 py-4">
-                      <dt className="text-ink">Memory</dt>
+                      <dt className="text-ink">{t('11')}</dt>
                       <dd className="flex items-baseline gap-4">
                         <span className="tabular-nums text-muted">7.2%</span>
-                        <span className="w-28 text-right text-sm text-muted">no</span>
+                        <span className="w-28 text-right text-sm text-muted">{t('12')}</span>
                       </dd>
                     </div>
                     <div
                       className="flex items-baseline justify-between gap-4 py-4 last:pb-0"
                     >
-                      <dt className="text-ink">Variant</dt>
+                      <dt className="text-ink">{t('13')}</dt>
                       <dd className="flex items-baseline gap-4">
                         <span className="tabular-nums text-muted">3.5%</span>
-                        <span className="w-28 text-right text-sm text-muted">no</span>
+                        <span className="w-28 text-right text-sm text-muted">{t('14')}</span>
                       </dd>
                     </div>
                   </dl>
@@ -80,34 +78,30 @@ export function Section4Section() {
                 <blockquote
                   className="mt-8 border-l-2 border-signal pl-6 text-h3 text-balance text-ink"
                 >
-                  The only attribute recorded on every single product is the only
-                  one the photograph already answers.
+                  {t('15')}
                 </blockquote>
                 <dl className="mt-8 grid gap-6 sm:grid-cols-3">
                   <div className="border-t-2 border-primary pt-4">
                     <dt className="text-sm text-muted">
-                      Recorded values the photo repeats
+                      {t('16')}
                     </dt>
                     <dd className="text-h2 tabular-nums text-ink">52.6%</dd>
                   </div>
                   <div className="border-t-2 border-primary pt-4">
                     <dt className="text-sm text-muted">
-                      Recorded values that add something
+                      {t('17')}
                     </dt>
                     <dd className="text-h2 tabular-nums text-ink">47.4%</dd>
                   </div>
                   <div className="border-t-2 border-primary pt-4">
                     <dt className="text-sm text-muted">
-                      Facts per product you cannot get by looking
+                      {t('18')}
                     </dt>
                     <dd className="text-h2 tabular-nums text-ink">0.90</dd>
                   </div>
                 </dl>
                 <p className="mt-8 text-body leading-relaxed text-pretty text-muted">
-                  Over half of everything this catalogue records is a second copy of
-                  what the picture shows. The average product carries less than one
-                  fact a shopper cannot get by looking at it. And every product has
-                  exactly one image. Not a median of one. All 2,176.
+                  {t('19')}
                 </p>
               </div>
             </div>

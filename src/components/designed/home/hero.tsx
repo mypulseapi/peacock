@@ -6,11 +6,13 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import Link from "next/link";
 
 export function HeroSection() {
+  const t = useTranslations("designed.home.hero");
   return (
     <section
             className="hero-bg hero-screen flex items-center overflow-x-clip border-b border-line"
@@ -23,22 +25,21 @@ export function HeroSection() {
                 <div className="@container xl:col-span-3">
                   <h1 className="reveal text-hero">
                     <span className="block xl:whitespace-nowrap"
-                      >Uncover shoppers’ intent</span
+                      >{t('1')}</span
                     >
                     <span className="block xl:whitespace-nowrap"
-                      >and catalogue gaps</span
+                      >{t('2')}</span
                     >
                   </h1>
                   <p
                     className="reveal mt-6 max-w-md text-lg leading-relaxed text-pretty text-muted delay-200"
                   >
-                    Pulse ranks the product data your catalogue is missing by how
-                    many shoppers need it, not by how empty a field is.
+                    {t('3')}
                   </p>
                   <div className="reveal mt-8 flex flex-wrap gap-3 delay-300">
                     <Link href="/en/contact" className="btn-primary"
-                      >Request a Decision Audit</Link>
-                    <a href="#method" className="btn-secondary">See how it works</a>
+                      >{t('4')}</Link>
+                    <a href="#method" className="btn-secondary">{t('5')}</a>
                   </div>
                 </div>
 
@@ -70,7 +71,7 @@ export function HeroSection() {
                           ></span>
                           <span className="flex items-center gap-1.5"
                             ><span className="tabular-nums">01</span
-                            ><span className="max-sm:sr-only">The problem</span></span
+                            ><span className="max-sm:sr-only">{t('6')}</span></span
                           >
                         </button>
                         <button
@@ -91,7 +92,7 @@ export function HeroSection() {
                           ></span>
                           <span className="flex items-center gap-1.5"
                             ><span className="tabular-nums">02</span
-                            ><span className="max-sm:sr-only">The audit</span></span
+                            ><span className="max-sm:sr-only">{t('7')}</span></span
                           >
                         </button>
                         <button
@@ -112,7 +113,7 @@ export function HeroSection() {
                           ></span>
                           <span className="flex items-center gap-1.5"
                             ><span className="tabular-nums">03</span
-                            ><span className="max-sm:sr-only">The priority</span></span
+                            ><span className="max-sm:sr-only">{t('8')}</span></span
                           >
                         </button>
                         <button
@@ -133,7 +134,7 @@ export function HeroSection() {
                           ></span>
                           <span className="flex items-center gap-1.5"
                             ><span className="tabular-nums">04</span
-                            ><span className="max-sm:sr-only">The repair</span></span
+                            ><span className="max-sm:sr-only">{t('9')}</span></span
                           >
                         </button>
                         <button
@@ -154,7 +155,7 @@ export function HeroSection() {
                           ></span>
                           <span className="flex items-center gap-1.5"
                             ><span className="tabular-nums">05</span
-                            ><span className="max-sm:sr-only">The outcome</span></span
+                            ><span className="max-sm:sr-only">{t('10')}</span></span
                           >
                         </button>
                       </div>
@@ -170,12 +171,12 @@ export function HeroSection() {
                             <span className="size-2.5 rounded-full bg-sky"></span>
                           </div>
                           <span className="text-xs text-muted max-sm:hidden"
-                            >app.thepulseapi.com / audits / laptops</span
+                            >{t('11')}</span
                           >
                           <div className="flex flex-1 items-center justify-end gap-2">
                             <span
                               className="rounded-full border border-line bg-card px-2 py-0.5 text-xs font-medium whitespace-nowrap text-muted"
-                              >Example data</span
+                              >{t('12')}</span
                             >
                             <button
                               type="button"
@@ -209,7 +210,7 @@ export function HeroSection() {
                                 <p
                                   className="font-display text-base font-semibold text-ink"
                                 >
-                                  My laptop catalogue: 216 products
+                                  {t('13')}
                                 </p>
                               </div>
                               <div
@@ -222,10 +223,9 @@ export function HeroSection() {
                                 ></span>
                                 <p className="text-data leading-snug text-gap-strong">
                                   <strong className="font-bold"
-                                    >357 fields are missing information.</strong
+                                    >{t('14')}</strong
                                   >
-                                  Shoppers can&rsquo;t use them to filter products,
-                                  and your search can&rsquo;t either.
+                                  {t('15')}
                                 </p>
                               </div>
                               <div className="relative flex-1 overflow-x-clip">
@@ -237,7 +237,7 @@ export function HeroSection() {
                                       <th
                                         className="pt-4 pr-2 pb-3 pl-5 text-xs font-semibold text-muted sm:pr-5"
                                       >
-                                        Name
+                                        {t('16')}
                                       </th>
                                       <th
                                         className="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3"
@@ -249,13 +249,13 @@ export function HeroSection() {
                                             >1</span
                                           ><span
                                             className="text-xs font-semibold text-ink"
-                                            >Screen size</span
+                                            >{t('17')}</span
                                           ></span
                                         ><span
                                           className="mt-1 flex items-center gap-1 text-caption font-bold text-gap-strong"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >80 missing</span
+                                          >{t('18')}</span
                                         >
                                       </th>
                                       <th
@@ -268,13 +268,13 @@ export function HeroSection() {
                                             >2</span
                                           ><span
                                             className="text-xs font-semibold text-ink"
-                                            >Memory</span
+                                            >{t('19')}</span
                                           ></span
                                         ><span
                                           className="mt-1 flex items-center gap-1 text-caption font-bold text-gap-strong"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >60 missing</span
+                                          >{t('20')}</span
                                         >
                                       </th>
                                       <th
@@ -287,13 +287,13 @@ export function HeroSection() {
                                             >4</span
                                           ><span
                                             className="text-xs font-semibold text-ink"
-                                            >Processor</span
+                                            >{t('21')}</span
                                           ></span
                                         ><span
                                           className="mt-1 flex items-center gap-1 text-caption font-bold text-gap-strong"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >162 missing</span
+                                          >{t('22')}</span
                                         >
                                       </th>
                                       <th
@@ -306,13 +306,13 @@ export function HeroSection() {
                                             >3</span
                                           ><span
                                             className="text-xs font-semibold text-ink"
-                                            >Storage</span
+                                            >{t('23')}</span
                                           ></span
                                         ><span
                                           className="mt-1 flex items-center gap-1 text-caption font-bold text-gap-strong"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >55 missing</span
+                                          >{t('24')}</span
                                         >
                                       </th>
                                     </tr>
@@ -327,13 +327,13 @@ export function HeroSection() {
                                             className="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
                                             aria-hidden="true"
                                           ></span
-                                          >LG 16Z90TS-G</span
+                                          >{t('25')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                       >
-                                        16.0&quot;
+                                        {t('26')}
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap sm:px-3"
@@ -341,7 +341,7 @@ export function HeroSection() {
                                         <span className="demo-in missing-flag delay-200"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >Missing</span
+                                          >{t('27')}</span
                                         >
                                       </td>
                                       <td
@@ -350,13 +350,13 @@ export function HeroSection() {
                                         <span className="demo-in missing-flag delay-200"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >Missing</span
+                                          >{t('28')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell"
                                       >
-                                        512GB
+                                        {t('29')}
                                       </td>
                                     </tr>
                                     <tr>
@@ -368,7 +368,7 @@ export function HeroSection() {
                                             className="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
                                             aria-hidden="true"
                                           ></span
-                                          >Spectre x360</span
+                                          >{t('30')}</span
                                         >
                                       </td>
                                       <td
@@ -377,13 +377,13 @@ export function HeroSection() {
                                         <span className="demo-in missing-flag delay-300"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >Missing</span
+                                          >{t('31')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                       >
-                                        16GB
+                                        {t('32')}
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
@@ -391,7 +391,7 @@ export function HeroSection() {
                                         <span className="demo-in missing-flag delay-300"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >Missing</span
+                                          >{t('33')}</span
                                         >
                                       </td>
                                       <td
@@ -400,7 +400,7 @@ export function HeroSection() {
                                         <span className="demo-in missing-flag delay-300"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >Missing</span
+                                          >{t('34')}</span
                                         >
                                       </td>
                                     </tr>
@@ -413,7 +413,7 @@ export function HeroSection() {
                                             className="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
                                             aria-hidden="true"
                                           ></span
-                                          >ThinkPad X1 Carbon Gen 9</span
+                                          >{t('35')}</span
                                         >
                                       </td>
                                       <td
@@ -422,13 +422,13 @@ export function HeroSection() {
                                         <span className="demo-in missing-flag delay-400"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >Missing</span
+                                          >{t('36')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                       >
-                                        32GB
+                                        {t('37')}
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
@@ -436,13 +436,13 @@ export function HeroSection() {
                                         <span className="demo-in missing-flag delay-400"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >Missing</span
+                                          >{t('38')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell"
                                       >
-                                        1TB
+                                        {t('39')}
                                       </td>
                                     </tr>
                                     <tr>
@@ -454,13 +454,13 @@ export function HeroSection() {
                                             className="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
                                             aria-hidden="true"
                                           ></span
-                                          >Razer Blade</span
+                                          >{t('40')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                       >
-                                        15.6&quot;
+                                        {t('41')}
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap sm:px-3"
@@ -468,7 +468,7 @@ export function HeroSection() {
                                         <span className="demo-in missing-flag delay-500"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >Missing</span
+                                          >{t('42')}</span
                                         >
                                       </td>
                                       <td
@@ -477,7 +477,7 @@ export function HeroSection() {
                                         <span className="demo-in missing-flag delay-500"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >Missing</span
+                                          >{t('43')}</span
                                         >
                                       </td>
                                       <td
@@ -486,7 +486,7 @@ export function HeroSection() {
                                         <span className="demo-in missing-flag delay-500"
                                           ><svg className="size-3" aria-hidden="true">
                                             <use href="#i-triangle-alert" /></svg
-                                          >Missing</span
+                                          >{t('44')}</span
                                         >
                                       </td>
                                     </tr>
@@ -497,8 +497,7 @@ export function HeroSection() {
                                 className="flex flex-wrap items-center justify-between gap-3 border-t border-surface-1 px-5 py-4"
                               >
                                 <p className="text-data text-muted">
-                                  Every blank cell is a question your catalogue
-                                  cannot answer.
+                                  {t('45')}
                                 </p>
                               </div>
                             </div>
@@ -517,7 +516,7 @@ export function HeroSection() {
                                 <p
                                   className="font-display text-base font-semibold text-ink"
                                 >
-                                  My laptop catalogue: 216 products
+                                  {t('46')}
                                 </p>
                                 <span
                                   className="demo-pill flex-col items-stretch gap-1 border-line bg-surface-1 text-muted"
@@ -526,7 +525,7 @@ export function HeroSection() {
                                       className="size-3 animate-spin rounded-full border-2 border-current border-t-surface-1 motion-reduce:animate-none"
                                       aria-hidden="true"
                                     ></span
-                                    >Auditing attributes</span
+                                    >{t('47')}</span
                                   ><span
                                     className="scan-track block h-0.75 w-full overflow-hidden rounded-full"
                                     ><span
@@ -541,10 +540,9 @@ export function HeroSection() {
                                   className="flex items-baseline justify-between gap-4"
                                 >
                                   <span className="text-data font-semibold text-primary"
-                                    >Auditing 216 products against 32 buying
-                                    requirements</span
+                                    >{t('48')}</span
                                   ><span className="tabular-nums text-xs text-muted"
-                                    >4 attributes</span
+                                    >{t('49')}</span
                                   >
                                 </div>
                               </div>
@@ -557,7 +555,7 @@ export function HeroSection() {
                                       <th
                                         className="pt-4 pr-2 pb-3 pl-5 text-xs font-semibold text-muted sm:pr-5"
                                       >
-                                        Name
+                                        {t('50')}
                                       </th>
                                       <th
                                         className="px-2 pt-4 pb-3 whitespace-nowrap sm:px-3"
@@ -569,11 +567,11 @@ export function HeroSection() {
                                             >1</span
                                           ><span
                                             className="text-xs font-semibold text-ink"
-                                            >Screen size</span
+                                            >{t('51')}</span
                                           ></span
                                         ><span
                                           className="mt-1 block text-caption font-normal text-muted"
-                                          >auditing…<span
+                                          >{t('52')}<span
                                             className="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"
                                             ><span
                                               className="demo-bar demo-bar-scan block h-full rounded-full bg-chart-main delay-0"
@@ -590,11 +588,11 @@ export function HeroSection() {
                                             >2</span
                                           ><span
                                             className="text-xs font-semibold text-ink"
-                                            >Memory</span
+                                            >{t('53')}</span
                                           ></span
                                         ><span
                                           className="mt-1 block text-caption font-normal text-muted"
-                                          >auditing…<span
+                                          >{t('54')}<span
                                             className="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"
                                             ><span
                                               className="demo-bar demo-bar-scan block h-full rounded-full bg-chart-main delay-180"
@@ -611,11 +609,11 @@ export function HeroSection() {
                                             >4</span
                                           ><span
                                             className="text-xs font-semibold text-ink"
-                                            >Processor</span
+                                            >{t('55')}</span
                                           ></span
                                         ><span
                                           className="mt-1 block text-caption font-normal text-muted"
-                                          >auditing…<span
+                                          >{t('56')}<span
                                             className="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"
                                             ><span
                                               className="demo-bar demo-bar-scan block h-full rounded-full bg-chart-main delay-360"
@@ -632,11 +630,11 @@ export function HeroSection() {
                                             >3</span
                                           ><span
                                             className="text-xs font-semibold text-ink"
-                                            >Storage</span
+                                            >{t('57')}</span
                                           ></span
                                         ><span
                                           className="mt-1 block text-caption font-normal text-muted"
-                                          >auditing…<span
+                                          >{t('58')}<span
                                             className="scan-track block h-1 w-full overflow-hidden rounded-full mt-1"
                                             ><span
                                               className="demo-bar demo-bar-scan block h-full rounded-full bg-chart-main delay-540"
@@ -655,20 +653,20 @@ export function HeroSection() {
                                             className="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
                                             aria-hidden="true"
                                           ></span
-                                          >LG 16Z90TS-G</span
+                                          >{t('59')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                       >
-                                        16.0&quot;
+                                        {t('60')}
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap sm:px-3"
                                       >
                                         <span
                                           className="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
-                                          >Auditing</span
+                                          >{t('61')}</span
                                         >
                                       </td>
                                       <td
@@ -676,13 +674,13 @@ export function HeroSection() {
                                       >
                                         <span
                                           className="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
-                                          >Auditing</span
+                                          >{t('62')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell"
                                       >
-                                        512GB
+                                        {t('63')}
                                       </td>
                                     </tr>
                                     <tr>
@@ -694,7 +692,7 @@ export function HeroSection() {
                                             className="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
                                             aria-hidden="true"
                                           ></span
-                                          >Spectre x360</span
+                                          >{t('64')}</span
                                         >
                                       </td>
                                       <td
@@ -702,20 +700,20 @@ export function HeroSection() {
                                       >
                                         <span
                                           className="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
-                                          >Auditing</span
+                                          >{t('65')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                       >
-                                        16GB
+                                        {t('66')}
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
                                       >
                                         <span
                                           className="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
-                                          >Auditing</span
+                                          >{t('67')}</span
                                         >
                                       </td>
                                       <td
@@ -723,7 +721,7 @@ export function HeroSection() {
                                       >
                                         <span
                                           className="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
-                                          >Auditing</span
+                                          >{t('68')}</span
                                         >
                                       </td>
                                     </tr>
@@ -736,7 +734,7 @@ export function HeroSection() {
                                             className="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
                                             aria-hidden="true"
                                           ></span
-                                          >ThinkPad X1 Carbon Gen 9</span
+                                          >{t('69')}</span
                                         >
                                       </td>
                                       <td
@@ -744,26 +742,26 @@ export function HeroSection() {
                                       >
                                         <span
                                           className="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
-                                          >Auditing</span
+                                          >{t('70')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                       >
-                                        32GB
+                                        {t('71')}
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap sm:px-3 hidden sm:table-cell"
                                       >
                                         <span
                                           className="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
-                                          >Auditing</span
+                                          >{t('72')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3 hidden sm:table-cell"
                                       >
-                                        1TB
+                                        {t('73')}
                                       </td>
                                     </tr>
                                     <tr>
@@ -775,20 +773,20 @@ export function HeroSection() {
                                             className="hidden size-5 shrink-0 rounded bg-surface-1 sm:block"
                                             aria-hidden="true"
                                           ></span
-                                          >Razer Blade</span
+                                          >{t('74')}</span
                                         >
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap text-muted sm:px-3"
                                       >
-                                        15.6&quot;
+                                        {t('75')}
                                       </td>
                                       <td
                                         className="px-2 py-2.5 whitespace-nowrap sm:px-3"
                                       >
                                         <span
                                           className="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
-                                          >Auditing</span
+                                          >{t('76')}</span
                                         >
                                       </td>
                                       <td
@@ -796,7 +794,7 @@ export function HeroSection() {
                                       >
                                         <span
                                           className="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
-                                          >Auditing</span
+                                          >{t('77')}</span
                                         >
                                       </td>
                                       <td
@@ -804,7 +802,7 @@ export function HeroSection() {
                                       >
                                         <span
                                           className="inline-flex rounded-md bg-surface-1 px-2 py-1 text-label font-semibold text-muted uppercase"
-                                          >Auditing</span
+                                          >{t('78')}</span
                                         >
                                       </td>
                                     </tr>
@@ -817,7 +815,7 @@ export function HeroSection() {
                                 <p
                                   className="flex flex-wrap items-center gap-3 text-data text-muted"
                                 >
-                                  Reading titles, descriptions and supplier specs.
+                                  {t('79')}
                                 </p>
                               </div>
                             </div>
@@ -835,7 +833,7 @@ export function HeroSection() {
                                 <p
                                   className="font-display text-sm font-semibold text-ink"
                                 >
-                                  Two ways to rank the same four missing attributes
+                                  {t('80')}
                                 </p>
                               </div>
                               <div
@@ -847,9 +845,9 @@ export function HeroSection() {
                                 <div className="sm:hidden">
                                   <div className="mb-2 grid grid-cols-2 gap-x-10">
                                     <div>
-                                      <p className="eyebrow">Traditional audit</p>
+                                      <p className="eyebrow">{t('81')}</p>
                                       <p className="mt-0.5 text-caption text-muted">
-                                        ranks by what is absent
+                                        {t('82')}
                                       </p>
                                     </div>
                                     <div>
@@ -868,7 +866,7 @@ export function HeroSection() {
                                           aria-hidden="true" priority />
                                       </p>
                                       <p className="mt-0.5 text-caption text-muted">
-                                        ranks by what shoppers need
+                                        {t('83')}
                                       </p>
                                     </div>
                                   </div>
@@ -889,10 +887,10 @@ export function HeroSection() {
                                           ><span className="min-w-0 flex-1"
                                             ><span
                                               className="block text-data font-semibold hyphens-auto text-ink"
-                                              >Processor</span
+                                              >{t('84')}</span
                                             ><span
                                               className="block tabular-nums text-caption text-muted"
-                                              >162 missing</span
+                                              >{t('85')}</span
                                             ></span
                                           >
                                         </div>
@@ -907,10 +905,10 @@ export function HeroSection() {
                                           ><span className="min-w-0 flex-1"
                                             ><span
                                               className="block text-data font-semibold hyphens-auto text-ink"
-                                              >Screen size</span
+                                              >{t('86')}</span
                                             ><span
                                               className="block tabular-nums text-caption text-muted"
-                                              >80 missing</span
+                                              >{t('87')}</span
                                             ></span
                                           >
                                         </div>
@@ -925,10 +923,10 @@ export function HeroSection() {
                                           ><span className="min-w-0 flex-1"
                                             ><span
                                               className="block text-data font-semibold hyphens-auto text-ink"
-                                              >Memory</span
+                                              >{t('88')}</span
                                             ><span
                                               className="block tabular-nums text-caption text-muted"
-                                              >60 missing</span
+                                              >{t('89')}</span
                                             ></span
                                           >
                                         </div>
@@ -943,10 +941,10 @@ export function HeroSection() {
                                           ><span className="min-w-0 flex-1"
                                             ><span
                                               className="block text-data font-semibold hyphens-auto text-ink"
-                                              >Storage</span
+                                              >{t('90')}</span
                                             ><span
                                               className="block tabular-nums text-caption text-muted"
-                                              >55 missing</span
+                                              >{t('91')}</span
                                             ></span
                                           >
                                         </div>
@@ -966,10 +964,10 @@ export function HeroSection() {
                                           ><span className="min-w-0 flex-1"
                                             ><span
                                               className="block text-data font-semibold hyphens-auto text-ink"
-                                              >Screen size</span
+                                              >{t('92')}</span
                                             ><span
                                               className="block tabular-nums text-caption text-muted"
-                                              >15 of 32</span
+                                              >{t('93')}</span
                                             ></span
                                           >
                                         </div>
@@ -984,10 +982,10 @@ export function HeroSection() {
                                           ><span className="min-w-0 flex-1"
                                             ><span
                                               className="block text-data font-semibold hyphens-auto text-ink"
-                                              >Memory</span
+                                              >{t('94')}</span
                                             ><span
                                               className="block tabular-nums text-caption text-muted"
-                                              >13 of 32</span
+                                              >{t('95')}</span
                                             ></span
                                           >
                                         </div>
@@ -1002,10 +1000,10 @@ export function HeroSection() {
                                           ><span className="min-w-0 flex-1"
                                             ><span
                                               className="block text-data font-semibold hyphens-auto text-ink"
-                                              >Storage</span
+                                              >{t('96')}</span
                                             ><span
                                               className="block tabular-nums text-caption text-muted"
-                                              >10 of 32</span
+                                              >{t('97')}</span
                                             ></span
                                           >
                                         </div>
@@ -1020,10 +1018,10 @@ export function HeroSection() {
                                           ><span className="min-w-0 flex-1"
                                             ><span
                                               className="block text-data font-semibold hyphens-auto text-ink"
-                                              >Processor</span
+                                              >{t('98')}</span
                                             ><span
                                               className="block tabular-nums text-caption text-muted"
-                                              >2 of 32</span
+                                              >{t('99')}</span
                                             ></span
                                           >
                                         </div>
@@ -1051,8 +1049,8 @@ export function HeroSection() {
                                       >
                                         <span
                                           className="demo-in flex flex-col items-center rounded-md bg-baseline px-1 py-1 text-label leading-tight font-bold text-on-step delay-1000"
-                                          ><span>1st</span><span>↓</span
-                                          ><span>last</span></span
+                                          ><span>{t('100')}</span><span>↓</span
+                                          ><span>{t('101')}</span></span
                                         >
                                       </div>
                                     </div>
@@ -1063,10 +1061,10 @@ export function HeroSection() {
                                 >
                                   <div className="min-w-0 flex-1">
                                     <p className="eyebrow">
-                                      Traditional Catalogue Audit
+                                      {t('102')}
                                     </p>
                                     <p className="mt-0.5 mb-5 text-xs text-muted">
-                                      ranks by what is absent
+                                      {t('103')}
                                     </p>
                                     <ol className="space-y-3">
                                       <li
@@ -1078,10 +1076,10 @@ export function HeroSection() {
                                         ><span className="min-w-0 flex-1"
                                           ><span
                                             className="block truncate text-data font-semibold text-ink"
-                                            >Processor</span
+                                            >{t('104')}</span
                                           ><span
                                             className="block tabular-nums text-caption text-muted"
-                                            >162 products missing it</span
+                                            >{t('105')}</span
                                           ></span
                                         >
                                       </li>
@@ -1094,10 +1092,10 @@ export function HeroSection() {
                                         ><span className="min-w-0 flex-1"
                                           ><span
                                             className="block truncate text-data font-semibold text-ink"
-                                            >Screen size</span
+                                            >{t('106')}</span
                                           ><span
                                             className="block tabular-nums text-caption text-muted"
-                                            >80 products missing it</span
+                                            >{t('107')}</span
                                           ></span
                                         >
                                       </li>
@@ -1110,10 +1108,10 @@ export function HeroSection() {
                                         ><span className="min-w-0 flex-1"
                                           ><span
                                             className="block truncate text-data font-semibold text-ink"
-                                            >Memory</span
+                                            >{t('108')}</span
                                           ><span
                                             className="block tabular-nums text-caption text-muted"
-                                            >60 products missing it</span
+                                            >{t('109')}</span
                                           ></span
                                         >
                                       </li>
@@ -1126,10 +1124,10 @@ export function HeroSection() {
                                         ><span className="min-w-0 flex-1"
                                           ><span
                                             className="block truncate text-data font-semibold text-ink"
-                                            >Storage</span
+                                            >{t('110')}</span
                                           ><span
                                             className="block tabular-nums text-caption text-muted"
-                                            >55 products missing it</span
+                                            >{t('111')}</span
                                           ></span
                                         >
                                       </li>
@@ -1157,7 +1155,7 @@ export function HeroSection() {
                                     >
                                       <span
                                         className="demo-in rounded-md bg-baseline px-1.5 py-0.5 text-label font-bold whitespace-nowrap text-on-step delay-1000"
-                                        >1st → last</span
+                                        >{t('112')}</span
                                       >
                                     </div>
                                   </div>
@@ -1177,7 +1175,7 @@ export function HeroSection() {
                                         aria-hidden="true" priority />
                                     </p>
                                     <p className="mt-0.5 mb-5 text-xs text-muted">
-                                      ranks by what shoppers need
+                                      {t('113')}
                                     </p>
                                     <ol className="space-y-3">
                                       <li
@@ -1189,10 +1187,10 @@ export function HeroSection() {
                                         ><span className="min-w-0 flex-1"
                                           ><span
                                             className="block truncate text-data font-semibold text-ink"
-                                            >Screen size</span
+                                            >{t('114')}</span
                                           ><span
                                             className="block tabular-nums text-caption text-muted"
-                                            >15 of 32 requirements need it</span
+                                            >{t('115')}</span
                                           ></span
                                         >
                                       </li>
@@ -1205,10 +1203,10 @@ export function HeroSection() {
                                         ><span className="min-w-0 flex-1"
                                           ><span
                                             className="block truncate text-data font-semibold text-ink"
-                                            >Memory</span
+                                            >{t('116')}</span
                                           ><span
                                             className="block tabular-nums text-caption text-muted"
-                                            >13 of 32 requirements need it</span
+                                            >{t('117')}</span
                                           ></span
                                         >
                                       </li>
@@ -1221,10 +1219,10 @@ export function HeroSection() {
                                         ><span className="min-w-0 flex-1"
                                           ><span
                                             className="block truncate text-data font-semibold text-ink"
-                                            >Storage</span
+                                            >{t('118')}</span
                                           ><span
                                             className="block tabular-nums text-caption text-muted"
-                                            >10 of 32 requirements need it</span
+                                            >{t('119')}</span
                                           ></span
                                         >
                                       </li>
@@ -1237,10 +1235,10 @@ export function HeroSection() {
                                         ><span className="min-w-0 flex-1"
                                           ><span
                                             className="block truncate text-data font-semibold text-ink"
-                                            >Processor</span
+                                            >{t('120')}</span
                                           ><span
                                             className="block tabular-nums text-caption text-muted"
-                                            >2 of 32 requirements need it</span
+                                            >{t('121')}</span
                                           ></span
                                         >
                                       </li>
@@ -1251,14 +1249,13 @@ export function HeroSection() {
                                   className="demo-in mt-12 text-data leading-relaxed text-pretty text-muted delay-1200"
                                 >
                                   <strong className="font-bold text-ink"
-                                    >Processor</strong
+                                    >{t('122')}</strong
                                   >
                                   is missing from 162 products, so a traditional
                                   audit ranks it first. But only 2 of 32 shopper
                                   requirements mention it, so Pulse ranks it last.{" "}
                                   <strong className="font-bold text-ink"
-                                    >Fixing it first could waste time and resources
-                                    with little impact on shoppers.</strong
+                                    >{t('123')}</strong
                                   >
                                 </p>
                               </div>
@@ -1277,13 +1274,13 @@ export function HeroSection() {
                                 <p
                                   className="font-display text-sm font-semibold text-ink"
                                 >
-                                  Recovering screen size
+                                  {t('124')}
                                 </p>
                                 <span
                                   className="demo-pill border-primary bg-primary font-bold text-on-primary"
                                   ><svg className="size-3.5" aria-hidden="true">
                                     <use href="#i-check" /></svg
-                                  >No new data purchased</span
+                                  >{t('125')}</span
                                 >
                               </div>
                               <div
@@ -1301,10 +1298,9 @@ export function HeroSection() {
                                   <span
                                     >Currently, Pulse identifies{" "}
                                     <strong className="font-bold text-primary"
-                                      >Screen size</strong
+                                      >{t('126')}</strong
                                     >
-                                    as the attribute that needs priority
-                                    correction.</span
+                                    {t('127')}</span
                                   >
                                 </p>
                                 <div
@@ -1322,8 +1318,7 @@ export function HeroSection() {
                                     >
                                       / 216</span
                                     ><span className="mt-1 block"
-                                      >values were found in your existing product
-                                      titles.</span
+                                      >{t('128')}</span
                                     >
                                   </p>
                                   <p
@@ -1333,8 +1328,7 @@ export function HeroSection() {
                                     <strong className="tabular-nums font-bold text-ink"
                                       >55</strong
                                     >
-                                    genuinely need acquiring. We tell you which, so
-                                    you can cost it before you commit.
+                                    {t('129')}
                                   </p>
                                 </div>
                                 <div
@@ -1349,7 +1343,7 @@ export function HeroSection() {
                                 >
                                   <svg className="size-3" aria-hidden="true">
                                     <use href="#i-file-text" /></svg
-                                  >Pulled straight out of your product titles
+                                  >{t('130')}
                                 </p>
                                 <ul className="space-y-3">
                                   <li
@@ -1357,12 +1351,12 @@ export function HeroSection() {
                                   >
                                     <span
                                       className="min-w-0 flex-1 truncate text-xs text-muted"
-                                      >HP Spectre x360
+                                      >{t('131')}
                                       <mark
                                         className="rounded bg-primary-tint px-1 font-bold text-primary-hover"
-                                        >13.5&quot;</mark
+                                        >{t('132')}</mark
                                       >
-                                      OLED Touch, 16GB</span
+                                      {t('133')}</span
                                     ><svg
                                       className="hidden size-3.5 text-primary sm:block"
                                       aria-hidden="true"
@@ -1372,7 +1366,7 @@ export function HeroSection() {
                                       className="demo-in inline-flex items-center gap-1.5 rounded-md bg-primary-tint px-1.5 py-0.5 tabular-nums text-xs font-bold text-primary ring-1 ring-primary-line ring-inset delay-520"
                                       ><svg className="size-3.5" aria-hidden="true">
                                         <use href="#i-check" /></svg
-                                      >13.5&quot;</span
+                                      >{t('134')}</span
                                     >
                                   </li>
                                   <li
@@ -1380,12 +1374,12 @@ export function HeroSection() {
                                   >
                                     <span
                                       className="min-w-0 flex-1 truncate text-xs text-muted"
-                                      >Lenovo ThinkPad X1 Carbon G9
+                                      >{t('135')}
                                       <mark
                                         className="rounded bg-primary-tint px-1 font-bold text-primary-hover"
-                                        >14 inch</mark
+                                        >{t('136')}</mark
                                       >
-                                      WUXGA</span
+                                      {t('137')}</span
                                     ><svg
                                       className="hidden size-3.5 text-primary sm:block"
                                       aria-hidden="true"
@@ -1395,7 +1389,7 @@ export function HeroSection() {
                                       className="demo-in inline-flex items-center gap-1.5 rounded-md bg-primary-tint px-1.5 py-0.5 tabular-nums text-xs font-bold text-primary ring-1 ring-primary-line ring-inset delay-720"
                                       ><svg className="size-3.5" aria-hidden="true">
                                         <use href="#i-check" /></svg
-                                      >14.0&quot;</span
+                                      >{t('138')}</span
                                     >
                                   </li>
                                   <li
@@ -1403,12 +1397,12 @@ export function HeroSection() {
                                   >
                                     <span
                                       className="min-w-0 flex-1 truncate text-xs text-muted"
-                                      >MSI GS66 Stealth
+                                      >{t('139')}
                                       <mark
                                         className="rounded bg-primary-tint px-1 font-bold text-primary-hover"
                                         >15.6</mark
                                       >
-                                      FHD 240Hz</span
+                                      {t('140')}</span
                                     ><svg
                                       className="hidden size-3.5 text-primary sm:block"
                                       aria-hidden="true"
@@ -1418,7 +1412,7 @@ export function HeroSection() {
                                       className="demo-in inline-flex items-center gap-1.5 rounded-md bg-primary-tint px-1.5 py-0.5 tabular-nums text-xs font-bold text-primary ring-1 ring-primary-line ring-inset delay-920"
                                       ><svg className="size-3.5" aria-hidden="true">
                                         <use href="#i-check" /></svg
-                                      >15.6&quot;</span
+                                      >{t('141')}</span
                                     >
                                   </li>
                                 </ul>
@@ -1438,13 +1432,13 @@ export function HeroSection() {
                                 <p
                                   className="font-display text-sm font-semibold text-ink"
                                 >
-                                  What your shoppers can now do
+                                  {t('142')}
                                 </p>
                                 <span
                                   className="demo-pill border-primary bg-primary font-bold text-on-primary"
                                   ><svg className="size-3.5" aria-hidden="true">
                                     <use href="#i-check" /></svg
-                                  >Verified on your catalogue</span
+                                  >{t('143')}</span
                                 >
                               </div>
                               <div
@@ -1461,14 +1455,14 @@ export function HeroSection() {
                                         className="size-3.5 rounded-sm bg-primary"
                                         aria-hidden="true"
                                       ></span
-                                      >A shopper can tell these apart</span
+                                      >{t('144')}</span
                                     >
                                     <span className="flex items-center gap-2.5"
                                       ><span
                                         className="size-3.5 rounded-sm bg-line"
                                         aria-hidden="true"
                                       ></span
-                                      >Still indistinguishable</span
+                                      >{t('145')}</span
                                     >
                                   </div>
                                 </div>
@@ -1489,16 +1483,16 @@ export function HeroSection() {
                                   >
                                     Adding one attribute helped shoppers distinguish{" "}
                                     <span className="whitespace-nowrap text-primary"
-                                      >63 more products</span
+                                      >{t('146')}</span
                                     >.
                                   </p>
                                   <div className="min-w-52">
-                                    <p className="eyebrow">Screen size recorded</p>
+                                    <p className="eyebrow">{t('147')}</p>
                                     <div
                                       className="mt-2.5 space-y-1.5 tabular-nums text-xs"
                                     >
                                       <div className="flex items-center gap-2.5">
-                                        <span className="w-11 text-muted">Before</span
+                                        <span className="w-11 text-muted">{t('148')}</span
                                         ><span
                                           className="h-2.5 flex-1 overflow-hidden rounded-full bg-surface-1"
                                           ><span
@@ -1509,7 +1503,7 @@ export function HeroSection() {
                                         >
                                       </div>
                                       <div className="flex items-center gap-2.5">
-                                        <span className="w-11 text-muted">After</span
+                                        <span className="w-11 text-muted">{t('149')}</span
                                         ><span
                                           className="h-2.5 flex-1 overflow-hidden rounded-full bg-surface-1"
                                           ><span
@@ -1540,18 +1534,15 @@ export function HeroSection() {
                           aria-live="polite"
                         >
                           <span className="demo-step" data-active data-demo-caption
-                            >94 out of 216 products have unclear differences for
-                            shoppers</span
+                            >{t('150')}</span
                           >
                           <span className="demo-step" data-demo-caption
-                            >Every attribute scored against real buying
-                            decisions</span
+                            >{t('151')}</span
                           >
                           <span className="demo-step" data-demo-caption></span>
                           <span className="demo-step" data-demo-caption></span>
                           <span className="demo-step" data-demo-caption
-                            >63 more products a shopper can tell apart (122 →
-                            185)</span
+                            >{t('152')}</span
                           >
                         </p>
                       </div>

@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section3Section() {
+  const t = useTranslations("designed.industries.cosmetics.section3");
   return (
     <section className="border-b border-line bg-surface-1/50">
             <div
@@ -14,14 +16,14 @@ export function Section3Section() {
             >
               <div className="lg:col-span-5 lg:pr-16">
                 <h2 className="reveal text-title text-balance">
-                  What usually goes wrong in Cosmetics and personal care
+                  {t('1')}
                 </h2>
                 <div className="reveal mt-8 max-w-md">
                   <p className="text-sm text-muted">
-                    What a buyer here is trying to decide:
+                    {t('2')}
                   </p>
                   <p className="mt-2 text-h3 text-pretty text-ink">
-                    Is this suitable for my skin and what I am trying to fix?
+                    {t('3')}
                   </p>
                 </div>
               </div>
@@ -34,8 +36,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Skin type and concern held as marketing prose rather than
-                        structured values
+                        {t('4')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -44,8 +45,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Ingredient information present but unsearchable, which
-                        matters for allergies
+                        {t('5')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -54,8 +54,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Shade and finish ranges recorded inconsistently across
-                        brands
+                        {t('6')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -64,8 +63,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Repeat purchases lost because the catalogue cannot answer a
-                        suitability question
+                        {t('7')}
                       </p>
                     </li>
                   </ul>
@@ -78,11 +76,9 @@ export function Section3Section() {
                     </svg>
                     <p className="text-body text-pretty text-muted">
                       <span className="font-semibold text-ink"
-                        >Where it usually already lives:</span
+                        >{t('8')}</span
                       >
-                      Ingredient lists and supplier data you already hold for
-                      compliance. The audit usually finds this is a structuring job
-                      rather than an acquisition one.
+                      {t('9')}
                     </p>
                   </div>
                 </div>

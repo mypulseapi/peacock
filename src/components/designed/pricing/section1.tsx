@@ -6,21 +6,22 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export function Section1Section() {
+  const t = useTranslations("designed.pricing.section1");
   return (
     <section className="hero-bg border-b border-line">
             <div className="frame pt-12 pb-16 lg:pb-20">
               <div className="flex flex-col items-center gap-3 text-center">
                 <h1 className="reveal text-headline text-balance">
-                  Stop fixing the wrong fields
+                  {t('1')}
                 </h1>
                 <p
                   className="reveal max-w-xl text-body text-pretty text-muted delay-100"
                 >
-                  One category export. The ranked Decision Audit back within 48
-                  hours.
+                  {t('2')}
                 </p>
               </div>
               <ul
@@ -35,29 +36,29 @@ export function Section1Section() {
                     aria-hidden="true"
                   ></div>
                   <div className="px-6 pt-6 lg:px-7">
-                    <p className="text-sm text-muted">Start here</p>
+                    <p className="text-sm text-muted">{t('3')}</p>
                     <h2
                       className="mt-1 text-h2 text-balance wrap-break-word hyphens-auto text-ink"
                     >
-                      Decision Audit
+                      {t('4')}
                     </h2>
                     <p className="mt-2 max-w-xs text-data text-pretty text-muted">
-                      The ranked list of what to record first, in your own products.
+                      {t('5')}
                     </p>
                   </div>
                   <div className="px-6 pt-5 lg:px-7">
                     <div className="flex flex-col gap-1">
                       <p className="font-display text-h3 font-semibold text-ink">
-                        Free
+                        {t('6')}
                       </p>
                       <p className="text-sm leading-snug text-muted">
-                        One category, one export, no account
+                        {t('7')}
                       </p>
                     </div>
                   </div>
                   <div className="px-6 pt-6 pb-6 lg:px-7">
                     <Link href="/en/contact" className="btn-primary w-full justify-center"
-                      >Request an audit</Link>
+                      >{t('8')}</Link>
                   </div>
                   <ul
                     className="space-y-2.5 border-t border-line px-6 pt-5 pb-6 text-data text-ink lg:px-7"
@@ -68,7 +69,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Attributes ranked by decision gap</span>
+                      ><span>{t('9')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -76,7 +77,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>The products missing each one</span>
+                      ><span>{t('10')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -84,7 +85,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Where each missing fact lives</span>
+                      ><span>{t('11')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -92,7 +93,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>What we recovered from your titles</span>
+                      ><span>{t('12')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -100,7 +101,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Your decision-readiness number</span>
+                      ><span>{t('13')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -108,7 +109,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>A 30-minute merchandising walkthrough</span>
+                      ><span>{t('14')}</span>
                     </li>
                   </ul>
                 </li>
@@ -120,31 +121,30 @@ export function Section1Section() {
                     aria-hidden="true"
                   ></div>
                   <div className="px-6 pt-6 lg:px-7">
-                    <p className="text-sm text-muted">Then</p>
+                    <p className="text-sm text-muted">{t('15')}</p>
                     <h2
                       className="mt-1 text-h2 text-balance wrap-break-word hyphens-auto text-ink"
                     >
-                      Repair plan and verification
+                      {t('16')}
                     </h2>
                     <p className="mt-2 max-w-xs text-data text-pretty text-muted">
-                      Which fix is worth your team&#x27;s week, and whether it
-                      worked.
+                      {t('17')}
                     </p>
                   </div>
                   <div className="px-6 pt-5 lg:px-7">
                     <div className="flex flex-col gap-1">
                       <p className="font-display text-h3 font-semibold text-ink">
-                        Per cycle
+                        {t('18')}
                       </p>
                       <p className="text-sm leading-snug text-muted">
-                        By catalogue size, or recurring with Monitor
+                        {t('19')}
                       </p>
                     </div>
                   </div>
                   <div className="px-6 pt-6 pb-6 lg:px-7">
                     <Link href="/en/contact" className="btn-primary w-full justify-center"
-                      >Talk to us<span className="sr-only">
-                        about the repair plan and verification</span
+                      >{t('20')}<span className="sr-only">
+                        {t('21')}</span
                       ></Link>
                   </div>
                   <ul
@@ -156,7 +156,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>A ranked plan with evidence and effort</span>
+                      ><span>{t('22')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -164,7 +164,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Before and after: coverage, gap, readiness</span>
+                      ><span>{t('23')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -172,7 +172,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Regressions reported first</span>
+                      ><span>{t('24')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -180,7 +180,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Figures use only products in both exports</span>
+                      ><span>{t('25')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -188,7 +188,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>We say when a repair is not worth it</span>
+                      ><span>{t('26')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -196,7 +196,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Monitor re-runs as the catalogue changes</span>
+                      ><span>{t('27')}</span>
                     </li>
                   </ul>
                 </li>
@@ -204,31 +204,31 @@ export function Section1Section() {
                   className="relative isolate grid min-w-0 overflow-hidden rounded-3xl border border-line bg-card shadow-sm lg:row-span-4 lg:grid-rows-subgrid lg:gap-y-0"
                 >
                   <div className="px-6 pt-6 lg:px-7">
-                    <p className="text-sm text-muted">After a pilot</p>
+                    <p className="text-sm text-muted">{t('28')}</p>
                     <h2
                       className="mt-1 text-h2 text-balance wrap-break-word hyphens-auto text-ink"
                     >
-                      Decision API
+                      {t('29')}
                     </h2>
                     <p className="mt-2 max-w-xs text-data text-pretty text-muted">
-                      The live engine, once you have a reason to want it.
+                      {t('30')}
                     </p>
                   </div>
                   <div className="px-6 pt-5 lg:px-7">
                     <div className="flex flex-col gap-1">
                       <p className="font-display text-h3 font-semibold text-ink">
-                        Per decision
+                        {t('31')}
                       </p>
                       <p className="text-sm leading-snug text-muted">
-                        Served after a pilot, never before
+                        {t('32')}
                       </p>
                     </div>
                   </div>
                   <div className="px-6 pt-6 pb-6 lg:px-7">
                     <Link                   href="/en/contact"
                       className="btn-secondary w-full justify-center"
-                      >Talk to us<span className="sr-only">
-                        about the Decision API</span
+                      >{t('33')}<span className="sr-only">
+                        {t('34')}</span
                       ></Link>
                   </div>
                   <ul
@@ -240,7 +240,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Ranking by what the session implies</span>
+                      ><span>{t('35')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -248,7 +248,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>A held-back control group, always</span>
+                      ><span>{t('36')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -256,7 +256,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>A per-factor breakdown per product</span>
+                      ><span>{t('37')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -264,7 +264,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Falls back to your order if slow or down</span>
+                      ><span>{t('38')}</span>
                     </li>
                     <li className="flex gap-2.5">
                       <svg
@@ -272,7 +272,7 @@ export function Section1Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Priced on decisions, agreed after the pilot</span>
+                      ><span>{t('39')}</span>
                     </li>
                   </ul>
                 </li>

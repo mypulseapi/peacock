@@ -6,21 +6,22 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export function Section5Section() {
+  const t = useTranslations("designed.about.section5");
   return (
     <section className="border-b border-line">
             <div className="frame py-20 lg:py-28">
               <div className="grid gap-4 lg:grid-cols-12 lg:gap-x-0">
                 <h2 className="text-title text-balance lg:col-span-5 lg:pr-16">
-                  Meet the team
+                  {t('1')}
                 </h2>
                 <p
                   className="text-body leading-relaxed text-pretty text-muted lg:col-span-7"
                 >
-                  Eight people across Singapore and Ho Chi Minh City, building the
-                  Decision Audit.
+                  {t('2')}
                 </p>
               </div>
               {/* Team (names, roles and LinkedIn from team.md, 19 Oct 2026; photos in src/assets/team as 384px transparent PNGs,
@@ -67,9 +68,9 @@ export function Section5Section() {
                         className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
-                  <h3 className="mt-5 text-h3 text-balance">Tracy Bui</h3>
+                  <h3 className="mt-5 text-h3 text-balance">{t('3')}</h3>
                   <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    Product Owner
+                    {t('4')}
                   </p>
                   <a
                     href="https://www.linkedin.com/in/van-bui-work"
@@ -117,9 +118,9 @@ export function Section5Section() {
                         className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
-                  <h3 className="mt-5 text-h3 text-balance">Rosie Tran</h3>
+                  <h3 className="mt-5 text-h3 text-balance">{t('5')}</h3>
                   <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    Founder Associate
+                    {t('6')}
                   </p>
                   <a
                     href="https://www.linkedin.com/in/ynhii2309"
@@ -167,9 +168,9 @@ export function Section5Section() {
                         className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
-                  <h3 className="mt-5 text-h3 text-balance">Elena Nguyen</h3>
+                  <h3 className="mt-5 text-h3 text-balance">{t('7')}</h3>
                   <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    Founder Associate
+                    {t('8')}
                   </p>
                   <a
                     href="https://www.linkedin.com/in/b%E1%BA%A3o-nguy%C3%AAn-nguy%E1%BB%85n"
@@ -217,9 +218,9 @@ export function Section5Section() {
                         className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
-                  <h3 className="mt-5 text-h3 text-balance">Iris Le</h3>
+                  <h3 className="mt-5 text-h3 text-balance">{t('9')}</h3>
                   <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    Quality Assurance / Control
+                    {t('10')}
                   </p>
                   <a
                     href="https://www.linkedin.com/in/ngocle123/"
@@ -267,9 +268,9 @@ export function Section5Section() {
                         className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
-                  <h3 className="mt-5 text-h3 text-balance">Albert Bui</h3>
+                  <h3 className="mt-5 text-h3 text-balance">{t('11')}</h3>
                   <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    Software Engineer
+                    {t('12')}
                   </p>
                   <a
                     href="https://www.linkedin.com/in/quy-bui-quang"
@@ -317,9 +318,9 @@ export function Section5Section() {
                         className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
-                  <h3 className="mt-5 text-h3 text-balance">Stephen Le</h3>
+                  <h3 className="mt-5 text-h3 text-balance">{t('13')}</h3>
                   <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    Mobile Developer
+                    {t('14')}
                   </p>
                   <a
                     href="https://www.linkedin.com/in/truongthole"
@@ -367,9 +368,9 @@ export function Section5Section() {
                         className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
-                  <h3 className="mt-5 text-h3 text-balance">Eric Pham</h3>
+                  <h3 className="mt-5 text-h3 text-balance">{t('15')}</h3>
                   <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    DevOps Engineer
+                    {t('16')}
                   </p>
                   <a
                     href="https://www.linkedin.com/in/phamtradev/"
@@ -417,9 +418,9 @@ export function Section5Section() {
                         className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
-                  <h3 className="mt-5 text-h3 text-balance">Stan Nguyen</h3>
+                  <h3 className="mt-5 text-h3 text-balance">{t('17')}</h3>
                   <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    Front-end Developer
+                    {t('18')}
                   </p>
                   <a
                     href="https://www.linkedin.com/in/ptannguyen"
@@ -436,21 +437,21 @@ export function Section5Section() {
                 className="mt-16 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 lg:grid-cols-4"
               >
                 <div>
-                  <dt className="text-sm text-muted">Founded</dt>
-                  <dd className="mt-1 text-data text-ink">March 2026</dd>
+                  <dt className="text-sm text-muted">{t('19')}</dt>
+                  <dd className="mt-1 text-data text-ink">{t('20')}</dd>
                 </div>
                 <div>
-                  <dt className="text-sm text-muted">Headquarters</dt>
-                  <dd className="mt-1 text-data text-ink">Singapore</dd>
+                  <dt className="text-sm text-muted">{t('21')}</dt>
+                  <dd className="mt-1 text-data text-ink">{t('22')}</dd>
                 </div>
                 <div>
-                  <dt className="text-sm text-muted">Engineering</dt>
-                  <dd className="mt-1 text-data text-ink">Ho Chi Minh City, Vietnam</dd>
+                  <dt className="text-sm text-muted">{t('23')}</dt>
+                  <dd className="mt-1 text-data text-ink">{t('24')}</dd>
                 </div>
                 <div>
-                  <dt className="text-sm text-muted">Built for</dt>
+                  <dt className="text-sm text-muted">{t('25')}</dt>
                   <dd className="mt-1 text-data text-pretty text-ink">
-                    Merchants in Vietnam and Southeast Asia
+                    {t('26')}
                   </dd>
                 </div>
               </dl>

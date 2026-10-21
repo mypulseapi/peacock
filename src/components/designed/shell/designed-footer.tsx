@@ -6,11 +6,13 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import Link from "next/link";
 
 export function DesignedFooter() {
+  const t = useTranslations("designed.shell.designed-footer");
   return (
     <footer className="border-t border-line bg-card">
           <div className="frame pt-20 pb-12 lg:pt-24">
@@ -35,52 +37,52 @@ export function DesignedFooter() {
                     aria-hidden="true" /></Link>
               </div>
               <div>
-                <h2 className="text-nav font-semibold">Product</h2>
+                <h2 className="text-nav font-semibold">{t('1')}</h2>
                 <ul className="mt-6 space-y-5 text-sm text-muted">
                   <li>
                     <Link                   href="/en/product/decision-audit"
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                      >Decision Audit</Link>
+                      >{t('2')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/product/decision-verification"
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                      >Decision Verification</Link>
+                      >{t('3')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/product/decision-monitor"
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                      >Decision Monitor</Link>
+                      >{t('4')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/pricing"
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                      >Pricing</Link>
+                      >{t('5')}</Link>
                   </li>
                 </ul>
               </div>
               <div>
-                <h2 className="text-nav font-semibold">Company</h2>
+                <h2 className="text-nav font-semibold">{t('6')}</h2>
                 <ul className="mt-6 space-y-5 text-sm text-muted">
                   <li>
                     <Link                   href="/en/about"
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                      >About us</Link>
+                      >{t('7')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/contact"
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                      >Contact</Link>
+                      >{t('8')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/careers"
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                      >Career</Link>
+                      >{t('9')}</Link>
                   </li>
                 </ul>
               </div>
               <div>
-                <h2 className="text-nav font-semibold">Contact point</h2>
+                <h2 className="text-nav font-semibold">{t('10')}</h2>
                 <div className="mt-6 flex gap-3">
                   <a
                     href="https://www.linkedin.com/company/108237732/"
@@ -115,7 +117,7 @@ export function DesignedFooter() {
                     <a
                       href="mailto:getintouch@thepulseapi.com"
                       className="-my-2.5 inline-flex min-h-11 items-center wrap-anywhere transition-colors duration-200 ease-out-soft hover:text-ink"
-                      >getintouch@thepulseapi.com</a
+                      >{t('11')}</a
                     >
                   </li>
                 </ul>
@@ -126,27 +128,27 @@ export function DesignedFooter() {
             <div
               className="frame flex flex-col gap-3 py-4 text-data text-ink sm:flex-row sm:items-center sm:justify-between"
             >
-              <p>© 2026 Pulse. All rights reserved.</p>
+              <p>{t('12')}</p>
               <ul className="flex flex-wrap items-center gap-x-7 gap-y-5">
                 <li>
                   <Link                 href="/en/privacy"
                     className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
-                    >Privacy Policy</Link>
+                    >{t('13')}</Link>
                 </li>
                 <li>
                   <Link                 href="/en/terms"
                     className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
-                    >Terms of Service</Link>
+                    >{t('14')}</Link>
                 </li>
                 <li>
                   <Link                 href="/en/cookies"
                     className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
-                    >Cookie Policy</Link>
+                    >{t('15')}</Link>
                 </li>
                 <li>
                   <Link                 href="/en/gdpr"
                     className="-my-2.5 inline-flex min-h-11 min-w-11 items-center justify-center transition-colors duration-200 ease-out-soft hover:text-primary"
-                    >GDPR</Link>
+                    >{t('16')}</Link>
                 </li>
               </ul>
             </div>

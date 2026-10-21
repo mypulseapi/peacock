@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function CategoryStripSection() {
+  const t = useTranslations("designed.home.category-strip");
   return (
     <section
             className="hidden border-b border-line"
@@ -20,49 +22,49 @@ export function CategoryStripSection() {
                   className="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
                 >
                   <span className="font-display text-lg font-semibold text-ink"
-                    >Beauty</span
+                    >{t('1')}</span
                   >
-                  <span className="text-xs text-muted">shade</span>
+                  <span className="text-xs text-muted">{t('2')}</span>
                 </li>
                 <li
                   className="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
                 >
                   <span className="font-display text-lg font-semibold text-ink"
-                    >Apparel</span
+                    >{t('3')}</span
                   >
-                  <span className="text-xs text-muted">fit</span>
+                  <span className="text-xs text-muted">{t('4')}</span>
                 </li>
                 <li
                   className="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
                 >
                   <span className="font-display text-lg font-semibold text-ink"
-                    >Electronics</span
+                    >{t('5')}</span
                   >
-                  <span className="text-xs text-muted">screen size</span>
+                  <span className="text-xs text-muted">{t('6')}</span>
                 </li>
                 <li
                   className="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
                 >
                   <span className="font-display text-lg font-semibold text-ink"
-                    >Grocery</span
+                    >{t('7')}</span
                   >
-                  <span className="text-xs text-muted">fragrance-free</span>
+                  <span className="text-xs text-muted">{t('8')}</span>
                 </li>
                 <li
                   className="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
                 >
                   <span className="font-display text-lg font-semibold text-ink"
-                    >Furniture</span
+                    >{t('9')}</span
                   >
-                  <span className="text-xs text-muted">capacity</span>
+                  <span className="text-xs text-muted">{t('10')}</span>
                 </li>
                 <li
                   className="flex h-24 flex-col items-center justify-center gap-1 border-r border-b border-line"
                 >
                   <span className="font-display text-lg font-semibold text-ink"
-                    >Parts</span
+                    >{t('11')}</span
                   >
-                  <span className="text-xs text-muted">compatibility</span>
+                  <span className="text-xs text-muted">{t('12')}</span>
                 </li>
               </ul>
             </div>

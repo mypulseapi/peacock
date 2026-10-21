@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section6Section() {
+  const t = useTranslations("designed.visual-evidence.section6");
   return (
     <section className="bg-void border-b border-line">
             <div
@@ -14,79 +16,65 @@ export function Section6Section() {
             >
               <div className="lg:col-span-5 lg:pr-16">
                 <h2 className="text-title text-balance">
-                  Where is the line on generating an image?
+                  {t('1')}
                 </h2>
                 <p className="mt-4 text-body leading-relaxed text-pretty text-muted">
-                  Sooner or later someone asks whether we would just make the
-                  missing picture. The answer has a line in it, and we would rather
-                  write the line down in public than negotiate it later.
+                  {t('2')}
                 </p>
               </div>
               <div className="lg:col-span-7">
                 <ol className="divide-y divide-line">
                   <li className="py-5 first:pt-0">
-                    <h3 className="text-h3 text-ink">Crop an existing photograph</h3>
+                    <h3 className="text-h3 text-ink">{t('3')}</h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Every pixel is real and only the framing is ours. Most
-                      merchants already own the detail shot and have it sitting at
-                      position six where nobody scrolls. Safe.
+                      {t('4')}
                     </p>
                   </li>
                   <li className="py-5">
                     <h3 className="text-h3 text-ink">
-                      Draw a measurement on a real photograph
+                      {t('5')}
                     </h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      A dimension line over a picture, using a number the catalogue
-                      already holds. Safe, with one rule: the overlay may only
-                      annotate an axis the photograph actually shows. Depth on a
-                      side view, not on a front view.
+                      {t('6')}
                     </p>
                   </li>
                   <li className="py-5">
                     <h3 className="text-h3 text-ink">
-                      Composite against a known scale
+                      {t('7')}
                     </h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Real product pixels, recorded dimensions, and a reference
-                      silhouette placed by arithmetic rather than by a model. Safe.
+                      {t('8')}
                     </p>
                   </li>
                   <li className="py-5">
-                    <h3 className="text-h3 text-ink">Generate the surroundings</h3>
+                    <h3 className="text-h3 text-ink">{t('9')}</h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Real product, invented room. Allowed, and only with the label
-                      on it that says so.
+                      {t('10')}
                     </p>
                   </li>
                   <li className="py-5 last:pb-0">
                     <h3 className="text-h3 text-ink">
-                      Generate the product showing a fact
+                      {t('11')}
                     </h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      A weave, a finish, a feature that nobody ever photographed.
-                      Never. This is inventing a product claim, and a picture is
-                      believed more readily than a sentence, which makes it worse
-                      rather than better. The merchant who ships it is the one who
-                      finds out.
+                      {t('12')}
                     </p>
                   </li>
                 </ol>
                 <p
                   className="mt-10 border-t border-line pt-6 text-h3 text-balance text-ink"
                 >
-                  We may generate presentation. We must never generate an unverified
-                  product fact.
+                  {t('13')}
                 </p>
               </div>
             </div>

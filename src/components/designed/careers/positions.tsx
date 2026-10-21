@@ -6,11 +6,13 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function PositionsSection() {
+  const t = useTranslations("designed.careers.positions");
   return (
     <section id="positions" className="scroll-mt-20 border-b border-line">
             <div className="frame py-20 lg:py-28">
-              <h2 className="reveal text-title text-balance">Open positions</h2>
+              <h2 className="reveal text-title text-balance">{t('1')}</h2>
               <div
                 className="reveal card mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center lg:p-8"
               >
@@ -22,9 +24,9 @@ export function PositionsSection() {
                   </svg>
                 </span>
                 <div className="flex-1">
-                  <p className="text-h3 text-ink">No open positions right now</p>
+                  <p className="text-h3 text-ink">{t('2')}</p>
                   <p className="mt-1 text-body text-pretty text-muted">
-                    New roles will be listed here when they open.
+                    {t('3')}
                   </p>
                 </div>
               </div>

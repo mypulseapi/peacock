@@ -6,20 +6,20 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section3Section() {
+  const t = useTranslations("designed.careers.section3");
   return (
     <section className="border-b border-line bg-surface-1/50">
             <div
               className="frame grid grid-cols-1 gap-12 py-20 lg:grid-cols-12 lg:gap-x-0 lg:py-28"
             >
               <div className="lg:col-span-6 lg:pr-16">
-                <h2 className="reveal text-title text-balance">Our culture</h2>
+                <h2 className="reveal text-title text-balance">{t('1')}</h2>
                 <p
                   className="reveal mt-6 max-w-xl text-body leading-relaxed text-pretty text-muted"
                 >
-                  We believe the best work happens when talented people have
-                  autonomy, clear goals, and the support they need to succeed. We&apos;re
-                  not about endless meetings or micromanagement.
+                  {t('2')}
                 </p>
               </div>
               <ul
@@ -28,29 +28,29 @@ export function Section3Section() {
                 <li className="flex gap-3">
                   <svg className="mt-1 size-4 shrink-0 text-primary" aria-hidden="true">
                     <use href="#i-check" /></svg
-                  ><span>Async-first communication</span>
+                  ><span>{t('3')}</span>
                 </li>
                 <li className="flex gap-3">
                   <svg className="mt-1 size-4 shrink-0 text-primary" aria-hidden="true">
                     <use href="#i-check" /></svg
-                  ><span>Focus time protected</span>
+                  ><span>{t('4')}</span>
                 </li>
                 <li className="flex gap-3">
                   <svg className="mt-1 size-4 shrink-0 text-primary" aria-hidden="true">
                     <use href="#i-check" /></svg
-                  ><span>Results over hours</span>
+                  ><span>{t('5')}</span>
                 </li>
                 <li className="flex gap-3">
                   <svg className="mt-1 size-4 shrink-0 text-primary" aria-hidden="true">
                     <use href="#i-check" /></svg
-                  ><span>Transparent decision-making</span>
+                  ><span>{t('6')}</span>
                 </li>
               </ul>
               <dl
                 className="reveal grid grid-cols-2 divide-line border-t border-line sm:grid-cols-4 sm:divide-x lg:col-span-12"
               >
                 <div className="px-0 py-6 sm:px-6 sm:first:pl-0">
-                  <dt className="text-sm text-muted">Team members</dt>
+                  <dt className="text-sm text-muted">{t('7')}</dt>
                   <dd
                     className="mt-1 font-display text-h1 font-semibold tabular-nums text-ink"
                   >
@@ -58,7 +58,7 @@ export function Section3Section() {
                   </dd>
                 </div>
                 <div className="px-0 py-6 sm:px-6 sm:first:pl-0">
-                  <dt className="text-sm text-muted">Countries</dt>
+                  <dt className="text-sm text-muted">{t('8')}</dt>
                   <dd
                     className="mt-1 font-display text-h1 font-semibold tabular-nums text-ink"
                   >
@@ -66,13 +66,13 @@ export function Section3Section() {
                   </dd>
                 </div>
                 <div className="px-0 py-6 sm:px-6 sm:first:pl-0">
-                  <dt className="text-sm text-muted">Stage</dt>
+                  <dt className="text-sm text-muted">{t('9')}</dt>
                   <dd className="mt-1 font-display text-h2 font-semibold text-ink">
-                    Early stage
+                    {t('10')}
                   </dd>
                 </div>
                 <div className="px-0 py-6 sm:px-6 sm:first:pl-0">
-                  <dt className="text-sm text-muted">Founded</dt>
+                  <dt className="text-sm text-muted">{t('11')}</dt>
                   <dd
                     className="mt-1 font-display text-h1 font-semibold tabular-nums text-ink"
                   >

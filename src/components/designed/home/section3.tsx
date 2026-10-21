@@ -6,42 +6,44 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section3Section() {
+  const t = useTranslations("designed.home.section3");
   return (
     <section className="border-b border-line">
             <div className="frame py-20 lg:py-28">
               <h2 className="reveal text-title text-balance text-ink">
-                Different products, the same catalogue problem
+                {t('1')}
               </h2>
               <div className="mt-12 grid gap-6 md:grid-cols-2 lg:mt-16">
                 <article
                   className="reveal flex flex-col rounded-2xl border border-line bg-card p-6 shadow-sm lg:p-10"
                 >
-                  <p className="eyebrow">Consumer goods</p>
+                  <p className="eyebrow">{t('2')}</p>
                   <h3 className="mt-4 text-h2 text-balance text-ink">
-                    <span className="xl:block">A parent is buying</span>
+                    <span className="xl:block">{t('3')}</span>
                     <span className="xl:block"
-                      >washing powder for a baby&rsquo;s skin</span
+                      >{t('4')}</span
                     >
                   </h3>
                   <dl className="mt-6 space-y-5 border-t border-line pt-6">
                     <div>
                       <dt className="text-sm font-semibold text-muted">
-                        Never recorded
+                        {t('5')}
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
                         The product packaging shows whether it&rsquo;s
                         fragrance-free, but this information{" "}
                         <strong
                           className="font-semibold whitespace-nowrap text-gap-strong"
-                          >isn&rsquo;t recorded</strong
+                          >{t('6')}</strong
                         >
-                        in the catalogue.
+                        {t('7')}
                       </dd>
                     </div>
                     <div>
                       <dt className="text-sm font-semibold text-muted">
-                        What it costs
+                        {t('8')}
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
                         Without this attribute, shoppers can&rsquo;t filter for
@@ -55,42 +57,42 @@ export function Section3Section() {
                 <article
                   className="reveal flex flex-col rounded-2xl border border-line bg-card p-6 shadow-sm delay-100 lg:p-10"
                 >
-                  <p className="eyebrow">Ecommerce and electronics</p>
+                  <p className="eyebrow">{t('9')}</p>
                   <h3 className="mt-4 text-h2 text-balance text-ink">
-                    <span className="xl:block">A designer is buying a laptop and</span>
+                    <span className="xl:block">{t('10')}</span>
                     <span className="xl:block"
-                      >needs the screen big enough to work on</span
+                      >{t('11')}</span
                     >
                   </h3>
                   <dl className="mt-6 space-y-5 border-t border-line pt-6">
                     <div>
                       <dt className="text-sm font-semibold text-muted">
-                        Never recorded
+                        {t('12')}
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
                         Screen size appears in{" "}
                         <strong className="font-semibold tabular-nums"
-                          >136 of 216</strong
+                          >{t('13')}</strong
                         >
                         product titles, but{" "}
                         <strong
                           className="font-semibold whitespace-nowrap text-gap-strong"
-                          >isn&rsquo;t recorded</strong
+                          >{t('14')}</strong
                         >
-                        as a separate attribute.
+                        {t('15')}
                       </dd>
                     </div>
                     <div>
                       <dt className="text-sm font-semibold text-muted">
-                        What it costs
+                        {t('16')}
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
                         Without clear product attributes, shoppers struggle to see
                         the differences between{" "}
                         <strong className="font-semibold tabular-nums"
-                          >94 of the 216</strong
+                          >{t('17')}</strong
                         >
-                        laptops.
+                        {t('18')}
                       </dd>
                     </div>
                   </dl>

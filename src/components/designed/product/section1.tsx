@@ -6,19 +6,19 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section1Section() {
+  const t = useTranslations("designed.product.section1");
   return (
     <section className="hero-bg border-b border-line">
             <div className="frame py-20 lg:py-28">
               <h1 className="reveal max-w-3xl text-headline text-balance">
-                Measure the catalogue. Fix what matters. Only then decide live
+                {t('1')}
               </h1>
               <p
                 className="reveal mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted delay-100"
               >
-                Four products, and they are a staircase rather than a suite. Each
-                one is useful on its own, each one has an exit, and the last one is
-                the only one that touches your storefront at all.
+                {t('2')}
               </p>
               <nav
                 className="reveal mt-8 flex flex-wrap gap-2 delay-200"
@@ -27,25 +27,22 @@ export function Section1Section() {
                 <a
                   href="#audit"
                   className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3.5 py-1.5 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary"
-                  ><span className="text-primary tabular-nums">01</span>Decision
-                  Audit</a
+                  ><span className="text-primary tabular-nums">01</span>{t('3')}</a
                 >
                 <a
                   href="#verification"
                   className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3.5 py-1.5 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary"
-                  ><span className="text-primary tabular-nums">02</span>Decision
-                  Verification</a
+                  ><span className="text-primary tabular-nums">02</span>{t('4')}</a
                 >
                 <a
                   href="#monitor"
                   className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3.5 py-1.5 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary"
-                  ><span className="text-primary tabular-nums">03</span>Decision
-                  Monitor</a
+                  ><span className="text-primary tabular-nums">03</span>{t('5')}</a
                 >
                 <a
                   href="#api"
                   className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3.5 py-1.5 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary"
-                  ><span className="text-primary tabular-nums">04</span>Decision API</a
+                  ><span className="text-primary tabular-nums">04</span>{t('6')}</a
                 >
               </nav>
             </div>

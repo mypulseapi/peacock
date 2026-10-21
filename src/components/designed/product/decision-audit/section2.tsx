@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section2Section() {
+  const t = useTranslations("designed.product.decision-audit.section2");
   return (
     <section className="scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">
@@ -17,12 +19,10 @@ export function Section2Section() {
                 <div className="min-w-0 lg:col-span-4">
                   <div className="lg:sticky lg:top-28">
                     <h2 className="reveal text-title text-balance">
-                      One shelf, from the gap to the fix
+                      {t('1')}
                     </h2>
                     <p className="reveal mt-5 text-lg text-pretty text-muted delay-100">
-                      The example laptop shelf through the four steps of an audit:
-                      what is missing, what shoppers need, what to fix first, and
-                      the repair.
+                      {t('2')}
                     </p>
                   </div>
                 </div>
@@ -41,12 +41,12 @@ export function Section2Section() {
                       className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-3"
                     >
                       <p className="text-sm font-semibold text-ink">
-                        Laptop shelf, <span className="tabular-nums">216</span> products
+                        {t('3')} <span className="tabular-nums">216</span> {t('4')}
                       </p>
                       <div className="flex items-center gap-2">
                         <span
                           className="rounded-full border border-line px-2 py-0.5 text-xs font-medium whitespace-nowrap text-muted"
-                          >Example data</span
+                          >{t('5')}</span
                         >
                         <button
                           type="button"
@@ -81,7 +81,7 @@ export function Section2Section() {
                               className="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line pre-2:bg-primary"
                             ></span
                             ><span className="tabular-nums">01</span
-                            ><span className="max-sm:sr-only">The problem</span>
+                            ><span className="max-sm:sr-only">{t('6')}</span>
                           </button>
                         </li>
                         <li>
@@ -95,7 +95,7 @@ export function Section2Section() {
                               className="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line at-2:bg-primary"
                             ></span
                             ><span className="tabular-nums">02</span
-                            ><span className="max-sm:sr-only">The audit</span>
+                            ><span className="max-sm:sr-only">{t('7')}</span>
                           </button>
                         </li>
                         <li>
@@ -109,7 +109,7 @@ export function Section2Section() {
                               className="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-line at-3:bg-primary"
                             ></span
                             ><span className="tabular-nums">03</span
-                            ><span className="max-sm:sr-only">The priority</span>
+                            ><span className="max-sm:sr-only">{t('8')}</span>
                           </button>
                         </li>
                         <li>
@@ -123,7 +123,7 @@ export function Section2Section() {
                               className="size-2 shrink-0 rounded-full transition-colors duration-300 ease-out-soft bg-primary pre-4:bg-line"
                             ></span
                             ><span className="tabular-nums">04</span
-                            ><span className="max-sm:sr-only">The repair</span>
+                            ><span className="max-sm:sr-only">{t('9')}</span>
                           </button>
                         </li>
                       </ol>
@@ -804,7 +804,7 @@ export function Section2Section() {
                                     >185</span
                                   ></span
                                 ></span
-                              >can be told apart</span
+                              >{t('10')}</span
                             >
                             <span className="flex items-center gap-1.5"
                               ><span
@@ -820,7 +820,7 @@ export function Section2Section() {
                                     >31</span
                                   ></span
                                 ></span
-                              >cannot</span
+                              >{t('11')}</span
                             >
                           </div>
                         </div>
@@ -828,10 +828,10 @@ export function Section2Section() {
                           <p className="grid text-caption text-muted">
                             <span
                               className="col-start-1 row-start-1 opacity-0 transition-opacity duration-300 ease-out-soft pre-3:opacity-100"
-                              >Products missing each attribute, of 216</span
+                              >{t('12')}</span
                             ><span
                               className="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft pre-3:opacity-0"
-                              >Ranked by bits of decision information</span
+                              >{t('13')}</span
                             >
                           </p>
                           <ol className="mt-2">
@@ -849,10 +849,10 @@ export function Section2Section() {
                                 <span
                                   className="flex flex-wrap items-baseline justify-between gap-x-2"
                                   ><span className="text-sm font-semibold text-ink"
-                                    >Screen size</span
+                                    >{t('14')}</span
                                   ><span
                                     className="text-caption tabular-nums text-muted transition-opacity duration-300 ease-out-soft delay-0 pre-2:opacity-0"
-                                    >1.067 bits</span
+                                    >{t('15')}</span
                                   ></span
                                 >
                                 <span
@@ -866,14 +866,14 @@ export function Section2Section() {
                                   ><span className="grid"
                                     ><span
                                       className="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft opacity-0 pre-4:opacity-100"
-                                      >80 missing</span
+                                      >{t('16')}</span
                                     ><span
                                       className="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft pre-4:opacity-0"
                                       ><span
                                         className="inline-flex items-center gap-1 font-medium text-success"
                                         ><svg className="size-3" aria-hidden="true">
                                           <use href="#i-circle-check" /></svg
-                                        >216 of 216</span
+                                        >{t('17')}</span
                                       ></span
                                     ></span
                                   ></span
@@ -891,10 +891,10 @@ export function Section2Section() {
                                 <span
                                   className="flex flex-wrap items-baseline justify-between gap-x-2"
                                   ><span className="text-sm font-semibold text-ink"
-                                    >Memory</span
+                                    >{t('18')}</span
                                   ><span
                                     className="text-caption tabular-nums text-muted transition-opacity duration-300 ease-out-soft delay-100 pre-2:opacity-0"
-                                    >1.012 bits</span
+                                    >{t('19')}</span
                                   ></span
                                 >
                                 <span
@@ -905,7 +905,7 @@ export function Section2Section() {
                                 ></span>
                                 <span
                                   className="mt-1 block text-caption tabular-nums text-muted"
-                                  >60 missing</span
+                                  >{t('20')}</span
                                 >
                               </span>
                             </li>
@@ -920,10 +920,10 @@ export function Section2Section() {
                                 <span
                                   className="flex flex-wrap items-baseline justify-between gap-x-2"
                                   ><span className="text-sm font-semibold text-ink"
-                                    >Processor</span
+                                    >{t('21')}</span
                                   ><span
                                     className="text-caption tabular-nums text-muted transition-opacity duration-300 ease-out-soft delay-200 pre-2:opacity-0"
-                                    >0.747 bits</span
+                                    >{t('22')}</span
                                   ></span
                                 >
                                 <span
@@ -934,7 +934,7 @@ export function Section2Section() {
                                 ></span>
                                 <span
                                   className="mt-1 block text-caption tabular-nums text-muted"
-                                  >162 missing</span
+                                  >{t('23')}</span
                                 >
                               </span>
                             </li>
@@ -949,10 +949,10 @@ export function Section2Section() {
                                 <span
                                   className="flex flex-wrap items-baseline justify-between gap-x-2"
                                   ><span className="text-sm font-semibold text-ink"
-                                    >Storage</span
+                                    >{t('24')}</span
                                   ><span
                                     className="text-caption tabular-nums text-muted transition-opacity duration-300 ease-out-soft delay-300 pre-2:opacity-0"
-                                    >0.688 bits</span
+                                    >{t('25')}</span
                                   ></span
                                 >
                                 <span
@@ -963,7 +963,7 @@ export function Section2Section() {
                                 ></span>
                                 <span
                                   className="mt-1 block text-caption tabular-nums text-muted"
-                                  >55 missing</span
+                                  >{t('26')}</span
                                 >
                               </span>
                             </li>
@@ -976,20 +976,16 @@ export function Section2Section() {
                       >
                         <span
                           className="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft opacity-0 pre-2:opacity-100"
-                          >216 laptops: 94 of them cannot be told apart. 357 fields
-                          are missing.</span
+                          >{t('27')}</span
                         ><span
                           className="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft opacity-0 at-2:opacity-100"
-                          >Every attribute is scored against 32 shopper
-                          requirements.</span
+                          >{t('28')}</span
                         ><span
                           className="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft opacity-0 at-3:opacity-100"
-                          >Screen size comes first. Processor, the emptiest, is only
-                          third.</span
+                          >{t('29')}</span
                         ><span
                           className="col-start-1 row-start-1 transition-opacity duration-300 ease-out-soft pre-4:opacity-0"
-                          >Screen size recorded on all 216: 185 laptops can now be
-                          told apart, up from 122.</span
+                          >{t('30')}</span
                         >
                       </p>
                     </div>

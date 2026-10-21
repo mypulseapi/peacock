@@ -6,12 +6,14 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section4Section() {
+  const t = useTranslations("designed.product.decision-audit.section4");
   return (
     <section className="scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">
               <h2 className="reveal text-title text-balance">
-                How does the audit work?
+                {t('1')}
               </h2>
               {/* Timeline: the calm line grows across the three stops as the section scrolls in (reveal-bar); on phones the
                    stops stack along a static line on the left. */}
@@ -34,15 +36,12 @@ export function Section4Section() {
                       className="absolute top-0.5 left-0 size-5 rounded-full border-4 border-card bg-primary ring-1 ring-primary-line md:static md:block"
                       aria-hidden="true"
                     ></span>
-                    <p className="text-data font-semibold text-primary md:mt-8">You</p>
-                    <h3 className="mt-4 text-h3 text-ink">Send one category</h3>
+                    <p className="text-data font-semibold text-primary md:mt-8">{t('2')}</p>
+                    <h3 className="mt-4 text-h3 text-ink">{t('3')}</h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Provide a CSV or JSON file containing product names,
-                      descriptions, categories, prices, and existing attributes.
-                      Choose a category where shoppers struggle to find the right
-                      product.
+                      {t('4')}
                     </p>
                   </li>
                   <li className="reveal relative pl-9 delay-500 md:pl-0">
@@ -50,14 +49,12 @@ export function Section4Section() {
                       className="absolute top-0.5 left-0 size-5 rounded-full border-4 border-card bg-primary ring-1 ring-primary-line md:static md:block"
                       aria-hidden="true"
                     ></span>
-                    <p className="text-data font-semibold text-primary md:mt-8">Us</p>
-                    <h3 className="mt-4 text-h3 text-ink">We measure it</h3>
+                    <p className="text-data font-semibold text-primary md:mt-8">{t('5')}</p>
+                    <h3 className="mt-4 text-h3 text-ink">{t('6')}</h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Within 48 hours, we measure how much each attribute helps tell
-                      products apart, and what it would be worth if recorded across
-                      the category, in bits rather than clicks.
+                      {t('7')}
                     </p>
                   </li>
                   <li className="reveal relative pl-9 delay-850 md:pl-0">
@@ -65,14 +62,12 @@ export function Section4Section() {
                       className="absolute top-0.5 left-0 size-5 rounded-full border-4 border-card bg-primary ring-1 ring-primary-line md:static md:block"
                       aria-hidden="true"
                     ></span>
-                    <p className="text-data font-semibold text-primary md:mt-8">Both</p>
-                    <h3 className="mt-4 text-h3 text-ink">We walk you through it</h3>
+                    <p className="text-data font-semibold text-primary md:mt-8">{t('8')}</p>
+                    <h3 className="mt-4 text-h3 text-ink">{t('9')}</h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Receive a ranked list of attributes and supporting files. We
-                      walk you through the findings and discuss what it would take
-                      to act on them.
+                      {t('10')}
                     </p>
                   </li>
                 </ol>

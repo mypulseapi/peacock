@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section3Section() {
+  const t = useTranslations("designed.industries.distribution.section3");
   return (
     <section className="border-b border-line bg-surface-1/50">
             <div
@@ -14,14 +16,14 @@ export function Section3Section() {
             >
               <div className="lg:col-span-5 lg:pr-16">
                 <h2 className="reveal text-title text-balance">
-                  What usually goes wrong in B2B and industrial
+                  {t('1')}
                 </h2>
                 <div className="reveal mt-8 max-w-md">
                   <p className="text-sm text-muted">
-                    What a buyer here is trying to decide:
+                    {t('2')}
                   </p>
                   <p className="mt-2 text-h3 text-pretty text-ink">
-                    Which part meets the specification I have to hit?
+                    {t('3')}
                   </p>
                 </div>
               </div>
@@ -34,8 +36,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Specifications trapped in supplier PDFs and never mapped
-                        into the catalogue
+                        {t('4')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -44,8 +45,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Search that works for a part number and fails for a
-                        requirement
+                        {t('5')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -54,8 +54,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Hundreds of variants distinguished only by a suffix in the
-                        product code
+                        {t('6')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -64,8 +63,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Sales time spent answering specification questions the
-                        catalogue should answer
+                        {t('7')}
                       </p>
                     </li>
                   </ul>
@@ -78,12 +76,9 @@ export function Section3Section() {
                     </svg>
                     <p className="text-body text-pretty text-muted">
                       <span className="font-semibold text-ink"
-                        >Where it usually already lives:</span
+                        >{t('8')}</span
                       >
-                      Usually a mapping job. The specification is in a supplier
-                      datasheet or a feed you already receive, and the audit
-                      separates the fields you can map this week from the ones that
-                      need real acquisition.
+                      {t('9')}
                     </p>
                   </div>
                 </div>

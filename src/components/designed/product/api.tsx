@@ -6,9 +6,11 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export function ApiSection() {
+  const t = useTranslations("designed.product.api");
   return (
     <section
             id="api"
@@ -21,30 +23,26 @@ export function ApiSection() {
                     Decision API.{" "}
                     <span
                       className="rounded bg-primary-tint px-1.5 py-0.5 align-middle text-label font-semibold text-primary uppercase"
-                      >Optional</span
+                      >{t('1')}</span
                     >
                     <span className="text-muted"
-                      >What should we show this visitor?</span
+                      >{t('2')}</span
                     >
                   </h2>
                   <p className="reveal mt-5 text-body leading-relaxed text-muted">
-                    The runtime reads the live session, what someone browses,
-                    searches and filters, and ranks your catalogue against what it
-                    can infer. It asks a question only when the answer would change
-                    what it shows. It runs alongside your existing store and search,
-                    and it replaces neither.
+                    {t('3')}
                   </p>
                   <p
                     className="reveal mt-6 border-t border-line pt-5 text-sm text-muted"
                   >
                     <strong className="font-semibold text-ink"
-                      >What it needs from you:</strong
+                      >{t('4')}</strong
                     >
-                    One script tag, and a pilot before any money changes hands.
+                    {t('5')}
                   </p>
                   <Link                 href="/en/product/decision-api"
                     className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
-                    >Read about Decision API<svg
+                    >{t('6')}<svg
                       className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
                       aria-hidden="true"
                     >
@@ -62,7 +60,7 @@ export function ApiSection() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >Ranks your catalogue against what the session implies</span
+                        >{t('7')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -72,8 +70,7 @@ export function ApiSection() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >A per-factor breakdown on every product, so nothing is a
-                        black box</span
+                        >{t('8')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -83,8 +80,7 @@ export function ApiSection() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >A held-back share of traffic that never sees it,
-                        always</span
+                        >{t('9')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -94,8 +90,7 @@ export function ApiSection() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >Falls back to your own order if anything is slow or
-                        unavailable</span
+                        >{t('10')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -104,7 +99,7 @@ export function ApiSection() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>No cookie, no login, no identity required</span>
+                      ><span>{t('11')}</span>
                     </li>
                   </ul>
                 </div>

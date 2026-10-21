@@ -6,18 +6,20 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export function RequestSection() {
+  const t = useTranslations("designed.about.request");
   return (
     <section id="request" className="cta-dots scroll-mt-16" data-cta>
             <div className="frame py-24 text-center lg:py-32">
               <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
-                Send us a category and judge for yourself
+                {t('1')}
               </h2>
               <div className="reveal mt-8 flex justify-center delay-100">
                 <Link href="/en/contact" className="btn-primary"
-                  >Request a Decision Audit</Link>
+                  >{t('2')}</Link>
               </div>
             </div>
           </section>

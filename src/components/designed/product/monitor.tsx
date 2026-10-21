@@ -6,9 +6,11 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export function MonitorSection() {
+  const t = useTranslations("designed.product.monitor");
   return (
     <section id="monitor" className="scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">
@@ -16,26 +18,22 @@ export function MonitorSection() {
                 <div className="lg:col-span-6">
                   <h2 className="reveal text-title text-balance">
                     Decision Monitor.{" "}
-                    <span className="text-muted">When did this shelf get worse?</span>
+                    <span className="text-muted">{t('1')}</span>
                   </h2>
                   <p className="reveal mt-5 text-body leading-relaxed text-muted">
-                    Catalogues decay. New products arrive unrecorded, supplier feeds
-                    change shape, and a category that was ready last quarter quietly
-                    stops being ready. Monitor re-runs the measurement as your
-                    catalogue changes and tells you when a shelf slips, naming the
-                    cause rather than just the number.
+                    {t('2')}
                   </p>
                   <p
                     className="reveal mt-6 border-t border-line pt-5 text-sm text-muted"
                   >
                     <strong className="font-semibold text-ink"
-                      >What it needs from you:</strong
+                      >{t('3')}</strong
                     >
-                    A recurring export, or a feed.
+                    {t('4')}
                   </p>
                   <Link                 href="/en/product/decision-monitor"
                     className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
-                    >Read about Decision Monitor<svg
+                    >{t('5')}<svg
                       className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
                       aria-hidden="true"
                     >
@@ -52,7 +50,7 @@ export function MonitorSection() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Re-measured on a schedule you set</span>
+                      ><span>{t('6')}</span>
                     </li>
                     <li className="flex gap-3">
                       <svg
@@ -61,8 +59,7 @@ export function MonitorSection() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >An alert that names the shelf, the attribute and the
-                        cause</span
+                        >{t('7')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -72,8 +69,7 @@ export function MonitorSection() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >Trend per category, so you can see decay before a buyer
-                        does</span
+                        >{t('8')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -82,7 +78,7 @@ export function MonitorSection() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Nothing to install: it reads the same export</span>
+                      ><span>{t('9')}</span>
                     </li>
                   </ul>
                 </div>

@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function ResearchSection() {
+  const t = useTranslations("designed.home.research");
   return (
     <section id="research" className="scroll-mt-16 border-b border-line">
             <div className="frame">
@@ -14,7 +16,7 @@ export function ResearchSection() {
                 <h2
                   className="reveal mx-auto max-w-5xl text-title text-balance text-ink"
                 >
-                  Independent research highlights the same problems
+                  {t('1')}
                 </h2>
               </div>
               {/* Stats (stats-2 layout): source on top, then number and finding. Each card is a 3-row subgrid, so numbers line up across cards */}
@@ -29,15 +31,14 @@ export function ResearchSection() {
                       href="https://baymard.com/research-articles/have-filters-for-list-item-info"
                       rel="noopener"
                       className="hit-area rounded-sm underline decoration-line-control underline-offset-2 transition-colors duration-150 ease-out-soft hover:text-ink hover:decoration-current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
-                      >Baymard Institute, 2019</a
+                      >{t('2')}</a
                     >
                   </p>
                   <p className="text-display text-ink tabular-nums">
                     <span data-count="38" data-suffix="%">38%</span>
                   </p>
                   <p className="text-body text-ink">
-                    of retailers do not allow shoppers to filter by their desired
-                    product attributes
+                    {t('3')}
                   </p>
                 </div>
                 <div
@@ -49,14 +50,14 @@ export function ResearchSection() {
                       href="https://mirasvit.com/blog/magento-structured-data-ai-readiness.html"
                       rel="noopener"
                       className="hit-area rounded-sm underline decoration-line-control underline-offset-2 transition-colors duration-150 ease-out-soft hover:text-ink hover:decoration-current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
-                      >Mirasvit, 2026</a
+                      >{t('4')}</a
                     >
                   </p>
                   <p className="text-display text-ink tabular-nums">
                     <span data-count="79" data-suffix="%">79%</span>
                   </p>
                   <p className="text-body text-ink">
-                    of product pages are missing some structured product data
+                    {t('5')}
                   </p>
                 </div>
                 <div
@@ -67,14 +68,14 @@ export function ResearchSection() {
                       href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable"
                       rel="noopener"
                       className="hit-area rounded-sm underline decoration-line-control underline-offset-2 transition-colors duration-150 ease-out-soft hover:text-ink hover:decoration-current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
-                      >Adobe Analytics, 2026</a
+                      >{t('6')}</a
                     >
                   </p>
                   <p className="text-display text-ink tabular-nums">
                     <span data-count="393" data-suffix="%">393%</span>
                   </p>
                   <p className="text-body text-ink">
-                    growth in AI-driven traffic to US retail websites
+                    {t('7')}
                   </p>
                 </div>
               </div>

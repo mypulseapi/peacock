@@ -6,11 +6,13 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import Link from "next/link";
 
 export function DesignedHeader() {
+  const t = useTranslations("designed.shell.designed-header");
   return (
     <header
           className="sticky top-0 z-50 border-b border-line bg-card font-display"
@@ -47,7 +49,7 @@ export function DesignedHeader() {
                     <summary
                       className="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink"
                     >
-                      Product
+                      {t('1')}
                       <svg
                         className="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
                         aria-hidden="true"
@@ -62,7 +64,7 @@ export function DesignedHeader() {
                       <div data-nav-content className="nav-content flex">
                         <div className="nav-column w-76 p-3">
                           <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                            Measure &amp; repair
+                            {t('2')}
                           </p>
                           <ul className="space-y-1">
                             <li>
@@ -71,11 +73,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >Decision Audit</span
+                                  >{t('3')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Rank which missing fields to fix first</span
+                                  >{t('4')}</span
                                 >
                               </Link>
                             </li>
@@ -85,11 +87,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >Decision Verification</span
+                                  >{t('5')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Re-measure what moved after a repair</span
+                                  >{t('6')}</span
                                 >
                               </Link>
                             </li>
@@ -97,7 +99,7 @@ export function DesignedHeader() {
                         </div>
                         <div className="nav-column w-76 p-3">
                           <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                            Keep it measured
+                            {t('7')}
                           </p>
                           <ul className="space-y-1">
                             <li>
@@ -106,15 +108,15 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >Decision Monitor
+                                  >{t('8')}
                                   <span
                                     className="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase"
-                                    >Recurring</span
+                                    >{t('9')}</span
                                   ></span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Get told when a shelf slips, and why</span
+                                  >{t('10')}</span
                                 >
                               </Link>
                             </li>
@@ -125,11 +127,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >How it works</span
+                                  >{t('11')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >From a blank cell to a measured result</span
+                                  >{t('12')}</span
                                 >
                               </a>
                             </li>
@@ -145,7 +147,7 @@ export function DesignedHeader() {
                     <summary
                       className="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink"
                     >
-                      Templates
+                      {t('13')}
                       <svg
                         className="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
                         aria-hidden="true"
@@ -160,7 +162,7 @@ export function DesignedHeader() {
                       <div data-nav-content className="nav-content flex">
                         <div className="nav-column w-76 p-3">
                           <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                            Everyday
+                            {t('14')}
                           </p>
                           <ul className="space-y-1">
                             <li>
@@ -169,11 +171,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >Ecommerce and retail</span
+                                  >{t('15')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Mixed catalogues, many shelves</span
+                                  >{t('16')}</span
                                 >
                               </Link>
                             </li>
@@ -183,11 +185,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >FMCG and consumer goods</span
+                                  >{t('17')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Fragrance-free, allergens, pack size</span
+                                  >{t('18')}</span
                                 >
                               </Link>
                             </li>
@@ -195,7 +197,7 @@ export function DesignedHeader() {
                         </div>
                         <div className="nav-column w-76 p-3">
                           <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                            Home &amp; beauty
+                            {t('19')}
                           </p>
                           <ul className="space-y-1">
                             <li>
@@ -204,11 +206,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >Furniture and homewares</span
+                                  >{t('20')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Dimensions, capacity, material</span
+                                  >{t('21')}</span
                                 >
                               </Link>
                             </li>
@@ -218,11 +220,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >Cosmetics and personal care</span
+                                  >{t('22')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Shade, skin type, finish</span
+                                  >{t('23')}</span
                                 >
                               </Link>
                             </li>
@@ -230,7 +232,7 @@ export function DesignedHeader() {
                         </div>
                         <div className="nav-column w-76 p-3">
                           <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                            Technical
+                            {t('24')}
                           </p>
                           <ul className="space-y-1">
                             <li>
@@ -239,11 +241,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >Technology and electronics</span
+                                  >{t('25')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Screen size, memory, storage</span
+                                  >{t('26')}</span
                                 >
                               </Link>
                             </li>
@@ -253,11 +255,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >B2B and industrial</span
+                                  >{t('27')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Compatibility and technical specs</span
+                                  >{t('28')}</span
                                 >
                               </Link>
                             </li>
@@ -273,7 +275,7 @@ export function DesignedHeader() {
                     <summary
                       className="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink"
                     >
-                      Resources
+                      {t('29')}
                       <svg
                         className="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
                         aria-hidden="true"
@@ -288,7 +290,7 @@ export function DesignedHeader() {
                       <div data-nav-content className="nav-content flex">
                         <div className="nav-column w-76 p-3">
                           <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                            Learn
+                            {t('30')}
                           </p>
                           <ul className="space-y-1">
                             <li>
@@ -298,11 +300,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >Documentation</span
+                                  >{t('31')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Integrate in ten lines, or not at all</span
+                                  >{t('32')}</span
                                 >
                               </a>
                             </li>
@@ -312,11 +314,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >Research</span
+                                  >{t('33')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >What we measured about product photographs</span
+                                  >{t('34')}</span
                                 >
                               </Link>
                             </li>
@@ -324,7 +326,7 @@ export function DesignedHeader() {
                         </div>
                         <div className="nav-column w-76 p-3">
                           <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                            Company
+                            {t('35')}
                           </p>
                           <ul className="space-y-1">
                             <li>
@@ -333,11 +335,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >About us</span
+                                  >{t('36')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Who builds Pulse, and why</span
+                                  >{t('37')}</span
                                 >
                               </Link>
                             </li>
@@ -347,11 +349,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >Contact</span
+                                  >{t('38')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >Talk to the team</span
+                                  >{t('39')}</span
                                 >
                               </Link>
                             </li>
@@ -361,11 +363,11 @@ export function DesignedHeader() {
                               >
                                 <span
                                   className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >Career</span
+                                  >{t('40')}</span
                                 >
                                 <span
                                   className="mt-1 block text-sm text-pretty text-muted"
-                                  >How we work, and how to reach us</span
+                                  >{t('41')}</span
                                 >
                               </Link>
                             </li>
@@ -376,7 +378,7 @@ export function DesignedHeader() {
                   </details>
                 </li>
 
-                <li><Link href="/en/pricing" className="nav-link">Pricing</Link></li>
+                <li><Link href="/en/pricing" className="nav-link">{t('42')}</Link></li>
               </ul>
               <div className="nav-viewport" data-nav-viewport>
                 <div className="nav-viewport-stack" data-nav-stack></div>
@@ -394,7 +396,7 @@ export function DesignedHeader() {
                     <svg className="size-4 text-primary" aria-hidden="true">
                       <use href="#i-globe" />
                     </svg>
-                    EN
+                    {t('43')}
                     <svg
                       className="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
                       aria-hidden="true"
@@ -409,7 +411,7 @@ export function DesignedHeader() {
                     <p
                       className="border-b border-line px-3 py-2 text-label font-medium text-muted uppercase"
                     >
-                      Switch language
+                      {t('44')}
                     </p>
                     <a
                       role="link"
@@ -417,7 +419,7 @@ export function DesignedHeader() {
                       aria-current="true"
                       className="mt-1 flex min-h-11 items-center gap-3 rounded-control bg-primary-tint px-3 py-2.5 text-sm font-medium text-primary"
                     >
-                      <span aria-hidden="true">🇺🇸</span> English
+                      <span aria-hidden="true">🇺🇸</span> {t('45')}
                       <svg className="ml-auto size-4" aria-hidden="true">
                         <use href="#i-check" />
                       </svg>
@@ -426,11 +428,11 @@ export function DesignedHeader() {
                   </div>
                 </details>
               </div>
-              <Link href="/en/signin" className="nav-link">Sign In</Link>
+              <Link href="/en/signin" className="nav-link">{t('46')}</Link>
               <Link             href="/en/contact"
                 className="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap"
               >
-                Request an audit
+                {t('47')}
                 <svg
                   className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
                   aria-hidden="true"
@@ -458,7 +460,7 @@ export function DesignedHeader() {
               >
                 {/* About us moved down into Resources, so the mobile menu lists it in the same
                      one place the desktop one does. */}
-                <p className="mt-6 px-4 eyebrow">Product</p>
+                <p className="mt-6 px-4 eyebrow">{t('48')}</p>
                 <ul className="mt-2">
                   <li>
                     <Link                   href="/en/product/decision-audit"
@@ -466,7 +468,7 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-clipboard-check" /></svg></span
-                      >Decision Audit</Link>
+                      >{t('49')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/product/decision-verification"
@@ -474,7 +476,7 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-compare" /></svg></span
-                      >Decision Verification</Link>
+                      >{t('50')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/product/decision-monitor"
@@ -482,11 +484,11 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-bell-ring" /></svg></span
-                      >Decision Monitor</Link>
+                      >{t('51')}</Link>
                   </li>
                 </ul>
 
-                <p className="mt-6 px-4 eyebrow">Templates</p>
+                <p className="mt-6 px-4 eyebrow">{t('52')}</p>
                 <ul className="mt-2">
                   <li>
                     <Link                   href="/en/industries/ecommerce"
@@ -494,7 +496,7 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-cart" /></svg></span
-                      >Ecommerce and retail</Link>
+                      >{t('53')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/industries/fmcg"
@@ -502,7 +504,7 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-basket" /></svg></span
-                      >FMCG and consumer goods</Link>
+                      >{t('54')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/industries/technology"
@@ -510,7 +512,7 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-cpu" /></svg></span
-                      >Technology and electronics</Link>
+                      >{t('55')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/industries/furniture"
@@ -518,7 +520,7 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-sofa" /></svg></span
-                      >Furniture and homewares</Link>
+                      >{t('56')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/industries/cosmetics"
@@ -526,7 +528,7 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-sparkles" /></svg></span
-                      >Cosmetics and personal care</Link>
+                      >{t('57')}</Link>
                   </li>
                   <li>
                     <Link                   href="/en/industries/distribution"
@@ -534,11 +536,11 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-factory" /></svg></span
-                      >B2B and industrial</Link>
+                      >{t('58')}</Link>
                   </li>
                 </ul>
 
-                <p className="mt-6 px-4 eyebrow">Resources</p>
+                <p className="mt-6 px-4 eyebrow">{t('59')}</p>
                 <ul className="mt-2">
                   <li>
                     <a
@@ -547,7 +549,7 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-file-text" /></svg></span
-                      >Documentation</a
+                      >{t('60')}</a
                     >
                   </li>
                   <li>
@@ -556,7 +558,7 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-flask" /></svg></span
-                      >Research</Link>
+                      >{t('61')}</Link>
                   </li>
                   {/* The desktop panel splits Resources into Learn and Company; on mobile the
                        two run together, so About us closes the list as Company does there. */}
@@ -566,21 +568,21 @@ export function DesignedHeader() {
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-user-round" /></svg></span
-                      >About us</Link>
+                      >{t('62')}</Link>
                   </li>
                 </ul>
 
                 <div className="mt-6 border-t border-line pt-6">
                   <Link                 href="/en/pricing"
                     className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
-                    >Pricing</Link>
+                    >{t('63')}</Link>
 
                   <Link                 href="/en/signin"
                     className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
-                    >Sign In</Link>
+                    >{t('64')}</Link>
                   <Link                 href="/en/contact"
                     className="btn-primary mt-4 w-full rounded-control text-nav"
-                    >Request a Decision Audit
+                    >{t('65')}
                     <svg className="size-3.5" aria-hidden="true">
                       <use href="#i-arrow-right" /></svg
                   ></Link>

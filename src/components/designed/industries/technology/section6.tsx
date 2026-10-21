@@ -6,34 +6,33 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export function Section6Section() {
+  const t = useTranslations("designed.industries.technology.section6");
   return (
     <section className="cta-dots" data-cta>
             <div className="frame py-24 text-center lg:py-32">
               <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
-                Send us one Technology and electronics category
+                {t('1')}
               </h2>
               <p
                 className="reveal mx-auto mt-6 max-w-xl text-lg text-pretty text-muted delay-100"
               >
-                Pick the shelf where you most suspect buyers struggle. You get a
-                ranked list, the affected products, and half an hour with whoever
-                owns merchandising.
+                {t('2')}
               </p>
               <div
                 className="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200"
               >
                 <Link href="/en/contact" className="btn-primary"
-                  >Request a Decision Audit</Link>
-                <Link href="/en/pricing" className="btn-secondary">View pricing</Link>
+                  >{t('3')}</Link>
+                <Link href="/en/pricing" className="btn-secondary">{t('4')}</Link>
               </div>
               <p
                 className="reveal mx-auto mt-6 max-w-md text-sm text-pretty text-muted delay-300"
               >
-                A fixed fee, no obligation, and if your catalogue is already fine we
-                will say so.
+                {t('5')}
               </p>
             </div>
           </section>

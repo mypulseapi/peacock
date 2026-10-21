@@ -6,19 +6,19 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section1Section() {
+  const t = useTranslations("designed.privacy.section1");
   return (
     <section className="hero-bg border-b border-line">
             <div className="frame py-20 lg:py-24">
               <h1 className="reveal max-w-3xl text-headline text-balance">
-                Privacy Policy
+                {t('1')}
               </h1>
               <p
                 className="reveal mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted delay-100"
               >
-                At Pulse, privacy isn&rsquo;t an afterthought &ndash; it&rsquo;s our
-                foundation. We&rsquo;ve built our technology to deliver powerful
-                personalization without compromising user privacy.
+                {t('2')}
               </p>
             </div>
           </section>

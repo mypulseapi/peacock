@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section2Section() {
+  const t = useTranslations("designed.visual-evidence.section2");
   return (
     <section className="border-b border-line">
             <div
@@ -14,27 +16,18 @@ export function Section2Section() {
             >
               <div className="lg:col-span-5 lg:pr-16">
                 <h2 className="text-title text-balance">
-                  Why did we go looking for this?
+                  {t('1')}
                 </h2>
               </div>
               <div className="lg:col-span-7">
                 <p className="text-body leading-relaxed text-pretty text-muted">
-                  Because of something a colleague said about their own shopping,
-                  which is the kind of remark that is unremarkable until you notice
-                  it contradicts your product. Most of the time, they said, they
-                  look at the pictures. They want to search by picture. They do not
-                  read the description.
+                  {t('2')}
                 </p>
                 <p className="mt-4 text-body leading-relaxed text-pretty text-muted">
-                  Every number Pulse produces assumes the opposite. We rank a
-                  missing field by how much recording it would narrow the shelf, and
-                  we count that field as working the moment it exists. We never
-                  asked whether anyone reads it. A fact the buyer cannot see does
-                  not decide a purchase, and we had been counting those facts at
-                  full value.
+                  {t('3')}
                 </p>
                 <p className="mt-4 text-body leading-relaxed text-pretty text-ink">
-                  So we measured it. Twice.
+                  {t('4')}
                 </p>
               </div>
             </div>

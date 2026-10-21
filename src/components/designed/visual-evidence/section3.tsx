@@ -6,134 +6,126 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section3Section() {
+  const t = useTranslations("designed.visual-evidence.section3");
   return (
     <section className="border-b border-line">
             <div className="frame py-20 lg:py-28">
               <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-0">
                 <div className="lg:col-span-5 lg:pr-16">
                   <h2 className="text-title text-balance">
-                    On a laptop shelf, the two channels miss each other completely
+                    {t('1')}
                   </h2>
                   <p className="mt-4 text-body leading-relaxed text-pretty text-muted">
-                    These are the nine things a laptop buyer weighs, typed by hand
-                    from the filter rails and buying guides of three large
-                    electronics retailers. For each one we asked two questions: can
-                    the catalogue tell you, and can the photograph tell you.
+                    {t('2')}
                   </p>
                 </div>
                 <div className="lg:col-span-7">
                   <div className="card overflow-x-auto">
                     <table className="w-full text-left text-body">
                       <caption className="sr-only">
-                        Nine laptop buying facets, by whether the catalogue records
-                        them and whether a product photograph shows them
+                        {t('3')}
                       </caption>
                       <thead>
                         <tr className="border-b border-line text-sm text-muted">
                           <th scope="col" className="py-3 pr-4 font-medium">
-                            What the buyer weighs
+                            {t('4')}
                           </th>
                           <th scope="col" className="py-3 pr-4 font-medium">
-                            Catalogue carries it
+                            {t('5')}
                           </th>
                           <th scope="col" className="py-3 font-medium">
-                            Photograph shows it
+                            {t('6')}
                           </th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-line">
                         <tr>
                           <th scope="row" className="py-3 pr-4 font-normal text-ink">
-                            Memory
+                            {t('7')}
                           </th>
-                          <td className="py-3 pr-4 text-ink">Yes</td>
-                          <td className="py-3 text-muted">No</td>
+                          <td className="py-3 pr-4 text-ink">{t('8')}</td>
+                          <td className="py-3 text-muted">{t('9')}</td>
                         </tr>
                         <tr>
                           <th scope="row" className="py-3 pr-4 font-normal text-ink">
-                            Storage
+                            {t('10')}
                           </th>
-                          <td className="py-3 pr-4 text-ink">Yes</td>
-                          <td className="py-3 text-muted">No</td>
+                          <td className="py-3 pr-4 text-ink">{t('11')}</td>
+                          <td className="py-3 text-muted">{t('12')}</td>
                         </tr>
                         <tr>
                           <th scope="row" className="py-3 pr-4 font-normal text-ink">
-                            Screen size
+                            {t('13')}
                           </th>
-                          <td className="py-3 pr-4 text-ink">Yes</td>
-                          <td className="py-3 text-muted">No</td>
+                          <td className="py-3 pr-4 text-ink">{t('14')}</td>
+                          <td className="py-3 text-muted">{t('15')}</td>
                         </tr>
                         <tr>
                           <th scope="row" className="py-3 pr-4 font-normal text-ink">
-                            Processor
+                            {t('16')}
                           </th>
-                          <td className="py-3 pr-4 text-ink">Yes</td>
-                          <td className="py-3 text-muted">No</td>
+                          <td className="py-3 pr-4 text-ink">{t('17')}</td>
+                          <td className="py-3 text-muted">{t('18')}</td>
                         </tr>
                         <tr>
                           <th scope="row" className="py-3 pr-4 font-normal text-ink">
-                            Price
+                            {t('19')}
                           </th>
-                          <td className="py-3 pr-4 text-muted">No</td>
-                          <td className="py-3 text-muted">No</td>
+                          <td className="py-3 pr-4 text-muted">{t('20')}</td>
+                          <td className="py-3 text-muted">{t('21')}</td>
                         </tr>
                         <tr>
                           <th scope="row" className="py-3 pr-4 font-normal text-ink">
-                            Weight
+                            {t('22')}
                           </th>
-                          <td className="py-3 pr-4 text-muted">No</td>
-                          <td className="py-3 text-muted">No</td>
+                          <td className="py-3 pr-4 text-muted">{t('23')}</td>
+                          <td className="py-3 text-muted">{t('24')}</td>
                         </tr>
                         <tr>
                           <th scope="row" className="py-3 pr-4 font-normal text-ink">
-                            Graphics
+                            {t('25')}
                           </th>
-                          <td className="py-3 pr-4 text-muted">No</td>
-                          <td className="py-3 text-muted">No</td>
+                          <td className="py-3 pr-4 text-muted">{t('26')}</td>
+                          <td className="py-3 text-muted">{t('27')}</td>
                         </tr>
                         <tr>
                           <th scope="row" className="py-3 pr-4 font-normal text-ink">
-                            Battery life
+                            {t('28')}
                           </th>
-                          <td className="py-3 pr-4 text-muted">No</td>
-                          <td className="py-3 text-muted">No</td>
+                          <td className="py-3 pr-4 text-muted">{t('29')}</td>
+                          <td className="py-3 text-muted">{t('30')}</td>
                         </tr>
                         <tr>
                           <th scope="row" className="py-3 pr-4 font-normal text-ink">
-                            Operating system
+                            {t('31')}
                           </th>
-                          <td className="py-3 pr-4 text-muted">No</td>
-                          <td className="py-3 font-medium text-ink">Yes</td>
+                          <td className="py-3 pr-4 text-muted">{t('32')}</td>
+                          <td className="py-3 font-medium text-ink">{t('33')}</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <dl className="mt-8 grid gap-6 sm:grid-cols-3">
                     <div className="border-t-2 border-primary pt-4">
-                      <dt className="text-sm text-muted">Catalogue carries</dt>
-                      <dd className="text-h2 tabular-nums text-ink">4 of 9</dd>
+                      <dt className="text-sm text-muted">{t('34')}</dt>
+                      <dd className="text-h2 tabular-nums text-ink">{t('35')}</dd>
                     </div>
                     <div className="border-t-2 border-primary pt-4">
-                      <dt className="text-sm text-muted">Photograph shows</dt>
-                      <dd className="text-h2 tabular-nums text-ink">1 of 9</dd>
+                      <dt className="text-sm text-muted">{t('36')}</dt>
+                      <dd className="text-h2 tabular-nums text-ink">{t('37')}</dd>
                     </div>
                     <div className="border-t-2 border-signal pt-4">
-                      <dt className="text-sm text-muted">Both channels</dt>
-                      <dd className="text-h2 tabular-nums text-ink">0 of 9</dd>
+                      <dt className="text-sm text-muted">{t('38')}</dt>
+                      <dd className="text-h2 tabular-nums text-ink">{t('39')}</dd>
                     </div>
                   </dl>
                   <p className="mt-8 text-body leading-relaxed text-pretty text-ink">
-                    Nothing overlaps. Every fact we can rank on is invisible in the
-                    picture, and the one fact the picture carries is the one the
-                    catalogue never records. We expected the two channels to back
-                    each other up. They do not even meet.
+                    {t('40')}
                   </p>
                   <p className="mt-4 text-sm leading-relaxed text-pretty text-muted">
-                    Honest caveat: the catalogue column is measured, the photograph
-                    column is our judgement. Screen size is the one we would argue
-                    about, and calling it visible does not change the shape of the
-                    result.
+                    {t('41')}
                   </p>
                 </div>
               </div>

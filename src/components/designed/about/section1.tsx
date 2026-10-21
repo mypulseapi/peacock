@@ -6,21 +6,20 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section1Section() {
+  const t = useTranslations("designed.about.section1");
   return (
     <section className="bg-soft-gradient border-b border-line">
             <div className="frame pt-20 pb-20 lg:pt-28 lg:pb-24">
               <div className="reveal mx-auto max-w-3xl text-center">
                 <h1 className="text-display text-balance">
-                  We measure whether product data can answer the questions shoppers
-                  ask
+                  {t('1')}
                 </h1>
                 <p
                   className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted"
                 >
-                  Pulse measures your product data against what shoppers actually
-                  decide on. Send one category export and get a ranked repair list
-                  back within 48 hours.
+                  {t('2')}
                 </p>
               </div>
 
@@ -33,21 +32,21 @@ export function Section1Section() {
                 >
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <figcaption className="text-h3 text-ink">
-                      The same four gaps, ranked two ways
+                      {t('3')}
                     </figcaption>
-                    <span className="badge border-line text-muted">Example data</span>
+                    <span className="badge border-line text-muted">{t('4')}</span>
                   </div>
                   <div className="mt-6 mb-6 grid gap-8 md:grid-cols-2">
                     <div>
                       <p className="text-sm text-muted">
-                        By how much is missing, of 216 products
+                        {t('5')}
                       </p>
                       <ol className="mt-3 space-y-4">
                         <li>
                           <div className="flex items-baseline gap-2 text-data">
                             <span className="w-4 shrink-0 tabular-nums text-muted"
                               >1</span
-                            ><span className="font-semibold text-ink">Processor</span
+                            ><span className="font-semibold text-ink">{t('6')}</span
                             ><span className="ml-auto tabular-nums text-muted"
                               >162</span
                             >
@@ -62,7 +61,7 @@ export function Section1Section() {
                           <div className="flex items-baseline gap-2 text-data">
                             <span className="w-4 shrink-0 tabular-nums text-muted"
                               >2</span
-                            ><span className="text-ink">Screen size</span
+                            ><span className="text-ink">{t('7')}</span
                             ><span className="ml-auto tabular-nums text-muted">80</span>
                           </div>
                           <div className="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
@@ -75,7 +74,7 @@ export function Section1Section() {
                           <div className="flex items-baseline gap-2 text-data">
                             <span className="w-4 shrink-0 tabular-nums text-muted"
                               >3</span
-                            ><span className="text-ink">Memory</span
+                            ><span className="text-ink">{t('8')}</span
                             ><span className="ml-auto tabular-nums text-muted">60</span>
                           </div>
                           <div className="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
@@ -88,7 +87,7 @@ export function Section1Section() {
                           <div className="flex items-baseline gap-2 text-data">
                             <span className="w-4 shrink-0 tabular-nums text-muted"
                               >4</span
-                            ><span className="text-ink">Storage</span
+                            ><span className="text-ink">{t('9')}</span
                             ><span className="ml-auto tabular-nums text-muted">55</span>
                           </div>
                           <div className="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
@@ -101,7 +100,7 @@ export function Section1Section() {
                     </div>
                     <div>
                       <p className="text-sm text-muted">
-                        By what shoppers need, of 32 requirements
+                        {t('10')}
                       </p>
                       <ol className="mt-3 space-y-4">
                         <li
@@ -111,9 +110,9 @@ export function Section1Section() {
                             <span
                               className="w-4 shrink-0 tabular-nums font-semibold text-signal-text"
                               >1</span
-                            ><span className="text-ink">Screen size</span
+                            ><span className="text-ink">{t('11')}</span
                             ><span className="ml-auto tabular-nums text-muted"
-                              >15 of 32</span
+                              >{t('12')}</span
                             >
                           </div>
                           <div className="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
@@ -126,9 +125,9 @@ export function Section1Section() {
                           <div className="flex items-baseline gap-2 text-data">
                             <span className="w-4 shrink-0 tabular-nums text-muted"
                               >2</span
-                            ><span className="text-ink">Memory</span
+                            ><span className="text-ink">{t('13')}</span
                             ><span className="ml-auto tabular-nums text-muted"
-                              >13 of 32</span
+                              >{t('14')}</span
                             >
                           </div>
                           <div className="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
@@ -141,9 +140,9 @@ export function Section1Section() {
                           <div className="flex items-baseline gap-2 text-data">
                             <span className="w-4 shrink-0 tabular-nums text-muted"
                               >3</span
-                            ><span className="text-ink">Storage</span
+                            ><span className="text-ink">{t('15')}</span
                             ><span className="ml-auto tabular-nums text-muted"
-                              >10 of 32</span
+                              >{t('16')}</span
                             >
                           </div>
                           <div className="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
@@ -156,9 +155,9 @@ export function Section1Section() {
                           <div className="flex items-baseline gap-2 text-data">
                             <span className="w-4 shrink-0 tabular-nums text-muted"
                               >4</span
-                            ><span className="font-semibold text-ink">Processor</span
+                            ><span className="font-semibold text-ink">{t('17')}</span
                             ><span className="ml-auto tabular-nums text-muted"
-                              >2 of 32</span
+                              >{t('18')}</span
                             >
                           </div>
                           <div className="mt-1 ml-6 h-1.5 rounded-full bg-surface-1">
@@ -173,16 +172,13 @@ export function Section1Section() {
                   <div className="mt-auto border-t border-line pt-5">
                     <p className="max-w-xl text-body text-pretty text-ink">
                       <span className="font-semibold"
-                        >Processor is missing from 162 products, but only 2 of 32
-                        shopper requirements mention it.</span
+                        >{t('19')}</span
                       >
-                      Ranked by absence it comes first; ranked by demand it comes
-                      last.
+                      {t('20')}
                     </p>
                   </div>
                   <p className="mt-2 text-caption text-muted">
-                    A requirement is a need shoppers stated when choosing. This
-                    shelf has 32.
+                    {t('21')}
                   </p>
                 </figure>
                 <div className="card flex min-w-0 flex-col divide-y divide-line">
@@ -190,21 +186,20 @@ export function Section1Section() {
                     <p
                       className="font-display text-title font-semibold tabular-nums text-ink"
                     >
-                      48 hours
+                      {t('22')}
                     </p>
                     <p className="mt-1 text-sm text-pretty text-muted">
-                      From one category export to your ranked Decision Audit.
+                      {t('23')}
                     </p>
                   </div>
                   <div className="flex flex-1 flex-col justify-center pt-6">
                     <p
                       className="font-display text-title font-semibold tabular-nums text-ink"
                     >
-                      12 of 12
+                      {t('24')}
                     </p>
                     <p className="mt-1 text-sm text-pretty text-muted">
-                      reruns of the example ranking put screen size first. Ranks 2
-                      to 4 moved, and we say so.
+                      {t('25')}
                     </p>
                   </div>
                 </div>

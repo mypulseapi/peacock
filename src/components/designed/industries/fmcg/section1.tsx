@@ -6,9 +6,11 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export function Section1Section() {
+  const t = useTranslations("designed.industries.fmcg.section1");
   return (
     <section className="hero-bg border-b border-line">
             <div
@@ -16,38 +18,33 @@ export function Section1Section() {
             >
               <div className="lg:col-span-6 lg:pr-16">
                 <h1 className="reveal text-headline text-balance">
-                  The pack looks the same. The decision is on the label
+                  {t('1')}
                 </h1>
                 <p
                   className="reveal mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted delay-100"
                 >
-                  Fast-moving goods are bought on small, specific facts: pack size,
-                  dietary claim, concentration, whether it suits a child. Those
-                  facts are printed on the packaging and photographed, which means a
-                  shopper can read them and your filters cannot. The fact is not
-                  missing. It is sitting inside an image nobody can search.
+                  {t('2')}
                 </p>
                 <div className="reveal mt-8 flex flex-wrap gap-3 delay-200">
                   <Link href="/en/contact" className="btn-primary"
-                    >Request a Decision Audit</Link>
+                    >{t('3')}</Link>
                   <Link href="/en/product/decision-audit" className="btn-secondary"
-                    >See what you get</Link>
+                    >{t('4')}</Link>
                 </div>
                 <p className="reveal mt-6 text-sm text-muted delay-300">
                   <span className="font-semibold text-ink"
-                    >Ranked repair list in 48 hours</span
+                    >{t('5')}</span
                   >
-                  from one category export
+                  {t('6')}
                 </p>
               </div>
               <figure className="reveal delay-200 lg:col-span-6">
                 <div className="card">
                   <p className="text-sm font-semibold text-ink">
-                    Attribute coverage on a typical FMCG and consumer goods
-                    catalogue
+                    {t('7')}
                   </p>
                   <p className="mt-1 text-caption text-muted">
-                    Illustrative of this sector&#x27;s shape
+                    {t('8')}
                   </p>
                   <ul className="mt-6 space-y-4">
                     <li
@@ -60,7 +57,7 @@ export function Section1Section() {
                           className="grid size-5 shrink-0 place-items-center rounded bg-signal text-caption tabular-nums text-on-step"
                           aria-label="Rank 1"
                           >1</span
-                        >Concentration
+                        >{t('9')}
                       </p>
                       <div
                         className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-card"
@@ -83,7 +80,7 @@ export function Section1Section() {
                           className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
                           aria-label="Rank 2"
                           >2</span
-                        >Pack size
+                        >{t('10')}
                       </p>
                       <div
                         className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
@@ -106,7 +103,7 @@ export function Section1Section() {
                           className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
                           aria-label="Rank 3"
                           >3</span
-                        >Dietary claim
+                        >{t('11')}
                       </p>
                       <div
                         className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
@@ -129,7 +126,7 @@ export function Section1Section() {
                           className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
                           aria-label="Rank 4"
                           >4</span
-                        >Brand
+                        >{t('12')}
                       </p>
                       <div
                         className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
@@ -149,7 +146,7 @@ export function Section1Section() {
                     <summary
                       className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-medium text-primary hover:text-primary-hover"
                     >
-                      View as table<svg
+                      {t('13')}<svg
                         className="size-4 transition-transform duration-200 ease-out-soft group-open:rotate-180"
                         aria-hidden="true"
                       >
@@ -159,8 +156,7 @@ export function Section1Section() {
                     <div className="mt-4 overflow-hidden rounded-lg border border-line">
                       <table className="w-full text-data">
                         <caption className="sr-only">
-                          Attribute coverage on a typical FMCG and consumer goods
-                          catalogue
+                          {t('14')}
                         </caption>
                         <thead className="bg-surface-1 text-xs text-muted">
                           <tr>
@@ -168,13 +164,13 @@ export function Section1Section() {
                               scope="col"
                               className="px-4 py-2 text-left font-sans font-medium"
                             >
-                              Attribute
+                              {t('15')}
                             </th>
                             <th
                               scope="col"
                               className="px-4 py-2 text-right font-sans font-medium"
                             >
-                              Recorded on
+                              {t('16')}
                             </th>
                           </tr>
                         </thead>
@@ -184,7 +180,7 @@ export function Section1Section() {
                               scope="row"
                               className="px-4 py-2 text-left font-sans font-normal"
                             >
-                              Concentration
+                              {t('17')}
                             </th>
                             <td className="px-4 py-2 text-right tabular-nums">22%</td>
                           </tr>
@@ -193,7 +189,7 @@ export function Section1Section() {
                               scope="row"
                               className="px-4 py-2 text-left font-sans font-normal"
                             >
-                              Pack size
+                              {t('18')}
                             </th>
                             <td className="px-4 py-2 text-right tabular-nums">58%</td>
                           </tr>
@@ -202,7 +198,7 @@ export function Section1Section() {
                               scope="row"
                               className="px-4 py-2 text-left font-sans font-normal"
                             >
-                              Dietary claim
+                              {t('19')}
                             </th>
                             <td className="px-4 py-2 text-right tabular-nums">31%</td>
                           </tr>
@@ -211,7 +207,7 @@ export function Section1Section() {
                               scope="row"
                               className="px-4 py-2 text-left font-sans font-normal"
                             >
-                              Brand
+                              {t('20')}
                             </th>
                             <td className="px-4 py-2 text-right tabular-nums">97%</td>
                           </tr>
@@ -221,8 +217,7 @@ export function Section1Section() {
                   </details>
                 </div>
                 <figcaption className="mt-4 max-w-xl text-caption text-muted">
-                  Rows are ranked by what a purchase turns on: rank 1 first. Those
-                  are the rows an audit surfaces and a coverage report buries.
+                  {t('21')}
                 </figcaption>
               </figure>
             </div>

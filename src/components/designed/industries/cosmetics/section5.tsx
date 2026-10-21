@@ -6,16 +6,18 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section5Section() {
+  const t = useTranslations("designed.industries.cosmetics.section5");
   return (
     <section className="border-b border-line">
             <div className="frame py-20 lg:py-28">
               <div className="max-w-2xl">
-                <h2 className="reveal text-title text-balance">What we do about it</h2>
+                <h2 className="reveal text-title text-balance">{t('1')}</h2>
                 <p
                   className="reveal mt-6 text-body leading-relaxed text-pretty text-muted"
                 >
-                  Three things, and only the first one needs anything from you.
+                  {t('2')}
                 </p>
               </div>
               <ol
@@ -26,11 +28,9 @@ export function Section5Section() {
                     className="grid size-9 place-items-center rounded-full bg-primary text-sm font-semibold tabular-nums text-on-primary"
                     >1</span
                   >
-                  <h3 className="mt-5 text-h3">Send one category</h3>
+                  <h3 className="mt-5 text-h3">{t('3')}</h3>
                   <p className="mt-2 text-body text-pretty text-muted">
-                    A CSV or JSON export of a single category. Product name,
-                    description, category, price, and whatever attributes you
-                    already record.
+                    {t('4')}
                   </p>
                 </li>
                 <li>
@@ -38,11 +38,9 @@ export function Section5Section() {
                     className="grid size-9 place-items-center rounded-full bg-primary text-sm font-semibold tabular-nums text-on-primary"
                     >2</span
                   >
-                  <h3 className="mt-5 text-h3">We rank what to record first</h3>
+                  <h3 className="mt-5 text-h3">{t('5')}</h3>
                   <p className="mt-2 text-body text-pretty text-muted">
-                    Every missing attribute scored by how much recording it would
-                    change what a buyer in your sector can decide, with the affected
-                    products attached.
+                    {t('6')}
                   </p>
                 </li>
                 <li>
@@ -50,11 +48,9 @@ export function Section5Section() {
                     className="grid size-9 place-items-center rounded-full bg-primary text-sm font-semibold tabular-nums text-on-primary"
                     >3</span
                   >
-                  <h3 className="mt-5 text-h3">You fix it, then we verify</h3>
+                  <h3 className="mt-5 text-h3">{t('7')}</h3>
                   <p className="mt-2 text-body text-pretty text-muted">
-                    Most of the repair is work your own team can do. When it is done
-                    we recompute on the repaired catalogue and show you exactly what
-                    moved.
+                    {t('8')}
                   </p>
                 </li>
               </ol>
@@ -67,28 +63,28 @@ export function Section5Section() {
                 >
                   <svg className="size-3.5 text-primary" aria-hidden="true">
                     <use href="#i-check" /></svg
-                  >One category export
+                  >{t('9')}
                 </li>
                 <li
                   className="flex items-center gap-2 rounded-full border border-line bg-card px-3 py-1.5 text-sm text-ink"
                 >
                   <svg className="size-3.5 text-primary" aria-hidden="true">
                     <use href="#i-check" /></svg
-                  >No code
+                  >{t('10')}
                 </li>
                 <li
                   className="flex items-center gap-2 rounded-full border border-line bg-card px-3 py-1.5 text-sm text-ink"
                 >
                   <svg className="size-3.5 text-primary" aria-hidden="true">
                     <use href="#i-check" /></svg
-                  >No tag on your site
+                  >{t('11')}
                 </li>
                 <li
                   className="flex items-center gap-2 rounded-full border border-line bg-card px-3 py-1.5 text-sm text-ink"
                 >
                   <svg className="size-3.5 text-primary" aria-hidden="true">
                     <use href="#i-check" /></svg
-                  >No customer data
+                  >{t('12')}
                 </li>
               </ul>
             </div>

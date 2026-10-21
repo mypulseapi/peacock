@@ -6,12 +6,14 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { useTranslations } from "next-intl";
 export function Section3Section() {
+  const t = useTranslations("designed.product.decision-verification.section3");
   return (
     <section className="scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">
               <h2 className="reveal text-title text-balance">
-                How does the verification work?
+                {t('1')}
               </h2>
               {/* Timeline (as on the Decision Audit page): the calm line grows across the three stops (reveal-bar); on
                    phones the stops stack along a static line on the left. */}
@@ -34,13 +36,12 @@ export function Section3Section() {
                       className="absolute top-0.5 left-0 size-5 rounded-full border-4 border-card bg-primary ring-1 ring-primary-line md:static md:block"
                       aria-hidden="true"
                     ></span>
-                    <p className="text-data font-semibold text-primary md:mt-8">You</p>
-                    <h3 className="mt-4 text-h3 text-ink">Re-export the category</h3>
+                    <p className="text-data font-semibold text-primary md:mt-8">{t('2')}</p>
+                    <h3 className="mt-4 text-h3 text-ink">{t('3')}</h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Export your shelf with current progress. Partial data is saved
-                      and supported, no need to wait for a full completion.
+                      {t('4')}
                     </p>
                   </li>
                   <li className="reveal relative pl-9 delay-500 md:pl-0">
@@ -48,16 +49,14 @@ export function Section3Section() {
                       className="absolute top-0.5 left-0 size-5 rounded-full border-4 border-card bg-primary ring-1 ring-primary-line md:static md:block"
                       aria-hidden="true"
                     ></span>
-                    <p className="text-data font-semibold text-primary md:mt-8">Us</p>
+                    <p className="text-data font-semibold text-primary md:mt-8">{t('5')}</p>
                     <h3 className="mt-4 text-h3 text-ink">
-                      Comparable before &amp; after results
+                      {t('6')}
                     </h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      We use the same method and product attributes in both audits,
-                      ensuring accurate and reliable before-and-after comparisons
-                      without changing the evaluation criteria.
+                      {t('7')}
                     </p>
                   </li>
                   <li className="reveal relative pl-9 delay-850 md:pl-0">
@@ -65,14 +64,12 @@ export function Section3Section() {
                       className="absolute top-0.5 left-0 size-5 rounded-full border-4 border-card bg-primary ring-1 ring-primary-line md:static md:block"
                       aria-hidden="true"
                     ></span>
-                    <p className="text-data font-semibold text-primary md:mt-8">Both</p>
-                    <h3 className="mt-4 text-h3 text-ink">See what has improved</h3>
+                    <p className="text-data font-semibold text-primary md:mt-8">{t('8')}</p>
+                    <h3 className="mt-4 text-h3 text-ink">{t('9')}</h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Track product attribute coverage, measure catalogue gap
-                      improvements, and assess your readiness score in a clear,
-                      shareable report for business decision-makers.
+                      {t('10')}
                     </p>
                   </li>
                 </ol>

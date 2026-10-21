@@ -6,22 +6,24 @@
  * five already had a `request.tsx`; this page did not, which is why it was the one page whose
  * `[data-cta]` and two `.reveal` hooks came up short against the designer's DOM.
  */
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export function RequestSection() {
+  const t = useTranslations("designed.visual-evidence.request");
   return (
     <section id="request" className="cta-dots scroll-mt-16 border-t border-line" data-cta>
       <div className="frame py-24 text-center lg:py-32">
         <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
-          Discover your shoppers&rsquo; intent with Pulse
+          {t('1')}
         </h2>
 
         <div className="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200">
           <Link href="/en/contact" className="btn-primary">
-            Request a Decision Audit
+            {t('2')}
           </Link>
           <Link href="/en#method" className="btn-secondary">
-            Read the method first
+            {t('3')}
           </Link>
         </div>
       </div>

@@ -4,21 +4,30 @@ import { createContext, useContext, useEffect, useSyncExternalStore, ReactNode }
 import { useMounted, useStored, writeStored } from "@/lib/client-hooks";
 
 type Theme = "light" | "dark";
-/** `null` means the visitor has not chosen, so the operating system decides. */
-type Preference = Theme | null;
+/**
+ * What the visitor picked. `"system"` is a choice like any other, not the absence of one.
+ *
+ * It used to be that no stored value meant "follow the system", because there was no control
+ * anywhere to choose with, and pinning everyone to light would have made the dark half of the
+ * palette unreachable. There is a control now, in the header, so the default can be a decision
+ * again: the site is a light design and opens light, and anyone who wants dark or wants to
+ * follow their OS says so and is remembered.
+ */
+export type Preference = Theme | "system";
+const DEFAULT_PREFERENCE: Preference = "light";
 
 interface ThemeContextType {
   /** What is actually on screen, which is what the toggle's icon and label describe. */
   theme: Theme;
-  /** What the visitor chose, or null while the OS is deciding. */
+  /** What the visitor chose: a fixed theme, or `"system"` to follow the OS. */
   preference: Preference;
   toggleTheme: () => void;
-  setTheme: (theme: Theme) => void;
+  setTheme: (preference: Preference) => void;
 }
 
 const defaultContext: ThemeContextType = {
   theme: "light",
-  preference: null,
+  preference: DEFAULT_PREFERENCE,
   toggleTheme: () => {},
   setTheme: () => {},
 };
@@ -54,23 +63,33 @@ function useSystemTheme(): Theme {
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const mounted = useMounted();
   // The stored preference IS the state, so there is nothing to copy into React on mount and no
-  // setState during hydration. `null` is a real value here: it means "follow the system".
+  // setState during hydration.
   const stored = useStored("pulse-theme", null);
-  const preference: Preference = stored === "light" || stored === "dark" ? stored : null;
+  const preference: Preference =
+    stored === "light" || stored === "dark" || stored === "system" ? stored : DEFAULT_PREFERENCE;
   const system = useSystemTheme();
-  const theme: Theme = preference ?? system;
+  const theme: Theme = preference === "system" ? system : preference;
 
   /*
-   * Write the attribute only when the visitor has chosen one.
+   * Write the attribute unless the visitor asked to follow the OS.
    *
-   * Removing it when they have not is what hands control back to `color-scheme: light dark`, and
-   * so to the OS. Stamping `data-theme` unconditionally -- which is what this did before, with
-   * `data-theme="light"` also hardcoded in the markup -- pinned every visitor to light and made
-   * the dark half of the palette unreachable without finding the toggle.
+   * Removing it is what hands control back to `color-scheme: light dark`, and so to the system,
+   * which is exactly and only what `"system"` should mean. Every other value is a decision the
+   * visitor made and the attribute states it.
    */
   useEffect(() => {
     const root = document.documentElement;
-    const next = preference;
+    /*
+     * Driven by what is stored, not by the defaulted preference.
+     *
+     * `useStored` has to return its server snapshot on the hydration render to match the HTML,
+     * so for one render `stored` is null and `preference` is the default. Acting on that meant
+     * React stamped `light` over the `dark` the inline script had already applied, and a chosen
+     * theme did not survive a reload. The inline script owns the first paint; React only acts
+     * once the visitor's actual choice is readable.
+     */
+    if (stored === null) return;
+    const next = stored === "system" ? null : stored;
     // On first mount the inline theme script has already stamped the attribute, so there is
     // nothing to change and nothing to animate. Without this guard every page load would open
     // with a cross-fade of one frame against an identical frame.
@@ -84,9 +103,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     // The cross-fade itself is styled in globals.css. Browsers without the API just swap.
     if (document.startViewTransition) document.startViewTransition(apply);
     else apply();
-  }, [preference]);
+  }, [stored]);
 
-  const setTheme = (next: Theme) => {
+  const setTheme = (next: Preference) => {
     writeStored("pulse-theme", next);
   };
 

@@ -275,75 +275,66 @@ export function DesignedHeader() {
                       data-panel
                       className="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none"
                     >
+                      {/*
+                        One column, and no section headings.
+
+                        It used to be Learn and Company side by side, three items against one.
+                        Once Documentation was promoted to the top bar, Learn held nothing but
+                        Research, and a heading over a single link is a label doing no work. With
+                        four links in one list there is one group, so naming it says nothing the
+                        panel does not already say.
+                      */}
                       <div data-nav-content className="nav-content flex">
                         <div className="nav-column w-76 p-3">
-                          <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                            {t('30')}
-                          </p>
                           <ul className="space-y-1">
-                            <li>
-                              <Link                             href={designedHref("/en/visual-evidence")}
-                                className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          <li>
+                            <Link href={designedHref("/en/visual-evidence")}
+                              className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink"
+                                >{t('33')}</span
                               >
-                                <span
-                                  className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >{t('33')}</span
-                                >
-                                <span
-                                  className="mt-1 block text-sm text-pretty text-muted"
-                                  >{t('34')}</span
-                                >
-                              </Link>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="nav-column w-76 p-3">
-                          <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                            {t('35')}
-                          </p>
-                          <ul className="space-y-1">
-                            <li>
-                              <Link                             href={designedHref("/en/about")}
-                                className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                              <span className="mt-1 block text-sm text-pretty text-muted"
+                                >{t('34')}</span
                               >
-                                <span
-                                  className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >{t('36')}</span
-                                >
-                                <span
-                                  className="mt-1 block text-sm text-pretty text-muted"
-                                  >{t('37')}</span
-                                >
-                              </Link>
-                            </li>
-                            <li>
-                              <Link                             href={designedHref("/en/contact")}
-                                className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href={designedHref("/en/about")}
+                              className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink"
+                                >{t('36')}</span
                               >
-                                <span
-                                  className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >{t('38')}</span
-                                >
-                                <span
-                                  className="mt-1 block text-sm text-pretty text-muted"
-                                  >{t('39')}</span
-                                >
-                              </Link>
-                            </li>
-                            <li>
-                              <Link                             href={designedHref("/en/careers")}
-                                className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                              <span className="mt-1 block text-sm text-pretty text-muted"
+                                >{t('37')}</span
                               >
-                                <span
-                                  className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >{t('40')}</span
-                                >
-                                <span
-                                  className="mt-1 block text-sm text-pretty text-muted"
-                                  >{t('41')}</span
-                                >
-                              </Link>
-                            </li>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href={designedHref("/en/contact")}
+                              className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink"
+                                >{t('38')}</span
+                              >
+                              <span className="mt-1 block text-sm text-pretty text-muted"
+                                >{t('39')}</span
+                              >
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href={designedHref("/en/careers")}
+                              className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink"
+                                >{t('40')}</span
+                              >
+                              <span className="mt-1 block text-sm text-pretty text-muted"
+                                >{t('41')}</span
+                              >
+                            </Link>
+                          </li>
                           </ul>
                         </div>
                       </div>
@@ -493,8 +484,8 @@ export function DesignedHeader() {
                           <use href="#i-flask" /></svg></span
                       >{t('61')}</Link>
                   </li>
-                  {/* The desktop panel splits Resources into Learn and Company; on mobile the
-                       two run together, so About us closes the list as Company does there. */}
+                  {/* The desktop panel is one unlabelled list now, which is what this has
+                       always been. */}
                   <li>
                     <Link                   href={designedHref("/en/about")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"

@@ -6,6 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { AttributeIcon } from "../../attribute-icon";
 import { designedHref, designedText } from "../../t";
 import Link from "next/link";
 
@@ -80,7 +81,7 @@ export function Section1Section() {
                           className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
                           aria-label="Rank 2"
                           >2</span
-                        >{t('10')}
+                        ><AttributeIcon src="icons/product-attribute-memory-ram.webp" />{t('10')}
                       </p>
                       <div
                         className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
@@ -103,7 +104,7 @@ export function Section1Section() {
                           className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
                           aria-label="Rank 3"
                           >3</span
-                        >{t('11')}
+                        ><AttributeIcon src="icons/product-attribute-storage.webp" />{t('11')}
                       </p>
                       <div
                         className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
@@ -126,7 +127,7 @@ export function Section1Section() {
                           className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
                           aria-label="Rank 4"
                           >4</span
-                        >{t('12')}
+                        ><AttributeIcon src="icons/product-attribute-processor.webp" />{t('12')}
                       </p>
                       <div
                         className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"

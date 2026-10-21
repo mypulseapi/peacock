@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Image from "next/image";
+import { img } from "@/lib/cdn";
 import { designedText } from "../t";
 export function Section3Section() {
   const t = designedText("home.section3");
@@ -19,6 +21,28 @@ export function Section3Section() {
                 <article
                   className="reveal flex flex-col rounded-2xl border border-line bg-card p-6 shadow-sm lg:p-10"
                 >
+                  {/*
+                    The product the shopper is actually holding.
+                    
+                    On a plate of its own, with a light background pinned in both themes: these
+                    shots are photographed on white with no alpha, so dropped straight onto the
+                    card they would be a white rectangle on a dark surface once the theme flips.
+                    A plate is also how a storefront shows a pack shot, which is the thing being
+                    described here.
+                    
+                    `width` and `height` are the file's own, which keeps the box reserved before
+                    it loads: the SEO gate in check-seo.mjs refuses an image without them.
+                  */}
+                  <div className="mb-6 grid place-items-center rounded-xl bg-[#fdfdfd] p-4">
+                    <Image
+                      src={img("home/baby-laundry-powder-pack-shot.webp")}
+                      alt={`${t('3')} ${t('4')}`}
+                      width={1536}
+                      height={1024}
+                      sizes="(min-width: 768px) 20rem, 90vw"
+                      className="h-32 w-auto object-contain"
+                    />
+                  </div>
                   <p className="eyebrow">{t('2')}</p>
                   <h3 className="mt-4 text-h2 text-balance text-ink">
                     <span className="xl:block">{t('3')}</span>
@@ -56,6 +80,28 @@ export function Section3Section() {
                 <article
                   className="reveal flex flex-col rounded-2xl border border-line bg-card p-6 shadow-sm delay-100 lg:p-10"
                 >
+                  {/*
+                    The product the shopper is actually holding.
+                    
+                    On a plate of its own, with a light background pinned in both themes: these
+                    shots are photographed on white with no alpha, so dropped straight onto the
+                    card they would be a white rectangle on a dark surface once the theme flips.
+                    A plate is also how a storefront shows a pack shot, which is the thing being
+                    described here.
+                    
+                    `width` and `height` are the file's own, which keeps the box reserved before
+                    it loads: the SEO gate in check-seo.mjs refuses an image without them.
+                  */}
+                  <div className="mb-6 grid place-items-center rounded-xl bg-[#fdfdfd] p-4">
+                    <Image
+                      src={img("product/office-laptop-missing-attributes.webp")}
+                      alt={`${t('10')} ${t('11')}`}
+                      width={1536}
+                      height={1024}
+                      sizes="(min-width: 768px) 20rem, 90vw"
+                      className="h-32 w-auto object-contain"
+                    />
+                  </div>
                   <p className="eyebrow">{t('9')}</p>
                   <h3 className="mt-4 text-h2 text-balance text-ink">
                     <span className="xl:block">{t('10')}</span>

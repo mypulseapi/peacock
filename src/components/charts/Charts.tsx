@@ -65,7 +65,7 @@ function Shell({
   );
 }
 
-export interface BarDatum { label: string; value: number; tone?: Tone; suffix?: string }
+export interface BarDatum { label: string; value: number; tone?: Tone; suffix?: string; icon?: string }
 
 /** Magnitude across categories. Horizontal, because category names are words. */
 export function BarChart({
@@ -81,7 +81,34 @@ export function BarChart({
           const hue = C[d.tone ?? "base"];
           return (
             <div key={d.label} className="grid grid-cols-[minmax(7rem,11rem)_1fr_auto] items-center gap-3 sm:gap-4">
-              <span className="truncate text-[0.875rem] font-medium" style={{ color: C.ink }}>{d.label}</span>
+              <span className="flex min-w-0 items-center gap-2 text-[0.875rem] font-medium" style={{ color: C.ink }}>
+                {d.icon && (
+                  /*
+                   * The mark, drawn with the label's own colour.
+                   *
+                   * A mask rather than an `<img>`: the source is black line art on transparent, so
+                   * as an image it would stay black whatever the theme and vanish on the dark one.
+                   * Masked, `currentColor` means it is always exactly as dark as the word beside
+                   * it, in either theme, with no second file.
+                   */
+                  <span
+                    aria-hidden="true"
+                    className="size-4 shrink-0"
+                    style={{
+                      backgroundColor: "currentColor",
+                      maskImage: `url(${d.icon})`,
+                      WebkitMaskImage: `url(${d.icon})`,
+                      maskSize: "contain",
+                      WebkitMaskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskRepeat: "no-repeat",
+                      maskPosition: "center",
+                      WebkitMaskPosition: "center",
+                    }}
+                  />
+                )}
+                <span className="truncate">{d.label}</span>
+              </span>
               <span className="h-3 overflow-hidden rounded-full" style={{ background: C.baseBg }}>
                 <span
                   className="block h-full rounded-full"

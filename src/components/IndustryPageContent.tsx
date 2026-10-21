@@ -150,6 +150,7 @@ export function IndustryPageContent({ slug }: { slug: string }) {
           data={s.attributes.map((a) => ({
             label: a.label,
             value: a.coverage,
+            icon: a.icon ? img(a.icon) : undefined,
             // The urgent row is the one a decision turns on and the catalogue
             // mostly does not record. Everything else is recessive.
             tone: a.decisive && a.coverage < 60 ? "warn" : a.decisive ? "good" : "base",

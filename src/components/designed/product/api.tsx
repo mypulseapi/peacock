@@ -6,7 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { designedText } from "../t";
+import { designedHref, designedText } from "../t";
 import Link from "next/link";
 
 export function ApiSection() {
@@ -40,7 +40,7 @@ export function ApiSection() {
                     >
                     {t('5')}
                   </p>
-                  <Link                 href="/en/product/decision-api"
+                  <Link                 href={designedHref("/en/product/decision-api")}
                     className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                     >{t('6')}<svg
                       className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"

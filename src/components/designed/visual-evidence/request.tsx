@@ -6,7 +6,7 @@
  * five already had a `request.tsx`; this page did not, which is why it was the one page whose
  * `[data-cta]` and two `.reveal` hooks came up short against the designer's DOM.
  */
-import { designedText } from "../t";
+import { designedHref, designedText } from "../t";
 import Link from "next/link";
 
 export function RequestSection() {
@@ -19,10 +19,10 @@ export function RequestSection() {
         </h2>
 
         <div className="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200">
-          <Link href="/en/contact" className="btn-primary">
+          <Link href={designedHref("/en/contact")} className="btn-primary">
             {t('2')}
           </Link>
-          <Link href="/en#method" className="btn-secondary">
+          <Link href={designedHref("/en#method")} className="btn-secondary">
             {t('3')}
           </Link>
         </div>

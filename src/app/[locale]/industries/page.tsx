@@ -1,7 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageSchema } from "@/components/PageSchema";
 import { buildAlternates } from "@/lib/seo";
-import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
@@ -24,11 +23,20 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default function IndustriesPage() {
-  const t = useTranslations("industriesPage");
-  const locale = useLocale();
+/*
+ * The locale comes from the route, not from `useLocale()`.
+ *
+ * This page is server rendered into a static export, and next-intl resolves a Server
+ * Component's locale from a request there is none of, so `useLocale()` returned the fallback:
+ * `/vi/industries` rendered entirely in English and every sector link pointed at `/en`.
+ * `params` is the one source that is right by construction.
+ */
+export default async function IndustriesPage({ params }: PageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "industriesPage" });
+  const tc = await getTranslations({ locale, namespace: "common" });
   const list = sectors(locale);
-  const tc = useTranslations("common");
 
   return (
     <>
@@ -48,7 +56,7 @@ export default function IndustriesPage() {
             const Icon = s.icon;
             return (
               <li key={s.slug}>
-                <Link
+                <Link locale={locale}
                   href={`/industries/${s.slug}`}
                   className="group ed-raise flex h-full flex-col rounded-2xl border border-[color:var(--ed-line)] p-7 transition hover:border-[color:var(--brand-indigo)]"
                 >
@@ -76,7 +84,7 @@ export default function IndustriesPage() {
         <div className="max-w-3xl">
           <h2 className="ed-d2 text-[color:var(--ed-ink)]">{t("anyTitle")}</h2>
           <p className="ed-body mt-7 max-w-[62ch]">{t("anyBody")}</p>
-          <Link
+          <Link locale={locale}
             href="/contact"
             className="group mt-11 inline-flex items-center gap-2 rounded-xl bg-[color:var(--brand-indigo)] px-5 py-3.5 text-[0.9375rem] font-semibold text-[color:var(--brand-on-indigo)] transition hover:bg-[color:var(--brand-indigo-deep)]"
           >

@@ -6,7 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { designedText } from "../t";
+import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
 import Link from "next/link";
@@ -18,7 +18,7 @@ export function DesignedFooter() {
           <div className="frame pt-20 pb-12 lg:pt-24">
             <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
               <div>
-                <Link               href="/en"
+                <Link               href={designedHref("/en")}
                   aria-label="Pulse home"
                   className="hit-area inline-flex"
                   ><Image
@@ -40,22 +40,22 @@ export function DesignedFooter() {
                 <h2 className="text-nav font-semibold">{t('1')}</h2>
                 <ul className="mt-6 space-y-5 text-sm text-muted">
                   <li>
-                    <Link                   href="/en/product/decision-audit"
+                    <Link                   href={designedHref("/en/product/decision-audit")}
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                       >{t('2')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/product/decision-verification"
+                    <Link                   href={designedHref("/en/product/decision-verification")}
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                       >{t('3')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/product/decision-monitor"
+                    <Link                   href={designedHref("/en/product/decision-monitor")}
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                       >{t('4')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/pricing"
+                    <Link                   href={designedHref("/en/pricing")}
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                       >{t('5')}</Link>
                   </li>
@@ -65,17 +65,17 @@ export function DesignedFooter() {
                 <h2 className="text-nav font-semibold">{t('6')}</h2>
                 <ul className="mt-6 space-y-5 text-sm text-muted">
                   <li>
-                    <Link                   href="/en/about"
+                    <Link                   href={designedHref("/en/about")}
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                       >{t('7')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/contact"
+                    <Link                   href={designedHref("/en/contact")}
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                       >{t('8')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/careers"
+                    <Link                   href={designedHref("/en/careers")}
                       className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                       >{t('9')}</Link>
                   </li>
@@ -131,22 +131,22 @@ export function DesignedFooter() {
               <p>{t('12')}</p>
               <ul className="flex flex-wrap items-center gap-x-7 gap-y-5">
                 <li>
-                  <Link                 href="/en/privacy"
+                  <Link                 href={designedHref("/en/privacy")}
                     className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
                     >{t('13')}</Link>
                 </li>
                 <li>
-                  <Link                 href="/en/terms"
+                  <Link                 href={designedHref("/en/terms")}
                     className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
                     >{t('14')}</Link>
                 </li>
                 <li>
-                  <Link                 href="/en/cookies"
+                  <Link                 href={designedHref("/en/cookies")}
                     className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-primary"
                     >{t('15')}</Link>
                 </li>
                 <li>
-                  <Link                 href="/en/gdpr"
+                  <Link                 href={designedHref("/en/gdpr")}
                     className="-my-2.5 inline-flex min-h-11 min-w-11 items-center justify-center transition-colors duration-200 ease-out-soft hover:text-primary"
                     >{t('16')}</Link>
                 </li>

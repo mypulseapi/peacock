@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { THEME_SCRIPT } from "@/lib/theme-script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import { setDesignedLocale } from "@/components/designed/locale";
+import { setRenderLocale } from "@/i18n/render-locale";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 import { Navbar } from "@/components/Navbar";
@@ -134,9 +134,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   // Enable static rendering
   setRequestLocale(locale);
-  // And the same for the designed components, which cannot use next-intl's copy of this: it
-  // resolves from a request, and a static export has none. See components/designed/locale.ts.
-  setDesignedLocale(locale);
+  // And the same for every Server Component below, which cannot use next-intl's copy of this:
+  // it resolves from a request, and a static export has none. See i18n/render-locale.ts.
+  setRenderLocale(locale);
 
   // Get messages for the locale.
   //

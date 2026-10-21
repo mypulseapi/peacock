@@ -27,6 +27,18 @@ const NOT_A_PAGE = /^(index|404|_not-found)\.html$/;
 const failures = [];
 const fail = (file, rule, detail) => failures.push({ file, rule, detail });
 
+/*
+ * Reported, but not a gate.
+ *
+ * Section 8 separates the rules that block from the ones that get reviewed, and image format is
+ * the second kind: a PNG that should be a WebP costs bytes, it does not break the page or hide it
+ * from a crawler. Making it fail would mean either converting artwork on someone else's behalf or
+ * watching the next person reach for `--warn` on the whole suite to get past it, which would take
+ * the real gates down with it.
+ */
+const warnings = [];
+const warn = (file, rule, detail) => warnings.push({ file, rule, detail });
+
 async function walk(dir) {
   const out = [];
   for (const e of await readdir(dir, { withFileTypes: true })) {
@@ -97,6 +109,38 @@ for (const f of files) {
       fail(rel, "main-content", `${mainText.length} chars of text: ${JSON.stringify(mainText.slice(0, 40))}`);
     }
   }
+  /* --- every image is named, sized and in a modern format (section 4.4) ---
+   *
+   * Three faults, and the third is the one that hides. An `<img>` with no `alt` at all is
+   * invisible to a crawler and to a screen reader; an `<img>` with neither dimensions nor a
+   * reserved box shifts the layout as it loads; and a raster served as PNG costs a visitor
+   * bytes the standard says to spend on WebP or AVIF.
+   *
+   * `alt=""` is not a fault. It is the correct marking for a decorative image, and this site
+   * uses it deliberately: the dark-theme logo and the hover duplicate of each team portrait are
+   * both `aria-hidden` copies of something already named next to them. Flagging those would
+   * teach the next person to silence the rule rather than read it.
+   *
+   * Neither is a missing `width`/`height` on a `fill` image. Next drops both by design there and
+   * positions the image absolutely, so the parent's `aspect-ratio` reserves the space and the
+   * layout does not move. The check looks for the reserved box, not for the attributes.
+   */
+  for (const tag of html.match(/<img\b[^>]*>/gi) ?? []) {
+    const attr = (n) => tag.match(new RegExp(`${n}="([^"]*)"`, "i"))?.[1];
+    const src = (attr("src") ?? "").replace(/\?.*$/, "");
+    const short = src.replace(/^https?:\/\/[^/]+\//, "");
+
+    if (attr("alt") === undefined) fail(rel, "image-alt", `no alt: ${short}`);
+
+    const sized = attr("width") && attr("height");
+    const filled = /\bposition:\s*absolute/i.test(attr("style") ?? "");
+    if (!sized && !filled) fail(rel, "image-size", `no width/height and not filled: ${short}`);
+
+    if (/\.(png|jpe?g)$/i.test(src) && !/favicon|apple-touch-icon/i.test(src)) {
+      warn(rel, "image-format", `serve WebP or AVIF: ${short}`);
+    }
+  }
+
   /* --- noindex pages carry no schema (section 2.4) --------------------- */
   if (noindex) {
     if (blocks.length > 0) fail(rel, "schema-on-noindex", `${blocks.length} JSON-LD block(s)`);
@@ -188,9 +232,23 @@ if (existsSync(join(OUT, "sitemap.xml"))) {
 }
 
 /* --- report ------------------------------------------------------------ */
-const byRule = failures.reduce((m, f) => ((m[f.rule] ??= []).push(f), m), {});
+const group = (list) => list.reduce((m, f) => ((m[f.rule] ??= []).push(f), m), {});
+const byRule = group(failures);
+
+/* Printed on a green run too, which is the only run anyone reads to the end. */
+function report(title, list) {
+  if (list.length === 0) return;
+  console.log(`\n${title}\n`);
+  for (const [rule, rows] of Object.entries(group(list))) {
+    console.log(`  ${String(rows.length).padStart(4)}  ${rule}`);
+    for (const f of rows.slice(0, 3)) console.log(`        ${f.file}: ${f.detail}`);
+    if (rows.length > 3) console.log(`        ... and ${rows.length - 3} more`);
+  }
+}
+
 if (failures.length === 0) {
   console.log(`seo ok — ${indexable} indexable pages, every gate passed`);
+  report(`seo: ${warnings.length} warning(s), reported not gated`, warnings);
   process.exit(0);
 }
 

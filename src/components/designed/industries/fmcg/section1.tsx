@@ -6,6 +6,10 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Image from "next/image";
+import { sector } from "@/content/industries";
+import { renderLocale } from "@/i18n/render-locale";
+import { img } from "@/lib/cdn";
 import { designedHref, designedText } from "../../t";
 import Link from "next/link";
 
@@ -39,6 +43,20 @@ export function Section1Section() {
                 </p>
               </div>
               <figure className="reveal delay-200 lg:col-span-6">
+                  {/*
+                    Photographed on white with no alpha, so it sits on a plate: dropped straight
+                    onto the page it would be a white block once the theme flips.
+                  */}
+                  <div className="mb-5 grid place-items-center rounded-2xl bg-[#fdfdfd] p-4">
+                    <Image
+                      src={img("sectors/fmcg-supermarket-shelf-packaged-goods.webp")}
+                      alt={sector(renderLocale(), "fmcg")?.name ?? ""}
+                      width={1536}
+                      height={1024}
+                      sizes="(min-width: 1024px) 32rem, 90vw"
+                      className="h-40 w-auto object-contain"
+                    />
+                  </div>
                 <div className="card">
                   <p className="text-sm font-semibold text-ink">
                     {t('7')}

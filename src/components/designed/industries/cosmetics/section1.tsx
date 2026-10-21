@@ -6,6 +6,11 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { AttributeIcon } from "../../attribute-icon";
+import Image from "next/image";
+import { sector } from "@/content/industries";
+import { renderLocale } from "@/i18n/render-locale";
+import { img } from "@/lib/cdn";
 import { designedHref, designedText } from "../../t";
 import Link from "next/link";
 
@@ -39,6 +44,20 @@ export function Section1Section() {
                 </p>
               </div>
               <figure className="reveal delay-200 lg:col-span-6">
+                  {/*
+                    Cut out with real transparency, so it needs no plate and sits directly on
+                    whichever surface the theme is showing.
+                  */}
+                  <div className="mb-5">
+                    <Image
+                      src={img("sectors/cosmetics-personal-care-product-range.webp")}
+                      alt={sector(renderLocale(), "cosmetics")?.name ?? ""}
+                      width={1536}
+                      height={1024}
+                      sizes="(min-width: 1024px) 32rem, 90vw"
+                      className="h-40 w-auto object-contain"
+                    />
+                  </div>
                 <div className="card">
                   <p className="text-sm font-semibold text-ink">
                     {t('7')}
@@ -57,7 +76,7 @@ export function Section1Section() {
                           className="grid size-5 shrink-0 place-items-center rounded bg-signal text-caption tabular-nums text-on-step"
                           aria-label="Rank 1"
                           >1</span
-                        >{t('9')}
+                        ><AttributeIcon src="icons/product-attribute-concern-addressed.webp" />{t('9')}
                       </p>
                       <div
                         className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-card"
@@ -80,7 +99,7 @@ export function Section1Section() {
                           className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
                           aria-label="Rank 2"
                           >2</span
-                        >{t('10')}
+                        ><AttributeIcon src="icons/product-attribute-skin-type.webp" />{t('10')}
                       </p>
                       <div
                         className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
@@ -103,7 +122,7 @@ export function Section1Section() {
                           className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
                           aria-label="Rank 3"
                           >3</span
-                        >{t('11')}
+                        ><AttributeIcon src="icons/product-attribute-key-ingredients.webp" />{t('11')}
                       </p>
                       <div
                         className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
@@ -126,7 +145,7 @@ export function Section1Section() {
                           className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
                           aria-label="Rank 4"
                           >4</span
-                        >{t('12')}
+                        ><AttributeIcon src="icons/product-attribute-volume.webp" />{t('12')}
                       </p>
                       <div
                         className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"

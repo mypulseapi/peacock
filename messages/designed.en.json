@@ -188,7 +188,9 @@
       "25": "Press and media",
       "26": "press@thepulseapi.com",
       "27": "General enquiry",
-      "28": "getintouch@thepulseapi.com"
+      "28": "getintouch@thepulseapi.com",
+      "helpLabel": "What can we help you with?",
+      "formNote": "The form is not connected yet. For now, email"
     },
     "section2": {
       "1": "Frequently Asked Questions",
@@ -624,7 +626,9 @@
       "15": "as a separate attribute.",
       "16": "What it costs",
       "17": "94 of the 216",
-      "18": "laptops."
+      "18": "laptops.",
+      "fragranceLead": "Without this attribute, shoppers can’t filter for fragrance-free options and must browse all",
+      "fragranceTail": "products to find a suitable one."
     },
     "why": {
       "1": "Why ecommerce brands should choose Pulse",
@@ -1547,8 +1551,6 @@
       "8": "Decision Monitor",
       "9": "Recurring",
       "10": "Get told when a shelf slips, and why",
-      "11": "How it works",
-      "12": "From a blank cell to a measured result",
       "13": "Templates",
       "14": "Everyday",
       "15": "Ecommerce and retail",

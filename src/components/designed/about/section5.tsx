@@ -6,6 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { asset } from "@/lib/cdn";
 import { designedText } from "../t";
 import Image from "next/image";
 
@@ -47,7 +48,7 @@ export function Section5Section() {
                     >
                       <div className="team-base size-full">
                         <Image
-                          src="/assets/team/tracy-bui.png"
+                          src={asset("team/tracy-bui.png")}
                           alt=""
                           width={384}
                           height={384}
@@ -60,7 +61,7 @@ export function Section5Section() {
                       aria-hidden="true"
                     >
                       <Image
-                        src="/assets/team/tracy-bui.png"
+                        src={asset("team/tracy-bui.png")}
                         alt=""
                         width={384}
                         height={384}
@@ -97,7 +98,7 @@ export function Section5Section() {
                     >
                       <div className="team-base size-full">
                         <Image
-                          src="/assets/team/rosie-tran.png"
+                          src={asset("team/rosie-tran.png")}
                           alt=""
                           width={384}
                           height={384}
@@ -110,7 +111,7 @@ export function Section5Section() {
                       aria-hidden="true"
                     >
                       <Image
-                        src="/assets/team/rosie-tran.png"
+                        src={asset("team/rosie-tran.png")}
                         alt=""
                         width={384}
                         height={384}
@@ -147,7 +148,7 @@ export function Section5Section() {
                     >
                       <div className="team-base size-full">
                         <Image
-                          src="/assets/team/elena-nguyen.png"
+                          src={asset("team/elena-nguyen.png")}
                           alt=""
                           width={384}
                           height={384}
@@ -160,7 +161,7 @@ export function Section5Section() {
                       aria-hidden="true"
                     >
                       <Image
-                        src="/assets/team/elena-nguyen.png"
+                        src={asset("team/elena-nguyen.png")}
                         alt=""
                         width={384}
                         height={384}
@@ -197,7 +198,7 @@ export function Section5Section() {
                     >
                       <div className="team-base size-full">
                         <Image
-                          src="/assets/team/iris-le.png"
+                          src={asset("team/iris-le.png")}
                           alt=""
                           width={384}
                           height={384}
@@ -210,7 +211,7 @@ export function Section5Section() {
                       aria-hidden="true"
                     >
                       <Image
-                        src="/assets/team/iris-le.png"
+                        src={asset("team/iris-le.png")}
                         alt=""
                         width={384}
                         height={384}
@@ -247,7 +248,7 @@ export function Section5Section() {
                     >
                       <div className="team-base size-full">
                         <Image
-                          src="/assets/team/albert-bui.png"
+                          src={asset("team/albert-bui.png")}
                           alt=""
                           width={384}
                           height={384}
@@ -260,7 +261,7 @@ export function Section5Section() {
                       aria-hidden="true"
                     >
                       <Image
-                        src="/assets/team/albert-bui.png"
+                        src={asset("team/albert-bui.png")}
                         alt=""
                         width={384}
                         height={384}
@@ -297,7 +298,7 @@ export function Section5Section() {
                     >
                       <div className="team-base size-full">
                         <Image
-                          src="/assets/team/stephen-le.png"
+                          src={asset("team/stephen-le.png")}
                           alt=""
                           width={384}
                           height={384}
@@ -310,7 +311,7 @@ export function Section5Section() {
                       aria-hidden="true"
                     >
                       <Image
-                        src="/assets/team/stephen-le.png"
+                        src={asset("team/stephen-le.png")}
                         alt=""
                         width={384}
                         height={384}
@@ -347,7 +348,7 @@ export function Section5Section() {
                     >
                       <div className="team-base size-full">
                         <Image
-                          src="/assets/team/eric-pham.png"
+                          src={asset("team/eric-pham.png")}
                           alt=""
                           width={384}
                           height={384}
@@ -360,7 +361,7 @@ export function Section5Section() {
                       aria-hidden="true"
                     >
                       <Image
-                        src="/assets/team/eric-pham.png"
+                        src={asset("team/eric-pham.png")}
                         alt=""
                         width={384}
                         height={384}
@@ -397,7 +398,7 @@ export function Section5Section() {
                     >
                       <div className="team-base size-full">
                         <Image
-                          src="/assets/team/stan-nguyen.png"
+                          src={asset("team/stan-nguyen.png")}
                           alt=""
                           width={384}
                           height={384}
@@ -410,7 +411,7 @@ export function Section5Section() {
                       aria-hidden="true"
                     >
                       <Image
-                        src="/assets/team/stan-nguyen.png"
+                        src={asset("team/stan-nguyen.png")}
                         alt=""
                         width={384}
                         height={384}

@@ -6,6 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { asset } from "@/lib/cdn";
 import { DesignedLocaleSwitch } from "./designed-locale-switch";
 import { DesignedThemeSwitch } from "./designed-theme-switch";
 import { designedHref, designedText } from "../t";
@@ -28,12 +29,12 @@ export function DesignedHeader() {
               className="hit-area shrink-0"
             >
               <Image
-                src="/assets/brand/logo.webp"
+                src={asset("brand/logo.webp")}
                 alt="Pulse"
                 width={84}
                 height={28}
                 className="h-7 w-auto theme-dark:hidden" priority /><Image
-                src="/assets/brand/logo-white.webp"
+                src={asset("brand/logo-white.webp")}
                 alt=""
                 width={84}
                 height={28}
@@ -121,21 +122,6 @@ export function DesignedHeader() {
                                   >{t('10')}</span
                                 >
                               </Link>
-                            </li>
-                            <li>
-                              <a
-                                href="#method"
-                                className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                              >
-                                <span
-                                  className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >{t('11')}</span
-                                >
-                                <span
-                                  className="mt-1 block text-sm text-pretty text-muted"
-                                  >{t('12')}</span
-                                >
-                              </a>
                             </li>
                           </ul>
                         </div>

@@ -6,8 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { HeroScene } from "../hero-scene";
 import { designedHref, designedText } from "../../t";
-import Image from "next/image";
 
 import Link from "next/link";
 
@@ -16,29 +16,7 @@ export function Section1Section() {
   return (
     <section className="relative isolate overflow-hidden border-b border-line">
             <div className="absolute inset-0 -z-10" aria-hidden="true">
-              <picture className="hero-video-poster" data-bg-poster>
-                <source
-                  srcSet="/assets/product/decision-verification-dark.webp"
-                  media="(prefers-color-scheme: dark)"
-                />
-                <Image
-                  src="/assets/product/decision-verification-light.webp"
-                  alt=""
-                  width={2560}
-                  height={1440}
-                  className="hero-video-media" priority />
-              </picture>
-              <video
-                className="hero-video-media hero-video-fade"
-                width={2560}
-                height={1440}
-                muted
-                loop
-                playsInline
-                preload="none"
-                data-bg-video="/assets/product/decision-verification"
-              ></video>
-              <div className="absolute inset-0 hero-video-scrim"></div>
+              <HeroScene variant="verification" />
             </div>
             {/* the frame keeps the page margins; the box inside it is the hero's height (540 / 800px) with the title and
                  the description under it at the top left */}

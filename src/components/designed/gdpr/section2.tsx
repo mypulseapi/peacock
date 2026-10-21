@@ -110,7 +110,7 @@ export function Section2Section() {
                       ><span
                         ><strong className="font-semibold text-ink"
                           >{t('27')}</strong
-                        >
+                        >{" "}
                         {t('28')}</span
                       >
                     </li>
@@ -121,7 +121,7 @@ export function Section2Section() {
                       ><span
                         ><strong className="font-semibold text-ink"
                           >{t('29')}</strong
-                        >
+                        >{" "}
                         {t('30')}</span
                       >
                     </li>

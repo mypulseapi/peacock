@@ -25,8 +25,6 @@
       "7": "Giữ cho luôn được đo",
       "9": "Định kỳ",
       "10": "Được báo khi một nhóm hàng tụt, kèm nguyên nhân",
-      "11": "Cách hoạt động",
-      "12": "Từ một ô trống đến một kết quả đo được",
       "13": "Mẫu theo ngành",
       "14": "Hằng ngày",
       "15": "Thương mại điện tử và bán lẻ",
@@ -347,7 +345,9 @@
       "15": "như một thuộc tính riêng.",
       "16": "Cái giá phải trả",
       "17": "94 trên 216",
-      "18": "laptop."
+      "18": "laptop.",
+      "fragranceLead": "Thiếu thuộc tính này, người mua không thể lọc theo lựa chọn không hương liệu và phải xem hết cả",
+      "fragranceTail": "sản phẩm để tìm ra một món phù hợp."
     },
     "why": {
       "1": "Vì sao các thương hiệu thương mại điện tử nên chọn Pulse",
@@ -453,7 +453,9 @@
       "21": "Hỗ trợ kỹ thuật",
       "23": "Hợp tác",
       "25": "Báo chí và truyền thông",
-      "27": "Câu hỏi chung"
+      "27": "Câu hỏi chung",
+      "helpLabel": "Chúng tôi có thể giúp gì cho bạn?",
+      "formNote": "Biểu mẫu hiện chưa được kết nối. Tạm thời, vui lòng gửi email tới"
     },
     "section2": {
       "1": "Câu hỏi thường gặp",

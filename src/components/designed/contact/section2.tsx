@@ -87,7 +87,7 @@ export function Section2Section() {
                         href="mailto:partners@thepulseapi.com"
                         className="font-semibold text-primary underline decoration-primary-line underline-offset-4"
                         >{t('9')}</a
-                      >
+                      >{" "}
                       {t('10')}
                     </p>
                   </details>

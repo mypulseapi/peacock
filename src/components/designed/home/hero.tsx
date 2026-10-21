@@ -6,6 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { asset } from "@/lib/cdn";
 import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
@@ -224,7 +225,7 @@ export function HeroSection() {
                                 <p className="text-data leading-snug text-gap-strong">
                                   <strong className="font-bold"
                                     >{t('14')}</strong
-                                  >
+                                  >{" "}
                                   {t('15')}
                                 </p>
                               </div>
@@ -853,12 +854,12 @@ export function HeroSection() {
                                     <div>
                                       <p className="flex h-4.5 items-center">
                                         <Image
-                                          src="/assets/brand/logo.webp"
+                                          src={asset("brand/logo.webp")}
                                           alt="Pulse"
                                           width={54}
                                           height={18}
                                           className="h-4.5 w-auto theme-dark:hidden" priority /><Image
-                                          src="/assets/brand/logo-white.webp"
+                                          src={asset("brand/logo-white.webp")}
                                           alt=""
                                           width={54}
                                           height={18}
@@ -1162,12 +1163,12 @@ export function HeroSection() {
                                   <div className="min-w-0 flex-1">
                                     <p className="flex h-4.5 items-center">
                                       <Image
-                                        src="/assets/brand/logo.webp"
+                                        src={asset("brand/logo.webp")}
                                         alt="Pulse"
                                         width={54}
                                         height={18}
                                         className="h-4.5 w-auto theme-dark:hidden" priority /><Image
-                                        src="/assets/brand/logo-white.webp"
+                                        src={asset("brand/logo-white.webp")}
                                         alt=""
                                         width={54}
                                         height={18}
@@ -1250,7 +1251,7 @@ export function HeroSection() {
                                 >
                                   <strong className="font-bold text-ink"
                                     >{t('122')}</strong
-                                  >
+                                  >{" "}
                                   is missing from 162 products, so a traditional
                                   audit ranks it first. But only 2 of 32 shopper
                                   requirements mention it, so Pulse ranks it last.{" "}
@@ -1299,7 +1300,7 @@ export function HeroSection() {
                                     >Currently, Pulse identifies{" "}
                                     <strong className="font-bold text-primary"
                                       >{t('126')}</strong
-                                    >
+                                    >{" "}
                                     {t('127')}</span
                                   >
                                 </p>
@@ -1327,7 +1328,7 @@ export function HeroSection() {
                                     The other{" "}
                                     <strong className="tabular-nums font-bold text-ink"
                                       >55</strong
-                                    >
+                                    >{" "}
                                     {t('129')}
                                   </p>
                                 </div>
@@ -1515,7 +1516,7 @@ export function HeroSection() {
                                             data-from="136"
                                             data-delay="1000"
                                             >216</span
-                                          >
+                                          >{" "}
                                           / 216</span
                                         >
                                       </div>

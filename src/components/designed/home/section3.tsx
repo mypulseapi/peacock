@@ -37,7 +37,7 @@ export function Section3Section() {
                         <strong
                           className="font-semibold whitespace-nowrap text-gap-strong"
                           >{t('6')}</strong
-                        >
+                        >{" "}
                         {t('7')}
                       </dd>
                     </div>
@@ -46,10 +46,9 @@ export function Section3Section() {
                         {t('8')}
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
-                        Without this attribute, shoppers can&rsquo;t filter for
-                        fragrance-free options and must browse all{" "}
+                        {t('fragranceLead')}{" "}
                         <strong className="font-semibold tabular-nums">40</strong>{" "}
-                        products to find a suitable one.
+                        {t('fragranceTail')}
                       </dd>
                     </div>
                   </dl>
@@ -73,12 +72,12 @@ export function Section3Section() {
                         Screen size appears in{" "}
                         <strong className="font-semibold tabular-nums"
                           >{t('13')}</strong
-                        >
+                        >{" "}
                         product titles, but{" "}
                         <strong
                           className="font-semibold whitespace-nowrap text-gap-strong"
                           >{t('14')}</strong
-                        >
+                        >{" "}
                         {t('15')}
                       </dd>
                     </div>
@@ -91,7 +90,7 @@ export function Section3Section() {
                         the differences between{" "}
                         <strong className="font-semibold tabular-nums"
                           >{t('17')}</strong
-                        >
+                        >{" "}
                         {t('18')}
                       </dd>
                     </div>

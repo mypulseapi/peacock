@@ -13,11 +13,10 @@ import Link from "next/link";
 
 export function Section1Section() {
   const t = designedText("product.decision-audit.section1");
+  // Screen size, Memory, Storage and Processor, already translated for the about page.
+  const about = designedText("about.section1");
   return (
     <section className="relative isolate overflow-hidden border-b border-line">
-            <div className="absolute inset-0 -z-10" aria-hidden="true">
-              <HeroScene variant="audit" />
-            </div>
             {/* the frame keeps the page margins; the box inside it is the hero's height (540 / 800px) with the title and
                  the description under it at the top left */}
             <div className="frame">
@@ -25,7 +24,8 @@ export function Section1Section() {
                    than the home page's demo rail does, so on a wide screen it reserved about 390px
                    of empty gradient under the content. Dropped so the hero sizes to what is in it,
                    like every other designed hero; the padding and the small-screen minimum stay. */}
-              <div className="min-h-135 py-14 lg:py-20">
+              <div className="grid min-h-135 items-center gap-12 py-14 lg:grid-cols-[minmax(0,1fr)_26rem] lg:gap-16 lg:py-20">
+                <div className="min-w-0">
                 <h1 className="reveal max-w-2xl text-headline text-balance">
                   {/*
                     `sm:block` only breaks the line from 640px up. Below that the two spans are
@@ -51,6 +51,22 @@ export function Section1Section() {
                       <use href="#i-sparkles" /></svg
                     >{t('5')}
                   </button>
+                </div>
+                </div>
+                {/*
+                  The figure, beside the words rather than behind them. `reveal` so it arrives with
+                  the rest of the hero, and the rows then stagger in on their own.
+                */}
+                <div className="reveal delay-200 min-w-0 lg:justify-self-end">
+                  <HeroScene
+                    variant="audit"
+                    labels={[
+                      about('7'),
+                      about('8'),
+                      about('9'),
+                      about('6'),
+                    ] as [string, string, string, string]}
+                  />
                 </div>
               </div>
             </div>

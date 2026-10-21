@@ -59,6 +59,7 @@ jobs:
           NEXT_PUBLIC_DEMO_URL: ${{ vars.NEXT_PUBLIC_DEMO_URL || 'https://demo.thepulseapi.com' }}
           NEXT_PUBLIC_AUTH_URL: ${{ vars.NEXT_PUBLIC_AUTH_URL || 'https://api.thepulseapi.com' }}
           NEXT_PUBLIC_CDN_PREFIX: ${{ vars.NEXT_PUBLIC_CDN_PREFIX || 'website' }}
+          NEXT_PUBLIC_CDN_MODELS: ${{ vars.NEXT_PUBLIC_CDN_MODELS || '1' }}
           NEXT_PUBLIC_SDK_PATH: ${{ vars.NEXT_PUBLIC_SDK_PATH || '/sdk/v0/pulse.iife.js' }}
           NEXT_PUBLIC_API_BASE_PATH: ${{ vars.NEXT_PUBLIC_API_BASE_PATH || '/api/v1' }}
           NEXT_PUBLIC_APP_SIGNIN_PATH: ${{ vars.NEXT_PUBLIC_APP_SIGNIN_PATH || '/signin' }}

@@ -262,9 +262,16 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
    *
    * Storage is wrapped because a private window or blocked site data throws on access, and an
    * assistant that takes down the page it sits on is worse than one that greets you twice.
+   *
+   * Not on the contact page. The panel opens over the right-hand column, which on that page is
+   * the form, so someone who arrived to send us a message is met by a chat window sitting on
+   * top of it. The launcher is still there if they want it.
    */
   useEffect(() => {
     if (getOpen()) return;
+    // `.html` because that is how the export is served when it is previewed from disk; the
+    // deployed site serves the same page at the extensionless path.
+    if (/\/contact(\.html)?\/?$/.test(window.location.pathname)) return;
 
     let seen = true;
     try {

@@ -5,7 +5,13 @@
  * structural should go back to the source page so the two do not drift.
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
+ *
+ * The three dropdowns are the one deliberate departure from the designer's markup: they were
+ * native `<select>` elements and are now `FormSelect`, which is shadcn's Select on Radix. The
+ * trigger wears the same `field` utility the inputs do, so the row still lines up.
  */
+import { FormSelect } from "./form-select";
+
 export function Section1Section() {
   return (
     <section className="hero-bg border-b border-line">
@@ -111,30 +117,38 @@ export function Section1Section() {
                       htmlFor="f-size"
                       className="mb-1.5 block text-sm font-medium text-ink"
                       >Company Size</label
-                    ><select id="f-size" name="companySize" className="field">
-                      <option value="">Select size</option>
-                      <option>1-10 employees</option>
-                      <option>11-50 employees</option>
-                      <option>51-200 employees</option>
-                      <option>201-500 employees</option>
-                      <option>500+ employees</option>
-                    </select>
+                    ><FormSelect
+                      id="f-size"
+                      name="companySize"
+                      placeholder="Select size"
+                      options={[
+                        "1-10 employees",
+                        "11-50 employees",
+                        "51-200 employees",
+                        "201-500 employees",
+                        "500+ employees",
+                      ]}
+                    />
                   </div>
                   <div>
                     <label
                       htmlFor="f-sector"
                       className="mb-1.5 block text-sm font-medium text-ink"
                       >What do you sell?</label
-                    ><select id="f-sector" name="sector" className="field">
-                      <option value="">Select sector</option>
-                      <option>Ecommerce and retail</option>
-                      <option>FMCG and consumer goods</option>
-                      <option>Technology and electronics</option>
-                      <option>Furniture and homewares</option>
-                      <option>Cosmetics and personal care</option>
-                      <option>B2B and industrial</option>
-                      <option>Something else</option>
-                    </select>
+                    ><FormSelect
+                      id="f-sector"
+                      name="sector"
+                      placeholder="Select sector"
+                      options={[
+                        "Ecommerce and retail",
+                        "FMCG and consumer goods",
+                        "Technology and electronics",
+                        "Furniture and homewares",
+                        "Cosmetics and personal care",
+                        "B2B and industrial",
+                        "Something else",
+                      ]}
+                    />
                   </div>
                   <div>
                     <label
@@ -142,13 +156,19 @@ export function Section1Section() {
                       className="mb-1.5 block text-sm font-medium text-ink"
                       >What can we help you with?{" "}
                       <span className="text-critical">*</span></label
-                    ><select id="f-type" name="inquiryType" required className="field">
-                      <option>Sales enquiry</option>
-                      <option>Technical support</option>
-                      <option>Partnerships</option>
-                      <option>Press and media</option>
-                      <option>General enquiry</option>
-                    </select>
+                    ><FormSelect
+                      id="f-type"
+                      name="inquiryType"
+                      required
+                      defaultValue="Sales enquiry"
+                      options={[
+                        "Sales enquiry",
+                        "Technical support",
+                        "Partnerships",
+                        "Press and media",
+                        "General enquiry",
+                      ]}
+                    />
                   </div>
                   <div className="sm:col-span-2">
                     <label

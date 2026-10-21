@@ -6,40 +6,39 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
+import Link from "next/link";
+
 export function AuditSection() {
+  const t = designedText("product.audit");
   return (
     <section id="audit" className="scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">
               <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
                 <div className="lg:col-span-6">
                   <h2 className="reveal text-title text-balance">
-                    Decision Audit.
-                    <span className="text-muted">What should we record first?</span>
+                    Decision Audit.{" "}
+                    <span className="text-muted">{t('1')}</span>
                   </h2>
                   <p className="reveal mt-5 text-body leading-relaxed text-muted">
-                    You send one category export. We work out which missing
-                    attributes would do the most to help your shoppers tell your
-                    products apart, rank them, and hand you the list with the
-                    affected products attached. The ranking is measured in bits of
-                    decision information, not guessed from click data.
+                    {t('2')}
                   </p>
                   <p
                     className="reveal mt-6 border-t border-line pt-5 text-sm text-muted"
                   >
                     <strong className="font-semibold text-ink"
-                      >What it needs from you:</strong
+                      >{t('3')}</strong
                     >
-                    One CSV or JSON export. No code, no tag, no system access.
+                    {t('4')}
                   </p>
-                  <a
-                    href="decision-audit.html"
+                  <Link                 href="/en/product/decision-audit"
                     className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
-                    >Read about Decision Audit<svg
+                    >{t('5')}<svg
                       className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
                       aria-hidden="true"
                     >
                       <use href="#i-arrow-right" /></svg
-                  ></a>
+                  ></Link>
                 </div>
                 <div className="reveal delay-200 lg:col-span-6">
                   <ul
@@ -52,8 +51,7 @@ export function AuditSection() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >Attributes ranked by what recording them everywhere would
-                        be worth</span
+                        >{t('6')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -62,7 +60,7 @@ export function AuditSection() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>The exact products missing each one</span>
+                      ><span>{t('7')}</span>
                     </li>
                     <li className="flex gap-3">
                       <svg
@@ -71,8 +69,7 @@ export function AuditSection() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >Where each fact lives: in your text already, in a supplier
-                        feed, or nowhere</span
+                        >{t('8')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -82,8 +79,7 @@ export function AuditSection() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >How much we recovered from your titles and descriptions
-                        before you lift a finger</span
+                        >{t('9')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -93,7 +89,7 @@ export function AuditSection() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >A decision-readiness number you can re-measure later</span
+                        >{t('10')}</span
                       >
                     </li>
                   </ul>

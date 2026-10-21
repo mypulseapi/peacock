@@ -6,13 +6,15 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
 export function Section4Section() {
+  const t = designedText("product.decision-verification.section4");
   return (
     <section className="bg-soft-gradient scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">
               <div className="mx-auto max-w-2xl text-center">
                 <h2 className="reveal text-title text-balance">
-                  What your business gains from Decision Verification
+                  {t('1')}
                 </h2>
               </div>
               <ul className="mt-14 grid gap-5 md:grid-cols-3">
@@ -31,11 +33,10 @@ export function Section4Section() {
                     </div>
                   </div>
                   <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
-                    Validate catalogue improvements
+                    {t('2')}
                   </h3>
                   <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
-                    Verify whether updated product attributes meet real shopper
-                    needs.
+                    {t('3')}
                   </p>
                 </li>
                 <li
@@ -53,11 +54,10 @@ export function Section4Section() {
                     </div>
                   </div>
                   <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
-                    See which repairs were not worth it
+                    {t('4')}
                   </h3>
                   <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
-                    Some repairs move nothing. We report those first, because a
-                    quarter spent on the wrong field is the expensive mistake.
+                    {t('5')}
                   </p>
                 </li>
                 <li
@@ -73,11 +73,10 @@ export function Section4Section() {
                     </div>
                   </div>
                   <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
-                    Evidence for whoever signed it off
+                    {t('6')}
                   </h3>
                   <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
-                    Before and after on the same measure, in the week the work
-                    finishes rather than the quarter after.
+                    {t('7')}
                   </p>
                 </li>
               </ul>

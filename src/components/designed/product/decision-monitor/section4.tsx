@@ -6,12 +6,14 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
 export function Section4Section() {
+  const t = designedText("product.decision-monitor.section4");
   return (
     <section className="scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">
               <h2 className="reveal text-title text-balance">
-                Set it once, then hear about it when it matters
+                {t('1')}
               </h2>
               {/* Timeline (as on the Decision Audit and Verification pages): the calm line grows across the three stops */}
               <div className="relative mt-14">
@@ -33,14 +35,12 @@ export function Section4Section() {
                       className="absolute top-0.5 left-0 size-5 rounded-full border-4 border-card bg-primary ring-1 ring-primary-line md:static md:block"
                       aria-hidden="true"
                     ></span>
-                    <p className="text-data font-semibold text-primary md:mt-8">Once</p>
-                    <h3 className="mt-4 text-h3 text-ink">Set the cadence</h3>
+                    <p className="text-data font-semibold text-primary md:mt-8">{t('2')}</p>
+                    <h3 className="mt-4 text-h3 text-ink">{t('3')}</h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Weekly or monthly, matched to how often your catalogue
-                      changes. It reads the same export the audit read, so there is
-                      nothing new to build and no integration to maintain.
+                      {t('4')}
                     </p>
                   </li>
                   <li className="reveal relative pl-9 delay-500 md:pl-0">
@@ -49,14 +49,13 @@ export function Section4Section() {
                       aria-hidden="true"
                     ></span>
                     <p className="text-data font-semibold text-primary md:mt-8">
-                      Ongoing
+                      {t('5')}
                     </p>
-                    <h3 className="mt-4 text-h3 text-ink">Monitor re-measures</h3>
+                    <h3 className="mt-4 text-h3 text-ink">{t('6')}</h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      The same method on every run, so the numbers are comparable
-                      over time rather than a series of unrelated snapshots.
+                      {t('7')}
                     </p>
                   </li>
                   <li className="reveal relative pl-9 delay-850 md:pl-0">
@@ -65,16 +64,15 @@ export function Section4Section() {
                       aria-hidden="true"
                     ></span>
                     <p className="text-data font-semibold text-primary md:mt-8">
-                      When it matters
+                      {t('8')}
                     </p>
                     <h3 className="mt-4 text-h3 text-ink">
-                      You get told, with the reason
+                      {t('9')}
                     </h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Not a dashboard you have to remember to open. An alert naming
-                      the shelf, the attribute and what caused the drop.
+                      {t('10')}
                     </p>
                   </li>
                 </ol>

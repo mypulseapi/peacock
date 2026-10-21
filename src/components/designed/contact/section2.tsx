@@ -6,20 +6,22 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
 export function Section2Section() {
+  const t = designedText("contact.section2");
   return (
     <section className="border-b border-line">
             <div className="frame py-20 lg:py-24">
               <div className="grid gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-4">
-                  <h2 className="reveal text-title">Frequently Asked Questions</h2>
+                  <h2 className="reveal text-title">{t('1')}</h2>
                 </div>
                 <div className="reveal border-t border-line lg:col-span-8">
                   <details className="group border-b border-line">
                     <summary
                       className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink"
                     >
-                      How long does the first audit take?
+                      {t('2')}
                       <svg
                         className="size-5 shrink-0 text-primary transition-transform duration-200 ease-out-soft group-open:rotate-180"
                         aria-hidden="true"
@@ -28,17 +30,14 @@ export function Section2Section() {
                       </svg>
                     </summary>
                     <p className="pb-6 text-body text-muted">
-                      Forty-eight hours from the moment your export lands. There is
-                      nothing to integrate first, because the audit reads a file
-                      rather than your website. Most teams get the export out of
-                      their PIM or platform in under an hour.
+                      {t('3')}
                     </p>
                   </details>
                   <details className="group border-b border-line">
                     <summary
                       className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink"
                     >
-                      Is the first audit really free?
+                      {t('4')}
                       <svg
                         className="size-5 shrink-0 text-primary transition-transform duration-200 ease-out-soft group-open:rotate-180"
                         aria-hidden="true"
@@ -47,17 +46,14 @@ export function Section2Section() {
                       </svg>
                     </summary>
                     <p className="pb-6 text-body text-muted">
-                      Yes. One category, one export, no account and no card. We
-                      would rather you judged the method on your own products than
-                      on somebody else&apos;s case study. What comes after is priced per
-                      cycle, and nobody has to decide that on day one.
+                      {t('5')}
                     </p>
                   </details>
                   <details className="group border-b border-line">
                     <summary
                       className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink"
                     >
-                      How quickly will someone reply?
+                      {t('6')}
                       <svg
                         className="size-5 shrink-0 text-primary transition-transform duration-200 ease-out-soft group-open:rotate-180"
                         aria-hidden="true"
@@ -66,16 +62,14 @@ export function Section2Section() {
                       </svg>
                     </summary>
                     <p className="pb-6 text-body text-muted">
-                      Usually the same working day. The inbox is read by the people
-                      who do the work rather than by a queue, so the reply comes
-                      from someone who can actually open your catalogue.
+                      {t('7')}
                     </p>
                   </details>
                   <details className="group border-b border-line">
                     <summary
                       className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink"
                     >
-                      Do you work with agencies and consultants?
+                      {t('8')}
                       <svg
                         className="size-5 shrink-0 text-primary transition-transform duration-200 ease-out-soft group-open:rotate-180"
                         aria-hidden="true"
@@ -88,13 +82,13 @@ export function Section2Section() {
                       consultants and systems integrators who run catalogue work for
                       their clients, and we are talking to the first partners now.
                       An audit takes the same single export whether it comes from
-                      you or from your client. Write to
+                      you or from your client. Write to{" "}
                       <a
                         href="mailto:partners@thepulseapi.com"
                         className="font-semibold text-primary underline decoration-primary-line underline-offset-4"
-                        >partners@thepulseapi.com</a
+                        >{t('9')}</a
                       >
-                      and tell us whose catalogue it is.
+                      {t('10')}
                     </p>
                   </details>
                 </div>

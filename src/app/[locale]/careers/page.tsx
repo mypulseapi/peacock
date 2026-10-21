@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageSchema } from "@/components/PageSchema";
+import { DesignedCareers } from "@/components/designed/careers";
 import { buildAlternates } from "@/lib/seo";
-import CareersPage from "./CareersPageClient";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -30,7 +30,9 @@ export default async function Page({ params }: PageProps) {
   return (
     <>
       <PageSchema locale={locale} path="/careers" />
-      <CareersPage />
+      {/* English gets the designer's converted page; Vietnamese keeps the translated one until
+          that conversion's text has been extracted and translated. See [locale]/page.tsx. */}
+      <DesignedCareers />
     </>
   );
 }

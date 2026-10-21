@@ -6,7 +6,13 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
+import Image from "next/image";
+
+import Link from "next/link";
+
 export function Section1Section() {
+  const t = designedText("product.decision-monitor.section1");
   return (
     <section className="relative isolate overflow-hidden border-b border-line">
             <div className="absolute inset-0 -z-10" aria-hidden="true">
@@ -15,13 +21,12 @@ export function Section1Section() {
                   srcSet="/assets/product/decision-monitor-dark.webp"
                   media="(prefers-color-scheme: dark)"
                 />
-                <img
+                <Image
                   src="/assets/product/decision-monitor-light.webp"
                   alt=""
                   width={2560}
                   height={1440}
-                  className="hero-video-media"
-                />
+                  className="hero-video-media" priority />
               </picture>
               <video
                 className="hero-video-media hero-video-fade"
@@ -40,26 +45,22 @@ export function Section1Section() {
             <div className="frame">
               <div className="min-h-135 py-14 lg:min-h-200 lg:py-20">
                 <h1 className="reveal max-w-2xl text-headline text-balance">
-                  <span className="sm:block">Know the week a shelf</span>
-                  <span className="sm:block">stopped being decidable</span>
+                  <span className="sm:block">{t('1')}</span>
+                  <span className="sm:block">{t('2')}</span>
                 </h1>
                 <p
                   className="reveal mt-6 max-w-lg text-lg leading-relaxed text-balance text-muted delay-100"
                 >
-                  Catalogues decay quietly. New products arrive unrecorded and a
-                  shelf that was ready last quarter stops being ready. Monitor
-                  re-measures as yours changes and names the shelf, the attribute
-                  and the cause.
+                  {t('3')}
                 </p>
                 {/* "Ask AI" is a placeholder, hidden until the AI assistant exists: remove "hidden" and wire it up then */}
                 <div className="reveal mt-8 flex flex-wrap gap-3 delay-200">
-                  <a href="../contact.html" className="btn-primary"
-                    >Request a Decision Audit</a
-                  >
+                  <Link href="/en/contact" className="btn-primary"
+                    >{t('4')}</Link>
                   <button type="button" className="btn-secondary hidden" data-ask-ai>
                     <svg className="size-4 text-primary" aria-hidden="true">
                       <use href="#i-sparkles" /></svg
-                    >Ask AI
+                    >{t('5')}
                   </button>
                 </div>
               </div>

@@ -6,13 +6,15 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
 export function Section5Section() {
+  const t = designedText("product.decision-monitor.section5");
   return (
     <section className="bg-soft-gradient scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">
               <div className="mx-auto max-w-2xl text-center">
                 <h2 className="reveal text-title text-balance">
-                  What your business gains from Decision Monitor
+                  {t('1')}
                 </h2>
               </div>
               <ul className="mt-14 grid gap-5 md:grid-cols-3">
@@ -31,11 +33,10 @@ export function Section5Section() {
                     </div>
                   </div>
                   <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
-                    Catch decay before a buyer does
+                    {t('2')}
                   </h3>
                   <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
-                    See a shelf slipping while it is still a backlog item, rather
-                    than after it has become a project.
+                    {t('3')}
                   </p>
                 </li>
                 <li
@@ -53,11 +54,10 @@ export function Section5Section() {
                     </div>
                   </div>
                   <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
-                    Know the cause, not just the number
+                    {t('4')}
                   </h3>
                   <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
-                    Every alert names the shelf, the attribute and what caused the
-                    drop, so the fix is obvious before anyone opens a dashboard.
+                    {t('5')}
                   </p>
                 </li>
                 <li
@@ -73,11 +73,10 @@ export function Section5Section() {
                     </div>
                   </div>
                   <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
-                    Compare quarters, not snapshots
+                    {t('6')}
                   </h3>
                   <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
-                    The same method on every run, so the trend per category means
-                    something and a regression is visible as a regression.
+                    {t('7')}
                   </p>
                 </li>
               </ul>

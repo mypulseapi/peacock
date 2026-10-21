@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
 export function Section2Section() {
+  const t = designedText("industries.distribution.section2");
   return (
     <section className="border-b border-line">
             <div
@@ -14,7 +16,7 @@ export function Section2Section() {
             >
               <div className="lg:col-span-4 lg:pr-12">
                 <h2 className="reveal text-title text-balance">
-                  What B2B and industrial looks like right now
+                  {t('1')}
                 </h2>
               </div>
               <ul
@@ -28,11 +30,10 @@ export function Section2Section() {
                   </p>
                   <div>
                     <p className="text-body text-pretty text-ink">
-                      estimated global B2B ecommerce market in 2026, five to six
-                      times B2C
+                      {t('2')}
                     </p>
                     <p className="mt-1 text-caption text-muted">
-                      industry estimate, 14.5% CAGR
+                      {t('3')}
                     </p>
                   </div>
                 </li>
@@ -44,10 +45,9 @@ export function Section2Section() {
                   </p>
                   <div>
                     <p className="text-body text-pretty text-ink">
-                      average machine readability of US retail product pages, lowest
-                      of any page type
+                      {t('4')}
                     </p>
-                    <p className="mt-1 text-caption text-muted">Adobe Analytics</p>
+                    <p className="mt-1 text-caption text-muted">{t('5')}</p>
                   </div>
                 </li>
                 <li className="flex items-baseline gap-5 py-5 sm:gap-8">
@@ -58,9 +58,9 @@ export function Section2Section() {
                   </p>
                   <div>
                     <p className="text-body text-pretty text-ink">
-                      of product pages ship no full set of structured data
+                      {t('6')}
                     </p>
-                    <p className="mt-1 text-caption text-muted">Adobe Analytics</p>
+                    <p className="mt-1 text-caption text-muted">{t('7')}</p>
                   </div>
                 </li>
               </ul>

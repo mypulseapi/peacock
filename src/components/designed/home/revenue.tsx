@@ -6,19 +6,20 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
 export function RevenueSection() {
+  const t = designedText("home.revenue");
   return (
     <section className="scroll-mt-16 border-b border-line" id="revenue">
             <div className="frame py-20 lg:py-28">
               <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
                 <h2 className="reveal text-title text-balance lg:col-span-7">
-                  Catalogue issues grow. So does your revenue risk
+                  {t('1')}
                 </h2>
                 <p
                   className="reveal text-lg text-pretty text-muted delay-100 lg:col-span-5"
                 >
-                  As more products are affected by missing attributes, more purchase
-                  opportunities may be at risk.
+                  {t('2')}
                 </p>
               </div>
               <ol
@@ -26,13 +27,13 @@ export function RevenueSection() {
                 aria-label="Affected SKUs over time"
               >
                 <li className="reveal min-w-0 flex-1 basis-32 delay-100 lg:basis-0">
-                  <p className="text-sm text-muted">Week 1</p>
+                  <p className="text-sm text-muted">{t('3')}</p>
                   <p
                     className="mt-1 font-display text-h1 font-semibold text-ink tabular-nums"
                   >
                     <span data-count="26">26</span>
                   </p>
-                  <p className="text-sm text-muted">affected SKUs</p>
+                  <p className="text-sm text-muted">{t('4')}</p>
                   <span
                     className="mt-4 block h-2 overflow-hidden rounded-full bg-surface-1"
                     aria-hidden="true"
@@ -42,13 +43,13 @@ export function RevenueSection() {
                   ></span>
                 </li>
                 <li className="reveal min-w-0 flex-1 basis-32 delay-200 lg:basis-0">
-                  <p className="text-sm text-muted">Month 1</p>
+                  <p className="text-sm text-muted">{t('5')}</p>
                   <p
                     className="mt-1 font-display text-h1 font-semibold text-ink tabular-nums"
                   >
                     <span data-count="105">105</span>
                   </p>
-                  <p className="text-sm text-muted">affected SKUs</p>
+                  <p className="text-sm text-muted">{t('6')}</p>
                   <span
                     className="mt-4 block h-2 overflow-hidden rounded-full bg-surface-1"
                     aria-hidden="true"
@@ -58,13 +59,13 @@ export function RevenueSection() {
                   ></span>
                 </li>
                 <li className="reveal min-w-0 flex-1 basis-32 delay-300 lg:basis-0">
-                  <p className="text-sm text-muted">Month 3</p>
+                  <p className="text-sm text-muted">{t('7')}</p>
                   <p
                     className="mt-1 font-display text-h1 font-semibold text-ink tabular-nums"
                   >
                     <span data-count="340">340</span>
                   </p>
-                  <p className="text-sm text-muted">affected SKUs</p>
+                  <p className="text-sm text-muted">{t('8')}</p>
                   <span
                     className="mt-4 block h-2 overflow-hidden rounded-full bg-surface-1"
                     aria-hidden="true"
@@ -74,13 +75,13 @@ export function RevenueSection() {
                   ></span>
                 </li>
                 <li className="reveal min-w-0 flex-1 basis-32 delay-400 lg:basis-0">
-                  <p className="text-sm text-muted">Month 6</p>
+                  <p className="text-sm text-muted">{t('9')}</p>
                   <p
                     className="mt-1 font-display text-h1 font-semibold text-ink tabular-nums"
                   >
                     <span data-count="680">680</span>
                   </p>
-                  <p className="text-sm text-muted">affected SKUs</p>
+                  <p className="text-sm text-muted">{t('10')}</p>
                   <span
                     className="mt-4 block h-2 overflow-hidden rounded-full bg-surface-1"
                     aria-hidden="true"
@@ -91,7 +92,7 @@ export function RevenueSection() {
                 </li>
               </ol>
               <p className="reveal mt-6 text-caption text-muted">
-                Illustrative SKU counts, not measured Pulse results.
+                {t('11')}
               </p>
 
               {/* the calculator, in the home page's wash card */}
@@ -101,21 +102,19 @@ export function RevenueSection() {
               >
                 <div className="min-w-0 lg:col-span-7">
                   <h3 className="reveal text-h2 text-balance text-ink">
-                    How much revenue could better product discovery unlock?
+                    {t('12')}
                   </h3>
                   <p
                     className="reveal mt-3 text-body leading-relaxed text-pretty text-muted delay-100"
                   >
-                    Explore a hypothetical revenue opportunity based on your website
-                    traffic, average order value, and assumed conversion
-                    improvement.
+                    {t('13')}
                   </p>
                   <form
                     className="reveal mt-8 grid gap-6 rounded-2xl border border-line bg-card p-5 shadow-sm delay-200 sm:grid-cols-2 sm:p-6"
                   >
                     <div>
                       <label htmlFor="calc-visits" className="text-sm font-medium text-ink"
-                        >Monthly website visits</label
+                        >{t('14')}</label
                       >
                       <input
                         id="calc-visits"
@@ -125,13 +124,13 @@ export function RevenueSection() {
                         min="0"
                         max="100000000"
                         step="1000"
-                        value="100000"
+                        defaultValue="100000"
                         className="field mt-2 tabular-nums"
                       />
                     </div>
                     <div>
                       <label htmlFor="calc-aov" className="text-sm font-medium text-ink"
-                        >Average order value (USD)</label
+                        >{t('15')}</label
                       >
                       <input
                         id="calc-aov"
@@ -141,14 +140,14 @@ export function RevenueSection() {
                         min="0"
                         max="100000"
                         step="0.01"
-                        value="50"
+                        defaultValue="50"
                         className="field mt-2 tabular-nums"
                       />
                     </div>
                     <div className="sm:col-span-2">
                       <div className="flex items-baseline justify-between gap-3">
                         <label htmlFor="calc-conv" className="text-sm font-medium text-ink"
-                          >Current conversion rate</label
+                          >{t('16')}</label
                         >
                         <output
                           htmlFor="calc-conv"
@@ -165,7 +164,7 @@ export function RevenueSection() {
                         min="0"
                         max="100"
                         step="0.1"
-                        value="10"
+                        defaultValue="10"
                         className="range-control mt-1"
                       />
                     </div>
@@ -174,14 +173,14 @@ export function RevenueSection() {
                         <label
                           htmlFor="calc-uplift"
                           className="text-sm font-medium text-ink"
-                          >Assumed conversion uplift</label
+                          >{t('17')}</label
                         >
                         <output
                           htmlFor="calc-uplift"
                           data-out="uplift"
                           aria-hidden="true"
                           className="text-sm font-semibold text-ink tabular-nums"
-                          >+2.2 points</output
+                          >{t('18')}</output
                         >
                       </div>
                       <input
@@ -191,11 +190,11 @@ export function RevenueSection() {
                         min="0"
                         max="100"
                         step="0.1"
-                        value="2.2"
+                        defaultValue="2.2"
                         className="range-control mt-1"
                       />
                       <p data-out="relative" className="text-caption text-muted">
-                        Projected conversion rate 12.2% (10% now + 2.2 points).
+                        {t('19')}
                       </p>
                     </div>
                   </form>
@@ -204,7 +203,7 @@ export function RevenueSection() {
                   <div
                     className="rounded-2xl border border-line bg-card p-6 shadow-sm sm:p-8"
                   >
-                    <p className="text-sm text-muted">Current monthly revenue</p>
+                    <p className="text-sm text-muted">{t('20')}</p>
                     <p
                       className="mt-1 font-display text-h1 font-semibold wrap-anywhere text-ink tabular-nums"
                     >
@@ -217,7 +216,7 @@ export function RevenueSection() {
                     </p>
                     <div className="mt-6 border-t border-line pt-6">
                       <p className="text-sm text-muted">
-                        Potential additional monthly revenue
+                        {t('21')}
                       </p>
                       <p
                         className="mt-1 font-display text-display font-semibold wrap-anywhere text-primary tabular-nums"
@@ -231,10 +230,7 @@ export function RevenueSection() {
                       </p>
                     </div>
                     <p className="mt-6 text-caption text-pretty text-muted">
-                      Illustrative scenario only. Assumes visits and average order
-                      value remain constant. Uplift is an absolute percentage-point
-                      assumption, not a Pulse performance claim. Excludes costs and
-                      profit.
+                      {t('22')}
                     </p>
                   </div>
                 </div>

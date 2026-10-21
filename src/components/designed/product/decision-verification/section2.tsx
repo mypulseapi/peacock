@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
 export function Section2Section() {
+  const t = designedText("product.decision-verification.section2");
   return (
     <section className="scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">
@@ -16,22 +18,20 @@ export function Section2Section() {
               >
                 <div className="min-w-0 lg:col-span-7">
                   <h2 className="reveal text-title text-balance">
-                    A more complete catalogue isn’t always better
+                    {t('1')}
                   </h2>
                   <h3 className="reveal mt-6 text-h3 text-ink delay-100">
-                    But are the right product attributes included?
+                    {t('2')}
                   </h3>
                   <p
                     className="reveal mt-3 text-body leading-relaxed text-pretty text-muted delay-100"
                   >
-                    Higher catalogue completeness doesn’t guarantee better product
-                    discovery. Missing decisive attributes can still make products
-                    difficult to compare and choose.
+                    {t('3')}
                   </p>
                   <p
                     className="reveal mt-6 text-lg font-medium text-pretty text-ink delay-200"
                   >
-                    Focus on attribute importance, not just completeness.
+                    {t('4')}
                   </p>
                 </div>
                 {/* Before / after meter (story scene, plays once: data-story data-once, src/main.js). One bar holds 71%; at beat 2 the
@@ -56,16 +56,16 @@ export function Section2Section() {
                         aria-hidden="true"
                       >
                         <div className="min-w-0">
-                          <p className="text-sm text-muted">Before</p>
+                          <p className="text-sm text-muted">{t('5')}</p>
                           <p
                             className="mt-1 font-display text-display font-semibold text-muted tabular-nums"
                           >
                             71%
                           </p>
-                          <p className="text-sm text-muted">Fields filled</p>
+                          <p className="text-sm text-muted">{t('6')}</p>
                         </div>
                         <div className="ml-auto min-w-0 text-right">
-                          <p className="text-sm text-muted">After</p>
+                          <p className="text-sm text-muted">{t('7')}</p>
                           <p
                             className="mt-1 font-display text-display font-semibold text-ink tabular-nums"
                           >
@@ -74,7 +74,7 @@ export function Section2Section() {
                               >93%</span
                             >
                           </p>
-                          <p className="text-sm text-muted">Fields filled</p>
+                          <p className="text-sm text-muted">{t('8')}</p>
                         </div>
                       </div>
                       <div className="relative mt-6 h-7" aria-hidden="true">
@@ -82,7 +82,7 @@ export function Section2Section() {
                           className="absolute bottom-1 left-82/100 inline-flex w-max origin-bottom -translate-x-1/2 items-center gap-1 text-xs font-semibold text-primary tabular-nums transition duration-300 ease-out-soft pre-3:translate-y-1 pre-3:scale-95 pre-3:opacity-0"
                           ><svg className="size-3.5" aria-hidden="true">
                             <use href="#i-trending-up" /></svg
-                          >+22 points</span
+                          >{t('9')}</span
                         >
                       </div>
                       {/* the meter: 71% already filled (grey), the 22 new points grow out of the 71 marker (blue) */}
@@ -111,7 +111,7 @@ export function Section2Section() {
                       <p
                         className="mt-6 border-t border-line pt-4 text-sm text-pretty text-muted"
                       >
-                        The catalogue is 22 percentage points fuller. Example data.
+                        {t('10')}
                       </p>
                     </div>
                   </div>

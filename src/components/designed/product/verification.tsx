@@ -6,7 +6,11 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
+import Link from "next/link";
+
 export function VerificationSection() {
+  const t = designedText("product.verification");
   return (
     <section
             id="verification"
@@ -16,33 +20,28 @@ export function VerificationSection() {
               <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
                 <div className="lg:col-span-6">
                   <h2 className="reveal text-title text-balance">
-                    Decision Verification.
-                    <span className="text-muted">Did the repair actually work?</span>
+                    Decision Verification.{" "}
+                    <span className="text-muted">{t('1')}</span>
                   </h2>
                   <p className="reveal mt-5 text-body leading-relaxed text-muted">
-                    Once your team has populated the top attribute, we run the same
-                    measurement again and show you what moved: coverage per
-                    attribute, how much of the gap closed, and where your readiness
-                    number landed. This needs no traffic and no waiting, because it
-                    is a property of your catalogue rather than of your visitors.
+                    {t('2')}
                   </p>
                   <p
                     className="reveal mt-6 border-t border-line pt-5 text-sm text-muted"
                   >
                     <strong className="font-semibold text-ink"
-                      >What it needs from you:</strong
+                      >{t('3')}</strong
                     >
-                    The repaired catalogue, re-exported.
+                    {t('4')}
                   </p>
-                  <a
-                    href="decision-verification.html"
+                  <Link                 href="/en/product/decision-verification"
                     className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
-                    >Read about Decision Verification<svg
+                    >{t('5')}<svg
                       className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
                       aria-hidden="true"
                     >
                       <use href="#i-arrow-right" /></svg
-                  ></a>
+                  ></Link>
                 </div>
                 <div className="reveal delay-200 lg:col-span-6">
                   <ul
@@ -54,7 +53,7 @@ export function VerificationSection() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>The same measurement, on the repaired catalogue</span>
+                      ><span>{t('6')}</span>
                     </li>
                     <li className="flex gap-3">
                       <svg
@@ -62,7 +61,7 @@ export function VerificationSection() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Before and after, attribute by attribute</span>
+                      ><span>{t('7')}</span>
                     </li>
                     <li className="flex gap-3">
                       <svg
@@ -71,8 +70,7 @@ export function VerificationSection() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >Confirmation the week you finish, not the quarter
-                        after</span
+                        >{t('8')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -81,7 +79,7 @@ export function VerificationSection() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Evidence for whoever signed off the work</span>
+                      ><span>{t('9')}</span>
                     </li>
                   </ul>
                 </div>

@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
 export function Section3Section() {
+  const t = designedText("industries.ecommerce.section3");
   return (
     <section className="border-b border-line bg-surface-1/50">
             <div
@@ -14,14 +16,14 @@ export function Section3Section() {
             >
               <div className="lg:col-span-5 lg:pr-16">
                 <h2 className="reveal text-title text-balance">
-                  What usually goes wrong in Ecommerce and retail
+                  {t('1')}
                 </h2>
                 <div className="reveal mt-8 max-w-md">
                   <p className="text-sm text-muted">
-                    What a buyer here is trying to decide:
+                    {t('2')}
                   </p>
                   <p className="mt-2 text-h3 text-pretty text-ink">
-                    Which of these ninety is the one for me?
+                    {t('3')}
                   </p>
                 </div>
               </div>
@@ -34,8 +36,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        A category page where filtering removes almost nothing,
-                        because the useful filters do not exist
+                        {t('4')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -44,8 +45,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Completeness reporting that is green while discovery plainly
-                        is not working
+                        {t('5')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -54,8 +54,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Attribute schemas set years ago, before the range grew into
-                        them
+                        {t('6')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -64,8 +63,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Enrichment quoted as a whole-catalogue project because
-                        nobody can say which fields come first
+                        {t('7')}
                       </p>
                     </li>
                   </ul>
@@ -78,11 +76,9 @@ export function Section3Section() {
                     </svg>
                     <p className="text-body text-pretty text-muted">
                       <span className="font-semibold text-ink"
-                        >Where it usually already lives:</span
+                        >{t('8')}</span
                       >
-                      Most of it is already in your product titles. On the laptop
-                      shelf we measured, 161 of 216 missing values were recoverable
-                      from text the merchant already owned.
+                      {t('9')}
                     </p>
                   </div>
                 </div>

@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
 export function Section2Section() {
+  const t = designedText("gdpr.section2");
   return (
     <section className="border-b border-line">
             <div className="frame py-16 lg:py-20">
@@ -14,46 +16,38 @@ export function Section2Section() {
                 <section
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
-                  <h2 className="text-h2 text-ink">Our Privacy-First Approach</h2>
+                  <h2 className="text-h2 text-ink">{t('1')}</h2>
                   <p
                     className="mt-4 rounded-2xl border border-primary-line bg-primary-tint px-5 py-4 text-data text-ink"
                   >
-                    We process data in accordance with GDPR requirements and respect
-                    the rights of all EU data subjects.
+                    {t('2')}
                   </p>
                   <p className="mt-4 text-body leading-relaxed text-muted">
-                    Pulse was built with privacy at its core. Unlike traditional
-                    personalization solutions that rely on extensive personal data
-                    collection, our inference engine works with minimal,
-                    non-identifying data signals.
+                    {t('3')}
                   </p>
                   <ul className="mt-6 grid gap-4 sm:grid-cols-2">
                     <li className="rounded-2xl border border-line bg-card p-5">
-                      <h3 className="text-h3 text-ink">Data Minimization</h3>
+                      <h3 className="text-h3 text-ink">{t('4')}</h3>
                       <p className="mt-1.5 text-data text-muted">
-                        We only collect data that is strictly necessary for
-                        providing our services.
+                        {t('5')}
                       </p>
                     </li>
                     <li className="rounded-2xl border border-line bg-card p-5">
-                      <h3 className="text-h3 text-ink">Purpose Limitation</h3>
+                      <h3 className="text-h3 text-ink">{t('6')}</h3>
                       <p className="mt-1.5 text-data text-muted">
-                        Data is only used for the specific purposes for which it was
-                        collected.
+                        {t('7')}
                       </p>
                     </li>
                     <li className="rounded-2xl border border-line bg-card p-5">
-                      <h3 className="text-h3 text-ink">Storage Limitation</h3>
+                      <h3 className="text-h3 text-ink">{t('8')}</h3>
                       <p className="mt-1.5 text-data text-muted">
-                        Session data is not retained beyond what is necessary for
-                        inference.
+                        {t('9')}
                       </p>
                     </li>
                     <li className="rounded-2xl border border-line bg-card p-5">
-                      <h3 className="text-h3 text-ink">Integrity &amp; Security</h3>
+                      <h3 className="text-h3 text-ink">{t('10')}</h3>
                       <p className="mt-1.5 text-data text-muted">
-                        All data is encrypted and protected with industry-standard
-                        security.
+                        {t('11')}
                       </p>
                     </li>
                   </ul>
@@ -61,44 +55,42 @@ export function Section2Section() {
                 <section
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
-                  <h2 className="text-h2 text-ink">Your Rights Under GDPR</h2>
+                  <h2 className="text-h2 text-ink">{t('12')}</h2>
                   <ul className="mt-6 grid gap-4 sm:grid-cols-2">
                     <li className="rounded-2xl border border-line bg-card p-5">
-                      <h3 className="text-h3 text-ink">Right to Access</h3>
+                      <h3 className="text-h3 text-ink">{t('13')}</h3>
                       <p className="mt-1.5 text-data text-muted">
-                        You can request a copy of the personal data we hold about
-                        you.
+                        {t('14')}
                       </p>
                     </li>
                     <li className="rounded-2xl border border-line bg-card p-5">
-                      <h3 className="text-h3 text-ink">Right to Rectification</h3>
+                      <h3 className="text-h3 text-ink">{t('15')}</h3>
                       <p className="mt-1.5 text-data text-muted">
-                        You can request correction of inaccurate or incomplete data.
+                        {t('16')}
                       </p>
                     </li>
                     <li className="rounded-2xl border border-line bg-card p-5">
-                      <h3 className="text-h3 text-ink">Right to Erasure</h3>
+                      <h3 className="text-h3 text-ink">{t('17')}</h3>
                       <p className="mt-1.5 text-data text-muted">
-                        You can request deletion of your personal data (&lsquo;right
-                        to be forgotten&rsquo;).
+                        {t('18')}
                       </p>
                     </li>
                     <li className="rounded-2xl border border-line bg-card p-5">
-                      <h3 className="text-h3 text-ink">Right to Restrict Processing</h3>
+                      <h3 className="text-h3 text-ink">{t('19')}</h3>
                       <p className="mt-1.5 text-data text-muted">
-                        You can request that we limit how we use your data.
+                        {t('20')}
                       </p>
                     </li>
                     <li className="rounded-2xl border border-line bg-card p-5">
-                      <h3 className="text-h3 text-ink">Right to Data Portability</h3>
+                      <h3 className="text-h3 text-ink">{t('21')}</h3>
                       <p className="mt-1.5 text-data text-muted">
-                        You can request your data in a machine-readable format.
+                        {t('22')}
                       </p>
                     </li>
                     <li className="rounded-2xl border border-line bg-card p-5">
-                      <h3 className="text-h3 text-ink">Right to Object</h3>
+                      <h3 className="text-h3 text-ink">{t('23')}</h3>
                       <p className="mt-1.5 text-data text-muted">
-                        You can object to processing based on legitimate interests.
+                        {t('24')}
                       </p>
                     </li>
                   </ul>
@@ -106,9 +98,9 @@ export function Section2Section() {
                 <section
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
-                  <h2 className="text-h2 text-ink">Legal Basis for Processing</h2>
+                  <h2 className="text-h2 text-ink">{t('25')}</h2>
                   <p className="mt-4 text-body leading-relaxed text-muted">
-                    We process personal data under the following legal bases:
+                    {t('26')}
                   </p>
                   <ol className="mt-4 space-y-3 text-body text-muted">
                     <li className="flex gap-3">
@@ -117,10 +109,9 @@ export function Section2Section() {
                         >1</span
                       ><span
                         ><strong className="font-semibold text-ink"
-                          >Contractual Necessity:</strong
+                          >{t('27')}</strong
                         >
-                        Processing necessary to fulfill our service agreements with
-                        clients.</span
+                        {t('28')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -129,10 +120,9 @@ export function Section2Section() {
                         >2</span
                       ><span
                         ><strong className="font-semibold text-ink"
-                          >Legitimate Interest:</strong
+                          >{t('29')}</strong
                         >
-                        Processing for fraud prevention and service
-                        optimization.</span
+                        {t('30')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -140,7 +130,7 @@ export function Section2Section() {
                         className="grid size-6 shrink-0 place-items-center rounded-full bg-primary-tint text-xs font-semibold text-primary"
                         >3</span
                       ><span
-                        ><strong className="font-semibold text-ink">Consent:</strong>
+                        ><strong className="font-semibold text-ink">{t('31')}</strong>{" "}
                         When explicitly provided for specific processing
                         activities.</span
                       >
@@ -150,11 +140,9 @@ export function Section2Section() {
                 <section
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
-                  <h2 className="text-h2 text-ink">Data Processing Agreement (DPA)</h2>
+                  <h2 className="text-h2 text-ink">{t('32')}</h2>
                   <p className="mt-4 text-body leading-relaxed text-muted">
-                    For our business clients, we offer a comprehensive Data
-                    Processing Agreement that outlines our obligations as a data
-                    processor. Our DPA includes:
+                    {t('33')}
                   </p>
                   <ul className="mt-4 space-y-2.5 text-body text-muted">
                     <li className="flex gap-3">
@@ -164,8 +152,7 @@ export function Section2Section() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >Standard Contractual Clauses (SCCs) for international
-                        transfers</span
+                        >{t('34')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -174,7 +161,7 @@ export function Section2Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Sub-processor list and notification procedures</span>
+                      ><span>{t('35')}</span>
                     </li>
                     <li className="flex gap-3">
                       <svg
@@ -182,7 +169,7 @@ export function Section2Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Technical and organizational security measures</span>
+                      ><span>{t('36')}</span>
                     </li>
                     <li className="flex gap-3">
                       <svg
@@ -190,7 +177,7 @@ export function Section2Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Data breach notification procedures</span>
+                      ><span>{t('37')}</span>
                     </li>
                   </ul>
                 </section>
@@ -198,16 +185,15 @@ export function Section2Section() {
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
                   <h2 className="text-h2 text-ink">
-                    Contact Our Data Protection Officer
+                    {t('38')}
                   </h2>
                   <p className="mt-4 text-body text-muted">
-                    For any GDPR-related inquiries or to exercise your rights,
-                    please contact our DPO.
+                    {t('39')}
                   </p>
                   <a
                     href="mailto:dpo@thepulseapi.com"
                     className="mt-4 inline-flex items-center gap-2 font-semibold text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
-                    >dpo@thepulseapi.com</a
+                    >{t('40')}</a
                   >
                 </section>
               </div>

@@ -13,6 +13,7 @@ import { Section4Section } from "./section4";
 import { Section5Section } from "./section5";
 import { Section6Section } from "./section6";
 import { Section7Section } from "./section7";
+import { RequestSection } from "./request";
 
 export function DesignedVisualEvidence() {
   return (
@@ -24,6 +25,7 @@ export function DesignedVisualEvidence() {
       <Section5Section />
       <Section6Section />
       <Section7Section />
+      <RequestSection />
     </>
   );
 }

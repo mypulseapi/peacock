@@ -6,18 +6,19 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
 export function Section1Section() {
+  const t = designedText("careers.section1");
   return (
     <section className="hero-bg border-b border-line">
             <div className="frame py-20 lg:py-28">
               <h1 className="reveal max-w-3xl text-headline text-balance">
-                Build the future of e-commerce
+                {t('1')}
               </h1>
               <p
                 className="reveal mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted delay-100"
               >
-                Join a team of passionate engineers, designers, and business minds
-                working to transform how online stores understand their customers.
+                {t('2')}
               </p>
             </div>
           </section>

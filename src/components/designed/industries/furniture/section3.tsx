@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
 export function Section3Section() {
+  const t = designedText("industries.furniture.section3");
   return (
     <section className="border-b border-line bg-surface-1/50">
             <div
@@ -14,14 +16,14 @@ export function Section3Section() {
             >
               <div className="lg:col-span-5 lg:pr-16">
                 <h2 className="reveal text-title text-balance">
-                  What usually goes wrong in Furniture and homewares
+                  {t('1')}
                 </h2>
                 <div className="reveal mt-8 max-w-md">
                   <p className="text-sm text-muted">
-                    What a buyer here is trying to decide:
+                    {t('2')}
                   </p>
                   <p className="mt-2 text-h3 text-pretty text-ink">
-                    Will it fit, and is it made of what I think it is?
+                    {t('3')}
                   </p>
                 </div>
               </div>
@@ -34,8 +36,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Dimensions written into descriptions rather than recorded as
-                        numbers
+                        {t('4')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -44,8 +45,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Material and finish described in marketing language that
-                        cannot be filtered
+                        {t('5')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -54,7 +54,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Returns driven by a fact the listing could have carried
+                        {t('6')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -63,8 +63,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Ranges where assembled and packed dimensions are used
-                        interchangeably
+                        {t('7')}
                       </p>
                     </li>
                   </ul>
@@ -77,11 +76,9 @@ export function Section3Section() {
                     </svg>
                     <p className="text-body text-pretty text-muted">
                       <span className="font-semibold text-ink"
-                        >Where it usually already lives:</span
+                        >{t('8')}</span
                       >
-                      Usually the supplier specification sheet, plus your own
-                      descriptions. Dimensions in particular are rarely missing from
-                      the business, only from the field.
+                      {t('9')}
                     </p>
                   </div>
                 </div>

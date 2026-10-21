@@ -6,7 +6,11 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
+import Link from "next/link";
+
 export function Section4Section() {
+  const t = designedText("about.section4");
   return (
     <section className="border-b border-line">
             <div
@@ -14,12 +18,12 @@ export function Section4Section() {
             >
               <div className="lg:col-span-5 lg:pr-16">
                 <h2 className="text-title text-balance">
-                  Early, and specific about it
+                  {t('1')}
                 </h2>
                 <p
                   className="mt-4 max-w-sm text-body leading-relaxed text-pretty text-muted"
                 >
-                  What we can show today, and what we cannot yet.
+                  {t('2')}
                 </p>
               </div>
               <div className="lg:col-span-7">
@@ -32,25 +36,23 @@ export function Section4Section() {
                     >
                       <svg className="size-5 shrink-0 text-success" aria-hidden="true">
                         <use href="#i-circle-check" /></svg
-                      >What we can show
+                      >{t('3')}
                     </h3>
                     <dl className="mt-4 divide-y divide-line">
                       <div className="py-4 first:pt-0 last:pb-0">
                         <dt className="text-sm font-semibold text-ink">
-                          What is proven
+                          {t('4')}
                         </dt>
                         <dd className="mt-1 text-body text-pretty text-muted">
-                          The measurement. When we rerun the ranking with different
-                          settings, the top of the list stays the same.
+                          {t('5')}
                         </dd>
                       </div>
                       <div className="py-4 first:pt-0 last:pb-0">
                         <dt className="text-sm font-semibold text-ink">
-                          What is built
+                          {t('6')}
                         </dt>
                         <dd className="mt-1 text-body text-pretty text-muted">
-                          The audit engine, and a live service that re-ranks a
-                          catalogue as it changes and explains every score.
+                          {t('7')}
                         </dd>
                       </div>
                     </dl>
@@ -61,40 +63,36 @@ export function Section4Section() {
                     >
                       <svg className="size-5 shrink-0 text-warning" aria-hidden="true">
                         <use href="#i-circle-alert" /></svg
-                      >What we cannot show yet
+                      >{t('8')}
                     </h3>
                     <dl className="mt-4 divide-y divide-line">
                       <div className="py-4 first:pt-0 last:pb-0">
                         <dt className="text-sm font-semibold text-ink">
-                          What is not proven
+                          {t('9')}
                         </dt>
                         <dd className="mt-1 text-body text-pretty text-muted">
-                          Any effect on revenue or conversion. We have run no live
-                          experiment, so we have no number and will not offer one.
+                          {t('10')}
                         </dd>
                       </div>
                       <div className="py-4 first:pt-0 last:pb-0">
                         <dt className="text-sm font-semibold text-ink">
-                          What we are unsure about
+                          {t('11')}
                         </dt>
                         <dd className="mt-1 text-body text-pretty text-muted">
-                          How far the method carries beyond the categories we have
-                          measured. We will know when more merchants have run it.
+                          {t('12')}
                         </dd>
                       </div>
                       <div className="py-4 first:pt-0 last:pb-0">
                         <dt className="text-sm font-semibold text-ink">
-                          Customers we can name
+                          {t('13')}
                         </dt>
                         <dd className="mt-1 text-body text-pretty text-muted">
-                          None yet. The first audit asks for one export and nothing
-                          installed, and we will name customers here only with their
-                          permission.
+                          {t('14')}
                         </dd>
                       </div>
                       <div className="py-4 first:pt-0 last:pb-0">
                         <dt className="text-sm font-semibold text-ink">
-                          The channel we do not measure
+                          {t('15')}
                         </dt>
                         <dd className="mt-1 text-body text-pretty text-muted">
                           A shopper can be told a fact three ways: a field they can
@@ -102,24 +100,20 @@ export function Section4Section() {
                           they will actually read. We measure the first one. On the
                           laptop shelf we use for our own research the first two do
                           not overlap at all, so a catalogue can score well here and
-                          still leave a buyer unable to see what they came for.
-                          <a
-                            href="visual-evidence.html"
+                          still leave a buyer unable to see what they came for.{" "}
+                          <Link                         href="/en/visual-evidence"
                             className="text-link underline underline-offset-4 hover:text-primary-hover"
-                            >We published the measurement</a
-                          >.
+                            >{t('16')}</Link>.
                         </dd>
                       </div>
                     </dl>
                   </div>
                 </div>
                 <p className="mt-10 border-t border-line pt-6 text-body text-ink">
-                  One export, nothing installed.
-                  <a
-                    href="contact.html"
+                  One export, nothing installed.{" "}
+                  <Link                 href="/en/contact"
                     className="hit-area font-medium text-link underline underline-offset-4 hover:text-primary-hover"
-                    >Request a Decision Audit</a
-                  >
+                    >{t('17')}</Link>
                 </p>
               </div>
             </div>

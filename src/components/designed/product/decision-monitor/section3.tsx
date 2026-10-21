@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
 export function Section3Section() {
+  const t = designedText("product.decision-monitor.section3");
   return (
     <section className="scroll-mt-16 border-b border-line bg-surface-1/50">
             <div
@@ -14,14 +16,12 @@ export function Section3Section() {
             >
               <div className="lg:order-last lg:col-span-4 lg:pl-12">
                 <h2 className="reveal text-title text-balance">
-                  The gap grows with every week nobody looks
+                  {t('1')}
                 </h2>
                 <p
                   className="reveal mt-6 max-w-sm text-body leading-relaxed text-pretty text-muted"
                 >
-                  Products carrying the gap at about 26 new products a week. The
-                  defect does not change; only the number of products wearing it,
-                  and who has to approve the fix.
+                  {t('2')}
                 </p>
               </div>
               <div className="reveal lg:col-span-8">
@@ -31,16 +31,16 @@ export function Section3Section() {
                       className="flex flex-wrap items-baseline justify-between gap-2"
                     >
                       <p className="text-sm font-semibold text-ink">
-                        Products carrying the gap
+                        {t('3')}
                       </p>
-                      <span className="badge border-line text-muted">Example data</span>
+                      <span className="badge border-line text-muted">{t('4')}</span>
                     </div>
                     <ol className="mt-6 divide-y divide-line">
                       <li
                         className="grid grid-cols-1 gap-2 py-5 first:pt-0 last:pb-0 sm:grid-cols-12 sm:items-center sm:gap-6"
                       >
                         <p className="text-sm font-semibold text-muted sm:col-span-2">
-                          Week 1
+                          {t('5')}
                         </p>
                         <div className="flex items-center gap-4 sm:col-span-6">
                           <div className="h-3 flex-1 rounded-full bg-surface-1">
@@ -55,14 +55,14 @@ export function Section3Section() {
                           </p>
                         </div>
                         <p className="text-sm text-pretty text-muted sm:col-span-4">
-                          One export to remap. Nobody to ask.
+                          {t('6')}
                         </p>
                       </li>
                       <li
                         className="grid grid-cols-1 gap-2 py-5 first:pt-0 last:pb-0 sm:grid-cols-12 sm:items-center sm:gap-6"
                       >
                         <p className="text-sm font-semibold text-muted sm:col-span-2">
-                          Month 1
+                          {t('7')}
                         </p>
                         <div className="flex items-center gap-4 sm:col-span-6">
                           <div className="h-3 flex-1 rounded-full bg-surface-1">
@@ -77,14 +77,14 @@ export function Section3Section() {
                           </p>
                         </div>
                         <p className="text-sm text-pretty text-muted sm:col-span-4">
-                          A backlog item, done inside a sprint.
+                          {t('8')}
                         </p>
                       </li>
                       <li
                         className="grid grid-cols-1 gap-2 py-5 first:pt-0 last:pb-0 sm:grid-cols-12 sm:items-center sm:gap-6"
                       >
                         <p className="text-sm font-semibold text-muted sm:col-span-2">
-                          Month 3
+                          {t('9')}
                         </p>
                         <div className="flex items-center gap-4 sm:col-span-6">
                           <div className="h-3 flex-1 rounded-full bg-surface-1">
@@ -99,14 +99,14 @@ export function Section3Section() {
                           </p>
                         </div>
                         <p className="text-sm text-pretty text-muted sm:col-span-4">
-                          A project, and a conversation about it.
+                          {t('10')}
                         </p>
                       </li>
                       <li
                         className="grid grid-cols-1 gap-2 py-5 first:pt-0 last:pb-0 sm:grid-cols-12 sm:items-center sm:gap-6"
                       >
                         <p className="text-sm font-semibold text-muted sm:col-span-2">
-                          Month 6
+                          {t('11')}
                         </p>
                         <div className="flex items-center gap-4 sm:col-span-6">
                           <div className="h-3 flex-1 rounded-full bg-surface-1">
@@ -121,7 +121,7 @@ export function Section3Section() {
                           </p>
                         </div>
                         <p className="text-sm text-pretty text-muted sm:col-span-4">
-                          A second budget request for work already paid for once.
+                          {t('12')}
                         </p>
                       </li>
                     </ol>

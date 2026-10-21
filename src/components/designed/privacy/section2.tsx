@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
 export function Section2Section() {
+  const t = designedText("privacy.section2");
   return (
     <section className="border-b border-line">
             <div className="frame py-16 lg:py-20">
@@ -14,63 +16,63 @@ export function Section2Section() {
                 <section
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
-                  <h2 className="text-h2 text-ink">Privacy Highlights</h2>
+                  <h2 className="text-h2 text-ink">{t('1')}</h2>
                   <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                     <li
                       className="flex items-center gap-2.5 rounded-2xl border border-line bg-card px-4 py-3 text-data font-medium text-ink"
                     >
                       <svg className="size-4 shrink-0 text-success" aria-hidden="true">
                         <use href="#i-check" /></svg
-                      >No cookies required
+                      >{t('2')}
                     </li>
                     <li
                       className="flex items-center gap-2.5 rounded-2xl border border-line bg-card px-4 py-3 text-data font-medium text-ink"
                     >
                       <svg className="size-4 shrink-0 text-success" aria-hidden="true">
                         <use href="#i-check" /></svg
-                      >No PII collection
+                      >{t('3')}
                     </li>
                     <li
                       className="flex items-center gap-2.5 rounded-2xl border border-line bg-card px-4 py-3 text-data font-medium text-ink"
                     >
                       <svg className="size-4 shrink-0 text-success" aria-hidden="true">
                         <use href="#i-check" /></svg
-                      >GDPR &amp; CCPA compliant
+                      >{t('4')}
                     </li>
                     <li
                       className="flex items-center gap-2.5 rounded-2xl border border-line bg-card px-4 py-3 text-data font-medium text-ink"
                     >
                       <svg className="size-4 shrink-0 text-success" aria-hidden="true">
                         <use href="#i-check" /></svg
-                      >Runs on SOC 2 certified infrastructure
+                      >{t('5')}
                     </li>
                   </ul>
                 </section>
                 <section
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
-                  <h2 className="text-h2 text-ink">Information We Collect</h2>
+                  <h2 className="text-h2 text-ink">{t('6')}</h2>
                   <ul className="mt-4 space-y-2.5 text-body text-muted">
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >Device type and browser information (non-identifying)</span
+                        >{t('7')}</span
                       >
                     </li>
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
-                      ><span>Referring website or traffic source</span>
+                      ><span>{t('8')}</span>
                     </li>
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >General geographic location (country/region level)</span
+                        >{t('9')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -78,74 +80,68 @@ export function Section2Section() {
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >On-site behavior patterns (searches, filters,
-                        browsing)</span
+                        >{t('10')}</span
                       >
                     </li>
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
-                      ><span>Time of visit and session duration</span>
+                      ><span>{t('11')}</span>
                     </li>
                   </ul>
                   <p
                     className="mt-5 rounded-2xl border border-primary-line bg-primary-tint px-5 py-4 text-data text-ink"
                   >
-                    <strong className="font-semibold">Note:</strong> We do NOT collect:
-                    names, emails, addresses, payment information, or any personally
-                    identifiable information (PII) without explicit consent.
+                    <strong className="font-semibold">{t('12')}</strong> {t('13')}
                   </p>
                 </section>
                 <section
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
-                  <h2 className="text-h2 text-ink">How We Use Information</h2>
+                  <h2 className="text-h2 text-ink">{t('14')}</h2>
                   <ul className="mt-4 space-y-2.5 text-body text-muted">
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >To provide real-time persona inference for personalized
-                        experiences</span
+                        >{t('15')}</span
                       >
                     </li>
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
-                      ><span>To improve our inference algorithms and accuracy</span>
+                      ><span>{t('16')}</span>
                     </li>
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >To generate aggregated, anonymized analytics for our
-                        clients</span
+                        >{t('17')}</span
                       >
                     </li>
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
-                      ><span>To maintain and improve our service performance</span>
+                      ><span>{t('18')}</span>
                     </li>
                   </ul>
                 </section>
                 <section
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
-                  <h2 className="text-h2 text-ink">Data Storage &amp; Security</h2>
+                  <h2 className="text-h2 text-ink">{t('19')}</h2>
                   <ul className="mt-4 space-y-2.5 text-body text-muted">
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >All data is encrypted in transit (TLS 1.3) and at rest
-                        (AES-256)</span
+                        >{t('20')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -153,8 +149,7 @@ export function Section2Section() {
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >We run on infrastructure whose providers hold SOC 2 Type II
-                        attestations. Pulse itself is not yet SOC 2 audited.</span
+                        >{t('21')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -162,23 +157,21 @@ export function Section2Section() {
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >Data is stored in secure, geographically distributed data
-                        centers</span
+                        >{t('22')}</span
                       >
                     </li>
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
-                      ><span>Regular security audits and penetration testing</span>
+                      ><span>{t('23')}</span>
                     </li>
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >Automatic data deletion after 90 days unless otherwise
-                        specified</span
+                        >{t('24')}</span
                       >
                     </li>
                   </ul>
@@ -186,20 +179,20 @@ export function Section2Section() {
                 <section
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
-                  <h2 className="text-h2 text-ink">What We Don&rsquo;t Do</h2>
+                  <h2 className="text-h2 text-ink">{t('25')}</h2>
                   <ul className="mt-4 space-y-2.5 text-body text-muted">
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
-                      ><span>We don&rsquo;t use cookies for tracking</span>
+                      ><span>{t('26')}</span>
                     </li>
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >We don&rsquo;t sell personal data to third parties</span
+                        >{t('27')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -207,22 +200,21 @@ export function Section2Section() {
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >We don&rsquo;t create cross-site tracking profiles</span
+                        >{t('28')}</span
                       >
                     </li>
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
-                      ><span>We don&rsquo;t use fingerprinting techniques</span>
+                      ><span>{t('29')}</span>
                     </li>
                     <li className="flex gap-3">
                       <span
                         className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary"
                       ></span
                       ><span
-                        >We don&rsquo;t share individual user data with
-                        advertisers</span
+                        >{t('30')}</span
                       >
                     </li>
                   </ul>
@@ -230,9 +222,9 @@ export function Section2Section() {
                 <section
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
-                  <h2 className="text-h2 text-ink">Your Rights</h2>
+                  <h2 className="text-h2 text-ink">{t('31')}</h2>
                   <p className="mt-4 text-body leading-relaxed text-muted">
-                    Depending on your location, you may have the following rights:
+                    {t('32')}
                   </p>
                   <ul className="mt-4 space-y-2.5 text-body text-muted">
                     <li className="flex gap-3">
@@ -241,7 +233,7 @@ export function Section2Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Right to access your data</span>
+                      ><span>{t('33')}</span>
                     </li>
                     <li className="flex gap-3">
                       <svg
@@ -249,7 +241,7 @@ export function Section2Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Right to rectification</span>
+                      ><span>{t('34')}</span>
                     </li>
                     <li className="flex gap-3">
                       <svg
@@ -258,8 +250,7 @@ export function Section2Section() {
                       >
                         <use href="#i-check" /></svg
                       ><span
-                        >Right to erasure (&lsquo;right to be
-                        forgotten&rsquo;)</span
+                        >{t('35')}</span
                       >
                     </li>
                     <li className="flex gap-3">
@@ -268,7 +259,7 @@ export function Section2Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Right to restrict processing</span>
+                      ><span>{t('36')}</span>
                     </li>
                     <li className="flex gap-3">
                       <svg
@@ -276,7 +267,7 @@ export function Section2Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Right to data portability</span>
+                      ><span>{t('37')}</span>
                     </li>
                     <li className="flex gap-3">
                       <svg
@@ -284,22 +275,21 @@ export function Section2Section() {
                         aria-hidden="true"
                       >
                         <use href="#i-check" /></svg
-                      ><span>Right to object to processing</span>
+                      ><span>{t('38')}</span>
                     </li>
                   </ul>
                 </section>
                 <section
                   className="reveal border-t border-line pt-10 first:border-t-0 first:pt-0"
                 >
-                  <h2 className="text-h2 text-ink">Questions About Privacy?</h2>
+                  <h2 className="text-h2 text-ink">{t('39')}</h2>
                   <p className="mt-4 text-body text-muted">
-                    We&rsquo;re happy to answer any questions about how we handle
-                    your data.
+                    {t('40')}
                   </p>
                   <a
                     href="mailto:privacy@thepulseapi.com"
                     className="mt-4 inline-flex items-center gap-2 font-semibold text-primary underline decoration-primary-line underline-offset-4 hover:decoration-current"
-                    >privacy@thepulseapi.com</a
+                    >{t('41')}</a
                   >
                 </section>
               </div>

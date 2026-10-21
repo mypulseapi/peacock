@@ -604,26 +604,41 @@ html[data-theme="dark"] footer {
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
-* {
-  box-sizing: border-box;
-}
+/* `* { box-sizing: border-box }` used to sit here, unlayered. Tailwind's preflight already sets it
+   in `@layer base`, so it added nothing -- except that an unlayered rule outranks every layered
+   one, including `@utility frame`'s `content-box`. That silently turned the page frame's 70rem
+   from "content width, padding outside it" into "padding eats into the content", costing 160px of
+   width and pushing the hero demo off the right edge. */
 
 html {
   scroll-behavior: smooth;
 }
 
+/*
+ * The legacy Signal base, now scoped.
+ *
+ * Unscoped, its `font-size: 15px` became the base for every page including the designer's, whose
+ * own base is the 16px default. One declaration moved the type on all twenty pages: 302 of 302
+ * elements on /about differed from the designer's build, almost all of them by that 1px and the
+ * reflow it caused. `line-height` and the Jakarta stack did the same to leading and shape.
+ *
+ * `.legacy-ui` is on <body> only for the locales still served by the old components.
+ */
 body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-jakarta), var(--font-inter), system-ui, -apple-system, sans-serif;
   min-height: 100vh;
-  font-size: 15px;
-  line-height: 1.5;
   /* Guard against horizontal scroll from decorative/absolute elements on small
      screens. `clip` (not `hidden`) keeps position: sticky working. */
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body.legacy-ui {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-jakarta), var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -766,8 +781,13 @@ html[data-theme="dark"] .stat-badge {
 }
 
 /* Headings: Plus Jakarta Sans (brand display font), weight 600, tight tracking.
-   Inline tracking-/leading- utilities still override per-heading. */
-h1, h2, h3, h4, h5, h6 {
+   Inline tracking-/leading- utilities still override per-heading.
+
+   Scoped, for the same reason as the base above: unlayered, this `line-height: 1.3` outranked
+   every heading utility the designer wrote, which set their own leading around 1.15. The hero h1
+   stood 36px taller than it should and pushed everything below it down the page, which is what
+   most of the remaining per-element differences were. */
+.legacy-ui :is(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-jakarta), var(--font-inter), system-ui, sans-serif;
   letter-spacing: -0.02em;
   line-height: 1.3;
@@ -825,7 +845,7 @@ html[data-theme="dark"] .glow-purple {
 }
 
 /* Primary Button - Bold and clickable */
-.btn-primary {
+.legacy-ui .btn-primary {
   background: var(--accent-primary);
   color: #ffffff;
   font-weight: 600;
@@ -849,7 +869,7 @@ html[data-theme="dark"] .glow-purple {
 }
 
 /* Secondary Button */
-.btn-secondary {
+.legacy-ui .btn-secondary {
   background: var(--bg-elevated);
   color: var(--text-primary);
   font-weight: 600;
@@ -1319,7 +1339,11 @@ html { scroll-behavior: smooth; }
    ========================================================================== */
 
 
-body { background: var(--ed-canvas); color: var(--ed-ink); }
+/* Scoped, like the other legacy base rules. Unlayered, this pinned `body` to the editorial
+   canvas on every page: the designed pages stayed `#faf9ff` in dark mode while their text and
+   their `html` background switched correctly, which is the one combination that looks broken
+   rather than merely wrong. */
+body.legacy-ui { background: var(--ed-canvas); color: var(--ed-ink); }
 
 .glass-card { background: var(--ed-raise); border-color: var(--ed-line); }
 .glass-card:hover { border-color: var(--brand-lav-300); }
@@ -1543,9 +1567,7 @@ html[data-theme="dark"] mark.fact { background: rgb(var(--sig-rgb) / .18); color
 
 /* Staggered arrival for the repair rows, and a pop for the value landing. */
 @media (prefers-reduced-motion: no-preference) {
-  .reveal { animation: revealRow .5s cubic-bezier(.22,.9,.3,1) both; }
   .pop    { animation: popIn .42s cubic-bezier(.34,1.56,.44,1) both; }
-  @keyframes revealRow { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   @keyframes popIn     { from { opacity: 0; transform: scale(.82); } to { opacity: 1; transform: scale(1); } }
 }
 
@@ -1579,26 +1601,12 @@ html[data-theme="dark"] mark.fact { background: rgb(var(--sig-rgb) / .18); color
 }
 
 
-/* Staggered reveal, applied to a container's own children so no wrapper div is
-   inserted between a grid and its items. Ten steps is enough for any grid on
-   the site; anything beyond arrives with the tenth. */
-.reveal > * {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 520ms cubic-bezier(.22,.61,.36,1), transform 520ms cubic-bezier(.22,.61,.36,1);
-}
-.reveal.is-in > * { opacity: 1; transform: translateY(0); }
-.reveal.is-in > *:nth-child(1) { transition-delay: 0ms; }
-.reveal.is-in > *:nth-child(2) { transition-delay: 90ms; }
-.reveal.is-in > *:nth-child(3) { transition-delay: 180ms; }
-.reveal.is-in > *:nth-child(4) { transition-delay: 270ms; }
-.reveal.is-in > *:nth-child(5) { transition-delay: 360ms; }
-.reveal.is-in > *:nth-child(6) { transition-delay: 450ms; }
-.reveal.is-in > *:nth-child(n+7) { transition-delay: 540ms; }
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal > * { opacity: 1; transform: none; transition: none; }
-}
+/* The staggered `.reveal > *` arrival that used to live here is gone. It hid every child of a
+   `.reveal` until the element gained `.is-in`, and nothing in this repo has ever added `.is-in` --
+   the designer's motion script signals arrival with `[data-shown]` on the element itself. So the
+   children never came back: the hero h1 measured `opacity: 1` while the span carrying its text sat
+   at 0, which is why the page rendered with its lede and nothing else. The designer's
+   `@utility reveal` below is the one reveal system. */
 
 
 /* A live session. The ring keeps breathing because the thing it stands for is
@@ -3726,4 +3734,189 @@ a[aria-disabled="true"],
 a[aria-disabled="true"] * {
   pointer-events: none;
   color: var(--color-muted);
+}
+
+
+/*
+ * Content becomes visible whether or not the script runs.
+ *
+ * The designer's `.reveal` is `opacity: 0` until `designed-motion.js` sets `[data-shown]`. On a
+ * folder of static HTML that is safe: the script always runs, immediately, against a DOM nothing
+ * else touches. In this app it is one failure away from a blank page -- a slow chunk, a client
+ * navigation, an extension that blocks the file, a hydration pass that replaces the nodes the
+ * observer was watching. Every one of those leaves real text at `opacity: 0`, which no test that
+ * reads the DOM can see.
+ *
+ * So the hidden state now expires. The animation runs once, 1.2s after paint, and is the only
+ * thing that can leave an element visible-by-default; the observer still does the real work and
+ * almost always wins, because it fires as soon as the element scrolls into view. This is a
+ * failsafe, not the mechanism.
+ *
+ * `forwards` matters: the element must stay visible after the animation ends, not snap back.
+ */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .reveal:not([data-shown]) {
+    animation: pulse-reveal-failsafe 400ms ease-out 1200ms forwards;
+  }
+}
+
+@keyframes pulse-reveal-failsafe {
+  to {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+/*
+ * Grid items may shrink below their content.
+ *
+ * A grid item defaults to `min-width: auto`, so it refuses to be narrower than what is inside it.
+ * On `visual-evidence` that is a wide table in a card: at 320px the column grew to 312px inside a
+ * 288px content box and pushed the whole page to 328. The table has its own `overflow-x: auto`
+ * and copes perfectly well once the column stops expanding to fit it.
+ *
+ * Scoped to the elements the designer marks as grid children, and it only ever *permits*
+ * shrinking -- nothing is forced narrower than it would otherwise be.
+ *
+ * It lives here rather than as `min-w-0` in the converted markup because that markup is
+ * regenerated from the designer's HTML and a hand-edit to it is lost on the next run. Mine was.
+ */
+[class*="col-span"] {
+  min-width: 0;
+}
+
+/*
+ * Standalone links clear the 24px tap target.
+ *
+ * WCAG 2.2 AA 2.5.8 wants 24x24 CSS pixels. The designer's CTA links -- `inline-flex` with a
+ * label and an arrow -- come out between 20px and 23px tall, so 52 of them across the converted
+ * pages were one to four pixels short. This is inherited from the source rather than introduced
+ * by the conversion: the same links measure the same in the original HTML.
+ *
+ * One rule rather than 52 edits, and it only reaches `a.inline-flex`, which is the CTA shape. A
+ * link inside a sentence is `display: inline` and untouched, which matters because 2.5.8 exempts
+ * those and padding them would break the line box of every paragraph that contains one.
+ */
+a.inline-flex {
+  min-height: 1.5rem;
+}
+
+
+/* ==================================================================== *
+ * Ask Pulse: the assistant panel's motion.                             *
+ *                                                                      *
+ * Copied from the handbook's global.css so the two assistants move the *
+ * same way. The panel is themed with this site's role tokens, but the  *
+ * timing and the curve are shared on purpose: it is the same assistant *
+ * in two places and it should not feel like two.                       *
+ * ==================================================================== */
+
+@keyframes pulse-message-in {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.pulse-message-in {
+  animation: pulse-message-in 420ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes pulse-typing {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+.pulse-typing {
+  animation: pulse-typing 1s ease-in-out infinite;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes pulse-caret {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.pulse-caret {
+  animation: pulse-caret 1s steps(1) infinite;
+}
+
+@keyframes pulse-panel-in {
+  from {
+    transform: translateY(12px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.pulse-panel-in {
+  animation: pulse-panel-in 260ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-message-in,
+  .pulse-typing,
+  .pulse-caret,
+  .pulse-panel-in {
+    animation: none;
+  }
+}
+
+/*
+ * Theme switch, matching the handbook.
+ *
+ * `ThemeContext` wraps the `data-theme` flip in `document.startViewTransition`, which gives the
+ * browser two snapshots to cross-fade. Left on its defaults that cross-fade is 250ms, linear,
+ * and blends both layers with `mix-blend-mode: plus-lighter`. Plus-lighter is additive, so
+ * halfway through a light to dark swap the two layers sum towards white and the page flashes.
+ *
+ * Fading the new snapshot in over a static old one avoids it: the old layer stays fully opaque
+ * underneath for the whole duration, so there is no additive blend and no dip in the middle.
+ * `::view-transition-new` already paints above `::view-transition-old`.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  animation: none;
+}
+
+::view-transition-new(root) {
+  animation: pulse-theme-in 420ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes pulse-theme-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Both layers held still leaves the new one opaque on top, which is an instant swap. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    animation: none;
+  }
 }

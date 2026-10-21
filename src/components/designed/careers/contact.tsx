@@ -6,29 +6,30 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
 export function ContactSection() {
+  const t = designedText("careers.contact");
   return (
     <section id="contact" className="cta-dots scroll-mt-20" data-cta>
             <div className="frame py-24 text-center lg:py-32">
               <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
-                Tell us how you&apos;d contribute
+                {t('1')}
               </h2>
               <p
                 className="reveal mx-auto mt-6 max-w-xl text-lg text-pretty text-muted delay-100"
               >
-                We&apos;re always interested in meeting exceptional people. Send us your
-                resume and tell us how you&apos;d contribute to Pulse.
+                {t('2')}
               </p>
               <div className="reveal mt-8 flex flex-col items-center delay-200">
                 <a href="mailto:careers@thepulseapi.com" className="btn-secondary"
-                  >Get in touch</a
+                  >{t('3')}</a
                 >
                 <p className="mt-4 text-sm text-muted">
-                  or write to
+                  or write to{" "}
                   <a
                     href="mailto:careers@thepulseapi.com"
                     className="font-medium text-link underline-offset-2 hover:underline"
-                    >careers@thepulseapi.com</a
+                    >{t('4')}</a
                   >
                 </p>
               </div>

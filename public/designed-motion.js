@@ -167,6 +167,20 @@ if (spySections.length) {
 const canHover = window.matchMedia(
   "(hover: hover) and (pointer: fine)",
 ).matches;
+
+/* ---------------------------------------------------------------------
+ * DIVERGENCE FROM THE DESIGNER'S FILE. Re-apply this after re-copying.
+ *
+ * The designer's menus open on hover and close on leaving. Reported as the
+ * wrong behaviour: a menu that opens because the pointer crossed it opens
+ * when nobody asked, and it closed again mid-reach while changing language.
+ *
+ * Kept as a flag rather than by deleting the three hover blocks, so a
+ * re-copy of src/main.js needs this one line put back and nothing else.
+ * `canHover` itself still drives the cursor-following hero light and the
+ * card tilt, which are hover effects that should stay hover effects.
+ * ------------------------------------------------------------------- */
+const HOVER_OPENS_MENUS = false;
 const mobileMenu = document.querySelector("[data-mobile-menu]");
 const megaNav = document.querySelector("[data-mega-nav]");
 const mega = megaNav ? createMegaMenu(megaNav) : null;
@@ -254,16 +268,18 @@ function createMegaMenu(nav) {
   items.forEach((item) => {
     item.details.querySelector("summary").addEventListener("click", (e) => {
       e.preventDefault(); // keep <details> in sync with the viewport ourselves
-      // A mouse click right after hover-open must not close it again; keyboard (detail 0) toggles
-      const hoverClick = canHover && e.detail > 0;
+      // A mouse click right after hover-open must not close it again; keyboard (detail 0) toggles.
+      // With HOVER_OPENS_MENUS off there is no hover-open to protect, so every click toggles:
+      // leaving this on meant clicking an open menu re-opened it and it could never be closed.
+      const hoverClick = canHover && HOVER_OPENS_MENUS && e.detail > 0;
       active === item && !hoverClick ? close() : open(item);
     });
-    if (canHover)
+    if (canHover && HOVER_OPENS_MENUS)
       item.details.parentElement.addEventListener("mouseenter", () =>
         open(item),
       );
   });
-  if (canHover) {
+  if (canHover && HOVER_OPENS_MENUS) {
     // Hovering a plain link (About us, Pricing) closes the menu; leaving the nav closes it after a beat
     nav
       .querySelectorAll(":scope > ul > li:not(:has([data-mega]))")
@@ -346,7 +362,7 @@ dropdowns.forEach((d) => {
     mega?.close();
     keepInView(d);
   });
-  if (!canHover) return;
+  if (!canHover || !HOVER_OPENS_MENUS) return;
   let timer;
   const host = d.parentElement;
   host.addEventListener("mouseenter", () => {

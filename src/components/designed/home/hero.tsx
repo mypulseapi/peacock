@@ -24,11 +24,23 @@ export function HeroSection() {
                 className="frame grid grid-cols-1 items-center gap-12 py-12 xl:grid-cols-10 xl:gap-14"
               >
                 <div className="@container xl:col-span-3">
+                  {/*
+                      `xl:whitespace-nowrap` is gone from both lines.
+
+                      It held each line on one row above 1280px, which the designer could do
+                      because the English reads "Uncover shoppers' intent" and happens to fit.
+                      The Vietnamese line is half again as long, so it ran straight out of its
+                      column and the demo panel clipped it mid-word. Both languages overflowed;
+                      only one was short enough to get away with it.
+
+                      Wrapping costs the English headline nothing: `text-hero` and the two
+                      blocks still set the two lines, and a line that does not fit now takes a
+                      second row instead of disappearing under the panel. */}
                   <h1 className="reveal text-hero">
-                    <span className="block xl:whitespace-nowrap"
+                    <span className="block text-balance"
                       >{t('1')}</span
                     >
-                    <span className="block xl:whitespace-nowrap"
+                    <span className="block text-balance"
                       >{t('2')}</span
                     >
                   </h1>

@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Image from "next/image";
+
 import Link from "next/link";
 
 export function DesignedHeader() {
@@ -21,20 +23,18 @@ export function DesignedHeader() {
               aria-label="Pulse home"
               className="hit-area shrink-0"
             >
-              <img
+              <Image
                 src="/assets/brand/logo.webp"
                 alt="Pulse"
                 width={84}
                 height={28}
-                className="h-7 w-auto theme-dark:hidden"
-              /><img
+                className="h-7 w-auto theme-dark:hidden" priority /><Image
                 src="/assets/brand/logo-white.webp"
                 alt=""
                 width={84}
                 height={28}
                 className="hidden h-7 w-auto theme-dark:inline"
-                aria-hidden="true"
-              />
+                aria-hidden="true" priority />
             </Link>
 
             {/* Desktop menu */}

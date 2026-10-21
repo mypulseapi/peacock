@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Image from "next/image";
+
 import Link from "next/link";
 
 export function HeroSection() {
@@ -852,20 +854,18 @@ export function HeroSection() {
                                     </div>
                                     <div>
                                       <p className="flex h-4.5 items-center">
-                                        <img
+                                        <Image
                                           src="/assets/brand/logo.webp"
                                           alt="Pulse"
                                           width={54}
                                           height={18}
-                                          className="h-4.5 w-auto theme-dark:hidden"
-                                        /><img
+                                          className="h-4.5 w-auto theme-dark:hidden" priority /><Image
                                           src="/assets/brand/logo-white.webp"
                                           alt=""
                                           width={54}
                                           height={18}
                                           className="hidden h-4.5 w-auto theme-dark:inline"
-                                          aria-hidden="true"
-                                        />
+                                          aria-hidden="true" priority />
                                       </p>
                                       <p className="mt-0.5 text-caption text-muted">
                                         ranks by what shoppers need
@@ -1163,20 +1163,18 @@ export function HeroSection() {
                                   </div>
                                   <div className="min-w-0 flex-1">
                                     <p className="flex h-4.5 items-center">
-                                      <img
+                                      <Image
                                         src="/assets/brand/logo.webp"
                                         alt="Pulse"
                                         width={54}
                                         height={18}
-                                        className="h-4.5 w-auto theme-dark:hidden"
-                                      /><img
+                                        className="h-4.5 w-auto theme-dark:hidden" priority /><Image
                                         src="/assets/brand/logo-white.webp"
                                         alt=""
                                         width={54}
                                         height={18}
                                         className="hidden h-4.5 w-auto theme-dark:inline"
-                                        aria-hidden="true"
-                                      />
+                                        aria-hidden="true" priority />
                                     </p>
                                     <p className="mt-0.5 mb-5 text-xs text-muted">
                                       ranks by what shoppers need

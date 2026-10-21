@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Image from "next/image";
+
 import Link from "next/link";
 
 export function DesignedFooter() {
@@ -17,21 +19,20 @@ export function DesignedFooter() {
                 <Link               href="/en"
                   aria-label="Pulse home"
                   className="hit-area inline-flex"
-                  ><img
+                  ><Image
                     src="/assets/brand/logo.webp"
                     alt="Pulse"
                     width={84}
                     height={28}
                     loading="lazy"
-                    className="h-7 w-auto theme-dark:hidden" /><img
+                    className="h-7 w-auto theme-dark:hidden" /><Image
                     src="/assets/brand/logo-white.webp"
                     alt=""
                     width={84}
                     height={28}
                     loading="lazy"
                     className="hidden h-7 w-auto theme-dark:inline"
-                    aria-hidden="true"
-                /></Link>
+                    aria-hidden="true" /></Link>
               </div>
               <div>
                 <h2 className="text-nav font-semibold">Product</h2>

@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Image from "next/image";
+
 import Link from "next/link";
 
 export function Section1Section() {
@@ -17,13 +19,12 @@ export function Section1Section() {
                   srcSet="/assets/product/decision-monitor-dark.webp"
                   media="(prefers-color-scheme: dark)"
                 />
-                <img
+                <Image
                   src="/assets/product/decision-monitor-light.webp"
                   alt=""
                   width={2560}
                   height={1440}
-                  className="hero-video-media"
-                />
+                  className="hero-video-media" priority />
               </picture>
               <video
                 className="hero-video-media hero-video-fade"

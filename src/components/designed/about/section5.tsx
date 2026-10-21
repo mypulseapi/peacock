@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Image from "next/image";
+
 export function Section5Section() {
   return (
     <section className="border-b border-line">
@@ -43,28 +45,26 @@ export function Section5Section() {
                       className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
-                        <img
+                        <Image
                           src="/assets/team/tracy-bui.png"
                           alt=""
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                        />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
                       className="team-pop pointer-events-none absolute inset-0"
                       aria-hidden="true"
                     >
-                      <img
+                      <Image
                         src="/assets/team/tracy-bui.png"
                         alt=""
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                      />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">Tracy Bui</h3>
@@ -95,28 +95,26 @@ export function Section5Section() {
                       className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
-                        <img
+                        <Image
                           src="/assets/team/rosie-tran.png"
                           alt=""
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                        />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
                       className="team-pop pointer-events-none absolute inset-0"
                       aria-hidden="true"
                     >
-                      <img
+                      <Image
                         src="/assets/team/rosie-tran.png"
                         alt=""
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                      />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">Rosie Tran</h3>
@@ -147,28 +145,26 @@ export function Section5Section() {
                       className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
-                        <img
+                        <Image
                           src="/assets/team/elena-nguyen.png"
                           alt=""
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                        />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
                       className="team-pop pointer-events-none absolute inset-0"
                       aria-hidden="true"
                     >
-                      <img
+                      <Image
                         src="/assets/team/elena-nguyen.png"
                         alt=""
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                      />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">Elena Nguyen</h3>
@@ -199,28 +195,26 @@ export function Section5Section() {
                       className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
-                        <img
+                        <Image
                           src="/assets/team/iris-le.png"
                           alt=""
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                        />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
                       className="team-pop pointer-events-none absolute inset-0"
                       aria-hidden="true"
                     >
-                      <img
+                      <Image
                         src="/assets/team/iris-le.png"
                         alt=""
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                      />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">Iris Le</h3>
@@ -251,28 +245,26 @@ export function Section5Section() {
                       className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
-                        <img
+                        <Image
                           src="/assets/team/albert-bui.png"
                           alt=""
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                        />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
                       className="team-pop pointer-events-none absolute inset-0"
                       aria-hidden="true"
                     >
-                      <img
+                      <Image
                         src="/assets/team/albert-bui.png"
                         alt=""
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                      />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">Albert Bui</h3>
@@ -303,28 +295,26 @@ export function Section5Section() {
                       className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
-                        <img
+                        <Image
                           src="/assets/team/stephen-le.png"
                           alt=""
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                        />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
                       className="team-pop pointer-events-none absolute inset-0"
                       aria-hidden="true"
                     >
-                      <img
+                      <Image
                         src="/assets/team/stephen-le.png"
                         alt=""
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                      />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">Stephen Le</h3>
@@ -355,28 +345,26 @@ export function Section5Section() {
                       className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
-                        <img
+                        <Image
                           src="/assets/team/eric-pham.png"
                           alt=""
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                        />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
                       className="team-pop pointer-events-none absolute inset-0"
                       aria-hidden="true"
                     >
-                      <img
+                      <Image
                         src="/assets/team/eric-pham.png"
                         alt=""
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                      />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">Eric Pham</h3>
@@ -407,28 +395,26 @@ export function Section5Section() {
                       className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
-                        <img
+                        <Image
                           src="/assets/team/stan-nguyen.png"
                           alt=""
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                        />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
                       className="team-pop pointer-events-none absolute inset-0"
                       aria-hidden="true"
                     >
-                      <img
+                      <Image
                         src="/assets/team/stan-nguyen.png"
                         alt=""
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100"
-                      />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">Stan Nguyen</h3>

@@ -6,6 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Image from "next/image";
+
 export function WhySection() {
   return (
     <section
@@ -155,13 +157,12 @@ export function WhySection() {
                       className="size-1/6 overflow-hidden rounded-full shadow-glow transition duration-500 ease-out-soft pre-shown:scale-75 pre-shown:opacity-0"
                     >
                       {/* the icon file has a light margin round its circle: zoom 1.3× (circle is 144 of 180px) to crop it */}
-                      <img
+                      <Image
                         src="/assets/brand/apple-touch-icon.png"
                         alt=""
                         width={180}
                         height={180}
-                        className="size-full scale-130"
-                      />
+                        className="size-full scale-130" priority />
                     </span>
                   </div>
                   <div

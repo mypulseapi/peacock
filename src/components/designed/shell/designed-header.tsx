@@ -123,21 +123,6 @@ export function DesignedHeader() {
                                 >
                               </Link>
                             </li>
-                            <li>
-                              <a
-                                href="#method"
-                                className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                              >
-                                <span
-                                  className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >{t('11')}</span
-                                >
-                                <span
-                                  className="mt-1 block text-sm text-pretty text-muted"
-                                  >{t('12')}</span
-                                >
-                              </a>
-                            </li>
                           </ul>
                         </div>
                       </div>

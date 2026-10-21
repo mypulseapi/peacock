@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
 export function Section3Section() {
+  const t = designedText("industries.fmcg.section3");
   return (
     <section className="border-b border-line bg-surface-1/50">
             <div
@@ -14,14 +16,14 @@ export function Section3Section() {
             >
               <div className="lg:col-span-5 lg:pr-16">
                 <h2 className="reveal text-title text-balance">
-                  What usually goes wrong in FMCG and consumer goods
+                  {t('1')}
                 </h2>
                 <div className="reveal mt-8 max-w-md">
                   <p className="text-sm text-muted">
-                    What a buyer here is trying to decide:
+                    {t('2')}
                   </p>
                   <p className="mt-2 text-h3 text-pretty text-ink">
-                    Which of these is right for my household?
+                    {t('3')}
                   </p>
                 </div>
               </div>
@@ -34,7 +36,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Decisive facts that exist only inside the pack photograph
+                        {t('4')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -43,8 +45,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Pack size and unit price recorded inconsistently across a
-                        range
+                        {t('5')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -53,8 +54,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Dietary and allergen claims written into the description
-                        instead of a field
+                        {t('6')}
                       </p>
                     </li>
                     <li className="flex gap-3 py-4 first:pt-0 last:pb-0">
@@ -63,8 +63,7 @@ export function Section3Section() {
                         aria-hidden="true"
                       ></span>
                       <p className="text-body text-pretty text-ink">
-                        Ranges that grow by variant, where every variant looks
-                        identical in a grid
+                        {t('7')}
                       </p>
                     </li>
                   </ul>
@@ -77,11 +76,9 @@ export function Section3Section() {
                     </svg>
                     <p className="text-body text-pretty text-muted">
                       <span className="font-semibold text-ink"
-                        >Where it usually already lives:</span
+                        >{t('8')}</span
                       >
-                      Usually the label and the supplier specification. Much of it
-                      is already written in your own descriptions and marketing
-                      copy, which is the cheapest place an audit finds it.
+                      {t('9')}
                     </p>
                   </div>
                 </div>

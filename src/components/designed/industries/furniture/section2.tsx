@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
 export function Section2Section() {
+  const t = designedText("industries.furniture.section2");
   return (
     <section className="border-b border-line">
             <div
@@ -14,7 +16,7 @@ export function Section2Section() {
             >
               <div className="lg:col-span-4 lg:pr-12">
                 <h2 className="reveal text-title text-balance">
-                  What Furniture and homewares looks like right now
+                  {t('1')}
                 </h2>
               </div>
               <ul
@@ -28,10 +30,9 @@ export function Section2Section() {
                   </p>
                   <div>
                     <p className="text-body text-pretty text-ink">
-                      of tested retailers offer no filter for information they
-                      already display
+                      {t('2')}
                     </p>
-                    <p className="mt-1 text-caption text-muted">Baymard Institute</p>
+                    <p className="mt-1 text-caption text-muted">{t('3')}</p>
                   </div>
                 </li>
                 <li className="flex items-baseline gap-5 py-5 sm:gap-8">
@@ -42,10 +43,9 @@ export function Section2Section() {
                   </p>
                   <div>
                     <p className="text-body text-pretty text-ink">
-                      of consumers frustrated by incomplete product information, up
-                      from 28%
+                      {t('4')}
                     </p>
-                    <p className="mt-1 text-caption text-muted">Akeneo PX Pulse 2025</p>
+                    <p className="mt-1 text-caption text-muted">{t('5')}</p>
                   </div>
                 </li>
               </ul>

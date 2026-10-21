@@ -6,7 +6,11 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
+import Image from "next/image";
+
 export function WhySection() {
+  const t = designedText("home.why");
   return (
     <section
             id="why"
@@ -18,7 +22,7 @@ export function WhySection() {
                 className="flex flex-col justify-center py-16 lg:col-span-3 lg:border-r lg:border-line lg:py-24 lg:pr-10"
               >
                 <h2 className="reveal text-title text-balance">
-                  Why ecommerce brands should choose Pulse
+                  {t('1')}
                 </h2>
                 {/* Phones and no-JS: the five reasons as a scannable list. Title on its own line, explanation under it,
                      hairlines between; the muted number is the desktop card's "Reason 0N / 05". role=list keeps the list
@@ -35,11 +39,10 @@ export function WhySection() {
                     >
                     <div className="min-w-0">
                       <p className="font-semibold text-balance text-ink">
-                        Capture shopper intent from the first interaction
+                        {t('2')}
                       </p>
                       <p className="mt-1 leading-relaxed text-pretty text-muted">
-                        Pulse reads what a shopper is trying to decide from their
-                        very first interaction, before they search, filter or leave.
+                        {t('3')}
                       </p>
                     </div>
                   </li>
@@ -51,12 +54,10 @@ export function WhySection() {
                     >
                     <div className="min-w-0">
                       <p className="font-semibold text-balance text-ink">
-                        Connect shoppers with the right products
+                        {t('4')}
                       </p>
                       <p className="mt-1 leading-relaxed text-pretty text-muted">
-                        Each shopper&rsquo;s intent is matched with the products
-                        whose attributes actually answer it, so they reach a
-                        suitable product sooner.
+                        {t('5')}
                       </p>
                     </div>
                   </li>
@@ -68,12 +69,10 @@ export function WhySection() {
                     >
                     <div className="min-w-0">
                       <p className="font-semibold text-balance text-ink">
-                        Reduce losing sales opportunities from early shopper exits
+                        {t('6')}
                       </p>
                       <p className="mt-1 leading-relaxed text-pretty text-muted">
-                        When products can&rsquo;t be told apart, shoppers leave
-                        early. Fixing the attributes that decide the purchase keeps
-                        them choosing.
+                        {t('7')}
                       </p>
                     </div>
                   </li>
@@ -85,12 +84,10 @@ export function WhySection() {
                     >
                     <div className="min-w-0">
                       <p className="font-semibold text-balance text-ink">
-                        Turn commerce data into actionable marketing intelligence
+                        {t('8')}
                       </p>
                       <p className="mt-1 leading-relaxed text-pretty text-muted">
-                        Your catalogue and shopper signals become a ranked list of
-                        what to fix and promote first, not another dashboard to
-                        read.
+                        {t('9')}
                       </p>
                     </div>
                   </li>
@@ -102,12 +99,10 @@ export function WhySection() {
                     >
                     <div className="min-w-0">
                       <p className="font-semibold text-balance text-ink">
-                        Uncover insights others miss or fail to collect
+                        {t('10')}
                       </p>
                       <p className="mt-1 leading-relaxed text-pretty text-muted">
-                        Pulse measures the attributes shoppers need but your
-                        catalogue never recorded: the gaps a completeness report
-                        cannot see.
+                        {t('11')}
                       </p>
                     </div>
                   </li>
@@ -155,13 +150,12 @@ export function WhySection() {
                       className="size-1/6 overflow-hidden rounded-full shadow-glow transition duration-500 ease-out-soft pre-shown:scale-75 pre-shown:opacity-0"
                     >
                       {/* the icon file has a light margin round its circle: zoom 1.3× (circle is 144 of 180px) to crop it */}
-                      <img
+                      <Image
                         src="/assets/brand/apple-touch-icon.png"
                         alt=""
                         width={180}
                         height={180}
-                        className="size-full scale-130"
-                      />
+                        className="size-full scale-130" priority />
                     </span>
                   </div>
                   <div
@@ -191,7 +185,7 @@ export function WhySection() {
                           </span>
                           <span
                             className="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
-                            >Shopper intent</span
+                            >{t('12')}</span
                           >
                         </span>
                       </span>
@@ -219,7 +213,7 @@ export function WhySection() {
                           </span>
                           <span
                             className="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
-                            >Right products</span
+                            >{t('13')}</span
                           >
                         </span>
                       </span>
@@ -247,7 +241,7 @@ export function WhySection() {
                           </span>
                           <span
                             className="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
-                            >Reduce bounce rate</span
+                            >{t('14')}</span
                           >
                         </span>
                       </span>
@@ -275,7 +269,7 @@ export function WhySection() {
                           </span>
                           <span
                             className="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
-                            >Marketing intelligence</span
+                            >{t('15')}</span
                           >
                         </span>
                       </span>
@@ -303,7 +297,7 @@ export function WhySection() {
                           </span>
                           <span
                             className="absolute top-full left-1/2 mt-2.5 -translate-x-1/2 text-sm font-medium whitespace-nowrap text-muted transition-colors duration-200 group-hover:text-ink group-data-active:font-semibold group-data-active:text-ink"
-                            >Hidden insights</span
+                            >{t('16')}</span
                           >
                         </span>
                       </span>
@@ -317,7 +311,7 @@ export function WhySection() {
                   >
                     <svg className="size-4 rotate-180" aria-hidden="true">
                       <use href="#i-arrow-right" /></svg
-                    >Select a circle to read each reason.
+                    >{t('17')}
                   </p>
                   <span
                     className="why-card absolute top-1/2 left-0 h-px w-12 bg-line-control"
@@ -343,14 +337,13 @@ export function WhySection() {
                     <div className="why-panel" data-why-panel>
                       <span
                         className="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
-                        >Reason 01 / 05</span
+                        >{t('18')}</span
                       >
                       <h3 className="mt-4 text-h3 text-ink">
-                        Capture shopper intent from the first interaction
+                        {t('19')}
                       </h3>
                       <p className="mt-2 text-data leading-relaxed text-muted">
-                        Pulse reads what a shopper is trying to decide from their
-                        very first interaction, before they search, filter or leave.
+                        {t('20')}
                       </p>
                       <div className="mt-4 border-t border-line pt-4">
                         <button
@@ -358,7 +351,7 @@ export function WhySection() {
                           className="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-focus"
                           data-why-next
                         >
-                          Next: Right products<svg
+                          {t('21')}<svg
                             className="size-3"
                             aria-hidden="true"
                           >
@@ -370,15 +363,13 @@ export function WhySection() {
                     <div className="why-panel" data-why-panel>
                       <span
                         className="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
-                        >Reason 02 / 05</span
+                        >{t('22')}</span
                       >
                       <h3 className="mt-4 text-h3 text-ink">
-                        Connect shoppers with the right products
+                        {t('23')}
                       </h3>
                       <p className="mt-2 text-data leading-relaxed text-muted">
-                        Each shopper&rsquo;s intent is matched with the products
-                        whose attributes actually answer it, so they reach a
-                        suitable product sooner.
+                        {t('24')}
                       </p>
                       <div className="mt-4 border-t border-line pt-4">
                         <button
@@ -386,7 +377,7 @@ export function WhySection() {
                           className="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-focus"
                           data-why-next
                         >
-                          Next: Reduce bounce rate<svg
+                          {t('25')}<svg
                             className="size-3"
                             aria-hidden="true"
                           >
@@ -398,15 +389,13 @@ export function WhySection() {
                     <div className="why-panel" data-why-panel>
                       <span
                         className="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
-                        >Reason 03 / 05</span
+                        >{t('26')}</span
                       >
                       <h3 className="mt-4 text-h3 text-ink">
-                        Reduce losing sales opportunities from early shopper exits
+                        {t('27')}
                       </h3>
                       <p className="mt-2 text-data leading-relaxed text-muted">
-                        When products can&rsquo;t be told apart, shoppers leave
-                        early. Fixing the attributes that decide the purchase keeps
-                        them choosing.
+                        {t('28')}
                       </p>
                       <div className="mt-4 border-t border-line pt-4">
                         <button
@@ -414,7 +403,7 @@ export function WhySection() {
                           className="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-focus"
                           data-why-next
                         >
-                          Next: Marketing intelligence<svg
+                          {t('29')}<svg
                             className="size-3"
                             aria-hidden="true"
                           >
@@ -426,15 +415,13 @@ export function WhySection() {
                     <div className="why-panel" data-why-panel>
                       <span
                         className="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
-                        >Reason 04 / 05</span
+                        >{t('30')}</span
                       >
                       <h3 className="mt-4 text-h3 text-ink">
-                        Turn commerce data into actionable marketing intelligence
+                        {t('31')}
                       </h3>
                       <p className="mt-2 text-data leading-relaxed text-muted">
-                        Your catalogue and shopper signals become a ranked list of
-                        what to fix and promote first, not another dashboard to
-                        read.
+                        {t('32')}
                       </p>
                       <div className="mt-4 border-t border-line pt-4">
                         <button
@@ -442,7 +429,7 @@ export function WhySection() {
                           className="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-focus"
                           data-why-next
                         >
-                          Next: Hidden insights<svg
+                          {t('33')}<svg
                             className="size-3"
                             aria-hidden="true"
                           >
@@ -454,15 +441,13 @@ export function WhySection() {
                     <div className="why-panel" data-why-panel>
                       <span
                         className="inline-flex rounded-full border border-line-control px-2.5 py-0.5 text-xs font-semibold text-ink tabular-nums"
-                        >Reason 05 / 05</span
+                        >{t('34')}</span
                       >
                       <h3 className="mt-4 text-h3 text-ink">
-                        Uncover insights others miss or fail to collect
+                        {t('35')}
                       </h3>
                       <p className="mt-2 text-data leading-relaxed text-muted">
-                        Pulse measures the attributes shoppers need but your
-                        catalogue never recorded: the gaps a completeness report
-                        cannot see.
+                        {t('36')}
                       </p>
                       <div className="mt-4 border-t border-line pt-4">
                         <button
@@ -470,7 +455,7 @@ export function WhySection() {
                           className="hit-area inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1 text-xs font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-focus"
                           data-why-next
                         >
-                          Next: Shopper intent<svg
+                          {t('37')}<svg
                             className="size-3"
                             aria-hidden="true"
                           >

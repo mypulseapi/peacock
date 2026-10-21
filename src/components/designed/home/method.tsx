@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
 export function MethodSection() {
+  const t = designedText("home.method");
   return (
     <section id="method" className="scroll-mt-16 border-b border-line" data-how>
             <div className="frame py-16 lg:py-24">
@@ -16,13 +18,12 @@ export function MethodSection() {
                 <div className="min-w-0 lg:col-span-4">
                   <div className="lg:sticky lg:top-28">
                     <h2 className="reveal text-title text-balance text-ink">
-                      How it works
+                      {t('1')}
                     </h2>
                     <p
                       className="reveal mt-4 max-w-md text-lg text-pretty text-muted delay-100 lg:min-h-21"
                     >
-                      One export in, a ranked list out. No code, no tag, no system
-                      access.
+                      {t('2')}
                     </p>
                     <ol
                       className="mt-29 hidden border-t border-line lg:block"
@@ -37,16 +38,14 @@ export function MethodSection() {
                           href="#how-step-1"
                           className="block py-5 text-h3 text-muted transition-colors duration-200 ease-out-soft group-data-active:text-ink"
                           data-how-link
-                          >Send one category</a
+                          >{t('3')}</a
                         >
                         <div className="how-desc">
                           <div>
                             <div className="pb-6">
-                              <p className="eyebrow-primary">You do this once</p>
+                              <p className="eyebrow-primary">{t('4')}</p>
                               <p className="mt-2 text-sm text-muted">
-                                A CSV or JSON export. Product name, description,
-                                category, price, and whatever attributes you already
-                                record. No code, no tag, no access to your systems.
+                                {t('5')}
                               </p>
                             </div>
                           </div>
@@ -61,17 +60,14 @@ export function MethodSection() {
                           href="#how-step-2"
                           className="block py-5 text-h3 text-muted transition-colors duration-200 ease-out-soft group-data-active:text-ink"
                           data-how-link
-                          >Get the Decision Audit</a
+                          >{t('6')}</a
                         >
                         <div className="how-desc">
                           <div>
                             <div className="pb-6">
-                              <p className="eyebrow-primary">48 hours</p>
+                              <p className="eyebrow-primary">{t('7')}</p>
                               <p className="mt-2 text-sm text-muted">
-                                Within 48 hours: the ranked list of what to record
-                                first, the specific products missing each field,
-                                where each missing fact actually lives, and your
-                                decision-readiness number.
+                                {t('8')}
                               </p>
                             </div>
                           </div>
@@ -86,17 +82,14 @@ export function MethodSection() {
                           href="#how-step-3"
                           className="block py-5 text-h3 text-muted transition-colors duration-200 ease-out-soft group-data-active:text-ink"
                           data-how-link
-                          >Fix it, then verify</a
+                          >{t('9')}</a
                         >
                         <div className="how-desc">
                           <div>
                             <div className="pb-6">
-                              <p className="eyebrow-primary">Your team, or ours</p>
+                              <p className="eyebrow-primary">{t('10')}</p>
                               <p className="mt-2 text-sm text-muted">
-                                You may not need us for the fix at all. When it is
-                                done we recompute on the repaired catalogue and show
-                                you exactly what moved. No traffic, no test, no
-                                waiting.
+                                {t('11')}
                               </p>
                             </div>
                           </div>
@@ -127,14 +120,12 @@ export function MethodSection() {
                       ></span>
                     </div>
                     <div className="mb-4 lg:sr-only">
-                      <p className="eyebrow-primary pr-28">You do this once</p>
+                      <p className="eyebrow-primary pr-28">{t('12')}</p>
                       <h3 id="how-step-1-title" className="mt-1 pr-28 text-h3">
-                        Send one category
+                        {t('13')}
                       </h3>
                       <p className="mt-1 text-sm text-muted">
-                        A CSV or JSON export. Product name, description, category,
-                        price, and whatever attributes you already record. No code,
-                        no tag, no access to your systems.
+                        {t('14')}
                       </p>
                     </div>
                     <div
@@ -149,11 +140,11 @@ export function MethodSection() {
                         <div
                           className="rounded-xl border border-line bg-card shadow-sm absolute top-1/2 left-0 z-10 w-64 origin-left -translate-y-1/2 scale-90 p-4 transition-all duration-700 ease-out-soft pre-4:left-1/2 pre-4:-translate-x-1/2 pre-4:scale-125 max-md:top-0 max-md:left-1/2 max-md:w-full max-md:max-w-64 max-md:origin-top max-md:-translate-x-1/2 max-md:translate-y-0 max-md:pre-4:top-1/2 max-md:pre-4:-translate-y-1/2 max-md:pre-4:scale-100"
                         >
-                          <p className="eyebrow">Your store</p>
+                          <p className="eyebrow">{t('15')}</p>
                           <p className="mt-1 font-semibold text-ink">
-                            Laptops
+                            Laptops{" "}
                             <span className="font-normal text-muted tabular-nums"
-                              >· 216 products</span
+                              >{t('16')}</span
                             >
                           </p>
                           <ul className="mt-3 divide-y divide-line text-sm text-ink">
@@ -161,27 +152,27 @@ export function MethodSection() {
                               <span
                                 className="size-6 shrink-0 rounded bg-surface-1"
                               ></span
-                              ><span className="truncate">LG 16Z90TS-G</span>
+                              ><span className="truncate">{t('17')}</span>
                             </li>
                             <li className="flex items-center gap-2.5 py-1.5">
                               <span
                                 className="size-6 shrink-0 rounded bg-surface-1"
                               ></span
-                              ><span className="truncate">Spectre x360</span>
+                              ><span className="truncate">{t('18')}</span>
                             </li>
                             <li className="flex items-center gap-2.5 py-1.5">
                               <span
                                 className="size-6 shrink-0 rounded bg-surface-1"
                               ></span
                               ><span className="truncate"
-                                >ThinkPad X1 Carbon Gen 9</span
+                                >{t('19')}</span
                               >
                             </li>
                             <li className="flex items-center gap-2.5 py-1.5">
                               <span
                                 className="size-6 shrink-0 rounded bg-surface-1"
                               ></span
-                              ><span className="truncate">Razer Blade</span>
+                              ><span className="truncate">{t('20')}</span>
                             </li>
                           </ul>
                           <div className="mt-3 flex justify-end">
@@ -217,11 +208,11 @@ export function MethodSection() {
                               <use href="#i-file" /></svg
                             ><span
                               className="absolute inset-x-0 bottom-5 mx-auto w-fit rounded bg-primary px-1.5 text-xs font-bold text-on-primary"
-                              >CSV</span
+                              >{t('21')}</span
                             ></span
                           >
                           <span className="text-xs font-semibold text-ink"
-                            >laptops.csv</span
+                            >{t('22')}</span
                           >
                         </div>
                         {/* 5 inside the file: the fields of the export */}
@@ -234,14 +225,13 @@ export function MethodSection() {
                             <div
                               className="flex flex-wrap items-baseline justify-between gap-2"
                             >
-                              <p className="font-semibold text-ink">laptops.csv</p>
+                              <p className="font-semibold text-ink">{t('23')}</p>
                               <p className="tabular-nums text-xs text-muted">
-                                216 rows
+                                {t('24')}
                               </p>
                             </div>
                             <p className="mt-1 text-xs text-muted">
-                              Product name, description, category, price and the
-                              attributes you already record.
+                              {t('25')}
                             </p>
                             <table
                               className="mt-3 w-full table-fixed text-left text-xs"
@@ -251,37 +241,37 @@ export function MethodSection() {
                                   <th
                                     className="w-1/4 py-1.5 pr-3 font-medium max-md:w-2/5"
                                   >
-                                    Name
+                                    {t('26')}
                                   </th>
                                   <th
                                     className="w-1/4 py-1.5 pr-3 font-medium max-md:hidden"
                                   >
-                                    Description
+                                    {t('27')}
                                   </th>
                                   <th className="py-1.5 pr-3 font-medium max-md:hidden">
-                                    Category
+                                    {t('28')}
                                   </th>
                                   <th className="py-1.5 pr-3 font-medium max-md:hidden">
-                                    Price
+                                    {t('29')}
                                   </th>
                                   <th className="py-1.5 pr-3 font-medium">
-                                    Screen size
+                                    {t('30')}
                                   </th>
                                   <th className="py-1.5 font-medium max-sm:hidden">
-                                    Memory
+                                    {t('31')}
                                   </th>
                                 </tr>
                               </thead>
                               <tbody className="divide-y divide-line">
                                 <tr>
                                   <td className="py-2 pr-3 font-medium text-ink">
-                                    HP Spectre x360
+                                    {t('32')}
                                   </td>
                                   <td className="py-2 pr-3 text-muted max-md:hidden">
-                                    13.5&quot; OLED Touch, 16GB
+                                    {t('33')}
                                   </td>
                                   <td className="py-2 pr-3 text-muted max-md:hidden">
-                                    Laptops
+                                    {t('34')}
                                   </td>
                                   <td className="py-2 pr-3 max-md:hidden">
                                     <span
@@ -292,20 +282,20 @@ export function MethodSection() {
                                     <span className="missing-flag"
                                       ><svg className="size-3" aria-hidden="true">
                                         <use href="#i-triangle-alert" /></svg
-                                      >Missing</span
+                                      >{t('35')}</span
                                     >
                                   </td>
-                                  <td className="py-2 max-sm:hidden">16GB</td>
+                                  <td className="py-2 max-sm:hidden">{t('36')}</td>
                                 </tr>
                                 <tr>
                                   <td className="py-2 pr-3 font-medium text-ink">
-                                    Lenovo ThinkPad X1 Carbon G9
+                                    {t('37')}
                                   </td>
                                   <td className="py-2 pr-3 text-muted max-md:hidden">
-                                    14 inch WUXGA
+                                    {t('38')}
                                   </td>
                                   <td className="py-2 pr-3 text-muted max-md:hidden">
-                                    Laptops
+                                    {t('39')}
                                   </td>
                                   <td className="py-2 pr-3 max-md:hidden">
                                     <span
@@ -316,20 +306,20 @@ export function MethodSection() {
                                     <span className="missing-flag"
                                       ><svg className="size-3" aria-hidden="true">
                                         <use href="#i-triangle-alert" /></svg
-                                      >Missing</span
+                                      >{t('40')}</span
                                     >
                                   </td>
-                                  <td className="py-2 max-sm:hidden">32GB</td>
+                                  <td className="py-2 max-sm:hidden">{t('41')}</td>
                                 </tr>
                                 <tr>
                                   <td className="py-2 pr-3 font-medium text-ink">
-                                    MSI GS66 Stealth
+                                    {t('42')}
                                   </td>
                                   <td className="py-2 pr-3 text-muted max-md:hidden">
-                                    15.6 FHD 240Hz
+                                    {t('43')}
                                   </td>
                                   <td className="py-2 pr-3 text-muted max-md:hidden">
-                                    Laptops
+                                    {t('44')}
                                   </td>
                                   <td className="py-2 pr-3 max-md:hidden">
                                     <span
@@ -340,14 +330,14 @@ export function MethodSection() {
                                     <span className="missing-flag"
                                       ><svg className="size-3" aria-hidden="true">
                                         <use href="#i-triangle-alert" /></svg
-                                      >Missing</span
+                                      >{t('45')}</span
                                     >
                                   </td>
                                   <td className="py-2 max-sm:hidden">
                                     <span className="missing-flag"
                                       ><svg className="size-3" aria-hidden="true">
                                         <use href="#i-triangle-alert" /></svg
-                                      >Missing</span
+                                      >{t('46')}</span
                                     >
                                   </td>
                                 </tr>
@@ -360,25 +350,25 @@ export function MethodSection() {
                           className="rounded-xl border border-line bg-card shadow-sm absolute top-1/2 right-0 w-56 -translate-y-1/2 p-4 transition-all duration-700 ease-out-soft pre-7:translate-x-4 pre-7:opacity-0 max-md:top-auto max-md:right-auto max-md:bottom-0 max-md:left-1/2 max-md:-translate-x-1/2 max-md:translate-y-0 max-md:pre-7:-translate-x-1/2 max-md:pre-7:translate-y-4"
                         >
                           <p className="font-display text-lg font-semibold text-ink">
-                            Pulse
+                            {t('47')}
                           </p>
                           <div className="mt-2 grid">
                             <p
                               className="col-start-1 row-start-1 text-sm text-muted opacity-0 transition-opacity duration-300 pre-8:opacity-100"
                             >
-                              Receiving your export…
+                              {t('48')}
                             </p>
                             <span
                               className="col-start-1 row-start-1 badge-success justify-self-start transition-all duration-500 pre-8:scale-90 pre-8:opacity-0"
                               ><svg className="size-3" aria-hidden="true">
                                 <use href="#i-check" /></svg
-                              >Export received</span
+                              >{t('49')}</span
                             >
                           </div>
                           <p
                             className="mt-2 tabular-nums text-sm text-ink transition-opacity duration-500 delay-200 pre-8:opacity-0"
                           >
-                            216 products in the audit
+                            {t('50')}
                           </p>
                         </div>
                       </div>
@@ -401,14 +391,12 @@ export function MethodSection() {
                       ></span>
                     </div>
                     <div className="mb-4 lg:sr-only">
-                      <p className="eyebrow-primary pr-28">48 hours</p>
+                      <p className="eyebrow-primary pr-28">{t('51')}</p>
                       <h3 id="how-step-2-title" className="mt-1 pr-28 text-h3">
-                        Get the Decision Audit
+                        {t('52')}
                       </h3>
                       <p className="mt-1 text-sm text-muted">
-                        Within 48 hours: the ranked list of what to record first,
-                        the specific products missing each field, where each missing
-                        fact actually lives, and your decision-readiness number.
+                        {t('53')}
                       </p>
                     </div>
                     <div
@@ -423,7 +411,7 @@ export function MethodSection() {
                         <div
                           className="rounded-xl border border-line bg-card shadow-sm absolute inset-x-0 top-0 overflow-hidden p-3 transition-all duration-700 ease-out-soft scale-95 pre-4:scale-100 sm:p-5"
                         >
-                          <p className="eyebrow">laptops.csv · 216 products</p>
+                          <p className="eyebrow">{t('54')}</p>
                           <table
                             className="mt-3 w-full table-fixed text-left tabular-nums text-xs sm:text-sm"
                           >
@@ -432,46 +420,46 @@ export function MethodSection() {
                                 <th
                                   className="w-1/4 py-1.5 pr-2 font-medium max-sm:w-1/3 md:w-1/3"
                                 >
-                                  Product
+                                  {t('55')}
                                 </th>
                                 <th className="py-1.5 pr-2 font-medium">
-                                  <span className="block text-ink">Screen size</span
+                                  <span className="block text-ink">{t('56')}</span
                                   ><span
                                     className="flex items-center gap-1 font-semibold text-gap-strong transition-opacity duration-500 pre-3:opacity-0"
                                     ><svg className="size-3" aria-hidden="true">
                                       <use href="#i-triangle-alert" /></svg
-                                    >80 missing</span
+                                    >{t('57')}</span
                                   >
                                 </th>
                                 <th className="py-1.5 pr-2 font-medium">
-                                  <span className="block text-ink">Memory</span
+                                  <span className="block text-ink">{t('58')}</span
                                   ><span
                                     className="flex items-center gap-1 font-semibold text-gap-strong transition-opacity duration-500 pre-3:opacity-0"
                                     ><svg className="size-3" aria-hidden="true">
                                       <use href="#i-triangle-alert" /></svg
-                                    >60 missing</span
+                                    >{t('59')}</span
                                   >
                                 </th>
                                 <th
                                   className="py-1.5 pr-2 font-medium hidden sm:table-cell"
                                 >
-                                  <span className="block text-ink">Processor</span
+                                  <span className="block text-ink">{t('60')}</span
                                   ><span
                                     className="flex items-center gap-1 font-semibold text-gap-strong transition-opacity duration-500 pre-3:opacity-0"
                                     ><svg className="size-3" aria-hidden="true">
                                       <use href="#i-triangle-alert" /></svg
-                                    >162 missing</span
+                                    >{t('61')}</span
                                   >
                                 </th>
                                 <th
                                   className="py-1.5 pr-2 font-medium hidden sm:table-cell"
                                 >
-                                  <span className="block text-ink">Storage</span
+                                  <span className="block text-ink">{t('62')}</span
                                   ><span
                                     className="flex items-center gap-1 font-semibold text-gap-strong transition-opacity duration-500 pre-3:opacity-0"
                                     ><svg className="size-3" aria-hidden="true">
                                       <use href="#i-triangle-alert" /></svg
-                                    >55 missing</span
+                                    >{t('63')}</span
                                   >
                                 </th>
                               </tr>
@@ -481,10 +469,10 @@ export function MethodSection() {
                                 <td
                                   className="truncate py-2 pr-2 text-ink max-sm:overflow-visible max-sm:whitespace-normal max-sm:wrap-anywhere"
                                 >
-                                  LG 16Z90TS-G
+                                  {t('64')}
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2">
-                                  <span className="text-ink">16.0&quot;</span>
+                                  <span className="text-ink">{t('65')}</span>
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2">
                                   <span className="missing-flag"
@@ -493,7 +481,7 @@ export function MethodSection() {
                                       aria-hidden="true"
                                     >
                                       <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
+                                    >{t('66')}</span
                                   >
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
@@ -503,18 +491,18 @@ export function MethodSection() {
                                       aria-hidden="true"
                                     >
                                       <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
+                                    >{t('67')}</span
                                   >
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
-                                  <span className="text-ink">512GB</span>
+                                  <span className="text-ink">{t('68')}</span>
                                 </td>
                               </tr>
                               <tr>
                                 <td
                                   className="truncate py-2 pr-2 text-ink max-sm:overflow-visible max-sm:whitespace-normal max-sm:wrap-anywhere"
                                 >
-                                  Spectre x360
+                                  {t('69')}
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2">
                                   <span className="missing-flag"
@@ -523,11 +511,11 @@ export function MethodSection() {
                                       aria-hidden="true"
                                     >
                                       <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
+                                    >{t('70')}</span
                                   >
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2">
-                                  <span className="text-ink">16GB</span>
+                                  <span className="text-ink">{t('71')}</span>
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
                                   <span className="missing-flag"
@@ -536,70 +524,7 @@ export function MethodSection() {
                                       aria-hidden="true"
                                     >
                                       <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
-                                  >
-                                </td>
-                                <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
-                                  <span className="missing-flag"
-                                    ><svg
-                                      className="size-3 max-sm:hidden"
-                                      aria-hidden="true"
-                                    >
-                                      <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
-                                  >
-                                </td>
-                              </tr>
-                              <tr>
-                                <td
-                                  className="truncate py-2 pr-2 text-ink max-sm:overflow-visible max-sm:whitespace-normal max-sm:wrap-anywhere"
-                                >
-                                  ThinkPad X1 Carbon Gen 9
-                                </td>
-                                <td className="py-2 pr-1 sm:pr-2">
-                                  <span className="missing-flag"
-                                    ><svg
-                                      className="size-3 max-sm:hidden"
-                                      aria-hidden="true"
-                                    >
-                                      <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
-                                  >
-                                </td>
-                                <td className="py-2 pr-1 sm:pr-2">
-                                  <span className="text-ink">32GB</span>
-                                </td>
-                                <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
-                                  <span className="missing-flag"
-                                    ><svg
-                                      className="size-3 max-sm:hidden"
-                                      aria-hidden="true"
-                                    >
-                                      <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
-                                  >
-                                </td>
-                                <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
-                                  <span className="text-ink">1TB</span>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td
-                                  className="truncate py-2 pr-2 text-ink max-sm:overflow-visible max-sm:whitespace-normal max-sm:wrap-anywhere"
-                                >
-                                  Razer Blade
-                                </td>
-                                <td className="py-2 pr-1 sm:pr-2">
-                                  <span className="text-ink">15.6&quot;</span>
-                                </td>
-                                <td className="py-2 pr-1 sm:pr-2">
-                                  <span className="missing-flag"
-                                    ><svg
-                                      className="size-3 max-sm:hidden"
-                                      aria-hidden="true"
-                                    >
-                                      <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
+                                    >{t('72')}</span
                                   >
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
@@ -609,17 +534,7 @@ export function MethodSection() {
                                       aria-hidden="true"
                                     >
                                       <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
-                                  >
-                                </td>
-                                <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
-                                  <span className="missing-flag"
-                                    ><svg
-                                      className="size-3 max-sm:hidden"
-                                      aria-hidden="true"
-                                    >
-                                      <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
+                                    >{t('73')}</span
                                   >
                                 </td>
                               </tr>
@@ -627,7 +542,7 @@ export function MethodSection() {
                                 <td
                                   className="truncate py-2 pr-2 text-ink max-sm:overflow-visible max-sm:whitespace-normal max-sm:wrap-anywhere"
                                 >
-                                  MacBook Pro
+                                  {t('74')}
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2">
                                   <span className="missing-flag"
@@ -636,17 +551,90 @@ export function MethodSection() {
                                       aria-hidden="true"
                                     >
                                       <use href="#i-triangle-alert" /></svg
-                                    >Missing</span
+                                    >{t('75')}</span
                                   >
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2">
-                                  <span className="text-ink">18GB</span>
+                                  <span className="text-ink">{t('76')}</span>
+                                </td>
+                                <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
+                                  <span className="missing-flag"
+                                    ><svg
+                                      className="size-3 max-sm:hidden"
+                                      aria-hidden="true"
+                                    >
+                                      <use href="#i-triangle-alert" /></svg
+                                    >{t('77')}</span
+                                  >
+                                </td>
+                                <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
+                                  <span className="text-ink">{t('78')}</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td
+                                  className="truncate py-2 pr-2 text-ink max-sm:overflow-visible max-sm:whitespace-normal max-sm:wrap-anywhere"
+                                >
+                                  {t('79')}
+                                </td>
+                                <td className="py-2 pr-1 sm:pr-2">
+                                  <span className="text-ink">{t('80')}</span>
+                                </td>
+                                <td className="py-2 pr-1 sm:pr-2">
+                                  <span className="missing-flag"
+                                    ><svg
+                                      className="size-3 max-sm:hidden"
+                                      aria-hidden="true"
+                                    >
+                                      <use href="#i-triangle-alert" /></svg
+                                    >{t('81')}</span
+                                  >
+                                </td>
+                                <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
+                                  <span className="missing-flag"
+                                    ><svg
+                                      className="size-3 max-sm:hidden"
+                                      aria-hidden="true"
+                                    >
+                                      <use href="#i-triangle-alert" /></svg
+                                    >{t('82')}</span
+                                  >
+                                </td>
+                                <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
+                                  <span className="missing-flag"
+                                    ><svg
+                                      className="size-3 max-sm:hidden"
+                                      aria-hidden="true"
+                                    >
+                                      <use href="#i-triangle-alert" /></svg
+                                    >{t('83')}</span
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td
+                                  className="truncate py-2 pr-2 text-ink max-sm:overflow-visible max-sm:whitespace-normal max-sm:wrap-anywhere"
+                                >
+                                  {t('84')}
+                                </td>
+                                <td className="py-2 pr-1 sm:pr-2">
+                                  <span className="missing-flag"
+                                    ><svg
+                                      className="size-3 max-sm:hidden"
+                                      aria-hidden="true"
+                                    >
+                                      <use href="#i-triangle-alert" /></svg
+                                    >{t('85')}</span
+                                  >
+                                </td>
+                                <td className="py-2 pr-1 sm:pr-2">
+                                  <span className="text-ink">{t('86')}</span>
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
                                   <span className="text-ink">M3</span>
                                 </td>
                                 <td className="py-2 pr-1 sm:pr-2 hidden sm:table-cell">
-                                  <span className="text-ink">512GB</span>
+                                  <span className="text-ink">{t('87')}</span>
                                 </td>
                               </tr>
                             </tbody>
@@ -663,43 +651,43 @@ export function MethodSection() {
                         >
                           <div className="flex items-center justify-between gap-2">
                             <p className="font-semibold text-ink">
-                              What to record first
+                              {t('88')}
                             </p>
-                            <span className="badge-primary">Ranked</span>
+                            <span className="badge-primary">{t('89')}</span>
                           </div>
                           <ol className="mt-3 space-y-1.5 tabular-nums text-sm">
                             <li
                               className="flex flex-wrap items-center gap-x-3 gap-y-0.5 rounded-lg border border-signal bg-signal-tint ring-1 ring-signal px-3 py-2 transition-all duration-500 delay-150 pre-4:translate-y-2 pre-4:opacity-0"
                             >
                               <span className="flex-1 font-semibold text-ink"
-                                >1. Screen size</span
+                                >{t('90')}</span
                               ><span className="w-full text-signal-text sm:w-auto"
-                                >80 to touch · 94 helped</span
+                                >{t('91')}</span
                               >
                             </li>
                             <li
                               className="rounded-lg border border-line px-3 py-2 text-ink transition-all duration-500 delay-250 pre-4:translate-y-2 pre-4:opacity-0"
                             >
-                              2. Memory
+                              {t('92')}
                             </li>
                             <li
                               className="rounded-lg border border-line px-3 py-2 text-ink transition-all duration-500 delay-350 pre-4:translate-y-2 pre-4:opacity-0"
                             >
-                              3. Storage
+                              {t('93')}
                             </li>
                             <li
                               className="rounded-lg border border-line px-3 py-2 text-ink transition-all duration-500 delay-450 pre-4:translate-y-2 pre-4:opacity-0"
                             >
-                              4. Processor
+                              {t('94')}
                             </li>
                           </ol>
                         </div>
                         {/* 4 the 48-hour timeline */}
                         <div className="absolute inset-x-0 bottom-0">
                           <div className="flex justify-between text-xs text-ink">
-                            <span>Export received</span
+                            <span>{t('95')}</span
                             ><span className="font-semibold text-ink"
-                              >Audit delivered · 48 hours</span
+                              >{t('96')}</span
                             >
                           </div>
                           <div className="mt-2 h-1.5 rounded-full bg-surface-1">
@@ -734,14 +722,12 @@ export function MethodSection() {
                       ></span>
                     </div>
                     <div className="mb-4 lg:sr-only">
-                      <p className="eyebrow-primary pr-28">Your team, or ours</p>
+                      <p className="eyebrow-primary pr-28">{t('97')}</p>
                       <h3 id="how-step-3-title" className="mt-1 pr-28 text-h3">
-                        Fix it, then verify
+                        {t('98')}
                       </h3>
                       <p className="mt-1 text-sm text-muted">
-                        You may not need us for the fix at all. When it is done we
-                        recompute on the repaired catalogue and show you exactly
-                        what moved. No traffic, no test, no waiting.
+                        {t('99')}
                       </p>
                     </div>
                     <div
@@ -759,11 +745,11 @@ export function MethodSection() {
                           <div
                             className="flex flex-wrap items-baseline justify-between gap-2"
                           >
-                            <p className="eyebrow">Screen size, found in your titles</p>
+                            <p className="eyebrow">{t('100')}</p>
                             <p
                               className="text-xs text-muted transition-opacity duration-500 pre-3:opacity-0"
                             >
-                              Recovered, no new data bought
+                              {t('101')}
                             </p>
                           </div>
                           <ul className="mt-2 divide-y divide-line">
@@ -772,20 +758,20 @@ export function MethodSection() {
                             >
                               <span
                                 className="min-w-0 text-base text-muted max-sm:text-sm sm:truncate"
-                                ><span>HP Spectre x360</span
+                                ><span>{t('102')}</span
                                 ><mark
                                   className="mx-1 inline-block rounded-md bg-primary px-1.5 py-0.5 font-bold text-on-primary transition-all duration-500 ease-out-soft pre-2:bg-card pre-2:font-semibold pre-2:text-muted sm:at-2:scale-125 at-2:shadow-sm sm:at-2:mx-4 sm:at-2:ring-4 at-2:ring-primary/60"
-                                  >13.5&quot;</mark
-                                ><span>OLED Touch, 16GB</span></span
+                                  >{t('103')}</mark
+                                ><span>{t('104')}</span></span
                               ><span className="grid shrink-0"
                                 ><span
                                   className="col-start-1 row-start-1 justify-self-end missing-flag opacity-0 transition-opacity duration-300 pre-3:opacity-100"
                                   ><svg className="size-3" aria-hidden="true">
                                     <use href="#i-triangle-alert" /></svg
-                                  >Missing</span
+                                  >{t('105')}</span
                                 ><span
                                   className="col-start-1 row-start-1 justify-self-end rounded border border-primary px-1.5 tabular-nums text-sm font-semibold text-ink transition-all duration-700 ease-out-soft delay-0 pre-3:-translate-x-16 pre-3:opacity-0"
-                                  >13.5&quot;</span
+                                  >{t('106')}</span
                                 ></span
                               >
                             </li>
@@ -794,20 +780,20 @@ export function MethodSection() {
                             >
                               <span
                                 className="min-w-0 text-base text-muted max-sm:text-sm sm:truncate"
-                                ><span>Lenovo ThinkPad X1 Carbon G9</span
+                                ><span>{t('107')}</span
                                 ><mark
                                   className="mx-1 inline-block rounded-md bg-primary px-1.5 py-0.5 font-bold text-on-primary transition-all duration-500 ease-out-soft pre-2:bg-card pre-2:font-semibold pre-2:text-muted sm:at-2:scale-125 at-2:shadow-sm sm:at-2:mx-4 sm:at-2:ring-4 at-2:ring-primary/60"
-                                  >14 inch</mark
-                                ><span>WUXGA</span></span
+                                  >{t('108')}</mark
+                                ><span>{t('109')}</span></span
                               ><span className="grid shrink-0"
                                 ><span
                                   className="col-start-1 row-start-1 justify-self-end missing-flag opacity-0 transition-opacity duration-300 pre-3:opacity-100"
                                   ><svg className="size-3" aria-hidden="true">
                                     <use href="#i-triangle-alert" /></svg
-                                  >Missing</span
+                                  >{t('110')}</span
                                 ><span
                                   className="col-start-1 row-start-1 justify-self-end rounded border border-primary px-1.5 tabular-nums text-sm font-semibold text-ink transition-all duration-700 ease-out-soft delay-150 pre-3:-translate-x-16 pre-3:opacity-0"
-                                  >14.0&quot;</span
+                                  >{t('111')}</span
                                 ></span
                               >
                             </li>
@@ -816,20 +802,20 @@ export function MethodSection() {
                             >
                               <span
                                 className="min-w-0 text-base text-muted max-sm:text-sm sm:truncate"
-                                ><span>MSI GS66 Stealth</span
+                                ><span>{t('112')}</span
                                 ><mark
                                   className="mx-1 inline-block rounded-md bg-primary px-1.5 py-0.5 font-bold text-on-primary transition-all duration-500 ease-out-soft pre-2:bg-card pre-2:font-semibold pre-2:text-muted sm:at-2:scale-125 at-2:shadow-sm sm:at-2:mx-4 sm:at-2:ring-4 at-2:ring-primary/60"
                                   >15.6</mark
-                                ><span>FHD 240Hz</span></span
+                                ><span>{t('113')}</span></span
                               ><span className="grid shrink-0"
                                 ><span
                                   className="col-start-1 row-start-1 justify-self-end missing-flag opacity-0 transition-opacity duration-300 pre-3:opacity-100"
                                   ><svg className="size-3" aria-hidden="true">
                                     <use href="#i-triangle-alert" /></svg
-                                  >Missing</span
+                                  >{t('114')}</span
                                 ><span
                                   className="col-start-1 row-start-1 justify-self-end rounded border border-primary px-1.5 tabular-nums text-sm font-semibold text-ink transition-all duration-700 ease-out-soft delay-300 pre-3:-translate-x-16 pre-3:opacity-0"
-                                  >15.6&quot;</span
+                                  >{t('115')}</span
                                 ></span
                               >
                             </li>
@@ -842,7 +828,7 @@ export function MethodSection() {
                           <div
                             className="rounded-xl border border-line bg-card shadow-sm p-4 transition-all duration-700 ease-out-soft pre-4:translate-y-6 pre-4:opacity-0"
                           >
-                            <p className="eyebrow">Shoppers can tell apart</p>
+                            <p className="eyebrow">{t('116')}</p>
                             <p className="mt-2 flex items-baseline gap-2 tabular-nums">
                               <span
                                 className="grid font-display text-3xl font-semibold text-ink"
@@ -856,7 +842,7 @@ export function MethodSection() {
                               ><span className="text-sm text-muted">/ 216</span
                               ><span
                                 className="ml-auto rounded-full bg-success-bg px-2 py-0.5 text-xs font-semibold text-success transition-all duration-500 delay-700 pre-5:scale-90 pre-5:opacity-0"
-                                >+63 products</span
+                                >{t('117')}</span
                               >
                             </p>
                             <div className="mt-3 h-2 rounded-full bg-surface-1">
@@ -869,13 +855,13 @@ export function MethodSection() {
                           <div
                             className="rounded-xl border border-line bg-card shadow-sm p-4 transition-all duration-700 ease-out-soft pre-6:translate-y-6 pre-6:opacity-0"
                           >
-                            <p className="eyebrow">Screen size recorded</p>
+                            <p className="eyebrow">{t('118')}</p>
                             <p className="mt-2 flex items-baseline gap-2 tabular-nums">
                               <span
                                 className="font-display text-3xl font-semibold text-ink"
                                 >216</span
                               ><span className="text-sm text-muted"
-                                >/ 216 · was 136</span
+                                >{t('119')}</span
                               >
                             </p>
                             <div className="mt-3 h-2 rounded-full bg-surface-1">
@@ -887,7 +873,7 @@ export function MethodSection() {
                               className="mt-3 badge-success transition-all duration-500 delay-1000 pre-6:scale-90 pre-6:opacity-0"
                               ><svg className="size-3" aria-hidden="true">
                                 <use href="#i-check" /></svg
-                              >Verified on your catalogue</span
+                              >{t('120')}</span
                             >
                           </div>
                         </div>

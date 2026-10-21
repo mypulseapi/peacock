@@ -6,12 +6,14 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../../t";
 export function Section5Section() {
+  const t = designedText("product.decision-audit.section5");
   return (
     <section className="border-b border-line">
             <div className="frame py-20 lg:py-28">
               <h2 className="reveal max-w-2xl text-title text-balance">
-                What your business gains from the Decision Audit
+                {t('1')}
               </h2>
               <ul className="mt-14 space-y-5">
                 <li
@@ -24,7 +26,7 @@ export function Section5Section() {
                       <span data-count="357">357</span>
                     </p>
                     <p className="mt-1 text-sm text-muted">
-                      missing fields found on the example laptop shelf
+                      {t('2')}
                     </p>
                     <span className="block"
                       ><span
@@ -47,27 +49,26 @@ export function Section5Section() {
                         aria-hidden="true"
                         ><span className="flex items-center gap-1.5"
                           ><span className="size-2 rounded-xs bg-chart-missing"></span
-                          >Screen size 80</span
+                          >{t('3')}</span
                         ><span className="flex items-center gap-1.5"
                           ><span className="size-2 rounded-xs bg-chart-missing"></span
-                          >Memory 60</span
+                          >{t('4')}</span
                         ><span className="flex items-center gap-1.5"
                           ><span className="size-2 rounded-xs bg-chart-missing"></span
-                          >Processor 162</span
+                          >{t('5')}</span
                         ><span className="flex items-center gap-1.5"
                           ><span className="size-2 rounded-xs bg-chart-missing"></span
-                          >Storage 55</span
+                          >{t('6')}</span
                         ></span
                       ></span
                     >
                   </div>
                   <div className="min-w-0 md:pt-3">
-                    <h3 className="text-h3 text-ink">Identify catalogue gaps</h3>
+                    <h3 className="text-h3 text-ink">{t('7')}</h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Discover missing product attributes that make it difficult for
-                      shoppers to compare products and find the right fit.
+                      {t('8')}
                     </p>
                   </div>
                 </li>
@@ -79,10 +80,10 @@ export function Section5Section() {
                       className="font-display text-display font-semibold text-ink tabular-nums"
                     >
                       <span className="text-primary" data-count="15">15</span
-                      ><span className="text-muted"> of 32</span>
+                      ><span className="text-muted"> {t('9')}</span>
                     </p>
                     <p className="mt-1 text-sm text-muted">
-                      shopper requirements need screen size, so it ranks first
+                      {t('10')}
                     </p>
                     <span className="reveal mt-5 block delay-300" aria-hidden="true"
                       ><span className="grid grid-cols-32 gap-0.5"
@@ -122,13 +123,12 @@ export function Section5Section() {
                   </div>
                   <div className="min-w-0 md:pt-3">
                     <h3 className="text-h3 text-ink">
-                      Identify decisive product attributes
+                      {t('11')}
                     </h3>
                     <p
                       className="mt-2 text-body leading-relaxed text-pretty text-muted"
                     >
-                      Understand which product attributes matter most to shoppers,
-                      helping businesses prioritise essential product information.
+                      {t('12')}
                     </p>
                   </div>
                 </li>

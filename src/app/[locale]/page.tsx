@@ -1,18 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageSchema } from "@/components/PageSchema";
+import { DesignedHome } from "@/components/designed/home";
 import { buildAlternates } from "@/lib/seo";
-import { HeroSection } from "@/components/home/HeroSection";
-import { ExamplesBand } from "@/components/home/ExamplesBand";
-import { ReasonsSection } from "@/components/home/ReasonsSection";
-import { ProofSection } from "@/components/home/ProofSection";
-import { ProblemSection } from "@/components/home/ProblemSection";
-import { MarketSection } from "@/components/home/MarketSection";
-import { MidCtaSection } from "@/components/home/MidCtaSection";
-import { DisagreementSection } from "@/components/home/DisagreementSection";
-import { HowItWorksSection } from "@/components/home/HowItWorksSection";
-import { PrivacySection } from "@/components/home/PrivacySection";
-import { FinalCtaSection } from "@/components/home/FinalCtaSection";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -60,21 +50,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <PageSchema locale={locale} nodes={[jsonLd]} />
-      {/* Clears the fixed navbar. The prototype uses `sticky`, but 15 pages in
-          this repo already pad for a fixed bar, a spacer is the one-line
-          equivalent with no blast radius. */}
-      <div className="h-[68px]" aria-hidden />
-      <HeroSection locale={locale} />
-      <ExamplesBand locale={locale} />
-      <ProofSection />
-      <ProblemSection />
-      <MarketSection />
-      <DisagreementSection />
-      <MidCtaSection />
-      <HowItWorksSection />
-      <ReasonsSection locale={locale} />
-      <PrivacySection />
-      <FinalCtaSection locale={locale} />
+      {/* The 68px spacer that used to sit here cleared the fixed legacy navbar. The designer's
+          header is sticky and takes its own space, so with both locales on the designed shell
+          there is no navbar to clear and the spacer would be 68px of empty gradient. */}
+      <DesignedHome />
     </>
   );
 }

@@ -1,8 +1,8 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageSchema } from "@/components/PageSchema";
+import { DesignedContact } from "@/components/designed/contact";
 import { buildAlternates } from "@/lib/seo";
 import { SITE, url } from "@/lib/site";
-import ContactPage from "./ContactPageClient";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -57,7 +57,9 @@ export default async function Page({ params }: PageProps) {
   return (
     <>
       <PageSchema locale={locale} path="/contact" nodes={[contactJsonLd]} />
-      <ContactPage />
+      {/* English gets the designer's converted page; Vietnamese keeps the translated one until
+          that conversion's text has been extracted and translated. See [locale]/page.tsx. */}
+      <DesignedContact />
     </>
   );
 }

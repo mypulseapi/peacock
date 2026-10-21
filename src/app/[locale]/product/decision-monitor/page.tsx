@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { buildAlternates } from "@/lib/seo";
-import { StoryPage, storyFaqSchema } from "@/components/StoryPage";
+import { storyFaqSchema } from "@/components/StoryPage";
 import { PageSchema } from "@/components/PageSchema";
-import { DriftScene, ThreeCausesScene, DecayCostScene } from "@/components/home/MonitorScenes";
+import { DesignedDecisionMonitor } from "@/components/designed/product/decision-monitor";
 import { decisionMonitor } from "@/content/pages/decision-monitor";
 
 interface PageProps { params: Promise<{ locale: string }> }
@@ -29,7 +29,9 @@ export default async function Page({ params }: PageProps) {
           answers lead with a complete sentence, so an answer engine can lift and
           attribute one without the surrounding page. */}
       <PageSchema locale={locale} path="/product/decision-monitor" nodes={[storyFaqSchema(decisionMonitor(locale))]} />
-      <StoryPage layout={{ steps: "timeline", gets: "showcase", limits: "ledger" }} heroVisual={<DriftScene />} situationVisual={<ThreeCausesScene />} chainVisual={<DecayCostScene />} c={decisionMonitor(locale)} />
+      {/* English gets the designer's converted page; Vietnamese keeps the translated one until
+          that conversion's text has been extracted and translated. See [locale]/page.tsx. */}
+      <DesignedDecisionMonitor />
     </>
   );
 }

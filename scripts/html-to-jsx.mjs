@@ -19,7 +19,7 @@
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
-import { join, basename } from "node:path";
+import { join, basename, posix } from "node:path";
 
 const args = process.argv.slice(2);
 const file = args.find((a) => !a.startsWith("--"));
@@ -29,13 +29,36 @@ const flag = (name, fallback) => {
 };
 const OUT = flag("out", "src/components/designed");
 const REF = flag("ref", "afedfc1");
+/** Internal links become routes under this locale. */
+const LOCALE = flag("locale", "en");
+/**
+ * Convert the whole of `<main>` as one component instead of splitting on `<section>`.
+ *
+ * Page bodies split naturally into sections and are far easier to review that way. The shell
+ * pieces -- the header, the footer, the skip link, the chat launcher -- are single elements that
+ * are not sections at all, so splitting writes nothing and reports them as loose fragments.
+ */
+const WHOLE = args.includes("--whole");
+/**
+ * Skip the generated `index.tsx`.
+ *
+ * The shell pieces share a directory with a hand-written barrel that exports all four of them,
+ * and the generated composition would overwrite it every run. It has done so twice.
+ */
+const NO_INDEX = args.includes("--no-index");
+const NAME = flag("name", null);
 
 if (!file) {
   console.error("usage: node scripts/html-to-jsx.mjs <page.html> [--ref <git-ref>] [--out <dir>]");
   process.exit(2);
 }
 
+/** The source page's directory, so `../x.html` resolves the way the browser would. */
+const PAGE_DIR = posix.dirname(file);
+
 const warnings = [];
+/** Set when any component ends up needing next/link, so only those files import it. */
+let usesLink = false;
 const warn = (what, sample) => warnings.push({ what, sample });
 
 /** Read from git by default: the working tree no longer has these files. */
@@ -203,6 +226,44 @@ function convertComments(html) {
   });
 }
 
+/**
+ * `about.html` becomes `/en/about`.
+ *
+ * The designer's pages link to each other as files, which is right for a folder of HTML and wrong
+ * for a routed app: `href="about.html"` resolves against whatever path the browser is on, so from
+ * `/en/product` it asks for `/en/product/about.html`. Every internal link has to become a route.
+ *
+ * Anchors, mailto, tel and absolute URLs are left exactly as they are.
+ */
+function rewriteLinks(html, locale) {
+  /*
+   * Resolve against the page's own directory, and keep any #fragment.
+   *
+   * Two bugs lived here. Only a leading `./` was stripped, so `../contact.html` on a page under
+   * `product/` became `/en/../contact` -- which a browser normalises to `/contact`, a route that
+   * does not exist. That was 31 links. And the `.html` test ran against the whole href, so
+   * `../index.html#method` failed it and shipped as a raw relative link; that was 4 more.
+   *
+   * `posix.resolve` from the page's directory does what the browser would do, before the locale
+   * prefix goes on.
+   */
+  return html.replace(/href="([^"]+)"/g, (whole, href) => {
+    if (/^(#|https?:|mailto:|tel:|\/)/.test(href)) return whole;
+    const [path, hash = ""] = splitHash(href);
+    if (!path.endsWith(".html")) return whole;
+    const abs = posix.resolve("/", PAGE_DIR, path).slice(1);
+    // index.html is the locale root; careers/index.html is /careers.
+    const route = abs.replace(/(^|\/)index\.html$/, "").replace(/\.html$/, "");
+    return `href="/${locale}${route ? "/" + route : ""}${hash}"`;
+  });
+}
+
+/** `a.html#b` -> `["a.html", "#b"]`. A query string counts as part of the tail. */
+function splitHash(href) {
+  const i = href.search(/[#?]/);
+  return i === -1 ? [href, ""] : [href.slice(0, i), href.slice(i)];
+}
+
 /** The designer's pages load assets from `./src/assets`; here they are served from `/assets`. */
 function rewriteAssetPaths(html) {
   return html
@@ -248,7 +309,105 @@ function convertStyles(html) {
   });
 }
 
-function toJsx(html) {
+/**
+ * An internal `<a>` becomes a `<Link>`.
+ *
+ * Next's `no-html-link-for-pages` rule is right to insist: a plain anchor to an internal route is
+ * a full page reload, which throws away the app and reloads every asset to move between two
+ * pages that share a layout. 180 of them came out of the shell and the converted pages.
+ *
+ * Anchors cannot nest, so the first `</a>` after an opening tag is always its own. That makes the
+ * pairing unambiguous without parsing, which is the only reason this is safe to do with a scan.
+ */
+function anchorsToLinks(html) {
+  let out = "";
+  let i = 0;
+  let converted = 0;
+
+  while (i < html.length) {
+    /*
+     * `<a` followed by any whitespace, not the literal `<a `.
+     *
+     * Prettier breaks a long opening tag after the element name, so half the anchors in this
+     * markup begin `<a\n  href=...`. Matching on the space missed every one of them and left 208
+     * of 208 unconverted on the second pass.
+     */
+    const found = /<a[\s>]/.exec(html.slice(i));
+    const open = found ? i + found.index : -1;
+    if (open === -1) {
+      out += html.slice(i);
+      break;
+    }
+    const openEnd = html.indexOf(">", open);
+    if (openEnd === -1) {
+      out += html.slice(i);
+      break;
+    }
+    const tag = html.slice(open, openEnd + 1);
+    /*
+     * `</a\n>`, not just `</a>`.
+     *
+     * The source is Prettier-formatted HTML, which breaks a long tag so the closing bracket lands
+     * on its own line. Searching for the literal `</a>` skips straight past those and pairs an
+     * opening tag with the NEXT anchor's close, which swallowed everything between them and
+     * produced `</a` inside a `<Link>`. It compiled to nothing and broke the page.
+     */
+    const closeMatch = /<\/a\s*>/.exec(html.slice(openEnd));
+    const close = closeMatch ? openEnd + closeMatch.index : -1;
+    const closeLen = closeMatch ? closeMatch[0].length : 4;
+    const internal = /href="\/[^"]*"/.test(tag) && !/\bdownload\b|target="_blank"/.test(tag);
+
+    if (!internal || close === -1) {
+      out += html.slice(i, openEnd + 1);
+      i = openEnd + 1;
+      continue;
+    }
+
+    out += html.slice(i, open) + "<Link " + tag.slice(3, -1) + ">" + html.slice(openEnd + 1, close) + "</Link>";
+    i = close + closeLen;
+    converted += 1;
+  }
+
+  return { html: out, converted };
+}
+
+/**
+ * `<template>` content has to be opaque to React.
+ *
+ * A template's children are inert markup, cloned later by script. React renders them as real
+ * children and then cannot match them on hydration, which fails the whole tree: "Hydration
+ * failed because the server rendered HTML didn't match the client", and everything below the
+ * boundary is thrown away and re-rendered. On a page whose content is revealed by that same
+ * script, the result is a blank page.
+ *
+ * Passing the content as `dangerouslySetInnerHTML` tells React to leave it alone, which is what
+ * the designer's plain HTML does anyway.
+ */
+function templatesToInnerHtml(html) {
+  return html.replace(/<template\b([^>]*)>([\s\S]*?)<\/template>/g, (_m, attrs, inner) => {
+    const content = JSON.stringify(inner);
+    return `<template${attrs} dangerouslySetInnerHTML={{ __html: ${content} }} />`;
+  });
+}
+
+/**
+ * `value` on a field React would call controlled becomes `defaultValue`.
+ *
+ * In HTML `value` is the initial value. In React it makes a controlled input, and without an
+ * `onChange` the field is read-only and React warns on every one. The designer's sliders and
+ * number inputs are plain HTML with their initial value in the markup, so `defaultValue` is the
+ * faithful translation.
+ *
+ * `<option value>` is left alone: there it means what React means by it.
+ */
+function valueToDefaultValue(html) {
+  return html.replace(/<(input|textarea|select)\b([^>]*)>/gi, (whole, tag, attrs) => {
+    if (/\bonChange=/.test(attrs) || !/\bvalue=/.test(attrs)) return whole;
+    return `<${tag}${attrs.replace(/\bvalue=/, "defaultValue=")}>`;
+  });
+}
+
+function toJsx(html, locale = LOCALE) {
   let out = html;
   /*
    * Order matters, and got this wrong once.
@@ -262,12 +421,48 @@ function toJsx(html) {
   out = escapeText(out);
   out = convertComments(out);
   out = rewriteAssetPaths(out);
+  out = rewriteLinks(out, locale);
+  /*
+   * Before the JSX transforms, not after.
+   *
+   * A template's content is raw HTML handed to `dangerouslySetInnerHTML`, so it must keep
+   * `class=` and its original attribute names. Extracting it after `renameAttributes` baked
+   * `className=` into a string the browser parses as HTML, where className means nothing and the
+   * element would render unstyled. Link and asset rewriting still has to happen first, because
+   * those apply to the template's content too.
+   */
+  out = templatesToInnerHtml(out);
   out = renameAttributes(out);
   out = convertStyles(out);
   out = numericAttributes(out);
+  out = valueToDefaultValue(out);
   out = stripInlineHandlers(out);
   out = closeVoids(out);
-  return out;
+  const linked = anchorsToLinks(out);
+  usesLink ||= linked.converted > 0;
+  return preserveInlineSpace(linked.html);
+}
+
+/**
+ * Put back the space JSX throws away either side of an inline tag.
+ *
+ * HTML collapses a newline to one space, so `for sale.\n<a ...>What we can...` renders with a gap
+ * before the link. JSX does not: whitespace that touches a tag boundary and contains a newline is
+ * removed outright, so the same markup rendered `for sale.What we can...`. The browser then has
+ * one unbreakable token to place, which pushed a 224px link onto its own line at 605px wide and
+ * moved everything after it.
+ *
+ * The source is Prettier-formatted HTML, and Prettier is whitespace-aware in exactly this spot:
+ * where it must not introduce a space it writes `</a\n>` instead of breaking before the tag. So a
+ * newline between text and an inline tag in the source really does mean a space belongs there.
+ */
+function preserveInlineSpace(jsx) {
+  const INLINE = "(?:Link|a|em|strong|code|span|b|i|abbr|sup|sub)";
+  return jsx
+    // text, newline, opening inline tag
+    .replace(new RegExp(`([^\\s>}])(\\n\\s*)(<${INLINE}[\\s/>])`, "g"), '$1{" "}$2$3')
+    // closing inline tag, newline, text
+    .replace(new RegExp(`(</${INLINE}>)(\\n\\s*)([^\\s<{])`, "g"), '$1{" "}$2$3');
 }
 
 /* ------------------------------------------------------------------ */
@@ -325,7 +520,9 @@ function topLevelSections(html) {
   return out;
 }
 
-const parts = topLevelSections(main);
+const parts = WHOLE
+  ? [{ kind: "section", html: main, banner: NAME }]
+  : topLevelSections(main);
 const sections = parts.filter((p) => p.kind === "section");
 const loose = parts.filter((p) => p.kind === "loose");
 
@@ -347,6 +544,9 @@ function bannerIn(fragment) {
 
 /** A stable, readable component name from the section's id, then its banner, else its position. */
 function nameFor(section, i) {
+  if (WHOLE && NAME) {
+    return NAME.replace(/(^|[-_])([a-z0-9])/g, (_m, _s, c) => c.toUpperCase());
+  }
   const openTag = /^<section\b[^>]*>/i.exec(section.html)?.[0] ?? "";
   const id = /\bid="([^"]+)"/.exec(openTag)?.[1];
   const base = id ?? (section.banner ? section.banner.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") : `section-${i + 1}`);
@@ -359,6 +559,8 @@ const written = [];
 
 sections.forEach((section, i) => {
   const name = nameFor(section, i);
+  // Reset before converting, not after: `toJsx` is what sets the flag.
+  usesLink = false;
   const jsx = toJsx(section.html);
   const fileName = `${name.replace(/Section$/, "").replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase()}.tsx`;
   const body = `/**
@@ -369,7 +571,7 @@ sections.forEach((section, i) => {
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-export function ${name}() {
+${usesLink ? 'import Link from "next/link";\n\n' : ""}export function ${name}() {
   return (
 ${jsx
   .split("\n")
@@ -392,7 +594,8 @@ ${jsx
 const pageName = basename(file, ".html").replace(/(^|[-_])([a-z0-9])/g, (_m, _s, c) => c.toUpperCase());
 const componentName = `Designed${pageName === "Index" ? basename(OUT).replace(/(^|[-_])([a-z0-9])/g, (_m, _s, c) => c.toUpperCase()) : pageName}`;
 
-writeFileSync(
+if (!NO_INDEX)
+  writeFileSync(
   join(OUT, "index.tsx"),
   `/**
  * \`${basename(file)}\` as the designer built it at ${REF}, one component per section.

@@ -90,6 +90,8 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
   { route: "/why/limits", audience: "any", area: "none", depth: "proof", decides: ["is-it-proven", "is-it-safe"] },
   { route: "/why/compare", audience: "merchant", area: "none", depth: "proof", decides: ["does-it-fit-me", "is-it-proven"] },
   { route: "/why/audit", audience: "any", area: "audit", depth: "proof", decides: ["is-it-proven", "how-it-works"] },
+  // The catalogue measurement: how much of what a catalogue records the photograph already shows.
+  { route: "/visual-evidence", audience: "any", area: "audit", depth: "proof", decides: ["is-it-proven", "how-it-works"] },
 
   // Use cases and industries
   { route: "/use-cases/seo-aeo", audience: "merchant", area: "pages", depth: "explainer", decides: ["does-it-fit-me"] },

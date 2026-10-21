@@ -6,19 +6,19 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import { designedText } from "../t";
 export function Section1Section() {
+  const t = designedText("gdpr.section1");
   return (
     <section className="hero-bg border-b border-line">
             <div className="frame py-20 lg:py-24">
               <h1 className="reveal max-w-3xl text-headline text-balance">
-                GDPR Compliance
+                {t('1')}
               </h1>
               <p
                 className="reveal mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted delay-100"
               >
-                Pulse is committed to protecting the privacy rights of individuals
-                in the European Union under the General Data Protection Regulation
-                (GDPR).
+                {t('2')}
               </p>
             </div>
           </section>

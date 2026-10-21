@@ -1530,5 +1530,11 @@
     "reopen": "Mở lại",
     "keepClosed": "Giữ nguyên",
     "matchedOn": "Khớp với"
+  },
+  "visualEvidence": {
+    "meta": {
+      "title": "Những gì bức ảnh đã cho thấy",
+      "description": "Trên một danh mục 2.176 sản phẩm, 52,6% giá trị thuộc tính đã ghi chỉ lặp lại đúng thứ bức ảnh cho thấy. Phần còn lại mới là phần thật sự đáng ghi."
+    }
   }
 }

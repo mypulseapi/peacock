@@ -7,6 +7,7 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { designedText } from "../../t";
+import { Figure } from "../figures/figure";
 export function Section5Section() {
   const t = designedText("product.decision-monitor.section5");
   return (
@@ -17,69 +18,11 @@ export function Section5Section() {
                   {t('1')}
                 </h2>
               </div>
-              <ul className="mt-14 grid gap-5 md:grid-cols-3">
-                <li
-                  className="reveal flex min-w-0 flex-col items-center rounded-2xl border border-line bg-card px-6 pt-4 pb-8 text-center shadow-sm delay-100 sm:px-8"
-                >
-                  <div
-                    className="relative grid size-40 max-w-full place-items-center sm:size-60"
-                    aria-hidden="true"
-                  >
-                    <div className="icon-grid absolute inset-0"></div>
-                    <div className="relative grid size-12 place-items-center">
-                      <svg className="size-7 text-ink">
-                        <use href="#i-user-round" />
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
-                    {t('2')}
-                  </h3>
-                  <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
-                    {t('3')}
-                  </p>
-                </li>
-                <li
-                  className="reveal flex min-w-0 flex-col items-center rounded-2xl border border-line bg-card px-6 pt-4 pb-8 text-center shadow-sm delay-200 sm:px-8"
-                >
-                  <div
-                    className="relative grid size-40 max-w-full place-items-center sm:size-60"
-                    aria-hidden="true"
-                  >
-                    <div className="icon-grid absolute inset-0"></div>
-                    <div className="relative grid size-12 place-items-center">
-                      <svg className="size-7 text-ink">
-                        <use href="#i-trending-up" />
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
-                    {t('4')}
-                  </h3>
-                  <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
-                    {t('5')}
-                  </p>
-                </li>
-                <li
-                  className="reveal flex min-w-0 flex-col items-center rounded-2xl border border-line bg-card px-6 pt-4 pb-8 text-center shadow-sm delay-300 sm:px-8"
-                >
-                  <div
-                    className="relative grid size-40 max-w-full place-items-center sm:size-60"
-                    aria-hidden="true"
-                  >
-                    <div className="icon-grid absolute inset-0"></div>
-                    <div className="relative grid size-12 place-items-center">
-                      <svg className="size-7 text-ink"><use href="#i-chart-pie" /></svg>
-                    </div>
-                  </div>
-                  <h3 className="-mt-4 text-h3 text-balance wrap-break-word text-ink">
-                    {t('6')}
-                  </h3>
-                  <p className="mt-3 text-body leading-relaxed text-pretty text-muted">
-                    {t('7')}
-                  </p>
-                </li>
-              </ul>
+              {/*
+                The designer's exported figure, in place of the three hand-converted cards. Same
+                titles and bodies, localized from `text.json`, and the counters now animate.
+              */}
+              <Figure product="decision-monitor" name="decision-monitor-gains" className="reveal mt-14" />
             </div>
           </section>
   );

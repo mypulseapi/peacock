@@ -4022,3 +4022,97 @@ a.inline-flex {
     opacity: 1;
   }
 }
+
+/* ==================================================================== */
+/* The designer's exported product figures.                             */
+/* ==================================================================== */
+
+/*
+ * Bridge the figures' palette onto the site's.
+ *
+ * Each figure reads `--pulse-<token>` with a hardcoded fallback, and in its own dark branch reads
+ * `--pulse-<token>-dark` falling back to `--pulse-<token>`. Setting only the light name is
+ * therefore enough, and is deliberately all that is set: the site's `--color-*` tokens already
+ * resolve per theme through `light-dark()`, so both of the figure's branches land on the right
+ * value and neither hardcoded fallback is ever reached.
+ *
+ * That also fixes a mismatch the figures would otherwise have. Their dark branch triggers on
+ * `prefers-color-scheme: dark`, which is the operating system, while this site follows the theme
+ * button. Pointing both branches at one theme-aware token makes the distinction moot rather than
+ * leaving a visitor who chose Light on a dark laptop with dark figures in a light page.
+ *
+ * Twenty-six of the twenty-seven names match a `--color-*` token exactly, because the export came
+ * out of this same design system. `primary-wash` is the exception: it is a utility here rather
+ * than a token, so it repeats that utility's expression.
+ */
+.figure {
+  --pulse-ink: var(--color-ink);
+  --pulse-muted: var(--color-muted);
+  --pulse-card: var(--color-card);
+  --pulse-surface-0: var(--color-surface-0);
+  --pulse-surface-1: var(--color-surface-1);
+  --pulse-line: var(--color-line);
+  --pulse-line-control: var(--color-line-control);
+  --pulse-primary: var(--color-primary);
+  --pulse-primary-hover: var(--color-primary-hover);
+  --pulse-primary-tint: var(--color-primary-tint);
+  --pulse-primary-line: var(--color-primary-line);
+  --pulse-primary-wash: color-mix(in oklab, var(--color-primary) 6%, var(--color-card));
+  --pulse-signal: var(--color-signal);
+  --pulse-signal-text: var(--color-signal-text);
+  --pulse-signal-tint: var(--color-signal-tint);
+  --pulse-signal-line: var(--color-signal-line);
+  --pulse-gap: var(--color-gap);
+  --pulse-gap-fill: var(--color-gap-fill);
+  --pulse-gap-strong: var(--color-gap-strong);
+  --pulse-chart-main: var(--color-chart-main);
+  --pulse-chart-missing: var(--color-chart-missing);
+  --pulse-chart-baseline: var(--color-chart-baseline);
+  --pulse-chart-second: var(--color-chart-second);
+  --pulse-baseline: var(--color-baseline);
+  --pulse-success: var(--color-success);
+  --pulse-on-step: var(--color-on-step);
+  --pulse-sky: var(--color-sky);
+}
+
+/* The export carries width and height for standalone use. Inline, the wrapper decides the width
+   and `viewBox` keeps the ratio, so those attributes have to be overridden rather than trusted. */
+.figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*
+ * Hold a figure on its first frame until it has been scrolled to.
+ *
+ * Nine of the eleven play once, and a play-once animation that runs while its section is still
+ * below the fold has played to nobody. The README's suggestion is to mount the SVG on
+ * intersection, but mounting late costs a layout shift on a figure that is sometimes 500px tall.
+ * Pausing is the same effect without moving anything: the markup is in the document from the
+ * start, holding frame one, and `designed-motion.js` removes this class when the figure arrives.
+ *
+ * `*` rather than a list of classes because the animations sit on elements named per file, and
+ * the prefix scheme means there is no shared class to target. `!important` because each figure
+ * sets `animation` inline in its own `<style>`, and this has to win against that.
+ *
+ * Gated on `html[data-js]`, which the inline boot script stamps before first paint. The class is
+ * in the prerendered HTML, so ungated this rule would leave a visitor with no JavaScript staring
+ * at eleven figures paused on frame one, with nothing to release them. With no JS they simply
+ * play on load, which is what they did before any of this.
+ */
+html[data-js] .figure-hold *,
+html[data-js] .figure-hold *::before,
+html[data-js] .figure-hold *::after {
+  animation-play-state: paused !important;
+}
+
+/* With reduced motion the figures already show their finished frame, so holding them would
+   freeze the wrong one: the first. Release them and let the file decide. */
+@media (prefers-reduced-motion: reduce) {
+  html[data-js] .figure-hold *,
+  html[data-js] .figure-hold *::before,
+  html[data-js] .figure-hold *::after {
+    animation-play-state: running !important;
+  }
+}

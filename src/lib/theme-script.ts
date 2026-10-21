@@ -18,4 +18,10 @@
 // `system` is the one value that leaves the attribute off, which hands the page back to
 // `color-scheme: light dark`. Anything else, including nothing stored, is a fixed theme:
 // the site opens light unless the visitor has said otherwise.
-export const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('pulse-theme');if(t!=='system'){document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}}catch(e){}})();`;
+//
+// It also stamps `data-js`, which is what lets CSS hold the exported product figures on their
+// first frame until `designed-motion.js` scrolls them into view. The hold has to be conditional:
+// the class is in the prerendered HTML, so without this attribute a visitor with no JavaScript
+// would get figures paused on frame one forever. `data-js` is set outside the try, before the
+// theme is read, because a localStorage that throws must not cost the page its animations.
+export const THEME_SCRIPT = `(function(){var e=document.documentElement;e.setAttribute('data-js','1');try{var t=localStorage.getItem('pulse-theme');if(t!=='system'){e.setAttribute('data-theme',t==='dark'?'dark':'light');}}catch(e2){}})();`;

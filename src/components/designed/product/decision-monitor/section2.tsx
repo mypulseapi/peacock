@@ -7,6 +7,7 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { designedText } from "../../t";
+import { Figure } from "../figures/figure";
 export function Section2Section() {
   const t = designedText("product.decision-monitor.section2");
   return (
@@ -51,60 +52,15 @@ export function Section2Section() {
                     {t('6')}
                   </p>
                 </div>
-                <div className="reveal min-w-0 delay-200 lg:col-span-5 lg:self-center">
-                  <div
-                    className="rounded-2xl border border-line bg-card p-6 shadow-sm sm:p-8"
-                  >
-                    <p className="text-h3 text-ink">
-                      {t('7')}
-                    </p>
-                    <p className="mt-2 text-sm text-muted">
-                      {t('8')}
-                    </p>
-                    <ul className="mt-6 space-y-5">
-                      <li>
-                        <div
-                          className="flex flex-wrap items-baseline justify-between gap-x-3"
-                        >
-                          <span className="text-data font-semibold text-ink"
-                            >{t('9')}</span
-                          >
-                          <span
-                            className="font-display text-h3 font-semibold text-ink tabular-nums"
-                            >{t('10')}</span
-                          >
-                        </div>
-                        <span
-                          className="mt-2 block h-2 overflow-hidden rounded-full bg-surface-1"
-                          aria-hidden="true"
-                          ><span
-                            className="reveal-bar block h-full w-15/32 rounded-full bg-chart-main delay-300"
-                          ></span
-                        ></span>
-                      </li>
-                      <li>
-                        <div
-                          className="flex flex-wrap items-baseline justify-between gap-x-3"
-                        >
-                          <span className="text-data font-semibold text-ink"
-                            >{t('11')}</span
-                          >
-                          <span
-                            className="font-display text-h3 font-semibold text-ink tabular-nums"
-                            >{t('12')}</span
-                          >
-                        </div>
-                        <span
-                          className="mt-2 block h-2 overflow-hidden rounded-full bg-surface-1"
-                          aria-hidden="true"
-                          ><span
-                            className="reveal-bar block h-full w-2/32 rounded-full bg-chart-second delay-450"
-                          ></span
-                        ></span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                {/*
+                  The designer's exported figure, in place of the hand-converted shelf. Same
+                  stat caption, card title and subtitle, localized from `text.json`.
+                */}
+                <Figure
+                  product="decision-monitor"
+                  name="decision-monitor-shelf-slips"
+                  className="reveal min-w-0 delay-200 lg:col-span-5 lg:self-center"
+                />
                 <p className="text-caption text-muted lg:col-span-12">
                   {t('13')}
                 </p>

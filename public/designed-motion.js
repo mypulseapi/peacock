@@ -97,6 +97,12 @@ const revealObserver = new IntersectionObserver(
   (entries) => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
+      // A held figure needs its brake off: the markup has been in the document since prerender,
+      // holding frame one. It is not an early return, because the same wrapper usually also
+      // carries .reveal, and skipping the rest would unhold a figure that then never faded in.
+      if (entry.target.classList.contains("figure-hold")) {
+        entry.target.classList.remove("figure-hold");
+      }
       const bars = barsByTrack.get(entry.target);
       if (bars) bars.forEach(show);
       if (!bars || entry.target.matches(REVEALS)) show(entry.target);
@@ -106,6 +112,8 @@ const revealObserver = new IntersectionObserver(
   { rootMargin: "0px 0px -10% 0px" },
 );
 document.querySelectorAll(REVEALS).forEach((el) => revealObserver.observe(el));
+// The exported figures ride the same observer rather than a second one with the same config.
+document.querySelectorAll(".figure-hold").forEach((el) => revealObserver.observe(el));
 document.querySelectorAll(".reveal-bar").forEach((bar) => {
   const track = bar.parentElement;
   if (!barsByTrack.has(track)) {

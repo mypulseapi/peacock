@@ -54,20 +54,25 @@ async function init(lang: string) {
     env.allowLocalModels = false;
 
     /*
-     * Serve the weights from our own CDN rather than the hub, when the bucket will allow it.
+     * Serve the weights from our own CDN rather than the hub.
      *
-     * 151MB across the two models, and every first question on the site currently fetches it
-     * from huggingface.co: a third party on the critical path of a feature we tell people is
-     * answered from our own pages, with their rate limits and their uptime.
+     * Ten files, 151.7 MiB, almost all of it the multilingual encoder at 135MB. Until this was
+     * turned on, every first question on the site fetched that from huggingface.co: a third
+     * party on the critical path of a feature we tell people is answered from our own pages,
+     * with their rate limits and their uptime.
      *
-     * The mirror exists at `<cdn>/<prefix>/models/<model>/...` and is verified. It is off by
-     * default because the bucket has no CORS policy, and an `<img>` needs none while a
-     * `fetch()` does: with it on and no policy, every model request fails with a bare
-     * `TypeError: Failed to fetch` and the assistant reports that it could not start.
+     * The mirror is at `<cdn>/<prefix>/models/<model>/...`, and `NEXT_PUBLIC_CDN_MODELS=1` is
+     * now the default in both workflows.
      *
-     * Turn it on by setting `NEXT_PUBLIC_CDN_MODELS=1`, once the bucket allows GET and HEAD
-     * from this origin. No code change, and no hostname written down here: the host is built
-     * from the same variable as every other asset.
+     * It was off for a fortnight because the bucket had no CORS policy, which is worth keeping
+     * written down: an `<img>` needs none and a `fetch()` does, so every other asset had been
+     * serving from this bucket for days while the weights failed with a bare
+     * `TypeError: Failed to fetch`. The policy allows GET and HEAD, exposes `content-range` and
+     * `accept-ranges` because the shards load by range, and was verified by a 206 carrying both
+     * those headers and `access-control-allow-origin`.
+     *
+     * Unset the variable to fall back to the hub. No hostname is written down here either way:
+     * the host is built from the same variable as every other asset.
      *
      * Re-mirror a model with:
      *   pnpm exec tsx scripts/upload-to-r2.ts --dir <models> --prefix <prefix>/models

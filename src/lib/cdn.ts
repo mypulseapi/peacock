@@ -54,16 +54,3 @@ export function asset(path: string): string {
   const v = HASHES[clean];
   return v ? `${base}?v=${v}` : base;
 }
-
-/**
- * The base of a family of files, for `data-bg-video`.
- *
- * `designed-motion.js` takes that attribute as a stem and appends `-light.av1.mp4`,
- * `-dark.h264.mp4`, `-light.webp` and so on. A stem has no single file behind it and therefore
- * no content hash, and appending `?v=` here would put the query in the middle of the URL the
- * script then builds. These four videos are cache-busted by changing their names instead.
- */
-export function assetStem(path: string): string {
-  const clean = `assets/${trim(path)}`;
-  return CDN ? (PREFIX ? `${CDN}/${PREFIX}/${clean}` : `${CDN}/${clean}`) : `/${clean}`;
-}

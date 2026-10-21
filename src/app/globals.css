@@ -3960,3 +3960,65 @@ a.inline-flex {
     }
   }
 }
+
+/*
+ * The product hero scene.
+ *
+ * Replaces a background video. It sits where the video did, absolutely positioned against the
+ * right edge of the hero and masked so it fades into the headline rather than butting against
+ * it, which is the same treatment `hero-video-media` gave the footage.
+ *
+ * The only animated property is `opacity`, on one group. `fill` was the obvious way to write
+ * this and the wrong one: colour cannot be composited, so it repaints every rectangle on every
+ * frame. Stacking a resolved copy over the gap and fading it in costs the compositor one layer.
+ *
+ * It runs once and stops. A hero that keeps moving competes with the sentence beside it, which
+ * is what the video did.
+ */
+.hero-scene {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  margin-block: auto;
+  padding: 3rem 2rem 3rem 0;
+  mask-image: linear-gradient(to right, transparent, black 30%);
+}
+
+.hero-scene-shelf rect {
+  fill: var(--surface-2, color-mix(in oklab, currentColor 8%, transparent));
+}
+
+.hero-scene-gap rect {
+  fill: var(--warn, #f0a93b);
+  opacity: 0.55;
+}
+
+.hero-scene-fill rect {
+  fill: var(--primary);
+  opacity: 0;
+  /* 120ms apart: fast enough to read as one gesture, slow enough to read as a sequence. */
+  animation: hero-scene-resolve 520ms var(--ease-out-soft, ease-out) forwards;
+  animation-delay: calc(360ms + var(--i) * 120ms);
+}
+
+@keyframes hero-scene-resolve {
+  to {
+    opacity: 1;
+  }
+}
+
+/*
+ * Reduced motion gets the finished state, not the empty one.
+ *
+ * Stopping the animation without this would leave every resolved cell at `opacity: 0`, so the
+ * shelf would read as permanently broken. The point of the picture is the resolution.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-scene-fill rect {
+    animation: none;
+    opacity: 1;
+  }
+}

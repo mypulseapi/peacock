@@ -10,11 +10,11 @@
  * native `<select>` elements and are now `FormSelect`, which is shadcn's Select on Radix. The
  * trigger wears the same `field` utility the inputs do, so the row still lines up.
  */
-import { useTranslations } from "next-intl";
+import { designedText } from "../t";
 import { FormSelect } from "./form-select";
 
 export function Section1Section() {
-  const t = useTranslations("designed.contact.section1");
+  const t = designedText("contact.section1");
   return (
     <section className="hero-bg border-b border-line">
             <div

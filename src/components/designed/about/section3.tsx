@@ -6,9 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { useTranslations } from "next-intl";
+import { designedText } from "../t";
 export function Section3Section() {
-  const t = useTranslations("designed.about.section3");
+  const t = designedText("about.section3");
   return (
     <section className="border-b border-line">
             <div

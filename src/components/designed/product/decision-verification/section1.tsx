@@ -6,13 +6,13 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { useTranslations } from "next-intl";
+import { designedText } from "../../t";
 import Image from "next/image";
 
 import Link from "next/link";
 
 export function Section1Section() {
-  const t = useTranslations("designed.product.decision-verification.section1");
+  const t = designedText("product.decision-verification.section1");
   return (
     <section className="relative isolate overflow-hidden border-b border-line">
             <div className="absolute inset-0 -z-10" aria-hidden="true">

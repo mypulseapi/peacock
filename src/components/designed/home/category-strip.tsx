@@ -6,9 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { useTranslations } from "next-intl";
+import { designedText } from "../t";
 export function CategoryStripSection() {
-  const t = useTranslations("designed.home.category-strip");
+  const t = designedText("home.category-strip");
   return (
     <section
             className="hidden border-b border-line"

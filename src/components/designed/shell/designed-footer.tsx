@@ -6,13 +6,13 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { useTranslations } from "next-intl";
+import { designedText } from "../t";
 import Image from "next/image";
 
 import Link from "next/link";
 
 export function DesignedFooter() {
-  const t = useTranslations("designed.shell.designed-footer");
+  const t = designedText("shell.designed-footer");
   return (
     <footer className="border-t border-line bg-card">
           <div className="frame pt-20 pb-12 lg:pt-24">

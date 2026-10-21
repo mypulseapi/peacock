@@ -6,13 +6,13 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { useTranslations } from "next-intl";
+import { designedText } from "../t";
 import Image from "next/image";
 
 import Link from "next/link";
 
 export function DesignedHeader() {
-  const t = useTranslations("designed.shell.designed-header");
+  const t = designedText("shell.designed-header");
   return (
     <header
           className="sticky top-0 z-50 border-b border-line bg-card font-display"

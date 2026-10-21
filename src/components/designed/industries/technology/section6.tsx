@@ -6,11 +6,11 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { useTranslations } from "next-intl";
+import { designedText } from "../../t";
 import Link from "next/link";
 
 export function Section6Section() {
-  const t = useTranslations("designed.industries.technology.section6");
+  const t = designedText("industries.technology.section6");
   return (
     <section className="cta-dots" data-cta>
             <div className="frame py-24 text-center lg:py-32">

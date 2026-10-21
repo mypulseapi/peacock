@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { THEME_SCRIPT } from "@/lib/theme-script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
+import { setDesignedLocale } from "@/components/designed/locale";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 import { Navbar } from "@/components/Navbar";
@@ -133,6 +134,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   // Enable static rendering
   setRequestLocale(locale);
+  // And the same for the designed components, which cannot use next-intl's copy of this: it
+  // resolves from a request, and a static export has none. See components/designed/locale.ts.
+  setDesignedLocale(locale);
 
   // Get messages for the locale.
   //
@@ -142,8 +146,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const messages = await getMessages({ locale });
 
   /*
-   * The designer's shell is English-only markup, like the page bodies it wraps. One flag so the
-   * two can never disagree about which half of the site a visitor is on.
+   * One flag, so the shell and the page bodies can never disagree about which half of the site
+   * a visitor is on. A designed body inside the legacy navbar is the mismatch that made the
+   * rebuild look nothing like the designer's build even once the pages themselves were right.
+   *
+   * Still English-only, but no longer because the markup is. The shell now reads its text from
+   * `designed.<locale>.json` like the pages do, so it can serve both languages; this flips to
+   * `true` in the same change that flips the fifteen page gates, because a designed body inside
+   * the legacy shell loses the `legacy-ui` class the legacy styling hangs off.
    */
   const designed = locale === "en";
 

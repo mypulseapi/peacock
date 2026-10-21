@@ -6,9 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { useTranslations } from "next-intl";
+import { designedText } from "../../t";
 export function Section3Section() {
-  const t = useTranslations("designed.product.decision-audit.section3");
+  const t = designedText("product.decision-audit.section3");
   return (
     <section className="bg-soft-gradient scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">

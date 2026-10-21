@@ -6,11 +6,11 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { useTranslations } from "next-intl";
+import { designedText } from "../../t";
 import Link from "next/link";
 
 export function RequestSection() {
-  const t = useTranslations("designed.product.decision-audit.request");
+  const t = designedText("product.decision-audit.request");
   return (
     <section
             id="request"

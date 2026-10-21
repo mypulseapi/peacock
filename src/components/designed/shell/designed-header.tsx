@@ -40,8 +40,8 @@ export function DesignedHeader() {
             {/* Desktop menu */}
             <nav aria-label="Main" className="relative hidden lg:block" data-mega-nav>
               <ul className="flex items-center gap-0.5">
-                <li><Link href="/en/about" className="nav-link">About us</Link></li>
-
+                {/* About us is deliberately not a top-level item. It lives once, under
+                     Resources > Company. Two entry points to /about read as two destinations. */}
                 <li className="relative">
                   <details className="group" data-dropdown data-mega>
                     <summary
@@ -456,10 +456,8 @@ export function DesignedHeader() {
               <div
                 className="fixed inset-x-0 top-17 bottom-0 animate-dropdown overflow-y-auto border-t border-line bg-card pt-4 pb-10 motion-reduce:animate-none md:px-4"
               >
-                <Link               href="/en/about"
-                  className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
-                  >About us</Link>
-
+                {/* About us moved down into Resources, so the mobile menu lists it in the same
+                     one place the desktop one does. */}
                 <p className="mt-6 px-4 eyebrow">Product</p>
                 <ul className="mt-2">
                   <li>
@@ -559,6 +557,16 @@ export function DesignedHeader() {
                         ><svg className="size-4" aria-hidden="true">
                           <use href="#i-flask" /></svg></span
                       >Research</Link>
+                  </li>
+                  {/* The desktop panel splits Resources into Learn and Company; on mobile the
+                       two run together, so About us closes the list as Company does there. */}
+                  <li>
+                    <Link                   href="/en/about"
+                      className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                      ><span className="nav-icon-tile size-9"
+                        ><svg className="size-4" aria-hidden="true">
+                          <use href="#i-user-round" /></svg></span
+                      >About us</Link>
                   </li>
                 </ul>
 

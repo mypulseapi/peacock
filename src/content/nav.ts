@@ -3,7 +3,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   ClipboardCheck, GitCompare, BellRing,
   ShoppingCart, ShoppingBasket, Cpu, Sofa, Sparkles, Boxes,
-  BookText, PenLine,
+  BookText, PenLine, UserRound,
 } from "lucide-react";
 
 /**
@@ -94,21 +94,24 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       { href: "/docs", icon: BookText, label: "Documentation", blurb: "Integrate in ten lines, or never integrate at all and just take the audit." },
       { href: "/blog", icon: PenLine, label: "Notes", blurb: "What we measured, what surprised us, what we got wrong." },
+      { href: "/about", icon: UserRound, label: "About us", blurb: "Who builds Pulse, and why." },
     ],
   },
 ];
 
 /**
- * About us leads, then Pricing.
+ * Pricing is the only flat link.
  *
- * The 2026-10 PDF review circled the empty space left of "Product" and drew an
- * arrow to it from "About us": they want the company before the catalogue.
+ * About us led this list from the 2026-10 PDF review, which circled the empty
+ * space left of "Product" and drew an arrow to it from "About us". It was
+ * removed on 2026-10-21: it also sits under Resources, and the header showed
+ * both at once, which reads as two different destinations rather than one page
+ * reached twice. Resources is the one that stayed, so the grouping survives.
  *
  * Flat links render after the group buttons, so order in this list is not enough
  * to move one in front of them. `lead` marks the ones drawn before the groups.
  */
 export const NAV_FLAT = [
-  { label: "About us", href: "/about", lead: true },
   { label: "Pricing", href: "/pricing" },
 ];
 export const NAV_CTA = { label: "Request an audit", href: "/contact" };
@@ -144,12 +147,12 @@ export const NAV_GROUPS_VI: NavGroup[] = [
     items: [
       { href: "/docs", icon: BookText, label: "Tài liệu", blurb: "Tích hợp trong mười dòng, hoặc không tích hợp gì và chỉ nhận bản kiểm tra." },
       { href: "/blog", icon: PenLine, label: "Ghi chép", blurb: "Chúng tôi đo được gì, điều gì gây bất ngờ, và chỗ nào đã sai." },
+      { href: "/about", icon: UserRound, label: "Về chúng tôi", blurb: "Ai xây dựng Pulse, và vì sao." },
     ],
   },
 ];
 
 export const NAV_FLAT_VI = [
-  { label: "Về chúng tôi", href: "/about", lead: true },
   { label: "Bảng giá", href: "/pricing" },
 ];
 export const NAV_CTA_VI = { label: "Yêu cầu kiểm tra", href: "/contact" };

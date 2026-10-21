@@ -6,7 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { designedText } from "../t";
+import { designedHref, designedText } from "../t";
 import Link from "next/link";
 
 export function Section2Section() {
@@ -42,7 +42,7 @@ export function Section2Section() {
                     {t('5')}
                   </p>
                   <p className="mt-6">
-                    <Link                   href="/en/product/decision-audit"
+                    <Link                   href={designedHref("/en/product/decision-audit")}
                       className="hit-area font-medium text-link underline underline-offset-4 hover:text-primary-hover"
                       >{t('6')}</Link>
                   </p>

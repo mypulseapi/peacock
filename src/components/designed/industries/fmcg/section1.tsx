@@ -6,7 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { designedText } from "../../t";
+import { designedHref, designedText } from "../../t";
 import Link from "next/link";
 
 export function Section1Section() {
@@ -26,9 +26,9 @@ export function Section1Section() {
                   {t('2')}
                 </p>
                 <div className="reveal mt-8 flex flex-wrap gap-3 delay-200">
-                  <Link href="/en/contact" className="btn-primary"
+                  <Link href={designedHref("/en/contact")} className="btn-primary"
                     >{t('3')}</Link>
-                  <Link href="/en/product/decision-audit" className="btn-secondary"
+                  <Link href={designedHref("/en/product/decision-audit")} className="btn-secondary"
                     >{t('4')}</Link>
                 </div>
                 <p className="reveal mt-6 text-sm text-muted delay-300">

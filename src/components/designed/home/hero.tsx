@@ -6,7 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { designedText } from "../t";
+import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
 import Link from "next/link";
@@ -37,7 +37,7 @@ export function HeroSection() {
                     {t('3')}
                   </p>
                   <div className="reveal mt-8 flex flex-wrap gap-3 delay-300">
-                    <Link href="/en/contact" className="btn-primary"
+                    <Link href={designedHref("/en/contact")} className="btn-primary"
                       >{t('4')}</Link>
                     <a href="#method" className="btn-secondary">{t('5')}</a>
                   </div>

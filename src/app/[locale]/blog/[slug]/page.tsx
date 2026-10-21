@@ -161,7 +161,7 @@ export default async function ArticlePage({ params }: PageProps) {
               {a.sources.map((src) => (
                 <li key={src.href}>
                   {src.href.startsWith("/") ? (
-                    <Link href={src.href} className="inline-flex min-h-[24px] items-start gap-2 text-[0.9375rem] text-[color:var(--accent-primary)] underline underline-offset-4">
+                    <Link locale={locale} href={src.href} className="inline-flex min-h-[24px] items-start gap-2 text-[0.9375rem] text-[color:var(--accent-primary)] underline underline-offset-4">
                       {src.label}
                     </Link>
                   ) : (
@@ -181,7 +181,7 @@ export default async function ArticlePage({ params }: PageProps) {
           </section>
 
           {s && (
-            <Link
+            <Link locale={locale}
               href={`/industries/${s.slug}`}
               className="group ed-raise mt-12 flex items-center gap-4 rounded-2xl border border-[color:var(--ed-line)] p-6 transition hover:border-[color:var(--brand-indigo)]"
             >
@@ -194,7 +194,7 @@ export default async function ArticlePage({ params }: PageProps) {
             </Link>
           )}
 
-          <Link href="/blog" className="mt-12 inline-flex min-h-[44px] items-center gap-2 text-[0.9375rem] font-semibold text-[color:var(--ed-ink-2)] transition hover:text-[color:var(--ed-ink)]">
+          <Link locale={locale} href="/blog" className="mt-12 inline-flex min-h-[44px] items-center gap-2 text-[0.9375rem] font-semibold text-[color:var(--ed-ink-2)] transition hover:text-[color:var(--ed-ink)]">
             <ArrowLeft className="h-4 w-4" aria-hidden />
             {t("backToNotes")}
           </Link>
@@ -207,7 +207,7 @@ export default async function ArticlePage({ params }: PageProps) {
             const Icon = x.icon;
             return (
               <li key={x.slug}>
-                <Link href={`/blog/${x.slug}`} className="group ed-raise flex h-full flex-col rounded-2xl border border-[color:var(--ed-line)] p-6 transition hover:border-[color:var(--brand-indigo)]">
+                <Link locale={locale} href={`/blog/${x.slug}`} className="group ed-raise flex h-full flex-col rounded-2xl border border-[color:var(--ed-line)] p-6 transition hover:border-[color:var(--brand-indigo)]">
                   <span className="grid h-8 w-8 place-items-center rounded-lg bg-[color:var(--brand-lav-100)]">
                     <Icon className="h-3.5 w-3.5" style={{ color: "var(--accent-primary)" }} aria-hidden />
                   </span>

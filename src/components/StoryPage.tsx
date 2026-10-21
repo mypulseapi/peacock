@@ -1,4 +1,4 @@
-import { useLocale } from "next-intl";
+import { renderLocale } from "@/i18n/render-locale";
 import { ui } from "@/content/locale";
 import { ArrowRight } from "lucide-react";
 import {
@@ -155,7 +155,11 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
    */
   heroVisual?: React.ReactNode;
 }) {
-  const t = ui(useLocale());
+  // Not `useLocale()`: this renders into a static export, where next-intl has no request to
+  // resolve the locale from and returns the fallback. That left every `/vi` page built on this
+  // component with a call to action pointing at `/en/contact`.
+  const locale = renderLocale();
+  const t = ui(locale);
   const hasSituationVisual = Boolean(situationVisual ?? c.scenes?.situation ?? c.situationImage);
   return (
     <>
@@ -344,6 +348,7 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
               <h2 className="ed-d2 text-[color:var(--on-panel)]">{c.cta.title}</h2>
               <p className="ed-lede mt-6 text-[color:var(--on-panel-2)]">{c.cta.body}</p>
               <Link
+                locale={locale}
                 href={c.cta.href}
                 className="sig-cta group mt-10 inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-[0.9375rem]"
               >

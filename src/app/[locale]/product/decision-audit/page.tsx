@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { buildAlternates } from "@/lib/seo";
-import { StoryPage, storyFaqSchema } from "@/components/StoryPage";
+import { storyFaqSchema } from "@/components/StoryPage";
 import { PageSchema } from "@/components/PageSchema";
 import { DesignedDecisionAudit } from "@/components/designed/product/decision-audit";
-import { AuditVisual } from "@/components/StoryVisual";
-import { ShopperScene } from "@/components/home/ShopperScene";
-import { EventChainScene } from "@/components/home/EventChainScene";
 import { decisionAudit } from "@/content/pages/decision-audit";
 
 interface PageProps { params: Promise<{ locale: string }> }
@@ -34,7 +31,7 @@ export default async function Page({ params }: PageProps) {
       <PageSchema locale={locale} path="/product/decision-audit" nodes={[storyFaqSchema(decisionAudit(locale))]} />
       {/* English gets the designer's converted page; Vietnamese keeps the translated one until
           that conversion's text has been extracted and translated. See [locale]/page.tsx. */}
-      {locale === "en" ? <DesignedDecisionAudit /> : <StoryPage layout={{ steps: "timeline", gets: "manifest", limits: "split" }} visual={<AuditVisual />} chainVisual={<EventChainScene />} heroVisual={<ShopperScene />} c={decisionAudit(locale)} />}
+      <DesignedDecisionAudit />
     </>
   );
 }

@@ -150,12 +150,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
    * a visitor is on. A designed body inside the legacy navbar is the mismatch that made the
    * rebuild look nothing like the designer's build even once the pages themselves were right.
    *
-   * Still English-only, but no longer because the markup is. The shell now reads its text from
-   * `designed.<locale>.json` like the pages do, so it can serve both languages; this flips to
-   * `true` in the same change that flips the fifteen page gates, because a designed body inside
-   * the legacy shell loses the `legacy-ui` class the legacy styling hangs off.
+   * Both languages, since the shell reads its text from `designed.<locale>.json` like the pages
+   * do. It stays a flag rather than becoming nothing because the legacy components are still in
+   * the tree for the routes that have not been converted, and a designed body inside the legacy
+   * shell loses the `legacy-ui` class the legacy styling hangs off.
    */
-  const designed = locale === "en";
+  const designed = true;
 
   return (
     <html

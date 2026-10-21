@@ -2,7 +2,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageSchema } from "@/components/PageSchema";
 import { DesignedTerms } from "@/components/designed/terms";
 import { buildAlternates } from "@/lib/seo";
-import TermsOfServicePage from "./TermsPageClient";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -33,7 +32,7 @@ export default async function Page({ params }: PageProps) {
       <PageSchema locale={locale} path="/terms" />
       {/* English gets the designer's converted page; Vietnamese keeps the translated one until
           that conversion's text has been extracted and translated. See [locale]/page.tsx. */}
-      {locale === "en" ? <DesignedTerms /> : <TermsOfServicePage />}
+      <DesignedTerms />
     </>
   );
 }

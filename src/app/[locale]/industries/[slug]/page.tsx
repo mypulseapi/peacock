@@ -56,7 +56,7 @@ export default async function IndustryPage({ params }: PageProps) {
   if (!s) notFound();
 
   // An element, not a component: see the note in components/designed/industries.
-  const designed = locale === "en" ? designedSector(slug) : null;
+  const designed = designedSector(slug);
 
   return (
     <>

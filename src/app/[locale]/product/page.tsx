@@ -2,7 +2,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageSchema } from "@/components/PageSchema";
 import { DesignedProduct } from "@/components/designed/product";
 import { buildAlternates } from "@/lib/seo";
-import ProductContent from "./ProductContent";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -41,7 +40,7 @@ export default async function Page({ params }: PageProps) {
       <PageSchema locale={locale} path="/product" nodes={[jsonLd]} />
       {/* English gets the designer's converted page; Vietnamese keeps the translated one until
           that conversion's text has been extracted and translated. See [locale]/page.tsx. */}
-      {locale === "en" ? <DesignedProduct /> : <ProductContent locale={locale} />}
+      <DesignedProduct />
     </>
   );
 }

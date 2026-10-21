@@ -282,21 +282,6 @@ export function DesignedHeader() {
                           </p>
                           <ul className="space-y-1">
                             <li>
-                              <a
-                                href="https://developer.thepulseapi.com/"
-                                className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                              >
-                                <span
-                                  className="flex items-center gap-2 text-sm font-semibold text-ink"
-                                  >{t('31')}</span
-                                >
-                                <span
-                                  className="mt-1 block text-sm text-pretty text-muted"
-                                  >{t('32')}</span
-                                >
-                              </a>
-                            </li>
-                            <li>
                               <Link                             href={designedHref("/en/visual-evidence")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
@@ -366,6 +351,12 @@ export function DesignedHeader() {
                   </details>
                 </li>
 
+                {/* Promoted out of the Resources panel: the docs are a destination of their own,
+                     not something to go hunting for behind a menu. It stays an <a> rather than a
+                     <Link>, because it leaves this site for the handbook. */}
+                <li>
+                  <a href="https://developer.thepulseapi.com/" className="nav-link">{t('31')}</a>
+                </li>
                 <li><Link href={designedHref("/en/pricing")} className="nav-link">{t('42')}</Link></li>
               </ul>
               <div className="nav-viewport" data-nav-viewport>
@@ -495,16 +486,6 @@ export function DesignedHeader() {
                 <p className="mt-6 px-4 eyebrow">{t('59')}</p>
                 <ul className="mt-2">
                   <li>
-                    <a
-                      href="https://developer.thepulseapi.com/"
-                      className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                      ><span className="nav-icon-tile size-9"
-                        ><svg className="size-4" aria-hidden="true">
-                          <use href="#i-file-text" /></svg></span
-                      >{t('60')}</a
-                    >
-                  </li>
-                  <li>
                     <Link                   href={designedHref("/en/visual-evidence")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
@@ -525,6 +506,11 @@ export function DesignedHeader() {
                 </ul>
 
                 <div className="mt-6 border-t border-line pt-6">
+                  <a
+                    href="https://developer.thepulseapi.com/"
+                    className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
+                    >{t('60')}</a
+                  >
                   <Link                 href={designedHref("/en/pricing")}
                     className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
                     >{t('63')}</Link>

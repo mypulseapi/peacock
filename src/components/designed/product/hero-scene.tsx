@@ -1,93 +1,132 @@
 /**
- * The product hero's visual, as one inline SVG instead of a video.
+ * The product hero's background texture, in place of the background video.
  *
- * It replaced a screen recording: four MP4s per page, light and dark in AV1 and H.264, 9.5MB
- * across the three product pages, plus a 2560px WebP poster to cover the gap before a frame
- * arrived. It played a sped-up tour of the product, which is a lot of motion to put beside a
- * headline someone is still reading, and the report was that it was confusing rather than
- * explanatory.
+ * This sits in `absolute inset-0 -z-10`, behind the headline. It is wallpaper, not a figure: the
+ * shelf story the pages actually tell is the designer's exported figure in section 2, one screen
+ * below, and competing with it from behind the title helped nobody.
  *
- * This says one thing instead. The shelf is the metaphor the whole site already uses: a grid of
- * products, some of which cannot be told apart. The amber cells are the gap; they fill, in
- * order, once. Then it stops. An enterprise hero should settle, not keep performing.
+ * It replaced four MP4s per page (light and dark, AV1 and H.264, 9.5MB across the three pages)
+ * plus a 2560px WebP poster.
  *
- * Why it is cheap:
- *   - About 9KB of markup, against 9.5MB of video. Nothing to download, nothing to decode.
- *   - Only `opacity` animates, on a group the compositor can handle on its own. No `fill`
- *     transitions, which cannot be composited and would repaint 112 rectangles a frame.
- *   - One pass, 2.4s, then idle. No loop means no work at all for the rest of the visit.
- *   - It is theme-agnostic: the colours are the same role tokens the page uses, so dark mode
- *     needs no second copy of anything. The video needed two.
+ * Why a `<pattern>` and no `viewBox`
+ * ----------------------------------
+ * The first version drew a fixed 14 by 8 grid in a 276 by 156 viewBox and let CSS size it. A
+ * viewBox scales its contents, so stretching that across a 1536px hero blew 16px cells up to
+ * about 55px: a chunky checkerboard of a dozen huge squares, nothing like a shelf of products.
+ * Worse, the cell size changed with the viewport, so it was never once the size it was designed
+ * at.
+ *
+ * With no viewBox, one user unit is one CSS pixel. A tiled pattern then holds its cell size at
+ * every width, which is what a texture needs: the hero gets wider, you get more cells, not bigger
+ * ones. It is also less markup than the grid it replaces, because the tile is drawn once and
+ * repeated by the renderer rather than by React.
+ *
+ * Colour
+ * ------
+ * Every fill is a `--color-*` token, the designed palette the rest of these pages use. The first
+ * version reached for `--primary`, `--warn` and `--surface-2`: `--primary` is a legacy token that
+ * resolves to a harsh saturated indigo rather than Pulse Blue, and the other two are not defined
+ * at all, so they silently fell back to a hardcoded amber and a `currentColor` mix. That is why it
+ * shipped looking like scattered navy blobs.
  */
-const COLS = 14;
-const ROWS = 8;
-const CELL = 16;
-const GAP = 4;
+const PITCH = 20;
+const CELL = 14;
+const RADIUS = 4;
 
 /*
- * Which cells read as the gap, per product.
+ * Where the accents sit inside one accent tile, as [column, row] of a 19 by 11 block.
  *
- * Generated with a constraint rather than typed by hand: no column holding more than two, no
- * row more than three, and no two adjacent in a row. The first hand-picked set put every gap
- * in columns 3 and 10, because a stride of 7 against 14 columns lands on the same two every
- * time, and it read as a deliberate stripe instead of a shelf with holes in it.
+ * Four per tile, which is under 2% of its cells. The first attempt used a 9 by 5 tile with five
+ * accents: that is 11% density repeating about nine times across a desktop hero, and the eye
+ * found the seams immediately. It read as patterned wallpaper rather than a scattering. A tile
+ * this size repeats roughly four times across and twice down, which is few enough that the
+ * repetition stops announcing itself.
+ *
+ * Within a tile no two share a row or a column and none is adjacent, so nothing lines up.
+ *
+ * One set per page, because the three heroes sit at the same place in the same layout and a
+ * visitor moving between them should not feel they never left.
  */
-const GAPS: Record<string, number[]> = {
-  audit: [1, 18, 21, 25, 32, 38, 43, 47, 56, 62, 66, 78, 84, 86, 96],
-  verification: [21, 25, 28, 42, 53, 55, 57, 69, 77, 93, 107],
-  monitor: [4, 25, 30, 43, 45, 47, 56, 65, 71, 73, 76, 88, 91, 97, 100, 107],
+const ACCENTS: Record<string, { gap: [number, number][]; filled: [number, number][] }> = {
+  audit: {
+    gap: [[3, 1], [14, 7]],
+    filled: [[8, 4], [17, 9]],
+  },
+  verification: {
+    gap: [[5, 2], [16, 8]],
+    filled: [[1, 6], [11, 0]],
+  },
+  monitor: {
+    gap: [[2, 9], [12, 3]],
+    filled: [[7, 1], [18, 6]],
+  },
 };
 
-export function HeroScene({ variant }: { variant: keyof typeof GAPS }) {
-  const gaps = new Set(GAPS[variant] ?? GAPS.audit);
-  const width = COLS * (CELL + GAP) - GAP;
-  const height = ROWS * (CELL + GAP) - GAP;
-  const cells = Array.from({ length: COLS * ROWS }, (_, i) => i);
-  const at = (i: number) => ({
-    x: (i % COLS) * (CELL + GAP),
-    y: Math.floor(i / COLS) * (CELL + GAP),
-  });
+const TILE_COLS = 19;
+const TILE_ROWS = 11;
+
+export function HeroScene({ variant }: { variant: keyof typeof ACCENTS }) {
+  const accents = ACCENTS[variant] ?? ACCENTS.audit;
+  // Prefixed per variant: three of these never share a page, but an id collision is the kind of
+  // bug that only shows up once someone puts two on one.
+  const id = `hs-${variant}`;
+  const at = ([c, r]: [number, number]) => ({ x: c * PITCH + (PITCH - CELL) / 2, y: r * PITCH + (PITCH - CELL) / 2 });
 
   return (
-    <svg
-      className="hero-scene"
-      viewBox={`0 0 ${width} ${height}`}
-      width={width}
-      height={height}
-      role="img"
-      aria-label="A shelf of products. The highlighted cells are the ones a shopper cannot tell apart, filling in as the missing attribute is recorded."
-    >
-      {/* The shelf. Flat, quiet, and never animated: it is the background, not the point. */}
-      <g className="hero-scene-shelf">
-        {cells.map((i) => {
-          const { x, y } = at(i);
-          return <rect key={i} x={x} y={y} width={CELL} height={CELL} rx={4} />;
-        })}
-      </g>
+    <svg className="hero-scene" aria-hidden="true" focusable="false">
+      <defs>
+        {/* The field. One cell, repeated by the renderer. */}
+        <pattern
+          id={`${id}-field`}
+          width={PITCH}
+          height={PITCH}
+          patternUnits="userSpaceOnUse"
+        >
+          <rect
+            x={(PITCH - CELL) / 2}
+            y={(PITCH - CELL) / 2}
+            width={CELL}
+            height={CELL}
+            rx={RADIUS}
+            className="hero-scene-cell"
+          />
+        </pattern>
 
-      {/* The gap, and the same cells resolved. Only the second group's opacity moves, and the
-          stagger is a custom property so one keyframe serves all of them. */}
-      <g className="hero-scene-gap">
-        {[...gaps].map((i) => {
-          const { x, y } = at(i);
-          return <rect key={i} x={x} y={y} width={CELL} height={CELL} rx={4} />;
-        })}
-      </g>
-      <g className="hero-scene-fill">
-        {[...gaps].map((i, n) => {
-          const { x, y } = at(i);
-          return (
+        {/* The accents, on a tile nine cells wide so they do not land in an obvious lattice. */}
+        <pattern
+          id={`${id}-accents`}
+          width={TILE_COLS * PITCH}
+          height={TILE_ROWS * PITCH}
+          patternUnits="userSpaceOnUse"
+        >
+          {accents.gap.map((cell) => (
             <rect
-              key={i}
-              x={x}
-              y={y}
+              key={`g${cell[0]}-${cell[1]}`}
+              {...at(cell)}
               width={CELL}
               height={CELL}
-              rx={4}
-              style={{ "--i": n } as React.CSSProperties}
+              rx={RADIUS}
+              className="hero-scene-gap"
             />
-          );
-        })}
+          ))}
+          {accents.filled.map((cell) => (
+            <rect
+              key={`f${cell[0]}-${cell[1]}`}
+              {...at(cell)}
+              width={CELL}
+              height={CELL}
+              rx={RADIUS}
+              className="hero-scene-filled"
+            />
+          ))}
+        </pattern>
+      </defs>
+
+      <rect width="100%" height="100%" fill={`url(#${id}-field)`} />
+      {/* One group, one opacity, one fade. The compositor handles it without touching layout, and
+          it settles rather than looping: an enterprise hero should stop performing. */}
+      <g className="hero-scene-accents">
+        <rect width="100%" height="100%" fill={`url(#${id}-accents)`} />
       </g>
     </svg>
   );

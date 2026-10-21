@@ -7,6 +7,7 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { DesignedLocaleSwitch } from "./designed-locale-switch";
+import { DesignedThemeSwitch } from "./designed-theme-switch";
 import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
@@ -388,6 +389,10 @@ export function DesignedHeader() {
 
             {/* Desktop actions */}
             <div className="hidden items-center gap-2 lg:flex">
+              <DesignedThemeSwitch
+                heading={t('theme')}
+                labels={{ light: t('themeLight'), dark: t('themeDark'), system: t('themeSystem') }}
+              />
               <DesignedLocaleSwitch heading={t('44')} />
               <Link href={designedHref("/en/signin")} className="nav-link">{t('46')}</Link>
               <Link             href={designedHref("/en/contact")}
@@ -547,6 +552,16 @@ export function DesignedHeader() {
                     <svg className="size-3.5" aria-hidden="true">
                       <use href="#i-arrow-right" /></svg
                   ></Link>
+
+                  {/* The theme and language controls live in the desktop actions, which are
+                       `hidden lg:flex`, so without these two a phone had neither. */}
+                  <div className="mt-6 flex items-center gap-2 border-t border-line pt-6">
+                    <DesignedThemeSwitch
+                heading={t('theme')}
+                labels={{ light: t('themeLight'), dark: t('themeDark'), system: t('themeSystem') }}
+              />
+                    <DesignedLocaleSwitch heading={t('44')} />
+                  </div>
                 </div>
               </div>
             </details>

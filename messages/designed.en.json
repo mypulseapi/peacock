@@ -1601,7 +1601,11 @@
       "62": "About us",
       "63": "Pricing",
       "64": "Sign In",
-      "65": "Request a Decision Audit"
+      "65": "Request a Decision Audit",
+      "theme": "Theme",
+      "themeLight": "Light",
+      "themeDark": "Dark",
+      "themeSystem": "System"
     },
     "designed-skip-link": {
       "1": "Skip to content"

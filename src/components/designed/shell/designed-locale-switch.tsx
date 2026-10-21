@@ -44,6 +44,7 @@ export function DesignedLocaleSwitch({ heading }: { heading: string }) {
         <summary
           className="hit-area flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-line px-4 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-ink"
           aria-label={`${current.shortLabel}, ${heading.toLowerCase()}`}
+          data-locale-switch
         >
           <svg className="size-4 text-primary" aria-hidden="true">
             <use href="#i-globe" />

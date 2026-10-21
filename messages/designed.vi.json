@@ -76,7 +76,11 @@
       "62": "Về chúng tôi",
       "63": "Bảng giá",
       "64": "Đăng nhập",
-      "65": "Yêu cầu Decision Audit"
+      "65": "Yêu cầu Decision Audit",
+      "theme": "Giao diện",
+      "themeLight": "Sáng",
+      "themeDark": "Tối",
+      "themeSystem": "Hệ thống"
     }
   },
   "home": {

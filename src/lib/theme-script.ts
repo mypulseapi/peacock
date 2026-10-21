@@ -15,4 +15,7 @@
  * streaming emits around twenty inline bootstrap scripts per page that no hash can cover. See the
  * CSP note in `next.config.ts`.
  */
-export const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('pulse-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();`;
+// `system` is the one value that leaves the attribute off, which hands the page back to
+// `color-scheme: light dark`. Anything else, including nothing stored, is a fixed theme:
+// the site opens light unless the visitor has said otherwise.
+export const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('pulse-theme');if(t!=='system'){document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}}catch(e){}})();`;

@@ -267,6 +267,30 @@ async function main() {
     totalSize: 0,
   };
 
+  /*
+   * `--dir <path> --prefix <key>` mirrors one tree and stops.
+   *
+   * This exists for the assistant's model weights. They are 170MB and they are not in the
+   * repository, because a git history is the wrong place for them, so there is nothing for the
+   * normal run to walk. Keeping it here rather than in a throwaway script means the next person
+   * who has to re-mirror a model has the command instead of having to rediscover it:
+   *
+   *   pnpm exec tsx scripts/upload-to-r2.ts --dir /tmp/models --prefix website/models
+   */
+  const dirFlag = process.argv.indexOf("--dir");
+  if (dirFlag !== -1) {
+    const dir = process.argv[dirFlag + 1];
+    const prefixFlag = process.argv.indexOf("--prefix");
+    const prefix = prefixFlag === -1 ? SITE_PREFIX : process.argv[prefixFlag + 1];
+    if (!dir || !fs.existsSync(dir)) {
+      console.error(`❌ --dir ${dir ?? "(missing)"} does not exist`);
+      process.exit(1);
+    }
+    const one = await uploadDirectory(dir, prefix, `${dir} -> ${prefix}/`);
+    console.log(`\n✅ ${one.uploaded} uploaded, ${one.failed} failed, ${(one.totalSize / 1048576).toFixed(1)} MB`);
+    process.exit(one.failed > 0 ? 1 : 0);
+  }
+
   // --clean is scoped to this site's own prefixes and NEVER the bucket root.
   // The bucket is shared with the product: an unprefixed clear would delete
   // demo/, originals/ and avatars/ along with the site.

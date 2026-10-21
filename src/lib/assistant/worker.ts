@@ -46,12 +46,38 @@ async function init(lang: string) {
       lang === 'vi' ? import('./search-index.vi.json') : import('./search-index.json'),
     ]);
 
-    // The index is the only thing we ship; the weights come from the hub and are cached by the
+    // The index is the only thing we ship; the weights are fetched once and cached by the
     // browser after the first open.
     index = loaded.default as unknown as SearchIndex;
     rows = decodeVectors(index);
 
     env.allowLocalModels = false;
+
+    /*
+     * Serve the weights from our own CDN rather than the hub, when the bucket will allow it.
+     *
+     * 151MB across the two models, and every first question on the site currently fetches it
+     * from huggingface.co: a third party on the critical path of a feature we tell people is
+     * answered from our own pages, with their rate limits and their uptime.
+     *
+     * The mirror exists at `<cdn>/<prefix>/models/<model>/...` and is verified. It is off by
+     * default because the bucket has no CORS policy, and an `<img>` needs none while a
+     * `fetch()` does: with it on and no policy, every model request fails with a bare
+     * `TypeError: Failed to fetch` and the assistant reports that it could not start.
+     *
+     * Turn it on by setting `NEXT_PUBLIC_CDN_MODELS=1`, once the bucket allows GET and HEAD
+     * from this origin. No code change, and no hostname written down here: the host is built
+     * from the same variable as every other asset.
+     *
+     * Re-mirror a model with:
+     *   pnpm exec tsx scripts/upload-to-r2.ts --dir <models> --prefix <prefix>/models
+     */
+    const cdn = (process.env.NEXT_PUBLIC_CDN_URL || '').replace(/\/+$/, '');
+    const prefix = (process.env.NEXT_PUBLIC_CDN_PREFIX || '').replace(/^\/+|\/+$/g, '');
+    if (cdn && process.env.NEXT_PUBLIC_CDN_MODELS === '1') {
+      env.remoteHost = prefix ? `${cdn}/${prefix}/models/` : `${cdn}/models/`;
+      env.remotePathTemplate = '{model}/';
+    }
 
     const pipe = await pipeline('feature-extraction', index.model, {
       dtype: 'q8',

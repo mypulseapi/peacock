@@ -6,7 +6,7 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { designedText } from "../t";
+import { designedHref, designedText } from "../t";
 import Link from "next/link";
 
 export function Section1Section() {
@@ -57,7 +57,7 @@ export function Section1Section() {
                     </div>
                   </div>
                   <div className="px-6 pt-6 pb-6 lg:px-7">
-                    <Link href="/en/contact" className="btn-primary w-full justify-center"
+                    <Link href={designedHref("/en/contact")} className="btn-primary w-full justify-center"
                       >{t('8')}</Link>
                   </div>
                   <ul
@@ -142,7 +142,7 @@ export function Section1Section() {
                     </div>
                   </div>
                   <div className="px-6 pt-6 pb-6 lg:px-7">
-                    <Link href="/en/contact" className="btn-primary w-full justify-center"
+                    <Link href={designedHref("/en/contact")} className="btn-primary w-full justify-center"
                       >{t('20')}<span className="sr-only">
                         {t('21')}</span
                       ></Link>
@@ -225,7 +225,7 @@ export function Section1Section() {
                     </div>
                   </div>
                   <div className="px-6 pt-6 pb-6 lg:px-7">
-                    <Link                   href="/en/contact"
+                    <Link                   href={designedHref("/en/contact")}
                       className="btn-secondary w-full justify-center"
                       >{t('33')}<span className="sr-only">
                         {t('34')}</span

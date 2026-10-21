@@ -6,7 +6,8 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { designedText } from "../t";
+import { DesignedLocaleSwitch } from "./designed-locale-switch";
+import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
 import Link from "next/link";
@@ -21,7 +22,7 @@ export function DesignedHeader() {
           <div
             className="frame flex h-17 items-center justify-between gap-4 lg:gap-2 xl:gap-4"
           >
-            <Link           href="/en"
+            <Link           href={designedHref("/en")}
               aria-label="Pulse home"
               className="hit-area shrink-0"
             >
@@ -68,7 +69,7 @@ export function DesignedHeader() {
                           </p>
                           <ul className="space-y-1">
                             <li>
-                              <Link                             href="/en/product/decision-audit"
+                              <Link                             href={designedHref("/en/product/decision-audit")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -82,7 +83,7 @@ export function DesignedHeader() {
                               </Link>
                             </li>
                             <li>
-                              <Link                             href="/en/product/decision-verification"
+                              <Link                             href={designedHref("/en/product/decision-verification")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -103,7 +104,7 @@ export function DesignedHeader() {
                           </p>
                           <ul className="space-y-1">
                             <li>
-                              <Link                             href="/en/product/decision-monitor"
+                              <Link                             href={designedHref("/en/product/decision-monitor")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -166,7 +167,7 @@ export function DesignedHeader() {
                           </p>
                           <ul className="space-y-1">
                             <li>
-                              <Link                             href="/en/industries/ecommerce"
+                              <Link                             href={designedHref("/en/industries/ecommerce")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -180,7 +181,7 @@ export function DesignedHeader() {
                               </Link>
                             </li>
                             <li>
-                              <Link                             href="/en/industries/fmcg"
+                              <Link                             href={designedHref("/en/industries/fmcg")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -201,7 +202,7 @@ export function DesignedHeader() {
                           </p>
                           <ul className="space-y-1">
                             <li>
-                              <Link                             href="/en/industries/furniture"
+                              <Link                             href={designedHref("/en/industries/furniture")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -215,7 +216,7 @@ export function DesignedHeader() {
                               </Link>
                             </li>
                             <li>
-                              <Link                             href="/en/industries/cosmetics"
+                              <Link                             href={designedHref("/en/industries/cosmetics")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -236,7 +237,7 @@ export function DesignedHeader() {
                           </p>
                           <ul className="space-y-1">
                             <li>
-                              <Link                             href="/en/industries/technology"
+                              <Link                             href={designedHref("/en/industries/technology")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -250,7 +251,7 @@ export function DesignedHeader() {
                               </Link>
                             </li>
                             <li>
-                              <Link                             href="/en/industries/distribution"
+                              <Link                             href={designedHref("/en/industries/distribution")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -309,7 +310,7 @@ export function DesignedHeader() {
                               </a>
                             </li>
                             <li>
-                              <Link                             href="/en/visual-evidence"
+                              <Link                             href={designedHref("/en/visual-evidence")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -330,7 +331,7 @@ export function DesignedHeader() {
                           </p>
                           <ul className="space-y-1">
                             <li>
-                              <Link                             href="/en/about"
+                              <Link                             href={designedHref("/en/about")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -344,7 +345,7 @@ export function DesignedHeader() {
                               </Link>
                             </li>
                             <li>
-                              <Link                             href="/en/contact"
+                              <Link                             href={designedHref("/en/contact")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -358,7 +359,7 @@ export function DesignedHeader() {
                               </Link>
                             </li>
                             <li>
-                              <Link                             href="/en/careers"
+                              <Link                             href={designedHref("/en/careers")}
                                 className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                               >
                                 <span
@@ -378,7 +379,7 @@ export function DesignedHeader() {
                   </details>
                 </li>
 
-                <li><Link href="/en/pricing" className="nav-link">{t('42')}</Link></li>
+                <li><Link href={designedHref("/en/pricing")} className="nav-link">{t('42')}</Link></li>
               </ul>
               <div className="nav-viewport" data-nav-viewport>
                 <div className="nav-viewport-stack" data-nav-stack></div>
@@ -387,49 +388,9 @@ export function DesignedHeader() {
 
             {/* Desktop actions */}
             <div className="hidden items-center gap-2 lg:flex">
-              <div className="relative">
-                <details className="group" data-dropdown>
-                  <summary
-                    className="hit-area flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-line px-4 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-ink"
-                    aria-label="EN, switch language"
-                  >
-                    <svg className="size-4 text-primary" aria-hidden="true">
-                      <use href="#i-globe" />
-                    </svg>
-                    {t('43')}
-                    <svg
-                      className="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
-                      aria-hidden="true"
-                    >
-                      <use href="#i-chevron-down" />
-                    </svg>
-                  </summary>
-                  <div
-                    data-panel
-                    className="absolute top-full right-0 mt-2 w-44 animate-dropdown rounded-2xl border border-line bg-card p-1.5 shadow-xl motion-reduce:animate-none"
-                  >
-                    <p
-                      className="border-b border-line px-3 py-2 text-label font-medium text-muted uppercase"
-                    >
-                      {t('44')}
-                    </p>
-                    <a
-                      role="link"
-                      aria-disabled="true"
-                      aria-current="true"
-                      className="mt-1 flex min-h-11 items-center gap-3 rounded-control bg-primary-tint px-3 py-2.5 text-sm font-medium text-primary"
-                    >
-                      <span aria-hidden="true">🇺🇸</span> {t('45')}
-                      <svg className="ml-auto size-4" aria-hidden="true">
-                        <use href="#i-check" />
-                      </svg>
-                    </a>
-                    {/* Tiếng Việt: add back (with hreflang) when the Vietnamese page exists, guideline §9 */}
-                  </div>
-                </details>
-              </div>
-              <Link href="/en/signin" className="nav-link">{t('46')}</Link>
-              <Link             href="/en/contact"
+              <DesignedLocaleSwitch heading={t('44')} />
+              <Link href={designedHref("/en/signin")} className="nav-link">{t('46')}</Link>
+              <Link             href={designedHref("/en/contact")}
                 className="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap"
               >
                 {t('47')}
@@ -463,7 +424,7 @@ export function DesignedHeader() {
                 <p className="mt-6 px-4 eyebrow">{t('48')}</p>
                 <ul className="mt-2">
                   <li>
-                    <Link                   href="/en/product/decision-audit"
+                    <Link                   href={designedHref("/en/product/decision-audit")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
@@ -471,7 +432,7 @@ export function DesignedHeader() {
                       >{t('49')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/product/decision-verification"
+                    <Link                   href={designedHref("/en/product/decision-verification")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
@@ -479,7 +440,7 @@ export function DesignedHeader() {
                       >{t('50')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/product/decision-monitor"
+                    <Link                   href={designedHref("/en/product/decision-monitor")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
@@ -491,7 +452,7 @@ export function DesignedHeader() {
                 <p className="mt-6 px-4 eyebrow">{t('52')}</p>
                 <ul className="mt-2">
                   <li>
-                    <Link                   href="/en/industries/ecommerce"
+                    <Link                   href={designedHref("/en/industries/ecommerce")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
@@ -499,7 +460,7 @@ export function DesignedHeader() {
                       >{t('53')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/industries/fmcg"
+                    <Link                   href={designedHref("/en/industries/fmcg")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
@@ -507,7 +468,7 @@ export function DesignedHeader() {
                       >{t('54')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/industries/technology"
+                    <Link                   href={designedHref("/en/industries/technology")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
@@ -515,7 +476,7 @@ export function DesignedHeader() {
                       >{t('55')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/industries/furniture"
+                    <Link                   href={designedHref("/en/industries/furniture")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
@@ -523,7 +484,7 @@ export function DesignedHeader() {
                       >{t('56')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/industries/cosmetics"
+                    <Link                   href={designedHref("/en/industries/cosmetics")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
@@ -531,7 +492,7 @@ export function DesignedHeader() {
                       >{t('57')}</Link>
                   </li>
                   <li>
-                    <Link                   href="/en/industries/distribution"
+                    <Link                   href={designedHref("/en/industries/distribution")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
@@ -553,7 +514,7 @@ export function DesignedHeader() {
                     >
                   </li>
                   <li>
-                    <Link                   href="/en/visual-evidence"
+                    <Link                   href={designedHref("/en/visual-evidence")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
@@ -563,7 +524,7 @@ export function DesignedHeader() {
                   {/* The desktop panel splits Resources into Learn and Company; on mobile the
                        two run together, so About us closes the list as Company does there. */}
                   <li>
-                    <Link                   href="/en/about"
+                    <Link                   href={designedHref("/en/about")}
                       className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                       ><span className="nav-icon-tile size-9"
                         ><svg className="size-4" aria-hidden="true">
@@ -573,14 +534,14 @@ export function DesignedHeader() {
                 </ul>
 
                 <div className="mt-6 border-t border-line pt-6">
-                  <Link                 href="/en/pricing"
+                  <Link                 href={designedHref("/en/pricing")}
                     className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
                     >{t('63')}</Link>
 
-                  <Link                 href="/en/signin"
+                  <Link                 href={designedHref("/en/signin")}
                     className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
                     >{t('64')}</Link>
-                  <Link                 href="/en/contact"
+                  <Link                 href={designedHref("/en/contact")}
                     className="btn-primary mt-4 w-full rounded-control text-nav"
                     >{t('65')}
                     <svg className="size-3.5" aria-hidden="true">

@@ -1,6 +1,6 @@
 import en from "../../../messages/designed.en.json";
 import vi from "../../../messages/designed.vi.json";
-import { designedLocale } from "./locale";
+import { renderLocale } from "@/i18n/render-locale";
 
 /**
  * The designed pages' text, looked up by component namespace.
@@ -34,9 +34,27 @@ function at(root: Catalogue, namespace: string): Record<string, string> {
  * should be unreachable: the catalogue is generated from the same markup that reads it.
  */
 export function designedText(namespace: string): (key: string) => string {
-  const locale = designedLocale();
+  const locale = renderLocale();
   const base = at(BY_LOCALE.en, namespace);
   const over = locale === "en" ? {} : at(BY_LOCALE[locale] ?? {}, namespace);
   const table = { ...base, ...over };
   return (key: string) => table[key] ?? key;
+}
+
+/**
+ * A link out of the designer's markup, pointed at the locale being rendered.
+ *
+ * The converted pages hardcode `/en/...`, because the designer built one English site and the
+ * converter copied its hrefs verbatim. That was harmless while `/vi` served the legacy
+ * components. It stopped being harmless the moment both locales started rendering these pages:
+ * every one of the 43 links in the shell sent a Vietnamese visitor to the English page.
+ *
+ * The `/en` prefix is kept in the source rather than stripped, so a link here still reads as the
+ * path the designer wrote and can be compared against the reference build.
+ */
+export function designedHref(path: string): string {
+  // The lookahead has to allow `#` and `?`, not just `/` and end of string: `/en#method` is a
+  // real link in this markup (the home page's method section, from the product pages), and the
+  // first version of this left all five of them pointing at the English home page.
+  return path.replace(/^\/en(?=[/#?]|$)/, `/${renderLocale()}`);
 }

@@ -75,6 +75,28 @@ for (const f of files) {
 
   if (h1s.length !== 1) fail(rel, "h1", `${h1s.length} found, expected exactly 1`);
 
+  /*
+   * The page is actually in the page.
+   *
+   * Every other rule here reads the head, and all of them passed on an export where 112 of 118
+   * pages had a `<main>` holding the single word "Loading" and nothing else: a `loading.tsx`
+   * had wrapped each route in a Suspense boundary that `output: export` resolved to the
+   * fallback. Perfect titles, canonicals and JSON-LD on a site with no content (BUG-25).
+   *
+   * A crawler reads the body, and so does a visitor whose JavaScript never arrived. 200
+   * characters sits well under the shortest real page here and well above any skeleton.
+   *
+   * Indexable pages only. The auth pages are deliberately a heading and a form, 61 characters
+   * on `reset-password`, and nothing crawls them.
+   */
+  if (!noindex) {
+    const main = pick(html, /<main[^>]*>([\s\S]*?)<\/main>/i);
+    const mainText = decode((main ?? "").replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
+    if (!main) fail(rel, "main-content", "no <main> element");
+    else if (mainText.length < 200) {
+      fail(rel, "main-content", `${mainText.length} chars of text: ${JSON.stringify(mainText.slice(0, 40))}`);
+    }
+  }
   /* --- noindex pages carry no schema (section 2.4) --------------------- */
   if (noindex) {
     if (blocks.length > 0) fail(rel, "schema-on-noindex", `${blocks.length} JSON-LD block(s)`);

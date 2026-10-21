@@ -252,18 +252,6 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
   const scroller = useRef<HTMLDivElement>(null);
   const input = useRef<HTMLTextAreaElement>(null);
 
-  /**
-   * Open by itself on a first visit, once, and never on a phone.
-   *
-   * The point is that a newcomer sees the assistant exists without having to find a button. It is
-   * remembered in `localStorage` so it does not reintroduce itself to a returning reader, and it
-   * is skipped below the `sm` breakpoint because there the panel is a full-height sheet: opening
-   * that unasked would cover the page a reader came to read, which is the opposite of leaving them
-   * free to surf.
-   *
-   * Storage is wrapped because a private window or blocked site data throws on access, and an
-   * assistant that crashes the page it sits on is worse than one that greets you twice.
-   */
   /*
    * Introduce the assistant once, on a first visit, and never on a phone.
    *

@@ -3920,3 +3920,43 @@ a.inline-flex {
     animation: none;
   }
 }
+
+/*
+ * Media placeholders.
+ *
+ * An image or video that has not arrived leaves its box empty, and on a slow connection a
+ * section reads as broken rather than as loading. This paints the box while it waits: the
+ * surface colour so the space is clearly occupied, and a sheen travelling across it so it is
+ * clearly still working.
+ *
+ * `designed-motion.js` sets `[data-media-ready]` on load, on error, and on a client
+ * navigation. Only under `scripting: enabled`, because nothing would ever clear it otherwise
+ * and a shimmer that never stops is a worse lie than an empty box.
+ *
+ * `background-clip: content-box` keeps the sheen inside the element's own padding, so a
+ * rounded media frame does not show a square of shimmer at its corners.
+ */
+@media (scripting: enabled) {
+  main :is(img, video):not([data-media-ready]) {
+    background-color: var(--surface-1);
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgb(var(--veil-rgb) / 0.10) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    background-clip: content-box;
+    animation: shimmer 1.4s linear infinite;
+  }
+
+  /* A still box still says "something belongs here"; the travelling sheen is the part that
+     has to go when motion is unwelcome. */
+  @media (prefers-reduced-motion: reduce) {
+    main :is(img, video):not([data-media-ready]) {
+      background-image: none;
+      animation: none;
+    }
+  }
+}

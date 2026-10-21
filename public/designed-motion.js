@@ -1347,6 +1347,7 @@ window.__pulseMotionRescan = function rescan() {
   // A navigation brings a fresh set of hidden elements, and `sweep` removes itself once a page
   // has none left. Re-adding the same function reference is a no-op if it is still attached.
   window.addEventListener("scroll", sweep, { passive: true });
+  scanMedia();
 };
 
 /*
@@ -1377,3 +1378,33 @@ function sweep() {
 }
 window.addEventListener("scroll", sweep, { passive: true });
 window.__pulseMotionSweep = sweep;
+
+/* ======================================================================
+ * Media placeholders.
+ *
+ * A picture or a video that has not arrived leaves its box empty, and on a
+ * slow connection the section reads as broken rather than as loading. The
+ * CSS in globals.css paints a shimmer in that box; this is what takes it
+ * away, because only the element knows when its pixels exist.
+ *
+ * Marked rather than removed: `[data-media-ready]` turns the shimmer off,
+ * so the rule is a single selector and the element keeps its own styling.
+ *
+ * An error marks it ready too. A broken image that shimmers forever claims
+ * to be loading something that is never coming, which is worse than a
+ * visibly missing picture.
+ * ==================================================================== */
+function markMedia(el) {
+  if (el.hasAttribute("data-media-ready")) return;
+  const done = () => el.setAttribute("data-media-ready", "");
+  const ready = el.tagName === "IMG" ? el.complete && el.naturalWidth > 0 : el.readyState >= 2;
+  if (ready) return done();
+  el.addEventListener(el.tagName === "IMG" ? "load" : "loadeddata", done, { once: true });
+  el.addEventListener("error", done, { once: true });
+}
+
+function scanMedia() {
+  document.querySelectorAll("main img, main video").forEach(markMedia);
+}
+
+scanMedia();

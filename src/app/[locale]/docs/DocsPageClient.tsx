@@ -101,7 +101,7 @@ export default function DocsPage() {
         aside={
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl">
             <Image
-              src={img("product/docs.webp")}
+              src={img("product/developer-api-resources-schema-webhook.webp")}
               alt={t("heroAlt")}
               fill
               priority

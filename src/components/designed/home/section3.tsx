@@ -22,25 +22,26 @@ export function Section3Section() {
                   className="reveal flex flex-col rounded-2xl border border-line bg-card p-6 shadow-sm lg:p-10"
                 >
                   {/*
-                    The product the shopper is actually holding.
-                    
-                    On a plate of its own, with a light background pinned in both themes: these
-                    shots are photographed on white with no alpha, so dropped straight onto the
-                    card they would be a white rectangle on a dark surface once the theme flips.
-                    A plate is also how a storefront shows a pack shot, which is the thing being
-                    described here.
-                    
+                    The product the shopper is actually holding, in the scene that shows both halves
+                    of the problem: the evidence on the pack, and the attribute the catalogue never
+                    recorded.
+
+                    Full width at the top of the card rather than a small shot on a plate. The scene
+                    carries its own light background and has no alpha, so the box keeps a light fill
+                    pinned in both themes; without it the image would read as a white rectangle on a
+                    dark surface once the theme flips.
+
                     `width` and `height` are the file's own, which keeps the box reserved before
                     it loads: the SEO gate in check-seo.mjs refuses an image without them.
-                  */}
-                  <div className="mb-6 grid place-items-center rounded-xl bg-[#fdfdfd] p-4">
+                    */}
+                  <div className="mb-6 overflow-hidden rounded-xl bg-[#fdfdfd]">
                     <Image
-                      src={img("home/baby-laundry-powder-pack-shot.webp")}
+                      src={img("home/baby-laundry-powder-fragrance-free-evidence-gap.webp")}
                       alt={`${t('3')} ${t('4')}`}
-                      width={768}
-                      height={512}
-                      sizes="(min-width: 768px) 20rem, 90vw"
-                      className="h-32 w-auto object-contain"
+                      width={1200}
+                      height={800}
+                      sizes="(min-width: 1024px) 34rem, (min-width: 768px) 44vw, 90vw"
+                      className="h-auto w-full"
                     />
                   </div>
                   <p className="eyebrow">{t('2')}</p>
@@ -80,25 +81,26 @@ export function Section3Section() {
                   className="reveal flex flex-col rounded-2xl border border-line bg-card p-6 shadow-sm delay-100 lg:p-10"
                 >
                   {/*
-                    The product the shopper is actually holding.
-                    
-                    On a plate of its own, with a light background pinned in both themes: these
-                    shots are photographed on white with no alpha, so dropped straight onto the
-                    card they would be a white rectangle on a dark surface once the theme flips.
-                    A plate is also how a storefront shows a pack shot, which is the thing being
-                    described here.
-                    
+                    The product the shopper is actually holding, in the scene that shows both halves
+                    of the problem: the evidence on the pack, and the attribute the catalogue never
+                    recorded.
+
+                    Full width at the top of the card rather than a small shot on a plate. The scene
+                    carries its own light background and has no alpha, so the box keeps a light fill
+                    pinned in both themes; without it the image would read as a white rectangle on a
+                    dark surface once the theme flips.
+
                     `width` and `height` are the file's own, which keeps the box reserved before
                     it loads: the SEO gate in check-seo.mjs refuses an image without them.
-                  */}
-                  <div className="mb-6 grid place-items-center rounded-xl bg-[#fdfdfd] p-4">
+                    */}
+                  <div className="mb-6 overflow-hidden rounded-xl bg-[#fdfdfd]">
                     <Image
-                      src={img("product/office-laptop-missing-attributes.webp")}
+                      src={img("home/office-laptop-screen-size-evidence-gap.webp")}
                       alt={`${t('10')} ${t('11')}`}
-                      width={768}
-                      height={512}
-                      sizes="(min-width: 768px) 20rem, 90vw"
-                      className="h-32 w-auto object-contain"
+                      width={1200}
+                      height={800}
+                      sizes="(min-width: 1024px) 34rem, (min-width: 768px) 44vw, 90vw"
+                      className="h-auto w-full"
                     />
                   </div>
                   <p className="eyebrow">{t('9')}</p>

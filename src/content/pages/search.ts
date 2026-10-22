@@ -31,7 +31,7 @@ export const SEARCH: StoryContent = {
   },
 
     heroImage: {
-      src: "product/search.webp",
+      src: "product/shopper-search-bar-price-delivery-signals.webp",
       alt: "A search bar surrounded by floating tokens for price, delivery, wallet and sentiment, the things a shopper is weighing while they type.",
     },
 
@@ -159,7 +159,7 @@ export const SEARCH_VI: StoryContent = {
   },
 
     heroImage: {
-      src: "product/search.webp",
+      src: "product/shopper-search-bar-price-delivery-signals.webp",
       alt: "Một ô tìm kiếm với các biểu tượng lơ lửng quanh nó cho giá, giao hàng, ví tiền và cảm nhận, những thứ người mua đang cân nhắc khi gõ.",
     },
 

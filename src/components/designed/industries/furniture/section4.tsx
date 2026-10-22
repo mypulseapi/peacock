@@ -7,6 +7,8 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { designedText } from "../../t";
+import Image from "next/image";
+import { img } from "@/lib/cdn";
 export function Section4Section() {
   const t = designedText("industries.furniture.section4");
   return (
@@ -22,6 +24,17 @@ export function Section4Section() {
               >
                 <div className="p-6 lg:p-8">
                   <h3 className="text-h3 text-muted">{t('2')}</h3>
+                  {/* Opaque, with no alpha, so each box keeps a light fill pinned in both themes. */}
+                  <div className="mt-5 overflow-hidden rounded-xl border border-line bg-[#fdfdfd]">
+                    <Image
+                      src={img("sectors/furniture-shelf-before-unanswered.webp")}
+                      alt={t('beforeAlt')}
+                      width={760}
+                      height={882}
+                      sizes="(min-width: 768px) 44vw, 90vw"
+                      className="h-auto w-full"
+                    />
+                  </div>
                   <ul className="mt-5 space-y-4">
                     <li className="flex gap-3 text-body text-pretty text-muted">
                       <span
@@ -50,6 +63,16 @@ export function Section4Section() {
                   className="border-t border-line bg-primary-wash p-6 md:border-t-0 lg:p-8"
                 >
                   <h3 className="text-h3">{t('6')}</h3>
+                  <div className="mt-5 overflow-hidden rounded-xl border border-line bg-[#fdfdfd]">
+                    <Image
+                      src={img("sectors/furniture-shelf-after-filters-usable.webp")}
+                      alt={t('afterAlt')}
+                      width={960}
+                      height={872}
+                      sizes="(min-width: 768px) 44vw, 90vw"
+                      className="h-auto w-full"
+                    />
+                  </div>
                   <ul className="mt-5 space-y-4">
                     <li className="flex gap-3 text-body text-pretty text-ink">
                       <svg

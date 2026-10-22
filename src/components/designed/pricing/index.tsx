@@ -7,11 +7,17 @@
  * Text is still inline English; extracting it for Vietnamese is a separate pass.
  */
 import { Section1Section } from "./section1";
+import { Section2Section } from "./section2";
+import { Section3Section } from "./section3";
+import { Section4Section } from "./section4";
 
 export function DesignedPricing() {
   return (
     <>
       <Section1Section />
+      <Section2Section />
+      <Section3Section />
+      <Section4Section />
     </>
   );
 }

@@ -83,6 +83,65 @@ export function Section3Section() {
                   </div>
                 </div>
               </div>
+
+              {/*
+                The measured coverage as data, moved here from under the hero. Orphaned beneath a
+                hero it read as a stray link; this is the section a reader who wants the numbers
+                comes to. A real table rather than a picture of one, so the figures are selectable,
+                translatable and read out in order, which the ranked bars in the figure are not.
+              */}
+              <details className="reveal group col-span-full mx-auto mt-10 max-w-2xl border-t border-line pt-1 delay-200">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-medium text-primary hover:text-primary-hover">
+                  {t('13')}<svg
+                    className="size-4 transition-transform duration-200 ease-out-soft group-open:rotate-180"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron-down" />
+                  </svg>
+                </summary>
+                <div className="mt-4 overflow-hidden rounded-lg border border-line">
+                  <table className="w-full text-data">
+                    <caption className="sr-only">{t('14')}</caption>
+                    <thead className="bg-surface-1 text-xs text-muted">
+                      <tr>
+                        <th scope="col" className="px-4 py-2 text-left font-sans font-medium">
+                          {t('15')}
+                        </th>
+                        <th scope="col" className="px-4 py-2 text-right font-sans font-medium">
+                          {t('16')}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-line">
+                          <tr>
+                            <th scope="row" className="px-4 py-2 text-left font-sans font-normal">
+                              {t('17')}
+                            </th>
+                            <td className="px-4 py-2 text-right tabular-nums">63%</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="px-4 py-2 text-left font-sans font-normal">
+                              {t('18')}
+                            </th>
+                            <td className="px-4 py-2 text-right tabular-nums">72%</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="px-4 py-2 text-left font-sans font-normal">
+                              {t('19')}
+                            </th>
+                            <td className="px-4 py-2 text-right tabular-nums">74%</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="px-4 py-2 text-left font-sans font-normal">
+                              {t('20')}
+                            </th>
+                            <td className="px-4 py-2 text-right tabular-nums">25%</td>
+                          </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-caption text-pretty text-muted">{t('21')}</p>
+              </details>
             </div>
           </section>
   );

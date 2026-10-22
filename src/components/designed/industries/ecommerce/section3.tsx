@@ -7,6 +7,21 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { designedText } from "../../t";
+/**
+ * The shelf this sector's figures were measured on, and what was recorded on it.
+ *
+ * `figureSource` in the hero states the same counts: 216 products, screen size on 136, memory 156,
+ * storage 161, processor 54. The percentage is derived here rather than written beside them, so the
+ * table and the catalogue window in the hero cannot drift apart.
+ */
+const SHELF = 216;
+const COVERAGE = [
+  { key: "screen", n: 136 },
+  { key: "memory", n: 156 },
+  { key: "storage", n: 161 },
+  { key: "processor", n: 54 },
+] as const;
+
 export function Section3Section() {
   const t = designedText("industries.ecommerce.section3");
   return (
@@ -83,6 +98,53 @@ export function Section3Section() {
                   </div>
                 </div>
               </div>
+
+              {/*
+                The measured coverage as data, moved here from the hero that was rebuilt as live
+                markup. A real table rather than a picture of one, so the figures are selectable,
+                translatable and read out in order.
+
+                The percentages are derived from the counts `figureSource` states, exactly as the
+                hero derives them, so the table and the catalogue window can never disagree.
+              */}
+              <details className="reveal group col-span-full mx-auto mt-10 max-w-2xl border-t border-line pt-1 delay-200">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-medium text-primary hover:text-primary-hover">
+                  {t('13')}<svg
+                    className="size-4 transition-transform duration-200 ease-out-soft group-open:rotate-180"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron-down" />
+                  </svg>
+                </summary>
+                <div className="mt-4 overflow-hidden rounded-lg border border-line">
+                  <table className="w-full text-data">
+                    <caption className="sr-only">{t('14')}</caption>
+                    <thead className="bg-surface-1 text-xs text-muted">
+                      <tr>
+                        <th scope="col" className="px-4 py-2 text-left font-sans font-medium">
+                          {t('15')}
+                        </th>
+                        <th scope="col" className="px-4 py-2 text-right font-sans font-medium">
+                          {t('16')}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-line">
+                      {COVERAGE.map((row, i) => (
+                        <tr key={row.key}>
+                          <th scope="row" className="px-4 py-2 text-left font-sans font-normal">
+                            {t(String(17 + i))}
+                          </th>
+                          <td className="px-4 py-2 text-right tabular-nums">
+                            {Math.round((100 * row.n) / SHELF)}%
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-caption text-pretty text-muted">{t('21')}</p>
+              </details>
             </div>
           </section>
   );

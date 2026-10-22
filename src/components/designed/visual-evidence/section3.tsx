@@ -13,7 +13,16 @@ export function Section3Section() {
     <section className="border-b border-line">
             <div className="frame py-20 lg:py-28">
               <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-0">
-                <div className="lg:col-span-5 lg:pr-16">
+                {/*
+                  Sticky, because the alternative is a column of white space.
+
+                  The heading and its paragraph are about 220px of copy beside a table two or three
+                  times that tall, so the column sat mostly empty. Sticking it keeps the framing
+                  with the reader while the figures it frames scroll past, and `self-start` is what
+                  stops the grid stretching the item to the row height, which would make `sticky`
+                  inert. Below `lg` the two stack and it is a normal block again.
+                */}
+                <div className="lg:col-span-5 lg:self-start lg:sticky lg:top-24 lg:pr-16">
                   <h2 className="text-title text-balance">
                     {t('1')}
                   </h2>

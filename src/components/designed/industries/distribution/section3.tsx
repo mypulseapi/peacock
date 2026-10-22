@@ -7,6 +7,7 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { designedText } from "../../t";
+import { SpecMap } from "./spec-map";
 export function Section3Section() {
   const t = designedText("industries.distribution.section3");
   return (
@@ -83,6 +84,69 @@ export function Section3Section() {
                   </div>
                 </div>
               </div>
+
+              {/*
+                `SpecMap` and the coverage table, both moved here from under the hero. The map is
+                the requirement that never reached a field, which is what this section is about;
+                the table is the measured coverage, orphaned beneath a hero as a stray link. A real
+                table rather than a picture of one, so the figures are selectable, translatable and
+                read out in order, which the ranked bars in the hero figure are not.
+              */}
+              <div className="reveal col-span-full mt-10 delay-100">
+                <SpecMap />
+              </div>
+              <details className="reveal group col-span-full mx-auto mt-8 max-w-2xl border-t border-line pt-1 delay-200">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-medium text-primary hover:text-primary-hover">
+                  {t('13')}<svg
+                    className="size-4 transition-transform duration-200 ease-out-soft group-open:rotate-180"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron-down" />
+                  </svg>
+                </summary>
+                <div className="mt-4 overflow-hidden rounded-lg border border-line">
+                  <table className="w-full text-data">
+                    <caption className="sr-only">{t('14')}</caption>
+                    <thead className="bg-surface-1 text-xs text-muted">
+                      <tr>
+                        <th scope="col" className="px-4 py-2 text-left font-sans font-medium">
+                          {t('15')}
+                        </th>
+                        <th scope="col" className="px-4 py-2 text-right font-sans font-medium">
+                          {t('16')}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-line">
+                          <tr>
+                            <th scope="row" className="px-4 py-2 text-left font-sans font-normal">
+                              {t('17')}
+                            </th>
+                            <td className="px-4 py-2 text-right tabular-nums">19%</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="px-4 py-2 text-left font-sans font-normal">
+                              {t('18')}
+                            </th>
+                            <td className="px-4 py-2 text-right tabular-nums">34%</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="px-4 py-2 text-left font-sans font-normal">
+                              {t('19')}
+                            </th>
+                            <td className="px-4 py-2 text-right tabular-nums">47%</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="px-4 py-2 text-left font-sans font-normal">
+                              {t('20')}
+                            </th>
+                            <td className="px-4 py-2 text-right tabular-nums">91%</td>
+                          </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-caption text-pretty text-muted">{t('21')}</p>
+              </details>
             </div>
           </section>
   );

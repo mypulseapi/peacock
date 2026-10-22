@@ -9,6 +9,7 @@
 import { AttributeIcon } from "../../attribute-icon";
 import { designedHref, designedText } from "../../t";
 import Link from "next/link";
+import { ShelfScene } from "./shelf-scene";
 
 export function Section1Section() {
   const t = designedText("industries.ecommerce.section1");
@@ -39,7 +40,9 @@ export function Section1Section() {
                   {t('6')}
                 </p>
               </div>
-              <figure className="reveal delay-200 lg:col-span-6">
+              <figure className="reveal grid gap-5 delay-200 lg:col-span-6">
+                {/* The shelf the headline describes. See shelf-scene.tsx. */}
+                <ShelfScene />
                 <div className="card">
                   <p className="text-sm font-semibold text-ink">
                     {t('7')}

@@ -824,6 +824,25 @@
         "3": "Request a Decision Audit",
         "4": "View pricing",
         "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so."
+      },
+      "figure": {
+        "requirement": "The buyer has to hit",
+        "requirementValue": "M12 × 1.5 · 16 bar · 304 stainless",
+        "datasheet": "Supplier datasheet",
+        "datasheetNote": "A PDF you already receive",
+        "gap": "never mapped",
+        "catalogue": "Your catalogue row",
+        "catalogueNote": "Three blanks, and the buyer cannot filter on any of them",
+        "partCode": "Part code",
+        "partCodeValue": "VLV-12-16-304",
+        "blank": "not recorded",
+        "specThread": "Thread size",
+        "valThread": "M12 × 1.5",
+        "specPressure": "Pressure rating",
+        "valPressure": "16 bar",
+        "specMaterial": "Material",
+        "valMaterial": "304 stainless",
+        "mapVerb": "Map"
       }
     },
     "ecommerce": {
@@ -900,6 +919,22 @@
         "3": "Request a Decision Audit",
         "4": "View pricing",
         "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so."
+      },
+      "scene": {
+        "category": "Laptops",
+        "filterBrand": "Brand",
+        "filterPrice": "Price",
+        "filterScreen": "Screen size",
+        "filterMemory": "Memory",
+        "filterStorage": "Storage",
+        "filterProcessor": "Processor",
+        "filterGraphics": "Graphics",
+        "filterBattery": "Battery life",
+        "filterWeight": "Weight",
+        "moreFilters": "More filters",
+        "missing": "Missing or inconsistent",
+        "channels": "Same products across channels",
+        "source": "Coverage measured on our own 216-product laptop shelf. The command that reproduces it is on the method page."
       }
     },
     "fmcg": {

@@ -4867,3 +4867,506 @@ html[data-js] .figure-hold *::after {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
+
+/* -------------------------------------------------------------------------
+   The distribution hero's figure: a supplier datasheet beside a catalogue row.
+
+   The point is the gap between the two cards, so they are the same width and
+   the arrow sits between them rather than inside either. Below `md` they
+   stack and the arrow turns to point down, because side by side at phone
+   width makes both cards too narrow to read.
+   ------------------------------------------------------------------------- */
+.spec-map {
+  display: grid;
+  gap: 0.875rem;
+}
+
+.spec-req {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--color-primary-line);
+  border-radius: 9999px;
+  background: var(--color-primary-tint);
+  justify-self: start;
+}
+
+.spec-req-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.spec-req-value {
+  font-family: var(--font-mono-brand);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.spec-pair {
+  display: grid;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+@media (min-width: 48rem) {
+  .spec-pair {
+    /* Equal cards, the arrow in its own column so neither card owns it. */
+    grid-template-columns: 1fr auto 1fr;
+  }
+}
+
+.spec-card {
+  border: 1px solid var(--color-line);
+  border-radius: 0.875rem;
+  background: var(--color-card);
+  padding: 0.875rem;
+}
+
+/* The row with the blanks is the problem, so it carries the warning line. */
+.spec-card-target {
+  border-color: var(--color-warning-line);
+}
+
+.spec-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.4375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.spec-rows {
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.375rem;
+}
+
+.spec-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.625rem;
+  padding: 0.3125rem 0;
+  border-bottom: 1px solid var(--color-line);
+  font-size: 0.75rem;
+}
+
+.spec-row:last-child {
+  border-bottom: 0;
+}
+
+.spec-row dt {
+  min-width: 0;
+  color: var(--color-muted);
+}
+
+.spec-row dd {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.spec-code {
+  font-family: var(--font-mono-brand);
+  /* A broken part code reads as two part codes. */
+  white-space: nowrap;
+}
+
+/* A blank is drawn as absent rather than as an empty cell, which reads as a
+   rendering fault instead of as the thing the page is about. */
+.spec-blank {
+  color: var(--color-warning);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.spec-card-foot {
+  margin-top: 0.75rem;
+  padding-top: 0.625rem;
+  border-top: 1px solid var(--color-line);
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.spec-card-foot-gap {
+  color: var(--color-warning);
+}
+
+.spec-gap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: 6.5rem;
+  text-align: center;
+  line-height: 1.25;
+  justify-self: center;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-warning);
+}
+
+/* Stacked, the arrow has to point the way the eye now travels. */
+@media (max-width: 47.99rem) {
+  .spec-gap svg {
+    transform: rotate(90deg);
+  }
+}
+
+.spec-fixes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.spec-fixes li {
+  display: flex;
+  align-items: center;
+  gap: 0.4375rem;
+  padding: 0.375rem 0.75rem 0.375rem 0.375rem;
+  border: 1px solid var(--color-line);
+  border-radius: 9999px;
+  background: var(--color-surface-1);
+  font-size: 0.8125rem;
+  color: var(--color-ink);
+}
+
+.spec-rank {
+  display: grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 9999px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* -------------------------------------------------------------------------
+   The ecommerce hero's figure: a category page a shopper cannot narrow.
+
+   Built rather than drawn, so the text translates, the Vietnamese diacritics
+   render, and it costs no image bytes. Every percentage in it is measured on
+   the 216-product laptop shelf; see shelf-scene.tsx.
+   ------------------------------------------------------------------------- */
+.shelf-scene {
+  display: grid;
+  gap: 0.75rem;
+  container-type: inline-size;
+}
+
+/* The worst-covered attribute, lifted above the shelf it breaks. */
+.shelf-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  /* Right padding reserves the space the meter's percentage is positioned into. */
+  padding: 0.625rem 3rem 0.625rem 0.875rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.875rem;
+  background: var(--color-card);
+  box-shadow: 0 1px 2px color-mix(in oklab, var(--color-ink) 6%, transparent);
+}
+
+.shelf-alert-mark {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: var(--color-critical-bg);
+  color: var(--color-critical);
+}
+
+.shelf-alert-body {
+  display: grid;
+  gap: 0.125rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.shelf-alert-body strong {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.shelf-alert-body small {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+/* One meter, used by the alert and the rail, so they cannot drift apart. */
+.shelf-meter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-surface-1);
+}
+
+.shelf-meter-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--color-primary);
+}
+
+.shelf-meter-warn {
+  background: var(--color-critical);
+}
+
+.shelf-meter em {
+  position: absolute;
+  right: -2.5rem;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink);
+}
+
+.shelf-body {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@container (min-width: 34rem) {
+  .shelf-body {
+    grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+  }
+}
+
+.shelf-window {
+  border: 1px solid var(--color-line);
+  border-radius: 0.875rem;
+  background: var(--color-card);
+  overflow: hidden;
+}
+
+.shelf-chrome {
+  display: flex;
+  gap: 0.3125rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-surface-1);
+}
+
+.shelf-chrome i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-line-control);
+}
+
+.shelf-inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.875rem;
+  padding: 0.875rem;
+}
+
+.shelf-category {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.shelf-filters ul {
+  margin-top: 0.5rem;
+  display: grid;
+  gap: 0.0625rem;
+}
+
+.shelf-filters li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.25rem 0.375rem;
+  border-radius: 0.3125rem;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+/* The filter the shopper wants is the one the catalogue cannot populate. */
+.shelf-filters li.is-current {
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.shelf-more {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+  margin-top: 0.5rem;
+  padding: 0.3125rem 0.5rem;
+  border: 1px dashed var(--color-primary-line);
+  border-radius: 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.shelf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: start;
+  gap: 0.5rem;
+}
+
+.shelf-tile {
+  display: grid;
+  align-content: start;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--color-surface-1);
+}
+
+/* A laptop in three boxes. Six of them, alike on purpose: that is the headline. */
+.shelf-laptop {
+  display: grid;
+  justify-items: center;
+  gap: 0.0625rem;
+  margin-bottom: 0.25rem;
+}
+
+.shelf-laptop-lid {
+  width: 2.25rem;
+  height: 1.375rem;
+  /* Rounded at the top only, so the lid meets the base rather than floating above it. */
+  border-radius: 0.1875rem 0.1875rem 0.0625rem 0.0625rem;
+  background: var(--color-ink);
+  box-shadow: inset 0 0 0 0.125rem color-mix(in oklab, var(--color-card) 55%, transparent);
+}
+
+.shelf-laptop[data-tint="1"] .shelf-laptop-lid {
+  background: color-mix(in oklab, var(--color-primary) 72%, var(--color-ink));
+}
+
+.shelf-laptop[data-tint="2"] .shelf-laptop-lid {
+  background: color-mix(in oklab, var(--color-ink) 70%, var(--color-muted));
+}
+
+.shelf-laptop-base {
+  /* Wider than the lid, which is what makes the silhouette read as an open laptop. */
+  width: 2.875rem;
+  height: 0.25rem;
+  border-radius: 0 0 0.1875rem 0.1875rem;
+  background: var(--color-line-control);
+}
+
+.shelf-line {
+  height: 0.3125rem;
+  border-radius: 9999px;
+  background: var(--color-line);
+}
+
+.shelf-line-short {
+  width: 60%;
+}
+
+.shelf-price {
+  margin-top: 0.125rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink);
+}
+
+.shelf-rail {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.shelf-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 2.75rem 0.5rem 0.625rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.625rem;
+  background: var(--color-card);
+}
+
+.shelf-stat-mark {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+}
+
+.shelf-stat-body {
+  display: grid;
+  gap: 0.0625rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.shelf-stat-body strong {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.shelf-channels {
+  padding: 0.625rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.625rem;
+  background: var(--color-card);
+}
+
+.shelf-channels p {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.shelf-channels ul {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.shelf-channels li {
+  padding: 0.1875rem 0.4375rem;
+  border-radius: 0.3125rem;
+  background: var(--color-surface-1);
+  font-size: 0.6875rem;
+  color: var(--color-muted);
+}
+
+.shelf-source {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}

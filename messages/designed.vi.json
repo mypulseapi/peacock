@@ -1206,6 +1206,25 @@
         "3": "ước tính ngành, CAGR 14,5%",
         "4": "mức độ máy đọc được trung bình của trang sản phẩm bán lẻ tại Mỹ, thấp nhất trong mọi loại trang",
         "6": "trang sản phẩm không có đủ bộ dữ liệu có cấu trúc"
+      },
+      "figure": {
+        "requirement": "Người mua phải đạt",
+        "requirementValue": "M12 × 1,5 · 16 bar · thép không gỉ 304",
+        "datasheet": "Bảng thông số nhà cung cấp",
+        "datasheetNote": "Một file PDF bạn vốn đã nhận được",
+        "gap": "chưa bao giờ được ánh xạ",
+        "catalogue": "Dòng dữ liệu trong danh mục của bạn",
+        "catalogueNote": "Ba ô trống, và người mua không lọc được theo ô nào",
+        "partCode": "Mã linh kiện",
+        "partCodeValue": "VLV-12-16-304",
+        "blank": "chưa ghi nhận",
+        "specThread": "Cỡ ren",
+        "valThread": "M12 × 1,5",
+        "specPressure": "Áp suất chịu được",
+        "valPressure": "16 bar",
+        "specMaterial": "Chất liệu",
+        "valMaterial": "Thép không gỉ 304",
+        "mapVerb": "Ánh xạ"
       }
     },
     "ecommerce": {
@@ -1280,6 +1299,22 @@
         "1": "Ngành thương mại điện tử và bán lẻ hiện ra sao",
         "2": "nhà bán lẻ được thử nghiệm không có bộ lọc cho chính thông tin họ đang hiển thị",
         "4": "người tiêu dùng thấy khó chịu vì thông tin sản phẩm không đầy đủ, tăng từ 28%"
+      },
+      "scene": {
+        "category": "Laptop",
+        "filterBrand": "Thương hiệu",
+        "filterPrice": "Giá",
+        "filterScreen": "Kích thước màn hình",
+        "filterMemory": "RAM",
+        "filterStorage": "Dung lượng",
+        "filterProcessor": "Vi xử lý",
+        "filterGraphics": "Card đồ hoạ",
+        "filterBattery": "Thời lượng pin",
+        "filterWeight": "Trọng lượng",
+        "moreFilters": "Thêm bộ lọc",
+        "missing": "Thiếu hoặc không nhất quán",
+        "channels": "Cùng bộ sản phẩm trên mọi kênh",
+        "source": "Độ phủ đo trên kệ laptop 216 sản phẩm của chính chúng tôi. Câu lệnh tái lập nằm ở trang phương pháp."
       }
     },
     "fmcg": {

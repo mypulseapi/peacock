@@ -264,6 +264,19 @@ function createMegaMenu(nav) {
   );
   let active = null;
   let closeTimer;
+  /*
+   * Which item hover opened, if any.
+   *
+   * Both halves of this have been wrong. A guard that suppressed the close on every click made an
+   * open menu impossible to close by clicking. Removing it made the FIRST click fail to open,
+   * because `mouseenter` and `click` arrive together when a pointer first reaches a summary: hover
+   * opened the menu and the click immediately toggled it shut.
+   *
+   * So the click asks which gesture it belongs to. Inside the gesture that hover opened, it commits
+   * the open and does nothing visible. Any click after that toggles, which is what a click on an
+   * already-open menu should do, and is the only behaviour a touch device ever sees.
+   */
+  let openedByHover = null;
 
   function settle(content) {
     if (content !== active?.content) {
@@ -319,6 +332,7 @@ function createMegaMenu(nav) {
 
   function close() {
     clearTimeout(closeTimer);
+    openedByHover = null;
     if (!active) return;
     const content = active.content;
     active = null;
@@ -330,16 +344,18 @@ function createMegaMenu(nav) {
   items.forEach((item) => {
     item.details.querySelector("summary").addEventListener("click", (e) => {
       e.preventDefault(); // keep <details> in sync with the viewport ourselves
-      // Every click toggles, including with hover-open on. The guard that used to sit here
-      // suppressed the close so a click inside a hover-open gesture would not undo it, and that is
-      // exactly what made an open menu impossible to close by clicking. Closing on click is right:
-      // the pointer is already inside, so `mouseenter` will not fire again and re-open it.
-      active === item ? close() : open(item);
+      if (openedByHover === item) {
+        openedByHover = null; // the pointer's own gesture: it stays open, deliberately now
+        return;
+      }
+      if (active === item) close();
+      else open(item);
     });
     if (canHover && HOVER_OPENS_MENUS)
-      item.details.parentElement.addEventListener("mouseenter", () =>
-        open(item),
-      );
+      item.details.parentElement.addEventListener("mouseenter", () => {
+        openedByHover = item;
+        open(item);
+      });
   });
   if (canHover && HOVER_OPENS_MENUS) {
     // Hovering a plain link (About us, Pricing) closes the menu; leaving the nav closes it after a beat
@@ -468,7 +484,7 @@ mobileMenu
 
 // Hero background: the soft spotlight follows the cursor with a fading tail (CSS hero-bg transitions them).
 // Mouse and pen only, not with reduced motion; without it the light stays at its resting place.
-feature("[data-hero]", function initHero(hero, signal) {
+feature("[data-hero]", function initHero(hero) {
   if (!(!reduceMotion)) return;
   let frame = 0;
   let still = 0;
@@ -499,7 +515,7 @@ feature("[data-hero]", function initHero(hero, signal) {
 
 // Call-to-action band (every page): the dots around the cursor light up. Mouse and pen only, not with reduced
 // motion; the light fades out when the pointer leaves the band (CSS cta-dots).
-feature("[data-cta]", function initCta(cta, signal) {
+feature("[data-cta]", function initCta(cta) {
   if (reduceMotion) return;
   let frame = 0;
   let point = null;
@@ -740,7 +756,7 @@ feature("[data-story]", function initStory(story, signal) {
 // being dragged stops at the room the other leaves (it never pushes the other thumb), the used-up part of its track
 // is pale, and a slider with no room left is disabled; so validIncrease always equals the chosen increase. Number fields are clamped to their min/max (shown back when the field is left). Results of a million or
 // more use the short form ($55M). The HTML holds the result for the default inputs, so it reads without JavaScript.
-feature("[data-calc]", function initCalc(calc, signal) {
+feature("[data-calc]", function initCalc(calc) {
   const field = (name) => calc.querySelector(`[name="${name}"]`);
   const out = (name) => calc.querySelector(`[data-out="${name}"]`);
   /*
@@ -854,7 +870,7 @@ feature("[data-calc]", function initCalc(calc, signal) {
 
 // Pause buttons for content that moves by itself (WCAG 2.2.2): [data-pause] toggles data-held on its
 // [data-pausable] wrapper (CSS stops the hero demo timer); aria-pressed and the icon follow.
-feature("[data-pause]", function initPause(button, signal) {
+feature("[data-pause]", function initPause(button) {
   const target = button.closest("[data-pausable]");
   button.addEventListener("click", () => {
     const held = target.toggleAttribute("data-held");
@@ -1398,7 +1414,7 @@ feature("[data-bg-video]", function initBgVideo(video, signal) {
 // adds the visitor's message and, after a short pause, the "not connected yet" reply from the <template> (its links
 // are already rewritten for the page's folder by sync-shell.py). Enter sends, Shift+Enter starts a new line. The jump
 // button shows when the conversation is scrolled away from the latest message.
-feature("[data-chat]", function initChat(chat, signal) {
+feature("[data-chat]", function initChat(chat) {
   const toggle = chat.querySelector("[data-chat-toggle]");
   const panel = chat.querySelector("[data-chat-panel]");
   const log = chat.querySelector("[data-chat-log]");

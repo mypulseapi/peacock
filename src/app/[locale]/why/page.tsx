@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { prepareLocale } from "@/i18n/render-locale";
 import { PageSchema } from "@/components/PageSchema";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { buildAlternates } from "@/lib/seo";
 import WhyContent from "./WhyContent";
 import { whyMethod, whyCompare, whyLimits } from "@/content/why";
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
 
   // Each section heading is a question, so answer engines can lift a complete
   // answer and attribute it. The limits are included deliberately: a model

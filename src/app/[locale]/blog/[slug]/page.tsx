@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { prepareLocale } from "@/i18n/render-locale";
 import { PageSchema } from "@/components/PageSchema";
 import { notFound, redirect } from "next/navigation";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { buildAlternates } from "@/lib/seo";
 import { url } from "@/lib/site";
 import { Link } from "@/i18n/routing";
@@ -109,7 +110,7 @@ function Blocks({ blocks }: { blocks: Block[] }) {
 
 export default async function ArticlePage({ params }: PageProps) {
   const { slug, locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
 
   // The five posts that published invented conversion figures. They were in the
   // sitemap, so they go to the index rather than 404.

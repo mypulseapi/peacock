@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
 import { StoryPage, storyFaqSchema } from "@/components/StoryPage";
 import { PageSchema } from "@/components/PageSchema";
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
   return (
     <>
       <PageSchema locale={locale} path="/use-cases/time-to-market" nodes={[storyFaqSchema(timeToMarket(locale))]} />

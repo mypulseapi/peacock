@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { prepareLocale } from "@/i18n/render-locale";
+import { getTranslations } from "next-intl/server";
 import { PageSchema } from "@/components/PageSchema";
 import { DesignedHome } from "@/components/designed/home";
 import { buildAlternates } from "@/lib/seo";
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   // Static rendering, and the locale the graph below declares. See [locale]/terms/page.tsx.
-  setRequestLocale(locale);
+  prepareLocale(locale);
   const jsonLd = {
     "@type": "SoftwareApplication",
     name: "Pulse",

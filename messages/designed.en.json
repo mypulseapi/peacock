@@ -561,7 +561,10 @@
       "117": "+63 products",
       "118": "Screen size recorded",
       "119": "/ 216 · was 136",
-      "120": "Verified on your catalogue"
+      "120": "Verified on your catalogue",
+      "pauseLabel": "Pause animation",
+      "playLabel": "Play animation",
+      "pausedLabel": "Paused"
     },
     "request": {
       "1": "Discover your shoppers’ intent with Pulse",

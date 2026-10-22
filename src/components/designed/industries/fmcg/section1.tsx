@@ -61,28 +61,27 @@ export function Section1Section() {
                 The figure, under the words and wider than the page column.
 
                 `bleed-x` gives back the page margins the frame took and the section clips, so the
-                reclaimed width does not scroll the page sideways, and the 1200px cap is the width
-                the brief asked for. The image fills that panel rather than being bounded against
+                reclaimed width does not scroll the page sideways, and the panel is the same width on every sector page. The image fills that panel rather than being bounded against
                 the screen inside it: a height bound with `object-contain` letterboxed it, leaving
                 pale bands down both sides of the border.
 
                 Opaque, with no alpha, so the box keeps a light fill pinned in both themes.
               */}
               <figure className="reveal mt-7 delay-200 lg:mt-8 lg:bleed-x">
-                <div className="mx-auto max-w-[738px] overflow-hidden rounded-2xl border border-line bg-[#fdfdfd]">
+                <div className="mx-auto max-w-[880px] overflow-hidden rounded-2xl border border-line bg-[#fdfdfd]">
                   <Image
                     src={img("sectors/fmcg-shelf-label-evidence-coverage-ranked.webp")}
                     alt={t('figureAlt')}
                     width={1400}
                     height={891}
-                    sizes="(min-width: 1280px) 738px, 94vw"
+                    sizes="(min-width: 1280px) 880px, 94vw"
                     priority
                     className="h-auto w-full"
                   />
                 </div>
 
                 {/* What the figure means, read left to right under it. */}
-                <ol className="mx-auto mt-7 grid max-w-[738px] grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-4">
+                <ol className="mx-auto mt-7 grid max-w-[880px] grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-4">
                   {BEATS.map((key, i) => (
                     <li key={key} className="flex gap-3">
                       <span

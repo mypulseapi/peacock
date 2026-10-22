@@ -17,7 +17,7 @@ const VI: Record<string, string> = {
   Dashboard: "Bảng điều khiển",
   "Data Pipeline": "Luồng dữ liệu",
   Authentication: "Xác thực",
-  "Real-time persona inference endpoint": "Điểm cuối suy luận chân dung theo thời gian thực",
+  "Ranking endpoint for the Decision API": "Điểm cuối xếp hạng của Decision API",
   "Customer dashboard and analytics": "Bảng điều khiển khách hàng và phân tích",
   "Event ingestion and processing": "Thu nhận và xử lý sự kiện",
   "API key and OAuth services": "Dịch vụ khoá API và OAuth",
@@ -52,8 +52,8 @@ export default function StatusPage() {
 
   const services = [
     {
-      name: "Inference API",
-      description: "Real-time persona inference endpoint",
+      name: "Decision API",
+      description: "Ranking endpoint for the Decision API",
       status: "operational",
       uptime: "99.99%",
       latency: "32ms",

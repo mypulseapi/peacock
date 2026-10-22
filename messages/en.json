@@ -688,9 +688,9 @@
     }
   },
   "industriesPage": {
-    "title": "One Engine.",
-    "titleHighlight": "Every Industry.",
-    "description": "Pulse adapts its real-time persona inference to any digital experience. Same core technology, industry-specific intelligence.",
+    "title": "One method.",
+    "titleHighlight": "Every category.",
+    "description": "The same measurement in every sector: which facts a buyer needs, which of them your catalogue records, and which gap is worth closing first.",
     "cta": "Try Live Demo",
     "secondaryCta": "View Pricing",
     "metricLabel": "what we can show today",
@@ -752,7 +752,7 @@
       "authDesc": "Learn how to authenticate your API requests",
       "inferTitle": "Inference API",
       "inferDesc": "Get real-time persona predictions",
-      "personalizeTitle": "Personalization API",
+      "personalizeTitle": "Decision API",
       "personalizeDesc": "Reorder your storefront in real time",
       "catalogTitle": "Catalog Sync",
       "catalogDesc": "Sync products & categories in real time",
@@ -768,7 +768,7 @@
       "step2Title": "2. Sync your catalog",
       "step2Desc": "Push your products and categories so Pulse knows what it can recommend and rank.",
       "step3Title": "3. Fetch personalization",
-      "step3Desc": "Call the Personalization API to reorder grids and search results for the live visitor."
+      "step3Desc": "Call the Decision API to reorder grids and search results for the live visitor."
     },
     "auth": {
       "title": "Authentication",
@@ -780,7 +780,7 @@
     },
     "inference": {
       "title": "Inference API",
-      "desc": "Get real-time persona inference for a visitor session. Returns persona attributes, confidence scores, and recommended product rankings.",
+      "desc": "Rank a visitor session against the catalogue. Returns the ranking factors, confidence scores and the product order, with the decision record behind each one.",
       "latency": "Target latency: <50ms (p95)",
       "requestBody": "Request Body",
       "response": "Response"
@@ -788,7 +788,7 @@
     "catalog": {
       "title": "Catalog Sync, Products & Categories",
       "intro": "Push your products and categories to Pulse so the engine knows what it can personalize. Send a full catalog once, then keep it in sync by sending each create, update, or delete as it happens in your store.",
-      "async": "Enrichment and Digital Twin tagging run asynchronously in the ingestion pipeline, the upsert call returns <code>202 Accepted</code> immediately and the <code>products.tagged</code> webhook fires when a product becomes available for inference. Inference itself stays on the request path.",
+      "async": "Enrichment and attribute tagging run asynchronously in the ingestion pipeline, the upsert call returns <code>202 Accepted</code> immediately and the <code>products.tagged</code> webhook fires when a product becomes available for inference. Inference itself stays on the request path.",
       "upsertDesc": "Create or update products. The call is idempotent on <code>id</code>, send the same product again with new fields to update it. Accepts one product or a batch.",
       "categoriesDesc": "Sync your category tree so Pulse understands how products relate. Set <code>parent_id</code> to mirror your store's hierarchy. Upserted the same way as products.",
       "deleteDesc": "Remove a product when it is deleted or permanently out of stock. It stops appearing in recommendations immediately. Use the same pattern to delete categories.",
@@ -796,7 +796,7 @@
       "syncNote": "Most merchants wire these calls to their store's product/category change events (e.g. a Shopify webhook or a save hook in a custom backend) so the Pulse catalog always mirrors what shoppers see. A nightly full re-sync is recommended as a safety net."
     },
     "personalize": {
-      "title": "Personalization API",
+      "title": "Decision API",
       "desc": "Once the SDK is capturing signals and your catalog is synced, call these endpoints to reorder your storefront in real time for the current visitor. Call them from your backend with a Bearer token, passing the session_id the SDK created in the browser.",
       "recommendDesc": "Return a ranked list of products personalized to the visitor's live persona, use it for \"For You\" grids, related products, and homepage rails.",
       "searchDesc": "Re-rank your search results by intent. Send the shopper's query and Pulse orders the matching products by the persona inferred this session. Results are cursor-paginated."
@@ -883,7 +883,7 @@
     "apiDocsItem": "Complete API documentation",
     "apiSdksItem": "SDKs for JavaScript, Python, Ruby",
     "apiWebhooksItem": "Webhook support for real-time events",
-    "codeGetInference": "// Get persona inference",
+    "codeGetInference": "// Rank this session",
     "codeReturns": "// Returns persona + rankings",
     "setupLabel": "Setup",
     "viewDocs": "View Docs",
@@ -1055,7 +1055,7 @@
       "use": {
         "title": "How We Use Information",
         "items": [
-          "To provide real-time persona inference for personalized experiences",
+          "To measure which product attributes a catalogue records and which a buying decision needs",
           "To improve our inference algorithms and accuracy",
           "To generate aggregated, anonymized analytics for our clients",
           "To maintain and improve our service performance"
@@ -1117,12 +1117,12 @@
       },
       "service": {
         "title": "2. Description of Service",
-        "content": "Pulse provides a real-time persona inference engine for e-commerce platforms. Our services include:",
+        "content": "Pulse measures whether product data can answer the questions shoppers ask before they buy, and ranks what to record first. Our services include:",
         "items": [
-          "Real-time visitor persona inference",
-          "Product Digital Twin tagging and categorization",
-          "Personalization APIs and integrations",
-          "Analytics and reporting dashboards"
+          "Decision Audit: a ranked list of the product attributes worth recording first, measured against stated buying requirements",
+          "Decision Verification: measurement of whether a repair improved what shoppers can establish",
+          "Decision Monitor: re-measurement as a catalogue changes",
+          "Decision API: an optional runtime ranking service, offered only after a controlled pilot"
         ]
       },
       "responsibilities": {

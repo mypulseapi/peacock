@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { THEME_SCRIPT } from "@/lib/theme-script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { clientMessages } from "@/i18n/client-namespaces";
 import { prepareLocale, setRenderLocale } from "@/i18n/render-locale";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
@@ -144,6 +145,13 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // next-intl resolves `requestLocale` from `headers()`, and a static export has no request:
   // every page then fails to prerender with `dynamic = "error"`, naming headers() and not this.
   const messages = await getMessages({ locale });
+  /*
+   * Only what the browser needs. The full catalogue is 81KB and it was serialised into every
+   * page, so the home page shipped the terms, the GDPR copy and the pricing tiers. A Server
+   * Component is already HTML by the time the browser sees it, so only client components can
+   * need a message at runtime: see src/i18n/client-namespaces.ts.
+   */
+  const clientSide = clientMessages(messages as Record<string, unknown>);
 
   /*
    * One flag, so the shell and the page bodies can never disagree about which half of the site
@@ -217,7 +225,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         {/* 41 symbols, defined once. Every designed page references them by `<use href="#i-...">`,
             so this has to be in the document before any of them render. */}
         <IconSprite />
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={clientSide}>
           <ThemeProvider>
             <Suspense fallback={null}>
               <NavigationProgress />

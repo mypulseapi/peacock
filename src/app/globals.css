@@ -4835,3 +4835,35 @@ html[data-js] .figure-hold *::after {
     stroke-dashoffset: 0;
   }
 }
+
+/* -------------------------------------------------------------------------
+   Contact page: one bookable person, as a row with their portrait.
+
+   A row rather than a button because there are two of them and each carries a
+   name, a role and a duration: a button wide enough for that stops reading as
+   a button. The whole row is the link, so the 44px target is the row's own
+   height rather than something smaller inside it.
+   ------------------------------------------------------------------------- */
+.book-row {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  min-height: 2.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--color-primary-line);
+  border-radius: 1rem;
+  background: var(--color-card);
+  transition:
+    border-color 150ms var(--ease-out-soft),
+    box-shadow 150ms var(--ease-out-soft);
+}
+
+.book-row:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 1px 2px color-mix(in oklab, var(--color-primary) 18%, transparent);
+}
+
+.book-row:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}

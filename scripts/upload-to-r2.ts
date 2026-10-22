@@ -119,7 +119,27 @@ function getAllFiles(dir: string, baseDir: string = dir): string[] {
 }
 
 /**
- * Determine if a file should use immutable caching
+ * The manifest `img()` and `asset()` read, so this agrees with the URLs the pages actually request.
+ */
+const MANIFEST: Record<string, string> = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "..", "src", "lib", "asset-manifest.json"), "utf8"),
+);
+
+/**
+ * Determine if a file should use immutable caching.
+ *
+ * **This was the Pingdom "Add Expires headers" F.** The only hashes it recognised were hashes in a
+ * FILENAME, and this site puts its hash in the QUERY STRING: `img()` looks the path up in
+ * `asset-manifest.json` and appends `?v=<content hash>`. So every image, every brand mark and every
+ * figure fell through to the one-hour branch and was re-fetched and revalidated on each visit,
+ * despite having a URL that cannot go stale by construction.
+ *
+ * A manifested asset IS immutable at its URL: change the file and the hash changes, so the URL
+ * changes with it. Reading the same manifest the site reads means the two cannot disagree, and an
+ * asset added to the manifest tomorrow gets the right header without anybody remembering this.
+ *
+ * Anything NOT in the manifest is served without a `?v=`, so it keeps the short, revalidating TTL:
+ * its URL is stable while its content is not, which is the one case where a year would be wrong.
  */
 function isImmutableAsset(filePath: string): boolean {
   // Files with content hashes in _next/static are immutable
@@ -130,7 +150,15 @@ function isImmutableAsset(filePath: string): boolean {
   if (/\.[a-f0-9]{8,}\.(js|css|woff2?|ttf|eot)$/i.test(filePath)) {
     return true;
   }
-  return false;
+  // The site's own assets, whose hash rides in the query string rather than the filename.
+  return manifestKey(filePath) !== undefined;
+}
+
+/** The R2 key minus the CDN prefix, which is how the manifest names a file. */
+function manifestKey(r2Key: string): string | undefined {
+  const prefix = SITE_PREFIX ? `${SITE_PREFIX}/` : "";
+  const bare = r2Key.startsWith(prefix) ? r2Key.slice(prefix.length) : r2Key;
+  return MANIFEST[bare] !== undefined ? bare : undefined;
 }
 
 /**

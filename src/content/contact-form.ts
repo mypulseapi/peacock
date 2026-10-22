@@ -37,8 +37,10 @@ const COPY = {
 
     /** The call booking, beside the form. */
     callTitle: "Rather talk it through?",
-    callBody: "Book a free 30 minute call. Bring one category and we will look at it with you.",
-    callCta: "Book a 30 minute call",
+    callBody:
+      "Book a free 30 minute call with either of us. Bring one category and we will look at it with you.",
+    /** Per person, under their name. The role itself comes from the About page's catalogue. */
+    callCta: "30 minutes, free",
   },
   vi: {
     note: "Chỉ hai ô, không gì thêm. Chúng tôi trả lời trong vòng một ngày làm việc. Không bản tin, không chuỗi email bán hàng.",
@@ -59,8 +61,8 @@ const COPY = {
 
     callTitle: "Bạn muốn trao đổi trực tiếp hơn?",
     callBody:
-      "Đặt một cuộc gọi 30 phút miễn phí. Hãy mang theo một ngành hàng và chúng tôi sẽ cùng bạn xem xét nó.",
-    callCta: "Đặt cuộc gọi 30 phút",
+      "Đặt một cuộc gọi 30 phút miễn phí với một trong hai chúng tôi. Hãy mang theo một ngành hàng và chúng tôi sẽ cùng bạn xem xét nó.",
+    callCta: "30 phút, miễn phí",
   },
 } as const;
 

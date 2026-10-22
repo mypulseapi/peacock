@@ -6,7 +6,8 @@ import { Section } from "@/components/home/Section";
 import { Link } from "@/i18n/routing";
 import { ArrowRight, Clock } from "lucide-react";
 import { NewsletterForm } from "@/components/NewsletterForm";
-import { ARTICLES } from "@/content/blog";
+import { articles } from "@/content/blog";
+import { useLocale } from "next-intl";
 import { ArticleArt } from "@/components/ArticleArt";
 
 /**
@@ -19,7 +20,7 @@ import { ArticleArt } from "@/components/ArticleArt";
  */
 export default function BlogPageClient() {
   const t = useTranslations("blog");
-  const [lead, ...rest] = ARTICLES;
+  const [lead, ...rest] = articles(useLocale());
   const LeadIcon = lead.icon;
 
   return (

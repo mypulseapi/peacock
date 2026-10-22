@@ -2,6 +2,8 @@ import {
   Filter, Gauge, Bot, TrendingUp, Megaphone, Store, Boxes, Plane, Binary, ShieldAlert,
   type LucideIcon,
 } from "lucide-react";
+import { byLocale } from "./locale";
+import { BLOG_VI } from "./blog.vi";
 
 /**
  * The notes.
@@ -23,8 +25,13 @@ import {
  * reproducible from the repository with the command on /why/method, and they
  * are always labelled as ours.
  *
- * Written in English only. These are articles rather than interface copy, and a
- * Vietnamese headline over an English body is worse than leaving it in English.
+ * Translated, headline and body together. The earlier note here said these were English only on
+ * the grounds that a Vietnamese headline over an English body is worse than leaving it alone,
+ * which was true of a half translation and is no longer the situation: `blog.vi.ts` carries every
+ * string in these ten pieces, and `articles()` returns them for the active locale.
+ *
+ * Attributions are deliberately NOT translated. "Baymard Institute, 2019" is the name of a
+ * published source, and a reader checking the citation needs the name that was published.
  */
 /**
  * Charts are blocks, not decoration bolted on afterwards.
@@ -464,6 +471,8 @@ export const ARTICLES: Article[] = [
     excerpt:
       "A bit is one halving of the shelf. That fixed meaning is the only reason two attributes as different as screen size and processor can be compared at all.",
     metaTitle: "What one bit of decision information buys",
+    metaDescription:
+      "A bit is one halving of the shelf. That fixed meaning is why two attributes as unlike as screen size and processor can be compared against each other at all.",
     category: "Method",
     icon: Binary,
     readTime: "8 min read",
@@ -555,5 +564,44 @@ export const ARTICLES: Article[] = [
   },
 ];
 
-export const articleBySlug = (slug: string) => ARTICLES.find((a) => a.slug === slug);
+/**
+ * The Vietnamese articles, built by translating every string in the English ones.
+ *
+ * A deep walk rather than a second copy of 560 lines: the two could not then disagree about
+ * structure, adding an article is one edit, and a string with no translation yet falls back to
+ * English instead of rendering `undefined`. `KEEP` lists the fields that are identifiers, data or
+ * citations rather than copy, so they pass through untouched in both languages.
+ */
+const KEEP = new Set([
+  "slug", // route
+  "art", // which hero mark
+  "t", // block type
+  "tone",
+  "icon",
+  "iso", // machine date
+  "sector", // sector slug
+  "href", // link target
+]);
+
+const translate = <T,>(node: T): T => {
+  if (typeof node === "string") return (BLOG_VI[node] ?? node) as T;
+  if (Array.isArray(node)) return node.map(translate) as T;
+  if (node && typeof node === "object") {
+    return Object.fromEntries(
+      Object.entries(node).map(([key, value]) => [key, KEEP.has(key) ? value : translate(value)]),
+    ) as T;
+  }
+  return node;
+};
+
+const ARTICLES_VI: Article[] = ARTICLES.map(translate);
+
+/** Every article, in the active locale, in publication order. */
+export const articles = (locale: string): Article[] =>
+  byLocale({ en: ARTICLES, vi: ARTICLES_VI }, locale);
+
+/** One article by slug, in the active locale. */
+export const articleBySlug = (slug: string, locale = "en") =>
+  articles(locale).find((a) => a.slug === slug);
+
 export const articleSlugs = ARTICLES.map((a) => a.slug);

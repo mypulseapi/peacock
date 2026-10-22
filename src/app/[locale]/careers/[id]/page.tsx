@@ -9,21 +9,46 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { forEachLocale } from "@/i18n/locales";
+import { getTranslations } from "next-intl/server";
+import { JOBS_VI } from "@/content/jobs.vi";
 
-const jobListings: Record<
-  string,
-  {
-    title: string;
-    department: string;
-    location: string;
-    type: string;
-    description: string;
-    responsibilities: string[];
-    requirements: string[];
-    niceToHave: string[];
-    salary: string;
-  }
-> = {
+/**
+ * One listing in the active locale.
+ *
+ * A lookup over the English rather than a second copy of the whole record: adding a role is then
+ * one edit, and a string with no translation yet renders in English instead of as `undefined`.
+ * Role TITLES stay in English deliberately, which is why they are absent from the dictionary; see
+ * `content/jobs.vi.ts`.
+ */
+function localised(job: JobListing, locale: string): JobListing {
+  if (locale !== "vi") return job;
+  const vi = (value: string) => JOBS_VI[value] ?? value;
+  return {
+    ...job,
+    department: vi(job.department),
+    location: vi(job.location),
+    type: vi(job.type),
+    salary: vi(job.salary),
+    description: vi(job.description),
+    responsibilities: job.responsibilities.map(vi),
+    requirements: job.requirements.map(vi),
+    niceToHave: job.niceToHave.map(vi),
+  };
+}
+
+interface JobListing {
+  title: string;
+  department: string;
+  location: string;
+  type: string;
+  description: string;
+  responsibilities: string[];
+  requirements: string[];
+  niceToHave: string[];
+  salary: string;
+}
+
+const jobListings: Record<string, JobListing> = {
   "senior-ml-engineer": {
     title: "Senior Machine Learning Engineer",
     department: "Engineering",
@@ -193,23 +218,27 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { id, locale } = await params;
-  const job = jobListings[id];
+  const t = await getTranslations({ locale, namespace: "careers" });
+  const raw = jobListings[id];
 
-  if (!job) {
-    return { title: "Position Not Found" };
+  if (!raw) {
+    return { title: t("notFound") };
   }
+  const job = localised(raw, locale);
+
+  const lead = t("jobMetaLead")
+    .replace("{title}", job.title)
+    .replace("{type}", job.type)
+    .replace("{location}", job.location);
 
   return {
     title: `${job.title} - ${job.department}`,
     // The job description runs to three hundred characters or more, which Google truncates
     // mid-word. The facts that identify the role are kept whole and the prose fills the rest.
-    description: fitDescription(
-      `${job.title} at Pulse. ${job.type}, ${job.location}.`,
-      job.description,
-    ),
+    description: fitDescription(lead, job.description),
     alternates: buildAlternates(locale, `/careers/${id}`),
     openGraph: {
-      title: `${job.title} | Careers at Pulse`,
+      title: t("jobOgTitle").replace("{title}", job.title),
       description: job.description,
     },
   };
@@ -219,11 +248,13 @@ export default async function JobPage({ params }: PageProps) {
   const { id, locale } = await params;
   // Static rendering: see the note in [locale]/terms/page.tsx.
   setRequestLocale(locale);
-  const job = jobListings[id];
+  const t = await getTranslations({ locale, namespace: "careers" });
+  const raw = jobListings[id];
 
-  if (!job) {
+  if (!raw) {
     notFound();
   }
+  const job = localised(raw, locale);
 
   const jobPostingJsonLd = {
     "@type": "JobPosting",
@@ -259,7 +290,7 @@ export default async function JobPage({ params }: PageProps) {
           className="inline-flex min-h-6 items-center gap-2 py-0.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-8 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          All Positions
+          {t("allPositions")}
         </Link>
 
         {/* Header */}
@@ -295,7 +326,7 @@ export default async function JobPage({ params }: PageProps) {
           {/* Description */}
           <div className="glass-card p-6 sm:p-8">
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
-              About This Role
+              {t("aboutRole")}
             </h2>
             <p className="text-[var(--text-secondary)] leading-relaxed">
               {job.description}
@@ -305,7 +336,7 @@ export default async function JobPage({ params }: PageProps) {
           {/* Responsibilities */}
           <div className="glass-card p-6 sm:p-8">
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
-              What You&apos;ll Do
+              {t("whatYouDo")}
             </h2>
             <ul className="space-y-3">
               {job.responsibilities.map((item, idx) => (
@@ -325,7 +356,7 @@ export default async function JobPage({ params }: PageProps) {
           {/* Requirements */}
           <div className="glass-card p-6 sm:p-8">
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
-              What We&apos;re Looking For
+              {t("lookingFor")}
             </h2>
             <ul className="space-y-3">
               {job.requirements.map((item, idx) => (
@@ -345,7 +376,7 @@ export default async function JobPage({ params }: PageProps) {
           {/* Nice to Have */}
           <div className="glass-card p-6 sm:p-8">
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
-              Nice to Have
+              {t("niceToHave")}
             </h2>
             <ul className="space-y-3">
               {job.niceToHave.map((item, idx) => (

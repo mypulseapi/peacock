@@ -369,7 +369,7 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
               }}
               aria-label={t.restart}
               title={t.restart}
-              className="text-muted hover:text-ink p-1"
+              className="text-muted hover:text-ink grid size-6 place-items-center rounded"
             >
               <RotateCcw className="size-4" />
             </button>
@@ -378,7 +378,7 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
             type="button"
             onClick={() => setOpen(false)}
             aria-label={t.close}
-            className="text-muted hover:text-ink -mr-1 p-1"
+            className="text-muted hover:text-ink -mr-1 grid size-6 place-items-center rounded"
           >
             <X className="size-4" />
           </button>
@@ -452,7 +452,7 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
               }
             }}
             placeholder={t.placeholder}
-            className="max-h-28 flex-1 resize-none bg-transparent text-sm outline-none disabled:opacity-50"
+            className="max-h-28 min-h-6 flex-1 resize-none bg-transparent text-sm outline-none disabled:opacity-50"
           />
           <button
             type="button"

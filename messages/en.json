@@ -527,7 +527,15 @@
       "description": "We're always interested in meeting exceptional people. Send us your resume and tell us how you'd contribute to Pulse.",
       "button": "Get in Touch"
     },
-    "heroAlt": "A team around a table with laptops, working through something together."
+    "heroAlt": "A team around a table with laptops, working through something together.",
+    "jobMetaLead": "{title} at Pulse. {type}, {location}.",
+    "jobOgTitle": "{title} | Careers at Pulse",
+    "notFound": "Position Not Found",
+    "allPositions": "All Positions",
+    "aboutRole": "About This Role",
+    "whatYouDo": "What You'll Do",
+    "lookingFor": "What We're Looking For",
+    "niceToHave": "Nice to Have"
   },
   "blog": {
     "meta": {
@@ -580,7 +588,14 @@
       "operational": "Operational",
       "degraded": "Degraded Performance",
       "outage": "Service Outage"
-    }
+    },
+    "eyebrow": "System status",
+    "lastChecked": "Last checked",
+    "unknown": "Unknown",
+    "last30": "Last 30 days",
+    "last90": "Last 90 days",
+    "last12m": "Last 12 months",
+    "durationLabel": "Duration"
   },
   "pricing": {
     "meta": {
@@ -826,7 +841,11 @@
     "gateTitle": "Want the whole thing as one document?",
     "gateBody": "Leave an email and we will send the full integration guide, both worked examples and the endpoint reference, in a single file you can forward to whoever has to approve it.",
     "gateCta": "Send it to me",
-    "gateSuccess": "On its way. Check your inbox for the documentation."
+    "gateSuccess": "On its way. Check your inbox for the documentation.",
+    "differentCredential": "Different credential:",
+    "catalogueWriteAuth": "catalogue writes are authenticated as a signed-in dashboard session, not with the publishable",
+    "keyUsedAbove": "key used for the calls above.",
+    "exampleAuthRequest": "# Example request with authentication"
   },
   "integrations": {
     "meta": {
@@ -859,7 +878,16 @@
     "readyToIntegrate": "Ready to Integrate?",
     "readyToIntegrateDesc": "Our solutions engineers can help you get set up in no time. Most integrations are completed within a single call.",
     "getStarted": "Get Started Free",
-    "readDocs": "Read the Docs"
+    "readDocs": "Read the Docs",
+    "available": "Available",
+    "apiDocsItem": "Complete API documentation",
+    "apiSdksItem": "SDKs for JavaScript, Python, Ruby",
+    "apiWebhooksItem": "Webhook support for real-time events",
+    "codeGetInference": "// Get persona inference",
+    "codeReturns": "// Returns persona + rankings",
+    "setupLabel": "Setup",
+    "viewDocs": "View Docs",
+    "viewApiDocs": "View API Docs"
   },
   "product": {
     "meta": {
@@ -1536,5 +1564,35 @@
       "title": "What the photograph already shows",
       "description": "Across a 2,176-product catalogue, 52.6% of recorded attribute values duplicate the product photograph. What that leaves is the part worth recording."
     }
+  },
+  "whyPage": {
+    "meta": {
+      "title": "Why Pulse: the method and the limits",
+      "description": "How a decision-information gap is measured, how it differs from engagement-ranked tooling, and exactly where the measurement stops being reliable."
+    }
+  },
+  "jobForm": {
+    "applyHeading": "Apply for This Position",
+    "namePlaceholder": "Jane Smith",
+    "emailPlaceholder": "jane@example.com",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "+84 912 345 678",
+    "linkedinLabel": "LinkedIn Profile",
+    "linkedinPlaceholder": "https://linkedin.com/in/janesmith",
+    "uploadPrompt": "Click to upload or drag and drop",
+    "uploadHint": "PDF or Word document (max {mb}MB)",
+    "coverLetterLabel": "Cover Letter / Why You're Interested",
+    "coverLetterPlaceholder": "Tell us why you're excited about this role and what makes you a great fit...",
+    "submitting": "Submitting...",
+    "submitApplication": "Submit Application",
+    "consentLead": "By submitting, you agree to our",
+    "privacyPolicy": "Privacy Policy",
+    "consentTail": ". We'll only use your information for this application.",
+    "errFixAbove": "Please fix the errors above",
+    "errResumeRequired": "Resume is required",
+    "errResumeUpload": "Please upload your resume",
+    "errResumeType": "Please upload a PDF or Word document",
+    "errVerification": "Please complete the verification below.",
+    "errSubmitFailed": "Failed to submit application. Please try again."
   }
 }

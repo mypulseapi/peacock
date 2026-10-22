@@ -95,12 +95,7 @@ export function Section4Section() {
                           {t('15')}
                         </dt>
                         <dd className="mt-1 text-body text-pretty text-muted">
-                          A shopper can be told a fact three ways: a field they can
-                          filter on, a photograph they can look at, or a sentence
-                          they will actually read. We measure the first one. On the
-                          laptop shelf we use for our own research the first two do
-                          not overlap at all, so a catalogue can score well here and
-                          still leave a buyer unable to see what they came for.{" "}
+                          {t('threeWays')}{" "}
                           <Link                         href={designedHref("/en/visual-evidence")}
                             className="text-link underline underline-offset-4 hover:text-primary-hover"
                             >{t('16')}</Link>.
@@ -110,7 +105,7 @@ export function Section4Section() {
                   </div>
                 </div>
                 <p className="mt-10 border-t border-line pt-6 text-body text-ink">
-                  One export, nothing installed.{" "}
+                  {t('oneExport')}{" "}
                   <Link                 href={designedHref("/en/contact")}
                     className="hit-area font-medium text-link underline underline-offset-4 hover:text-primary-hover"
                     >{t('17')}</Link>

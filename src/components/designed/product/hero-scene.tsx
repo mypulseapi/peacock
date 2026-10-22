@@ -1,146 +1,114 @@
 import Image from "next/image";
+import {
+  Check,
+  HelpCircle,
+  Users,
+  Image as ImageIcon,
+  Scan,
+  Ruler,
+  Tag,
+  FlaskConical,
+} from "lucide-react";
 import { img } from "@/lib/cdn";
+import { sector } from "@/content/industries";
+import { heroEvidence } from "@/content/hero-evidence";
 import { renderLocale } from "@/i18n/render-locale";
 
 /**
- * The product hero's figure: one shelf item, and the attribute a purchase turns on.
+ * The product hero's evidence panel, built to the reference composition supplied on 2026-10-21.
  *
- * What came before this said nothing. It was a field of faint squares with a few coloured ones
- * scattered through it, which is decoration: a visitor could not tell from it what the product
- * does, and the report was exactly that. Before that it was four MP4s per page, 9.5MB, playing a
- * sped-up screen tour nobody asked for.
+ * The product in the middle with its measurements called out, and three cards overlapping it: the
+ * buying decision with its evidence ticked off, what to fix ranked by impact, and what the
+ * business gets. It explains rather than decorates, which is the point of replacing what was here.
  *
- * This draws the argument instead, in the smallest form that still carries it. A product, four
- * attributes, three of them recorded and one not, and the one that is missing is the one the
- * decision turns on, so it is ranked first and drawn in Signal. That is the whole Decision Audit
- * in one card, and the shelf figure further down the page then tells it at length.
+ * What it replaced, in order: four MP4s per page at 9.5MB; a field of faint squares that told a
+ * visitor nothing; and two attempts of mine at this composition that cropped the product in half
+ * and ranked rows against numbers that disagreed with the ranking.
  *
- * Why this is markup and not an SVG
- * ---------------------------------
- * Because of the words. An SVG carries its text as drawn glyphs, which is why the designer's
- * exported figures needed a build step to put the Vietnamese back. Here the four attribute names
- * come from the catalogue through `t`, so the figure is translated by the same mechanism as the
- * paragraph beside it, with nothing to re-export when a word changes. The values are numbers and
- * units, which read the same in both languages.
+ * Read it as the merchant. That is my product. That is the question my customer is asking of it.
+ * Those are the facts I have, that one I never wrote down, and here is what to do about it.
  *
- * Every colour is a `--color-*` token. The version this replaces reached for `--primary`, which
- * is a legacy token resolving to a harsh indigo, and for `--warn` and `--surface-2`, which do not
- * exist at all, so it shipped in colours nobody chose.
+ * Copy comes from `content/hero-evidence.ts`, in the active locale.
  */
 type Variant = "audit" | "verification" | "monitor";
 
-/**
- * The product, and the row nobody recorded, per page.
- *
- * A photograph rather than a drawn shape. A merchant recognises their own shelf in a product
- * shot and does not recognise it in a rounded rectangle, and recognising it is the entire job of
- * this figure: the argument only lands once you accept that the thing in the picture is the thing
- * you sell.
- *
- * All three are shot on white with no alpha, so each sits on a plate whose background does not
- * follow the theme. Dropped straight onto the card they would be a white block the moment the
- * theme flipped.
- */
-const STORY: Record<Variant, { gap: number; after: string; photo: string; w: number; h: number }> = {
-  // The audit finds the gap and ranks it. Nothing is filled in yet.
-  audit: {
-    gap: 0,
-    after: "",
-    photo: "product/gaming-laptop-missing-attributes.webp",
-    w: 1536,
-    h: 1024,
-  },
-  // Verification shows the same shelf once the top gap has been closed, so the value is there.
-  verification: {
-    gap: 0,
-    after: '15.6"',
-    photo: "product/office-laptop-missing-attributes.webp",
-    w: 1536,
-    h: 1024,
-  },
-  // Monitor watches a shelf that was complete and is not any more, so the gap is further down.
-  monitor: {
-    gap: 2,
-    after: "",
-    photo: "product/shopper-comparing-laptops-in-store.webp",
-    w: 1697,
-    h: 927,
-  },
-};
+const ROW_ICON = {
+  image: ImageIcon,
+  scan: Scan,
+  ruler: Ruler,
+  tag: Tag,
+  flask: FlaskConical,
+} as const;
 
-export function HeroScene({
-  variant,
-  labels,
-}: {
-  variant: Variant;
-  /** The four attribute names, already translated by the caller. */
-  labels: [string, string, string, string];
-}) {
-  const { gap, after, photo, w, h } = STORY[variant];
+
+export function HeroScene({ variant }: { variant: Variant }) {
   const locale = renderLocale();
-  // Values, not prose: a size, a capacity, a part number. They need no translation, which is why
-  // the figure can carry data at all without a second catalogue.
-  const values = ['15.6"', "16 GB", "512 GB", "i7"];
-
-  /*
-   * Ranked order, which means the decisive row is the first row.
-   *
-   * The first version kept the catalogue's order and only moved the rank number, so Monitor read
-   * 2, 3, 1, 4 down the list with rank 1 sitting third. A ranked list whose numbers do not
-   * descend is not a ranked list, it is a mistake the reader has to explain to themselves.
-   */
-  const order = [gap, ...labels.map((_, i) => i).filter((i) => i !== gap)];
+  const e = heroEvidence(locale, variant);
+  const s = sector(locale, e.slug);
 
   return (
-    <figure className="hero-figure" aria-hidden="true">
-      <div className="hero-figure-card">
-        {/* The product itself, on its plate. */}
-        <div className="hero-figure-product">
-          <Image
-            src={img(photo)}
-            alt=""
-            width={w}
-            height={h}
-            priority
-            sizes="(min-width: 1024px) 28rem, 90vw"
-            className="h-44 w-auto object-contain"
-          />
-        </div>
+    <div className="decision-visual">
+      {/* The question, as a quiet chip above the product rather than a card beside it. */}
+      <p className="decision-question">
+        <span className="icon-circle">
+          <Users className="size-3" aria-hidden="true" />
+        </span>
+        {e.question}
+      </p>
 
-        <ul className="hero-figure-rows">
-          {order.map((i, position) => {
-            const label = labels[i];
-            const missing = i === gap;
-            return (
-              <li
-                key={label}
-                /*
-                 * Three states, not two. On the audit the decisive row is empty and reads as a
-                 * problem; on verification that same row now carries its value, so it has to read
-                 * as resolved. Leaving it in Signal with a value in it said "urgent" and "fixed"
-                 * at once, which is the one thing the figure must not do.
-                 */
-                className={
-                  missing
-                    ? after
-                      ? "hero-figure-row hero-figure-row-done"
-                      : "hero-figure-row hero-figure-row-gap"
-                    : "hero-figure-row"
-                }
-                style={{ "--i": position } as React.CSSProperties}
-              >
-                <span className="hero-figure-rank">{position + 1}</span>
-                <span className="hero-figure-label" lang={locale}>
-                  {label}
-                </span>
-                <span className="hero-figure-value">
-                  {missing ? (after ? after : "—") : values[i]}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
+      {/* The product, large, with the answers annotated onto it. */}
+      <div className="product-stage">
+        <Image
+          className="product-image"
+          src={img(e.photo)}
+          alt={s?.name ?? ""}
+          width={e.width}
+          height={e.height}
+          priority
+          sizes="(min-width: 1024px) 26rem, 70vw"
+        />
       </div>
-    </figure>
+
+      {/*
+        Annotations, not a table.
+        
+        Each one is small, points at the product, and answers one thing: either the catalogue
+        records this, or it does not. Big cards beside the product competed with it and buried it;
+        a callout with an arrow reads as a note about the thing it is attached to.
+      */}
+      {e.evidence.map((row, i) => (
+        <span
+          key={row.label}
+          className={`callout callout-${row.at} ${row.known ? "is-known" : "is-unknown"}`}
+          style={{ "--i": i } as React.CSSProperties}
+        >
+          <span className="callout-mark">
+            {row.known ? (
+              <Check className="size-2.5" aria-hidden="true" />
+            ) : (
+              <HelpCircle className="size-2.5" aria-hidden="true" />
+            )}
+          </span>
+          <span className="callout-text">
+            <strong>{row.label}</strong>
+            <small>{row.detail}</small>
+          </span>
+        </span>
+      ))}
+
+      {/* What to do about it, as one compact strip rather than a panel. */}
+      <ol className="fix-strip">
+        {e.recommendations.slice(0, 3).map((r, i) => {
+          const Icon = ROW_ICON[r.icon];
+          return (
+            <li key={r.text} style={{ "--i": i } as React.CSSProperties}>
+              <span className="fix-rank">{i + 1}</span>
+              <Icon className="size-3 shrink-0" aria-hidden="true" />
+              <span className="fix-text">{r.text}</span>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
   );
 }

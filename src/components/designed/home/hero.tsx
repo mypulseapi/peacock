@@ -1264,9 +1264,7 @@ export function HeroSection() {
                                   <strong className="font-bold text-ink"
                                     >{t('122')}</strong
                                   >{" "}
-                                  is missing from 162 products, so a traditional
-                                  audit ranks it first. But only 2 of 32 shopper
-                                  requirements mention it, so Pulse ranks it last.{" "}
+                                  {t('rankDisagreement')}{" "}
                                   <strong className="font-bold text-ink"
                                     >{t('123')}</strong
                                   >
@@ -1309,7 +1307,7 @@ export function HeroSection() {
                                     <use href="#i-sparkles" />
                                   </svg>
                                   <span
-                                    >Currently, Pulse identifies{" "}
+                                    >{t('currentlyIdentifies')}{" "}
                                     <strong className="font-bold text-primary"
                                       >{t('126')}</strong
                                     >{" "}
@@ -1494,7 +1492,7 @@ export function HeroSection() {
                                   <p
                                     className="max-w-md font-display text-lg font-semibold text-pretty text-ink"
                                   >
-                                    Adding one attribute helped shoppers distinguish{" "}
+                                    {t('oneMoreAttribute')}{" "}
                                     <span className="whitespace-nowrap text-primary"
                                       >{t('146')}</span
                                     >.

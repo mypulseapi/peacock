@@ -99,6 +99,18 @@ export function RevenueSection() {
               <div
                 className="bg-primary-wash mt-16 grid gap-10 rounded-3xl border border-primary-line px-5 py-10 sm:px-10 lg:mt-20 lg:grid-cols-12 lg:gap-x-12 lg:px-14 lg:py-14"
                 data-calc
+                /*
+                  The calculator's own copy, for designed-motion.js.
+
+                  That script rewrites these four strings on every input and has no catalogue of
+                  its own, so it printed English over the translated markup the moment anyone
+                  touched a slider: the page loaded in Vietnamese and reverted as it was used.
+                  Templates here keep the copy in the catalogue, where the rest of the page's is.
+                */
+                data-copy-points={t('calcPoints')}
+                data-copy-relative={t('calcRelative')}
+                data-copy-capped={t('calcCapped')}
+                data-copy-valuetext={t('calcValueText')}
               >
                 <div className="min-w-0 lg:col-span-7">
                   <h3 className="reveal text-h2 text-balance text-ink">

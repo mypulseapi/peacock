@@ -56,8 +56,7 @@ export function Section3Section() {
                         {t('5')}
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
-                        The product packaging shows whether it&rsquo;s
-                        fragrance-free, but this information{" "}
+                        {t('packagingLead')}{" "}
                         <strong
                           className="font-semibold whitespace-nowrap text-gap-strong"
                           >{t('6')}</strong
@@ -115,11 +114,11 @@ export function Section3Section() {
                         {t('12')}
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
-                        Screen size appears in{" "}
+                        {t('screenLead')}{" "}
                         <strong className="font-semibold tabular-nums"
                           >{t('13')}</strong
                         >{" "}
-                        product titles, but{" "}
+                        {t('screenMid')}{" "}
                         <strong
                           className="font-semibold whitespace-nowrap text-gap-strong"
                           >{t('14')}</strong
@@ -132,8 +131,7 @@ export function Section3Section() {
                         {t('16')}
                       </dt>
                       <dd className="mt-1.5 text-pretty text-ink">
-                        Without clear product attributes, shoppers struggle to see
-                        the differences between{" "}
+                        {t('noAttributesLead')}{" "}
                         <strong className="font-semibold tabular-nums"
                           >{t('17')}</strong
                         >{" "}

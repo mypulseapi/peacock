@@ -23,8 +23,7 @@ export function Section2Section() {
                     {t('2')}
                   </p>
                   <p className="mt-4 text-body leading-relaxed text-muted">
-                    We do not use cookies to track or store your data, as described
-                    in our{" "}
+                    {t('noTracking')}{" "}
                     <Link                   href={designedHref("/en/privacy")}
                       className="font-semibold text-primary underline decoration-primary-line underline-offset-4"
                       >{t('3')}</Link>.

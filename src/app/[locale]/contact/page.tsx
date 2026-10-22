@@ -11,7 +11,7 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("contact.meta");
+  const t = await getTranslations({ locale, namespace: "contact.meta" });
 
   return {
     title: t("title"),

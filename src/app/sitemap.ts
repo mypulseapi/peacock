@@ -9,8 +9,20 @@ import { SITE } from "@/lib/site";
  * Next requires that to be stated rather than inferred, because the alternative -- a route that
  * wants to be dynamic in a build that cannot be -- is a silent 404 on the deployed site.
  *
- * `lastModified` therefore means "when the site was last built", which for a static deploy is the
- * same thing as when it last changed.
+ * There is no `lastModified` on any entry, and that is deliberate.
+ *
+ * It used to be `new Date()`, stamped onto all 100 URLs on every build. That is not what the field
+ * means: it claims each page changed when the site was last deployed, so a deploy that touched one
+ * blog post told Google that the terms, the privacy policy and every product page changed too.
+ * `reference/seo_and_aeo_engineering_standard.md` says it outright: "`lastmod` must be a real
+ * modification date or be omitted entirely; a `lastmod` that updates on every deploy is ignored by
+ * Google after it is caught lying twice."
+ *
+ * Omitted is the honest option here. These pages are built from TypeScript content modules rather
+ * than from one file per page, so there is no per-page date to read: the blog's ten articles live
+ * in `content/blog.ts`, and a git date for that file is the date of the most recent article, not
+ * of each one. The handbook is the opposite case, one `.mdx` per page, and it reads a real git
+ * date per file.
  */
 export const dynamic = "force-static";
 
@@ -134,7 +146,6 @@ function makeAlternates(path: string) {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const currentDate = new Date().toISOString();
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
   // Static pages
@@ -142,7 +153,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const page of staticPages) {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${page}`,
-        lastModified: currentDate,
         changeFrequency: changeFrequencies[page] || "monthly",
         priority: pagePriorities[page] || 0.5,
         alternates: makeAlternates(page),
@@ -156,7 +166,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const path = `/industries/${slug}`;
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${path}`,
-        lastModified: currentDate,
         changeFrequency: "monthly",
         priority: 0.8,
         alternates: makeAlternates(path),
@@ -170,7 +179,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const path = `/blog/${slug}`;
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${path}`,
-        lastModified: currentDate,
         changeFrequency: "monthly",
         priority: 0.7,
         alternates: makeAlternates(path),
@@ -184,7 +192,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const path = `/careers/${id}`;
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${path}`,
-        lastModified: currentDate,
         changeFrequency: "monthly",
         priority: 0.6,
         alternates: makeAlternates(path),

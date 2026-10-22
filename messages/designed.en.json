@@ -867,7 +867,9 @@
         "18": "Memory",
         "19": "Storage",
         "20": "Processor",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries.",
+        "figureAlt": "A laptop category page with nine filters. Screen size is selected and recorded on only 63% of the shelf; memory 72%, storage 74%, processor 25%. The same products are listed across Amazon, Google, Meta, Shopify and TikTok.",
+        "figureSource": "Coverage measured on our own 216-product laptop shelf: screen size on 136, memory 156, storage 161, processor 54. The command that reproduces it is on the method page."
       },
       "section2": {
         "1": "What Ecommerce and retail looks like right now",

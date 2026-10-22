@@ -9,7 +9,8 @@
 import { AttributeIcon } from "../../attribute-icon";
 import { designedHref, designedText } from "../../t";
 import Link from "next/link";
-import { ShelfScene } from "./shelf-scene";
+import Image from "next/image";
+import { img } from "@/lib/cdn";
 
 export function Section1Section() {
   const t = designedText("industries.ecommerce.section1");
@@ -40,188 +41,18 @@ export function Section1Section() {
                   {t('6')}
                 </p>
               </div>
-              <figure className="reveal grid gap-5 delay-200 lg:col-span-6">
-                {/* The shelf the headline describes. See shelf-scene.tsx. */}
-                <ShelfScene />
-                <div className="card">
-                  <p className="text-sm font-semibold text-ink">
-                    {t('7')}
-                  </p>
-                  <p className="mt-1 text-caption text-muted">
-                    {t('8')}
-                  </p>
-                  <ul className="mt-6 space-y-4">
-                    <li
-                      className="-mx-2 grid grid-cols-12 items-center gap-x-3 gap-y-1.5 rounded-lg border border-signal bg-signal-tint px-2 py-2 ring-1 ring-signal"
-                    >
-                      <p
-                        className="col-span-12 sm:col-span-4 flex items-center gap-2 text-sm font-semibold text-ink"
-                      >
-                        <span
-                          className="grid size-5 shrink-0 place-items-center rounded bg-signal text-caption tabular-nums text-on-step"
-                          aria-label="Rank 1"
-                          >1</span
-                        >{t('9')}
-                      </p>
-                      <div
-                        className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-card"
-                      >
-                        <div
-                          className="reveal-bar h-full rounded-full bg-chart-highlight w-63/100"
-                        ></div>
-                      </div>
-                      <p
-                        className="col-span-2 text-right text-sm font-semibold tabular-nums text-signal-text"
-                      >
-                        63%
-                      </p>
-                    </li>
-                    <li className="grid grid-cols-12 items-center gap-x-3 gap-y-1.5">
-                      <p
-                        className="col-span-12 sm:col-span-4 flex items-center gap-2 text-sm text-ink"
-                      >
-                        <span
-                          className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
-                          aria-label="Rank 2"
-                          >2</span
-                        ><AttributeIcon src="icons/product-attribute-memory-ram.webp" />{t('10')}
-                      </p>
-                      <div
-                        className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
-                      >
-                        <div
-                          className="reveal-bar h-full rounded-full bg-chart-baseline w-72/100"
-                        ></div>
-                      </div>
-                      <p
-                        className="col-span-2 text-right text-sm tabular-nums text-ink"
-                      >
-                        72%
-                      </p>
-                    </li>
-                    <li className="grid grid-cols-12 items-center gap-x-3 gap-y-1.5">
-                      <p
-                        className="col-span-12 sm:col-span-4 flex items-center gap-2 text-sm text-ink"
-                      >
-                        <span
-                          className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
-                          aria-label="Rank 3"
-                          >3</span
-                        ><AttributeIcon src="icons/product-attribute-storage.webp" />{t('11')}
-                      </p>
-                      <div
-                        className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
-                      >
-                        <div
-                          className="reveal-bar h-full rounded-full bg-chart-baseline w-74/100"
-                        ></div>
-                      </div>
-                      <p
-                        className="col-span-2 text-right text-sm tabular-nums text-ink"
-                      >
-                        74%
-                      </p>
-                    </li>
-                    <li className="grid grid-cols-12 items-center gap-x-3 gap-y-1.5">
-                      <p
-                        className="col-span-12 sm:col-span-4 flex items-center gap-2 text-sm text-ink"
-                      >
-                        <span
-                          className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
-                          aria-label="Rank 4"
-                          >4</span
-                        ><AttributeIcon src="icons/product-attribute-processor.webp" />{t('12')}
-                      </p>
-                      <div
-                        className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
-                      >
-                        <div
-                          className="reveal-bar h-full rounded-full bg-chart-baseline w-25/100"
-                        ></div>
-                      </div>
-                      <p
-                        className="col-span-2 text-right text-sm tabular-nums text-ink"
-                      >
-                        25%
-                      </p>
-                    </li>
-                  </ul>
-                  <details className="group mt-6 border-t border-line pt-1">
-                    <summary
-                      className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-medium text-primary hover:text-primary-hover"
-                    >
-                      {t('13')}<svg
-                        className="size-4 transition-transform duration-200 ease-out-soft group-open:rotate-180"
-                        aria-hidden="true"
-                      >
-                        <use href="#i-chevron-down" />
-                      </svg>
-                    </summary>
-                    <div className="mt-4 overflow-hidden rounded-lg border border-line">
-                      <table className="w-full text-data">
-                        <caption className="sr-only">
-                          {t('14')}
-                        </caption>
-                        <thead className="bg-surface-1 text-xs text-muted">
-                          <tr>
-                            <th
-                              scope="col"
-                              className="px-4 py-2 text-left font-sans font-medium"
-                            >
-                              {t('15')}
-                            </th>
-                            <th
-                              scope="col"
-                              className="px-4 py-2 text-right font-sans font-medium"
-                            >
-                              {t('16')}
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-line">
-                          <tr>
-                            <th
-                              scope="row"
-                              className="px-4 py-2 text-left font-sans font-normal"
-                            >
-                              {t('17')}
-                            </th>
-                            <td className="px-4 py-2 text-right tabular-nums">63%</td>
-                          </tr>
-                          <tr>
-                            <th
-                              scope="row"
-                              className="px-4 py-2 text-left font-sans font-normal"
-                            >
-                              {t('18')}
-                            </th>
-                            <td className="px-4 py-2 text-right tabular-nums">72%</td>
-                          </tr>
-                          <tr>
-                            <th
-                              scope="row"
-                              className="px-4 py-2 text-left font-sans font-normal"
-                            >
-                              {t('19')}
-                            </th>
-                            <td className="px-4 py-2 text-right tabular-nums">74%</td>
-                          </tr>
-                          <tr>
-                            <th
-                              scope="row"
-                              className="px-4 py-2 text-left font-sans font-normal"
-                            >
-                              {t('20')}
-                            </th>
-                            <td className="px-4 py-2 text-right tabular-nums">25%</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </details>
-                </div>
+              <figure className="reveal delay-200 lg:col-span-6">
+                <Image
+                  src={img("industries/ecommerce-shelf-filter-coverage.webp")}
+                  alt={t('figureAlt')}
+                  width={1400}
+                  height={845}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  priority
+                  className="h-auto w-full"
+                />
                 <figcaption className="mt-4 max-w-xl text-caption text-muted">
-                  {t('21')}
+                  {t('figureSource')}
                 </figcaption>
               </figure>
             </div>

@@ -1249,7 +1249,9 @@
         "17": "Kích thước màn hình",
         "18": "RAM",
         "19": "Lưu trữ",
-        "20": "Vi xử lý"
+        "20": "Vi xử lý",
+        "figureAlt": "Trang ngành hàng laptop với chín bộ lọc. Kích thước màn hình đang được chọn và chỉ được ghi nhận trên 63% kệ hàng; RAM 72%, dung lượng 74%, vi xử lý 25%. Cùng bộ sản phẩm đó được niêm yết trên Amazon, Google, Meta, Shopify và TikTok.",
+        "figureSource": "Độ phủ đo trên kệ laptop 216 sản phẩm của chính chúng tôi: kích thước màn hình 136, RAM 156, dung lượng 161, vi xử lý 54. Câu lệnh tái lập nằm ở trang phương pháp."
       },
       "section3": {
         "2": "Điều một người mua ở đây đang cố quyết định:",

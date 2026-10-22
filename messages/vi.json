@@ -734,7 +734,7 @@
       "authDesc": "Tìm hiểu cách xác thực các yêu cầu API của bạn",
       "inferTitle": "API Suy luận",
       "inferDesc": "Nhận dự đoán persona thời gian thực",
-      "personalizeTitle": "API Cá nhân hóa",
+      "personalizeTitle": "Decision API",
       "personalizeDesc": "Sắp xếp lại cửa hàng của bạn theo thời gian thực",
       "catalogTitle": "Đồng bộ Danh mục",
       "catalogDesc": "Đồng bộ sản phẩm & danh mục theo thời gian thực",
@@ -770,7 +770,7 @@
     "catalog": {
       "title": "Đồng bộ Danh mục, Sản phẩm & Danh mục",
       "intro": "Đẩy sản phẩm và danh mục của bạn lên Pulse để công cụ biết những gì có thể cá nhân hóa. Gửi toàn bộ danh mục một lần, sau đó giữ đồng bộ bằng cách gửi từng thao tác tạo, cập nhật hoặc xóa ngay khi nó xảy ra trong cửa hàng của bạn.",
-      "async": "Làm giàu dữ liệu và gắn thẻ Digital Twin chạy bất đồng bộ trong pipeline nạp dữ liệu, lệnh upsert trả về <code>202 Accepted</code> ngay lập tức và webhook <code>products.tagged</code> kích hoạt khi sản phẩm sẵn sàng cho suy luận. Bản thân suy luận vẫn nằm trên đường request.",
+      "async": "Làm giàu dữ liệu và gắn thẻ thuộc tính chạy bất đồng bộ trong pipeline nạp dữ liệu, lệnh upsert trả về <code>202 Accepted</code> ngay lập tức và webhook <code>products.tagged</code> kích hoạt khi một sản phẩm sẵn sàng cho suy luận. Bản thân việc suy luận vẫn nằm trên đường xử lý yêu cầu.",
       "upsertDesc": "Tạo hoặc cập nhật sản phẩm. Lệnh này có tính bất biến (idempotent) theo <code>id</code>, gửi lại cùng một sản phẩm với các trường mới để cập nhật nó. Chấp nhận một sản phẩm hoặc một lô.",
       "categoriesDesc": "Đồng bộ cây danh mục của bạn để Pulse hiểu mối quan hệ giữa các sản phẩm. Đặt <code>parent_id</code> để phản ánh cấu trúc phân cấp của cửa hàng. Được upsert giống như sản phẩm.",
       "deleteDesc": "Xóa một sản phẩm khi nó bị xóa hoặc hết hàng vĩnh viễn. Nó sẽ ngừng xuất hiện trong các đề xuất ngay lập tức. Sử dụng cùng mẫu để xóa danh mục.",
@@ -778,7 +778,7 @@
       "syncNote": "Hầu hết các nhà bán hàng kết nối các lệnh gọi này với sự kiện thay đổi sản phẩm/danh mục của cửa hàng (ví dụ: một webhook Shopify hoặc một save hook trong backend tùy chỉnh) để danh mục Pulse luôn phản ánh đúng những gì người mua nhìn thấy. Nên đồng bộ lại toàn bộ hằng đêm như một biện pháp dự phòng."
     },
     "personalize": {
-      "title": "API Cá nhân hóa",
+      "title": "Decision API",
       "desc": "Khi SDK đã thu thập tín hiệu và danh mục của bạn đã được đồng bộ, hãy gọi các endpoint này để sắp xếp lại cửa hàng theo thời gian thực cho khách hiện tại. Gọi chúng từ backend của bạn bằng Bearer token, truyền session_id mà SDK đã tạo trong trình duyệt.",
       "recommendDesc": "Trả về danh sách sản phẩm được xếp hạng và cá nhân hóa theo persona trực tiếp của khách, dùng cho lưới \"Dành cho bạn\", sản phẩm liên quan và các dải trên trang chủ.",
       "searchDesc": "Xếp hạng lại kết quả tìm kiếm theo ý định. Gửi truy vấn của người mua và Pulse sắp xếp các sản phẩm phù hợp theo persona được suy luận trong phiên này. Kết quả được phân trang bằng con trỏ (cursor)."
@@ -1099,12 +1099,12 @@
       },
       "service": {
         "title": "2. Mô tả Dịch vụ",
-        "content": "Pulse cung cấp công cụ suy luận persona thời gian thực cho các nền tảng thương mại điện tử. Dịch vụ của chúng tôi bao gồm:",
+        "content": "Pulse đo xem dữ liệu sản phẩm có trả lời được những câu hỏi người mua đặt ra trước khi quyết định hay không, và xếp hạng những gì cần ghi nhận trước. Dịch vụ của chúng tôi gồm:",
         "items": [
-          "Suy luận persona khách truy cập thời gian thực",
-          "Gắn thẻ và phân loại sản phẩm Digital Twin",
-          "API và tích hợp cá nhân hóa",
-          "Bảng điều khiển phân tích và báo cáo"
+          "Decision Audit: danh sách xếp hạng những thuộc tính sản phẩm đáng ghi nhận trước nhất, đo theo các yêu cầu mua hàng đã được nêu ra",
+          "Decision Verification: đo xem một lần sửa có cải thiện được điều người mua xác định được hay không",
+          "Decision Monitor: đo lại khi danh mục thay đổi",
+          "Decision API: dịch vụ xếp hạng thời gian thực không bắt buộc, chỉ cung cấp sau một chương trình thử nghiệm có đối chứng"
         ]
       },
       "responsibilities": {
@@ -1291,9 +1291,9 @@
     }
   },
   "industriesPage": {
-    "title": "Một công cụ.",
-    "titleHighlight": "Mọi ngành nghề.",
-    "description": "Pulse thích ứng công nghệ suy luận persona thời gian thực cho mọi trải nghiệm số. Cùng một công nghệ cốt lõi, trí tuệ chuyên biệt theo ngành.",
+    "title": "Một phương pháp.",
+    "titleHighlight": "Mọi ngành hàng.",
+    "description": "Cùng một phép đo cho mọi ngành: người mua cần những dữ kiện nào, danh mục của bạn ghi nhận được bao nhiêu trong số đó, và khoảng trống nào đáng lấp trước.",
     "cta": "Kiểm tra miễn phí",
     "secondaryCta": "Xem bảng giá",
     "metricLabel": "những gì chúng tôi chứng minh được hôm nay",

@@ -675,26 +675,19 @@
     "cosmetics": {
       "section1": {
         "1": "Suitability decides the sale, and suitability is not a field",
-        "2": "Personal care is bought against a specific need: a skin type, a concern, an ingredient to seek out or avoid. Those are exactly the attributes most catalogues hold as prose, or print on the back of a bottle, which is why a shopper who knows precisely what they want still cannot narrow the shelf. Nobody has to write the fact down. Somebody has to make it findable.",
         "3": "Request a Decision Audit",
         "4": "See what you get",
         "5": "Ranked repair list in 48 hours",
         "6": "from one category export",
-        "7": "Attribute coverage on a typical Cosmetics and personal care catalogue",
-        "8": "Illustrative of this sector's shape",
-        "9": "Concern addressed",
-        "10": "Skin type",
-        "11": "Key ingredient",
-        "12": "Volume",
-        "13": "View as table",
-        "14": "Attribute coverage on a typical Cosmetics and personal care catalogue",
-        "15": "Attribute",
-        "16": "Recorded on",
-        "17": "Concern addressed",
-        "18": "Skin type",
-        "19": "Key ingredient",
-        "20": "Volume",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "eyebrow": "Cosmetics and personal care",
+        "lede": "Personal care is bought against a specific need: a skin type, a concern, an ingredient to seek or avoid. Those answers are printed on the pack and written in the copy, and almost never recorded as fields.",
+        "step1": "Evidence exists",
+        "step1Body": "The pack and the product copy already state it.",
+        "step2": "The catalogue can’t use it",
+        "step2Body": "Suitability is prose, not a field a shopper can filter on.",
+        "step3": "Pulse finds the gap",
+        "step3Body": "The audit ranks which missing answer matters first.",
+        "figureAlt": "A skincare range on a bathroom counter, marked up with what the packs state: skin type sensitive skin, volume 250 ml, key ingredient hyaluronic acid and concern addressed hydration. A panel ranks attribute coverage on a typical cosmetics and personal care catalogue: concern addressed first at 24 per cent, then skin type 29, key ingredient 41 and volume 88."
       },
       "section2": {
         "1": "What Cosmetics and personal care looks like right now",
@@ -712,7 +705,16 @@
         "6": "Shade and finish ranges recorded inconsistently across brands",
         "7": "Repeat purchases lost because the catalogue cannot answer a suitability question",
         "8": "Where it usually already lives:",
-        "9": "Ingredient lists and supplier data you already hold for compliance. The audit usually finds this is a structuring job rather than an acquisition one."
+        "9": "Ingredient lists and supplier data you already hold for compliance. The audit usually finds this is a structuring job rather than an acquisition one.",
+        "13": "View as table",
+        "14": "Attribute coverage on a typical Cosmetics and personal care catalogue",
+        "15": "Attribute",
+        "16": "Recorded on",
+        "17": "Concern addressed",
+        "18": "Skin type",
+        "19": "Key ingredient",
+        "20": "Volume",
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -751,26 +753,19 @@
     "distribution": {
       "section1": {
         "1": "Your buyers choose on spec. Your catalogue was built for order codes",
-        "2": "Industrial and trade catalogues were designed for someone who already knows the part number. The buyer who does not is filtering on thread size, voltage or tolerance, and those live in a PDF datasheet rather than in a field.",
         "3": "Request a Decision Audit",
         "4": "See what you get",
         "5": "Which specs to map first",
         "6": "from one category export",
-        "7": "Attribute coverage on a typical B2B and industrial catalogue",
-        "8": "Illustrative of this sector's shape",
-        "9": "Tolerance class",
-        "10": "Voltage rating",
-        "11": "Thread size",
-        "12": "Pack quantity",
-        "13": "View as table",
-        "14": "Attribute coverage on a typical B2B and industrial catalogue",
-        "15": "Attribute",
-        "16": "Recorded on",
-        "17": "Tolerance class",
-        "18": "Voltage rating",
-        "19": "Thread size",
-        "20": "Pack quantity",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "eyebrow": "B2B and industrial distribution",
+        "lede": "Industrial and trade catalogues were built for someone who already knows the order code. A buyer who chooses on specification has to read the part to find it.",
+        "step1": "Evidence exists",
+        "step1Body": "The specification is printed on the part and the carton label.",
+        "step2": "The catalogue can’t use it",
+        "step2Body": "It is held as an order code, not as the specification a buyer searches on.",
+        "step3": "Pulse finds the gap",
+        "step3Body": "The audit ranks which missing specification matters first.",
+        "figureAlt": "Stainless fittings and bolts beside a carton whose label reads M12 by 1.5, 16 bar, 304 stainless, with each called out: thread size, pressure rating, material and pack quantity 100 pieces. A panel ranks attribute coverage on a typical B2B and industrial catalogue: tolerance class first at 19 per cent, then voltage rating 34, thread size 47 and pack quantity 91."
       },
       "section2": {
         "1": "What B2B and industrial looks like right now",
@@ -790,7 +785,16 @@
         "6": "Hundreds of variants distinguished only by a suffix in the product code",
         "7": "Sales time spent answering specification questions the catalogue should answer",
         "8": "Where it usually already lives:",
-        "9": "Usually a mapping job. The specification is in a supplier datasheet or a feed you already receive, and the audit separates the fields you can map this week from the ones that need real acquisition."
+        "9": "Usually a mapping job. The specification is in a supplier datasheet or a feed you already receive, and the audit separates the fields you can map this week from the ones that need real acquisition.",
+        "13": "View as table",
+        "14": "Attribute coverage on a typical B2B and industrial catalogue",
+        "15": "Attribute",
+        "16": "Recorded on",
+        "17": "Tolerance class",
+        "18": "Voltage rating",
+        "19": "Thread size",
+        "20": "Pack quantity",
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -824,6 +828,25 @@
         "3": "Request a Decision Audit",
         "4": "View pricing",
         "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so."
+      },
+      "figure": {
+        "requirement": "The buyer has to hit",
+        "requirementValue": "M12 × 1.5 · 16 bar · 304 stainless",
+        "datasheet": "Supplier datasheet",
+        "datasheetNote": "A PDF you already receive",
+        "gap": "never mapped",
+        "catalogue": "Your catalogue row",
+        "catalogueNote": "Three blanks, and the buyer cannot filter on any of them",
+        "partCode": "Part code",
+        "partCodeValue": "VLV-12-16-304",
+        "blank": "not recorded",
+        "specThread": "Thread size",
+        "valThread": "M12 × 1.5",
+        "specPressure": "Pressure rating",
+        "valPressure": "16 bar",
+        "specMaterial": "Material",
+        "valMaterial": "304 stainless",
+        "mapVerb": "Map"
       }
     },
     "ecommerce": {
@@ -834,21 +857,22 @@
         "4": "See what you get",
         "5": "Ranked repair list in 48 hours",
         "6": "from one category export",
-        "7": "Attribute coverage on a typical Ecommerce and retail catalogue",
-        "8": "Illustrative of this sector's shape",
         "9": "Screen size",
         "10": "Memory",
         "11": "Storage",
         "12": "Processor",
-        "13": "View as table",
-        "14": "Attribute coverage on a typical Ecommerce and retail catalogue",
-        "15": "Attribute",
-        "16": "Recorded on",
-        "17": "Screen size",
-        "18": "Memory",
-        "19": "Storage",
-        "20": "Processor",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "figureAlt": "A laptop category page with nine filters. Screen size is selected and recorded on only 63% of the shelf; memory 72%, storage 74%, processor 25%. The same products are listed across Amazon, Google, Meta, Shopify and TikTok.",
+        "figureSource": "Coverage measured on our own 216-product laptop shelf: screen size on 136, memory 156, storage 161, processor 54. The command that reproduces it is on the method page.",
+        "eyebrow": "E-commerce",
+        "shelfName": "Laptops",
+        "filterBrand": "Brand",
+        "filterPrice": "Price",
+        "filterGraphics": "Graphics",
+        "filterBattery": "Battery life",
+        "filterWeight": "Weight",
+        "moreFilters": "More filters",
+        "coverageState": "Missing or inconsistent",
+        "channelsTitle": "Same products across channels"
       },
       "section2": {
         "1": "What Ecommerce and retail looks like right now",
@@ -866,7 +890,16 @@
         "6": "Attribute schemas set years ago, before the range grew into them",
         "7": "Enrichment quoted as a whole-catalogue project because nobody can say which fields come first",
         "8": "Where it usually already lives:",
-        "9": "Most of it is already in your product titles. On the laptop shelf we measured, 161 of 216 missing values were recoverable from text the merchant already owned."
+        "9": "Most of it is already in your product titles. On the laptop shelf we measured, 161 of 216 missing values were recoverable from text the merchant already owned.",
+        "13": "View as table",
+        "14": "Attribute coverage on a typical Ecommerce and retail catalogue",
+        "15": "Attribute",
+        "16": "Recorded on",
+        "17": "Screen size",
+        "18": "Memory",
+        "19": "Storage",
+        "20": "Processor",
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -878,7 +911,27 @@
         "7": "The same buyer narrows on Screen size and reaches a shortlist they can choose from.",
         "8": "Screen size came first on the ranked list, measured against what buyers in this sector actually ask, not against how much data was missing.",
         "9": "The remaining gaps are still ranked, so the next round of work is already ordered and costed.",
-        "10": "Coverage figures illustrate the shape of a catalogue in this sector."
+        "10": "Coverage figures illustrate the shape of a catalogue in this sector.",
+        "chipGap": "Gap",
+        "chipUsable": "Usable",
+        "shelfName": "Laptops",
+        "shelfCount": "90 products",
+        "notUsable": "Not usable",
+        "coverageLabel": "Screen-size coverage",
+        "repairRank": "Top-ranked gap",
+        "repairNote": "Highest-value field to repair first.",
+        "actionRecord": "Record",
+        "actionShow": "Show",
+        "auditName": "Decision Audit",
+        "auditAction": "Repair first",
+        "chooseLabel": "Choose",
+        "shortlistCount": "26 products",
+        "sortLabel": "Relevance",
+        "band1": "13 inch",
+        "band2": "14 inch",
+        "band3": "15–16 inch",
+        "band4": "17 inch+",
+        "attributeName": "Screen size"
       },
       "section5": {
         "1": "What we do about it",
@@ -900,31 +953,40 @@
         "3": "Request a Decision Audit",
         "4": "View pricing",
         "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so."
+      },
+      "scene": {
+        "category": "Laptops",
+        "filterBrand": "Brand",
+        "filterPrice": "Price",
+        "filterScreen": "Screen size",
+        "filterMemory": "Memory",
+        "filterStorage": "Storage",
+        "filterProcessor": "Processor",
+        "filterGraphics": "Graphics",
+        "filterBattery": "Battery life",
+        "filterWeight": "Weight",
+        "moreFilters": "More filters",
+        "missing": "Missing or inconsistent",
+        "channels": "Same products across channels",
+        "source": "Coverage measured on our own 216-product laptop shelf. The command that reproduces it is on the method page."
       }
     },
     "fmcg": {
       "section1": {
         "1": "The pack looks the same. The decision is on the label",
-        "2": "Fast-moving goods are bought on small, specific facts: pack size, dietary claim, concentration, whether it suits a child. Those facts are printed on the packaging and photographed, which means a shopper can read them and your filters cannot. The fact is not missing. It is sitting inside an image nobody can search.",
         "3": "Request a Decision Audit",
         "4": "See what you get",
         "5": "Ranked repair list in 48 hours",
         "6": "from one category export",
-        "7": "Attribute coverage on a typical FMCG and consumer goods catalogue",
-        "8": "Illustrative of this sector's shape",
-        "9": "Concentration",
-        "10": "Pack size",
-        "11": "Dietary claim",
-        "12": "Brand",
-        "13": "View as table",
-        "14": "Attribute coverage on a typical FMCG and consumer goods catalogue",
-        "15": "Attribute",
-        "16": "Recorded on",
-        "17": "Concentration",
-        "18": "Pack size",
-        "19": "Dietary claim",
-        "20": "Brand",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "figureAlt": "A supermarket cereal shelf. The front pack is marked up with what its label states: pack size 500g and the dietary claim high fibre, read from the photograph, while concentration and suitable for children are flagged as not stated. Beside it, attribute coverage on a typical FMCG catalogue ranks concentration first at 22 per cent, then pack size 58, dietary claim 31 and brand 97.",
+        "eyebrow": "FMCG and consumer goods",
+        "lede": "Fast-moving goods are bought on small, specific facts: pack size, dietary claims, concentration, suitability and more. The facts often exist, but only on the packaging.",
+        "step1": "Evidence exists",
+        "step1Body": "The shopper can read it on the pack.",
+        "step2": "The catalogue can’t use it",
+        "step2Body": "The fact is not stored as structured product data.",
+        "step3": "Pulse finds the gap",
+        "step3Body": "The audit ranks which missing evidence matters first."
       },
       "section2": {
         "1": "What FMCG and consumer goods looks like right now",
@@ -936,15 +998,30 @@
         "7": "Adobe Analytics"
       },
       "section3": {
-        "1": "What usually goes wrong in FMCG and consumer goods",
         "2": "What a buyer here is trying to decide:",
         "3": "Which of these is right for my household?",
-        "4": "Decisive facts that exist only inside the pack photograph",
-        "5": "Pack size and unit price recorded inconsistently across a range",
-        "6": "Dietary and allergen claims written into the description instead of a field",
-        "7": "Ranges that grow by variant, where every variant looks identical in a grid",
-        "8": "Where it usually already lives:",
-        "9": "Usually the label and the supplier specification. Much of it is already written in your own descriptions and marketing copy, which is the cheapest place an audit finds it."
+        "figureAlt": "A shopper in a supermarket aisle holding a cereal box, reading its side panel. The pack on the shelf is marked up with what the label states, pack size 500g and the dietary claim high fibre, and with what the catalogue does not hold: concentration and suitable for children, both not stated.",
+        "eyebrow": "The FMCG problem",
+        "heading": "The information exists. The catalogue can’t use it.",
+        "item1": "Trapped in packaging",
+        "item1Body": "Decisive facts exist only in pack photography.",
+        "item2": "Recorded inconsistently",
+        "item2Body": "Pack size and unit price vary across the range.",
+        "item3": "Buried in copy",
+        "item3Body": "Dietary and allergen claims sit in descriptions instead of fields.",
+        "item4": "Variants look identical",
+        "item4Body": "Important differences disappear in the product grid.",
+        "evidenceTitle": "Where the evidence already lives",
+        "evidenceSources": "Packaging · Supplier specs · Descriptions · Marketing copy",
+        "13": "View as table",
+        "14": "Attribute coverage on a typical FMCG and consumer goods catalogue",
+        "15": "Attribute",
+        "16": "Recorded on",
+        "17": "Concentration",
+        "18": "Pack size",
+        "19": "Dietary claim",
+        "20": "Brand",
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -983,33 +1060,27 @@
     "furniture": {
       "section1": {
         "1": "It looks right. Whether it fits is a different question",
-        "2": "Furniture sells on an image and comes back on a measurement. Depth, material, weight capacity and assembly decide the purchase and drive the return, and they are the fields most often left to a paragraph of description. A front-facing photograph cannot show depth at any resolution, so recording the number is only half the repair. The other half is a side view with the number on it.",
         "3": "Request a Decision Audit",
         "4": "See what you get",
         "5": "Ranked repair list in 48 hours",
         "6": "from one category export",
-        "7": "Attribute coverage on a typical Furniture and homewares catalogue",
-        "8": "Illustrative of this sector's shape",
-        "9": "Weight capacity",
-        "10": "Assembled depth",
-        "11": "Primary material",
-        "12": "Colour",
-        "13": "View as table",
-        "14": "Attribute coverage on a typical Furniture and homewares catalogue",
-        "15": "Attribute",
-        "16": "Recorded on",
-        "17": "Weight capacity",
-        "18": "Assembled depth",
-        "19": "Primary material",
-        "20": "Colour",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "eyebrow": "Furniture and homewares",
+        "lede": "Furniture sells on an image and comes back on a measurement: depth, material, weight capacity and assembly. Those facts decide the purchase, and they are the ones left to a paragraph of description.",
+        "step1": "Evidence exists",
+        "step1Body": "The measurements are in the listing photograph and the supplier sheet.",
+        "step2": "The catalogue can’t use it",
+        "step2Body": "They sit in a description instead of a field a shopper can filter on.",
+        "step3": "Pulse finds the gap",
+        "step3Body": "The audit ranks which missing measurement matters first.",
+        "figureAlt": "An armchair in a living room, marked up with what its listing states: weight capacity 120 kg, material oak wood, depth 78 cm and colour beige, with scale drawings beside it. A panel ranks attribute coverage on a typical furniture and homewares catalogue: weight capacity first at 18 per cent, then assembled depth 44, primary material 52 and colour 95."
       },
       "section2": {
         "1": "What Furniture and homewares looks like right now",
         "2": "of tested retailers offer no filter for information they already display",
         "3": "Baymard Institute",
         "4": "of consumers frustrated by incomplete product information, up from 28%",
-        "5": "Akeneo PX Pulse 2025"
+        "5": "Akeneo PX Pulse 2025",
+        "sceneAlt": "An armchair and side table in a sunlit living room, the kind of piece these figures are about."
       },
       "section3": {
         "1": "What usually goes wrong in Furniture and homewares",
@@ -1020,7 +1091,17 @@
         "6": "Returns driven by a fact the listing could have carried",
         "7": "Ranges where assembled and packed dimensions are used interchangeably",
         "8": "Where it usually already lives:",
-        "9": "Usually the supplier specification sheet, plus your own descriptions. Dimensions in particular are rarely missing from the business, only from the field."
+        "9": "Usually the supplier specification sheet, plus your own descriptions. Dimensions in particular are rarely missing from the business, only from the field.",
+        "figureAlt": "An armchair in a living room with its measurements drawn on: material solid oak, height 78cm, finish linen, depth 82cm and width 68cm, each marked against the piece itself.",
+        "13": "View as table",
+        "14": "Attribute coverage on a typical Furniture and homewares catalogue",
+        "15": "Attribute",
+        "16": "Recorded on",
+        "17": "Weight capacity",
+        "18": "Assembled depth",
+        "19": "Primary material",
+        "20": "Colour",
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -1032,7 +1113,9 @@
         "7": "The same buyer narrows on Weight capacity and reaches a shortlist they can choose from.",
         "8": "Weight capacity came first on the ranked list, measured against what buyers in this sector actually ask, not against how much data was missing.",
         "9": "The remaining gaps are still ranked, so the next round of work is already ordered and costed.",
-        "10": "Coverage figures illustrate the shape of a catalogue in this sector."
+        "10": "Coverage figures illustrate the shape of a catalogue in this sector.",
+        "beforeAlt": "A shelving unit in a room, with weight capacity, material and dimensions each shown as an unanswered question, beside a listing card carrying only a photograph and a rating.",
+        "afterAlt": "The same shelving unit with every measurement recorded: weight capacity 120kg, height 180cm, material oak wood, width 80cm and depth 30cm, beside a filter panel a shopper can now set each of those to."
       },
       "section5": {
         "1": "What we do about it",
@@ -1059,26 +1142,19 @@
     "technology": {
       "section1": {
         "1": "Two devices, one number apart, and the number is missing",
-        "2": "Electronics is the clearest version of this problem and the category we measured first. Buyers narrow on screen size, memory, storage and processor, and a catalogue that records three of those four cannot separate a shelf that needs all four.",
         "3": "Request a Decision Audit",
         "4": "See what you get",
         "5": "Ranked repair list in 48 hours",
         "6": "from one category export",
-        "7": "Attribute coverage on a typical Technology and electronics catalogue",
-        "8": "Illustrative of this sector's shape",
-        "9": "Screen size",
-        "10": "Memory",
-        "11": "Storage",
-        "12": "Processor",
-        "13": "View as table",
-        "14": "Attribute coverage on a typical Technology and electronics catalogue",
-        "15": "Attribute",
-        "16": "Recorded on",
-        "17": "Screen size",
-        "18": "Memory",
-        "19": "Storage",
-        "20": "Processor",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "eyebrow": "Technology and electronics",
+        "lede": "Buyers narrow on screen size, memory, storage and processor. A catalogue that records three of those four cannot separate a shelf that needs all four.",
+        "step1": "Evidence exists",
+        "step1Body": "The specification is in the listing and the supplier sheet.",
+        "step2": "The catalogue can’t use it",
+        "step2Body": "The number sits in a title or a description, not a field.",
+        "step3": "Pulse finds the gap",
+        "step3Body": "The audit ranks which missing number matters first.",
+        "figureAlt": "Two laptops on a desk, marked up with the specification a buyer narrows on: screen size 14 inch, processor M3 Pro, memory 16 GB and storage 512 GB. A panel ranks attribute coverage on a typical technology and electronics catalogue: screen size first at 63 per cent, then memory 72, storage 74 and processor 25."
       },
       "section2": {
         "1": "What Technology and electronics looks like right now",
@@ -1096,7 +1172,16 @@
         "6": "Ranges where a single attribute separates most of the shelf and is recorded worst",
         "7": "Comparison tables that cannot be built because the underlying fields are empty",
         "8": "Where it usually already lives:",
-        "9": "Mostly your own titles. On the laptop shelf we measured, 161 of 216 missing values were recoverable from text the merchant already owned, with no new data purchased."
+        "9": "Mostly your own titles. On the laptop shelf we measured, 161 of 216 missing values were recoverable from text the merchant already owned, with no new data purchased.",
+        "13": "View as table",
+        "14": "Attribute coverage on a typical Technology and electronics catalogue",
+        "15": "Attribute",
+        "16": "Recorded on",
+        "17": "Screen size",
+        "18": "Memory",
+        "19": "Storage",
+        "20": "Processor",
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -1173,7 +1258,56 @@
       "36": "A held-back control group, always",
       "37": "A per-factor breakdown per product",
       "38": "Falls back to your order if slow or down",
-      "39": "Priced on decisions, agreed after the pilot"
+      "39": "Priced on decisions, agreed after the pilot",
+      "heroTitle": "Start with one category.",
+      "heroTitle2": "Pay more only when there is something worth fixing.",
+      "heroLede": "One category export gives you a ranked Decision Audit. From there, choose whether to repair, verify, monitor, or automate.",
+      "afterTitle": "If the audit finds something worth fixing",
+      "afterLede": "You choose how far Pulse should take it.",
+      "monitorBadge": "Recurring",
+      "monitorName": "Decision Monitor",
+      "monitorLede": "Re-measure the same catalogue and hear about regressions when they matter.",
+      "monitorPrice": "Recurring",
+      "monitorPriceNote": "Weekly or monthly, by catalogue size",
+      "monitorCta": "Set up monitoring",
+      "monitorCtaSr": "about Decision Monitor",
+      "monitor1": "Weekly or monthly",
+      "monitor2": "The same measurement method",
+      "monitor3": "Regression alerts",
+      "monitor4": "The attribute and the cause, named",
+      "monitor5": "Comparable history",
+      "growsTitle": "Start small. Expand only when the evidence supports it.",
+      "grows1Tier": "Free",
+      "grows1Name": "Audit",
+      "grows1Body": "One category",
+      "grows1Out": "Find what matters",
+      "grows2Tier": "Project",
+      "grows2Name": "Repair and verification",
+      "grows2Body": "The ranked plan, measured",
+      "grows2Out": "Fix what matters",
+      "grows3Tier": "Recurring",
+      "grows3Name": "Monitor",
+      "grows3Body": "Re-measure continuously",
+      "grows3Out": "Keep it healthy",
+      "grows4Tier": "Scale",
+      "grows4Name": "Decision API",
+      "grows4Body": "Live decisions",
+      "grows4Out": "Automate it",
+      "driversTitle": "What determines the price",
+      "driver1": "Catalogue size",
+      "driver1Body": "Products and variants",
+      "driver2": "Categories",
+      "driver2Body": "Number of shelves",
+      "driver3": "Frequency",
+      "driver3Body": "One off, or monitored",
+      "driver4": "Live decisions",
+      "driver4Body": "API volume once deployed",
+      "driversNote": "No catalogue-wide enrichment contract is required to start.",
+      "finalEyebrow": "Not sure where to start?",
+      "finalTitle": "Start with one category.",
+      "finalLede": "We will tell you which product information is worth fixing before you commit to a larger project.",
+      "finalCta": "Request a Decision Audit",
+      "finalNote": "One export · No integration · 48 hours"
     }
   },
   "privacy": {
@@ -1262,7 +1396,8 @@
         "2": "data shoppers decide on",
         "3": "Identify, prioritize, and verify the product-information fixes that matter most to buying decisions.",
         "4": "Request a Decision Audit",
-        "5": "Ask AI"
+        "5": "Ask AI",
+        "figureAlt": "A Decision Audit of one laptop. Memory, storage and processor are recorded; screen size sits in the title and cannot be filtered on. A table ranks nine attributes by coverage and decision impact, and a panel lists the top five fixes, led by adding screen size to structured data."
       },
       "section2": {
         "1": "One shelf, from the gap to the fix",
@@ -1325,7 +1460,10 @@
         "7": "Within 48 hours, we measure how much each attribute helps tell products apart, and what it would be worth if recorded across the category, in bits rather than clicks.",
         "8": "Both",
         "9": "We walk you through it",
-        "10": "Receive a ranked list of attributes and supporting files. We walk you through the findings and discuss what it would take to act on them."
+        "10": "Receive a ranked list of attributes and supporting files. We walk you through the findings and discuss what it would take to act on them.",
+        "figure1Alt": "A CSV file and a JSON file feeding a product data table of corn flakes, body lotion, shampoo and a chocolate bar, each with its price and category, above an open carton holding the same four products.",
+        "figure2Alt": "An attribute coverage panel reading brand 97 per cent, pack size 58 per cent, dietary claim 31 per cent and concentration 22 per cent, with a magnifier over a 400 ml body lotion and all four attributes ticked off beside it.",
+        "figure3Alt": "A ranked list of attribute opportunities: concentration high, pack size medium, dietary claim medium and brand low, above a report with a bar chart and a pie chart, and a panel offering to view the full report, download files, discuss findings and plan next steps."
       },
       "section5": {
         "1": "What your business gains from the Decision Audit",
@@ -1362,7 +1500,8 @@
         "2": "stopped being decidable",
         "3": "Catalogues decay quietly. New products arrive unrecorded and a shelf that was ready last quarter stops being ready. Monitor re-measures as yours changes and names the shelf, the attribute and the cause.",
         "4": "Request a Decision Audit",
-        "5": "Ask AI"
+        "5": "Ask AI",
+        "figureAlt": "Decision Monitor watching a skincare shelf. Shelf decisionability reads 78 per cent, up 18 points on a rising trend line, and re-measurement runs weekly. Skin type has dropped on 14 new lines while key ingredient stays recorded, and the shopper question it answers is whether a product suits their skin. A before and after pair shows a night cream going from two unanswered attributes to two filled in, and this week's top changes rank skin type as high impact, key ingredient medium and usage occasion low."
       },
       "section2": {
         "1": "What does a shelf look like when it slips?",
@@ -1403,7 +1542,10 @@
         "7": "The same method on every run, so the numbers are comparable over time rather than a series of unrelated snapshots.",
         "8": "When it matters",
         "9": "You get told, with the reason",
-        "10": "Not a dashboard you have to remember to open. An alert naming the shelf, the attribute and what caused the drop."
+        "10": "Not a dashboard you have to remember to open. An alert naming the shelf, the attribute and what caused the drop.",
+        "figure1Alt": "A March 2024 calendar beside a clock, with the cadence set to weekly, every 7 days, and monthly, every 30 days, offered as the alternative. A note says the audit is imported automatically, and the run days are marked across the month.",
+        "figure2Alt": "Attribute coverage on the current run against the previous one, rising from January to March 2024: ingredients 42 to 78 per cent, up 36 points; pack size 28 to 62, up 34; skin type 51 to 89, up 38.",
+        "figure3Alt": "An alert dated 8 March 2024 headed concern addressed, answering the shopper question “is this fragrance-free?”. It names the shelf as Baby Care, the attribute as fragrance-free and the cause as not recorded in catalogue, next to the pack that carries the claim."
       },
       "section5": {
         "1": "What your business gains from Decision Monitor",
@@ -1439,7 +1581,8 @@
         "2": "against what shoppers need",
         "3": "Your team populated the top attribute. We run the same measurement again and show you exactly what moved, attribute by attribute. It reads your catalogue rather than your traffic, so there is nothing to wait for.",
         "4": "Request a Decision Audit",
-        "5": "Ask AI"
+        "5": "Ask AI",
+        "figureAlt": "Decision Verification on one laptop, before and after. A before card lists screen size, memory, storage and processor as unanswered; the after card fills all four in. A table sets each attribute's before value against its after value, turning missing, partial and unclear into 15.6 inches, 16 GB, 512 GB, Intel i7, RTX 4060, 8 hours and 1.8 kg. Decision completeness rises from 42 to 87 per cent, and the same answers are checked across Amazon, Google, Meta, Shopify and TikTok."
       },
       "section2": {
         "1": "A more complete catalogue isn’t always better",
@@ -1463,7 +1606,10 @@
         "7": "We use the same method and product attributes in both audits, ensuring accurate and reliable before-and-after comparisons without changing the evaluation criteria.",
         "8": "Both",
         "9": "See what has improved",
-        "10": "Track product attribute coverage, measure catalogue gap improvements, and assess your readiness score in a clear, shareable report for business decision-makers."
+        "10": "Track product attribute coverage, measure catalogue gap improvements, and assess your readiness score in a clear, shareable report for business decision-makers.",
+        "figure1Alt": "A product catalogue of baby lotion, laundry powder and face cream with their categories and prices, exporting to CSV and JSON. A progress bar reads 78 per cent, because a part-finished export is accepted.",
+        "figure2Alt": "The same baby lotion before and after, side by side. Both cards carry brand GentleCare, category Baby Care and price 8.90; the after card adds fragrance free, dermatologist tested and suitable for sensitive skin, each answered yes, where the before card has blanks.",
+        "figure3Alt": "A catalogue gap reduced panel: attribute coverage rises from 32 to 87 per cent, 68 points of added coverage. A bar chart sets before against after for product identification, ingredients, safety and usage, size and dimensions, and brand and origin, beside a twelve page verification report to download."
       },
       "section4": {
         "1": "What your business gains from Decision Verification",
@@ -1662,7 +1808,9 @@
     },
     "section1": {
       "1": "Half of what your catalogue records, the photograph already said",
-      "2": "We ran our own catalogue through the question we ask merchants, and got back an answer we did not want. Here it is, with the working."
+      "2": "We ran our own catalogue through the question we ask merchants, and got back an answer we did not want. Here it is, with the working.",
+      "eyebrow": "Visual evidence",
+      "provenance": "Measured in October 2026. Nothing on this page is for sale."
     },
     "section2": {
       "1": "Why did we go looking for this?",

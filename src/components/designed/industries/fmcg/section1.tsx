@@ -4,239 +4,100 @@
  * The markup is the designer's. Change it here only for things the converter cannot do; anything
  * structural should go back to the source page so the two do not drift.
  *
- * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
+ * Rebuilt from the supplied brief as a centred, editorial hero rather than a 50/50 split. The
+ * split was fighting the illustration: the figure is detailed and wants horizontal room, and the
+ * headline was wrapping to four lines in a column too narrow for it. Centring the words and
+ * running the figure full width underneath gives each what it needs.
+ *
+ * Order: industry, the buying problem, the short explanation, the calls to action, then the visual
+ * proof, then what Pulse makes of it. The coverage table that used to sit under the figure has
+ * moved out: orphaned under a hero, it read as a stray link, and the evidence section that follows
+ * is where a reader looking for the numbers goes.
  */
 import Image from "next/image";
-import { sector } from "@/content/industries";
-import { renderLocale } from "@/i18n/render-locale";
 import { img } from "@/lib/cdn";
 import { designedHref, designedText } from "../../t";
 import Link from "next/link";
 
+/** What the figure proves, in three beats, as the brief set them out. */
+const BEATS = ["step1", "step2", "step3"] as const;
+
 export function Section1Section() {
   const t = designedText("industries.fmcg.section1");
   return (
-    <section className="hero-bg border-b border-line">
-            <div
-              className="frame grid grid-cols-1 items-center gap-14 py-20 lg:grid-cols-12 lg:gap-x-0 lg:py-28"
-            >
-              <div className="lg:col-span-6 lg:pr-16">
-                <h1 className="reveal text-headline text-balance">
+    <section className="hero-bg overflow-hidden border-b border-line">
+            <div className="frame pt-8 pb-14 lg:pt-10 lg:pb-16">
+              <div className="mx-auto max-w-3xl text-center">
+                <p className="reveal eyebrow">{t('eyebrow')}</p>
+                <h1 className="reveal mt-3 text-headline text-balance">
                   {t('1')}
                 </h1>
-                <p
-                  className="reveal mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted delay-100"
-                >
-                  {t('2')}
+                {/*
+                  The short lede, not the original paragraph. That one explained the mechanism in
+                  full before the reader had seen the figure that shows it; this says what is bought
+                  on and where the facts sit, and lets the picture carry the rest.
+                */}
+                <p className="reveal mx-auto mt-3 max-w-2xl text-body leading-relaxed text-pretty text-muted delay-100">
+                  {t('lede')}
                 </p>
-                <div className="reveal mt-8 flex flex-wrap gap-3 delay-200">
+                <div className="reveal mt-6 flex flex-wrap justify-center gap-3 delay-200">
                   <Link href={designedHref("/en/contact")} className="btn-primary"
                     >{t('3')}</Link>
                   <Link href={designedHref("/en/product/decision-audit")} className="btn-secondary"
                     >{t('4')}</Link>
                 </div>
-                <p className="reveal mt-6 text-sm text-muted delay-300">
-                  <span className="font-semibold text-ink"
-                    >{t('5')}</span
-                  >{" "}
-                  {t('6')}
+                <p className="reveal mt-5 flex items-center justify-center gap-2.5 text-sm text-muted delay-300">
+                  <svg className="size-4 shrink-0 text-primary" aria-hidden="true">
+                    <use href="#i-sparkles" />
+                  </svg>
+                  <span>
+                    <span className="font-semibold text-ink">{t('5')}</span>{" "}
+                    {t('6')}
+                  </span>
                 </p>
               </div>
-              <figure className="reveal delay-200 lg:col-span-6">
-                  {/*
-                    Photographed on white with no alpha, so it sits on a plate: dropped straight
-                    onto the page it would be a white block once the theme flips.
-                  */}
-                  <div className="mb-5 grid place-items-center rounded-2xl bg-[#fdfdfd] p-4">
-                    <Image
-                      src={img("sectors/fmcg-supermarket-shelf-packaged-goods.webp")}
-                      alt={sector(renderLocale(), "fmcg")?.name ?? ""}
-                      width={1536}
-                      height={1024}
-                      sizes="(min-width: 1024px) 32rem, 90vw"
-                      className="h-40 w-auto object-contain"
-                    />
-                  </div>
-                <div className="card">
-                  <p className="text-sm font-semibold text-ink">
-                    {t('7')}
-                  </p>
-                  <p className="mt-1 text-caption text-muted">
-                    {t('8')}
-                  </p>
-                  <ul className="mt-6 space-y-4">
-                    <li
-                      className="-mx-2 grid grid-cols-12 items-center gap-x-3 gap-y-1.5 rounded-lg border border-signal bg-signal-tint px-2 py-2 ring-1 ring-signal"
-                    >
-                      <p
-                        className="col-span-12 sm:col-span-4 flex items-center gap-2 text-sm font-semibold text-ink"
-                      >
-                        <span
-                          className="grid size-5 shrink-0 place-items-center rounded bg-signal text-caption tabular-nums text-on-step"
-                          aria-label="Rank 1"
-                          >1</span
-                        >{t('9')}
-                      </p>
-                      <div
-                        className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-card"
-                      >
-                        <div
-                          className="reveal-bar h-full rounded-full bg-chart-highlight w-22/100"
-                        ></div>
-                      </div>
-                      <p
-                        className="col-span-2 text-right text-sm font-semibold tabular-nums text-signal-text"
-                      >
-                        22%
-                      </p>
-                    </li>
-                    <li className="grid grid-cols-12 items-center gap-x-3 gap-y-1.5">
-                      <p
-                        className="col-span-12 sm:col-span-4 flex items-center gap-2 text-sm text-ink"
-                      >
-                        <span
-                          className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
-                          aria-label="Rank 2"
-                          >2</span
-                        >{t('10')}
-                      </p>
-                      <div
-                        className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
-                      >
-                        <div
-                          className="reveal-bar h-full rounded-full bg-chart-baseline w-58/100"
-                        ></div>
-                      </div>
-                      <p
-                        className="col-span-2 text-right text-sm tabular-nums text-ink"
-                      >
-                        58%
-                      </p>
-                    </li>
-                    <li className="grid grid-cols-12 items-center gap-x-3 gap-y-1.5">
-                      <p
-                        className="col-span-12 sm:col-span-4 flex items-center gap-2 text-sm text-ink"
-                      >
-                        <span
-                          className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
-                          aria-label="Rank 3"
-                          >3</span
-                        >{t('11')}
-                      </p>
-                      <div
-                        className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
-                      >
-                        <div
-                          className="reveal-bar h-full rounded-full bg-chart-baseline w-31/100"
-                        ></div>
-                      </div>
-                      <p
-                        className="col-span-2 text-right text-sm tabular-nums text-ink"
-                      >
-                        31%
-                      </p>
-                    </li>
-                    <li className="grid grid-cols-12 items-center gap-x-3 gap-y-1.5">
-                      <p
-                        className="col-span-12 sm:col-span-4 flex items-center gap-2 text-sm text-ink"
-                      >
-                        <span
-                          className="grid size-5 shrink-0 place-items-center rounded bg-baseline text-caption tabular-nums text-on-step"
-                          aria-label="Rank 4"
-                          >4</span
-                        >{t('12')}
-                      </p>
-                      <div
-                        className="col-span-10 h-2.5 sm:col-span-6 rounded-full bg-surface-1"
-                      >
-                        <div
-                          className="reveal-bar h-full rounded-full bg-chart-baseline w-97/100"
-                        ></div>
-                      </div>
-                      <p
-                        className="col-span-2 text-right text-sm tabular-nums text-ink"
-                      >
-                        97%
-                      </p>
-                    </li>
-                  </ul>
-                  <details className="group mt-6 border-t border-line pt-1">
-                    <summary
-                      className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-medium text-primary hover:text-primary-hover"
-                    >
-                      {t('13')}<svg
-                        className="size-4 transition-transform duration-200 ease-out-soft group-open:rotate-180"
+
+              {/*
+                The figure, under the words and wider than the page column.
+
+                `bleed-x` gives back the page margins the frame took and the section clips, so the
+                reclaimed width does not scroll the page sideways, and the 1200px cap is the width
+                the brief asked for. The image fills that panel rather than being bounded against
+                the screen inside it: a height bound with `object-contain` letterboxed it, leaving
+                pale bands down both sides of the border.
+
+                Opaque, with no alpha, so the box keeps a light fill pinned in both themes.
+              */}
+              <figure className="reveal mt-7 delay-200 lg:mt-8 lg:bleed-x">
+                <div className="mx-auto max-w-[738px] overflow-hidden rounded-2xl border border-line bg-[#fdfdfd]">
+                  <Image
+                    src={img("sectors/fmcg-shelf-label-evidence-coverage-ranked.webp")}
+                    alt={t('figureAlt')}
+                    width={1400}
+                    height={891}
+                    sizes="(min-width: 1280px) 738px, 94vw"
+                    priority
+                    className="h-auto w-full"
+                  />
+                </div>
+
+                {/* What the figure means, read left to right under it. */}
+                <ol className="mx-auto mt-7 grid max-w-[738px] grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-4">
+                  {BEATS.map((key, i) => (
+                    <li key={key} className="flex gap-3">
+                      <span
+                        className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-primary-tint text-caption font-semibold tabular-nums text-primary"
                         aria-hidden="true"
                       >
-                        <use href="#i-chevron-down" />
-                      </svg>
-                    </summary>
-                    <div className="mt-4 overflow-hidden rounded-lg border border-line">
-                      <table className="w-full text-data">
-                        <caption className="sr-only">
-                          {t('14')}
-                        </caption>
-                        <thead className="bg-surface-1 text-xs text-muted">
-                          <tr>
-                            <th
-                              scope="col"
-                              className="px-4 py-2 text-left font-sans font-medium"
-                            >
-                              {t('15')}
-                            </th>
-                            <th
-                              scope="col"
-                              className="px-4 py-2 text-right font-sans font-medium"
-                            >
-                              {t('16')}
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-line">
-                          <tr>
-                            <th
-                              scope="row"
-                              className="px-4 py-2 text-left font-sans font-normal"
-                            >
-                              {t('17')}
-                            </th>
-                            <td className="px-4 py-2 text-right tabular-nums">22%</td>
-                          </tr>
-                          <tr>
-                            <th
-                              scope="row"
-                              className="px-4 py-2 text-left font-sans font-normal"
-                            >
-                              {t('18')}
-                            </th>
-                            <td className="px-4 py-2 text-right tabular-nums">58%</td>
-                          </tr>
-                          <tr>
-                            <th
-                              scope="row"
-                              className="px-4 py-2 text-left font-sans font-normal"
-                            >
-                              {t('19')}
-                            </th>
-                            <td className="px-4 py-2 text-right tabular-nums">31%</td>
-                          </tr>
-                          <tr>
-                            <th
-                              scope="row"
-                              className="px-4 py-2 text-left font-sans font-normal"
-                            >
-                              {t('20')}
-                            </th>
-                            <td className="px-4 py-2 text-right tabular-nums">97%</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </details>
-                </div>
-                <figcaption className="mt-4 max-w-xl text-caption text-muted">
-                  {t('21')}
-                </figcaption>
+                        {i + 1}
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-body font-semibold text-ink">{t(key)}</p>
+                        <p className="mt-1 text-data text-pretty text-muted">{t(`${key}Body`)}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
               </figure>
             </div>
           </section>

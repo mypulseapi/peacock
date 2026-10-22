@@ -6,8 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { HeroScene } from "../hero-scene";
 import { designedHref, designedText } from "../../t";
+import Image from "next/image";
+import { img } from "@/lib/cdn";
 
 import Link from "next/link";
 
@@ -15,49 +16,65 @@ export function Section1Section() {
   const t = designedText("product.decision-monitor.section1");
   return (
     <section className="relative isolate overflow-hidden border-b border-line">
-            {/* the frame keeps the page margins; the box inside it is the hero's height (540 / 800px) with the title and
-                 the description under it at the top left */}
+            {/* the frame keeps the page margins; the figure below then reclaims them, so the words sit
+                 in the page column and the image spans the screen */}
             <div className="frame">
-              {/* The designer set `lg:min-h-200` here, a forced 800px. These three heroes carry less
-                   than the home page's demo rail does, so on a wide screen it reserved about 390px
-                   of empty gradient under the content. Dropped so the hero sizes to what is in it,
-                   like every other designed hero; the padding and the small-screen minimum stay. */}
-              <div className="grid min-h-135 items-center gap-12 py-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16 lg:py-20">
-                <div className="min-w-0">
-                <h1 className="reveal max-w-2xl text-headline text-balance">
-                  {/*
-                    `sm:block` only breaks the line from 640px up. Below that the two spans are
-                    inline, and JSX drops the newline between them, so the headline rendered as
-                    "productdata", "fixagainst" and "shelfstopped" on every phone. The explicit
-                    space is the fix: it separates them when they are inline and collapses
-                    harmlessly at the end of a line once they are blocks.
-                  */}
-                  <span className="sm:block">{t('1')}</span>{" "}
-                  <span className="sm:block">{t('2')}</span>
-                </h1>
-                <p
-                  className="reveal mt-6 max-w-lg text-lg leading-relaxed text-balance text-muted delay-100"
-                >
-                  {t('3')}
-                </p>
-                {/* "Ask AI" is a placeholder, hidden until the AI assistant exists: remove "hidden" and wire it up then */}
-                <div className="reveal mt-8 flex flex-wrap gap-3 delay-200">
-                  <Link href={designedHref("/en/contact")} className="btn-primary"
-                    >{t('4')}</Link>
-                  <button type="button" className="btn-secondary hidden" data-ask-ai>
-                    <svg className="size-4 text-primary" aria-hidden="true">
-                      <use href="#i-sparkles" /></svg
-                    >{t('5')}
-                  </button>
-                </div>
+              {/*
+                The copy above the figure rather than beside it.
+
+                The words are the page's heading and its description, and they still have to be the
+                first thing a reader and a crawler meet, so they stay an `h1` and a paragraph in
+                source order. What changed is their weight: they are sized down and centred over a
+                narrow column, because the figure is what a merchant actually reads this page for.
+              */}
+              <div className="pt-12 pb-0 lg:pt-16">
+                <div className="mx-auto max-w-2xl text-center">
+                  <h1 className="reveal text-title text-balance">
+                    {/*
+                      `sm:block` only breaks the line from 640px up. Below that the two spans are
+                      inline, and JSX drops the newline between them, so the headline rendered as
+                      "productdata", "fixagainst" and "shelfstopped" on every phone. The explicit
+                      space is the fix: it separates them when they are inline and collapses
+                      harmlessly at the end of a line once they are blocks.
+                    */}
+                    <span className="sm:block">{t('1')}</span>{" "}
+                    <span className="sm:block">{t('2')}</span>
+                  </h1>
+                  <p
+                    className="reveal mx-auto mt-4 max-w-xl text-body leading-relaxed text-pretty text-muted delay-100"
+                  >
+                    {t('3')}
+                  </p>
+                  {/* "Ask AI" is a placeholder, hidden until the AI assistant exists: remove "hidden" and wire it up then */}
+                  <div className="reveal mt-7 flex flex-wrap justify-center gap-3 delay-200">
+                    <Link href={designedHref("/en/contact")} className="btn-primary"
+                      >{t('4')}</Link>
+                    <button type="button" className="btn-secondary hidden" data-ask-ai>
+                      <svg className="size-4 text-primary" aria-hidden="true">
+                        <use href="#i-sparkles" /></svg
+                      >{t('5')}
+                    </button>
+                  </div>
                 </div>
                 {/*
-                  The figure, beside the words rather than behind them. `reveal` so it arrives with
-                  the rest of the hero, and the rows then stagger in on their own.
+                  The figure, under the words and across the whole screen.
+
+                  An image as supplied, not a built scene. `bleed-x` gives back the page margins the
+                  frame took; the section clips, so the reclaimed width does not scroll the page
+                  sideways. The height cap keeps the whole figure above the fold: it is 2:1, so at
+                  full page width it would stand 720px tall on a 1440px screen and its lower half
+                  would fall below it. `object-contain` fits the whole image inside that bound
+                  rather than cropping it.
                 */}
-                <div className="reveal delay-200 w-full min-w-0">
-                  <HeroScene
-                    variant="monitor"
+                <div className="reveal mt-8 delay-200 lg:mt-10 lg:bleed-x">
+                  <Image
+                    src={img("product/decision-monitor-shelf-decay-weekly-watch.webp")}
+                    alt={t('figureAlt')}
+                    width={1774}
+                    height={887}
+                    sizes="100vw"
+                    priority
+                    className="mx-auto h-auto w-full object-contain lg:max-h-[calc(100svh-28rem)]"
                   />
                 </div>
               </div>

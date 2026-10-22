@@ -62,7 +62,7 @@ export const RECOMMENDATIONS: StoryContent = {
   },
 
   situationImage: {
-    src: "product/generic-recommendations.webp",
+    src: "product/untargeted-recommended-for-you-strip.webp",
     alt: "A storefront showing a strip headed Recommended Just For You, with three unrelated products under it.",
     caption: "The strip a first-time visitor actually gets. Nothing here was chosen for them, because nothing was known about them, and the heading says otherwise.",
   },
@@ -186,7 +186,7 @@ export const RECOMMENDATIONS_VI: StoryContent = {
   },
 
   situationImage: {
-    src: "product/generic-recommendations.webp",
+    src: "product/untargeted-recommended-for-you-strip.webp",
     alt: "Một gian hàng hiển thị dải gợi ý với tiêu đề Recommended Just For You và ba sản phẩm không liên quan bên dưới.",
     caption: "Đúng dải gợi ý mà một khách lần đầu nhận được. Không thứ nào ở đó được chọn cho họ, vì chẳng ai biết gì về họ, trong khi tiêu đề lại nói ngược lại.",
   },

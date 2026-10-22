@@ -298,7 +298,10 @@
       "117": "thêm 63 sản phẩm",
       "118": "Đã ghi nhận kích thước màn hình",
       "119": "/ 216 · trước là 136",
-      "120": "Đã xác minh trên danh mục của bạn"
+      "120": "Đã xác minh trên danh mục của bạn",
+      "pauseLabel": "Tạm dừng hoạt ảnh",
+      "playLabel": "Phát hoạt ảnh",
+      "pausedLabel": "Đã tạm dừng"
     },
     "request": {
       "1": "Khám phá ý định của người mua cùng Pulse",

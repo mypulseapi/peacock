@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { renderLocale } from "@/i18n/render-locale";
 import TEXT from "./text.json";
@@ -85,18 +85,50 @@ export function Figure({
    */
   priority?: boolean;
 }) {
-  const svg = localize(
-    readFileSync(join(DIR, product, `${name}.svg`), "utf8"),
-    `${product}/${name}`,
-    renderLocale(),
-  );
+  const locale = renderLocale();
+  const read = (file: string) =>
+    localize(readFileSync(join(DIR, product, file), "utf8"), `${product}/${name}`, locale);
+
+  const svg = read(`${name}.svg`);
+
+  /*
+   * The phone cut of the same figure, where one exists.
+   *
+   * These are not the desktop file scaled down: they were recorded from the live page at 375px, so
+   * they carry the phone layout, stacked columns and the ranked list under the shelf rather than
+   * beside it. Each is under 20 KB.
+   *
+   * Both are inlined and one is hidden, rather than swapped at runtime. These figures have to be
+   * inline to see `data-theme` at all, so `<picture>` and a media `src` are not available, and
+   * picking one in JavaScript would mean no figure at all until it ran. The two files use
+   * different id prefixes by design (`dag-` against `dagm-`), which is what makes it safe to put
+   * both in one document.
+   */
+  const mobileFile = `${name}-mobile.svg`;
+  const mobile = existsSync(join(DIR, product, mobileFile)) ? read(mobileFile) : null;
+
+  const hold = priority ? "" : " figure-hold";
+
+  if (!mobile)
+    return (
+      <div
+        className={`figure${hold} ${className}`.trim()}
+        // The file is ours, written by the import script from the designer's export, and it is read
+        // off disk at build time. There is no user input anywhere on this path.
+        dangerouslySetInnerHTML={{ __html: svg }}
+      />
+    );
 
   return (
-    <div
-      className={`figure${priority ? "" : " figure-hold"} ${className}`.trim()}
-      // The file is ours, written by the import script from the designer's export, and it is read
-      // off disk at build time. There is no user input anywhere on this path.
-      dangerouslySetInnerHTML={{ __html: svg }}
-    />
+    <>
+      <div
+        className={`figure${hold} ${className} sm:hidden`.trim()}
+        dangerouslySetInnerHTML={{ __html: mobile }}
+      />
+      <div
+        className={`figure${hold} ${className} hidden sm:block`.trim()}
+        dangerouslySetInnerHTML={{ __html: svg }}
+      />
+    </>
   );
 }

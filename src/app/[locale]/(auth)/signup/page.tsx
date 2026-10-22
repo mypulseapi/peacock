@@ -1,4 +1,5 @@
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
+import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
 import { SignUpForm } from "./SignUpForm";
 
@@ -8,7 +9,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
   const t = await getTranslations({ locale, namespace: "auth.signUp" });
   return {
     title: t("title"),
@@ -26,6 +27,6 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
   return <SignUpForm />;
 }

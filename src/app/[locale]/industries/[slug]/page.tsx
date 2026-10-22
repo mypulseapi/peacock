@@ -1,8 +1,8 @@
 import { notFound, redirect } from "next/navigation";
+import { prepareLocale } from "@/i18n/render-locale";
 import { PageSchema } from "@/components/PageSchema";
 import { designedSector } from "@/components/designed/industries";
 import { buildAlternates, fitDescription } from "@/lib/seo";
-import { setRequestLocale } from "next-intl/server";
 import { IndustryPageContent } from "@/components/IndustryPageContent";
 import { sector, sectorSlugs, RETIRED_SECTOR_SLUGS } from "@/content/industries";
 import { forEachLocale } from "@/i18n/locales";
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function IndustryPage({ params }: PageProps) {
   const { slug, locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
 
   // The ten-sector set was in the sitemap, so the five that were retired and the
   // one that was renamed send visitors to the index instead of a 404.

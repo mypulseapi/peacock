@@ -37,8 +37,8 @@ export function Section3Section() {
                     <Image
                       src={img("home/baby-laundry-powder-pack-shot.webp")}
                       alt={`${t('3')} ${t('4')}`}
-                      width={1536}
-                      height={1024}
+                      width={768}
+                      height={512}
                       sizes="(min-width: 768px) 20rem, 90vw"
                       className="h-32 w-auto object-contain"
                     />
@@ -95,8 +95,8 @@ export function Section3Section() {
                     <Image
                       src={img("product/office-laptop-missing-attributes.webp")}
                       alt={`${t('10')} ${t('11')}`}
-                      width={1536}
-                      height={1024}
+                      width={768}
+                      height={512}
                       sizes="(min-width: 768px) 20rem, 90vw"
                       className="h-32 w-auto object-contain"
                     />

@@ -1,5 +1,5 @@
-import { setRequestLocale } from "next-intl/server";
 import { IconSprite } from "@/components/designed/icon-sprite";
+import { prepareLocale } from "@/i18n/render-locale";
 import { DesignedHome } from "@/components/designed/home";
 
 /**
@@ -19,7 +19,7 @@ export default async function PreviewHome({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
 
   return (
     <>

@@ -1,4 +1,5 @@
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
+import { prepareLocale } from "@/i18n/render-locale";
 import { PageSchema } from "@/components/PageSchema";
 import { DesignedPricing } from "@/components/designed/pricing";
 import { buildAlternates } from "@/lib/seo";
@@ -9,7 +10,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
   const t = await getTranslations({ locale, namespace: "pricing.meta" });
 
   return {
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
 
   return (
     <>

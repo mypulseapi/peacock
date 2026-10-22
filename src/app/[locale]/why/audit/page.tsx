@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { prepareLocale } from "@/i18n/render-locale";
 import { PageSchema } from "@/components/PageSchema";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { buildAlternates } from "@/lib/seo";
 import { PAGE_CATALOGUE } from "@/lib/page-catalogue";
 import { ALL_REQUIREMENTS, REQUIREMENT_VALUE } from "@/lib/visitor-requirements";
@@ -42,7 +43,7 @@ function auditRows() {
 
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
   const t = await getTranslations({ locale, namespace: "ourAudit" });
   const tReq = await getTranslations({ locale, namespace: "nextBest.requirements" });
 

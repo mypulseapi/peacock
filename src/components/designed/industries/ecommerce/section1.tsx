@@ -6,7 +6,6 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { AttributeIcon } from "../../attribute-icon";
 import { designedHref, designedText } from "../../t";
 import Link from "next/link";
 import Image from "next/image";

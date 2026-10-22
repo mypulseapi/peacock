@@ -1299,7 +1299,8 @@
         "2": "data shoppers decide on",
         "3": "Identify, prioritize, and verify the product-information fixes that matter most to buying decisions.",
         "4": "Request a Decision Audit",
-        "5": "Ask AI"
+        "5": "Ask AI",
+        "figureAlt": "A Decision Audit of one laptop. Memory, storage and processor are recorded; screen size sits in the title and cannot be filtered on. A table ranks nine attributes by coverage and decision impact, and a panel lists the top five fixes, led by adding screen size to structured data."
       },
       "section2": {
         "1": "One shelf, from the gap to the fix",

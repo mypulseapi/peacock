@@ -832,7 +832,8 @@
         "2": "mà người mua dựa vào để quyết định",
         "3": "Xác định, ưu tiên và kiểm chứng những sửa chữa thông tin sản phẩm có ảnh hưởng lớn nhất đến quyết định mua hàng.",
         "4": "Yêu cầu Decision Audit",
-        "5": "Hỏi AI"
+        "5": "Hỏi AI",
+        "figureAlt": "Một bản Decision Audit cho một chiếc laptop. RAM, dung lượng và vi xử lý đã được ghi nhận; kích thước màn hình nằm trong tiêu đề và không lọc được. Một bảng xếp hạng chín thuộc tính theo độ phủ và mức ảnh hưởng tới quyết định, cùng một khung liệt kê năm việc cần sửa trước, đứng đầu là bổ sung kích thước màn hình vào dữ liệu có cấu trúc."
       },
       "section2": {
         "1": "Một kệ hàng, từ lỗ hổng đến việc sửa",

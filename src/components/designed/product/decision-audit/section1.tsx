@@ -6,8 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
-import { HeroScene } from "../hero-scene";
 import { designedHref, designedText } from "../../t";
+import Image from "next/image";
+import { img } from "@/lib/cdn";
 
 import Link from "next/link";
 
@@ -52,12 +53,20 @@ export function Section1Section() {
                 </div>
                 </div>
                 {/*
-                  The figure, beside the words rather than behind them. `reveal` so it arrives with
-                  the rest of the hero, and the rows then stagger in on their own.
+                  The figure, beside the words rather than behind them.
+
+                  An image as supplied, not a built scene. `HeroScene` still serves the
+                  verification and monitor pages, which have no image of their own yet.
                 */}
                 <div className="reveal delay-200 w-full min-w-0">
-                  <HeroScene
-                    variant="audit"
+                  <Image
+                    src={img("product/decision-audit-ranked-repair-list.webp")}
+                    alt={t('figureAlt')}
+                    width={1600}
+                    height={800}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    priority
+                    className="h-auto w-full"
                   />
                 </div>
               </div>

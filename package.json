@@ -18,7 +18,8 @@
     "check:fallback": "tsx scripts/check-semantic-fallback.ts",
     "check:placeholders": "node scripts/check-placeholders.mjs",
     "check:seo": "node scripts/check-seo.mjs",
-    "build:search-index": "node scripts/build-search-index.mjs"
+    "build:search-index": "node scripts/build-search-index.mjs",
+    "cdn:restamp": "node scripts/restamp-r2-cache.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "^4.3.1",

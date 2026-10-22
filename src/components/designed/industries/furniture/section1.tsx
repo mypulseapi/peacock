@@ -66,20 +66,20 @@ export function Section1Section() {
                 Opaque, with no alpha, so the box keeps a light fill pinned in both themes.
               */}
               <figure className="reveal mt-7 delay-200 lg:mt-8 lg:bleed-x">
-                <div className="mx-auto max-w-[643px] overflow-hidden rounded-2xl border border-line bg-[#fdfdfd]">
+                <div className="mx-auto max-w-[880px] overflow-hidden rounded-2xl border border-line bg-[#fdfdfd]">
                   <Image
                     src={img("sectors/furniture-room-fit-measurements-coverage.webp")}
                     alt={t('figureAlt')}
                     width={1400}
                     height={1023}
-                    sizes="(min-width: 1280px) 643px, 94vw"
+                    sizes="(min-width: 1280px) 880px, 94vw"
                     priority
                     className="h-auto w-full"
                   />
                 </div>
 
                 {/* What the figure means, read left to right under it. */}
-                <ol className="mx-auto mt-7 grid max-w-[643px] grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-4">
+                <ol className="mx-auto mt-7 grid max-w-[880px] grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-4">
                   {BEATS.map((key, i) => (
                     <li key={key} className="flex gap-3">
                       <span

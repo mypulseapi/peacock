@@ -1,7 +1,7 @@
 import { JobApplicationForm } from "@/components/JobApplicationForm";
+import { prepareLocale } from "@/i18n/render-locale";
 import { PageSchema } from "@/components/PageSchema";
 import { img } from "@/lib/cdn";
-import { setRequestLocale } from "next-intl/server";
 import { buildAlternates, fitDescription } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { ArrowLeft, Briefcase, Clock, MapPin } from "lucide-react";
@@ -247,7 +247,7 @@ export async function generateMetadata({
 export default async function JobPage({ params }: PageProps) {
   const { id, locale } = await params;
   // Static rendering: see the note in [locale]/terms/page.tsx.
-  setRequestLocale(locale);
+  prepareLocale(locale);
   const t = await getTranslations({ locale, namespace: "careers" });
   const raw = jobListings[id];
 

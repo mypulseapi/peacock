@@ -1,4 +1,5 @@
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
+import { prepareLocale } from "@/i18n/render-locale";
 import { PageSchema } from "@/components/PageSchema";
 import { buildAlternates } from "@/lib/seo";
 import DocsPage from "./DocsPageClient";
@@ -9,7 +10,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
   const t = await getTranslations({ locale, namespace: "docs.meta" });
 
   return {
@@ -25,7 +26,7 @@ export default async function Page({ params }: PageProps) {
   // `output: "export"` has no request to read: the page fails to prerender with
   // `dynamic = "error"`. Calling it in `generateMetadata` alone is not enough -- that runs in
   // its own scope, so the page body still falls back to the dynamic path.
-  setRequestLocale(locale);
+  prepareLocale(locale);
 
   return (
     <>

@@ -13,6 +13,7 @@
  * footer's strings in the client bundle, which is a list of links.
  */
 import { useTranslations } from "next-intl";
+import { SOCIAL } from "@/lib/social";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { Github, Linkedin, Facebook } from "lucide-react";
@@ -20,9 +21,9 @@ import { img } from "@/lib/cdn";
 
 
 const SOCIALS = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/thepulseapi", Icon: Linkedin, bg: "#0a66c2" },
+  { label: "LinkedIn", href: SOCIAL.linkedin, Icon: Linkedin, bg: "#0a66c2" },
   { label: "Facebook", href: "https://www.facebook.com/thepulseapi", Icon: Facebook, bg: "#1877f2" },
-  { label: "GitHub", href: "https://github.com/thepulseapi", Icon: Github, bg: "#24292f" },
+  { label: "GitHub", href: SOCIAL.github, Icon: Github, bg: "#24292f" },
 ];
 
 interface FooterLink {

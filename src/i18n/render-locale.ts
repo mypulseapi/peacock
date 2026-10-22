@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { setRequestLocale } from "next-intl/server";
 import { FALLBACK_LOCALE } from "./locales";
 
 /**
@@ -26,6 +27,25 @@ const store = cache((): { locale: string } => ({ locale: FALLBACK_LOCALE }));
 
 export function setRenderLocale(locale: string): void {
   store().locale = locale;
+}
+
+/**
+ * Set BOTH locale stores for this render. Call it at the top of every page and layout.
+ *
+ * **The layout alone is not enough, and that was a real bug.** Next does not re-render a layout
+ * segment that has not changed, so navigating from `/vi` to `/vi/pricing` in the browser renders
+ * only the page: the layout never runs, `setRenderLocale` is never called, and every component
+ * beneath reads the default. The page arrived in English under Vietnamese chrome, and a hard
+ * refresh fixed it, which is the signature of a layout-only side effect.
+ *
+ * So the page sets it too. One function rather than two calls, because the failure mode of
+ * remembering one and forgetting the other is silent: the page renders, in the wrong language.
+ */
+export function prepareLocale(locale: string): void {
+  // next-intl's, for `useTranslations` and `getTranslations` in client and server components.
+  setRequestLocale(locale);
+  // Ours, for the designed components, which next-intl cannot reach in a static export.
+  setRenderLocale(locale);
 }
 
 export function renderLocale(): string {

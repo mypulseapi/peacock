@@ -1,4 +1,5 @@
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
+import { prepareLocale } from "@/i18n/render-locale";
 import { PageSchema } from "@/components/PageSchema";
 import { buildAlternates } from "@/lib/seo";
 import { Link } from "@/i18n/routing";
@@ -13,7 +14,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
   const t = await getTranslations({ locale, namespace: "industriesPage.meta" });
 
   return {
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: PageProps) {
  */
 export default async function IndustriesPage({ params }: PageProps) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  prepareLocale(locale);
   const t = await getTranslations({ locale, namespace: "industriesPage" });
   const tc = await getTranslations({ locale, namespace: "common" });
   const list = sectors(locale);

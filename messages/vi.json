@@ -262,9 +262,9 @@
   },
   "about": {
     "meta": {
-      "title": "Về Pulse: phép đo, và những gì nó chưa thể khẳng định",
+      "title": "Về Pulse: phép đo và những giới hạn của nó",
       "description": "Chúng tôi đo xem dữ liệu sản phẩm có trả lời được những câu người mua hỏi hay không. Mọi con số đều tái lập được từ kho mã, kể cả những lần chạy thất bại.",
-      "ogTitle": "Về Pulse: phép đo, và những gì nó chưa thể khẳng định",
+      "ogTitle": "Về Pulse: phép đo và những giới hạn của nó",
       "ogDescription": "Chúng tôi đo xem dữ liệu sản phẩm có trả lời được những câu người mua hỏi hay không. Mọi con số đều tái lập được từ kho mã, kể cả những lần chạy thất bại."
     },
     "badge": "Về PULSE",
@@ -365,10 +365,10 @@
   },
   "contact": {
     "meta": {
-      "title": "Yêu cầu Decision Audit, hoặc hỏi chúng tôi điều khó hơn",
-      "description": "Gửi một tệp xuất ngành hàng và nhận danh sách xếp hạng những gì cần ghi trước trong 48 giờ. Không mã nguồn, không thẻ theo dõi, không dữ liệu khách hàng, không ràng buộc.",
-      "ogTitle": "Yêu cầu Decision Audit, hoặc hỏi chúng tôi điều khó hơn",
-      "ogDescription": "Gửi một tệp xuất ngành hàng và nhận danh sách xếp hạng những gì cần ghi trước trong 48 giờ. Không mã nguồn, không thẻ theo dõi, không dữ liệu khách hàng, không ràng buộc."
+      "title": "Yêu cầu Decision Audit cho danh mục của bạn",
+      "description": "Gửi một tệp xuất ngành hàng và nhận lại danh sách xếp hạng những gì cần ghi trước, trong 48 giờ. Không mã nguồn, không thẻ, không dữ liệu khách hàng.",
+      "ogTitle": "Yêu cầu Decision Audit cho danh mục của bạn",
+      "ogDescription": "Gửi một tệp xuất ngành hàng và nhận lại danh sách xếp hạng những gì cần ghi trước, trong 48 giờ. Không mã nguồn, không thẻ, không dữ liệu khách hàng."
     },
     "badge": "Yêu cầu Decision Audit",
     "title": "Gửi một danh mục.",
@@ -527,14 +527,22 @@
       "description": "Chúng tôi luôn quan tâm đến việc gặp gỡ những người xuất sắc. Gửi CV của bạn và cho chúng tôi biết bạn sẽ đóng góp gì cho Pulse.",
       "button": "Liên hệ"
     },
-    "heroAlt": "Một nhóm quanh bàn với laptop, cùng nhau xử lý một việc gì đó."
+    "heroAlt": "Một nhóm quanh bàn với laptop, cùng nhau xử lý một việc gì đó.",
+    "jobMetaLead": "{title} tại Pulse. {type}, {location}.",
+    "jobOgTitle": "{title} | Tuyển dụng tại Pulse",
+    "notFound": "Không tìm thấy vị trí",
+    "allPositions": "Tất cả vị trí",
+    "aboutRole": "Về vị trí này",
+    "whatYouDo": "Bạn sẽ làm gì",
+    "lookingFor": "Chúng tôi tìm kiếm điều gì",
+    "niceToHave": "Có thì càng tốt"
   },
   "blog": {
     "meta": {
-      "title": "Ghi chép về dữ liệu sản phẩm, khả năng tìm thấy hàng và thương mại tác tử",
-      "description": "Nghiên cứu về cái giá của thuộc tính sản phẩm còn thiếu, mọi con số đều có nguồn. Các bài viết hiện chỉ có bản tiếng Anh.",
-      "ogTitle": "Ghi chép về dữ liệu sản phẩm, khả năng tìm thấy hàng và thương mại tác tử",
-      "ogDescription": "Nghiên cứu về cái giá của thuộc tính sản phẩm còn thiếu, mọi con số đều có nguồn. Các bài viết hiện chỉ có bản tiếng Anh."
+      "title": "Ghi chép về dữ liệu sản phẩm và thương mại AI",
+      "description": "Nghiên cứu về cái giá của thuộc tính sản phẩm còn thiếu, mọi con số đều có nguồn: Baymard về bộ lọc, Adobe về khả năng đọc máy, và phép đo của chúng tôi.",
+      "ogTitle": "Ghi chép về dữ liệu sản phẩm và thương mại AI",
+      "ogDescription": "Nghiên cứu về cái giá của thuộc tính sản phẩm còn thiếu, mọi con số đều có nguồn: Baymard về bộ lọc, Adobe về khả năng đọc máy, và phép đo của chúng tôi."
     },
     "title": "Những gì chúng tôi đo được, và những gì người khác đo được.",
     "titleHighlight": "Blog",
@@ -548,7 +556,7 @@
       "success": "Cảm ơn đã đăng ký! Kiểm tra hộp thư của bạn để xác nhận."
     },
     "eyebrow": "Ghi chép",
-    "lede": "Nghiên cứu về dữ liệu sản phẩm và khả năng tìm thấy hàng, mọi con số đều có nguồn. Con số nào của chúng tôi thì có ghi rõ, và câu lệnh tái lập nó nằm ở trang phương pháp. Các bài viết hiện chỉ có bản tiếng Anh.",
+    "lede": "Nghiên cứu về dữ liệu sản phẩm và khả năng tìm thấy hàng, mọi con số đều có nguồn. Con số nào của chúng tôi thì có ghi rõ, và câu lệnh tái lập nó nằm ở trang phương pháp.",
     "read": "Đọc bài",
     "subscribeTitle": "Thỉnh thoảng có bài mới.",
     "subscribeBody": "Chúng tôi viết khi đo được điều gì đó đáng viết, và việc đó không theo lịch.",
@@ -558,10 +566,10 @@
   },
   "status": {
     "meta": {
-      "title": "Trạng thái hệ thống và độ trễ thời gian thực của Pulse API",
-      "description": "Tình trạng hoạt động hiện tại, lịch sử sự cố, và độ trễ p50 cùng p95 báo dưới dạng phân phối thay vì số trung vị.",
-      "ogTitle": "Trạng thái hệ thống và độ trễ thời gian thực của Pulse API",
-      "ogDescription": "Tình trạng hoạt động hiện tại, lịch sử sự cố, và độ trễ p50 cùng p95 báo dưới dạng phân phối thay vì số trung vị."
+      "title": "Trạng thái hệ thống và độ trễ Pulse API",
+      "description": "Tình trạng hoạt động hiện tại và lịch sử sự cố, với độ trễ p50 và p95 báo dưới dạng phân phối thay vì số trung vị, cho từng dịch vụ và từng khu vực.",
+      "ogTitle": "Trạng thái hệ thống và độ trễ Pulse API",
+      "ogDescription": "Tình trạng hoạt động hiện tại và lịch sử sự cố, với độ trễ p50 và p95 báo dưới dạng phân phối thay vì số trung vị, cho từng dịch vụ và từng khu vực."
     },
     "title": "Trạng thái hệ thống",
     "description": "Trạng thái thời gian thực của các dịch vụ và cơ sở hạ tầng Pulse",
@@ -580,13 +588,20 @@
       "operational": "Hoạt động",
       "degraded": "Hiệu suất giảm",
       "outage": "Ngừng dịch vụ"
-    }
+    },
+    "eyebrow": "Trạng thái hệ thống",
+    "lastChecked": "Kiểm tra lần cuối",
+    "unknown": "Không rõ",
+    "last30": "30 ngày qua",
+    "last90": "90 ngày qua",
+    "last12m": "12 tháng qua",
+    "durationLabel": "Thời lượng"
   },
   "pricing": {
     "meta": {
-      "title": "Bảng giá: phí cố định cho bản kiểm tra, phần còn lại theo từng chương trình",
+      "title": "Bảng giá: phí cố định cho bản kiểm tra",
       "description": "Decision Audit có giá cố định cho mỗi danh mục. Bộ máy thời gian thực được định giá theo từng chương trình thử nghiệm, không bao giờ trước đó.",
-      "ogTitle": "Bảng giá: phí cố định cho bản kiểm tra, phần còn lại theo từng chương trình",
+      "ogTitle": "Bảng giá: phí cố định cho bản kiểm tra",
       "ogDescription": "Decision Audit có giá cố định cho mỗi danh mục. Bộ máy thời gian thực được định giá theo từng chương trình thử nghiệm, không bao giờ trước đó."
     },
     "title": "Tính theo quyết định tạo ra.",
@@ -693,9 +708,9 @@
   },
   "docs": {
     "meta": {
-      "title": "Tài liệu API: tích hợp trong mười dòng, hoặc không tích hợp gì",
+      "title": "Tài liệu API: tích hợp trong mười dòng",
       "description": "Tài liệu tham chiếu cho SDK Pulse và Decision API, gồm các yếu tố xếp hạng, bản ghi quyết định và nhánh đối chứng. Bản kiểm tra không cần tới thứ nào cả.",
-      "ogTitle": "Tài liệu API: tích hợp trong mười dòng, hoặc không tích hợp gì",
+      "ogTitle": "Tài liệu API: tích hợp trong mười dòng",
       "ogDescription": "Tài liệu tham chiếu cho SDK Pulse và Decision API, gồm các yếu tố xếp hạng, bản ghi quyết định và nhánh đối chứng. Bản kiểm tra không cần tới thứ nào cả."
     },
     "title": "Tài liệu API",
@@ -808,7 +823,11 @@
     "gateTitle": "Muốn nhận trọn bộ trong một tài liệu?",
     "gateBody": "Để lại email và chúng tôi sẽ gửi toàn bộ hướng dẫn tích hợp, cả hai ví dụ mẫu và tài liệu tham chiếu endpoint, gói trong một tệp duy nhất để bạn chuyển cho người phải phê duyệt.",
     "gateCta": "Gửi cho tôi",
-    "gateSuccess": "Đang gửi. Kiểm tra hộp thư của bạn để nhận tài liệu."
+    "gateSuccess": "Đang gửi. Kiểm tra hộp thư của bạn để nhận tài liệu.",
+    "differentCredential": "Thông tin xác thực khác:",
+    "catalogueWriteAuth": "thao tác ghi vào danh mục được xác thực bằng phiên đăng nhập trên bảng điều khiển, không phải bằng khoá công khai",
+    "keyUsedAbove": "dùng cho các lệnh gọi ở trên.",
+    "exampleAuthRequest": "# Ví dụ lệnh gọi có xác thực"
   },
   "integrations": {
     "meta": {
@@ -841,13 +860,22 @@
     "readyToIntegrate": "Sẵn sàng tích hợp?",
     "readyToIntegrateDesc": "Đội ngũ kỹ sư giải pháp có thể giúp bạn thiết lập nhanh chóng. Hầu hết các tích hợp được hoàn thành trong một cuộc gọi.",
     "getStarted": "Bắt đầu miễn phí",
-    "readDocs": "Đọc tài liệu"
+    "readDocs": "Đọc tài liệu",
+    "available": "Có sẵn",
+    "apiDocsItem": "Tài liệu API đầy đủ",
+    "apiSdksItem": "SDK cho JavaScript, Python, Ruby",
+    "apiWebhooksItem": "Hỗ trợ webhook cho sự kiện thời gian thực",
+    "codeGetInference": "// Suy luận chân dung",
+    "codeReturns": "// Trả về chân dung + thứ hạng",
+    "setupLabel": "Cài đặt",
+    "viewDocs": "Xem tài liệu",
+    "viewApiDocs": "Xem tài liệu API"
   },
   "product": {
     "meta": {
-      "title": "Sản phẩm: đo danh mục trước, rồi mới xếp hạng gian hàng",
+      "title": "Sản phẩm: đo danh mục trước, rồi xếp hạng",
       "description": "Decision Audit, Verification và Monitor cho dữ liệu sản phẩm, cùng Tìm kiếm, Gợi ý, Trang danh mục và Merchandising Studio. Một cầu thang có lối ra ở mọi bậc.",
-      "ogTitle": "Sản phẩm: đo danh mục trước, rồi mới xếp hạng gian hàng",
+      "ogTitle": "Sản phẩm: đo danh mục trước, rồi xếp hạng",
       "ogDescription": "Decision Audit, Verification và Monitor cho dữ liệu sản phẩm, cùng Tìm kiếm, Gợi ý, Trang danh mục và Merchandising Studio. Một cầu thang có lối ra ở mọi bậc."
     },
     "badge": "Engine",
@@ -979,9 +1007,9 @@
   },
   "privacy": {
     "meta": {
-      "title": "Quyền riêng tư: chỉ dữ liệu sản phẩm, không cookie và không danh tính",
+      "title": "Quyền riêng tư: chỉ dữ liệu sản phẩm",
       "description": "Pulse thu thập gì, không bao giờ thu thập gì, và bản kiểm tra chạy ra sao mà không cần hồ sơ khách hàng, lịch sử đơn hàng hay bất kỳ dữ liệu cá nhân nào.",
-      "ogTitle": "Quyền riêng tư: chỉ dữ liệu sản phẩm, không cookie và không danh tính",
+      "ogTitle": "Quyền riêng tư: chỉ dữ liệu sản phẩm",
       "ogDescription": "Pulse thu thập gì, không bao giờ thu thập gì, và bản kiểm tra chạy ra sao mà không cần hồ sơ khách hàng, lịch sử đơn hàng hay bất kỳ dữ liệu cá nhân nào."
     },
     "title": "Chính sách Bảo mật",
@@ -1057,9 +1085,9 @@
   "terms": {
     "meta": {
       "title": "Điều khoản dịch vụ",
-      "description": "Các điều khoản áp dụng cho việc sử dụng Pulse Decision Audit, Verification, Monitor và Decision API.",
+      "description": "Các điều khoản áp dụng cho việc sử dụng Pulse Decision Audit, Decision Verification, Decision Monitor và Decision API, cùng giới hạn trách nhiệm của chúng tôi.",
       "ogTitle": "Điều khoản dịch vụ",
-      "ogDescription": "Các điều khoản áp dụng cho việc sử dụng Pulse Decision Audit, Verification, Monitor và Decision API."
+      "ogDescription": "Các điều khoản áp dụng cho việc sử dụng Pulse Decision Audit, Decision Verification, Decision Monitor và Decision API, cùng giới hạn trách nhiệm của chúng tôi."
     },
     "title": "Điều khoản Dịch vụ",
     "description": "Vui lòng đọc kỹ các điều khoản này trước khi sử dụng dịch vụ Pulse.",
@@ -1130,9 +1158,9 @@
   },
   "cookies": {
     "meta": {
-      "title": "Chính sách cookie: website này đặt gì, và sản phẩm thì không",
+      "title": "Chính sách cookie: website này đặt những gì",
       "description": "Website này dùng một số ít cookie. Bản thân bộ máy Pulse chạy mà không cần cookie nào, và đó là một lựa chọn sản phẩm chứ không phải một lựa chọn chính sách.",
-      "ogTitle": "Chính sách cookie: website này đặt gì, và sản phẩm thì không",
+      "ogTitle": "Chính sách cookie: website này đặt những gì",
       "ogDescription": "Website này dùng một số ít cookie. Bản thân bộ máy Pulse chạy mà không cần cookie nào, và đó là một lựa chọn sản phẩm chứ không phải một lựa chọn chính sách."
     },
     "title": "Chính sách Cookie",
@@ -1167,9 +1195,9 @@
   },
   "gdpr": {
     "meta": {
-      "title": "GDPR: Pulse xử lý dữ liệu thế nào, và vì sao có rất ít dữ liệu",
+      "title": "GDPR: Pulse xử lý dữ liệu sản phẩm thế nào",
       "description": "Bản kiểm tra chỉ chạy trên dữ liệu sản phẩm. Không hồ sơ khách hàng, không lịch sử đơn hàng, không hồ sơ cá nhân, và xoá tệp danh mục đã gửi khi được yêu cầu.",
-      "ogTitle": "GDPR: Pulse xử lý dữ liệu thế nào, và vì sao có rất ít dữ liệu",
+      "ogTitle": "GDPR: Pulse xử lý dữ liệu sản phẩm thế nào",
       "ogDescription": "Bản kiểm tra chỉ chạy trên dữ liệu sản phẩm. Không hồ sơ khách hàng, không lịch sử đơn hàng, không hồ sơ cá nhân, và xoá tệp danh mục đã gửi khi được yêu cầu."
     },
     "title": "Tuân thủ GDPR",
@@ -1274,10 +1302,10 @@
     "anyBody": "Bản kiểm tra chỉ đọc dữ liệu sản phẩm và không đọc gì khác, nên phương pháp không thay đổi theo ngành của bạn. Thứ thay đổi là những thuộc tính nào quan trọng, và đó chính là thứ chúng tôi đo thay vì phỏng đoán. Gửi một ngành hàng và chúng tôi sẽ cho biết việc này có đáng thời gian của bạn hay không.",
     "anyCta": "Yêu cầu Decision Audit",
     "meta": {
-      "title": "Giải pháp theo ngành: nơi dữ liệu sản phẩm quyết định đơn hàng",
-      "description": "Decision Audit cho thương mại điện tử, sàn thương mại, phân phối B2B, nguồn dữ liệu mua sắm, du lịch và tác tử mua sắm AI. Một tệp xuất ngành hàng, kết quả xếp hạng trong 48 giờ.",
-      "ogTitle": "Giải pháp theo ngành: nơi dữ liệu sản phẩm quyết định đơn hàng",
-      "ogDescription": "Decision Audit cho thương mại điện tử, sàn thương mại, phân phối B2B, nguồn dữ liệu mua sắm, du lịch và tác tử mua sắm AI. Một tệp xuất ngành hàng, kết quả xếp hạng trong 48 giờ."
+      "title": "Giải pháp theo ngành: nơi dữ liệu quyết định",
+      "description": "Decision Audit cho thương mại điện tử, sàn thương mại, phân phối B2B, nguồn cấp dữ liệu, du lịch và tác tử AI. Một tệp xuất, kết quả trong 48 giờ.",
+      "ogTitle": "Giải pháp theo ngành: nơi dữ liệu quyết định",
+      "ogDescription": "Decision Audit cho thương mại điện tử, sàn thương mại, phân phối B2B, nguồn cấp dữ liệu, du lịch và tác tử AI. Một tệp xuất, kết quả trong 48 giờ."
     }
   },
   "auth": {
@@ -1536,5 +1564,35 @@
       "title": "Những gì bức ảnh đã cho thấy",
       "description": "Trên một danh mục 2.176 sản phẩm, 52,6% giá trị thuộc tính đã ghi chỉ lặp lại đúng thứ bức ảnh cho thấy. Phần còn lại mới là phần thật sự đáng ghi."
     }
+  },
+  "whyPage": {
+    "meta": {
+      "title": "Vì sao chọn Pulse: phương pháp và những giới hạn",
+      "description": "Cách đo khoảng trống thông tin quyết định, cách nó khác với những công cụ xếp hạng theo mức tương tác, và chính xác chỗ nào phép đo thôi còn đáng tin."
+    }
+  },
+  "jobForm": {
+    "applyHeading": "Ứng tuyển vị trí này",
+    "namePlaceholder": "Nguyễn Thị An",
+    "emailPlaceholder": "an@congty.com",
+    "phoneLabel": "Số điện thoại",
+    "phonePlaceholder": "+84 912 345 678",
+    "linkedinLabel": "Hồ sơ LinkedIn",
+    "linkedinPlaceholder": "https://linkedin.com/in/nguyenthian",
+    "uploadPrompt": "Nhấn để tải lên hoặc kéo thả tệp vào đây",
+    "uploadHint": "Tệp PDF hoặc Word (tối đa {mb}MB)",
+    "coverLetterLabel": "Thư ứng tuyển / Vì sao bạn quan tâm",
+    "coverLetterPlaceholder": "Hãy cho chúng tôi biết vì sao bạn hào hứng với vị trí này và điều gì khiến bạn phù hợp...",
+    "submitting": "Đang gửi...",
+    "submitApplication": "Gửi hồ sơ ứng tuyển",
+    "consentLead": "Khi gửi, bạn đồng ý với",
+    "privacyPolicy": "Chính sách bảo mật",
+    "consentTail": " của chúng tôi. Chúng tôi chỉ dùng thông tin của bạn cho hồ sơ ứng tuyển này.",
+    "errFixAbove": "Vui lòng sửa các lỗi ở trên",
+    "errResumeRequired": "CV là bắt buộc",
+    "errResumeUpload": "Vui lòng tải lên CV của bạn",
+    "errResumeType": "Vui lòng tải lên tệp PDF hoặc Word",
+    "errVerification": "Vui lòng hoàn tất phần xác minh bên dưới.",
+    "errSubmitFailed": "Gửi hồ sơ không thành công. Vui lòng thử lại."
   }
 }

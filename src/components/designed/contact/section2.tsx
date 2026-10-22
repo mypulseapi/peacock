@@ -7,6 +7,8 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { designedText } from "../t";
+import { contactEmail } from "@/lib/contact-emails";
+
 export function Section2Section() {
   const t = designedText("contact.section2");
   return (
@@ -78,15 +80,12 @@ export function Section2Section() {
                       </svg>
                     </summary>
                     <p className="pb-6 text-body text-muted">
-                      Yes. We are building a partner programme for agencies,
-                      consultants and systems integrators who run catalogue work for
-                      their clients, and we are talking to the first partners now.
-                      An audit takes the same single export whether it comes from
-                      you or from your client. Write to{" "}
+                      {t('partnerAnswer')}{" "}
+                      {/* The address is configuration, not copy: see src/lib/contact-emails.ts. */}
                       <a
-                        href="mailto:partners@thepulseapi.com"
+                        href={`mailto:${contactEmail("partners")}`}
                         className="font-semibold text-primary underline decoration-primary-line underline-offset-4"
-                        >{t('9')}</a
+                        >{contactEmail("partners")}</a
                       >{" "}
                       {t('10')}
                     </p>

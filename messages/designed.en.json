@@ -63,7 +63,8 @@
       "8": "next to the ranking",
       "9": ", not in a footnote.",
       "10": "Earn the integration",
-      "11": "The first audit needs no code, no tag and no access to your systems. If it is not useful, you have lost an export and an afternoon."
+      "11": "The first audit needs no code, no tag and no access to your systems. If it is not useful, you have lost an export and an afternoon.",
+      "rankingSteady": "Our ranking is steady at the top and less steady below it, and we say so"
     },
     "section4": {
       "1": "Early, and specific about it",
@@ -82,7 +83,9 @@
       "14": "None yet. The first audit asks for one export and nothing installed, and we will name customers here only with their permission.",
       "15": "The channel we do not measure",
       "16": "We published the measurement",
-      "17": "Request a Decision Audit"
+      "17": "Request a Decision Audit",
+      "threeWays": "A shopper can be told a fact three ways: a field they can filter on, a photograph they can look at, or a sentence they will actually read. We measure the first one. On the laptop shelf we use for our own research the first two do not overlap at all, so a catalogue can score well here and still leave a buyer unable to see what they came for.",
+      "oneExport": "One export, nothing installed."
     },
     "section5": {
       "1": "Meet the team",
@@ -166,31 +169,16 @@
       "3": "One category, one export, no account and no card",
       "4": "Findings within 48 hours of your export landing",
       "5": "No code, no tag on your site, no customer data",
-      "6": "Send us a message",
-      "7": "Your Name",
+      "6": "Request your audit",
       "8": "Work Email",
       "9": "Company Name",
-      "10": "Company Size",
-      "11": "What do you sell?",
-      "12": "Catalogue export (optional)",
-      "13": "CSV, JSON or a spreadsheet, up to 15MB. One category is enough. Send it now and we can start without a second email.",
-      "14": "Your Message",
-      "15": "0/5000 characters",
-      "16": "Send Message",
-      "17": "getintouch@thepulseapi.com",
+      "16": "Request audit",
       "18": "Or contact us directly",
       "19": "Sales enquiry",
-      "20": "sales@thepulseapi.com",
       "21": "Technical support",
-      "22": "support@thepulseapi.com",
       "23": "Partnerships",
-      "24": "partners@thepulseapi.com",
       "25": "Press and media",
-      "26": "press@thepulseapi.com",
-      "27": "General enquiry",
-      "28": "getintouch@thepulseapi.com",
-      "helpLabel": "What can we help you with?",
-      "formNote": "The form is not connected yet. For now, email"
+      "27": "General enquiry"
     },
     "section2": {
       "1": "Frequently Asked Questions",
@@ -201,8 +189,8 @@
       "6": "How quickly will someone reply?",
       "7": "Usually the same working day. The inbox is read by the people who do the work rather than by a queue, so the reply comes from someone who can actually open your catalogue.",
       "8": "Do you work with agencies and consultants?",
-      "9": "partners@thepulseapi.com",
-      "10": "and tell us whose catalogue it is."
+      "10": "and tell us whose catalogue it is.",
+      "partnerAnswer": "Yes. We are building a partner programme for agencies, consultants and systems integrators who run catalogue work for their clients, and we are talking to the first partners now. An audit takes the same single export whether it comes from you or from your client. Write to"
     },
     "section3": {
       "1": "Would you rather see it live?",
@@ -228,7 +216,8 @@
       "10": "We use browser local storage only for essential functionality like remembering your theme preference (light/dark mode). This data never leaves your device and is not used for tracking purposes.",
       "11": "Questions?",
       "12": "If you have any questions about our cookie policy, please contact us.",
-      "13": "privacy@thepulseapi.com"
+      "13": "privacy@thepulseapi.com",
+      "noTracking": "We do not use cookies to track or store your data, as described in our"
     }
   },
   "gdpr": {
@@ -276,7 +265,8 @@
       "37": "Data breach notification procedures",
       "38": "Contact Our Data Protection Officer",
       "39": "For any GDPR-related inquiries or to exercise your rights, please contact our DPO.",
-      "40": "dpo@thepulseapi.com"
+      "40": "dpo@thepulseapi.com",
+      "consentBasis": "When explicitly provided for specific processing activities."
     }
   },
   "home": {
@@ -446,7 +436,10 @@
       "149": "After",
       "150": "94 out of 216 products have unclear differences for shoppers",
       "151": "Every attribute scored against real buying decisions",
-      "152": "63 more products a shopper can tell apart (122 → 185)"
+      "152": "63 more products a shopper can tell apart (122 → 185)",
+      "currentlyIdentifies": "Currently, Pulse identifies",
+      "oneMoreAttribute": "Adding one attribute helped shoppers distinguish",
+      "rankDisagreement": "is missing from 162 products, so a traditional audit ranks it first. But only 2 of 32 shopper requirements mention it, so Pulse ranks it last."
     },
     "method": {
       "1": "How it works",
@@ -606,7 +599,11 @@
       "19": "Projected conversion rate 12.2% (10% now + 2.2 points).",
       "20": "Current monthly revenue",
       "21": "Potential additional monthly revenue",
-      "22": "Illustrative scenario only. Assumes visits and average order value remain constant. Uplift is an absolute percentage-point assumption, not a Pulse performance claim. Excludes costs and profit."
+      "22": "Illustrative scenario only. Assumes visits and average order value remain constant. Uplift is an absolute percentage-point assumption, not a Pulse performance claim. Excludes costs and profit.",
+      "calcPoints": "+{n} points",
+      "calcRelative": "Projected conversion rate {p} ({c} now + {n} points).",
+      "calcCapped": "Projected conversion rate {p}. The increase is capped at {n} points, because a conversion rate cannot pass 100%.",
+      "calcValueText": "plus {n} percentage points"
     },
     "section3": {
       "1": "Different products, the same catalogue problem",
@@ -628,7 +625,11 @@
       "17": "94 of the 216",
       "18": "laptops.",
       "fragranceLead": "Without this attribute, shoppers can’t filter for fragrance-free options and must browse all",
-      "fragranceTail": "products to find a suitable one."
+      "fragranceTail": "products to find a suitable one.",
+      "packagingLead": "The product packaging shows whether it’s fragrance-free, but this information",
+      "screenLead": "Screen size appears in",
+      "screenMid": "product titles, but",
+      "noAttributesLead": "Without clear product attributes, shoppers struggle to see the differences between"
     },
     "why": {
       "1": "Why ecommerce brands should choose Pulse",
@@ -1762,7 +1763,9 @@
       "1": "What this does not prove yet",
       "2": "It proves the overlap, because the overlap is a property of the catalogue and we counted it. It does not prove anyone loses a sale over it. The evidence for that would be a shopper opening a picture, opening it again, and leaving. We do not collect that, which is an uncomfortable thing to admit halfway down a page arguing it matters.",
       "3": "So this is a measurement and a hypothesis, kept apart on purpose. Two things would kill it. Reordering a product gallery turns out not to change what people buy. Or merchants take the suggested photograph, shoot it, and nothing moves. We would rather find either of those out early, and we will publish it here when we do.",
-      "4": "What we can and cannot claim"
+      "4": "What we can and cannot claim",
+      "measuredIn": "Measured in October 2026. Nothing on this page is for sale.",
+      "isTheRest": "is the rest of it."
     }
   }
 }

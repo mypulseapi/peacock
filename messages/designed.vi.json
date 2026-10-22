@@ -213,7 +213,10 @@
       "149": "Sau",
       "150": "94 trên 216 sản phẩm có điểm khác biệt mà người mua không nhận ra",
       "151": "Mỗi thuộc tính được chấm điểm theo quyết định mua hàng thực tế",
-      "152": "thêm 63 sản phẩm người mua phân biệt được (122 → 185)"
+      "152": "thêm 63 sản phẩm người mua phân biệt được (122 → 185)",
+      "currentlyIdentifies": "Hiện tại, Pulse nhận diện",
+      "oneMoreAttribute": "Thêm một thuộc tính đã giúp người mua phân biệt được",
+      "rankDisagreement": "thiếu ở 162 sản phẩm, nên một bản kiểm tra truyền thống xếp nó đầu bảng. Nhưng chỉ 2 trên 32 yêu cầu của người mua có nhắc tới nó, nên Pulse xếp nó cuối bảng."
     },
     "method": {
       "1": "Cách hoạt động",
@@ -287,7 +290,15 @@
       "98": "Sửa, rồi kiểm chứng",
       "99": "Có thể bạn không cần đến chúng tôi cho việc sửa. Khi sửa xong, chúng tôi tính lại trên danh mục đã sửa và cho bạn thấy chính xác điều gì đã thay đổi. Không cần lưu lượng truy cập, không cần chạy thử, không phải chờ đợi.",
       "100": "Kích thước màn hình, tìm thấy trong tiêu đề của bạn",
-      "101": "Đã khôi phục, không mua thêm dữ liệu"
+      "101": "Đã khôi phục, không mua thêm dữ liệu",
+      "105": "Thiếu",
+      "110": "Thiếu",
+      "114": "Thiếu",
+      "116": "Người mua phân biệt được",
+      "117": "thêm 63 sản phẩm",
+      "118": "Đã ghi nhận kích thước màn hình",
+      "119": "/ 216 · trước là 136",
+      "120": "Đã xác minh trên danh mục của bạn"
     },
     "request": {
       "1": "Khám phá ý định của người mua cùng Pulse",
@@ -322,7 +333,11 @@
       "19": "Tỷ lệ chuyển đổi dự kiến 12,2% (10% hiện tại + 2,2 điểm).",
       "20": "Doanh thu hằng tháng hiện tại",
       "21": "Doanh thu tăng thêm tiềm năng mỗi tháng",
-      "22": "Chỉ là kịch bản minh họa. Giả định lượt truy cập và giá trị đơn hàng trung bình không đổi. Mức tăng là giả định theo điểm phần trăm tuyệt đối, không phải cam kết hiệu quả của Pulse. Chưa tính chi phí và lợi nhuận."
+      "22": "Chỉ là kịch bản minh họa. Giả định lượt truy cập và giá trị đơn hàng trung bình không đổi. Mức tăng là giả định theo điểm phần trăm tuyệt đối, không phải cam kết hiệu quả của Pulse. Chưa tính chi phí và lợi nhuận.",
+      "calcPoints": "+{n} điểm",
+      "calcRelative": "Tỷ lệ chuyển đổi dự kiến {p} ({c} hiện tại + {n} điểm).",
+      "calcCapped": "Tỷ lệ chuyển đổi dự kiến {p}. Mức tăng bị giới hạn ở {n} điểm, vì tỷ lệ chuyển đổi không thể vượt quá 100%.",
+      "calcValueText": "cộng {n} điểm phần trăm"
     },
     "section3": {
       "1": "Sản phẩm khác nhau, cùng một vấn đề danh mục",
@@ -344,7 +359,11 @@
       "17": "94 trên 216",
       "18": "laptop.",
       "fragranceLead": "Thiếu thuộc tính này, người mua không thể lọc theo lựa chọn không hương liệu và phải xem hết cả",
-      "fragranceTail": "sản phẩm để tìm ra một món phù hợp."
+      "fragranceTail": "sản phẩm để tìm ra một món phù hợp.",
+      "packagingLead": "Bao bì sản phẩm có ghi rõ sản phẩm có hương liệu hay không, nhưng thông tin này",
+      "screenLead": "Kích thước màn hình xuất hiện trong",
+      "screenMid": "tiêu đề sản phẩm, nhưng",
+      "noAttributesLead": "Khi thuộc tính sản phẩm không rõ ràng, người mua khó thấy được khác biệt giữa"
     },
     "why": {
       "1": "Vì sao các thương hiệu thương mại điện tử nên chọn Pulse",
@@ -434,25 +453,16 @@
       "3": "Một ngành hàng, một bản xuất, không cần tài khoản và không cần thẻ",
       "4": "Có kết quả trong vòng 48 giờ kể từ khi nhận được bản xuất",
       "5": "Không cần code, không gắn thẻ trên website, không cần dữ liệu khách hàng",
-      "6": "Gửi tin nhắn cho chúng tôi",
-      "7": "Tên của bạn",
+      "6": "Yêu cầu đánh giá của bạn",
       "8": "Email công việc",
       "9": "Tên công ty",
-      "10": "Quy mô công ty",
-      "11": "Bạn bán gì?",
-      "12": "Bản xuất danh mục (không bắt buộc)",
-      "13": "CSV, JSON hoặc một bảng tính, tối đa 15MB. Một ngành hàng là đủ. Gửi ngay bây giờ và chúng tôi có thể bắt đầu mà không cần email thứ hai.",
-      "14": "Nội dung tin nhắn",
-      "15": "0/5000 ký tự",
-      "16": "Gửi tin nhắn",
+      "16": "Gửi yêu cầu",
       "18": "Hoặc liên hệ trực tiếp với chúng tôi",
       "19": "Câu hỏi về bán hàng",
       "21": "Hỗ trợ kỹ thuật",
       "23": "Hợp tác",
       "25": "Báo chí và truyền thông",
-      "27": "Câu hỏi chung",
-      "helpLabel": "Chúng tôi có thể giúp gì cho bạn?",
-      "formNote": "Biểu mẫu hiện chưa được kết nối. Tạm thời, vui lòng gửi email tới"
+      "27": "Câu hỏi chung"
     },
     "section2": {
       "1": "Câu hỏi thường gặp",
@@ -463,7 +473,8 @@
       "6": "Bao lâu thì có người trả lời?",
       "7": "Thường là trong cùng ngày làm việc. Hộp thư được đọc bởi chính những người làm công việc này chứ không phải một hàng đợi, nên câu trả lời đến từ người thực sự có thể mở danh mục của bạn.",
       "8": "Các bạn có làm việc với agency và nhà tư vấn không?",
-      "10": "và cho chúng tôi biết đó là danh mục của ai."
+      "10": "và cho chúng tôi biết đó là danh mục của ai.",
+      "partnerAnswer": "Có. Chúng tôi đang xây dựng chương trình đối tác dành cho agency, nhà tư vấn và đơn vị tích hợp hệ thống đang làm công việc danh mục cho khách hàng của họ, và hiện chúng tôi đang trao đổi với những đối tác đầu tiên. Một bản kiểm tra vẫn chỉ cần đúng một bản xuất dữ liệu, dù nó đến từ bạn hay từ khách hàng của bạn. Hãy viết thư tới"
     },
     "section3": {
       "1": "Bạn muốn xem trực tiếp hơn?",
@@ -533,7 +544,8 @@
       "9": "Việc sử dụng local storage",
       "10": "Chúng tôi chỉ dùng local storage của trình duyệt cho các chức năng thiết yếu như ghi nhớ lựa chọn giao diện của bạn (chế độ sáng/tối). Dữ liệu này không bao giờ rời khỏi thiết bị của bạn và không được dùng để theo dõi.",
       "11": "Có câu hỏi?",
-      "12": "Nếu bạn có bất kỳ câu hỏi nào về chính sách cookie của chúng tôi, vui lòng liên hệ."
+      "12": "Nếu bạn có bất kỳ câu hỏi nào về chính sách cookie của chúng tôi, vui lòng liên hệ.",
+      "noTracking": "Chúng tôi không dùng cookie để theo dõi hay lưu trữ dữ liệu của bạn, như đã nêu trong"
     }
   },
   "about": {
@@ -594,7 +606,8 @@
       "8": "ngay cạnh bảng xếp hạng",
       "9": ", chứ không phải trong một chú thích cuối trang.",
       "10": "Xứng đáng với việc được tích hợp",
-      "11": "Bản kiểm tra đầu tiên không cần code, không cần gắn thẻ và không cần truy cập hệ thống của bạn. Nếu nó không hữu ích, bạn chỉ mất một bản xuất và một buổi chiều."
+      "11": "Bản kiểm tra đầu tiên không cần code, không cần gắn thẻ và không cần truy cập hệ thống của bạn. Nếu nó không hữu ích, bạn chỉ mất một bản xuất và một buổi chiều.",
+      "rankingSteady": "Thứ hạng của chúng tôi ổn định ở đầu bảng và kém ổn định hơn ở phía dưới, và chúng tôi nói rõ điều đó"
     },
     "section4": {
       "1": "Còn sớm, và chúng tôi nói rõ điều đó",
@@ -613,14 +626,16 @@
       "14": "Chưa có. Bản kiểm tra đầu tiên chỉ cần một bản xuất và không cài đặt gì, và chúng tôi chỉ nêu tên khách hàng ở đây khi được họ cho phép.",
       "15": "Kênh mà chúng tôi không đo",
       "16": "Chúng tôi đã công bố phép đo",
-      "17": "Yêu cầu Decision Audit"
+      "17": "Yêu cầu Decision Audit",
+      "threeWays": "Một dữ kiện có thể được truyền tới người mua theo ba cách: một trường họ lọc được, một bức ảnh họ nhìn được, hoặc một câu họ thực sự sẽ đọc. Chúng tôi đo cách thứ nhất. Trên kệ laptop mà chúng tôi dùng cho nghiên cứu của mình, hai cách đầu hoàn toàn không chồng lấn nhau, nên một danh mục có thể đạt điểm cao ở đây mà vẫn khiến người mua không thấy được thứ họ cần tìm.",
+      "oneExport": "Một bản xuất dữ liệu, không cài đặt gì cả."
     },
     "section5": {
       "1": "Gặp gỡ đội ngũ",
       "2": "Tám người tại Singapore và Thành phố Hồ Chí Minh, cùng xây dựng Decision Audit.",
-      "4": "Product Owner",
-      "6": "Founder Associate",
-      "8": "Founder Associate",
+      "4": "Chủ sở hữu sản phẩm",
+      "6": "Trợ lý sáng lập",
+      "8": "Trợ lý sáng lập",
       "10": "Đảm bảo và kiểm soát chất lượng",
       "12": "Kỹ sư phần mềm",
       "14": "Lập trình viên di động",
@@ -744,7 +759,9 @@
       "1": "Điều này chưa chứng minh được gì",
       "2": "Nó chứng minh sự không chồng lấn, vì đó là một đặc tính của danh mục và chúng tôi đã đếm. Nó không chứng minh có ai đó mất một đơn hàng vì điều này. Bằng chứng cho điều đó sẽ là một người mua mở bức ảnh ra, mở lại lần nữa, rồi rời đi. Chúng tôi không thu thập dữ liệu đó, và đây là điều khó chịu khi phải thừa nhận ở giữa một trang đang lập luận rằng nó quan trọng.",
       "3": "Vậy nên đây là một phép đo và một giả thuyết, được tách bạch có chủ đích. Hai điều có thể bác bỏ nó. Việc sắp xếp lại thư viện ảnh sản phẩm hóa ra không làm thay đổi điều người ta mua. Hoặc các nhà bán hàng chụp đúng bức ảnh được gợi ý, và không có gì chuyển biến. Chúng tôi thà biết sớm một trong hai điều đó, và sẽ công bố tại đây khi biết.",
-      "4": "Điều chúng tôi có thể và không thể khẳng định"
+      "4": "Điều chúng tôi có thể và không thể khẳng định",
+      "measuredIn": "Đo vào tháng 10 năm 2026. Không có gì trên trang này được rao bán.",
+      "isTheRest": "là phần còn lại."
     }
   },
   "product": {
@@ -1623,7 +1640,8 @@
       "36": "Các biện pháp bảo mật về kỹ thuật và tổ chức",
       "37": "Quy trình thông báo khi có sự cố rò rỉ dữ liệu",
       "38": "Liên hệ Cán bộ bảo vệ dữ liệu của chúng tôi",
-      "39": "Với mọi thắc mắc liên quan đến GDPR hoặc để thực hiện các quyền của bạn, vui lòng liên hệ DPO của chúng tôi."
+      "39": "Với mọi thắc mắc liên quan đến GDPR hoặc để thực hiện các quyền của bạn, vui lòng liên hệ DPO của chúng tôi.",
+      "consentBasis": "Khi được cung cấp một cách rõ ràng cho những hoạt động xử lý cụ thể."
     }
   }
 }

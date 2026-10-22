@@ -686,20 +686,40 @@ document.querySelectorAll("[data-story]").forEach((story) => {
 document.querySelectorAll("[data-calc]").forEach((calc) => {
   const field = (name) => calc.querySelector(`[name="${name}"]`);
   const out = (name) => calc.querySelector(`[data-out="${name}"]`);
-  const full = new Intl.NumberFormat("en-US", {
+  /*
+   * Copy and number formatting both follow the page, not this file.
+   *
+   * Every string below was a literal here, so the calculator printed English over the translated
+   * markup the moment a slider moved: /vi loaded in Vietnamese and reverted as it was used. The
+   * templates come from data- attributes the component renders from the message catalogue, and
+   * fall back to the English wording if an attribute is missing.
+   *
+   * The locale drives the separators too (Vietnamese writes 12,2 where English writes 12.2). The
+   * CURRENCY stays USD because the field beside it is labelled "Average order value (USD)";
+   * converting the number without converting the amount would be a lie in either language.
+   */
+  const loc = document.documentElement.lang || "en";
+  const copy = (name, fallback) => calc.dataset[name] || fallback;
+  const fill = (template, values) =>
+    template.replace(/\{(\w+)\}/g, (_, key) => values[key] ?? "");
+  const full = new Intl.NumberFormat(loc, {
     style: "currency",
     currency: "USD",
     maximumFractionDigits: 0,
   });
-  const short = new Intl.NumberFormat("en-US", {
+  const short = new Intl.NumberFormat(loc, {
     style: "currency",
     currency: "USD",
     notation: "compact",
     maximumFractionDigits: 1,
   });
+  const decimal = new Intl.NumberFormat(loc, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
   const money = (v) => (v >= 1e6 ? short : full).format(v);
   const round = (v) => Math.round(v * 10) / 10;
-  const pct = (v) => `${round(v)}%`;
+  const pct = (v) => `${new Intl.NumberFormat(loc).format(round(v))}%`;
   const clamp = (input) => {
     const v = Number(input.value);
     const lo = Number(input.min),
@@ -726,16 +746,28 @@ document.querySelectorAll("[data-calc]").forEach((calc) => {
     uplift.style.setProperty("--range-room", `${maxIncrease}%`);
     uplift.disabled = maxIncrease <= 0 && expectedIncrease <= 0;
     out("conv").textContent = pct(currentCR);
-    out("uplift").textContent = `+${validIncrease.toFixed(1)} points`;
+    const increaseText = decimal.format(validIncrease);
+    out("uplift").textContent = fill(copy("copyPoints", "+{n} points"), {
+      n: increaseText,
+    });
     conv.setAttribute("aria-valuetext", pct(currentCR));
     uplift.setAttribute(
       "aria-valuetext",
-      `plus ${validIncrease.toFixed(1)} percentage points`,
+      fill(copy("copyValuetext", "plus {n} percentage points"), { n: increaseText }),
     );
     out("relative").textContent =
       expectedIncrease > maxIncrease
-        ? `Projected conversion rate ${pct(projectedCR)}. The increase is capped at ${maxIncrease.toFixed(1)} points, because a conversion rate cannot pass 100%.`
-        : `Projected conversion rate ${pct(projectedCR)} (${pct(currentCR)} now + ${validIncrease.toFixed(1)} points).`;
+        ? fill(
+            copy(
+              "copyCapped",
+              "Projected conversion rate {p}. The increase is capped at {n} points, because a conversion rate cannot pass 100%.",
+            ),
+            { p: pct(projectedCR), n: decimal.format(maxIncrease) },
+          )
+        : fill(
+            copy("copyRelative", "Projected conversion rate {p} ({c} now + {n} points)."),
+            { p: pct(projectedCR), c: pct(currentCR), n: increaseText },
+          );
     const currentRevenue = (visits * currentCR * aov) / 100;
     const projectedRevenue = (visits * projectedCR * aov) / 100;
     out("current").textContent = money(currentRevenue);

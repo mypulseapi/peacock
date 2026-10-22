@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageSchema } from "@/components/PageSchema";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildAlternates } from "@/lib/seo";
 import WhyContent from "./WhyContent";
 import { whyMethod, whyCompare, whyLimits } from "@/content/why";
@@ -9,10 +9,12 @@ interface PageProps { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
+  // From the catalogue, not literals: written inline, this was the one page whose /vi title and
+  // description stayed English however the locale was resolved.
+  const t = await getTranslations({ locale, namespace: "whyPage.meta" });
   return {
-    title: "Why Pulse: the method and the limits",
-    description:
-      "How a decision-information gap is measured, how it differs from engagement-ranked tooling, and exactly where the measurement stops being reliable.",
+    title: t("title"),
+    description: t("description"),
     alternates: buildAlternates(locale, "/why"),
   };
 }

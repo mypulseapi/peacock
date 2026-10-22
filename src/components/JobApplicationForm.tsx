@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState, useCallback } from "react";
 import Link from "next/link";
 import { Turnstile } from "@/components/Turnstile";
@@ -28,6 +29,7 @@ interface FieldErrors {
 }
 
 export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps) {
+  const t = useTranslations("jobForm");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -112,7 +114,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
       if (!resumeValidation.validateType(file.type)) {
         setFieldErrors((prev) => ({
           ...prev,
-          resume: "Please upload a PDF or Word document",
+          resume: t("errResumeType"),
         }));
         return;
       }
@@ -150,7 +152,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
       if (!validationResult.success) {
         const errors = formatZodErrors(validationResult.error);
         setFieldErrors(errors);
-        setSubmitError("Please fix the errors above");
+        setSubmitError(t("errFixAbove"));
         return;
       }
 
@@ -158,14 +160,14 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
       if (!resume) {
         setFieldErrors((prev) => ({
           ...prev,
-          resume: "Resume is required",
+          resume: t("errResumeRequired"),
         }));
-        setSubmitError("Please upload your resume");
+        setSubmitError(t("errResumeUpload"));
         return;
       }
 
       if (!token) {
-        setSubmitError("Please complete the verification below.");
+        setSubmitError(t("errVerification"));
         return;
       }
 
@@ -189,7 +191,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
           // Handle validation errors from server
           if (data.details) {
             setFieldErrors(data.details);
-            setSubmitError("Please fix the errors above");
+            setSubmitError(t("errFixAbove"));
           } else {
             throw new Error(data.error || "Failed to submit application");
           }
@@ -201,7 +203,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
         setSubmitError(
           error instanceof Error
             ? error.message
-            : "Failed to submit application. Please try again."
+            : t("errSubmitFailed")
         );
       } finally {
         setIsSubmitting(false);
@@ -210,7 +212,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
         setTsKey((k) => k + 1);
       }
     },
-    [token, formData, resume, jobId, jobTitle]
+    [t, token, formData, resume, jobId, jobTitle]
   );
 
   if (isSubmitted) {
@@ -236,7 +238,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
   return (
     <div className="glass-card p-6 sm:p-8 border-[var(--accent-primary)]/30">
       <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-6">
-        Apply for This Position
+        {t("applyHeading")}
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-5" noValidate>
@@ -251,7 +253,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
             value={formData.name}
             onChange={handleInputChange}
             onBlur={handleInputBlur}
-            placeholder="Jane Smith"
+            placeholder={t("namePlaceholder")}
             className={`w-full px-4 py-3 rounded-lg bg-[var(--bg-primary)] border text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none transition-colors ${
               fieldErrors.name
                 ? "border-red-500 focus:border-red-500"
@@ -278,7 +280,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
             value={formData.email}
             onChange={handleInputChange}
             onBlur={handleInputBlur}
-            placeholder="jane@example.com"
+            placeholder={t("emailPlaceholder")}
             className={`w-full px-4 py-3 rounded-lg bg-[var(--bg-primary)] border text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none transition-colors ${
               fieldErrors.email
                 ? "border-red-500 focus:border-red-500"
@@ -297,7 +299,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
         {/* Phone */}
         <div>
           <label className="block text-sm font-medium mb-2 text-[var(--text-primary)]">
-            Phone Number
+            {t("phoneLabel")}
           </label>
           <input
             type="tel"
@@ -305,7 +307,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
             value={formData.phone}
             onChange={handleInputChange}
             onBlur={handleInputBlur}
-            placeholder="+1 (555) 123-4567"
+            placeholder={t("phonePlaceholder")}
             className={`w-full px-4 py-3 rounded-lg bg-[var(--bg-primary)] border text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none transition-colors ${
               fieldErrors.phone
                 ? "border-red-500 focus:border-red-500"
@@ -323,7 +325,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
         {/* LinkedIn */}
         <div>
           <label className="block text-sm font-medium mb-2 text-[var(--text-primary)]">
-            LinkedIn Profile
+            {t("linkedinLabel")}
           </label>
           <input
             type="url"
@@ -331,7 +333,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
             value={formData.linkedin}
             onChange={handleInputChange}
             onBlur={handleInputBlur}
-            placeholder="https://linkedin.com/in/janesmith"
+            placeholder={t("linkedinPlaceholder")}
             className={`w-full px-4 py-3 rounded-lg bg-[var(--bg-primary)] border text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none transition-colors ${
               fieldErrors.linkedin
                 ? "border-red-500 focus:border-red-500"
@@ -386,10 +388,10 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
               />
               <Upload className="w-8 h-8 text-[var(--text-muted)] mx-auto mb-2" />
               <p className="text-sm text-[var(--text-secondary)]">
-                Click to upload or drag and drop
+                {t("uploadPrompt")}
               </p>
               <p className="text-xs text-[var(--text-muted)] mt-1">
-                PDF or Word document (max {resumeValidation.maxSizeMB}MB)
+                {t("uploadHint").replace("{mb}", String(resumeValidation.maxSizeMB))}
               </p>
             </div>
           )}
@@ -404,14 +406,14 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
         {/* Cover Letter */}
         <div>
           <label className="block text-sm font-medium mb-2 text-[var(--text-primary)]">
-            Cover Letter / Why You&apos;re Interested
+            {t("coverLetterLabel")}
           </label>
           <textarea
             name="coverLetter"
             value={formData.coverLetter}
             onChange={handleInputChange}
             onBlur={handleInputBlur}
-            placeholder="Tell us why you're excited about this role and what makes you a great fit..."
+            placeholder={t("coverLetterPlaceholder")}
             rows={5}
             className={`w-full px-4 py-3 rounded-lg bg-[var(--bg-primary)] border text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none transition-colors resize-none ${
               fieldErrors.coverLetter
@@ -470,25 +472,25 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                 ></path>
               </svg>
-              Submitting...
+              {t("submitting")}
             </>
           ) : (
             <>
               <Send className="w-4 h-4" />
-              Submit Application
+              {t("submitApplication")}
             </>
           )}
         </button>
 
         <p className="text-xs text-[var(--text-muted)] text-center">
-          By submitting, you agree to our{" "}
+          {t("consentLead")}{" "}
           <Link
             href="/privacy"
             className="underline hover:text-[var(--text-secondary)]"
           >
-            Privacy Policy
+            {t("privacyPolicy")}
           </Link>
-          . We&apos;ll only use your information for this application.
+          {t("consentTail")}
         </p>
 
       </form>

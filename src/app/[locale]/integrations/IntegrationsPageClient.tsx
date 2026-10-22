@@ -6,6 +6,70 @@ import { Section } from "@/components/home/Section";
 import { Link } from "@/i18n/routing";
 import { DEMO_URL } from "@/lib/constants";
 import { ShoppingCart, Code, Zap, ArrowRight, Check, Clock, Sparkles } from "lucide-react";
+import { useLocale } from "next-intl";
+
+/**
+ * Vietnamese for the two arrays below, keyed by the English.
+ *
+ * A lookup rather than a duplicated array: adding a platform is then one edit, and a string with
+ * no translation yet degrades to English instead of breaking the shape. Platform names, protocol
+ * names and SDK names are proper nouns and stay as they are in both languages.
+ */
+const VI: Record<string, string> = {
+  // Platform descriptions.
+  "Native app with one-click installation. Full support for Shopify Plus.":
+    "Ứng dụng gốc, cài đặt chỉ với một cú nhấp. Hỗ trợ đầy đủ Shopify Plus.",
+  "Full-featured extension for Magento 2.x and Adobe Commerce.":
+    "Tiện ích mở rộng đầy đủ tính năng cho Magento 2.x và Adobe Commerce.",
+  "WordPress plugin with deep WooCommerce integration.":
+    "Plugin WordPress tích hợp sâu với WooCommerce.",
+  "Native app available in the BigCommerce marketplace.":
+    "Ứng dụng gốc có sẵn trên chợ ứng dụng BigCommerce.",
+  "SFRA cartridge for B2C Commerce Cloud integration.":
+    "Cartridge SFRA để tích hợp với B2C Commerce Cloud.",
+  "REST API and SDKs for custom integrations and headless commerce.":
+    "API REST và SDK cho tích hợp tùy chỉnh và thương mại headless.",
+  "Custom / Headless": "Tùy chỉnh / Headless",
+
+  // Features.
+  "One-click install": "Cài đặt một cú nhấp",
+  "Automatic product sync": "Tự động đồng bộ sản phẩm",
+  "Theme integration": "Tích hợp giao diện",
+  "Shopify Flow support": "Hỗ trợ Shopify Flow",
+  "Composer installation": "Cài đặt qua Composer",
+  "Multi-store support": "Hỗ trợ nhiều cửa hàng",
+  "Page Builder compatible": "Tương thích Page Builder",
+  "Plugin installation": "Cài đặt dạng plugin",
+  "Block editor support": "Hỗ trợ trình soạn thảo khối",
+  "Gutenberg blocks": "Khối Gutenberg",
+  "REST API integration": "Tích hợp API REST",
+  "Marketplace app": "Ứng dụng trên chợ ứng dụng",
+  "Stencil theme support": "Hỗ trợ giao diện Stencil",
+  "Headless compatible": "Tương thích headless",
+  "Multi-channel support": "Hỗ trợ đa kênh",
+  "SFRA cartridge": "Cartridge SFRA",
+  "OCAPI integration": "Tích hợp OCAPI",
+  "Einstein compatible": "Tương thích Einstein",
+  "Multi-site support": "Hỗ trợ nhiều website",
+  "GraphQL support": "Hỗ trợ GraphQL",
+  "Server-side rendering": "Kết xuất phía máy chủ",
+
+  // Setup times.
+  "5 minutes": "5 phút",
+  "10 minutes": "10 phút",
+  "30 minutes": "30 phút",
+  "1 hour": "1 giờ",
+  Varies: "Tùy trường hợp",
+
+  // Data integrations.
+  "Send persona data to GA4 for enhanced analytics":
+    "Gửi dữ liệu chân dung sang GA4 để phân tích sâu hơn",
+  "Route Pulse events through your Segment pipeline":
+    "Chuyển sự kiện Pulse qua luồng dữ liệu Segment của bạn",
+  "Enrich email campaigns with persona insights":
+    "Làm giàu chiến dịch email bằng thông tin chân dung",
+  "Power SMS personalization with Pulse data": "Cá nhân hoá SMS bằng dữ liệu Pulse",
+};
 
 const platforms = [
   {
@@ -83,6 +147,9 @@ const dataIntegrations = [
 
 export default function IntegrationsPage() {
   const t = useTranslations("integrations");
+  // English passes through untouched, so this costs the English page one map lookup per string.
+  const isVi = useLocale() === "vi";
+  const tr = (value: string) => (isVi ? (VI[value] ?? value) : value);
 
   return (
     <>
@@ -135,17 +202,17 @@ export default function IntegrationsPage() {
                   <span className="text-3xl">{platform.logo}</span>
                   <div>
                     <h3 className="font-semibold text-[var(--text-primary)]">
-                      {platform.name}
+                      {tr(platform.name)}
                     </h3>
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-[var(--accent-secondary)]" />
-                      <span className="text-xs text-[var(--accent-secondary-light)]">Available</span>
+                      <span className="text-xs text-[var(--accent-secondary-light)]">{t('available')}</span>
                     </div>
                   </div>
                 </div>
 
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
-                  {platform.description}
+                  {tr(platform.description)}
                 </p>
 
                 <div className="mb-4 flex-grow">
@@ -153,7 +220,7 @@ export default function IntegrationsPage() {
                     {platform.features.map((feature, featureIdx) => (
                       <li key={featureIdx} className="flex items-center gap-2 text-sm text-[var(--text-muted)]">
                         <Check className="w-3.5 h-3.5 text-[var(--accent-secondary-light)]" />
-                        {feature}
+                        {tr(feature)}
                       </li>
                     ))}
                   </ul>
@@ -161,13 +228,13 @@ export default function IntegrationsPage() {
 
                 <div className="flex items-center justify-between pt-4 border-t border-[var(--surface-border)]">
                   <span className="text-xs text-[var(--text-muted)]">
-                    Setup: {platform.setupTime}
+                    {t('setupLabel')}: {tr(platform.setupTime)}
                   </span>
                   <Link
                     href="/docs"
                     className="text-sm text-[var(--accent-primary-light)] hover:underline inline-flex min-h-6 items-center gap-1 py-0.5"
                   >
-                    View Docs
+                    {t('viewDocs')}
                     <ArrowRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -190,10 +257,10 @@ export default function IntegrationsPage() {
               <div key={idx} className="glass-card p-5">
                 <span className="text-2xl mb-3 block">{integration.logo}</span>
                 <h3 className="font-semibold text-[var(--text-primary)] mb-1">
-                  {integration.name}
+                  {tr(integration.name)}
                 </h3>
                 <p className="text-sm text-[var(--text-muted)]">
-                  {integration.description}
+                  {tr(integration.description)}
                 </p>
               </div>
             ))}
@@ -248,33 +315,32 @@ export default function IntegrationsPage() {
                 <span className="text-sm text-[var(--accent-primary-light)]">REST API</span>
               </div>
               <h2 className="ed-d4 text-[var(--text-primary)] mb-4">
-                Build Custom Integrations
+                {t('customIntegrations')}
               </h2>
               <p className="text-[var(--text-secondary)] mb-6">
-                For headless commerce, custom platforms, or unique requirements, our REST API
-                gives you full control over the Pulse inference engine.
+                {t('customIntegrationsDesc')}
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-center gap-2 text-[var(--text-secondary)]">
                   <Check className="w-4 h-4 text-[var(--accent-secondary-light)]" />
-                  Complete API documentation
+                  {t('apiDocsItem')}
                 </li>
                 <li className="flex items-center gap-2 text-[var(--text-secondary)]">
                   <Check className="w-4 h-4 text-[var(--accent-secondary-light)]" />
-                  SDKs for JavaScript, Python, Ruby
+                  {t('apiSdksItem')}
                 </li>
                 <li className="flex items-center gap-2 text-[var(--text-secondary)]">
                   <Check className="w-4 h-4 text-[var(--accent-secondary-light)]" />
-                  Webhook support for real-time events
+                  {t('apiWebhooksItem')}
                 </li>
               </ul>
               <Link href="/docs" className="btn-primary inline-flex items-center gap-2">
-                View API Docs
+                {t('viewApiDocs')}
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
             <div className="bg-[var(--bg-tertiary)] rounded-xl p-6 font-mono text-sm overflow-hidden">
-              <div className="text-[var(--text-muted)] mb-2">{"// Get persona inference"}</div>
+              <div className="text-[var(--text-muted)] mb-2">{t('codeGetInference')}</div>
               <div className="text-[var(--text-secondary)]">
                 <span className="text-[var(--accent-tertiary-light)]">const</span> response = <span className="text-[var(--accent-tertiary-light)]">await</span> pulse.<span className="text-[var(--accent-secondary-light)]">infer</span>({`{`}
               </div>
@@ -288,7 +354,7 @@ export default function IntegrationsPage() {
                 behavior: {`{`} search, filters {`}`}
               </div>
               <div className="text-[var(--text-secondary)]">{`}`});</div>
-              <div className="mt-4 text-[var(--text-muted)]">{"// Returns persona + rankings"}</div>
+              <div className="mt-4 text-[var(--text-muted)]">{t('codeReturns')}</div>
             </div>
           </div>
         </div>

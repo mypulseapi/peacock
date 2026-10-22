@@ -131,8 +131,7 @@ export function Section2Section() {
                         >3</span
                       ><span
                         ><strong className="font-semibold text-ink">{t('31')}</strong>{" "}
-                        When explicitly provided for specific processing
-                        activities.</span
+                        {t('consentBasis')}</span
                       >
                     </li>
                   </ol>

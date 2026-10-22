@@ -72,7 +72,8 @@ jobs:
           NEXT_PUBLIC_PARTNERS_EMAIL: ${{ vars.NEXT_PUBLIC_PARTNERS_EMAIL || 'partners@thepulseapi.com' }}
           NEXT_PUBLIC_PRESS_EMAIL: ${{ vars.NEXT_PUBLIC_PRESS_EMAIL || 'press@thepulseapi.com' }}
           NEXT_PUBLIC_CAREERS_EMAIL: ${{ vars.NEXT_PUBLIC_CAREERS_EMAIL || 'careers@thepulseapi.com' }}
-          NEXT_PUBLIC_CALENDLY_URL: ${{ vars.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/sumanbonakurthi/30min' }}
+          NEXT_PUBLIC_CALENDLY_ELENA_URL: ${{ vars.NEXT_PUBLIC_CALENDLY_ELENA_URL || 'https://calendly.com/elena-nguyen-thepulseapi/30min' }}
+          NEXT_PUBLIC_CALENDLY_ROSIE_URL: ${{ vars.NEXT_PUBLIC_CALENDLY_ROSIE_URL || 'https://calendly.com/rosie-tran-thepulseapi/30min' }}
         run: pnpm build
 
       - name: Write the custom domain

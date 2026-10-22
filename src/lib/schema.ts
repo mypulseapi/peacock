@@ -1,4 +1,5 @@
 import { SITE } from "./site";
+import { SAME_AS } from "./social";
 import { img } from "./cdn";
 import { localeMeta } from "@/i18n/locales";
 
@@ -57,7 +58,8 @@ function organization(): GraphNode {
     },
     description:
       "Pulse measures whether a merchant's product data is ready to support the buying decisions shoppers are trying to make, then reads the live session to decide what to show and when one more question is worth asking.",
-    sameAs: ["https://www.linkedin.com/company/thepulseapi/"],
+    // From the same place the footers link, so `sameAs` cannot claim a profile we do not link.
+    sameAs: SAME_AS,
   };
 }
 

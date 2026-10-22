@@ -7,6 +7,7 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { asset } from "@/lib/cdn";
+import { SOCIAL } from "@/lib/social";
 import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
@@ -86,7 +87,7 @@ export function DesignedFooter() {
                 <h2 className="text-nav font-semibold">{t('10')}</h2>
                 <div className="mt-6 flex gap-3">
                   <a
-                    href="https://www.linkedin.com/company/108237732/"
+                    href={SOCIAL.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Pulse on LinkedIn (opens in a new tab)"
@@ -104,7 +105,7 @@ export function DesignedFooter() {
                       <use href="#i-facebook" /></svg
                   ></a>
                   <a
-                    href="https://github.com/thepulseapi"
+                    href={SOCIAL.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Pulse on GitHub (opens in a new tab)"

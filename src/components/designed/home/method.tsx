@@ -110,13 +110,30 @@ export function MethodSection() {
                     data-how-card
                   >
                     <div className="how-pause">
-                      <span className="how-pause-icon" aria-hidden="true"
-                        ><svg className="size-3.5"><use href="#i-pause" /></svg
-                      ></span>
+                      {/*
+                        A real button, not the sign it was: the hover pause behind it is invisible to
+                        a thumb. The two labels ride on the element rather than living in the motion
+                        script, so /vi gets Vietnamese here instead of the English the script would
+                        otherwise hardcode.
+                      */}
+                      <button
+                        type="button"
+                        className="how-pause-icon"
+                        data-how-pause
+                        aria-pressed="false"
+                        aria-label={t('pauseLabel')}
+                        data-label-pause={t('pauseLabel')}
+                        data-label-play={t('playLabel')}
+                      >
+                        <svg className="size-3.5" aria-hidden="true"
+                          ><use href="#i-pause" data-how-pause-icon /></svg
+                        >
+                      </button>
                       <span
                         className="how-pause-label"
                         role="status"
                         data-how-status
+                        data-label-paused={t('pausedLabel')}
                       ></span>
                     </div>
                     <div className="mb-4 lg:sr-only">
@@ -381,13 +398,30 @@ export function MethodSection() {
                     data-how-card
                   >
                     <div className="how-pause">
-                      <span className="how-pause-icon" aria-hidden="true"
-                        ><svg className="size-3.5"><use href="#i-pause" /></svg
-                      ></span>
+                      {/*
+                        A real button, not the sign it was: the hover pause behind it is invisible to
+                        a thumb. The two labels ride on the element rather than living in the motion
+                        script, so /vi gets Vietnamese here instead of the English the script would
+                        otherwise hardcode.
+                      */}
+                      <button
+                        type="button"
+                        className="how-pause-icon"
+                        data-how-pause
+                        aria-pressed="false"
+                        aria-label={t('pauseLabel')}
+                        data-label-pause={t('pauseLabel')}
+                        data-label-play={t('playLabel')}
+                      >
+                        <svg className="size-3.5" aria-hidden="true"
+                          ><use href="#i-pause" data-how-pause-icon /></svg
+                        >
+                      </button>
                       <span
                         className="how-pause-label"
                         role="status"
                         data-how-status
+                        data-label-paused={t('pausedLabel')}
                       ></span>
                     </div>
                     <div className="mb-4 lg:sr-only">
@@ -712,13 +746,30 @@ export function MethodSection() {
                     data-how-card
                   >
                     <div className="how-pause">
-                      <span className="how-pause-icon" aria-hidden="true"
-                        ><svg className="size-3.5"><use href="#i-pause" /></svg
-                      ></span>
+                      {/*
+                        A real button, not the sign it was: the hover pause behind it is invisible to
+                        a thumb. The two labels ride on the element rather than living in the motion
+                        script, so /vi gets Vietnamese here instead of the English the script would
+                        otherwise hardcode.
+                      */}
+                      <button
+                        type="button"
+                        className="how-pause-icon"
+                        data-how-pause
+                        aria-pressed="false"
+                        aria-label={t('pauseLabel')}
+                        data-label-pause={t('pauseLabel')}
+                        data-label-play={t('playLabel')}
+                      >
+                        <svg className="size-3.5" aria-hidden="true"
+                          ><use href="#i-pause" data-how-pause-icon /></svg
+                        >
+                      </button>
                       <span
                         className="how-pause-label"
                         role="status"
                         data-how-status
+                        data-label-paused={t('pausedLabel')}
                       ></span>
                     </div>
                     <div className="mb-4 lg:sr-only">

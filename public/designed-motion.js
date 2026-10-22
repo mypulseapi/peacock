@@ -176,6 +176,55 @@ const canHover = window.matchMedia(
   "(hover: hover) and (pointer: fine)",
 ).matches;
 
+/* ====================================================================
+ * Per-feature mounting.
+ *
+ * Every feature below used to bind its element once, at script load. That is
+ * right for a set of static pages where each navigation is a full load. Here
+ * the pages are a Next app: a client navigation swaps the DOM and nothing
+ * re-runs, so the new page's elements were never initialised and the old
+ * page's timers kept running. Measured on the Why orbit: it turned on first
+ * load and was dead after every round trip.
+ *
+ * So a feature is now `init(el, signal)`, registered with the selector it
+ * answers to. `mountFeatures` inits anything new and aborts anything whose
+ * element has left the document. One AbortController per mounted element, so
+ * `{ signal }` on a window or document listener removes it, and `onAbort`
+ * carries the rest: frames, timers, observers.
+ * ==================================================================== */
+const mounted = new Map(); // element -> AbortController
+const features = []; // { sel, init }
+
+/** Register a feature. `init(el, signal)` runs once per matching element per page. */
+function feature(sel, init) {
+  features.push({ sel, init });
+}
+
+/** Run `fn` when this feature's element goes away. For frames, timers, observers. */
+function onAbort(signal, fn) {
+  signal.addEventListener("abort", fn, { once: true });
+}
+
+function mountFeatures() {
+  for (const [el, ctrl] of mounted)
+    if (!el.isConnected) {
+      ctrl.abort();
+      mounted.delete(el);
+    }
+  for (const { sel, init } of features)
+    for (const el of document.querySelectorAll(sel)) {
+      if (mounted.has(el)) continue;
+      const ctrl = new AbortController();
+      mounted.set(el, ctrl);
+      // One broken feature must not stop the others from mounting.
+      try {
+        init(el, ctrl.signal);
+      } catch (err) {
+        console.error(`motion: ${sel} failed to mount`, err);
+      }
+    }
+}
+
 /* ---------------------------------------------------------------------
  * DIVERGENCE FROM THE DESIGNER'S FILE. Re-apply this after re-copying.
  *
@@ -187,8 +236,13 @@ const canHover = window.matchMedia(
  * re-copy of src/main.js needs this one line put back and nothing else.
  * `canHover` itself still drives the cursor-following hero light and the
  * card tilt, which are hover effects that should stay hover effects.
+ *
+ * Hover opens the menus for mouse and pen only, gated on `canHover`. Touch has no hover and
+ * keyboard needs Enter, so both keep the click and Enter path unchanged. Leaving the nav closes
+ * after 150ms, and re-entering within that window cancels the close, so crossing the gap between
+ * the summary and its panel does not shut it.
  * ------------------------------------------------------------------- */
-const HOVER_OPENS_MENUS = false;
+const HOVER_OPENS_MENUS = true;
 const mobileMenu = document.querySelector("[data-mobile-menu]");
 const megaNav = document.querySelector("[data-mega-nav]");
 const mega = megaNav ? createMegaMenu(megaNav) : null;
@@ -276,11 +330,11 @@ function createMegaMenu(nav) {
   items.forEach((item) => {
     item.details.querySelector("summary").addEventListener("click", (e) => {
       e.preventDefault(); // keep <details> in sync with the viewport ourselves
-      // A mouse click right after hover-open must not close it again; keyboard (detail 0) toggles.
-      // With HOVER_OPENS_MENUS off there is no hover-open to protect, so every click toggles:
-      // leaving this on meant clicking an open menu re-opened it and it could never be closed.
-      const hoverClick = canHover && HOVER_OPENS_MENUS && e.detail > 0;
-      active === item && !hoverClick ? close() : open(item);
+      // Every click toggles, including with hover-open on. The guard that used to sit here
+      // suppressed the close so a click inside a hover-open gesture would not undo it, and that is
+      // exactly what made an open menu impossible to close by clicking. Closing on click is right:
+      // the pointer is already inside, so `mouseenter` will not fire again and re-open it.
+      active === item ? close() : open(item);
     });
     if (canHover && HOVER_OPENS_MENUS)
       item.details.parentElement.addEventListener("mouseenter", () =>
@@ -414,8 +468,8 @@ mobileMenu
 
 // Hero background: the soft spotlight follows the cursor with a fading tail (CSS hero-bg transitions them).
 // Mouse and pen only, not with reduced motion; without it the light stays at its resting place.
-const hero = document.querySelector("[data-hero]");
-if (hero && !reduceMotion) {
+feature("[data-hero]", function initHero(hero, signal) {
+  if (!(!reduceMotion)) return;
   let frame = 0;
   let still = 0;
   hero.addEventListener("pointermove", (event) => {
@@ -441,11 +495,11 @@ if (hero && !reduceMotion) {
       }
     });
   });
-}
+});
 
 // Call-to-action band (every page): the dots around the cursor light up. Mouse and pen only, not with reduced
 // motion; the light fades out when the pointer leaves the band (CSS cta-dots).
-document.querySelectorAll("[data-cta]").forEach((cta) => {
+feature("[data-cta]", function initCta(cta, signal) {
   if (reduceMotion) return;
   let frame = 0;
   let point = null;
@@ -468,8 +522,7 @@ document.querySelectorAll("[data-cta]").forEach((cta) => {
 // (animate-demo-timer) finishes, the next step starts. Hovering the app window (not the timeline) or scrolling it out of view
 // pauses the timer; clicking a tab jumps to that step. With reduced motion the timer is hidden, so
 // nothing advances by itself.
-const demo = document.querySelector("[data-demo]");
-if (demo) {
+feature("[data-demo]", function initDemo(demo, signal) {
   const tabs = [...demo.querySelectorAll("[data-demo-tab]")];
   const groups = [
     tabs,
@@ -532,11 +585,13 @@ if (demo) {
       .querySelector(".demo-timer")
       ?.addEventListener("animationend", () => go((i + 1) % tabs.length));
   });
-  new IntersectionObserver(([entry]) =>
+  const io = new IntersectionObserver(([entry]) =>
     demo.toggleAttribute("data-paused", !entry.isIntersecting),
-  ).observe(demo);
+  );
+  io.observe(demo);
+  onAbort(signal, () => io.disconnect());
   go(0);
-}
+});
 
 // Story board (Decision Audit page): one [data-story] figure plays its [data-scene] beat timeline, the same model
 // as How it works (data-play, then data-b2 … at the ms in data-beats; pre-N / at-N variants in CSS). It loops
@@ -546,7 +601,7 @@ if (demo) {
 // Step buttons ([data-story-step="N"], disabled in the HTML so they do nothing without JS) jump to beat N: the
 // earlier beats are set at once, beat N's own transition plays, and the story carries on from there (or stays put
 // while paused). With reduced motion they still switch steps, instantly and without autoplay.
-document.querySelectorAll("[data-story]").forEach((story) => {
+feature("[data-story]", function initStory(story, signal) {
   const scene = story.querySelector("[data-scene]");
   if (!scene) return;
   const steps = story.querySelectorAll("[data-story-step]");
@@ -665,13 +720,15 @@ document.querySelectorAll("[data-story]").forEach((story) => {
     attributes: true,
     attributeFilter: ["data-held"],
   });
-  new IntersectionObserver(
+  const io = new IntersectionObserver(
     ([entry]) => {
       onScreen = entry.isIntersecting;
       sync();
     },
     { threshold: 0.4 },
-  ).observe(story);
+  );
+  io.observe(story);
+  onAbort(signal, () => io.disconnect());
 });
 
 // Revenue calculator (home, [data-calc]), as the owner specified:
@@ -683,7 +740,7 @@ document.querySelectorAll("[data-story]").forEach((story) => {
 // being dragged stops at the room the other leaves (it never pushes the other thumb), the used-up part of its track
 // is pale, and a slider with no room left is disabled; so validIncrease always equals the chosen increase. Number fields are clamped to their min/max (shown back when the field is left). Results of a million or
 // more use the short form ($55M). The HTML holds the result for the default inputs, so it reads without JavaScript.
-document.querySelectorAll("[data-calc]").forEach((calc) => {
+feature("[data-calc]", function initCalc(calc, signal) {
   const field = (name) => calc.querySelector(`[name="${name}"]`);
   const out = (name) => calc.querySelector(`[data-out="${name}"]`);
   /*
@@ -797,7 +854,7 @@ document.querySelectorAll("[data-calc]").forEach((calc) => {
 
 // Pause buttons for content that moves by itself (WCAG 2.2.2): [data-pause] toggles data-held on its
 // [data-pausable] wrapper (CSS stops the hero demo timer); aria-pressed and the icon follow.
-document.querySelectorAll("[data-pause]").forEach((button) => {
+feature("[data-pause]", function initPause(button, signal) {
   const target = button.closest("[data-pausable]");
   button.addEventListener("click", () => {
     const held = target.toggleAttribute("data-held");
@@ -812,8 +869,7 @@ document.querySelectorAll("[data-pause]").forEach((button) => {
 // reduced motion, and only while on screen). Clicking a circle turns it to 3 o'clock and opens the card beside it
 // with its reason; clicking it again, the card's × or Esc closes the card and the ring turns on. "Next" moves on.
 // The ring also holds still while the pointer or keyboard focus is on the orbit.
-const why = document.querySelector("[data-why]");
-if (why) {
+feature("[data-why]", function initWhy(why, signal) {
   const spin = why.querySelector("[data-why-spin]");
   const tabs = [...why.querySelectorAll("[data-why-tab]")];
   const panels = [...why.querySelectorAll("[data-why-panel]")];
@@ -828,6 +884,9 @@ if (why) {
   // the ring stops while the pointer or keyboard focus is on the orbit (so the circles hold still to be picked),
   // while a card is open, and off screen; the animation loop only runs while it turns
   let frame = 0;
+  // Declared, because `turning()` reads it before any pointer event assigns it. Undeclared, the
+  // read threw "hovered is not defined" on the first intersection and the ring never turned at all.
+  let hovered = false;
   // touch screens have no hover to hold it still, so there the ring does not turn by itself (WCAG 2.2.2)
   const noHover = window.matchMedia("(hover: none)").matches;
   const turning = () =>
@@ -845,10 +904,11 @@ if (why) {
   };
   // watch the orbit itself, not the section: hidden on phones (no box) or scrolled away, it does not turn
   const orbit = why.querySelector("[data-why-orbit]");
-  new IntersectionObserver(([entry]) => {
+  const io = new IntersectionObserver(([entry]) => {
     onScreen = entry.isIntersecting;
     wake();
-  }).observe(orbit ?? why);
+  });
+  io.observe(orbit ?? why);
   const setHover = (on) => {
     hovered = on;
     wake();
@@ -922,10 +982,22 @@ if (why) {
     }),
   );
   // Esc closes the card wherever focus is
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && open >= 0) close();
+  document.addEventListener(
+    "keydown",
+    (event) => {
+      if (event.key === "Escape" && open >= 0) close();
+    },
+    { signal },
+  );
+
+  // The frame, the observer and the two timers outlive the element on their own; the signal is
+  // what stops a navigated-away orbit from still animating and still answering Escape.
+  onAbort(signal, () => {
+    cancelAnimationFrame(frame);
+    io.disconnect();
+    clearTimeout(swap);
   });
-}
+});
 
 // How it works (lovable.dev style): the step whose card has crossed the middle of the screen is active.
 // Its description opens (CSS: how-desc) and --how-p (0 → 1) fills the line under it as the card scrolls
@@ -934,11 +1006,11 @@ if (why) {
 // arrive at the times in data-beats; the last frame holds, the scene fades out, resets instantly and plays
 // again. A scene that loses focus (another card becomes active, or it leaves the screen) pauses on its current
 // beat and carries on from there when it comes back. Hovering the active card (mouse or pen) pauses its story the
-// same way, and a "Paused" sign fades in at the card's corner (CSS: how-pause; a signal only, not a control).
+// same way, and "Paused" appears at the card's corner (CSS: how-pause). That corner pill is also the pause
+// button, because hover is the one thing a thumb cannot do: pressing it stops every story (WCAG 2.2.2).
 // A scene that has never played shows its final frame. Without JS, or with reduced motion (never data-play),
 // every scene simply shows its final frame.
-const how = document.querySelector("[data-how]");
-if (how) {
+feature("[data-how]", function initHow(how, signal) {
   const steps = [...how.querySelectorAll("[data-how-step]")];
   const cards = [...how.querySelectorAll("[data-how-card]")];
   const scenes = cards.map((card) => card.querySelector("[data-scene]"));
@@ -950,6 +1022,7 @@ if (how) {
   let running = null; // the scene whose timers are running
   let startedAt = 0; // performance.now() minus the elapsed time of the running scene
   let held = null; // the card under the pointer: its story pauses while it is there
+  let paused = false; // the visitor pressed pause: every story stops until they press play
 
   const clearTimers = () => {
     timers.forEach(clearTimeout);
@@ -1007,13 +1080,15 @@ if (how) {
   // run the scene that should play (the active one, unless its card is hovered); hold any other
   const sync = () => {
     const card = cards[scenes.indexOf(playing)];
-    const want = playing && !reduceMotion && card !== held ? playing : null;
+    const want =
+      playing && !reduceMotion && card !== held && !paused ? playing : null;
     cards.forEach((c, i) => {
-      const on = scenes[i] === playing && !reduceMotion && c === held;
+      const on = scenes[i] === playing && !reduceMotion && (c === held || paused);
       c.toggleAttribute("data-held", on);
       const status = c.querySelector("[data-how-status]");
-      if (status && status.textContent !== (on ? "Paused" : ""))
-        status.textContent = on ? "Paused" : ""; // role=status: announced when it changes
+      // The word comes from the markup, where it is translated; a literal here would be English on /vi.
+      const text = on ? (status?.dataset.labelPaused ?? "") : "";
+      if (status && status.textContent !== text) status.textContent = text; // role=status: announced when it changes
     });
     if (running === want) return;
     if (running) hold(running);
@@ -1028,17 +1103,48 @@ if (how) {
 
   // Hovering a card (mouse and pen) pauses its story while the pointer is on it; the "Paused" sign shows meanwhile.
   cards.forEach((card) => {
-    card.addEventListener("pointerenter", (e) => {
-      if (e.pointerType === "touch") return;
-      held = card;
-      sync();
-    });
-    card.addEventListener("pointerleave", (e) => {
-      if (e.pointerType === "touch" || held !== card) return;
-      held = null;
-      sync();
-    });
+    card.addEventListener(
+      "pointerenter",
+      (e) => {
+        if (e.pointerType === "touch") return;
+        held = card;
+        sync();
+      },
+      { signal },
+    );
+    card.addEventListener(
+      "pointerleave",
+      (e) => {
+        if (e.pointerType === "touch" || held !== card) return;
+        held = null;
+        sync();
+      },
+      { signal },
+    );
   });
+
+  // Touch has no hover, so the pill is also the control. One state across all three buttons: scrolling
+  // on to the next card must not restart motion the visitor asked to stop.
+  const pauseButtons = [...how.querySelectorAll("[data-how-pause]")];
+  pauseButtons.forEach((btn) =>
+    btn.addEventListener(
+      "click",
+      () => {
+        paused = !paused;
+        for (const b of pauseButtons) {
+          b.setAttribute("aria-pressed", String(paused));
+          const label = paused ? b.dataset.labelPlay : b.dataset.labelPause;
+          if (label) b.setAttribute("aria-label", label);
+          b.querySelector("[data-how-pause-icon]")?.setAttribute(
+            "href",
+            paused ? "#i-play" : "#i-pause",
+          );
+        }
+        sync();
+      },
+      { signal },
+    ),
+  );
 
   // Clicking a step scrolls smoothly to its card (centred) instead of jumping; reduced motion jumps
   how.querySelectorAll("[data-how-link]").forEach((link) =>
@@ -1086,11 +1192,11 @@ if (how) {
         requestAnimationFrame(update);
       }
     },
-    { passive: true },
+    { passive: true, signal },
   );
-  addEventListener("resize", update);
+  addEventListener("resize", update, { signal });
   update();
-}
+});
 
 // DEAL acronym (About page). The HTML is the final, expanded column. Measure it once, pin its width, start each
 // initial from its place in a big centred "DEAL" row (FLIP: translate + scale back to the column), then loop:
@@ -1220,7 +1326,7 @@ function initDeal(deal) {
 // or <html data-theme>. It plays only while on screen and fades in once a frame is playing. The poster is only a
 // fallback: reduced motion and no JS (CSS), autoplay blocked, or no frame after 3s. There is no
 // pause button (decided 16 Oct 2026): reduced motion is the opt-out.
-document.querySelectorAll("[data-bg-video]").forEach((video) => {
+feature("[data-bg-video]", function initBgVideo(video, signal) {
   if (reduceMotion) return; // the CSS shows the poster instead
   const stem = video.dataset.bgVideo;
   const section = video.closest("section");
@@ -1276,12 +1382,15 @@ document.querySelectorAll("[data-bg-video]").forEach((video) => {
     else video.pause();
   };
 
-  new IntersectionObserver(([entry]) => {
+  const io = new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;
     if (visible) load(); // first time on screen: fetch the video
     update();
-  }).observe(section);
-  osDark.addEventListener("change", () => theme && load());
+  });
+  io.observe(section);
+  onAbort(signal, () => io.disconnect());
+  // `osDark` is a MediaQueryList that outlives the page, so this one needs the signal too
+  osDark.addEventListener("change", () => theme && load(), { signal });
 });
 
 // Ask Pulse chat (shell, every page; UI only, 20 Oct 2026): the corner button opens and closes the panel
@@ -1289,7 +1398,7 @@ document.querySelectorAll("[data-bg-video]").forEach((video) => {
 // adds the visitor's message and, after a short pause, the "not connected yet" reply from the <template> (its links
 // are already rewritten for the page's folder by sync-shell.py). Enter sends, Shift+Enter starts a new line. The jump
 // button shows when the conversation is scrolled away from the latest message.
-document.querySelectorAll("[data-chat]").forEach((chat) => {
+feature("[data-chat]", function initChat(chat, signal) {
   const toggle = chat.querySelector("[data-chat-toggle]");
   const panel = chat.querySelector("[data-chat-panel]");
   const log = chat.querySelector("[data-chat-log]");
@@ -1393,6 +1502,9 @@ const UNSHOWN =
   ".reveal:not([data-shown]), [data-count]:not([data-shown]), [data-type]:not([data-shown]), [data-shelf]:not([data-shown])";
 
 window.__pulseMotionRescan = function rescan() {
+  // Features first: a navigation brings new elements that nothing has bound yet, and takes away
+  // elements whose timers are still running.
+  mountFeatures();
   document.querySelectorAll(UNSHOWN).forEach((el) => revealObserver.observe(el));
   document.querySelectorAll(".reveal-bar").forEach((bar) => {
     const track = bar.parentElement;
@@ -1464,3 +1576,6 @@ function scanMedia() {
 }
 
 scanMedia();
+
+// The first page is mounted here; every page after it goes through `__pulseMotionRescan`.
+mountFeatures();

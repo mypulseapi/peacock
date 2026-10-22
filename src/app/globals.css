@@ -2715,20 +2715,21 @@ html[data-theme="dark"] {
     }
   }
 }
-/* Pause sign in the top-right corner of a How it works card (JS + motion only): while the pointer is on the card its
-   story pauses and this pill fades in with a pause icon and "Paused" (src/main.js sets data-held on the card and the
-   status text). It is only a signal: not a button, not focusable, no hover style, clicks pass through. */
+/* Pause control in the top-right corner of a How it works card (JS + motion only). Hover and pen pause a card's story
+   on their own; touch has neither, so until this was a button there was no way at all to stop a loop that restarts
+   every seven seconds (WCAG 2.2.2). It used to be a sign: it faded in on hover, let clicks pass through, and took no
+   focus. Now the pill stays visible and takes the press, "Paused" still reveals beside the icon on whichever card is
+   playing (src/main.js sets data-held), and the icon swaps to play. Pressing it stops all three stories, because
+   scrolling on to the next card must not restart motion the visitor asked to stop. */
 @utility how-pause {
-  @apply pointer-events-none absolute top-4 right-4 z-10 hidden h-8 items-center rounded-full border border-line bg-card text-xs font-medium text-ink opacity-0 shadow-sm transition-opacity duration-200 ease-out-soft select-none;
+  @apply absolute top-4 right-4 z-10 hidden h-8 items-center rounded-full border border-line bg-card text-xs font-medium text-ink shadow-sm select-none;
   @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
     display: inline-flex;
   }
-  [data-held] > & {
-    opacity: 1;
-  }
 }
 @utility how-pause-icon {
-  @apply grid size-8 place-items-center;
+  /* 32px in the corner, 44px to a thumb: `hit-area` grows the target without growing the pill. */
+  @apply hit-area grid size-8 cursor-pointer place-items-center rounded-full text-muted transition-colors duration-150 ease-out-soft hover:text-ink;
 }
 @utility how-pause-label {
   display: inline-block;

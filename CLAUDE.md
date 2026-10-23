@@ -207,6 +207,17 @@ Run this after **each** skill step, not only at the end of a plan.
   request with review threads resolved. `develop` needs `Lint` and `Type check`; `main` needs
   those plus `Build site` and `Source branch`. There are no bypass actors, so this applies to
   admins too.
+- **Only admins can merge into `main`** (23 Oct 2026). A third ruleset, `main: only admins merge`,
+  restricts updates to `main` to the admin role (Suman, Eric). The two above require **zero**
+  approvals, so until this any maintainer could merge a release and deploy production. A maintainer
+  can still open the `develop` -> `main` pull request; an admin merges it. It sits beside the other
+  two rather than inside them because a bypass actor bypasses every rule in its ruleset, and the
+  pull request and checks must keep binding admins.
+- **Every change here gets an ODIN record** (23 Oct 2026). ODIN is in the `rainbow` repository, so
+  the record is a merge request there, and the pull request here names it, or says why there is
+  nothing to record. The template in `.github/pull_request_template.md` asks for it. This is
+  `rainbow/CLAUDE.md` rule 3 applied across the two repositories; who may change what is in
+  `rainbow/ODIN/process/TEAM.md` § Stan's access.
 - `Source branch` refuses a pull request into `main` from anything but `develop`. Without it a
   feature branch could publish work that never sat on `develop`, which is the whole point of
   having `develop`.

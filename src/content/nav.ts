@@ -97,18 +97,18 @@ export const NAV_GROUPS: NavGroup[] = [
           "Recompute after the repair and see exactly what moved. No traffic needed.",
       },
       {
-        href: "/product/return-verification",
-        icon: Undo2,
-        label: "Return Verification",
-        blurb:
-          "See which missing facts go with returns, and whether a repair moved them.",
-      },
-      {
         href: "/product/decision-monitor",
         icon: BellRing,
         label: "Decision Monitor",
         blurb: "Catalogues decay. Get told when a shelf slips and why.",
         tag: "Recurring",
+      },
+      {
+        href: "/product/return-verification",
+        icon: Undo2,
+        label: "Return Verification",
+        blurb:
+          "See which missing facts go with returns, and whether a repair moved them.",
       },
     ],
   },
@@ -215,19 +215,19 @@ export const NAV_GROUPS_VI: NavGroup[] = [
           "Đo lại sau khi sửa và thấy chính xác điều gì đã thay đổi. Không cần lưu lượng truy cập.",
       },
       {
-        href: "/product/return-verification",
-        icon: Undo2,
-        label: "Return Verification",
-        blurb:
-          "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không.",
-      },
-      {
         href: "/product/decision-monitor",
         icon: BellRing,
         label: "Decision Monitor",
         blurb:
           "Danh mục xuống cấp theo thời gian. Được báo khi một nhóm hàng tụt, kèm nguyên nhân.",
         tag: "Định kỳ",
+      },
+      {
+        href: "/product/return-verification",
+        icon: Undo2,
+        label: "Return Verification",
+        blurb:
+          "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không.",
       },
     ],
   },

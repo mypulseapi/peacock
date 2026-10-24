@@ -116,21 +116,6 @@ export function DesignedHeader() {
                             </span>
                           </Link>
                         </li>
-                        <li>
-                          <Link
-                            href={designedHref(
-                              "/en/product/return-verification",
-                            )}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("returnName")}
-                            </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("returnBlurb")}
-                            </span>
-                          </Link>
-                        </li>
                       </ul>
                     </div>
                     <div className="nav-column w-76 p-3">
@@ -151,6 +136,21 @@ export function DesignedHeader() {
                             </span>
                             <span className="mt-1 block text-sm text-pretty text-muted">
                               {t("10")}
+                            </span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href={designedHref(
+                              "/en/product/return-verification",
+                            )}
+                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                          >
+                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                              {t("returnName")}
+                            </span>
+                            <span className="mt-1 block text-sm text-pretty text-muted">
+                              {t("returnBlurb")}
                             </span>
                           </Link>
                         </li>
@@ -465,19 +465,6 @@ export function DesignedHeader() {
               </li>
               <li>
                 <Link
-                  href={designedHref("/en/product/return-verification")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-circle-check" />
-                    </svg>
-                  </span>
-                  {t("returnName")}
-                </Link>
-              </li>
-              <li>
-                <Link
                   href={designedHref("/en/product/decision-monitor")}
                   className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                 >
@@ -487,6 +474,19 @@ export function DesignedHeader() {
                     </svg>
                   </span>
                   {t("51")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={designedHref("/en/product/return-verification")}
+                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                >
+                  <span className="nav-icon-tile size-9">
+                    <svg className="size-4" aria-hidden="true">
+                      <use href="#i-circle-check" />
+                    </svg>
+                  </span>
+                  {t("returnName")}
                 </Link>
               </li>
             </ul>

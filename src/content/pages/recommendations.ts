@@ -20,7 +20,7 @@ export const RECOMMENDATIONS: StoryContent = {
 
   visualHeading: "The same ranker, pointed at a slot.",
   visualBody:
-    "Not a second model. The four factors that order a search result order a recommendation strip.",
+    "Not a second model. The factors that order a search result order a recommendation strip.",
 
   chainBlock: {
     eyebrow: "The cold start, stated plainly",
@@ -95,7 +95,7 @@ export const RECOMMENDATIONS: StoryContent = {
         n: "02",
         meta: "Rank",
         title: "The catalogue is ordered",
-        body: "The slot asks for n products and gets them ranked on base relevance, persona fit, attribute affinity and price band, the same four factors search uses.",
+        body: "The slot asks for n products and gets them ranked on relevance, persona fit, quality, price band and attribute affinity, the same factors search uses.",
       },
       {
         n: "03",
@@ -122,7 +122,7 @@ export const RECOMMENDATIONS: StoryContent = {
       {
         icon: Shuffle,
         title: "One ranker, not two",
-        body: "The strip and the search results are ordered by the same four factors. A merchandiser who understands one understands the other, and there is no second model to keep in sync.",
+        body: "The strip and the search results are ordered by the same factors. A merchandiser who understands one understands the other, and there is no second model to keep in sync.",
       },
       {
         icon: ShieldCheck,
@@ -163,7 +163,7 @@ export const RECOMMENDATIONS: StoryContent = {
     },
     {
       q: "Is this a different model from your search ranking?",
-      a: "No, and that is deliberate. It is the same ranker with the same four factors pointed at a slot instead of a result set. One thing to understand, one thing to audit, and no second model quietly drifting away from the first.",
+      a: "No, and that is deliberate. It is the same ranker with the same factors pointed at a slot instead of a result set. One thing to understand, one thing to audit, and no second model quietly drifting away from the first.",
     },
     {
       q: "What happens if it is unavailable?",
@@ -193,7 +193,7 @@ export const RECOMMENDATIONS_VI: StoryContent = {
 
   visualHeading: "Cùng một bộ xếp hạng, chĩa vào một ô hiển thị.",
   visualBody:
-    "Không phải mô hình thứ hai. Bốn yếu tố sắp xếp kết quả tìm kiếm cũng sắp xếp một dải gợi ý.",
+    "Không phải mô hình thứ hai. Các yếu tố sắp xếp kết quả tìm kiếm cũng sắp xếp một dải gợi ý.",
 
   chainBlock: {
     eyebrow: "Khởi đầu nguội, nói thẳng",
@@ -267,7 +267,7 @@ export const RECOMMENDATIONS_VI: StoryContent = {
         n: "02",
         meta: "Xếp hạng",
         title: "Danh mục được sắp xếp",
-        body: "Ô hiển thị hỏi xin n sản phẩm và nhận lại chúng đã xếp theo độ liên quan nền, mức khớp chân dung, độ tương hợp thuộc tính và khoảng giá, đúng bốn yếu tố mà tìm kiếm dùng.",
+        body: "Ô hiển thị hỏi xin n sản phẩm và nhận lại chúng đã xếp theo độ liên quan, mức khớp chân dung, chất lượng, khoảng giá và độ tương hợp thuộc tính, đúng các yếu tố mà tìm kiếm dùng.",
       },
       {
         n: "03",
@@ -294,7 +294,7 @@ export const RECOMMENDATIONS_VI: StoryContent = {
       {
         icon: Shuffle,
         title: "Một bộ xếp hạng, không phải hai",
-        body: "Dải gợi ý và kết quả tìm kiếm được sắp bởi cùng bốn yếu tố. Người phụ trách trưng bày hàng hoá hiểu được cái này thì hiểu được cái kia, và không có mô hình thứ hai nào phải giữ cho đồng bộ.",
+        body: "Dải gợi ý và kết quả tìm kiếm được sắp bởi cùng các yếu tố. Người phụ trách trưng bày hàng hoá hiểu được cái này thì hiểu được cái kia, và không có mô hình thứ hai nào phải giữ cho đồng bộ.",
       },
       {
         icon: ShieldCheck,
@@ -335,7 +335,7 @@ export const RECOMMENDATIONS_VI: StoryContent = {
     },
     {
       q: "Đây có phải mô hình khác với bộ xếp hạng tìm kiếm của các bạn không?",
-      a: "Không, và điều đó là có chủ đích. Nó là cùng một bộ xếp hạng với cùng bốn yếu tố, chĩa vào một ô hiển thị thay vì một tập kết quả. Một thứ để hiểu, một thứ để rà soát, và không có mô hình thứ hai nào lặng lẽ trôi xa khỏi cái thứ nhất.",
+      a: "Không, và điều đó là có chủ đích. Nó là cùng một bộ xếp hạng với cùng các yếu tố, chĩa vào một ô hiển thị thay vì một tập kết quả. Một thứ để hiểu, một thứ để rà soát, và không có mô hình thứ hai nào lặng lẽ trôi xa khỏi cái thứ nhất.",
     },
     {
       q: "Nếu nó không sẵn sàng thì sao?",

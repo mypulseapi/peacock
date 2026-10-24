@@ -10,7 +10,7 @@ import type { StoryContent } from "@/components/StoryPage";
 /**
  * Search, as a surface the Decision API serves rather than as a product of its
  * own. Grounded in what `apps/api/road-runner/src/search` actually contains:
- * `search.service.ts`, `ranking.service.ts` with its four named factors,
+ * `search.service.ts`, `ranking.service.ts` with its named factors,
  * `query-intent.ts`, and `holdback.service.ts`. Nothing here describes a
  * capability that is not in that directory with a spec beside it.
  */
@@ -18,11 +18,11 @@ export const SEARCH: StoryContent = {
   meta: {
     title: "Search: rank results on what the shopper is deciding",
     description:
-      "Runs beside your existing search rather than replacing it, scores every result on four readable factors, and always holds a share of traffic back.",
+      "Runs beside your existing search rather than replacing it, scores every result on factors you can read, and always holds a share of traffic back.",
   },
   eyebrow: "Search",
   title: "Search that ranks on what the shopper is deciding.",
-  lede: "It runs beside the search you already have rather than replacing it, scores every result on four factors you can read, and always holds a share of traffic back so you can see what it is actually doing.",
+  lede: "It runs beside the search you already have rather than replacing it, scores every result on factors you can read, and always holds a share of traffic back so you can see what it is actually doing.",
 
   visualHeading: "Why this result came first.",
   visualBody:
@@ -42,7 +42,7 @@ export const SEARCH: StoryContent = {
   scenes: {
     situation: {
       kind: "asks",
-      eyebrow: "One query, four factors",
+      eyebrow: "One query, scored factor by factor",
       rows: [
         {
           label: "Matches the words",
@@ -67,7 +67,7 @@ export const SEARCH: StoryContent = {
       ],
       okLabel: "Scored",
       noLabel: "No field",
-      note: "of the four factors needs a field the catalogue does not record yet. The ranking says so rather than guessing.",
+      note: "of these needs a field the catalogue does not record yet. The ranking says so rather than guessing.",
     },
     chain: {
       /*
@@ -124,7 +124,7 @@ export const SEARCH: StoryContent = {
   steps: {
     heading: "How the ranking works",
     intro:
-      "Four factors, computed per request, and every one of them readable.",
+      "Several factors, computed per request, and every one of them readable.",
     items: [
       {
         n: "01",
@@ -157,8 +157,8 @@ export const SEARCH: StoryContent = {
       },
       {
         icon: SlidersHorizontal,
-        title: "Four factors, named",
-        body: "Base relevance, persona fit, attribute affinity and price band. Each contributes a visible amount to the score, and they are the same four in the console and in the API response.",
+        title: "The factors, named",
+        body: "Relevance, persona fit, quality, price band, attribute affinity and audience fit. Each contributes a visible amount to the score, and they are the same factors in the console and in the API response. A factor with no data behind it is left out, not scored as zero.",
       },
       {
         icon: Eye,
@@ -226,11 +226,11 @@ export const SEARCH_VI: StoryContent = {
   meta: {
     title: "Tìm kiếm: xếp hạng theo điều người mua cân nhắc",
     description:
-      "Chạy song song với công cụ tìm kiếm sẵn có thay vì thay thế nó, chấm mọi kết quả theo bốn yếu tố đọc được, và luôn giữ lại một phần lưu lượng đối chứng.",
+      "Chạy song song với công cụ tìm kiếm sẵn có thay vì thay thế nó, chấm mọi kết quả theo các yếu tố đọc được, và luôn giữ lại một phần lưu lượng đối chứng.",
   },
   eyebrow: "Tìm kiếm",
   title: "Tìm kiếm xếp hạng theo điều người mua đang cân nhắc.",
-  lede: "Nó chạy song song với công cụ tìm kiếm bạn đang có thay vì thay thế, chấm điểm mọi kết quả theo bốn yếu tố bạn đọc được, và luôn giữ lại một phần lưu lượng để bạn thấy nó thực sự đang làm gì.",
+  lede: "Nó chạy song song với công cụ tìm kiếm bạn đang có thay vì thay thế, chấm điểm mọi kết quả theo các yếu tố bạn đọc được, và luôn giữ lại một phần lưu lượng để bạn thấy nó thực sự đang làm gì.",
 
   visualHeading: "Vì sao kết quả này đứng đầu.",
   visualBody:
@@ -250,7 +250,7 @@ export const SEARCH_VI: StoryContent = {
   scenes: {
     situation: {
       kind: "asks",
-      eyebrow: "Một truy vấn, bốn yếu tố",
+      eyebrow: "Một truy vấn, chấm theo từng yếu tố",
       rows: [
         { label: "Khớp từ khoá", eg: "công cụ của bạn, vốn đã ổn", ok: true },
         {
@@ -271,7 +271,7 @@ export const SEARCH_VI: StoryContent = {
       ],
       okLabel: "Chấm được",
       noLabel: "Thiếu trường",
-      note: "trong bốn yếu tố cần một trường mà danh mục chưa ghi. Bảng xếp hạng nói thẳng điều đó thay vì đoán.",
+      note: "trong số này cần một trường mà danh mục chưa ghi. Bảng xếp hạng nói thẳng điều đó thay vì đoán.",
     },
     chain: {
       kind: "funnel",
@@ -319,7 +319,7 @@ export const SEARCH_VI: StoryContent = {
 
   steps: {
     heading: "Thứ hạng được tính ra sao",
-    intro: "Bốn yếu tố, tính theo từng yêu cầu, và cả bốn đều đọc được.",
+    intro: "Nhiều yếu tố, tính theo từng yêu cầu, và yếu tố nào cũng đọc được.",
     items: [
       {
         n: "01",
@@ -352,8 +352,8 @@ export const SEARCH_VI: StoryContent = {
       },
       {
         icon: SlidersHorizontal,
-        title: "Bốn yếu tố, có tên rõ ràng",
-        body: "Độ liên quan nền, mức khớp chân dung, độ tương hợp thuộc tính và khoảng giá. Mỗi yếu tố đóng góp một lượng nhìn thấy được vào điểm số, và chúng là cùng bốn yếu tố trong bảng điều khiển lẫn trong phản hồi API.",
+        title: "Các yếu tố, có tên rõ ràng",
+        body: "Độ liên quan, mức khớp chân dung, chất lượng, khoảng giá, độ tương hợp thuộc tính và mức khớp nhóm khách hàng. Mỗi yếu tố đóng góp một lượng nhìn thấy được vào điểm số, và chúng là cùng các yếu tố trong bảng điều khiển lẫn trong phản hồi API. Yếu tố nào không có dữ liệu thì được bỏ ra, không bị tính là 0.",
       },
       {
         icon: Eye,

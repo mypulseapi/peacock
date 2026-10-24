@@ -170,7 +170,7 @@ export const PAGES: StoryContent = {
     },
     {
       q: "How is this different from your recommendations?",
-      a: "Only in where it points. Recommendations order a slot, pages order a grid, and search orders a result set. One ranker, four factors, three surfaces, which is why understanding one of these pages means you understand the other two.",
+      a: "Only in where it points. Recommendations order a slot, pages order a grid, and search orders a result set. One ranker, one set of factors, three surfaces, which is why understanding one of these pages means you understand the other two.",
     },
     {
       q: "Can we still pin products?",
@@ -350,7 +350,7 @@ export const PAGES_VI: StoryContent = {
     },
     {
       q: "Việc này khác gì phần gợi ý sản phẩm của các bạn?",
-      a: "Chỉ khác ở chỗ nó chĩa vào đâu. Gợi ý sản phẩm sắp một ô hiển thị, trang danh mục sắp một lưới, và tìm kiếm sắp một tập kết quả. Một bộ xếp hạng, bốn yếu tố, ba bề mặt, đó là lý do hiểu một trong ba trang này nghĩa là bạn đã hiểu hai trang còn lại.",
+      a: "Chỉ khác ở chỗ nó chĩa vào đâu. Gợi ý sản phẩm sắp một ô hiển thị, trang danh mục sắp một lưới, và tìm kiếm sắp một tập kết quả. Một bộ xếp hạng, một bộ yếu tố, ba bề mặt, đó là lý do hiểu một trong ba trang này nghĩa là bạn đã hiểu hai trang còn lại.",
     },
     {
       q: "Chúng tôi còn ghim được sản phẩm không?",

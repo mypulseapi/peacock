@@ -145,7 +145,7 @@ export const MERCHANDISING_STUDIO: StoryContent = {
         n: "03",
         meta: "Audit",
         title: "Pull a decision record",
-        body: "Any ranked response carries an id and the four factors behind each score. When somebody asks why a product placed where it did, the answer is retrievable.",
+        body: "Any ranked response carries an id and the factors behind each score. When somebody asks why a product placed where it did, the answer is retrievable.",
       },
     ],
   },
@@ -161,7 +161,7 @@ export const MERCHANDISING_STUDIO: StoryContent = {
       {
         icon: Users,
         title: "Persona tagging",
-        body: "Which products are associated with which personas, which is one of the four ranking factors and the one a merchandiser has the most useful opinion about.",
+        body: "Which products are associated with which personas, which is one of the ranking factors and the one a merchandiser has the most useful opinion about.",
       },
       {
         icon: Gauge,
@@ -355,7 +355,7 @@ export const MERCHANDISING_STUDIO_VI: StoryContent = {
         n: "03",
         meta: "Truy vết",
         title: "Tra một bản ghi quyết định",
-        body: "Mọi phản hồi đã xếp hạng đều mang một mã và bốn yếu tố đứng sau từng điểm số. Khi ai đó hỏi vì sao một sản phẩm nằm ở vị trí đó, câu trả lời là thứ tra ra được.",
+        body: "Mọi phản hồi đã xếp hạng đều mang một mã và các yếu tố đứng sau từng điểm số. Khi ai đó hỏi vì sao một sản phẩm nằm ở vị trí đó, câu trả lời là thứ tra ra được.",
       },
     ],
   },
@@ -371,7 +371,7 @@ export const MERCHANDISING_STUDIO_VI: StoryContent = {
       {
         icon: Users,
         title: "Gắn thẻ chân dung",
-        body: "Sản phẩm nào gắn với chân dung nào, vốn là một trong bốn yếu tố xếp hạng và là yếu tố mà người phụ trách trưng bày hàng hoá có ý kiến hữu ích nhất.",
+        body: "Sản phẩm nào gắn với chân dung nào, vốn là một trong các yếu tố xếp hạng và là yếu tố mà người phụ trách trưng bày hàng hoá có ý kiến hữu ích nhất.",
       },
       {
         icon: Gauge,

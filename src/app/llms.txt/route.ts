@@ -56,6 +56,7 @@ What Pulse does NOT do or claim:
 ## Product
 - [Decision Audit](${en("/product/decision-audit")}): which product data to fix first, ranked by how many shoppers need it.
 - [Decision Verification](${en("/product/decision-verification")}): the same measurement on the repaired export, so a fix can be proved without traffic.
+- [Return Verification](${en("/product/return-verification")}): which missing product facts go with returns in your order history, and whether a repair moved them.
 - [Decision Monitor](${en("/product/decision-monitor")}): what decays in a catalogue over time, and where.
 - [Decision API](${en("/product/decision-api")}): the endpoints behind all of it.
 

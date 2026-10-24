@@ -75,6 +75,10 @@ export function Footer() {
           label: t("decisionVerification"),
           href: "/product/decision-verification",
         },
+        {
+          label: t("returnVerification"),
+          href: "/product/return-verification",
+        },
         { label: t("decisionMonitor"), href: "/product/decision-monitor" },
         { label: t("pricing"), href: "/pricing" },
       ],

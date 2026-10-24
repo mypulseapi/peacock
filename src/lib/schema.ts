@@ -205,6 +205,10 @@ const CRUMB_LABELS: Record<string, { en: string; vi: string }> = {
     en: "Decision Verification",
     vi: "Decision Verification",
   },
+  "/product/return-verification": {
+    en: "Return Verification",
+    vi: "Return Verification",
+  },
   "/product/decision-monitor": {
     en: "Decision Monitor",
     vi: "Decision Monitor",

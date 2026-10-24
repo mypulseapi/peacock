@@ -4,6 +4,7 @@ import {
   ClipboardCheck,
   GitCompare,
   BellRing,
+  Undo2,
   ShoppingCart,
   ShoppingBasket,
   Cpu,
@@ -94,6 +95,13 @@ export const NAV_GROUPS: NavGroup[] = [
         label: "Decision Verification",
         blurb:
           "Recompute after the repair and see exactly what moved. No traffic needed.",
+      },
+      {
+        href: "/product/return-verification",
+        icon: Undo2,
+        label: "Return Verification",
+        blurb:
+          "See which missing facts go with returns, and whether a repair moved them.",
       },
       {
         href: "/product/decision-monitor",
@@ -205,6 +213,13 @@ export const NAV_GROUPS_VI: NavGroup[] = [
         label: "Decision Verification",
         blurb:
           "Đo lại sau khi sửa và thấy chính xác điều gì đã thay đổi. Không cần lưu lượng truy cập.",
+      },
+      {
+        href: "/product/return-verification",
+        icon: Undo2,
+        label: "Return Verification",
+        blurb:
+          "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không.",
       },
       {
         href: "/product/decision-monitor",

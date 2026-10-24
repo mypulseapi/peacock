@@ -26,6 +26,7 @@ export type Audience =
 export type ProductArea =
   | "audit"
   | "verification"
+  | "returns"
   | "monitor"
   | "api"
   | "search"
@@ -117,6 +118,13 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     area: "verification",
     depth: "explainer",
     decides: ["what-it-does", "is-it-proven"],
+  },
+  {
+    route: "/product/return-verification",
+    audience: "merchant",
+    area: "returns",
+    depth: "explainer",
+    decides: ["what-it-does", "how-it-works"],
   },
   {
     route: "/product/decision-monitor",

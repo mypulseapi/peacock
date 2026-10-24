@@ -15,7 +15,8 @@
       "13": "Chính sách bảo mật",
       "14": "Điều khoản dịch vụ",
       "15": "Chính sách cookie",
-      "16": "GDPR"
+      "16": "GDPR",
+      "returnName": "Return Verification"
     },
     "designed-header": {
       "1": "Sản phẩm",
@@ -75,7 +76,9 @@
       "theme": "Giao diện",
       "themeLight": "Sáng",
       "themeDark": "Tối",
-      "themeSystem": "Hệ thống"
+      "themeSystem": "Hệ thống",
+      "returnName": "Return Verification",
+      "returnBlurb": "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không"
     }
   },
   "home": {

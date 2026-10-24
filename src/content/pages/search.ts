@@ -1,5 +1,10 @@
 import { byLocale } from "@/content/locale";
-import { Search, SlidersHorizontal, Eye, SplitSquareHorizontal } from "lucide-react";
+import {
+  Search,
+  SlidersHorizontal,
+  Eye,
+  SplitSquareHorizontal,
+} from "lucide-react";
 import type { StoryContent } from "@/components/StoryPage";
 
 /**
@@ -17,8 +22,7 @@ export const SEARCH: StoryContent = {
   },
   eyebrow: "Search",
   title: "Search that ranks on what the shopper is deciding.",
-  lede:
-    "It runs beside the search you already have rather than replacing it, scores every result on four factors you can read, and always holds a share of traffic back so you can see what it is actually doing.",
+  lede: "It runs beside the search you already have rather than replacing it, scores every result on four factors you can read, and always holds a share of traffic back so you can see what it is actually doing.",
 
   visualHeading: "Why this result came first.",
   visualBody:
@@ -30,20 +34,36 @@ export const SEARCH: StoryContent = {
     body: "The problem is the order they came back in, and that is a different problem with a different fix.",
   },
 
-    heroImage: {
-      src: "product/shopper-search-bar-price-delivery-signals.webp",
-      alt: "A search bar surrounded by floating tokens for price, delivery, wallet and sentiment, the things a shopper is weighing while they type.",
-    },
+  heroImage: {
+    src: "product/shopper-search-bar-price-delivery-signals.webp",
+    alt: "A search bar surrounded by floating tokens for price, delivery, wallet and sentiment, the things a shopper is weighing while they type.",
+  },
 
   scenes: {
     situation: {
       kind: "asks",
       eyebrow: "One query, four factors",
       rows: [
-        { label: "Matches the words", eg: "your search engine, already fine", ok: true },
-        { label: "Fits the implied budget", eg: "from what this session browsed", ok: true },
-        { label: "Separates the near-identical", eg: "needs the deciding attribute", ok: false },
-        { label: "Explains its own position", eg: "a reason per result", ok: true },
+        {
+          label: "Matches the words",
+          eg: "your search engine, already fine",
+          ok: true,
+        },
+        {
+          label: "Fits the implied budget",
+          eg: "from what this session browsed",
+          ok: true,
+        },
+        {
+          label: "Separates the near-identical",
+          eg: "needs the deciding attribute",
+          ok: false,
+        },
+        {
+          label: "Explains its own position",
+          eg: "a reason per result",
+          ok: true,
+        },
       ],
       okLabel: "Scored",
       noLabel: "No field",
@@ -58,48 +78,98 @@ export const SEARCH: StoryContent = {
        */
       kind: "funnel",
       total: 200,
-      lead: { before: "One shopper opens the first screen and reads", after: "of them." },
+      lead: {
+        before: "One shopper opens the first screen and reads",
+        after: "of them.",
+      },
       // The six ARE the good outcome, so they read as one. Drawn in warn they
       // were six red crosses standing for the products that work.
       alike: "look the same in the order they arrive",
       reached: "reached a shopper",
       bands: [
-        { label: "returned", value: 200, tone: "work", note: "your existing engine, doing its job. This part already works." },
-        { label: "a shopper reads", value: 10, tone: "work", note: "the first screen, and rarely past it" },
-        { label: "they can tell apart", value: 6, tone: "good", note: "separable on the fields the catalogue records" },
+        {
+          label: "returned",
+          value: 200,
+          tone: "work",
+          note: "your existing engine, doing its job. This part already works.",
+        },
+        {
+          label: "a shopper reads",
+          value: 10,
+          tone: "work",
+          note: "the first screen, and rarely past it",
+        },
+        {
+          label: "they can tell apart",
+          value: 6,
+          tone: "good",
+          note: "separable on the fields the catalogue records",
+        },
       ],
       note: "Illustrative of the shape, not a measurement of your shelf. Swapping search engines changes the first band and leaves the last one alone.",
     },
   },
 
   situation: {
-    heading: "Keyword search is not the reason your shoppers cannot find things.",
+    heading:
+      "Keyword search is not the reason your shoppers cannot find things.",
     body: [
       "Most search tools match the words in the box against the words in your catalogue, and they do it well. That is why replacing one with another rarely moves anything: the matching was never the weak part.",
       "The weak part is what happens after the match. A query returns ninety products that all genuinely match it, and the ordering has to decide which of the ninety this particular person should see first. Sorted by relevance they are near identical. Sorted by popularity you show everyone the same thing.",
       "There is also a floor under all of it. If your catalogue never recorded the field your category decides on, no ranking can order by it and no shopper can filter on it, which is why the audit comes before this page in our own product order.",
     ],
-    pull:
-      "Ranking a set of results well is a different problem from matching them, and it is the one nobody solves by swapping search engines.",
+    pull: "Ranking a set of results well is a different problem from matching them, and it is the one nobody solves by swapping search engines.",
   },
 
   steps: {
     heading: "How the ranking works",
-    intro: "Four factors, computed per request, and every one of them readable.",
+    intro:
+      "Four factors, computed per request, and every one of them readable.",
     items: [
-      { n: "01", meta: "Match", title: "Relevance, as now", body: "Query intent is parsed and matched against the catalogue. This part is not the clever bit and we do not claim it is; it is the baseline every result starts from." },
-      { n: "02", meta: "Session", title: "Weighted by the visit", body: "What this person has browsed, searched and filtered in this visit moves persona, affinity and price-band fit. No cookie and no login, so it works on a first visit." },
-      { n: "03", meta: "Always", title: "A share never sees it", body: "A held-back arm, stable for the session, ranks the same query your original way. That is what makes any number anyone reports about this measurable rather than asserted." },
+      {
+        n: "01",
+        meta: "Match",
+        title: "Relevance, as now",
+        body: "Query intent is parsed and matched against the catalogue. This part is not the clever bit and we do not claim it is; it is the baseline every result starts from.",
+      },
+      {
+        n: "02",
+        meta: "Session",
+        title: "Weighted by the visit",
+        body: "What this person has browsed, searched and filtered in this visit moves persona, affinity and price-band fit. No cookie and no login, so it works on a first visit.",
+      },
+      {
+        n: "03",
+        meta: "Always",
+        title: "A share never sees it",
+        body: "A held-back arm, stable for the session, ranks the same query your original way. That is what makes any number anyone reports about this measurable rather than asserted.",
+      },
     ],
   },
 
   gets: {
     heading: "What you get",
     items: [
-      { icon: Search, title: "Intent parsed from the query", body: "A query is read for what it constrains, not only for the words in it, so a search that names an attribute your catalogue records is used as a constraint rather than as a bag of tokens." },
-      { icon: SlidersHorizontal, title: "Four factors, named", body: "Base relevance, persona fit, attribute affinity and price band. Each contributes a visible amount to the score, and they are the same four in the console and in the API response." },
-      { icon: Eye, title: "A decision record per request", body: "Every ranked response carries an id and the factors behind it. When somebody asks why a product was third, the answer is retrievable rather than reconstructed." },
-      { icon: SplitSquareHorizontal, title: "A control arm by default", body: "Not a setting you turn on when you want to measure. Some of your searchers are permanently served your existing ranking, and the two are reported side by side." },
+      {
+        icon: Search,
+        title: "Intent parsed from the query",
+        body: "A query is read for what it constrains, not only for the words in it, so a search that names an attribute your catalogue records is used as a constraint rather than as a bag of tokens.",
+      },
+      {
+        icon: SlidersHorizontal,
+        title: "Four factors, named",
+        body: "Base relevance, persona fit, attribute affinity and price band. Each contributes a visible amount to the score, and they are the same four in the console and in the API response.",
+      },
+      {
+        icon: Eye,
+        title: "A decision record per request",
+        body: "Every ranked response carries an id and the factors behind it. When somebody asks why a product was third, the answer is retrievable rather than reconstructed.",
+      },
+      {
+        icon: SplitSquareHorizontal,
+        title: "A control arm by default",
+        body: "Not a setting you turn on when you want to measure. Some of your searchers are permanently served your existing ranking, and the two are reported side by side.",
+      },
     ],
   },
 
@@ -120,11 +190,26 @@ export const SEARCH: StoryContent = {
   },
 
   faq: [
-    { q: "Do we have to replace our search engine?", a: "No. It ranks the result set your search returns rather than producing that set from scratch, so your existing index, your synonyms and your infrastructure stay where they are. If you switch it off, your own order is what renders, because that order is the fallback path." },
-    { q: "How fast is it?", a: "No model call and no database read on the hot path, because the work is a rank over a set your own engine already retrieved. The console shows the whole distribution, since a median tells you nothing about the slowest search in fifty." },
-    { q: "Why can you rank without a cookie?", a: "Because it infers from what is happening in the current visit rather than from who the person is. Browsing, searching and filtering in this session are enough to move the ranking, which is also why it works on a first visit when a profile-based system has nothing to go on." },
-    { q: "How do we know it is doing anything?", a: "The held-back arm. A share of your traffic always sees your original ordering, stable per session, so the two arms can be compared on your own traffic rather than against a number we quote you." },
-    { q: "What if our catalogue has gaps?", a: "Then ranking helps less than fixing them would, and we will say so. No ordering can use an attribute nobody recorded. That is why the Decision Audit is first in our product order and this is not." },
+    {
+      q: "Do we have to replace our search engine?",
+      a: "No. It ranks the result set your search returns rather than producing that set from scratch, so your existing index, your synonyms and your infrastructure stay where they are. If you switch it off, your own order is what renders, because that order is the fallback path.",
+    },
+    {
+      q: "How fast is it?",
+      a: "No model call and no database read on the hot path, because the work is a rank over a set your own engine already retrieved. The console shows the whole distribution, since a median tells you nothing about the slowest search in fifty.",
+    },
+    {
+      q: "Why can you rank without a cookie?",
+      a: "Because it infers from what is happening in the current visit rather than from who the person is. Browsing, searching and filtering in this session are enough to move the ranking, which is also why it works on a first visit when a profile-based system has nothing to go on.",
+    },
+    {
+      q: "How do we know it is doing anything?",
+      a: "The held-back arm. A share of your traffic always sees your original ordering, stable per session, so the two arms can be compared on your own traffic rather than against a number we quote you.",
+    },
+    {
+      q: "What if our catalogue has gaps?",
+      a: "Then ranking helps less than fixing them would, and we will say so. No ordering can use an attribute nobody recorded. That is why the Decision Audit is first in our product order and this is not.",
+    },
   ],
 
   cta: {
@@ -145,8 +230,7 @@ export const SEARCH_VI: StoryContent = {
   },
   eyebrow: "Tìm kiếm",
   title: "Tìm kiếm xếp hạng theo điều người mua đang cân nhắc.",
-  lede:
-    "Nó chạy song song với công cụ tìm kiếm bạn đang có thay vì thay thế, chấm điểm mọi kết quả theo bốn yếu tố bạn đọc được, và luôn giữ lại một phần lưu lượng để bạn thấy nó thực sự đang làm gì.",
+  lede: "Nó chạy song song với công cụ tìm kiếm bạn đang có thay vì thay thế, chấm điểm mọi kết quả theo bốn yếu tố bạn đọc được, và luôn giữ lại một phần lưu lượng để bạn thấy nó thực sự đang làm gì.",
 
   visualHeading: "Vì sao kết quả này đứng đầu.",
   visualBody:
@@ -158,10 +242,10 @@ export const SEARCH_VI: StoryContent = {
     body: "Vấn đề nằm ở thứ tự chúng trả về, và đó là một bài toán khác với một cách sửa khác.",
   },
 
-    heroImage: {
-      src: "product/shopper-search-bar-price-delivery-signals.webp",
-      alt: "Một ô tìm kiếm với các biểu tượng lơ lửng quanh nó cho giá, giao hàng, ví tiền và cảm nhận, những thứ người mua đang cân nhắc khi gõ.",
-    },
+  heroImage: {
+    src: "product/shopper-search-bar-price-delivery-signals.webp",
+    alt: "Một ô tìm kiếm với các biểu tượng lơ lửng quanh nó cho giá, giao hàng, ví tiền và cảm nhận, những thứ người mua đang cân nhắc khi gõ.",
+  },
 
   scenes: {
     situation: {
@@ -169,9 +253,21 @@ export const SEARCH_VI: StoryContent = {
       eyebrow: "Một truy vấn, bốn yếu tố",
       rows: [
         { label: "Khớp từ khoá", eg: "công cụ của bạn, vốn đã ổn", ok: true },
-        { label: "Hợp mức giá hàm ý", eg: "từ những gì phiên này đã xem", ok: true },
-        { label: "Tách được thứ gần như giống nhau", eg: "cần thuộc tính quyết định", ok: false },
-        { label: "Tự giải thích vị trí của nó", eg: "một lý do cho mỗi kết quả", ok: true },
+        {
+          label: "Hợp mức giá hàm ý",
+          eg: "từ những gì phiên này đã xem",
+          ok: true,
+        },
+        {
+          label: "Tách được thứ gần như giống nhau",
+          eg: "cần thuộc tính quyết định",
+          ok: false,
+        },
+        {
+          label: "Tự giải thích vị trí của nó",
+          eg: "một lý do cho mỗi kết quả",
+          ok: true,
+        },
       ],
       okLabel: "Chấm được",
       noLabel: "Thiếu trường",
@@ -180,46 +276,95 @@ export const SEARCH_VI: StoryContent = {
     chain: {
       kind: "funnel",
       total: 200,
-      lead: { before: "Một người mua mở màn hình đầu tiên và đọc", after: "trong số đó." },
+      lead: {
+        before: "Một người mua mở màn hình đầu tiên và đọc",
+        after: "trong số đó.",
+      },
       alike: "trông giống hệt nhau theo thứ tự chúng về",
       reached: "tới được người mua",
       bands: [
-        { label: "kết quả trả về", value: 200, tone: "work", note: "công cụ sẵn có của bạn, làm đúng việc của nó. Phần này vốn đã chạy tốt." },
-        { label: "người mua đọc", value: 10, tone: "work", note: "màn hình đầu tiên, và hiếm khi hơn" },
-        { label: "họ phân biệt được", value: 6, tone: "good", note: "tách được bằng những trường danh mục có ghi" },
+        {
+          label: "kết quả trả về",
+          value: 200,
+          tone: "work",
+          note: "công cụ sẵn có của bạn, làm đúng việc của nó. Phần này vốn đã chạy tốt.",
+        },
+        {
+          label: "người mua đọc",
+          value: 10,
+          tone: "work",
+          note: "màn hình đầu tiên, và hiếm khi hơn",
+        },
+        {
+          label: "họ phân biệt được",
+          value: 6,
+          tone: "good",
+          note: "tách được bằng những trường danh mục có ghi",
+        },
       ],
       note: "Minh hoạ cho hình dạng vấn đề, không phải phép đo trên kệ hàng của bạn. Đổi công cụ tìm kiếm sẽ đổi dải đầu tiên và không động gì tới dải cuối.",
     },
   },
 
   situation: {
-    heading: "Tìm kiếm theo từ khoá không phải lý do người mua của bạn không tìm thấy hàng.",
+    heading:
+      "Tìm kiếm theo từ khoá không phải lý do người mua của bạn không tìm thấy hàng.",
     body: [
       "Phần lớn công cụ tìm kiếm khớp các từ trong ô tìm kiếm với các từ trong danh mục của bạn, và làm việc đó tốt. Đó là lý do thay công cụ này bằng công cụ khác hiếm khi thay đổi được gì: khâu khớp từ chưa bao giờ là điểm yếu.",
       "Điểm yếu nằm ở việc xảy ra sau khi khớp. Một truy vấn trả về chín mươi sản phẩm đều khớp đúng, và thứ tự phải quyết định trong chín mươi sản phẩm đó thì người này nên thấy cái nào trước. Sắp theo độ liên quan thì chúng gần như giống hệt nhau. Sắp theo mức phổ biến thì bạn cho mọi người thấy cùng một thứ.",
       "Bên dưới tất cả còn có một cái sàn. Nếu danh mục của bạn chưa bao giờ ghi kích thước màn hình thì không thứ hạng nào sắp theo nó được và không người mua nào lọc theo nó được, và đó là lý do bản kiểm tra đứng trước trang này trong chính thứ tự sản phẩm của chúng tôi.",
     ],
-    pull:
-      "Xếp hạng tốt một tập kết quả là bài toán khác với việc tìm ra tập kết quả đó, và nó là bài toán không ai giải được bằng cách đổi công cụ tìm kiếm.",
+    pull: "Xếp hạng tốt một tập kết quả là bài toán khác với việc tìm ra tập kết quả đó, và nó là bài toán không ai giải được bằng cách đổi công cụ tìm kiếm.",
   },
 
   steps: {
     heading: "Thứ hạng được tính ra sao",
     intro: "Bốn yếu tố, tính theo từng yêu cầu, và cả bốn đều đọc được.",
     items: [
-      { n: "01", meta: "Khớp", title: "Độ liên quan, như hiện tại", body: "Ý định truy vấn được phân tích và đối chiếu với danh mục. Đây không phải phần thông minh và chúng tôi không nhận là vậy; nó là mốc nền mà mọi kết quả xuất phát từ đó." },
-      { n: "02", meta: "Phiên", title: "Nhân trọng số theo lần ghé", body: "Những gì người này đã duyệt, tìm và lọc trong lần ghé này làm dịch chuyển chân dung, độ tương hợp và mức khớp khoảng giá. Không cookie và không đăng nhập, nên nó chạy được ngay từ lần ghé đầu tiên." },
-      { n: "03", meta: "Luôn luôn", title: "Một phần không bao giờ thấy nó", body: "Một nhánh được giữ lại, ổn định theo phiên, xếp cùng truy vấn đó theo cách gốc của bạn. Đó là thứ khiến mọi con số ai đó báo cáo về việc này trở nên đo được thay vì chỉ được khẳng định suông." },
+      {
+        n: "01",
+        meta: "Khớp",
+        title: "Độ liên quan, như hiện tại",
+        body: "Ý định truy vấn được phân tích và đối chiếu với danh mục. Đây không phải phần thông minh và chúng tôi không nhận là vậy; nó là mốc nền mà mọi kết quả xuất phát từ đó.",
+      },
+      {
+        n: "02",
+        meta: "Phiên",
+        title: "Nhân trọng số theo lần ghé",
+        body: "Những gì người này đã duyệt, tìm và lọc trong lần ghé này làm dịch chuyển chân dung, độ tương hợp và mức khớp khoảng giá. Không cookie và không đăng nhập, nên nó chạy được ngay từ lần ghé đầu tiên.",
+      },
+      {
+        n: "03",
+        meta: "Luôn luôn",
+        title: "Một phần không bao giờ thấy nó",
+        body: "Một nhánh được giữ lại, ổn định theo phiên, xếp cùng truy vấn đó theo cách gốc của bạn. Đó là thứ khiến mọi con số ai đó báo cáo về việc này trở nên đo được thay vì chỉ được khẳng định suông.",
+      },
     ],
   },
 
   gets: {
     heading: "Bạn nhận được gì",
     items: [
-      { icon: Search, title: "Ý định được đọc ra từ truy vấn", body: "Một truy vấn được đọc theo những gì nó ràng buộc, không chỉ theo các từ trong đó, nên một lượt tìm có nêu thuộc tính mà danh mục bạn có ghi sẽ được dùng như một ràng buộc thay vì một túi từ khoá." },
-      { icon: SlidersHorizontal, title: "Bốn yếu tố, có tên rõ ràng", body: "Độ liên quan nền, mức khớp chân dung, độ tương hợp thuộc tính và khoảng giá. Mỗi yếu tố đóng góp một lượng nhìn thấy được vào điểm số, và chúng là cùng bốn yếu tố trong bảng điều khiển lẫn trong phản hồi API." },
-      { icon: Eye, title: "Một bản ghi quyết định cho mỗi yêu cầu", body: "Mọi phản hồi đã xếp hạng đều mang một mã và các yếu tố đứng sau nó. Khi ai đó hỏi vì sao một sản phẩm đứng thứ ba, câu trả lời là thứ tra ra được chứ không phải dựng lại." },
-      { icon: SplitSquareHorizontal, title: "Nhánh đối chứng mặc định", body: "Không phải một thiết lập bạn bật lên khi muốn đo. Một phần người tìm kiếm luôn được phục vụ bằng thứ hạng sẵn có của bạn, và hai bên được báo cáo cạnh nhau." },
+      {
+        icon: Search,
+        title: "Ý định được đọc ra từ truy vấn",
+        body: "Một truy vấn được đọc theo những gì nó ràng buộc, không chỉ theo các từ trong đó, nên một lượt tìm có nêu thuộc tính mà danh mục bạn có ghi sẽ được dùng như một ràng buộc thay vì một túi từ khoá.",
+      },
+      {
+        icon: SlidersHorizontal,
+        title: "Bốn yếu tố, có tên rõ ràng",
+        body: "Độ liên quan nền, mức khớp chân dung, độ tương hợp thuộc tính và khoảng giá. Mỗi yếu tố đóng góp một lượng nhìn thấy được vào điểm số, và chúng là cùng bốn yếu tố trong bảng điều khiển lẫn trong phản hồi API.",
+      },
+      {
+        icon: Eye,
+        title: "Một bản ghi quyết định cho mỗi yêu cầu",
+        body: "Mọi phản hồi đã xếp hạng đều mang một mã và các yếu tố đứng sau nó. Khi ai đó hỏi vì sao một sản phẩm đứng thứ ba, câu trả lời là thứ tra ra được chứ không phải dựng lại.",
+      },
+      {
+        icon: SplitSquareHorizontal,
+        title: "Nhánh đối chứng mặc định",
+        body: "Không phải một thiết lập bạn bật lên khi muốn đo. Một phần người tìm kiếm luôn được phục vụ bằng thứ hạng sẵn có của bạn, và hai bên được báo cáo cạnh nhau.",
+      },
     ],
   },
 
@@ -240,11 +385,26 @@ export const SEARCH_VI: StoryContent = {
   },
 
   faq: [
-    { q: "Chúng tôi có phải thay công cụ tìm kiếm không?", a: "Không. Nó xếp hạng tập kết quả mà công cụ tìm kiếm của bạn trả về, chứ không tự tạo ra tập kết quả đó, nên chỉ mục, từ đồng nghĩa và hạ tầng hiện tại của bạn vẫn giữ nguyên. Nếu bạn tắt đi, thứ hiển thị là thứ tự của chính bạn, bởi thứ tự đó là phương án dự phòng." },
-    { q: "Nó nhanh tới đâu?", a: "Không gọi mô hình và không đọc cơ sở dữ liệu trên đường nóng, vì công việc chỉ là xếp hạng một tập kết quả mà công cụ của bạn đã lấy về. Bảng điều khiển hiển thị toàn bộ phân phối, vì một số trung vị không nói gì về lượt tìm chậm nhất trong năm mươi lượt." },
-    { q: "Vì sao các bạn xếp hạng được mà không cần cookie?", a: "Vì nó suy luận từ những gì đang diễn ra trong lần ghé hiện tại chứ không từ việc người đó là ai. Việc duyệt, tìm và lọc trong phiên này là đủ để làm dịch chuyển thứ hạng, đó cũng là lý do nó chạy được ở lần ghé đầu tiên, khi một hệ thống dựa trên hồ sơ chưa có gì để bám vào." },
-    { q: "Làm sao chúng tôi biết nó có tác dụng gì không?", a: "Nhờ nhánh được giữ lại. Một phần lưu lượng của bạn luôn thấy thứ tự gốc, ổn định theo từng phiên, nên hai nhánh so sánh được trên chính lưu lượng của bạn thay vì đối chiếu với một con số chúng tôi nêu ra." },
-    { q: "Nếu danh mục của chúng tôi có khoảng trống thì sao?", a: "Thì việc xếp hạng giúp ít hơn so với việc sửa các khoảng trống đó, và chúng tôi sẽ nói vậy. Không thứ tự nào dùng được một thuộc tính chưa ai ghi. Đó là lý do Decision Audit đứng đầu trong thứ tự sản phẩm của chúng tôi còn trang này thì không." },
+    {
+      q: "Chúng tôi có phải thay công cụ tìm kiếm không?",
+      a: "Không. Nó xếp hạng tập kết quả mà công cụ tìm kiếm của bạn trả về, chứ không tự tạo ra tập kết quả đó, nên chỉ mục, từ đồng nghĩa và hạ tầng hiện tại của bạn vẫn giữ nguyên. Nếu bạn tắt đi, thứ hiển thị là thứ tự của chính bạn, bởi thứ tự đó là phương án dự phòng.",
+    },
+    {
+      q: "Nó nhanh tới đâu?",
+      a: "Không gọi mô hình và không đọc cơ sở dữ liệu trên đường nóng, vì công việc chỉ là xếp hạng một tập kết quả mà công cụ của bạn đã lấy về. Bảng điều khiển hiển thị toàn bộ phân phối, vì một số trung vị không nói gì về lượt tìm chậm nhất trong năm mươi lượt.",
+    },
+    {
+      q: "Vì sao các bạn xếp hạng được mà không cần cookie?",
+      a: "Vì nó suy luận từ những gì đang diễn ra trong lần ghé hiện tại chứ không từ việc người đó là ai. Việc duyệt, tìm và lọc trong phiên này là đủ để làm dịch chuyển thứ hạng, đó cũng là lý do nó chạy được ở lần ghé đầu tiên, khi một hệ thống dựa trên hồ sơ chưa có gì để bám vào.",
+    },
+    {
+      q: "Làm sao chúng tôi biết nó có tác dụng gì không?",
+      a: "Nhờ nhánh được giữ lại. Một phần lưu lượng của bạn luôn thấy thứ tự gốc, ổn định theo từng phiên, nên hai nhánh so sánh được trên chính lưu lượng của bạn thay vì đối chiếu với một con số chúng tôi nêu ra.",
+    },
+    {
+      q: "Nếu danh mục của chúng tôi có khoảng trống thì sao?",
+      a: "Thì việc xếp hạng giúp ít hơn so với việc sửa các khoảng trống đó, và chúng tôi sẽ nói vậy. Không thứ tự nào dùng được một thuộc tính chưa ai ghi. Đó là lý do Decision Audit đứng đầu trong thứ tự sản phẩm của chúng tôi còn trang này thì không.",
+    },
   ],
 
   cta: {

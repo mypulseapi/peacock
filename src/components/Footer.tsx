@@ -19,10 +19,14 @@ import { Link } from "@/i18n/routing";
 import { Github, Linkedin, Facebook } from "lucide-react";
 import { img } from "@/lib/cdn";
 
-
 const SOCIALS = [
   { label: "LinkedIn", href: SOCIAL.linkedin, Icon: Linkedin, bg: "#0a66c2" },
-  { label: "Facebook", href: "https://www.facebook.com/thepulseapi", Icon: Facebook, bg: "#1877f2" },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/thepulseapi",
+    Icon: Facebook,
+    bg: "#1877f2",
+  },
   { label: "GitHub", href: SOCIAL.github, Icon: Github, bg: "#24292f" },
 ];
 
@@ -67,7 +71,10 @@ export function Footer() {
       title: t("product"),
       links: [
         { label: t("decisionAudit"), href: "/product/decision-audit" },
-        { label: t("decisionVerification"), href: "/product/decision-verification" },
+        {
+          label: t("decisionVerification"),
+          href: "/product/decision-verification",
+        },
         { label: t("decisionMonitor"), href: "/product/decision-monitor" },
         { label: t("pricing"), href: "/pricing" },
       ],
@@ -99,10 +106,24 @@ export function Footer() {
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1.15fr)_repeat(3,minmax(0,1fr))] lg:gap-10">
           <div>
             <Link href="/" aria-label="Pulse home" className="inline-flex">
-              <Image src={img("brand/logo.webp")} alt="Pulse" width={600} height={200} sizes="104px" className="logo-light h-7 w-auto" />
-              <Image src={img("brand/logo-white.webp")} alt="" aria-hidden width={600} height={200} sizes="104px" className="logo-dark h-7 w-auto" />
+              <Image
+                src={img("brand/logo.webp")}
+                alt="Pulse"
+                width={600}
+                height={200}
+                sizes="104px"
+                className="logo-light h-7 w-auto"
+              />
+              <Image
+                src={img("brand/logo-white.webp")}
+                alt=""
+                aria-hidden
+                width={600}
+                height={200}
+                sizes="104px"
+                className="logo-dark h-7 w-auto"
+              />
             </Link>
-
           </div>
 
           {/* Contact point sits with the link columns, not on the brand rail.
@@ -110,16 +131,28 @@ export function Footer() {
               icons to the right-hand side, and the left reduced to the logo. */}
           {columns.map((col) => (
             <div key={col.title}>
-              <h2 className="text-[0.9375rem] font-semibold text-[color:var(--on-chrome)]">{col.title}</h2>
+              <h2 className="text-[0.9375rem] font-semibold text-[color:var(--on-chrome)]">
+                {col.title}
+              </h2>
               <ul className="mt-6 space-y-3.5 text-[0.875rem] text-[color:var(--on-chrome-2)]">
                 {col.links.map((link) => (
                   <li key={link.label} className="flex items-start gap-2">
                     {link.external ? (
-                      <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[24px] items-center leading-[1.6] transition hover:text-[color:var(--on-chrome)]">
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-[24px] items-center leading-[1.6] transition hover:text-[color:var(--on-chrome)]"
+                      >
                         {link.label}
                       </a>
                     ) : (
-                      <Link href={link.href} className="inline-flex min-h-[24px] items-center leading-[1.6] transition hover:text-[color:var(--on-chrome)]">{link.label}</Link>
+                      <Link
+                        href={link.href}
+                        className="inline-flex min-h-[24px] items-center leading-[1.6] transition hover:text-[color:var(--on-chrome)]"
+                      >
+                        {link.label}
+                      </Link>
                     )}
                     {link.badge && (
                       <span className="mt-1 inline-flex h-[18px] shrink-0 items-center rounded bg-[color:var(--sig)] px-1.5 text-[9.5px] font-semibold whitespace-nowrap text-[color:var(--on-sig)]">
@@ -133,7 +166,9 @@ export function Footer() {
           ))}
 
           <div>
-            <h2 className="text-[0.9375rem] font-semibold text-[color:var(--on-chrome)]">{t("contactPoint")}</h2>
+            <h2 className="text-[0.9375rem] font-semibold text-[color:var(--on-chrome)]">
+              {t("contactPoint")}
+            </h2>
             <div className="mt-6 flex gap-3">
               {SOCIALS.map(({ label, href, Icon }) => (
                 <a
@@ -152,20 +187,25 @@ export function Footer() {
               {/* ponytail: still hidden until someone supplies a real number. */}
               {t("phone") && (
                 <li>
-                  <a href={`tel:${t("phone").replace(/\s/g, "")}`} className="inline-flex min-h-[24px] items-center transition hover:text-[color:var(--on-chrome)]">
+                  <a
+                    href={`tel:${t("phone").replace(/\s/g, "")}`}
+                    className="inline-flex min-h-[24px] items-center transition hover:text-[color:var(--on-chrome)]"
+                  >
                     {t("phone")}
                   </a>
                 </li>
               )}
               <li>
-                <a href={`mailto:${t("email")}`} className="inline-flex min-h-[24px] items-center transition hover:text-[color:var(--on-chrome)]">
+                <a
+                  href={`mailto:${t("email")}`}
+                  className="inline-flex min-h-[24px] items-center transition hover:text-[color:var(--on-chrome)]"
+                >
                   {t("email")}
                 </a>
               </li>
             </ul>
           </div>
         </div>
-
       </div>
 
       {/* Full bleed and solid white. The bar reads as a distinct band under the
@@ -179,7 +219,10 @@ export function Footer() {
         <ul className="flex flex-wrap items-center gap-x-7 gap-y-2 text-[0.8125rem] text-[color:var(--on-panel)]">
           {legal.map((l) => (
             <li key={l.href}>
-              <Link href={l.href} className="inline-flex min-h-[24px] items-center transition hover:opacity-70">
+              <Link
+                href={l.href}
+                className="inline-flex min-h-[24px] items-center transition hover:opacity-70"
+              >
                 {l.label}
               </Link>
             </li>

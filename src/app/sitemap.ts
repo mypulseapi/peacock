@@ -103,7 +103,10 @@ const pagePriorities: Record<string, number> = {
 };
 
 // Change frequencies based on content type
-const changeFrequencies: Record<string, MetadataRoute.Sitemap[number]["changeFrequency"]> = {
+const changeFrequencies: Record<
+  string,
+  MetadataRoute.Sitemap[number]["changeFrequency"]
+> = {
   "": "weekly",
   "/product": "monthly",
   "/product/decision-audit": "monthly",

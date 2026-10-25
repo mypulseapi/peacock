@@ -79,6 +79,12 @@
       "themeSystem": "Hệ thống",
       "returnName": "Return Verification",
       "returnBlurb": "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không"
+    },
+    "notFound": {
+      "title": "Trang này không tồn tại",
+      "body": "Đường dẫn có thể đã cũ hoặc gõ sai. Trang chủ liệt kê mọi sản phẩm Pulse cung cấp.",
+      "home": "Về trang chủ",
+      "audit": "Xem Decision Audit"
     }
   },
   "home": {
@@ -409,6 +415,21 @@
       "35": "Phát hiện những insight người khác bỏ sót hoặc không thu thập được",
       "36": "Pulse đo những thuộc tính người mua cần nhưng danh mục của bạn chưa bao giờ ghi nhận: những lỗ hổng mà một báo cáo độ đầy đủ không nhìn thấy.",
       "37": "Tiếp theo: Ý định người mua"
+    },
+    "products": {
+      "title": "Bắt đầu với Decision Audit",
+      "auditName": "Decision Audit",
+      "auditTag": "Bắt đầu ở đây",
+      "auditBlurb": "Trường dữ liệu nào nên bổ sung trước, xếp hạng trên chính danh mục của bạn.",
+      "auditMore": "Mọi việc khác đi theo từ đó: kiểm tra bản sửa đã thay đổi điều gì, giữ cho từng nhóm hàng luôn được đo, và xem thông tin còn thiếu nào đi cùng hàng bị trả.",
+      "auditCta": "Xem Decision Audit",
+      "verifyName": "Decision Verification",
+      "verifyBlurb": "Đo lại sau khi sửa và thấy chính xác điều gì đã thay đổi. Không cần lưu lượng truy cập.",
+      "monitorName": "Decision Monitor",
+      "monitorTag": "Định kỳ",
+      "monitorBlurb": "Danh mục xuống cấp theo thời gian. Được báo khi một nhóm hàng tụt, kèm nguyên nhân.",
+      "returnsName": "Return Verification",
+      "returnsBlurb": "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không."
     }
   },
   "pricing": {

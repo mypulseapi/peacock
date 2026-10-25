@@ -9,6 +9,7 @@
 import { HeroSection } from "./hero";
 import { CategoryStripSection } from "./category-strip";
 import { Section3Section } from "./section3";
+import { ProductsSection } from "./products";
 import { MethodSection } from "./method";
 import { ResearchSection } from "./research";
 import { WhySection } from "./why";
@@ -21,6 +22,8 @@ export function DesignedHome() {
       <HeroSection />
       <CategoryStripSection />
       <Section3Section />
+      {/* Not the designer's: see products.tsx. */}
+      <ProductsSection />
       <MethodSection />
       <ResearchSection />
       <WhySection />

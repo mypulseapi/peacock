@@ -9,8 +9,6 @@ import { clientMessages } from "@/i18n/client-namespaces";
 import { prepareLocale, setRenderLocale } from "@/i18n/render-locale";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { AssistantPanel } from "@/components/assistant/assistant-panel";
 import { NavigationProgress } from "@/components/NavigationProgress";
@@ -106,7 +104,7 @@ const CSP = [
   "font-src 'self' data:",
   // Deduped: auth and api are usually the same host, and a repeated origin in a CSP is noise
   // that makes a real one harder to spot when something is blocked.
-  `connect-src 'self' ${[...new Set([SITE.api, SITE.auth, SITE.cdn])].join(' ')}`,
+  `connect-src 'self' ${[...new Set([SITE.api, SITE.auth, SITE.cdn])].join(" ")}`,
   "base-uri 'self'",
   // The forms post to the gateway now, so it has to be allowed as a form target.
   `form-action 'self' ${SITE.api}`,
@@ -125,7 +123,10 @@ interface LocaleLayoutProps {
   params: Promise<{ locale: string }>;
 }
 
-export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
+export default async function LocaleLayout({
+  children,
+  params,
+}: LocaleLayoutProps) {
   const { locale } = await params;
 
   // Validate that the incoming locale is valid
@@ -153,23 +154,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
    */
   const clientSide = clientMessages(messages as Record<string, unknown>);
 
-  /*
-   * One flag, so the shell and the page bodies can never disagree about which half of the site
-   * a visitor is on. A designed body inside the legacy navbar is the mismatch that made the
-   * rebuild look nothing like the designer's build even once the pages themselves were right.
-   *
-   * Both languages, since the shell reads its text from `designed.<locale>.json` like the pages
-   * do. It stays a flag rather than becoming nothing because the legacy components are still in
-   * the tree for the routes that have not been converted, and a designed body inside the legacy
-   * shell loses the `legacy-ui` class the legacy styling hangs off.
-   */
-  const designed = true;
-
   return (
-    <html
-      lang={locale}
-      suppressHydrationWarning
-    >
+    <html lang={locale} suppressHydrationWarning>
       <head>
         {/*
             The Content-Security-Policy, as a meta tag rather than a response header.
@@ -189,10 +175,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             The origins are interpolated from SITE so this policy cannot drift from what the app
             actually talks to -- the failure mode of a hand-maintained list is a blocked fetch in
             production and a green build. */}
-        <meta
-          httpEquiv="Content-Security-Policy"
-          content={CSP}
-        />
+        <meta httpEquiv="Content-Security-Policy" content={CSP} />
         {/* Shared with src/lib/theme-script.ts: why it is inline, and why that is survivable. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         {/*
@@ -207,15 +190,18 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             A preload does not change when the script executes, only when it arrives, so the
             ordering `DesignedMotion` depends on is untouched. By the time `afterInteractive`
             runs it, the bytes are already here. */}
-        {designed ? (
-          <link rel="preload" as="script" href="/designed-motion.js" fetchPriority="low" />
-        ) : null}
+        <link
+          rel="preload"
+          as="script"
+          href="/designed-motion.js"
+          fetchPriority="low"
+        />
         {/* No JSON-LD here, deliberately. The standard requires exactly one ld+json block per
             document holding a single @graph, because nodes in separate blocks cannot reference
             each other by @id. A layout cannot know the page's own nodes, so the whole graph is
             built per page through <PageSchema />. See src/lib/schema.ts. */}
       </head>
-      <body className={`antialiased min-h-screen${designed ? "" : " legacy-ui bg-grid"}`}>
+      <body className="antialiased min-h-screen">
         {/*
             `locale` is passed explicitly. Without it next-intl resolves the locale on the server
             through `getLocale()`, which reads the request config and ends at `headers()`. A
@@ -230,29 +216,18 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             <Suspense fallback={null}>
               <NavigationProgress />
             </Suspense>
-            {/*
-                English gets the designer's shell; Vietnamese keeps the app's own.
-
-                The page converter reads <main> only, so the shell was never part of it: the
-                converted bodies rendered inside this app's dark navbar and footer while being
-                the designer's light design themselves. That mismatch is most of why the rebuild
-                looked nothing like staging even once the pages were faithful.
-
-                Vietnamese stays on Navbar and Footer because those are translated and the
-                designer's shell is English markup, the same reason the page bodies split.
-            */}
-            {designed ? <DesignedSkipLink /> : null}
-            {designed ? <DesignedHeader /> : <Navbar />}
+            <DesignedSkipLink />
+            <DesignedHeader />
             <main id="main">{children}</main>
             {/* B4: ordered by what this visit has not answered. Renders nothing when nothing is. */}
             <Suspense fallback={null}></Suspense>
-            {designed ? <DesignedFooter /> : <Footer />}
+            <DesignedFooter />
             {/* Ask Pulse, on every page and in both languages. This replaces the designer's
                 static chat shell from chat.html, which had the panel but nothing behind it. */}
             <AssistantPanel lang={locale === "vi" ? "vi" : "en"} />
             {/* The motion the designer's markup declares through data attributes. Without it every
                 `.reveal` stays at opacity 0, which is 363 elements across the converted pages. */}
-            {designed ? <DesignedMotion /> : null}
+            <DesignedMotion />
             {/* B6: shows the inference and lets the visitor correct it. */}
             <Suspense fallback={null}>
               <IntentPanel />

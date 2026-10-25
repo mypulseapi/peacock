@@ -1,9 +1,10 @@
-'use client';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { loadMessages, saveMessages } from '@/lib/assistant/session';
-import notes from '@/lib/assistant/page-notes.json';
+"use client";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { loadMessages, saveMessages } from "@/lib/assistant/session";
+import notes from "@/lib/assistant/page-notes.json";
+import { ORIGINS, talk } from "@/lib/assistant/talk";
 
-export type Status = 'idle' | 'loading' | 'ready' | 'failed';
+export type Status = "idle" | "loading" | "ready" | "failed";
 
 export interface Source {
   url: string;
@@ -14,7 +15,7 @@ export interface Source {
 
 export interface Message {
   id: number;
-  role: 'you' | 'assistant';
+  role: "you" | "assistant";
   /** What has been revealed so far. Equals `full` once streaming finishes. */
   text: string;
   full: string;
@@ -44,7 +45,7 @@ interface PageNote {
  * arriving", not "still thinking".
  */
 export function useAssistant(lang: string) {
-  const [status, setStatus] = useState<Status>('idle');
+  const [status, setStatus] = useState<Status>("idle");
   const [progress, setProgress] = useState(0);
   // Restored on mount, which is what makes a conversation survive a navigation. Lazy so the
   // read happens once rather than on every render, and after hydration so the server and the
@@ -89,20 +90,23 @@ export function useAssistant(lang: string) {
 
   const start = useCallback(() => {
     if (worker.current) return;
-    setStatus('loading');
+    setStatus("loading");
 
-    const w = new Worker(new URL('../../lib/assistant/worker.ts', import.meta.url), {
-      type: 'module',
-    });
+    const w = new Worker(
+      new URL("../../lib/assistant/worker.ts", import.meta.url),
+      {
+        type: "module",
+      },
+    );
     worker.current = w;
 
-    w.addEventListener('message', (event: MessageEvent) => {
+    w.addEventListener("message", (event: MessageEvent) => {
       const msg = event.data as
-        | { type: 'ready' }
-        | { type: 'progress'; loaded: number; total: number }
-        | { type: 'failed'; reason: string }
+        | { type: "ready" }
+        | { type: "progress"; loaded: number; total: number }
+        | { type: "failed"; reason: string }
         | {
-            type: 'answer';
+            type: "answer";
             id: number;
             body: string;
             code?: { lang: string; source: string };
@@ -110,22 +114,22 @@ export function useAssistant(lang: string) {
             kind: string;
           };
 
-      if (msg.type === 'ready') {
-        setStatus('ready');
+      if (msg.type === "ready") {
+        setStatus("ready");
         const q = queued.current;
         queued.current = null;
         if (q !== null) sendRef.current(q);
-      }
-      else if (msg.type === 'progress') setProgress(Math.min(1, msg.loaded / Math.max(1, msg.total)));
-      else if (msg.type === 'failed') setStatus('failed');
-      else if (msg.type === 'answer') {
+      } else if (msg.type === "progress")
+        setProgress(Math.min(1, msg.loaded / Math.max(1, msg.total)));
+      else if (msg.type === "failed") setStatus("failed");
+      else if (msg.type === "answer") {
         setPending(false);
         setMessages((prev) => [
           ...prev,
           {
             id: msg.id,
-            role: 'assistant',
-            text: '',
+            role: "assistant",
+            text: "",
             full: msg.body,
             sources: msg.sources ?? [],
             code: msg.code,
@@ -135,7 +139,7 @@ export function useAssistant(lang: string) {
       }
     });
 
-    w.postMessage({ type: 'init', lang });
+    w.postMessage({ type: "init", lang });
   }, [lang]);
 
   /**
@@ -150,7 +154,8 @@ export function useAssistant(lang: string) {
     if (!streaming) return;
 
     const words = streaming.full.split(/(\s+)/);
-    let shown = streaming.text.length === 0 ? 0 : streaming.text.split(/(\s+)/).length;
+    let shown =
+      streaming.text.length === 0 ? 0 : streaming.text.split(/(\s+)/).length;
 
     const tick = () => {
       shown += 1;
@@ -158,11 +163,12 @@ export function useAssistant(lang: string) {
       setMessages((prev) =>
         prev.map((m) =>
           m.id === streaming.id
-            ? { ...m, text: words.slice(0, shown).join(''), streaming: !done }
+            ? { ...m, text: words.slice(0, shown).join(""), streaming: !done }
             : m,
         ),
       );
-      if (!done) reveal.current = window.setTimeout(tick, 14 + Math.random() * 26);
+      if (!done)
+        reveal.current = window.setTimeout(tick, 14 + Math.random() * 26);
     };
 
     reveal.current = window.setTimeout(tick, 60);
@@ -184,7 +190,12 @@ export function useAssistant(lang: string) {
   const send = useCallback(
     (trimmed: string) => {
       setPending(true);
-      worker.current?.postMessage({ type: 'ask', id: nextId.current++, query: trimmed, lang });
+      worker.current?.postMessage({
+        type: "ask",
+        id: nextId.current++,
+        query: trimmed,
+        lang,
+      });
     },
     [lang],
   );
@@ -220,13 +231,31 @@ export function useAssistant(lang: string) {
         ...prev,
         {
           id: nextId.current++,
-          role: 'you',
+          role: "you",
           text: trimmed,
           full: trimmed,
           sources: [],
           streaming: false,
         },
       ]);
+      // Small talk is answered here, at once, without starting the model: "hi" should not cost a
+      // reader a 23 MB download. See lib/assistant/talk.ts.
+      const quick = talk(trimmed, lang, ORIGINS);
+      if (quick?.final) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: nextId.current++,
+            role: "assistant",
+            text: "",
+            full: quick.answer.body,
+            sources: [],
+            streaming: true,
+          },
+        ]);
+        return;
+      }
+
       setPending(true);
 
       if (!worker.current) {
@@ -235,14 +264,14 @@ export function useAssistant(lang: string) {
         return;
       }
 
-      if (status !== 'ready') {
+      if (status !== "ready") {
         queued.current = trimmed;
         return;
       }
 
       send(trimmed);
     },
-    [send, start, status],
+    [send, start, status, lang],
   );
 
   /**
@@ -265,20 +294,24 @@ export function useAssistant(lang: string) {
        * `/quickstart`, so a straight lookup missed every page but the root. Normalise before
        * looking up, and keep the normalised form for the links below it.
        */
-      const url = rawUrl.length > 1 ? rawUrl.replace(/\/+$/, '') : '/';
+      const url = rawUrl.length > 1 ? rawUrl.replace(/\/+$/, "") : "/";
       const page = (notes as Record<string, PageNote | undefined>)[url];
       if (!page) return;
 
-      const lead = lang === 'vi' ? 'Bạn đang xem' : 'You opened';
-      const covers = lang === 'vi' ? 'Trang này nói về' : 'This page covers';
+      const lead = lang === "vi" ? "Bạn đang xem" : "You opened";
+      const covers = lang === "vi" ? "Trang này nói về" : "This page covers";
       const invite =
-        lang === 'vi' ? 'Hỏi tôi bất cứ điều gì về trang này.' : 'Ask me anything about it.';
+        lang === "vi"
+          ? "Hỏi tôi bất cứ điều gì về trang này."
+          : "Ask me anything about it.";
 
       const parts = [`**${lead}: ${page.title}**`, page.summary];
       if (page.topics.length > 0) {
         parts.push(
           `${covers}:\n` +
-            page.topics.map((t) => `- [${t.heading}](${url}#${t.anchor})`).join('\n'),
+            page.topics
+              .map((t) => `- [${t.heading}](${url}#${t.anchor})`)
+              .join("\n"),
         );
       }
       parts.push(invite);
@@ -287,14 +320,14 @@ export function useAssistant(lang: string) {
         // Never twice in a row for the same page, so a re-render or a hash change is not an
         // event, and never directly after the reader has just spoken.
         const last = prev[prev.length - 1];
-        if (last?.role === 'assistant' && last.noteFor === url) return prev;
+        if (last?.role === "assistant" && last.noteFor === url) return prev;
         return [
           ...prev,
           {
             id: nextId.current++,
-            role: 'assistant',
-            text: parts.join('\n\n'),
-            full: parts.join('\n\n'),
+            role: "assistant",
+            text: parts.join("\n\n"),
+            full: parts.join("\n\n"),
             sources: [],
             noteFor: url,
             streaming: false,

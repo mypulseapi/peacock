@@ -1,56 +1,61 @@
-'use client';
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { usePathname } from 'next/navigation';
-import { ArrowUp, Bot, RotateCcw, Sparkles, X } from 'lucide-react';
-import { useAssistant, type Message } from './use-assistant';
+"use client";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { usePathname } from "next/navigation";
+import { ArrowUp, Bot, RotateCcw, Sparkles, X } from "lucide-react";
+import { useAssistant, type Message } from "./use-assistant";
 import {
   clearMessages,
   getOpen,
   getOpenOnServer,
   setOpen as writeOpen,
   subscribeOpen,
-} from '@/lib/assistant/session';
+} from "@/lib/assistant/session";
 
-const SEEN_KEY = 'pulse-assistant-greeted';
+const SEEN_KEY = "pulse-assistant-greeted";
 
 const COPY = {
   en: {
-    open: 'Ask Pulse',
-    title: 'Ask Pulse',
-    subtitle: 'Answers are quoted from this site, never generated.',
-    firstLoad: 'The first question downloads a 23 MB search model. It is cached after that.',
-    placeholder: 'What does a Decision Audit actually measure?',
-    loading: 'Getting ready',
-    failed: 'The assistant could not start on this device. Everything it would have said is on the pages themselves.',
-    thinking: 'Reading the site',
-    send: 'Send',
-    close: 'Close',
-    restart: 'Start a new conversation',
+    open: "Ask Pulse",
+    title: "Ask Pulse",
+    subtitle:
+      "Answers come from thepulseapi.com and the developer docs, never made up.",
+    firstLoad:
+      "The first question downloads a 23 MB search model. It is cached after that.",
+    placeholder: "What does a Decision Audit actually measure?",
+    loading: "Getting ready",
+    failed:
+      "The assistant could not start on this device. Everything it would have said is on the pages themselves.",
+    thinking: "Reading the site",
+    send: "Send",
+    close: "Close",
+    restart: "Start a new conversation",
     suggestions: [
-      'What does a Decision Audit actually measure?',
-      'Which industries is this built for?',
-      'What does it cost?',
-      'What can Pulse not prove yet?',
+      "What does a Decision Audit actually measure?",
+      "Which industries is this built for?",
+      "What does it cost?",
+      "How do I send my first API request?",
     ],
   },
   vi: {
-    open: 'Hỏi Pulse',
-    title: 'Hỏi Pulse',
-    subtitle: 'Câu trả lời được trích từ chính các trang này, không phải do máy tự viết.',
+    open: "Hỏi Pulse",
+    title: "Hỏi Pulse",
+    subtitle:
+      "Trả lời từ thepulseapi.com và tài liệu cho lập trình viên, không tự bịa ra.",
     firstLoad:
-      'Câu hỏi đầu tiên sẽ tải mô hình tìm kiếm đa ngôn ngữ 129 MB, sau đó được lưu lại trên máy bạn.',
-    placeholder: 'Decision Audit thực sự đo những gì?',
-    loading: 'Đang chuẩn bị',
-    failed: 'Trợ lý không khởi động được trên thiết bị này. Mọi điều nó định nói đều có sẵn trên các trang.',
-    thinking: 'Đang đọc nội dung trang',
-    send: 'Gửi',
-    close: 'Đóng',
-    restart: 'Bắt đầu cuộc trò chuyện mới',
+      "Câu hỏi đầu tiên sẽ tải mô hình tìm kiếm đa ngôn ngữ 129 MB, sau đó được lưu lại trên máy bạn.",
+    placeholder: "Decision Audit thực sự đo những gì?",
+    loading: "Đang chuẩn bị",
+    failed:
+      "Trợ lý không khởi động được trên thiết bị này. Mọi điều nó định nói đều có sẵn trên các trang.",
+    thinking: "Đang đọc nội dung trang",
+    send: "Gửi",
+    close: "Đóng",
+    restart: "Bắt đầu cuộc trò chuyện mới",
     suggestions: [
-      'Decision Audit thực sự đo những gì?',
-      'Sản phẩm này dành cho những ngành nào?',
-      'Chi phí như thế nào?',
-      'Pulse chưa chứng minh được điều gì?',
+      "Decision Audit thực sự đo những gì?",
+      "Sản phẩm này dành cho những ngành nào?",
+      "Chi phí như thế nào?",
+      "Gửi yêu cầu API đầu tiên như thế nào?",
     ],
   },
 } as const;
@@ -63,15 +68,15 @@ const COPY = {
  * last unterminated marker costs a few characters of latency and keeps every frame valid.
  */
 function stable(text: string): string {
-  const openLink = text.lastIndexOf('[');
+  const openLink = text.lastIndexOf("[");
   if (openLink !== -1 && !/\]\([^)]*\)\s*$/.test(text.slice(openLink))) {
     const closed = text.slice(openLink).match(/^\[[^\]]*\]\([^)]*\)/);
     if (!closed) return text.slice(0, openLink);
   }
   const ticks = (text.match(/`/g) ?? []).length;
-  if (ticks % 2 === 1) return text.slice(0, text.lastIndexOf('`'));
+  if (ticks % 2 === 1) return text.slice(0, text.lastIndexOf("`"));
   const bolds = (text.match(/\*\*/g) ?? []).length;
-  if (bolds % 2 === 1) return text.slice(0, text.lastIndexOf('**'));
+  if (bolds % 2 === 1) return text.slice(0, text.lastIndexOf("**"));
   return text;
 }
 
@@ -86,9 +91,9 @@ function stable(text: string): string {
 function inline(text: string): string {
   return (
     text
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
       .replace(
         /`([^`]+)`/g,
         '<code class="bg-surface-1 rounded px-1 py-0.5 text-[0.85em]">$1</code>',
@@ -104,10 +109,13 @@ function inline(text: string): string {
        * path rather than the whole string, because a full URL on its own line is what was
        * pushing the parenthesis onto a line of its own.
        */
-      .replace(/(^|[\s(])(https?:\/\/[^\s<)]+)/g, (_m, lead: string, url: string) => {
-        const shown = url.replace(/^https?:\/\//, '');
-        return `${lead}<a href="${url}" class="text-primary underline underline-offset-2 break-all">${shown}</a>`;
-      })
+      .replace(
+        /(^|[\s(])(https?:\/\/[^\s<)]+)/g,
+        (_m, lead: string, url: string) => {
+          const shown = url.replace(/^https?:\/\//, "");
+          return `${lead}<a href="${url}" class="text-primary underline underline-offset-2 break-all">${shown}</a>`;
+        },
+      )
   );
 }
 
@@ -117,7 +125,13 @@ function inline(text: string): string {
  * Blocks rather than a string of `<br/>`: a list is a `<ul>` with its own spacing, a paragraph
  * is a `<p>`, and the gaps come from CSS instead of from stray line breaks.
  */
-function Rendered({ text, streaming = false }: { text: string; streaming?: boolean }) {
+function Rendered({
+  text,
+  streaming = false,
+}: {
+  text: string;
+  streaming?: boolean;
+}) {
   const source = streaming ? stable(text) : text;
   const out: string[] = [];
   let list: string[] = [];
@@ -128,7 +142,7 @@ function Rendered({ text, streaming = false }: { text: string; streaming?: boole
     out.push(
       `<ul class="my-2 space-y-1 pl-4">${list
         .map((i) => `<li class="list-disc leading-snug">${i}</li>`)
-        .join('')}</ul>`,
+        .join("")}</ul>`,
     );
     list = [];
   };
@@ -137,14 +151,14 @@ function Rendered({ text, streaming = false }: { text: string; streaming?: boole
     if (para.length === 0) return;
     // A lone bold line is a label for whatever follows it ("Related pages"), so it keeps its
     // top margin and drops the bottom one rather than floating between two blocks.
-    const only = para.length === 1 ? para[0] ?? '' : '';
+    const only = para.length === 1 ? (para[0] ?? "") : "";
     const isLabel = /^<strong>[^<]*<\/strong>$/.test(only);
-    const cls = isLabel ? 'mt-3 mb-1 first:mt-0' : 'my-2 first:mt-0 last:mb-0';
-    out.push(`<p class="${cls}">${para.join(' ')}</p>`);
+    const cls = isLabel ? "mt-3 mb-1 first:mt-0" : "my-2 first:mt-0 last:mb-0";
+    out.push(`<p class="${cls}">${para.join(" ")}</p>`);
     para = [];
   };
 
-  for (const raw of source.split('\n')) {
+  for (const raw of source.split("\n")) {
     const line = raw.trim();
 
     if (line.length === 0) {
@@ -156,7 +170,7 @@ function Rendered({ text, streaming = false }: { text: string; streaming?: boole
     const item = /^[-*]\s+(.*)$/.exec(line);
     if (item) {
       flushPara();
-      list.push(inline(item[1] ?? ''));
+      list.push(inline(item[1] ?? ""));
       continue;
     }
 
@@ -166,19 +180,21 @@ function Rendered({ text, streaming = false }: { text: string; streaming?: boole
   flushPara();
   flushList();
 
-  return <div dangerouslySetInnerHTML={{ __html: out.join('') }} />;
+  return <div dangerouslySetInnerHTML={{ __html: out.join("") }} />;
 }
 
-function Bubble({ message, lang }: { message: Message; lang: 'en' | 'vi' }) {
-  const mine = message.role === 'you';
+function Bubble({ message, lang }: { message: Message; lang: "en" | "vi" }) {
+  const mine = message.role === "you";
 
   return (
-    <div className={`pulse-message-in flex ${mine ? 'justify-end' : 'justify-start'}`}>
+    <div
+      className={`pulse-message-in flex ${mine ? "justify-end" : "justify-start"}`}
+    >
       <div
         className={
           mine
-            ? 'bg-primary max-w-[85%] rounded-2xl rounded-br-md px-4 py-2.5 text-sm text-on-primary'
-            : 'bg-surface-1 border-line max-w-[92%] rounded-2xl rounded-bl-md border px-4 py-3 text-sm leading-[1.6]'
+            ? "bg-primary max-w-[85%] rounded-2xl rounded-br-md px-4 py-2.5 text-sm text-on-primary"
+            : "bg-surface-1 border-line max-w-[92%] rounded-2xl rounded-bl-md border px-4 py-3 text-sm leading-[1.6]"
         }
       >
         <Rendered text={message.text} streaming={message.streaming} />
@@ -199,11 +215,11 @@ function Bubble({ message, lang }: { message: Message; lang: 'en' | 'vi' }) {
                 className="text-muted hover:text-ink flex items-baseline gap-1.5 text-xs leading-snug"
               >
                 <span className="shrink-0 opacity-70">
-                  {lang === 'vi' ? 'Nguồn' : 'Source'}
+                  {lang === "vi" ? "Nguồn" : "Source"}
                 </span>
                 <span className="underline underline-offset-2">
                   {s.title}
-                  {s.heading && s.heading !== s.title ? ` · ${s.heading}` : ''}
+                  {s.heading && s.heading !== s.title ? ` · ${s.heading}` : ""}
                 </span>
               </a>
             ))}
@@ -226,7 +242,7 @@ function Typing({ label }: { label: string }) {
           key={d}
           aria-hidden="true"
           className="pulse-typing bg-primary size-[7px] rounded-full"
-          style={{ ['--d' as string]: `${d * 160}ms` }}
+          style={{ ["--d" as string]: `${d * 160}ms` }}
         />
       ))}
     </div>
@@ -240,13 +256,14 @@ function Typing({ label }: { label: string }) {
  * reader who never asks pays nothing. If the model cannot load the panel says so plainly and
  * points at the pages, because the answer was always on a page anyway.
  */
-export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
+export function AssistantPanel({ lang }: { lang: "en" | "vi" }) {
   const t = COPY[lang];
   // Read straight from the store, so a navigation reopens it without a corrective render.
   const open = useSyncExternalStore(subscribeOpen, getOpen, getOpenOnServer);
   const setOpen = writeOpen;
-  const [draft, setDraft] = useState('');
-  const { status, progress, messages, pending, ask, reset, note } = useAssistant(lang);
+  const [draft, setDraft] = useState("");
+  const { status, progress, messages, pending, ask, reset, note } =
+    useAssistant(lang);
   const pathname = usePathname();
   const firstPath = useRef<string | null>(null);
   const scroller = useRef<HTMLDivElement>(null);
@@ -275,30 +292,33 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
 
     let seen = true;
     try {
-      seen = window.localStorage.getItem(SEEN_KEY) === '1';
+      seen = window.localStorage.getItem(SEEN_KEY) === "1";
     } catch {
       seen = true;
     }
     if (seen) return;
 
     try {
-      window.localStorage.setItem(SEEN_KEY, '1');
+      window.localStorage.setItem(SEEN_KEY, "1");
     } catch {
       /* nothing to do: it just greets again next time */
     }
 
-    if (!window.matchMedia('(min-width: 640px)').matches) return;
+    if (!window.matchMedia("(min-width: 640px)").matches) return;
 
     const t = window.setTimeout(() => writeOpen(true), 900);
     return () => window.clearTimeout(t);
   }, []);
 
   useEffect(() => {
-    if (open && status !== 'failed') input.current?.focus();
+    if (open && status !== "failed") input.current?.focus();
   }, [open, status]);
 
   useEffect(() => {
-    scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
+    scroller.current?.scrollTo({
+      top: scroller.current.scrollHeight,
+      behavior: "smooth",
+    });
   }, [messages, pending]);
 
   /*
@@ -320,15 +340,15 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') writeOpen(false);
+      if (e.key === "Escape") writeOpen(false);
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   const submit = () => {
     ask(draft);
-    setDraft('');
+    setDraft("");
   };
 
   if (!open) {
@@ -385,14 +405,21 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
         </div>
       </header>
 
-      <div ref={scroller} className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
-        {status === 'failed' && <p className="text-muted text-sm">{t.failed}</p>}
-
-        {status === 'idle' && messages.length === 0 && (
-          <p className="text-muted mb-3 text-xs leading-relaxed">{t.firstLoad}</p>
+      <div
+        ref={scroller}
+        className="flex-1 space-y-3 overflow-y-auto px-4 py-4"
+      >
+        {status === "failed" && (
+          <p className="text-muted text-sm">{t.failed}</p>
         )}
 
-        {status !== 'failed' && messages.length === 0 && (
+        {status === "idle" && messages.length === 0 && (
+          <p className="text-muted mb-3 text-xs leading-relaxed">
+            {t.firstLoad}
+          </p>
+        )}
+
+        {status !== "failed" && messages.length === 0 && (
           <div className="space-y-2">
             {t.suggestions.map((q, i) => (
               <button
@@ -400,7 +427,7 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
                 type="button"
                 onClick={() => ask(q)}
                 className="pulse-message-in border-line hover:bg-surface-1 block w-full rounded-xl border px-3 py-2 text-left text-sm"
-                style={{ ['--delay' as string]: `${i * 60}ms` }}
+                style={{ ["--delay" as string]: `${i * 60}ms` }}
               >
                 {q}
               </button>
@@ -413,17 +440,17 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
         ))}
 
         {/*
-          * The download, shown under the question that started it.
-          *
-          * It used to be gated on there being no messages, so asking the first question made the
-          * only sign of life vanish for as long as the model took, which on the Vietnamese
-          * 129 MB model is long enough to look broken.
-          */}
-        {status === 'loading' && (
+         * The download, shown under the question that started it.
+         *
+         * It used to be gated on there being no messages, so asking the first question made the
+         * only sign of life vanish for as long as the model took, which on the Vietnamese
+         * 129 MB model is long enough to look broken.
+         */}
+        {status === "loading" && (
           <div className="text-muted pulse-message-in space-y-2 text-xs">
             <p>
               {t.loading}
-              {progress > 0 ? ` ${Math.round(progress * 100)}%` : '…'}
+              {progress > 0 ? ` ${Math.round(progress * 100)}%` : "…"}
             </p>
             <div className="bg-surface-1 h-1 overflow-hidden rounded-full">
               <div
@@ -434,7 +461,7 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
           </div>
         )}
 
-        {pending && status !== 'loading' && <Typing label={t.thinking} />}
+        {pending && status !== "loading" && <Typing label={t.thinking} />}
       </div>
 
       <div className="border-line border-t p-3">
@@ -443,10 +470,10 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
             ref={input}
             rows={1}
             value={draft}
-            disabled={status === 'failed'}
+            disabled={status === "failed"}
             onChange={(e) => setDraft(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
+              if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
                 submit();
               }
@@ -457,7 +484,7 @@ export function AssistantPanel({ lang }: { lang: 'en' | 'vi' }) {
           <button
             type="button"
             onClick={submit}
-            disabled={status === 'failed' || draft.trim().length === 0}
+            disabled={status === "failed" || draft.trim().length === 0}
             aria-label={t.send}
             className="bg-primary shrink-0 rounded-lg p-1.5 text-on-primary disabled:opacity-30"
           >

@@ -15,6 +15,7 @@
     "check:pages": "node scripts/check-page-catalogue.mjs",
     "check:intent": "tsx scripts/check-intent-ranking.ts",
     "check:parser": "tsx scripts/check-requirement-parser.ts",
+    "check:talk": "tsx scripts/check-talk.ts",
     "check:fallback": "tsx scripts/check-semantic-fallback.ts",
     "check:placeholders": "node scripts/check-placeholders.mjs",
     "check:seo": "node scripts/check-seo.mjs",

@@ -78,7 +78,18 @@
       "themeDark": "Tối",
       "themeSystem": "Hệ thống",
       "returnName": "Return Verification",
-      "returnBlurb": "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không"
+      "returnBlurb": "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không",
+      "storefront": "Cá nhân hoá cửa hàng",
+      "apiName": "Decision API",
+      "apiBlurb": "Xếp hạng danh mục cho lượt truy cập đang diễn ra",
+      "searchName": "Search",
+      "searchBlurb": "Sắp xếp kết quả tìm kiếm theo điều người mua đang cân nhắc",
+      "recsName": "Recommendations",
+      "recsBlurb": "Hữu ích ngay từ lượt truy cập đầu tiên, không cần lịch sử mua hàng",
+      "pagesName": "Pages",
+      "pagesBlurb": "Sắp xếp trang danh mục cho người vừa ghé vào",
+      "studioName": "Merchandising Studio",
+      "studioBlurb": "Quản lý danh mục và xem vì sao mỗi sản phẩm được xếp ở vị trí đó"
     },
     "notFound": {
       "title": "Trang này không tồn tại",
@@ -429,7 +440,18 @@
       "monitorTag": "Định kỳ",
       "monitorBlurb": "Danh mục xuống cấp theo thời gian. Được báo khi một nhóm hàng tụt, kèm nguyên nhân.",
       "returnsName": "Return Verification",
-      "returnsBlurb": "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không."
+      "returnsBlurb": "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không.",
+      "storefrontTitle": "Rồi cá nhân hoá cửa hàng",
+      "apiName": "Decision API",
+      "apiBlurb": "Xếp hạng danh mục cho lượt truy cập đang diễn ra",
+      "searchName": "Search",
+      "searchBlurb": "Sắp xếp kết quả tìm kiếm theo điều người mua đang cân nhắc",
+      "recsName": "Recommendations",
+      "recsBlurb": "Hữu ích ngay từ lượt truy cập đầu tiên, không cần lịch sử mua hàng",
+      "pagesName": "Pages",
+      "pagesBlurb": "Sắp xếp trang danh mục cho người vừa ghé vào",
+      "studioName": "Merchandising Studio",
+      "studioBlurb": "Quản lý danh mục và xem vì sao mỗi sản phẩm được xếp ở vị trí đó"
     }
   },
   "pricing": {

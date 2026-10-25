@@ -189,8 +189,8 @@ export function buildGraph({
  * Breadcrumb labels, by route prefix.
  *
  * The standard says the crumb label is the navigation label rather than the SERP title:
- * "Decision Audit", not "Decision Audit: which product data to fix first". Those live in
- * src/content/nav.ts for the routes that appear in the menu, but the menu does not cover legal
+ * "Decision Audit", not "Decision Audit: which product data to fix first". Those live in the
+ * header menu (`shell` in messages/designed.*.json), but the menu does not cover legal
  * pages, `/why/*` or `/use-cases/*`, so the trail would break exactly where the hierarchy is
  * deepest. One explicit map covers every route instead, and `check-page-catalogue.mjs` already
  * fails the build when a route exists without a catalogue entry.

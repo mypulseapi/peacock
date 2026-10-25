@@ -1,53 +1,43 @@
-import { NextIntlClientProvider } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { THEME_SCRIPT } from "@/lib/theme-script";
+import { setRenderLocale } from "@/i18n/render-locale";
 import { ThemeProvider } from "@/context/ThemeContext";
-import { NotFoundContent } from "@/components/NotFoundContent";
+import { IconSprite } from "@/components/designed/icon-sprite";
+import {
+  DesignedFooter,
+  DesignedHeader,
+  DesignedSkipLink,
+} from "@/components/designed/shell";
+import { DesignedNotFound } from "@/components/designed/not-found";
 
-// Import English messages for the root 404 page
-import enMessages from "../../messages/en.json";
+/*
+ * Pages serves /en as en.html, so /en/ (a real page typed with a trailing slash) lands here.
+ * Drop the slash and load the real page. A path that is missing either way comes back here
+ * without the slash and stops, so a mistyped URL still shows the 404 below.
+ */
+const TRAILING_SLASH = `(function(){var p=location.pathname;if(p.length>1&&p.slice(-1)==='/'){location.replace(p.slice(0,-1)+location.search+location.hash)}})();`;
 
-// Root-level not-found with the same layout as other pages
+// The 404.html GitHub Pages serves for every missing path, with a 404 status. It sits outside
+// [locale], so it renders the designed shell itself, in English: one file serves both locales.
 export default function RootNotFound() {
-  // This route sits outside [locale], so nothing has told next-intl which locale is being
-  // rendered. Left unset, its request config falls back to reading `headers()` and the page
-  // cannot be exported statically.
-  //
-  // English, not `routing.defaultLocale`: the messages imported above are the English ones and
-  // `<html lang>` below says en. Using the default locale here would label a Vietnamese page
-  // that renders English text.
-  setRequestLocale("en");
+  setRenderLocale("en");
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('pulse-theme');
-                  if (theme) {
-                    document.documentElement.setAttribute('data-theme', theme);
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: TRAILING_SLASH }} />
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
-      <body className="antialiased bg-grid min-h-screen">
-        <NextIntlClientProvider messages={enMessages} locale="en">
-          <ThemeProvider>
-            <Navbar />
-            <main>
-              <NotFoundContent />
-            </main>
-            <Footer />
-          </ThemeProvider>
-        </NextIntlClientProvider>
+      <body className="antialiased min-h-screen">
+        <IconSprite />
+        <ThemeProvider>
+          <DesignedSkipLink />
+          <DesignedHeader />
+          <main id="main">
+            <DesignedNotFound />
+          </main>
+          <DesignedFooter />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -672,6 +672,21 @@
       "35": "Uncover insights others miss or fail to collect",
       "36": "Pulse measures the attributes shoppers need but your catalogue never recorded: the gaps a completeness report cannot see.",
       "37": "Next: Shopper intent"
+    },
+    "products": {
+      "title": "Start with the Decision Audit",
+      "auditName": "Decision Audit",
+      "auditTag": "Start here",
+      "auditBlurb": "Which missing field to record first, ranked, in your own catalogue.",
+      "auditMore": "Everything else follows from it: check what the repair moved, keep each shelf measured, and see which missing facts go with returns.",
+      "auditCta": "See the Decision Audit",
+      "verifyName": "Decision Verification",
+      "verifyBlurb": "Recompute after the repair and see exactly what moved. No traffic needed.",
+      "monitorName": "Decision Monitor",
+      "monitorTag": "Recurring",
+      "monitorBlurb": "Catalogues decay. Get told when a shelf slips and why.",
+      "returnsName": "Return Verification",
+      "returnsBlurb": "See which missing facts go with returns, and whether a repair moved them."
     }
   },
   "industries": {
@@ -1761,6 +1776,12 @@
     },
     "designed-skip-link": {
       "1": "Skip to content"
+    },
+    "notFound": {
+      "title": "This page does not exist",
+      "body": "The link may be old or mistyped. The home page lists everything Pulse offers.",
+      "home": "Back to home",
+      "audit": "See the Decision Audit"
     }
   },
   "terms": {

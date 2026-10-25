@@ -60,6 +60,12 @@ What Pulse does NOT do or claim:
 - [Decision Monitor](${en("/product/decision-monitor")}): what decays in a catalogue over time, and where.
 - [Decision API](${en("/product/decision-api")}): the endpoints behind all of it.
 
+## Storefront (the optional live session layer)
+- [Search](${en("/product/search")}): ranks results from your existing search on what the shopper is deciding, with a held-back control share.
+- [Recommendations](${en("/product/recommendations")}): ranked against the visit happening now, so a first session is served without history.
+- [Pages](${en("/product/pages")}): category and landing grids ordered against what each visit implies.
+- [Merchandising Studio](${en("/product/merchandising-studio")}): the console for the catalogue, the holdback and the record behind a ranking; overrides are not built yet.
+
 ## Research and method
 - [Why Pulse](${en("/why")}): the argument, with the datasets attached.
 - [The method](${en("/why/method")}): how decision information is measured and why bits rather than clicks.

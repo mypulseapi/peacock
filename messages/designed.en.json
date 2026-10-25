@@ -686,7 +686,18 @@
       "monitorTag": "Recurring",
       "monitorBlurb": "Catalogues decay. Get told when a shelf slips and why.",
       "returnsName": "Return Verification",
-      "returnsBlurb": "See which missing facts go with returns, and whether a repair moved them."
+      "returnsBlurb": "See which missing facts go with returns, and whether a repair moved them.",
+      "storefrontTitle": "Then personalise the storefront",
+      "apiName": "Decision API",
+      "apiBlurb": "Rank your catalogue for the visit happening right now",
+      "searchName": "Search",
+      "searchBlurb": "Order search results by what the shopper is weighing up",
+      "recsName": "Recommendations",
+      "recsBlurb": "Useful from a shopper's first visit, no history needed",
+      "pagesName": "Pages",
+      "pagesBlurb": "Order category pages for the shopper who just arrived",
+      "studioName": "Merchandising Studio",
+      "studioBlurb": "Manage the catalogue and see why each product ranked where it did"
     }
   },
   "industries": {
@@ -1772,7 +1783,18 @@
       "themeDark": "Dark",
       "themeSystem": "System",
       "returnName": "Return Verification",
-      "returnBlurb": "See which missing facts go with returns, and whether a repair moved them"
+      "returnBlurb": "See which missing facts go with returns, and whether a repair moved them",
+      "storefront": "Personalise the storefront",
+      "apiName": "Decision API",
+      "apiBlurb": "Rank your catalogue for the visit happening right now",
+      "searchName": "Search",
+      "searchBlurb": "Order search results by what the shopper is weighing up",
+      "recsName": "Recommendations",
+      "recsBlurb": "Useful from a shopper's first visit, no history needed",
+      "pagesName": "Pages",
+      "pagesBlurb": "Order category pages for the shopper who just arrived",
+      "studioName": "Merchandising Studio",
+      "studioBlurb": "Manage the catalogue and see why each product ranked where it did"
     },
     "designed-skip-link": {
       "1": "Skip to content"

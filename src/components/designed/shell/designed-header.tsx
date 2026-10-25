@@ -14,6 +14,23 @@ import Image from "next/image";
 
 import Link from "next/link";
 
+/**
+ * The storefront products, added 2026-10-25: Pulse personalises, tracks the visit and ranks
+ * search, and the menu listed only the catalogue tools. Third in the panel because the Decision
+ * Audit is what is sold first; these act on a live storefront once there is a reason to.
+ */
+const STOREFRONT = [
+  { href: "/en/product/decision-api", key: "api", icon: "i-terminal" },
+  { href: "/en/product/search", key: "search", icon: "i-user-search" },
+  { href: "/en/product/recommendations", key: "recs", icon: "i-sparkles" },
+  { href: "/en/product/pages", key: "pages", icon: "i-file-text" },
+  {
+    href: "/en/product/merchandising-studio",
+    key: "studio",
+    icon: "i-chart-pie",
+  },
+];
+
 export function DesignedHeader() {
   const t = designedText("shell.designed-header");
   return (
@@ -154,6 +171,28 @@ export function DesignedHeader() {
                             </span>
                           </Link>
                         </li>
+                      </ul>
+                    </div>
+                    <div className="nav-column w-76 p-3">
+                      <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
+                        {t("storefront")}
+                      </p>
+                      <ul className="space-y-1">
+                        {STOREFRONT.map((p) => (
+                          <li key={p.href}>
+                            <Link
+                              href={designedHref(p.href)}
+                              className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                {t(`${p.key}Name`)}
+                              </span>
+                              <span className="mt-1 block text-sm text-pretty text-muted">
+                                {t(`${p.key}Blurb`)}
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -489,6 +528,25 @@ export function DesignedHeader() {
                   {t("returnName")}
                 </Link>
               </li>
+            </ul>
+
+            <p className="mt-6 px-4 eyebrow">{t("storefront")}</p>
+            <ul className="mt-2">
+              {STOREFRONT.map((p) => (
+                <li key={p.href}>
+                  <Link
+                    href={designedHref(p.href)}
+                    className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  >
+                    <span className="nav-icon-tile size-9">
+                      <svg className="size-4" aria-hidden="true">
+                        <use href={`#${p.icon}`} />
+                      </svg>
+                    </span>
+                    {t(`${p.key}Name`)}
+                  </Link>
+                </li>
+              ))}
             </ul>
 
             <p className="mt-6 px-4 eyebrow">{t("52")}</p>

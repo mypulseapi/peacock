@@ -12,7 +12,6 @@
  */
 import { renderLocale } from "@/i18n/render-locale";
 import { ui } from "@/content/locale";
-import { Check, X } from "lucide-react";
 
 const INK = "#16181d", MID = "#4c5563", MUTE = "#9aa1ad";
 const GOOD = "var(--sig-deep)", GOOD_BG = "var(--sig-tint)";
@@ -136,35 +135,6 @@ export function MonitorVisual() {
   );
 }
 
-/** A ranked product with its breakdown, which is the runtime's promise. */
-export function ApiVisual() {
-  const t = ui(renderLocale());
-  const f = [
-    { k: t.baseRelevance, v: 42 },
-    { k: t.personaFit, v: 28 },
-    { k: t.priceBand, v: 18 },
-    { k: t.brandAffinity, v: 12 },
-  ];
-  return (
-    <Frame title={t.whyFirst} badge={t.live} badgeTone="work">
-      <Row label="ThinkPad X1 Carbon Gen 9" sub="SKU I9J0K1L2"
-           right={<span className="ed-num rounded-md px-2 py-1 text-[0.75rem] font-bold" style={{ background: "#eef3fe", color: WORK }}>0.87</span>} />
-      <div className="mt-3 space-y-2">
-        {f.map((x) => (
-          <div key={x.k} className="flex items-center justify-between gap-3">
-            <span className="text-[0.75rem]" style={{ color: MID }}>{x.k}</span>
-            <span className="flex items-center gap-2">
-              <Bar pct={x.v * 2} color={WORK} w="5rem" />
-              <span className="ed-num w-8 text-right text-[0.75rem] font-semibold" style={{ color: WORK }}>{x.v}%</span>
-            </span>
-          </div>
-        ))}
-      </div>
-      <p className="mt-3 text-[0.75rem]" style={{ color: MUTE }}>{t.explainRanked}</p>
-    </Frame>
-  );
-}
-
 /** What a bit is, drawn. */
 export function MethodVisual() {
   const t = ui(renderLocale());
@@ -249,132 +219,6 @@ export function LimitsVisual() {
  * figures deliberately share a shape; the studio one is a two-list ledger,
  * because what that page is actually showing you is the gap between them.
  * -------------------------------------------------------------------------- */
-
-/** Two arms of the same query, which is the only honest way to draw ranking. */
-export function SearchVisual() {
-  const t = ui(renderLocale());
-  const engine = ["ThinkPad X1 Carbon", "MacBook Pro 14", "Dell XPS 15"];
-  const control = ["MSI GS66 Stealth", "ThinkPad X1 Carbon", "Razer Blade 15"];
-  return (
-    <Frame title={`${t.resultsFor} ${t.queryLaptop}`} badge={t.live} badgeTone="work">
-      <div className="grid grid-cols-2 gap-3">
-        {[
-          { h: t.engineArm, rows: engine, tone: WORK, bg: "#eef3fe" },
-          { h: t.controlArm, rows: control, tone: HOLD, bg: "#fdf1dd" },
-        ].map((col) => (
-          <div key={col.h}>
-            <p className="mb-2 text-[0.6875rem] font-bold tracking-wider uppercase" style={{ color: col.tone }}>{col.h}</p>
-            <ol className="space-y-1.5">
-              {col.rows.map((r, i) => (
-                <li
-                  key={r}
-                  className="flex items-center gap-2 rounded-md px-2 py-1.5 text-[0.75rem]"
-                  style={{ background: col.bg, color: i === 0 ? INK : MID, fontWeight: i === 0 ? 700 : 500 }}
-                >
-                  <span className="ed-num opacity-60">{i + 1}</span>
-                  <span className="truncate">{r}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        ))}
-      </div>
-      <p className="mt-3 text-[0.75rem]" style={{ color: MUTE }}>{t.heldBackNote}</p>
-    </Frame>
-  );
-}
-
-/** The cold-start case, drawn as the signals available with no history at all. */
-export function RecommendationsVisual() {
-  const t = ui(renderLocale());
-  const f = [
-    { k: t.baseRelevance, v: 34 },
-    { k: t.personaFit, v: 31 },
-    { k: t.brandAffinity, v: 21 },
-    { k: t.priceBand, v: 14 },
-  ];
-  return (
-    <Frame title={t.slotPdp} badge={t.firstVisit} badgeTone="work">
-      <div className="space-y-2">
-        {f.map((x) => (
-          <div key={x.k} className="flex items-center justify-between gap-3">
-            <span className="text-[0.75rem]" style={{ color: MID }}>{x.k}</span>
-            <span className="flex items-center gap-2">
-              <Bar pct={x.v * 2.4} color={WORK} w="5rem" />
-              <span className="ed-num w-8 text-right text-[0.75rem] font-semibold" style={{ color: WORK }}>{x.v}%</span>
-            </span>
-          </div>
-        ))}
-      </div>
-      <p className="mt-3 text-[0.75rem]" style={{ color: MUTE }}>{t.noHistoryNote}</p>
-    </Frame>
-  );
-}
-
-/** A grid, with the arrival context that ordered it sitting above. */
-export function PagesVisual() {
-  const t = ui(renderLocale());
-  return (
-    <Frame title={t.gridFor} badge={t.fromCampaign} badgeTone="work">
-      <div className="grid grid-cols-4 gap-2" aria-hidden>
-        {Array.from({ length: 12 }, (_, i) => (
-          <span
-            key={i}
-            className="aspect-[3/4] rounded-md"
-            style={{
-              background: i < 4 ? "#dde6fd" : "#f2f4f7",
-              boxShadow: i < 4 ? `inset 0 0 0 1.5px ${WORK}` : "none",
-            }}
-          />
-        ))}
-      </div>
-      <p className="mt-3 text-[0.75rem]" style={{ color: MUTE }}>{t.pageNote}</p>
-    </Frame>
-  );
-}
-
-/**
- * Two lists, and the second one is the point.
- *
- * Every competitor's studio page is a feature grid. Drawing ours as built
- * beside not-built is the only version of this figure that matches what the
- * page says, and it is the more persuasive of the two.
- */
-export function StudioVisual() {
-  const t = ui(renderLocale());
-  return (
-    <Frame title={t.consoleTitle} badge={t.verified}>
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <p className="mb-2 text-[0.6875rem] font-bold tracking-wider uppercase" style={{ color: GOOD }}>{t.built}</p>
-          <ul className="space-y-1.5">
-            {[t.cCatalogue, t.cPersonas, t.cHoldback, t.cRecord].map((r) => (
-              <li key={r} className="flex items-start gap-2 rounded-md px-2 py-1.5 text-[0.75rem]"
-                  style={{ background: GOOD_BG, color: INK }}>
-                <Check className="mt-0.5 h-3 w-3 shrink-0" style={{ color: GOOD }} aria-hidden />
-                <span>{r}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p className="mb-2 text-[0.6875rem] font-bold tracking-wider uppercase" style={{ color: WARN }}>{t.notBuilt}</p>
-          <ul className="space-y-1.5">
-            {[t.cPin, t.cSimulate].map((r) => (
-              <li key={r} className="flex items-start gap-2 rounded-md px-2 py-1.5 text-[0.75rem]"
-                  style={{ background: WARN_BG, color: MID }}>
-                <X className="mt-0.5 h-3 w-3 shrink-0" style={{ color: WARN }} aria-hidden />
-                <span>{r}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <p className="mt-3 text-[0.75rem]" style={{ color: MUTE }}>{t.consoleNote}</p>
-    </Frame>
-  );
-}
-
 
 /**
  * Where schema coverage stops.

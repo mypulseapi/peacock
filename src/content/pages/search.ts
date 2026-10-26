@@ -129,13 +129,13 @@ export const SEARCH: ChapterContent = {
         n: "02",
         meta: "Session",
         title: "Weighted by the visit",
-        body: "What this person has browsed, searched and filtered in this visit moves persona, affinity and price-band fit.",
+        body: "What this person has browsed, searched and filtered in this visit moves persona, affinity and price-band fit. No cookie and no login, so it works on a first visit.",
       },
       {
         n: "03",
         meta: "Always",
         title: "A share never sees it",
-        body: "A held-back arm, stable for the session, ranks the same query your original way.",
+        body: "A held-back arm, stable for the session, ranks the same query your original way. That is what makes any number anyone reports about this measurable rather than asserted.",
       },
     ],
   },
@@ -151,7 +151,7 @@ export const SEARCH: ChapterContent = {
       {
         icon: SlidersHorizontal,
         title: "The factors, named",
-        body: "Relevance, persona fit, quality, price band, attribute affinity and audience fit. Each contributes a visible amount to the score, and they are the same factors in the console and in the API response.",
+        body: "Relevance, persona fit, quality, price band, attribute affinity and audience fit. Each contributes a visible amount to the score, and they are the same factors in the console and in the API response. A factor with no data behind it is left out, not scored as zero.",
       },
       {
         icon: Eye,
@@ -317,13 +317,13 @@ export const SEARCH_VI: ChapterContent = {
         n: "02",
         meta: "Phiên",
         title: "Nhân trọng số theo lần ghé",
-        body: "Những gì người này đã duyệt, tìm và lọc trong lần ghé này làm dịch chuyển chân dung, độ tương hợp và mức khớp khoảng giá.",
+        body: "Những gì người này đã duyệt, tìm và lọc trong lần ghé này làm dịch chuyển chân dung, độ tương hợp và mức khớp khoảng giá. Không cookie và không đăng nhập, nên nó chạy được ngay từ lần ghé đầu tiên.",
       },
       {
         n: "03",
         meta: "Luôn luôn",
         title: "Một phần không bao giờ thấy nó",
-        body: "Một nhánh được giữ lại, ổn định theo phiên, xếp cùng truy vấn đó theo cách gốc của bạn.",
+        body: "Một nhánh được giữ lại, ổn định theo phiên, xếp cùng truy vấn đó theo cách gốc của bạn. Đó là thứ khiến mọi con số ai đó báo cáo về việc này trở nên đo được thay vì chỉ được khẳng định suông.",
       },
     ],
   },
@@ -339,7 +339,7 @@ export const SEARCH_VI: ChapterContent = {
       {
         icon: SlidersHorizontal,
         title: "Các yếu tố, có tên rõ ràng",
-        body: "Độ liên quan, mức khớp chân dung, chất lượng, khoảng giá, độ tương hợp thuộc tính và mức khớp nhóm khách hàng. Mỗi yếu tố đóng góp một lượng nhìn thấy được vào điểm số, và chúng là cùng các yếu tố trong bảng điều khiển lẫn trong phản hồi API.",
+        body: "Độ liên quan, mức khớp chân dung, chất lượng, khoảng giá, độ tương hợp thuộc tính và mức khớp nhóm khách hàng. Mỗi yếu tố đóng góp một lượng nhìn thấy được vào điểm số, và chúng là cùng các yếu tố trong bảng điều khiển lẫn trong phản hồi API. Yếu tố nào không có dữ liệu thì được bỏ ra, không bị tính là 0.",
       },
       {
         icon: Eye,

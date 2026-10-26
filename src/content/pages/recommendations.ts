@@ -67,6 +67,7 @@ export const RECOMMENDATIONS: ChapterContent = {
       "Your recommendation engine is quietest exactly when it matters most.",
     body: [
       "Collaborative filtering needs a history to filter against. On a visitor with no history it has nothing, so it falls back to what sold well last week, which is the same strip every anonymous visitor sees. That is most of your traffic on most storefronts.",
+      "The information you need is already in front of you. Somebody who has opened three products under a price point and filtered twice has told you a great deal, and none of it required knowing who they are.",
     ],
     pull: "A recommendation engine that needs to know who somebody is cannot help on the visit where it would matter most.",
   },
@@ -80,7 +81,7 @@ export const RECOMMENDATIONS: ChapterContent = {
         n: "01",
         meta: "Signals",
         title: "The visit emits",
-        body: "Views, searches, filters and cart actions in this session. Each one moves persona weight and attribute affinity.",
+        body: "Views, searches, filters and cart actions in this session. Each one moves persona weight and attribute affinity. Nothing is stored against a person, because there is no person to store it against.",
       },
       {
         n: "02",
@@ -113,7 +114,7 @@ export const RECOMMENDATIONS: ChapterContent = {
       {
         icon: Shuffle,
         title: "One ranker, not two",
-        body: "The strip and the search results are ordered by the same factors.",
+        body: "The strip and the search results are ordered by the same factors. A merchandiser who understands one understands the other, and there is no second model to keep in sync.",
       },
       {
         icon: ShieldCheck,
@@ -230,6 +231,7 @@ export const RECOMMENDATIONS_VI: ChapterContent = {
       "Bộ máy gợi ý của bạn im lặng nhất đúng vào lúc nó quan trọng nhất.",
     body: [
       "Lọc cộng tác cần một lịch sử để mà lọc. Với khách chưa có lịch sử thì nó không có gì, nên nó lùi về thứ bán chạy tuần trước, và đó là cùng một dải sản phẩm mà mọi khách ẩn danh đều thấy. Trên phần lớn gian hàng, đó là phần lớn lưu lượng của bạn.",
+      "Thông tin bạn cần vốn đã ở ngay trước mặt. Một người đã mở ba sản phẩm dưới một mức giá và lọc hai lần đã nói cho bạn biết rất nhiều, và không điều nào trong đó đòi hỏi phải biết họ là ai.",
     ],
     pull: "Một bộ máy gợi ý cần biết người ta là ai thì không giúp được gì ở đúng lần ghé mà nó quan trọng nhất.",
   },
@@ -243,7 +245,7 @@ export const RECOMMENDATIONS_VI: ChapterContent = {
         n: "01",
         meta: "Tín hiệu",
         title: "Lần ghé phát tín hiệu",
-        body: "Lượt xem, lượt tìm, lượt lọc và thao tác giỏ hàng trong phiên này. Mỗi thứ làm dịch chuyển trọng số chân dung và độ tương hợp thuộc tính.",
+        body: "Lượt xem, lượt tìm, lượt lọc và thao tác giỏ hàng trong phiên này. Mỗi thứ làm dịch chuyển trọng số chân dung và độ tương hợp thuộc tính. Không gì được lưu gắn với một con người, vì không có con người nào để mà gắn vào.",
       },
       {
         n: "02",
@@ -276,7 +278,7 @@ export const RECOMMENDATIONS_VI: ChapterContent = {
       {
         icon: Shuffle,
         title: "Một bộ xếp hạng, không phải hai",
-        body: "Dải gợi ý và kết quả tìm kiếm được sắp bởi cùng các yếu tố.",
+        body: "Dải gợi ý và kết quả tìm kiếm được sắp bởi cùng các yếu tố. Người phụ trách trưng bày hàng hoá hiểu được cái này thì hiểu được cái kia, và không có mô hình thứ hai nào phải giữ cho đồng bộ.",
       },
       {
         icon: ShieldCheck,

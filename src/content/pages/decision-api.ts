@@ -70,6 +70,7 @@ export const DECISION_API: ChapterContent = {
   situation: {
     heading: "This is the last thing we would sell you, and that is deliberate.",
     body: [
+      "It is also the wrong place to start. Ranking a catalogue against what a visitor seems to need cannot help if the catalogue does not record the facts that visitor is deciding on. Running the engine over an unrepaired shelf produces a confident ordering of products that are still indistinguishable.",
       "So the audit comes first, the repair comes second, and this comes when you have a shelf worth ranking and a reason to believe ordering it live would change something.",
     ],
     pull:
@@ -196,6 +197,7 @@ export const DECISION_API_VI: ChapterContent = {
   situation: {
     heading: "Đây là thứ cuối cùng chúng tôi muốn bán cho bạn, và điều đó là có chủ đích.",
     body: [
+      "Nó cũng là điểm khởi đầu sai. Xếp hạng một danh mục theo nhu cầu có vẻ có của khách truy cập sẽ không giúp được gì nếu danh mục không ghi lại chính những dữ kiện mà khách đang dựa vào để quyết định. Chạy bộ máy trên một kệ hàng chưa sửa chỉ tạo ra một thứ tự đầy tự tin của những sản phẩm vẫn không phân biệt được với nhau.",
       "Nên bản kiểm tra đi trước, việc sửa đi thứ hai, và thứ này đến khi bạn đã có một kệ hàng đáng xếp hạng cùng một lý do để tin rằng sắp xếp nó theo thời gian thực sẽ thay đổi được điều gì đó.",
     ],
     pull:

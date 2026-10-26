@@ -137,7 +137,7 @@ export const MERCHANDISING_STUDIO: ChapterContent = {
         n: "02",
         meta: "Control",
         title: "Set the holdback",
-        body: "The share of sessions that never see the engine, stable per session.",
+        body: "The share of sessions that never see the engine, stable per session. It is an organisation setting, it defaults on, and it is what makes any later comparison possible.",
       },
       {
         n: "03",
@@ -345,7 +345,7 @@ export const MERCHANDISING_STUDIO_VI: ChapterContent = {
         n: "02",
         meta: "Điều khiển",
         title: "Đặt mức giữ lại",
-        body: "Tỷ lệ phiên truy cập không bao giờ thấy bộ máy, ổn định theo từng phiên.",
+        body: "Tỷ lệ phiên truy cập không bao giờ thấy bộ máy, ổn định theo từng phiên. Đây là thiết lập ở cấp tổ chức, mặc định bật, và là thứ khiến mọi phép so sánh về sau trở nên khả thi.",
       },
       {
         n: "03",

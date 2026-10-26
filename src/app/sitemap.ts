@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { sectorSlugs } from "@/content/industries";
+import { AGENT_SLUGS } from "@/content/pages/agents";
 import { blogSlugs } from "@/data/blog-slugs";
 import { careerIds } from "@/data/career-ids";
 import { SITE } from "@/lib/site";
@@ -176,6 +177,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     for (const slug of sectorSlugs) {
       const path = `/industries/${slug}`;
+      sitemapEntries.push({
+        url: `${baseUrl}/${locale}${path}`,
+        changeFrequency: "monthly",
+        priority: 0.8,
+        alternates: makeAlternates(path),
+      });
+    }
+  }
+
+  // The "For AI agents" pages
+  for (const locale of locales) {
+    for (const slug of AGENT_SLUGS) {
+      const path = `/agents/${slug}`;
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${path}`,
         changeFrequency: "monthly",

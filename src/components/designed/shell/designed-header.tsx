@@ -31,6 +31,51 @@ const STOREFRONT = [
   },
 ];
 
+// The Solutions panel (2026-10-26, was "Templates"): agents first, because a decision call AI agents
+// use in any industry is the proposition now (ODIN/strategy/OPEN-SOURCE.md §0).
+const AGENTS = [
+  { href: "/en/agents/shopping-assistants", key: "agentShop", icon: "i-cart" },
+  { href: "/en/agents/procurement", key: "agentProc", icon: "i-factory" },
+  { href: "/en/agents/travel", key: "agentTravel", icon: "i-globe" },
+  { href: "/en/agents/coding-agents", key: "agentCode", icon: "i-terminal" },
+];
+const INDUSTRIES = [
+  { href: "/en/industries/ecommerce", name: "15", blurb: "16", icon: "i-cart" },
+  { href: "/en/industries/fmcg", name: "17", blurb: "18", icon: "i-basket" },
+  { href: "/en/industries/furniture", name: "20", blurb: "21", icon: "i-sofa" },
+  {
+    href: "/en/industries/cosmetics",
+    name: "22",
+    blurb: "23",
+    icon: "i-sparkles",
+  },
+  { href: "/en/industries/technology", name: "25", blurb: "26", icon: "i-cpu" },
+  {
+    href: "/en/industries/distribution",
+    name: "27",
+    blurb: "28",
+    icon: "i-factory",
+  },
+];
+const GOALS = [
+  {
+    href: "/en/product/promotion-audit",
+    key: "goalPromo",
+    icon: "i-chart-pie",
+  },
+  {
+    href: "/en/product/return-verification",
+    key: "goalReturns",
+    icon: "i-undo",
+  },
+  { href: "/en/use-cases/seo-aeo", key: "goalAeo", icon: "i-user-search" },
+  {
+    href: "/en/use-cases/time-to-market",
+    key: "goalLaunch",
+    icon: "i-trending-up",
+  },
+];
+
 export function DesignedHeader() {
   const t = designedText("shell.designed-header");
   return (
@@ -102,7 +147,10 @@ export function DesignedHeader() {
                   {/* A fixed width, three columns' worth like Templates (2026-10-26). Its columns grow to fill
                       (`flex-1`), so without one it took whatever width the viewport had when the script
                       measured it: 608px on first open or after Resources, 912px after Templates. */}
-                  <div data-nav-content className="nav-content flex w-228 flex-col">
+                  <div
+                    data-nav-content
+                    className="nav-content flex w-228 flex-col"
+                  >
                     {/* The catalogue tools side by side; the storefront, which comes later, as a row under them. */}
                     <div className="flex w-full justify-center">
                       <div className="nav-column min-w-76 flex-1 p-3">
@@ -282,143 +330,92 @@ export function DesignedHeader() {
                   <div data-nav-content className="nav-content flex">
                     <div className="nav-column w-76 p-3">
                       <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                        {t("14")}
+                        {t("agentsHeading")}
                       </p>
                       <ul className="space-y-1">
-                        <li>
-                          <Link
-                            href={designedHref("/en/industries/ecommerce")}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="nav-icon-tile">
-                              <svg className="size-4" aria-hidden="true">
-                                <use href="#i-cart" />
-                              </svg>
-                            </span>
-                            <span className="min-w-0">
-                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                {t("15")}
+                        {AGENTS.map((p) => (
+                          <li key={p.href}>
+                            <Link
+                              href={designedHref(p.href)}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="nav-icon-tile">
+                                <svg className="size-4" aria-hidden="true">
+                                  <use href={`#${p.icon}`} />
+                                </svg>
                               </span>
-                              <span className="mt-1 block text-sm text-pretty text-muted">
-                                {t("16")}
+                              <span className="min-w-0">
+                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                  {t(`${p.key}Name`)}
+                                  <span className="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase">
+                                    {t("newTag")}
+                                  </span>
+                                </span>
+                                <span className="mt-1 block text-sm text-pretty text-muted">
+                                  {t(`${p.key}Blurb`)}
+                                </span>
                               </span>
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href={designedHref("/en/industries/fmcg")}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="nav-icon-tile">
-                              <svg className="size-4" aria-hidden="true">
-                                <use href="#i-basket" />
-                              </svg>
-                            </span>
-                            <span className="min-w-0">
-                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                {t("17")}
-                              </span>
-                              <span className="mt-1 block text-sm text-pretty text-muted">
-                                {t("18")}
-                              </span>
-                            </span>
-                          </Link>
-                        </li>
+                            </Link>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                     <div className="nav-column w-76 p-3">
                       <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                        {t("19")}
+                        {t("industriesHeading")}
                       </p>
                       <ul className="space-y-1">
-                        <li>
-                          <Link
-                            href={designedHref("/en/industries/furniture")}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="nav-icon-tile">
-                              <svg className="size-4" aria-hidden="true">
-                                <use href="#i-sofa" />
-                              </svg>
-                            </span>
-                            <span className="min-w-0">
-                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                {t("20")}
+                        {INDUSTRIES.map((p) => (
+                          <li key={p.href}>
+                            <Link
+                              href={designedHref(p.href)}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="nav-icon-tile">
+                                <svg className="size-4" aria-hidden="true">
+                                  <use href={`#${p.icon}`} />
+                                </svg>
                               </span>
-                              <span className="mt-1 block text-sm text-pretty text-muted">
-                                {t("21")}
+                              <span className="min-w-0">
+                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                  {t(p.name)}
+                                </span>
+                                <span className="mt-1 block text-sm text-pretty text-muted">
+                                  {t(p.blurb)}
+                                </span>
                               </span>
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href={designedHref("/en/industries/cosmetics")}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="nav-icon-tile">
-                              <svg className="size-4" aria-hidden="true">
-                                <use href="#i-sparkles" />
-                              </svg>
-                            </span>
-                            <span className="min-w-0">
-                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                {t("22")}
-                              </span>
-                              <span className="mt-1 block text-sm text-pretty text-muted">
-                                {t("23")}
-                              </span>
-                            </span>
-                          </Link>
-                        </li>
+                            </Link>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                     <div className="nav-column w-76 p-3">
                       <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                        {t("24")}
+                        {t("goalsHeading")}
                       </p>
                       <ul className="space-y-1">
-                        <li>
-                          <Link
-                            href={designedHref("/en/industries/technology")}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="nav-icon-tile">
-                              <svg className="size-4" aria-hidden="true">
-                                <use href="#i-cpu" />
-                              </svg>
-                            </span>
-                            <span className="min-w-0">
-                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                {t("25")}
+                        {GOALS.map((p) => (
+                          <li key={p.href}>
+                            <Link
+                              href={designedHref(p.href)}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="nav-icon-tile">
+                                <svg className="size-4" aria-hidden="true">
+                                  <use href={`#${p.icon}`} />
+                                </svg>
                               </span>
-                              <span className="mt-1 block text-sm text-pretty text-muted">
-                                {t("26")}
+                              <span className="min-w-0">
+                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                  {t(`${p.key}Name`)}
+                                </span>
+                                <span className="mt-1 block text-sm text-pretty text-muted">
+                                  {t(`${p.key}Blurb`)}
+                                </span>
                               </span>
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href={designedHref("/en/industries/distribution")}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="nav-icon-tile">
-                              <svg className="size-4" aria-hidden="true">
-                                <use href="#i-factory" />
-                              </svg>
-                            </span>
-                            <span className="min-w-0">
-                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                {t("27")}
-                              </span>
-                              <span className="mt-1 block text-sm text-pretty text-muted">
-                                {t("28")}
-                              </span>
-                            </span>
-                          </Link>
-                        </li>
+                            </Link>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -562,6 +559,18 @@ export function DesignedHeader() {
                 {t("42")}
               </Link>
             </li>
+            <li>
+              {/* The selling point, so it stands apart: the GitHub mark and the primary colour. */}
+              <Link
+                href={designedHref("/en/opensource")}
+                className="nav-link gap-1.5 font-semibold text-primary! hover:bg-primary-tint!"
+              >
+                <svg className="size-4" aria-hidden="true">
+                  <use href="#i-github" />
+                </svg>
+                {t("opensource")}
+              </Link>
+            </li>
           </ul>
           <div className="nav-viewport" data-nav-viewport>
             <div className="nav-viewport-stack" data-nav-stack></div>
@@ -701,7 +710,26 @@ export function DesignedHeader() {
               ))}
             </ul>
 
-            <p className="mt-6 px-4 eyebrow">{t("52")}</p>
+            <p className="mt-6 px-4 eyebrow">{t("agentsHeading")}</p>
+            <ul className="mt-2">
+              {AGENTS.map((p) => (
+                <li key={p.href}>
+                  <Link
+                    href={designedHref(p.href)}
+                    className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  >
+                    <span className="nav-icon-tile size-9">
+                      <svg className="size-4" aria-hidden="true">
+                        <use href={`#${p.icon}`} />
+                      </svg>
+                    </span>
+                    {t(`${p.key}Name`)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-6 px-4 eyebrow">{t("industriesHeading")}</p>
             <ul className="mt-2">
               <li>
                 <Link
@@ -783,6 +811,25 @@ export function DesignedHeader() {
               </li>
             </ul>
 
+            <p className="mt-6 px-4 eyebrow">{t("goalsHeading")}</p>
+            <ul className="mt-2">
+              {GOALS.map((p) => (
+                <li key={p.href}>
+                  <Link
+                    href={designedHref(p.href)}
+                    className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  >
+                    <span className="nav-icon-tile size-9">
+                      <svg className="size-4" aria-hidden="true">
+                        <use href={`#${p.icon}`} />
+                      </svg>
+                    </span>
+                    {t(`${p.key}Name`)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
             <p className="mt-6 px-4 eyebrow">{t("59")}</p>
             <ul className="mt-2">
               <li>
@@ -829,6 +876,15 @@ export function DesignedHeader() {
                 className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
               >
                 {t("63")}
+              </Link>
+              <Link
+                href={designedHref("/en/opensource")}
+                className="flex items-center gap-2 rounded-control px-4 py-3 text-lg font-semibold text-primary"
+              >
+                <svg className="size-5" aria-hidden="true">
+                  <use href="#i-github" />
+                </svg>
+                {t("opensource")}
               </Link>
 
               <Link

@@ -251,6 +251,13 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     depth: "explainer",
     decides: ["does-it-fit-me"],
   },
+  {
+    route: "/agents/[slug]",
+    audience: "developer",
+    area: "api",
+    depth: "explainer",
+    decides: ["does-it-fit-me", "how-to-integrate"],
+  },
 
   // Commercial
   {

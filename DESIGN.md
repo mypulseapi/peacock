@@ -19,6 +19,20 @@ Live reference: `components.html` shows every component below rendered with the 
    not decoration.
 3. **Colour has a job.** Every colour below has one meaning. Never use a colour outside its role.
 4. **Generous whitespace.** Sections breathe (`py-20`); dense data lives inside cards.
+5. **Show, don't tell** (owner, 26 Oct 2026). Keep the words to the minimum a visitor needs and let a
+   visual carry the rest: an image, a short video, a diagram, a drawn scene or the product's own UI.
+   - A section says one thing: a heading, at most one short paragraph (about 40 words), then the visual.
+     A list beats a paragraph; cut any sentence the visual already says.
+   - Every section that explains how something works, what changes, or what the merchant gets has a
+     visual. A section of prose alone needs a reason.
+   - The visual describes the content, never decorates it (principle 1): the product, the data, the flow,
+     the before and after. No stock photos: the owner's images, or drawings made from the tokens.
+   - Video is muted, loops, needs no sound to follow, and has a poster for reduced motion and no-JS (§6).
+   - Words stay where only words work: headings, the lede, alt text, captions, and the limits a buyer
+     forwards. Cutting text never cuts a fact the page needs, and a visual follows the no-invented-content
+     rule like any copy (real figures, or labelled examples).
+   - Both locales: words inside an image cannot be translated, so prefer pictures with no text in them,
+     or draw the words in markup.
 
 ## 2. Colour tokens — Signal
 

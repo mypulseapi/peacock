@@ -42,6 +42,12 @@ const OFFERINGS = [
     blurb: "returnsBlurb",
     icon: "i-compare",
   },
+  {
+    href: "/en/product/promotion-audit",
+    name: "promotionName",
+    blurb: "promotionBlurb",
+    icon: "i-chart-pie",
+  },
 ];
 
 // The storefront products, the menu's third column, after the catalogue tools.

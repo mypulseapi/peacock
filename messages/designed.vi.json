@@ -592,7 +592,17 @@
       "finalTitle": "Bắt đầu với một ngành hàng.",
       "finalLede": "Chúng tôi sẽ cho bạn biết thông tin sản phẩm nào đáng sửa trước khi bạn cam kết vào một dự án lớn hơn.",
       "finalCta": "Yêu cầu Decision Audit",
-      "finalNote": "Một bản xuất · Không cần tích hợp · 48 giờ"
+      "finalNote": "Một bản xuất · Không cần tích hợp · 48 giờ",
+      "growsEyebrow": "Cách hoạt động",
+      "growsIntro": "Một lộ trình rõ ràng từ hiểu biết tới tác động đo lường được.",
+      "grows1Copy": "Phân tích danh mục để tìm ra điều quan trọng.",
+      "grows1Alt": "Bản kiểm tra sản phẩm cho thấy bằng chứng còn thiếu và mâu thuẫn",
+      "grows2Copy": "Sửa các vấn đề theo kế hoạch đã xếp hạng và đo lường kết quả.",
+      "grows2Alt": "Kế hoạch sửa sản phẩm đã xếp hạng với các bản sửa đã hoàn thành",
+      "grows3Copy": "Theo dõi danh mục liên tục và đi trước các vấn đề mới.",
+      "grows3Alt": "Bảng theo dõi với biểu đồ xu hướng và cảnh báo vấn đề",
+      "grows4Copy": "Dùng thông tin sản phẩm trực tiếp để tự động hóa quyết định.",
+      "grows4Alt": "Sản phẩm kết nối với Pulse Decision API"
     }
   },
   "contact": {

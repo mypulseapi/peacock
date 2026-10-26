@@ -1,6 +1,9 @@
 import { byLocale } from "@/content/locale";
 import { Undo2, Wrench, Scale, CircleSlash, FlaskConical } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
+import type { PromotionsArtText } from "@/components/designed/product/chapter-art";
+
+type Content = ChapterContent & { art: PromotionsArtText };
 
 /**
  * Promotion Audit. Grounded in what rainbow ships (ODIN/strategy/INTERVENTION-INTELLIGENCE.md §11):
@@ -13,7 +16,7 @@ import type { StoryContent } from "@/components/StoryPage";
  * so the copy describes what is measured and the "will not" list says the rest. No competitor or
  * marketplace is named as failing.
  */
-export const PROMOTION_AUDIT: StoryContent = {
+export const PROMOTION_AUDIT: Content = {
   meta: {
     title: "Promotion Audit: which discounts paid for themselves",
     description:
@@ -22,6 +25,23 @@ export const PROMOTION_AUDIT: StoryContent = {
   eyebrow: "Promotion Audit",
   title: "Find out which promotions paid for themselves, after the returns.",
   lede: "Send the history of your vouchers, price cuts and free-shipping offers with the orders, returns and failed deliveries they produced. We work out which ones left you better off than doing nothing, for which shoppers, and where fixing the listing beats a discount.",
+
+  // The words in the chain chart (chapter-art.tsx), and the hero image, on the CDN like the other
+  // product heroes (owner's image, 26 Oct 2026). Nothing in either is a measured result.
+  art: {
+    note: "Illustration",
+    voucher: "Voucher",
+    orders: "Orders",
+    failed: "Failed deliveries",
+    returned: "Returns",
+    kept: "Stay bought",
+  },
+  heroImage: {
+    src: "product/promotion-audit-offers-against-doing-nothing.webp",
+    width: 1913,
+    height: 822,
+    alt: "Promotion Audit on one laptop. A table sets each offer against doing nothing: a voucher is marked test first, a price cut did worse than doing nothing, and free shipping and a listing repair beat doing nothing. Cards beside it show an offer's orders net of returns and failed deliveries, where to give nothing, a listing repair priced against a price cut, and a test where the history cannot tell. Three steps run beneath: export your promotion history, we measure each offer against doing nothing, test what is not yet proven.",
+  },
 
   chainBlock: {
     eyebrow: "More orders is not the goal",
@@ -144,7 +164,7 @@ export const PROMOTION_AUDIT: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const PROMOTION_AUDIT_VI: StoryContent = {
+export const PROMOTION_AUDIT_VI: Content = {
   meta: {
     title: "Promotion Audit: khuyến mãi nào thực sự có lãi",
     description:
@@ -153,6 +173,21 @@ export const PROMOTION_AUDIT_VI: StoryContent = {
   eyebrow: "Promotion Audit",
   title: "Biết khuyến mãi nào thực sự có lãi, sau khi đã tính hàng bị trả.",
   lede: "Gửi lịch sử voucher, giảm giá và miễn phí vận chuyển của bạn kèm số đơn, hàng bị trả và đơn giao thất bại mà chúng tạo ra. Chúng tôi tính xem ưu đãi nào giúp bạn tốt hơn so với không làm gì, cho nhóm người mua nào, và ở đâu sửa trang sản phẩm có lợi hơn giảm giá.",
+
+  art: {
+    note: "Minh hoạ",
+    voucher: "Voucher",
+    orders: "Đơn hàng",
+    failed: "Giao thất bại",
+    returned: "Hàng bị trả",
+    kept: "Được giữ lại",
+  },
+  heroImage: {
+    src: "product/promotion-audit-offers-against-doing-nothing.webp",
+    width: 1913,
+    height: 822,
+    alt: "Promotion Audit trên một máy tính xách tay. Một bảng đặt từng ưu đãi cạnh việc không làm gì: voucher được đánh dấu thử trước, giảm giá kém hơn không làm gì, còn miễn phí vận chuyển và sửa trang sản phẩm tốt hơn không làm gì. Các thẻ bên cạnh cho thấy đơn hàng của một ưu đãi sau khi trừ hàng bị trả và giao thất bại, chỗ nào không nên ưu đãi, việc sửa trang sản phẩm đặt cạnh giảm giá, và một thử nghiệm khi lịch sử không đủ để biết. Ba bước ở bên dưới: xuất lịch sử khuyến mãi, đo mỗi ưu đãi so với không làm gì, thử nghiệm những gì chưa được chứng minh.",
+  },
 
   chainBlock: {
     eyebrow: "Nhiều đơn hơn không phải là mục tiêu",

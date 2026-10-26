@@ -37,7 +37,9 @@ export function AuthShell({
         <div className="glass-card p-6 sm:p-8">{children}</div>
 
         {footer && (
-          <p className="mt-6 text-center text-sm text-[var(--text-secondary)]">{footer}</p>
+          <p className="mt-6 text-center text-sm text-[var(--text-secondary)]">
+            {footer}
+          </p>
         )}
       </div>
     </div>
@@ -56,6 +58,9 @@ export function Field({
   autoComplete,
   required,
   disabled,
+  inputMode,
+  maxLength,
+  autoFocus,
   children,
 }: {
   id: string;
@@ -68,6 +73,9 @@ export function Field({
   autoComplete?: string;
   required?: boolean;
   disabled?: boolean;
+  inputMode?: "numeric" | "email";
+  maxLength?: number;
+  autoFocus?: boolean;
   children?: ReactNode;
 }) {
   return (
@@ -88,6 +96,9 @@ export function Field({
         placeholder={placeholder}
         autoComplete={autoComplete}
         disabled={disabled}
+        inputMode={inputMode}
+        maxLength={maxLength}
+        autoFocus={autoFocus}
         // The message belongs to the field, so the field owns it. A screen reader that announces
         // the error without saying which box it belongs to has not communicated anything.
         aria-invalid={Boolean(error)}
@@ -145,7 +156,13 @@ export function SubmitButton({
   );
 }
 
-export function AuthLink({ href, children }: { href: string; children: ReactNode }) {
+export function AuthLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
   return (
     /* min-h-6: WCAG 2.2 AA 2.5.8 wants a 24px target, and the line box alone was 19px. These sit
        on their own line rather than inside a sentence, so the standard's in-text exemption does

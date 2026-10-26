@@ -1319,84 +1319,31 @@
       "generic": "Something went wrong. Please try again.",
       "tooManyAttempts": "Too many attempts. Please wait a moment and try again."
     },
-    "signUp": {
-      "title": "Create your account",
-      "subtitle": "Start personalising search for your store. No card required.",
-      "name": "Your name",
-      "namePlaceholder": "John Smith",
-      "email": "Work email",
-      "emailPlaceholder": "john@company.com",
-      "password": "Password",
-      "submit": "Create account",
-      "submitting": "Creating your account…",
-      "haveAccount": "Already have an account?",
-      "signInLink": "Sign in",
-      "rules": {
-        "length": "Between 8 and 128 characters",
-        "letter": "At least one letter",
-        "number": "At least one number"
-      },
+    "entry": {
+      "title": "Sign in or create an account",
+      "subtitle": "We will email you a 6-digit code. No password needed.",
+      "email": "Email",
+      "continue": "Continue with email",
+      "continuing": "Sending…",
+      "sent": "We've sent a 6-digit code to {email}.",
+      "code": "6-digit code",
+      "verify": "Verify and continue",
+      "verifying": "Verifying…",
+      "resend": "Resend code",
+      "resendIn": "Resend code in {seconds} s",
+      "changeEmail": "Change email",
+      "delivery": "Email may be delayed. Check spam, resend when available, or change the address.",
+      "consent": "By continuing you agree to the <terms>Terms</terms> and <privacy>Privacy Policy</privacy>.",
+      "googleFailed": "Google sign-in didn't complete. Try again, or continue with email.",
+      "seconds": "{count, plural, one {# second} other {# seconds}}",
+      "minutes": "{count, plural, one {# minute} other {# minutes}}",
       "errors": {
-        "nameRequired": "Please tell us your name.",
-        "emailInvalid": "That does not look like an email address.",
-        "emailTaken": "An account already exists for this address.",
-        "emailTakenLink": "Sign in instead",
-        "passwordWeak": "Your password does not meet the rules below."
+        "invalidEmail": "Enter a valid email address.",
+        "incorrect": "This code is incorrect. Try again.",
+        "expired": "This code is no longer valid. Request a new code.",
+        "locked": "Too many incorrect attempts. Request a new code.",
+        "throttled": "Too many requests. Try again in {time}."
       }
-    },
-    "signIn": {
-      "title": "Welcome back",
-      "subtitle": "Sign in to your PULSE dashboard.",
-      "email": "Work email",
-      "emailPlaceholder": "john@company.com",
-      "password": "Password",
-      "forgot": "Forgot password?",
-      "submit": "Sign in",
-      "submitting": "Signing you in…",
-      "noAccount": "New to PULSE?",
-      "signUpLink": "Create an account",
-      "errors": {
-        "invalid": "That email and password do not match an account."
-      }
-    },
-    "forgot": {
-      "title": "Reset your password",
-      "subtitle": "We will email you a link to set a new one.",
-      "email": "Work email",
-      "emailPlaceholder": "john@company.com",
-      "submit": "Send reset link",
-      "submitting": "Sending…",
-      "sentTitle": "Check your email",
-      "sentBody": "If an account exists for {email}, a reset link is on its way.",
-      "backToSignIn": "Back to sign in",
-      "errors": {
-        "emailInvalid": "That does not look like an email address."
-      }
-    },
-    "reset": {
-      "title": "Set a new password",
-      "subtitle": "Choose something you have not used before.",
-      "newPassword": "New password",
-      "confirmPassword": "Confirm new password",
-      "submit": "Reset password",
-      "submitting": "Saving…",
-      "invalidTitle": "This link is not valid",
-      "invalidBody": "It may have been truncated by your email client, or already used.",
-      "requestNew": "Request a new link",
-      "errors": {
-        "mismatch": "The two passwords do not match.",
-        "invalidToken": "This reset link has expired or has already been used."
-      }
-    },
-    "verify": {
-      "title": "Confirm your email",
-      "subtitle": "One more step before you can sign in.",
-      "body": "We have sent you a confirmation link. Click it to activate your account.",
-      "bodyWithEmail": "We have sent a confirmation link to {email}. Click it to activate your account.",
-      "resend": "Resend the email",
-      "resending": "Sending…",
-      "resent": "Sent. Check your inbox again.",
-      "backToSignIn": "Back to sign in"
     }
   },
   "industryShell": {

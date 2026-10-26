@@ -31,13 +31,13 @@ site, at [/why/limits](https://thepulseapi.com/en/why/limits).
 Pulse is built by **Resolve Labs**, a small team working on one question: which product
 information is worth paying to fix.
 
-| | |
-| --- | --- |
-| Website | [thepulseapi.com](https://thepulseapi.com) |
-| Developer handbook | [developer.thepulseapi.com](https://developer.thepulseapi.com) |
-| Dashboard | [app.thepulseapi.com](https://app.thepulseapi.com) |
-| SDK | [`@thepulseapi/sdk`](https://www.npmjs.com/package/@thepulseapi/sdk), MIT licensed |
-| LinkedIn | [thepulseapi](https://www.linkedin.com/company/thepulseapi/) |
+|                    |                                                                                    |
+| ------------------ | ---------------------------------------------------------------------------------- |
+| Website            | [thepulseapi.com](https://thepulseapi.com)                                         |
+| Developer handbook | [developer.thepulseapi.com](https://developer.thepulseapi.com)                     |
+| Dashboard          | [app.thepulseapi.com](https://app.thepulseapi.com)                                 |
+| SDK                | [`@thepulseapi/sdk`](https://www.npmjs.com/package/@thepulseapi/sdk), MIT licensed |
+| LinkedIn           | [thepulseapi](https://www.linkedin.com/company/thepulseapi/)                       |
 
 The site is published in **English and Vietnamese**. A bare URL resolves to Vietnamese, because
 Vietnam is the market being sold into; `/en` is the English tree.
@@ -72,6 +72,15 @@ localhost, for `pnpm dev`.
 
 In CI the values come from repository variables (Settings → Secrets and variables → Actions →
 Variables). None of them is a secret; all of them are visible in the shipped HTML.
+
+### Sign-in
+
+`/{locale}/signin` is the one entry page for new and returning merchants: an email, then a
+6-digit code from the auth service, or Google. There is no password on the website. A successful
+sign-in goes to the dashboard page in `?redirect=`, but only if it is on `NEXT_PUBLIC_APP_URL`
+(`src/lib/return-url.ts`, checked by `check:return-url` in `build`); anything else goes to the
+dashboard's default. No variable was added for it. The requirement, design and server half live in
+rainbow: `ODIN/design/01-auth/01-website-sign-in/task.md`.
 
 ### SEO and AEO
 

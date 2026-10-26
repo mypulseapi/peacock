@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
+import { AuthShell } from "../AuthShell";
 import { SignInForm } from "./SignInForm";
 
 interface PageProps {
@@ -10,7 +12,7 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
-  const t = await getTranslations({ locale, namespace: "auth.signIn" });
+  const t = await getTranslations({ locale, namespace: "auth.entry" });
   return {
     title: t("title"),
     description: t("subtitle"),
@@ -25,8 +27,21 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
+/*
+ * The form reads `?redirect=` and `?error=` with `useSearchParams`, which makes Next emit the
+ * Suspense fallback into the static HTML. The fallback is the heading, so the exported page is
+ * never an empty document (the same reasoning as reset-password).
+ */
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
-  return <SignInForm />;
+  const t = await getTranslations("auth.entry");
+
+  return (
+    <Suspense
+      fallback={<AuthShell title={t("title")} subtitle={t("subtitle")} />}
+    >
+      <SignInForm />
+    </Suspense>
+  );
 }

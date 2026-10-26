@@ -23,7 +23,8 @@ export default function RootNotFound() {
   setRenderLocale("en");
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    // Same as the [locale] layout: see the note on data-scroll-behavior there.
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: TRAILING_SLASH }} />
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />

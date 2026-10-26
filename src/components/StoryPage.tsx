@@ -131,8 +131,16 @@ function SituationPull({ text, className = "" }: { text: string; className?: str
   );
 }
 
-export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual, layout }: {
+export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual, layout, titleClassName, plainHeadings = false }: {
   c: StoryContent;
+  /** The hero headline's type style, passed to `PageHero`. Product pages set `text-hero`. */
+  titleClassName?: string;
+  /**
+   * Headings with no eyebrow label over them and no trailing full stop (DESIGN.md §3 and the owner's
+   * rule of 19 Oct 2026). Set by the nine product pages on 26 Oct 2026; the why and use-case pages keep
+   * the old style until the owner asks. A full stop between two sentences in one heading stays.
+   */
+  plainHeadings?: boolean;
   /**
    * Which shape each repeated block takes. Thirteen pages share this template
    * and rendered identically from "how it works" down; each route picks a
@@ -159,10 +167,16 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
   // component with a call to action pointing at `/en/contact`.
   const locale = renderLocale();
   const t = ui(locale);
+  // ponytail: the full stop is dropped where the heading renders, not in 12 content files × 2 locales.
+  const h = (s: string) => (plainHeadings ? s.replace(/\.\s*$/, "") : s);
+  const eb = (s: string) => (plainHeadings ? undefined : s);
+  // Lane titles in a comparison scene are headings too (h3), and their side labels are eyebrows (owner, 26 Oct 2026).
+  const sc = (spec: SceneSpec): SceneSpec =>
+    plainHeadings && spec.kind === "lanes" ? { ...spec, lanes: spec.lanes.map((l) => ({ ...l, eyebrow: "", title: h(l.title) })) } : spec;
   const hasSituationVisual = Boolean(situationVisual ?? c.scenes?.situation ?? c.situationImage);
   return (
     <>
-      <PageHero eyebrow={c.eyebrow} title={c.title} lede={c.lede}
+      <PageHero eyebrow={eb(c.eyebrow)} title={h(c.title)} lede={c.lede} titleClassName={titleClassName}
                 aside={
                   heroVisual ??
                   (c.heroImage ? (
@@ -177,13 +191,13 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
                       />
                     </div>
                   ) : (
-                    c.scenes?.hero && <Scene spec={c.scenes.hero} slot="hero" />
+                    c.scenes?.hero && <Scene spec={sc(c.scenes.hero)} slot="hero" />
                   ))
                 } />
 
       {c.situation && (
       <Section>
-        <SectionHead eyebrow={t.whereYouAre} title={c.situation.heading} />
+        <SectionHead eyebrow={eb(t.whereYouAre)} title={h(c.situation.heading)} />
         {/* Two shapes. With a scene the prose and its pull quote share the
             right track, because putting the pull on its own grid row left it
             stranded below the scene. Without a scene the grid used to render
@@ -209,7 +223,7 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
                     </figcaption>
                   </figure>
                 ) : (
-                  <Scene spec={c.scenes!.situation!} slot="situation" />
+                  <Scene spec={sc(c.scenes!.situation!)} slot="situation" />
                 ))}
               <div>
                 <div className="ed-stack">
@@ -236,9 +250,9 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
 
       {c.chainBlock && (chainVisual || c.scenes?.chain) && (
         <Section>
-          <SectionHead eyebrow={c.chainBlock.eyebrow} title={c.chainBlock.heading} body={c.chainBlock.body} />
+          <SectionHead eyebrow={eb(c.chainBlock.eyebrow)} title={h(c.chainBlock.heading)} body={c.chainBlock.body} />
           <div className="mt-12">
-            {chainVisual ?? (c.scenes?.chain && <Scene spec={c.scenes.chain} slot="chain" />)}
+            {chainVisual ?? (c.scenes?.chain && <Scene spec={sc(c.scenes.chain)} slot="chain" />)}
           </div>
         </Section>
       )}
@@ -246,7 +260,7 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
       {visual && (
         <Section tone="raise" className="border-y border-[color:var(--ed-line)]">
           <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
-            <SectionHead eyebrow={t.whatItLooksLike} title={c.visualHeading ?? t.theOutput} body={c.visualBody} />
+            <SectionHead eyebrow={eb(t.whatItLooksLike)} title={h(c.visualHeading ?? t.theOutput)} body={c.visualBody} />
             <div>{visual}</div>
           </div>
         </Section>
@@ -255,13 +269,13 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
       {c.evidence && <EvidenceBand e={c.evidence} />}
 
       <Section>
-        <SectionHead eyebrow={t.whatHappens} title={c.steps.heading} body={c.steps.intro} />
+        <SectionHead eyebrow={eb(t.whatHappens)} title={h(c.steps.heading)} body={c.steps.intro} />
         <StepsBlock shape={layout?.steps} items={c.steps.items} />
       </Section>
 
       {c.gets && (
       <Section tone="raise" className="border-y border-[color:var(--ed-line)]">
-        <SectionHead eyebrow={t.whatYouGet} title={c.gets.heading} body={c.gets.intro} />
+        <SectionHead eyebrow={eb(t.whatYouGet)} title={h(c.gets.heading)} body={c.gets.intro} />
         {/* The icon is rendered here, on the server, because a component is a
             function and cannot be handed to a client block as a prop. */}
         <GetsBlock
@@ -275,7 +289,7 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
 
       {c.beforeAfter && (
         <Section tone="raise" className="border-y border-[color:var(--ed-line)]">
-          <SectionHead eyebrow={t.whatYouGet} title={c.beforeAfter.heading} body={c.beforeAfter.intro} />
+          <SectionHead eyebrow={eb(t.whatYouGet)} title={h(c.beforeAfter.heading)} body={c.beforeAfter.intro} />
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             {([c.beforeAfter.before, c.beforeAfter.after] as const).map((col, i) => (
               <div
@@ -307,7 +321,7 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
 
       {c.limits && (
       <Section>
-        <SectionHead eyebrow={t.beforeYouCommit} title={c.limits.heading} />
+        <SectionHead eyebrow={eb(t.beforeYouCommit)} title={h(c.limits.heading)} />
         <LimitsBlock
           shape={layout?.limits}
           will={c.limits.will}
@@ -320,7 +334,7 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
 
       <Section>
         <div className="grid gap-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
-          <SectionHead eyebrow={t.questions} title={t.theOnesThatDecide} />
+          <SectionHead eyebrow={eb(t.questions)} title={h(t.theOnesThatDecide)} />
           <dl className="ed-rule">
             {c.faq.map((i) => (
               <div key={i.q} className="border-b border-[color:var(--ed-line)]">
@@ -344,7 +358,7 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
           story page closes the way the rest of the site does. The copy stays this page's own. */}
       <section id="request" className="cta-dots scroll-mt-16 border-t border-line" data-cta>
         <div className="frame py-24 text-center lg:py-32">
-          <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">{c.cta.title}</h2>
+          <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">{h(c.cta.title)}</h2>
           <p className="reveal mx-auto mt-6 max-w-xl text-lg text-pretty text-muted delay-100">{c.cta.body}</p>
           <div className="reveal mt-8 flex flex-col items-center delay-200">
             <Link locale={locale} href={c.cta.href} className="btn-primary">

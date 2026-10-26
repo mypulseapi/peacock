@@ -79,32 +79,6 @@
       "vi": "Nhận một danh sách thuộc tính đã xếp hạng cùng các tệp kèm theo. Chúng tôi sẽ đi qua kết quả cùng bạn và trao đổi xem cần gì để hành động dựa trên đó."
     }
   },
-  "decision-monitor/decision-monitor-gains": {
-    "card-1-title": {
-      "en": "Catch decay before a buyer does",
-      "vi": "Bắt được sự xuống cấp trước khi người mua nhận ra"
-    },
-    "card-1-body": {
-      "en": "See a shelf slipping while it is still a backlog item, rather than after it has become a project.",
-      "vi": "Thấy một kệ hàng đang tụt khi nó vẫn còn là một đầu việc tồn đọng, thay vì sau khi nó đã thành một dự án."
-    },
-    "card-2-title": {
-      "en": "Know the cause, not just the number",
-      "vi": "Biết nguyên nhân, không chỉ con số"
-    },
-    "card-2-body": {
-      "en": "Every alert names the shelf, the attribute and what caused the drop, so the fix is obvious before anyone opens a dashboard.",
-      "vi": "Mỗi cảnh báo đều nêu rõ kệ hàng, thuộc tính và nguyên nhân khiến nó tụt, nên cách sửa đã rõ trước cả khi có ai mở bảng điều khiển."
-    },
-    "card-3-title": {
-      "en": "Compare quarters, not snapshots",
-      "vi": "So sánh theo quý, không phải theo ảnh chụp rời rạc"
-    },
-    "card-3-body": {
-      "en": "The same method on every run, so the trend per category means something and a regression is visible as a regression.",
-      "vi": "Cùng một phương pháp ở mọi lần chạy, nên xu hướng của từng ngành hàng có ý nghĩa và một bước thụt lùi hiện ra đúng là một bước thụt lùi."
-    }
-  },
   "decision-monitor/decision-monitor-gap-grows": {
     "row-1-note": {
       "en": "One export to remap. Nobody to ask.",
@@ -173,32 +147,6 @@
     "card-subtitle": {
       "en": "Example data: the test shelf from the home page.",
       "vi": "Dữ liệu ví dụ: kệ thử nghiệm từ trang chủ."
-    }
-  },
-  "decision-verification/decision-verification-gains": {
-    "card-1-title": {
-      "en": "Validate catalogue improvements",
-      "vi": "Xác nhận các cải thiện của danh mục"
-    },
-    "card-1-body": {
-      "en": "Verify whether updated product attributes meet real shopper needs.",
-      "vi": "Kiểm chứng xem những thuộc tính sản phẩm đã cập nhật có đáp ứng đúng nhu cầu thực của người mua hay không."
-    },
-    "card-2-title": {
-      "en": "See which repairs were not worth it",
-      "vi": "Thấy những sửa chữa nào là không đáng"
-    },
-    "card-2-body": {
-      "en": "Some repairs move nothing. We report those first, because a quarter spent on the wrong field is the expensive mistake.",
-      "vi": "Một số sửa chữa không thay đổi gì cả. Chúng tôi báo cáo những cái đó trước, vì một quý dành cho sai trường dữ liệu mới là sai lầm đắt giá."
-    },
-    "card-3-title": {
-      "en": "Evidence for whoever signed it off",
-      "vi": "Bằng chứng cho người đã phê duyệt"
-    },
-    "card-3-body": {
-      "en": "Before and after on the same measure, in the week the work finishes rather than the quarter after.",
-      "vi": "Trước và sau trên cùng một thước đo, ngay trong tuần công việc hoàn tất chứ không phải quý sau."
     }
   },
   "decision-verification/decision-verification-how-it-works": {

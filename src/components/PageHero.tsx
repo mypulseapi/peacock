@@ -6,9 +6,15 @@ import type { ReactNode } from "react";
  * back to a new left edge on each line, and these pages carry real prose.
  */
 export function PageHero({
-  eyebrow, title, lede, children, aside,
+  eyebrow, title, lede, children, aside, titleClassName = "ed-d1",
 }: {
-  eyebrow: string; title: ReactNode; lede?: ReactNode; children?: ReactNode;
+  eyebrow?: string; title: ReactNode; lede?: ReactNode; children?: ReactNode;
+  /**
+   * The headline's type style. `ed-d1` (Geist 700) by default; the product pages pass `text-hero`, the
+   * home hero's size and title face (owner's Version A, 26 Oct 2026). The why and use-case pages keep
+   * `ed-d1` until the owner asks for them too.
+   */
+  titleClassName?: string;
   /**
    * A scene beside the words rather than under them. Without it the hero is a
    * column of text down the left and an empty right third, which is what every
@@ -32,8 +38,8 @@ export function PageHero({
       }`}>
         <div className={aside ? "grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-16" : ""}>
           <div>
-            <p className="ed-eyebrow">{eyebrow}</p>
-            <h1 className="ed-d1 mt-6 max-w-[20ch] text-[color:var(--ed-ink)]">{title}</h1>
+            {eyebrow && <p className="ed-eyebrow">{eyebrow}</p>}
+            <h1 className={`${titleClassName} ${eyebrow ? "mt-6 " : ""}max-w-[20ch] text-[color:var(--ed-ink)]`}>{title}</h1>
             {lede && <p className="ed-lede mt-8 max-w-[62ch]">{lede}</p>}
             {children && <div className="mt-11">{children}</div>}
           </div>

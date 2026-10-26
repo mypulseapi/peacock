@@ -1,5 +1,13 @@
 import { byLocale } from "./locale";
-import { ShoppingCart, ShoppingBasket, Cpu, Sofa, Sparkles, Boxes, type LucideIcon } from "lucide-react";
+import {
+  ShoppingCart,
+  ShoppingBasket,
+  Cpu,
+  Sofa,
+  Sparkles,
+  Boxes,
+  type LucideIcon,
+} from "lucide-react";
 
 /**
  * Sector pages, rewritten against what this product actually is.
@@ -89,7 +97,8 @@ const EN: Sector[] = [
     slug: "ecommerce",
     icon: ShoppingCart,
     name: "Ecommerce and retail",
-    tagline: "Deep shelves, and two products that differ on a field nobody recorded",
+    tagline:
+      "Deep shelves, and two products that differ on a field nobody recorded",
     metaTitle: "Ecommerce and retail: the unrecorded field",
     summary:
       "A category with hundreds of near-identical products, where the fact that separates them was never a column.",
@@ -109,17 +118,50 @@ const EN: Sector[] = [
       "Enrichment quoted as a whole-catalogue project because nobody can say which fields come first",
     ],
     provenance:
-      "Most of it is already in your product titles. On the laptop shelf we measured, 161 of 216 missing values were recoverable from text the merchant already owned.",
+      "Most of it is already in your product titles and descriptions. In a sample of 9 real laptop listings, every fact missing from the spec fields was in the title or description.",
     attributes: [
       { label: "Screen size", coverage: 63, decisive: true },
-      { label: "Memory", coverage: 72, icon: "icons/product-attribute-memory-ram.webp", decisive: true },
-      { label: "Storage", coverage: 74, icon: "icons/product-attribute-storage.webp", decisive: true },
-      { label: "Processor", coverage: 25, icon: "icons/product-attribute-processor.webp", decisive: false },
+      {
+        label: "Memory",
+        coverage: 72,
+        icon: "icons/product-attribute-memory-ram.webp",
+        decisive: true,
+      },
+      {
+        label: "Storage",
+        coverage: 74,
+        icon: "icons/product-attribute-storage.webp",
+        decisive: true,
+      },
+      {
+        label: "Processor",
+        coverage: 25,
+        icon: "icons/product-attribute-processor.webp",
+        decisive: false,
+      },
     ],
     facts: [
-      { value: 6.88, unit: "T", label: "global retail ecommerce sales forecast for 2026, 21.1% of all retail", source: "industry forecast, 2026" },
-      { value: 38, unit: "%", label: "of tested retailers offer no filter for information they already display", source: "Baymard Institute" },
-      { value: 34, unit: "%", label: "of consumers frustrated by incomplete product information, up from 28%", source: "Akeneo PX Pulse 2025" },
+      {
+        value: 6.88,
+        unit: "T",
+        label:
+          "global retail ecommerce sales forecast for 2026, 21.1% of all retail",
+        source: "industry forecast, 2026",
+      },
+      {
+        value: 38,
+        unit: "%",
+        label:
+          "of tested retailers offer no filter for information they already display",
+        source: "Baymard Institute",
+      },
+      {
+        value: 34,
+        unit: "%",
+        label:
+          "of consumers frustrated by incomplete product information, up from 28%",
+        source: "Akeneo PX Pulse 2025",
+      },
     ],
     metric: "Ranked repair list in 48 hours",
   },
@@ -127,7 +169,8 @@ const EN: Sector[] = [
     slug: "fmcg",
     icon: ShoppingBasket,
     name: "FMCG and consumer goods",
-    tagline: "Hundreds of near-identical packs, separated by a fact on the label",
+    tagline:
+      "Hundreds of near-identical packs, separated by a fact on the label",
     metaTitle: "FMCG: near-identical packs, one label fact",
     summary:
       "Shelves where the pack looks the same and the decision turns on a claim, a size or an ingredient nobody put in a field.",
@@ -151,9 +194,26 @@ const EN: Sector[] = [
       { label: "Brand", coverage: 97, decisive: false },
     ],
     facts: [
-      { value: 38, unit: "%", label: "of tested retailers offer no filter for information they already display", source: "Baymard Institute" },
-      { value: 34, unit: "%", label: "of consumers frustrated by incomplete product information, up from 28%", source: "Akeneo PX Pulse 2025" },
-      { value: 79, unit: "%", label: "of product pages ship no full set of structured data", source: "Adobe Analytics" },
+      {
+        value: 38,
+        unit: "%",
+        label:
+          "of tested retailers offer no filter for information they already display",
+        source: "Baymard Institute",
+      },
+      {
+        value: 34,
+        unit: "%",
+        label:
+          "of consumers frustrated by incomplete product information, up from 28%",
+        source: "Akeneo PX Pulse 2025",
+      },
+      {
+        value: 79,
+        unit: "%",
+        label: "of product pages ship no full set of structured data",
+        source: "Adobe Analytics",
+      },
     ],
     metric: "Ranked repair list in 48 hours",
   },
@@ -161,7 +221,8 @@ const EN: Sector[] = [
     slug: "technology",
     icon: Cpu,
     name: "Technology and electronics",
-    tagline: "The category we measured, and the one where specifications decide everything",
+    tagline:
+      "The category we measured, and the one where specifications decide everything",
     metaTitle: "Technology and electronics: specs decide",
     summary:
       "Deep specification-led shelves where two devices differ on one number, and that number is missing.",
@@ -177,16 +238,42 @@ const EN: Sector[] = [
       "Comparison tables that cannot be built because the underlying fields are empty",
     ],
     provenance:
-      "Mostly your own titles. On the laptop shelf we measured, 161 of 216 missing values were recoverable from text the merchant already owned, with no new data purchased.",
+      "Mostly your own titles and descriptions. In a sample of 9 real laptop listings, every fact missing from the spec fields was in the title or description, with no new data purchased.",
     attributes: [
       { label: "Screen size", coverage: 63, decisive: true },
-      { label: "Memory", coverage: 72, icon: "icons/product-attribute-memory-ram.webp", decisive: true },
-      { label: "Storage", coverage: 74, icon: "icons/product-attribute-storage.webp", decisive: true },
-      { label: "Processor", coverage: 25, icon: "icons/product-attribute-processor.webp", decisive: false },
+      {
+        label: "Memory",
+        coverage: 72,
+        icon: "icons/product-attribute-memory-ram.webp",
+        decisive: true,
+      },
+      {
+        label: "Storage",
+        coverage: 74,
+        icon: "icons/product-attribute-storage.webp",
+        decisive: true,
+      },
+      {
+        label: "Processor",
+        coverage: 25,
+        icon: "icons/product-attribute-processor.webp",
+        decisive: false,
+      },
     ],
     facts: [
-      { value: 38, unit: "%", label: "of tested retailers offer no filter for information they already display", source: "Baymard Institute" },
-      { value: 79, unit: "%", label: "of product pages ship no full set of structured data", source: "Adobe Analytics" },
+      {
+        value: 38,
+        unit: "%",
+        label:
+          "of tested retailers offer no filter for information they already display",
+        source: "Baymard Institute",
+      },
+      {
+        value: 79,
+        unit: "%",
+        label: "of product pages ship no full set of structured data",
+        source: "Adobe Analytics",
+      },
     ],
     metric: "The category behind our published method",
   },
@@ -218,8 +305,20 @@ const EN: Sector[] = [
       { label: "Colour", coverage: 95, decisive: false },
     ],
     facts: [
-      { value: 38, unit: "%", label: "of tested retailers offer no filter for information they already display", source: "Baymard Institute" },
-      { value: 34, unit: "%", label: "of consumers frustrated by incomplete product information, up from 28%", source: "Akeneo PX Pulse 2025" },
+      {
+        value: 38,
+        unit: "%",
+        label:
+          "of tested retailers offer no filter for information they already display",
+        source: "Baymard Institute",
+      },
+      {
+        value: 34,
+        unit: "%",
+        label:
+          "of consumers frustrated by incomplete product information, up from 28%",
+        source: "Akeneo PX Pulse 2025",
+      },
     ],
     metric: "Ranked repair list in 48 hours",
   },
@@ -227,7 +326,8 @@ const EN: Sector[] = [
     slug: "cosmetics",
     icon: Sparkles,
     name: "Cosmetics and personal care",
-    tagline: "Chosen on skin type, ingredients and concerns that were never fields",
+    tagline:
+      "Chosen on skin type, ingredients and concerns that were never fields",
     metaTitle: "Cosmetics: skin type and ingredients as fields",
     summary:
       "A category bought on suitability, where the attributes that decide suitability live in the description.",
@@ -245,14 +345,45 @@ const EN: Sector[] = [
     provenance:
       "Ingredient lists and supplier data you already hold for compliance. The audit usually finds this is a structuring job rather than an acquisition one.",
     attributes: [
-      { label: "Skin type", coverage: 29, icon: "icons/product-attribute-skin-type.webp", decisive: true },
-      { label: "Key ingredient", coverage: 41, icon: "icons/product-attribute-key-ingredients.webp", decisive: true },
-      { label: "Concern addressed", coverage: 24, icon: "icons/product-attribute-concern-addressed.webp", decisive: true },
-      { label: "Volume", coverage: 88, icon: "icons/product-attribute-volume.webp", decisive: false },
+      {
+        label: "Skin type",
+        coverage: 29,
+        icon: "icons/product-attribute-skin-type.webp",
+        decisive: true,
+      },
+      {
+        label: "Key ingredient",
+        coverage: 41,
+        icon: "icons/product-attribute-key-ingredients.webp",
+        decisive: true,
+      },
+      {
+        label: "Concern addressed",
+        coverage: 24,
+        icon: "icons/product-attribute-concern-addressed.webp",
+        decisive: true,
+      },
+      {
+        label: "Volume",
+        coverage: 88,
+        icon: "icons/product-attribute-volume.webp",
+        decisive: false,
+      },
     ],
     facts: [
-      { value: 34, unit: "%", label: "of consumers frustrated by incomplete product information, up from 28%", source: "Akeneo PX Pulse 2025" },
-      { value: 79, unit: "%", label: "of product pages ship no full set of structured data", source: "Adobe Analytics" },
+      {
+        value: 34,
+        unit: "%",
+        label:
+          "of consumers frustrated by incomplete product information, up from 28%",
+        source: "Akeneo PX Pulse 2025",
+      },
+      {
+        value: 79,
+        unit: "%",
+        label: "of product pages ship no full set of structured data",
+        source: "Adobe Analytics",
+      },
     ],
     metric: "Ranked repair list in 48 hours",
   },
@@ -260,7 +391,8 @@ const EN: Sector[] = [
     slug: "distribution",
     icon: Boxes,
     name: "B2B and industrial",
-    tagline: "Specification-driven buying against catalogues built for order codes",
+    tagline:
+      "Specification-driven buying against catalogues built for order codes",
     metaTitle: "B2B and industrial: catalogues built for codes",
     summary:
       "Your buyers choose on specification, and the catalogue was built to be ordered from rather than searched.",
@@ -288,9 +420,26 @@ const EN: Sector[] = [
       { label: "Pack quantity", coverage: 91, decisive: false },
     ],
     facts: [
-      { value: 36, unit: "T", label: "estimated global B2B ecommerce market in 2026, five to six times B2C", source: "industry estimate, 14.5% CAGR" },
-      { value: 66, unit: "%", label: "average machine readability of US retail product pages, lowest of any page type", source: "Adobe Analytics" },
-      { value: 79, unit: "%", label: "of product pages ship no full set of structured data", source: "Adobe Analytics" },
+      {
+        value: 36,
+        unit: "T",
+        label:
+          "estimated global B2B ecommerce market in 2026, five to six times B2C",
+        source: "industry estimate, 14.5% CAGR",
+      },
+      {
+        value: 66,
+        unit: "%",
+        label:
+          "average machine readability of US retail product pages, lowest of any page type",
+        source: "Adobe Analytics",
+      },
+      {
+        value: 79,
+        unit: "%",
+        label: "of product pages ship no full set of structured data",
+        source: "Adobe Analytics",
+      },
     ],
     metric: "Which specs to map first",
   },
@@ -301,7 +450,8 @@ const VI: Sector[] = [
     slug: "ecommerce",
     icon: ShoppingCart,
     name: "Thương mại điện tử và bán lẻ",
-    tagline: "Danh mục sâu, và hai sản phẩm khác nhau ở một trường không ai ghi lại",
+    tagline:
+      "Danh mục sâu, và hai sản phẩm khác nhau ở một trường không ai ghi lại",
     metaTitle: "Thương mại điện tử: trường dữ liệu bị bỏ sót",
     summary:
       "Một ngành hàng với hàng trăm sản phẩm gần như giống hệt nhau, nơi dữ kiện phân biệt chúng chưa bao giờ là một cột dữ liệu.",
@@ -321,17 +471,50 @@ const VI: Sector[] = [
       "Việc làm giàu dữ liệu bị báo giá như một dự án toàn danh mục vì không ai nói được nên làm trường nào trước",
     ],
     provenance:
-      "Phần lớn đã nằm sẵn trong tiêu đề sản phẩm của bạn. Trên kệ laptop chúng tôi đo, 161 trên 216 giá trị còn thiếu lấy lại được từ chính văn bản nhà bán đang có.",
+      "Phần lớn đã nằm sẵn trong tiêu đề và mô tả sản phẩm của bạn. Trong 9 tin đăng laptop thật chúng tôi lấy mẫu, mọi dữ kiện thiếu ở phần thông số đều có trong tiêu đề hoặc mô tả.",
     attributes: [
       { label: "Kích thước màn hình", coverage: 63, decisive: true },
-      { label: "RAM", coverage: 72, icon: "icons/product-attribute-memory-ram.webp", decisive: true },
-      { label: "Dung lượng", coverage: 74, icon: "icons/product-attribute-storage.webp", decisive: true },
-      { label: "Vi xử lý", coverage: 25, icon: "icons/product-attribute-processor.webp", decisive: false },
+      {
+        label: "RAM",
+        coverage: 72,
+        icon: "icons/product-attribute-memory-ram.webp",
+        decisive: true,
+      },
+      {
+        label: "Dung lượng",
+        coverage: 74,
+        icon: "icons/product-attribute-storage.webp",
+        decisive: true,
+      },
+      {
+        label: "Vi xử lý",
+        coverage: 25,
+        icon: "icons/product-attribute-processor.webp",
+        decisive: false,
+      },
     ],
     facts: [
-      { value: 6.88, unit: "T", label: "doanh số thương mại điện tử bán lẻ toàn cầu dự báo cho 2026, chiếm 21,1% toàn bộ bán lẻ", source: "dự báo ngành, 2026" },
-      { value: 38, unit: "%", label: "các website được kiểm tra không có bộ lọc cho thông tin họ vốn đã hiển thị", source: "Baymard Institute" },
-      { value: 34, unit: "%", label: "người tiêu dùng khó chịu vì thông tin sản phẩm thiếu, tăng từ 28%", source: "Akeneo PX Pulse 2025" },
+      {
+        value: 6.88,
+        unit: "T",
+        label:
+          "doanh số thương mại điện tử bán lẻ toàn cầu dự báo cho 2026, chiếm 21,1% toàn bộ bán lẻ",
+        source: "dự báo ngành, 2026",
+      },
+      {
+        value: 38,
+        unit: "%",
+        label:
+          "các website được kiểm tra không có bộ lọc cho thông tin họ vốn đã hiển thị",
+        source: "Baymard Institute",
+      },
+      {
+        value: 34,
+        unit: "%",
+        label:
+          "người tiêu dùng khó chịu vì thông tin sản phẩm thiếu, tăng từ 28%",
+        source: "Akeneo PX Pulse 2025",
+      },
     ],
     metric: "Danh sách sửa đã xếp hạng trong 48 giờ",
   },
@@ -339,7 +522,8 @@ const VI: Sector[] = [
     slug: "fmcg",
     icon: ShoppingBasket,
     name: "Hàng tiêu dùng nhanh",
-    tagline: "Hàng trăm bao bì gần như giống hệt, phân biệt bằng một dòng chữ trên nhãn",
+    tagline:
+      "Hàng trăm bao bì gần như giống hệt, phân biệt bằng một dòng chữ trên nhãn",
     metaTitle: "Hàng tiêu dùng nhanh: một dòng trên nhãn",
     summary:
       "Những kệ hàng mà bao bì trông như nhau, còn quyết định lại nằm ở một công bố, một dung tích hay một thành phần chưa ai đưa vào trường dữ liệu.",
@@ -363,9 +547,26 @@ const VI: Sector[] = [
       { label: "Thương hiệu", coverage: 97, decisive: false },
     ],
     facts: [
-      { value: 38, unit: "%", label: "nhà bán lẻ được kiểm tra không có bộ lọc cho thông tin họ vốn đã hiển thị", source: "Baymard Institute" },
-      { value: 34, unit: "%", label: "người mua thấy khó chịu vì thông tin sản phẩm thiếu, tăng từ 28%", source: "Akeneo PX Pulse 2025" },
-      { value: 79, unit: "%", label: "trang sản phẩm không có bộ dữ liệu có cấu trúc đầy đủ", source: "Adobe Analytics" },
+      {
+        value: 38,
+        unit: "%",
+        label:
+          "nhà bán lẻ được kiểm tra không có bộ lọc cho thông tin họ vốn đã hiển thị",
+        source: "Baymard Institute",
+      },
+      {
+        value: 34,
+        unit: "%",
+        label:
+          "người mua thấy khó chịu vì thông tin sản phẩm thiếu, tăng từ 28%",
+        source: "Akeneo PX Pulse 2025",
+      },
+      {
+        value: 79,
+        unit: "%",
+        label: "trang sản phẩm không có bộ dữ liệu có cấu trúc đầy đủ",
+        source: "Adobe Analytics",
+      },
     ],
     metric: "Danh sách sửa đã xếp hạng trong 48 giờ",
   },
@@ -389,16 +590,42 @@ const VI: Sector[] = [
       "Không dựng nổi bảng so sánh vì các trường bên dưới đang trống",
     ],
     provenance:
-      "Chủ yếu nằm trong chính tiêu đề của bạn. Trên kệ laptop chúng tôi đo, 161 trên 216 giá trị còn thiếu lấy lại được từ văn bản nhà bán vốn đã có, không phải mua thêm dữ liệu nào.",
+      "Chủ yếu nằm trong chính tiêu đề và mô tả của bạn. Trong 9 tin đăng laptop thật chúng tôi lấy mẫu, mọi dữ kiện thiếu ở phần thông số đều có trong tiêu đề hoặc mô tả, không phải mua thêm dữ liệu nào.",
     attributes: [
       { label: "Kích thước màn hình", coverage: 63, decisive: true },
-      { label: "RAM", coverage: 72, icon: "icons/product-attribute-memory-ram.webp", decisive: true },
-      { label: "Dung lượng", coverage: 74, icon: "icons/product-attribute-storage.webp", decisive: true },
-      { label: "Vi xử lý", coverage: 25, icon: "icons/product-attribute-processor.webp", decisive: false },
+      {
+        label: "RAM",
+        coverage: 72,
+        icon: "icons/product-attribute-memory-ram.webp",
+        decisive: true,
+      },
+      {
+        label: "Dung lượng",
+        coverage: 74,
+        icon: "icons/product-attribute-storage.webp",
+        decisive: true,
+      },
+      {
+        label: "Vi xử lý",
+        coverage: 25,
+        icon: "icons/product-attribute-processor.webp",
+        decisive: false,
+      },
     ],
     facts: [
-      { value: 38, unit: "%", label: "nhà bán lẻ được kiểm tra không có bộ lọc cho thông tin họ vốn đã hiển thị", source: "Baymard Institute" },
-      { value: 79, unit: "%", label: "trang sản phẩm không có bộ dữ liệu có cấu trúc đầy đủ", source: "Adobe Analytics" },
+      {
+        value: 38,
+        unit: "%",
+        label:
+          "nhà bán lẻ được kiểm tra không có bộ lọc cho thông tin họ vốn đã hiển thị",
+        source: "Baymard Institute",
+      },
+      {
+        value: 79,
+        unit: "%",
+        label: "trang sản phẩm không có bộ dữ liệu có cấu trúc đầy đủ",
+        source: "Adobe Analytics",
+      },
     ],
     metric: "Ngành hàng đứng sau phương pháp đã công bố của chúng tôi",
   },
@@ -430,8 +657,20 @@ const VI: Sector[] = [
       { label: "Màu sắc", coverage: 95, decisive: false },
     ],
     facts: [
-      { value: 38, unit: "%", label: "nhà bán lẻ được kiểm tra không có bộ lọc cho thông tin họ vốn đã hiển thị", source: "Baymard Institute" },
-      { value: 34, unit: "%", label: "người mua thấy khó chịu vì thông tin sản phẩm thiếu, tăng từ 28%", source: "Akeneo PX Pulse 2025" },
+      {
+        value: 38,
+        unit: "%",
+        label:
+          "nhà bán lẻ được kiểm tra không có bộ lọc cho thông tin họ vốn đã hiển thị",
+        source: "Baymard Institute",
+      },
+      {
+        value: 34,
+        unit: "%",
+        label:
+          "người mua thấy khó chịu vì thông tin sản phẩm thiếu, tăng từ 28%",
+        source: "Akeneo PX Pulse 2025",
+      },
     ],
     metric: "Danh sách sửa đã xếp hạng trong 48 giờ",
   },
@@ -439,7 +678,8 @@ const VI: Sector[] = [
     slug: "cosmetics",
     icon: Sparkles,
     name: "Mỹ phẩm và chăm sóc cá nhân",
-    tagline: "Chọn theo loại da, thành phần và vấn đề cần xử lý, những thứ chưa bao giờ là trường dữ liệu",
+    tagline:
+      "Chọn theo loại da, thành phần và vấn đề cần xử lý, những thứ chưa bao giờ là trường dữ liệu",
     metaTitle: "Mỹ phẩm: loại da và thành phần thành trường",
     summary:
       "Ngành hàng mua theo mức độ phù hợp, trong khi các thuộc tính quyết định sự phù hợp lại nằm trong phần mô tả.",
@@ -447,7 +687,8 @@ const VI: Sector[] = [
     heroHighlight: "sự phù hợp lại không phải một trường",
     heroLede:
       "Chăm sóc cá nhân được mua theo một nhu cầu rất cụ thể: một loại da, một vấn đề cần xử lý, một thành phần cần tìm hoặc cần tránh. Đó đúng là những thuộc tính mà phần lớn danh mục để ở dạng văn xuôi, nên một người biết chính xác mình muốn gì vẫn không thu hẹp nổi kệ hàng.",
-    decision: "Sản phẩm này có hợp với da tôi và vấn đề tôi đang muốn xử lý không?",
+    decision:
+      "Sản phẩm này có hợp với da tôi và vấn đề tôi đang muốn xử lý không?",
     problems: [
       "Loại da và vấn đề cần xử lý để ở dạng văn xuôi tiếp thị thay vì giá trị có cấu trúc",
       "Thông tin thành phần có mà không tìm kiếm được, điều rất quan trọng với người dị ứng",
@@ -457,14 +698,45 @@ const VI: Sector[] = [
     provenance:
       "Danh sách thành phần và dữ liệu nhà cung cấp bạn vốn đã giữ để tuân thủ quy định. Bản kiểm tra thường cho thấy đây là việc cấu trúc lại dữ liệu chứ không phải đi thu thập mới.",
     attributes: [
-      { label: "Loại da", coverage: 29, icon: "icons/product-attribute-skin-type.webp", decisive: true },
-      { label: "Thành phần chính", coverage: 41, icon: "icons/product-attribute-key-ingredients.webp", decisive: true },
-      { label: "Vấn đề xử lý", coverage: 24, icon: "icons/product-attribute-concern-addressed.webp", decisive: true },
-      { label: "Dung tích", coverage: 88, icon: "icons/product-attribute-volume.webp", decisive: false },
+      {
+        label: "Loại da",
+        coverage: 29,
+        icon: "icons/product-attribute-skin-type.webp",
+        decisive: true,
+      },
+      {
+        label: "Thành phần chính",
+        coverage: 41,
+        icon: "icons/product-attribute-key-ingredients.webp",
+        decisive: true,
+      },
+      {
+        label: "Vấn đề xử lý",
+        coverage: 24,
+        icon: "icons/product-attribute-concern-addressed.webp",
+        decisive: true,
+      },
+      {
+        label: "Dung tích",
+        coverage: 88,
+        icon: "icons/product-attribute-volume.webp",
+        decisive: false,
+      },
     ],
     facts: [
-      { value: 34, unit: "%", label: "người mua thấy khó chịu vì thông tin sản phẩm thiếu, tăng từ 28%", source: "Akeneo PX Pulse 2025" },
-      { value: 79, unit: "%", label: "trang sản phẩm không có bộ dữ liệu có cấu trúc đầy đủ", source: "Adobe Analytics" },
+      {
+        value: 34,
+        unit: "%",
+        label:
+          "người mua thấy khó chịu vì thông tin sản phẩm thiếu, tăng từ 28%",
+        source: "Akeneo PX Pulse 2025",
+      },
+      {
+        value: 79,
+        unit: "%",
+        label: "trang sản phẩm không có bộ dữ liệu có cấu trúc đầy đủ",
+        source: "Adobe Analytics",
+      },
     ],
     metric: "Danh sách sửa đã xếp hạng trong 48 giờ",
   },
@@ -472,7 +744,8 @@ const VI: Sector[] = [
     slug: "distribution",
     icon: Boxes,
     name: "B2B và công nghiệp",
-    tagline: "Mua theo thông số kỹ thuật, trên danh mục dựng ra để đặt theo mã hàng",
+    tagline:
+      "Mua theo thông số kỹ thuật, trên danh mục dựng ra để đặt theo mã hàng",
     metaTitle: "B2B và công nghiệp: danh mục dựng cho mã hàng",
     summary:
       "Người mua của bạn chọn theo thông số, còn danh mục thì được dựng để đặt hàng chứ không phải để tìm kiếm.",
@@ -500,16 +773,34 @@ const VI: Sector[] = [
       { label: "Số lượng mỗi thùng", coverage: 91, decisive: false },
     ],
     facts: [
-      { value: 36, unit: "T", label: "quy mô thương mại điện tử B2B toàn cầu ước tính năm 2026, gấp năm tới sáu lần B2C", source: "ước tính ngành, CAGR 14,5%" },
-      { value: 66, unit: "%", label: "mức đọc được bằng máy trung bình của trang sản phẩm bán lẻ Mỹ, thấp nhất trong mọi loại trang", source: "Adobe Analytics" },
-      { value: 79, unit: "%", label: "trang sản phẩm không có bộ dữ liệu có cấu trúc đầy đủ", source: "Adobe Analytics" },
+      {
+        value: 36,
+        unit: "T",
+        label:
+          "quy mô thương mại điện tử B2B toàn cầu ước tính năm 2026, gấp năm tới sáu lần B2C",
+        source: "ước tính ngành, CAGR 14,5%",
+      },
+      {
+        value: 66,
+        unit: "%",
+        label:
+          "mức đọc được bằng máy trung bình của trang sản phẩm bán lẻ Mỹ, thấp nhất trong mọi loại trang",
+        source: "Adobe Analytics",
+      },
+      {
+        value: 79,
+        unit: "%",
+        label: "trang sản phẩm không có bộ dữ liệu có cấu trúc đầy đủ",
+        source: "Adobe Analytics",
+      },
     ],
     metric: "Nên ánh xạ thông số nào trước",
   },
 ];
 
 export const sectors = (l: string): Sector[] => byLocale({ en: EN, vi: VI }, l);
-export const sector = (l: string, slug: string) => sectors(l).find((s) => s.slug === slug);
+export const sector = (l: string, slug: string) =>
+  sectors(l).find((s) => s.slug === slug);
 
 /** Slugs the old ten-sector set had. They were in the sitemap, so they redirect. */
 export const RETIRED_SECTOR_SLUGS = [
@@ -544,6 +835,3 @@ export const sectorSlugs = EN.map((s) => s.slug);
  * contradict it. The only measured figures on this site are the laptop shelf's
  * and they live on /why/method with the command that reproduces them.
  * ------------------------------------------------------------------------- */
-
-
-

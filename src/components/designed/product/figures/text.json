@@ -9,8 +9,8 @@
       "vi": "Phát hiện những thuộc tính sản phẩm còn thiếu khiến người mua khó so sánh sản phẩm và tìm được lựa chọn phù hợp."
     },
     "card-1-caption": {
-      "en": "missing fields found on the example laptop shelf",
-      "vi": "trường dữ liệu còn thiếu được tìm thấy trên kệ laptop ví dụ"
+      "en": "missing fields found on the example test shelf",
+      "vi": "trường dữ liệu còn thiếu được tìm thấy trên kệ thử nghiệm ví dụ"
     },
     "card-1-legend-1": {
       "en": "Screen size 80",
@@ -163,16 +163,16 @@
   },
   "decision-monitor/decision-monitor-shelf-slips": {
     "stat-caption": {
-      "en": "of 216 products a shopper still cannot tell apart, on the shelf we measured",
-      "vi": "trên 216 sản phẩm mà người mua vẫn không phân biệt được, trên kệ hàng chúng tôi đã đo"
+      "en": "of 216 products a shopper still cannot tell apart, on our test shelf",
+      "vi": "trên 216 sản phẩm mà người mua vẫn không phân biệt được, trên kệ thử nghiệm của chúng tôi"
     },
     "card-title": {
       "en": "Requirements needing each attribute",
       "vi": "Số yêu cầu cần đến từng thuộc tính"
     },
     "card-subtitle": {
-      "en": "Example data: the laptop shelf from the home page.",
-      "vi": "Dữ liệu ví dụ: kệ laptop từ trang chủ."
+      "en": "Example data: the test shelf from the home page.",
+      "vi": "Dữ liệu ví dụ: kệ thử nghiệm từ trang chủ."
     }
   },
   "decision-verification/decision-verification-gains": {

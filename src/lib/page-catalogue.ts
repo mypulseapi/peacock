@@ -294,7 +294,7 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
 
   // Developer
   {
-    route: "/docs",
+    route: "/docs", // forwards to the developer handbook since 2026-10-27
     audience: "developer",
     area: "api",
     depth: "reference",

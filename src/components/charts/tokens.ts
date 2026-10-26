@@ -45,7 +45,8 @@ export const C = {
 
   ink: "#16181d",
   mid: "#4c5563",
-  mute: "#9aa1ad",
+  /** Muted text. Was #9aa1ad, 2.6:1 on white; this clears WCAG AA on white and on the tinted panels (2026-10-26). */
+  mute: "#5f6773",
   grid: "#eef0f4",
 } as const;
 

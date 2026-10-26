@@ -56,10 +56,10 @@ const jobListings: Record<string, JobListing> = {
     type: "Full-time",
     salary: "Negotiable",
     description:
-      "We're looking for a Senior Machine Learning Engineer to build and optimize our real-time inference engine. You'll work on ML models that process millions of requests per day with sub-50ms latency requirements. This is a high-impact role where your work directly affects the personalization experience for millions of e-commerce shoppers.",
+      "We're looking for a Senior Machine Learning Engineer to build the models behind Pulse's decisions: reading product evidence, ranking which catalogue gaps are worth fixing, and deciding live which products meet a shopper's requirements. This is a high-impact role where your work decides what merchants fix and what shoppers are shown.",
     responsibilities: [
-      "Design and implement ML models for real-time persona inference",
-      "Optimize model performance for sub-50ms latency at scale",
+      "Design and implement models that read product evidence and decide what fits a requirement",
+      "Keep model inference fast enough for the live storefront path",
       "Build and maintain our feature engineering pipeline",
       "Collaborate with product to translate business needs into ML solutions",
       "Mentor junior engineers and contribute to technical culture",
@@ -282,7 +282,12 @@ export default async function JobPage({ params }: PageProps) {
 
   return (
     <div className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-6 lg:px-8">
-      <PageSchema locale={locale} path={`/careers/${id}`} leaf={job.title} nodes={[jobPostingJsonLd]} />
+      <PageSchema
+        locale={locale}
+        path={`/careers/${id}`}
+        leaf={job.title}
+        nodes={[jobPostingJsonLd]}
+      />
       <div className="max-w-3xl mx-auto">
         {/* Back Link */}
         <Link

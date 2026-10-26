@@ -7,7 +7,8 @@
  * the next, which is the part of the business model a tiered table cannot express.
  *
  * Colours come from the design, one accent per step, with a dark-theme pair for each so the cards
- * work in both themes. Text lives in `pricing.section1` like the rest of the page, in both languages.
+ * work in both themes. The light orange and teal text are darker than the design's: as drawn they
+ * measured 2.5 to 4.2:1, under WCAG AA (2026-10-26). The dots and washes keep the design's colours. Text lives in `pricing.section1` like the rest of the page, in both languages.
  */
 import { designedText } from "../t";
 import { FlowFigure, type FlowFigureName } from "./flow-figure";
@@ -39,8 +40,8 @@ const STEPS: Array<{
     icon: "i-pen",
     tone: {
       dot: "bg-[#29aa98]",
-      tier: "text-[#078c7e] dark:text-[#5fd6c6]",
-      pill: "bg-[#eaf9f6] text-[#078879] dark:bg-[#0f2e2a] dark:text-[#7fe3d4]",
+      tier: "text-[#05756a] dark:text-[#5fd6c6]",
+      pill: "bg-[#eaf9f6] text-[#05695f] dark:bg-[#0f2e2a] dark:text-[#7fe3d4]",
       glow: "bg-[#d9f7f0] dark:bg-[#12453e]",
     },
   },
@@ -51,8 +52,8 @@ const STEPS: Array<{
     icon: "i-trending-up",
     tone: {
       dot: "bg-[#ffa72c]",
-      tier: "text-[#f08a00] dark:text-[#ffbf66]",
-      pill: "bg-[#fff6e8] text-[#e88200] dark:bg-[#33240c] dark:text-[#ffc777]",
+      tier: "text-[#b45309] dark:text-[#ffbf66]",
+      pill: "bg-[#fff6e8] text-[#a14b00] dark:bg-[#33240c] dark:text-[#ffc777]",
       glow: "bg-[#fff0d8] dark:bg-[#4a3410]",
     },
   },

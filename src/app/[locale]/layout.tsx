@@ -31,31 +31,24 @@ export const metadata: Metadata = {
   title: {
     // Descriptive first, brand last, matching every other page rather than
     // inverting the pattern on the one page that gets the most traffic.
-    default: "Know which product data to fix first | Pulse",
+    default: "Commerce decision intelligence for product data | Pulse",
     template: "%s | Pulse",
   },
+  // The entity definition from the SEO/AEO audit (2026-10-26), the same sentence the home page carries.
   description:
-    "PULSE measures whether a merchant's product data is ready to support the buying decisions their shoppers are trying to make, ranked, in their own catalogue, in 48 hours. Then it reads the live session to decide what to show, and when one more question is worth asking.",
+    "Pulse measures whether your catalogue holds the evidence shoppers and AI agents need to decide, ranks the data gaps worth fixing, and verifies the repair.",
   keywords: [
-    "personalization",
-    "AI",
-    "inference engine",
-    "real-time",
-    "persona",
-    "catalogue enrichment",
+    "commerce decision intelligence",
     "product data quality",
+    "product data audit",
+    "product catalogue audit",
+    "missing product attributes",
+    "product data enrichment",
+    "decision readiness",
+    "decision evidence",
+    "AI-ready product data",
+    "product data for AI shopping agents",
     "decision audit",
-    "value of information",
-    "guided selling",
-    "e-commerce personalization",
-    "behavioral inference",
-    "recommendation engine",
-    "product discovery",
-    "privacy-first personalization",
-    "cookieless personalization",
-    "user engagement",
-    "machine learning",
-    "B2B SaaS",
   ],
   authors: [{ name: "Pulse" }],
   icons: {

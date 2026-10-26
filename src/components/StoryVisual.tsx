@@ -13,7 +13,7 @@
 import { renderLocale } from "@/i18n/render-locale";
 import { ui } from "@/content/locale";
 
-const INK = "#16181d", MID = "#4c5563", MUTE = "#9aa1ad";
+const INK = "#16181d", MID = "#4c5563", MUTE = "#5f6773";
 const GOOD = "var(--sig-deep)", GOOD_BG = "var(--sig-tint)";
 const WARN = "#b91c1c", WARN_BG = "#fdeceb";
 const WORK = "var(--sig-deep)";

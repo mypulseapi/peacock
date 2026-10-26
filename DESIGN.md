@@ -44,8 +44,13 @@ Every colour is defined once, in the `COLOURS` block of `@theme` in `src/input.c
 2. **Roles** — what pages use (`primary`, `ink`, `gap` …). Every text and surface role is an **exact,
    contrast-checked hex** written as `light-dark(<light>, <dark>)` — never `color-mix()` for text, so the
    ratios in the guideline stay true. Only decorative borders and washes use `color-mix()`.
-3. **Theme** — the page follows the visitor's OS setting (`color-scheme: light dark` on `:root`);
-   `<html data-theme="light|dark">` overrides it. There is no visible toggle. Because every role is
+3. **Theme** — light by default; the header switch (`designed-theme-switch.tsx`, a `role="switch"` button,
+   26 Oct 2026) sets `<html data-theme="light|dark">` and is remembered. There is no "System" option; a browser
+   that stored it from the old menu follows the OS (`color-scheme: light dark` on `:root`) until the switch is
+   pressed. The switch's knob slides and its sun turns to a moon in 300ms `ease-out-soft`, and the page changes
+   from the switch outward, a circle grown by a view transition (`data-theme-reveal`, 550ms); with reduced motion
+   the knob jumps and the page swaps at once. Beside it, the languages as one borderless "VI | EN" pair
+   (`designed-locale-switch.tsx`), the current one marked, the other a link to the same page. Because every role is
    `light-dark()`, nothing else is needed for dark mode — no `dark:` classes in HTML. Dark surfaces are cool black
    (Night `#0B0D12`, cards `#14171F`), not navy (final guide, 19 Oct 2026). The one exception is what a token cannot switch,
    such as an image: use the `theme-dark:` variant (OS dark unless `data-theme="light"`, or `data-theme="dark"`),

@@ -579,16 +579,8 @@ export function DesignedHeader() {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-2 self-stretch xl:flex">
-          <DesignedThemeSwitch
-            attached
-            heading={t("theme")}
-            labels={{
-              light: t("themeLight"),
-              dark: t("themeDark"),
-              system: t("themeSystem"),
-            }}
-          />
-          <DesignedLocaleSwitch attached heading={t("44")} />
+          <DesignedThemeSwitch label={t("themeDark")} />
+          <DesignedLocaleSwitch heading={t("44")} />
           <Link href={designedHref("/en/signin")} className="nav-link">
             {t("46")}
           </Link>
@@ -906,14 +898,7 @@ export function DesignedHeader() {
               {/* The theme and language controls live in the desktop actions, which are
                        `hidden lg:flex`, so without these two a phone had neither. */}
               <div className="mt-6 flex items-center gap-2 border-t border-line pt-6">
-                <DesignedThemeSwitch
-                  heading={t("theme")}
-                  labels={{
-                    light: t("themeLight"),
-                    dark: t("themeDark"),
-                    system: t("themeSystem"),
-                  }}
-                />
+                <DesignedThemeSwitch label={t("themeDark")} />
                 <DesignedLocaleSwitch heading={t("44")} />
               </div>
             </div>

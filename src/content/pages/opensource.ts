@@ -7,30 +7,31 @@ import type { StoryContent } from "@/components/StoryPage";
  * exactly what is released today and what is only planned.
  *
  * Checked 2026-10-26: `@thepulseapi/sdk` 0.2.0 is on npm (MIT) with its source in a private
- * repository, so it is readable through npm, not GitHub; `@thepulseapi/docs-mcp` has public source
- * on GitHub and is not yet on npm. Planned items carry "planned", never a date. No competitor named.
+ * repository, so it is readable through npm, not GitHub; `@thepulseapi/mcp` has public source and is not yet
+ * on npm. Both live in the public monorepo github.com/mypulseapi/open-pulse since 2026-10-26. Planned items carry "planned", never a date. No competitor named.
  */
 export const OPENSOURCE: StoryContent = {
   meta: {
-    title: "Open source: the Pulse SDK and MCP server",
+    title: "Open Pulse: decisions any AI agent can use",
     description:
       "The Pulse SDK and MCP server are MIT licensed. See what is released, what is planned and how to contribute. Finding problems is open; deciding is the API.",
   },
   eyebrow: "Open source",
-  title: "The tools that find problems are open. The decisions are the API.",
-  lede: "Anyone can read, run and improve the code that connects a store to Pulse and the tools an agent uses to read it. What decides which fix is worth paying for, and proves it worked, is the Pulse API.",
+  title: "Open Pulse: grounded decisions for any AI agent, in any industry.",
+  lede: "Send requirements and the options you are choosing between: products, suppliers, hotels, plans. For each one Pulse answers fits, fails, or cannot tell, with what is missing. Claude, ChatGPT, Claude Code and your own code can call it. The client code is open source; the decision engine is the Pulse API.",
 
   chainBlock: {
     eyebrow: "Why open",
-    heading: "Code you can read is code you can trust in your checkout.",
-    body: "An SDK runs on your storefront and an MCP server runs on your machine. You should not have to take either on faith.",
+    heading:
+      'An agent that can say "the evidence does not say" stops guessing.',
+    body: "Language models are built to answer. Pulse gives them a third answer besides yes and no, grounded in what each option actually states.",
   },
 
   situation: {
     heading: "What is open, and what is not.",
     body: [
-      "Open: the browser SDK, the MCP server that lets an agent search our documentation and ask the Decision API, and, as they are released, the query parser, the evidence formats and the return-reason taxonomy.",
-      "Not open: deciding which gaps matter, which repair or promotion is worth its cost, and whether it worked. Those run behind the API, because that is the work our customers pay for.",
+      "Open: the MCP server that gives agents Pulse's verdicts and searches our documentation, the browser SDK, runnable examples, and, as they are released, a query parser and shared formats for requirements and evidence.",
+      "Not open: the decision engine itself, and in commerce the economics of which repair or promotion is worth its cost. Those run behind the API, because that is the work our customers pay for.",
     ],
     pull: "Detection is open. Decision is the API.",
   },
@@ -43,13 +44,13 @@ export const OPENSOURCE: StoryContent = {
         n: "01",
         meta: "Install",
         title: "Install from npm",
-        body: "npm install @thepulseapi/sdk. The MCP server's source is on GitHub; its npm package is being published.",
+        body: "npm install @thepulseapi/sdk. The MCP server, @thepulseapi/mcp, is being published to npm.",
       },
       {
         n: "02",
         meta: "Read",
         title: "Read the source",
-        body: "The MCP server lives in the mypulseapi/handbook repository on GitHub. The SDK's published code is readable on npm.",
+        body: "Both packages live in one public repository, mypulseapi/open-pulse on GitHub.",
       },
       {
         n: "03",
@@ -70,7 +71,7 @@ export const OPENSOURCE: StoryContent = {
       },
       {
         icon: Bot,
-        title: "@thepulseapi/docs-mcp: source public",
+        title: "@thepulseapi/mcp: source public",
         body: "An MCP server for Claude, ChatGPT and other agents: search the docs, and with a key, ask the Decision API which products meet a shopper's requirements. MIT, source on GitHub.",
       },
       {
@@ -114,7 +115,7 @@ export const OPENSOURCE: StoryContent = {
     },
     {
       q: "Where is the code?",
-      a: "On GitHub under mypulseapi and on npm under @thepulseapi. The MCP server's source is in the mypulseapi/handbook repository; the SDK is published on npm.",
+      a: "In one public repository, mypulseapi/open-pulse on GitHub, and on npm under @thepulseapi.",
     },
     {
       q: "Can I contribute?",
@@ -131,8 +132,8 @@ export const OPENSOURCE: StoryContent = {
   ],
 
   cta: {
-    title: "Start with the SDK.",
-    body: "Install it, read it, and connect your store. The developer docs cover the rest.",
+    title: "Give your agent a decision it can stand behind.",
+    body: "Add the MCP server to your agent, or call the API from your code. The repository has runnable examples for both.",
     label: "Read the developer docs",
     href: "https://developer.thepulseapi.com/opensource",
     note: "Questions about contributing: open an issue on GitHub.",
@@ -142,26 +143,25 @@ export const OPENSOURCE: StoryContent = {
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
 export const OPENSOURCE_VI: StoryContent = {
   meta: {
-    title: "Mã nguồn mở: SDK và máy chủ MCP của Pulse",
+    title: "Open Pulse: quyết định mọi tác tử AI đều dùng được",
     description:
       "SDK và máy chủ MCP của Pulse dùng giấy phép MIT. Xem những gì đã phát hành, dự kiến, và cách đóng góp trên GitHub. Tìm vấn đề là mở; quyết định là API.",
   },
   eyebrow: "Mã nguồn mở",
-  title: "Công cụ tìm ra vấn đề là mã nguồn mở. Phần ra quyết định là API.",
-  lede: "Ai cũng có thể đọc, chạy và cải thiện mã nguồn kết nối cửa hàng với Pulse và các công cụ mà một tác tử AI dùng để đọc nó. Phần quyết định bản sửa nào đáng trả tiền, và chứng minh nó có tác dụng, là Pulse API.",
+  title: "Open Pulse: quyết định có căn cứ cho mọi tác tử AI, trong mọi ngành.",
+  lede: "Gửi các yêu cầu và những lựa chọn bạn đang cân nhắc: sản phẩm, nhà cung cấp, khách sạn, gói dịch vụ. Với từng lựa chọn, Pulse trả lời đạt, không đạt hoặc không đủ thông tin, kèm điều còn thiếu. Claude, ChatGPT, Claude Code và mã của bạn đều gọi được. Mã phía client là mã nguồn mở; bộ máy ra quyết định là Pulse API.",
 
   chainBlock: {
     eyebrow: "Vì sao mở",
-    heading:
-      "Mã nguồn đọc được là mã nguồn có thể tin khi đặt vào trang thanh toán.",
-    body: "SDK chạy trên cửa hàng của bạn và máy chủ MCP chạy trên máy của bạn. Bạn không nên phải tin mà không được xem.",
+    heading: 'Một tác tử biết nói "bằng chứng không cho biết" sẽ thôi đoán.',
+    body: "Mô hình ngôn ngữ được tạo ra để trả lời. Pulse cho chúng một câu trả lời thứ ba ngoài có và không, dựa trên những gì từng lựa chọn thực sự ghi.",
   },
 
   situation: {
     heading: "Cái gì mở, và cái gì không.",
     body: [
-      "Mở: SDK cho trình duyệt, máy chủ MCP giúp tác tử AI tìm trong tài liệu và hỏi Decision API, và khi phát hành, bộ phân tích câu tìm kiếm, các định dạng bằng chứng và bảng phân loại lý do trả hàng.",
-      "Không mở: việc quyết định khoảng trống nào quan trọng, bản sửa hay khuyến mãi nào đáng chi phí, và nó có tác dụng không. Những phần đó chạy sau API, vì đó là công việc khách hàng trả tiền.",
+      "Mở: máy chủ MCP đưa phán quyết của Pulse tới các tác tử AI và tìm trong tài liệu, SDK cho trình duyệt, các ví dụ chạy được, và khi phát hành, bộ phân tích câu yêu cầu cùng các định dạng chung cho yêu cầu và bằng chứng.",
+      "Không mở: chính bộ máy ra quyết định, và trong thương mại, phần tính toán bản sửa hay khuyến mãi nào đáng chi phí. Những phần đó chạy sau API, vì đó là công việc khách hàng trả tiền.",
     ],
     pull: "Tìm vấn đề là mở. Ra quyết định là API.",
   },
@@ -175,13 +175,13 @@ export const OPENSOURCE_VI: StoryContent = {
         n: "01",
         meta: "Cài đặt",
         title: "Cài từ npm",
-        body: "npm install @thepulseapi/sdk. Mã nguồn máy chủ MCP có trên GitHub; gói npm của nó đang được phát hành.",
+        body: "npm install @thepulseapi/sdk. Máy chủ MCP, @thepulseapi/mcp, đang được phát hành lên npm.",
       },
       {
         n: "02",
         meta: "Đọc",
         title: "Đọc mã nguồn",
-        body: "Máy chủ MCP nằm trong kho mypulseapi/handbook trên GitHub. Mã đã phát hành của SDK đọc được trên npm.",
+        body: "Cả hai gói nằm trong một kho công khai, mypulseapi/open-pulse trên GitHub.",
       },
       {
         n: "03",
@@ -202,7 +202,7 @@ export const OPENSOURCE_VI: StoryContent = {
       },
       {
         icon: Bot,
-        title: "@thepulseapi/docs-mcp: mã nguồn công khai",
+        title: "@thepulseapi/mcp: mã nguồn công khai",
         body: "Máy chủ MCP cho Claude, ChatGPT và các tác tử khác: tìm trong tài liệu, và khi có khóa, hỏi Decision API sản phẩm nào đáp ứng yêu cầu của người mua. MIT, mã nguồn trên GitHub.",
       },
       {
@@ -246,7 +246,7 @@ export const OPENSOURCE_VI: StoryContent = {
     },
     {
       q: "Mã nguồn ở đâu?",
-      a: "Trên GitHub dưới mypulseapi và trên npm dưới @thepulseapi. Mã nguồn máy chủ MCP nằm trong kho mypulseapi/handbook; SDK được phát hành trên npm.",
+      a: "Trong một kho công khai, mypulseapi/open-pulse trên GitHub, và trên npm dưới @thepulseapi.",
     },
     {
       q: "Tôi có thể đóng góp không?",
@@ -263,8 +263,8 @@ export const OPENSOURCE_VI: StoryContent = {
   ],
 
   cta: {
-    title: "Bắt đầu với SDK.",
-    body: "Cài đặt, đọc, và kết nối cửa hàng của bạn. Tài liệu cho lập trình viên lo phần còn lại.",
+    title: "Cho tác tử của bạn một quyết định có căn cứ.",
+    body: "Thêm máy chủ MCP vào tác tử, hoặc gọi API từ mã của bạn. Kho mã có ví dụ chạy được cho cả hai.",
     label: "Đọc tài liệu cho lập trình viên",
     href: "https://developer.thepulseapi.com/vi/opensource",
     note: "Câu hỏi về đóng góp: mở issue trên GitHub.",

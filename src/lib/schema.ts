@@ -57,7 +57,8 @@ function organization(): GraphNode {
       caption: "Pulse",
     },
     description:
-      "Pulse measures whether a merchant's product data is ready to support the buying decisions shoppers are trying to make, then reads the live session to decide what to show and when one more question is worth asking.",
+      // The entity definition from the SEO/AEO audit (2026-10-26); the home page and layout carry the same sentence.
+      "Pulse is commerce decision intelligence for product data. It measures whether a catalogue holds the evidence shoppers and AI agents need to make product decisions, identifies the gaps worth fixing, and verifies the repair.",
     // From the same place the footers link, so `sameAs` cannot claim a profile we do not link.
     sameAs: SAME_AS,
   };

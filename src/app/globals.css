@@ -1123,10 +1123,11 @@ html[data-theme="dark"] .footer-card {
 .ed-d4 { font-size: var(--d4); line-height: 1.45;  letter-spacing: var(--tr-snug); font-weight: 650; }
 .ed-lede { font-size: var(--lede); line-height: 1.75; color: var(--ed-ink-2); }
 
-/* Eyebrow. Small caps tracking, never below 12px, never lighter than ink-3. */
+/* Eyebrow. Small caps tracking, never below 12px. ink-2, not ink-3: at 12px ink-3 measured 3.4 to
+   3.9:1 on the hero canvas, under WCAG AA (2026-10-26). */
 .ed-eyebrow {
   font-size: 0.75rem; font-weight: 600; letter-spacing: 0.11em;
-  text-transform: uppercase; color: var(--ed-ink-3);
+  text-transform: uppercase; color: var(--ed-ink-2);
 }
 
 /* Hairline rule that reads as a typographic device rather than a border. */

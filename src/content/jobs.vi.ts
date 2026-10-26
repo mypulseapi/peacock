@@ -20,12 +20,12 @@ export const JOBS_VI: Record<string, string> = {
   Negotiable: "Thoả thuận",
 
   /* Senior Machine Learning Engineer */
-  "We're looking for a Senior Machine Learning Engineer to build and optimize our real-time inference engine. You'll work on ML models that process millions of requests per day with sub-50ms latency requirements. This is a high-impact role where your work directly affects the personalization experience for millions of e-commerce shoppers.":
-    "Chúng tôi đang tìm một Senior Machine Learning Engineer để xây dựng và tối ưu bộ máy suy luận thời gian thực. Bạn sẽ làm việc với các mô hình học máy xử lý hàng triệu yêu cầu mỗi ngày với yêu cầu độ trễ dưới 50ms. Đây là vị trí có ảnh hưởng lớn, nơi công việc của bạn tác động trực tiếp tới trải nghiệm cá nhân hoá của hàng triệu người mua hàng trực tuyến.",
-  "Design and implement ML models for real-time persona inference":
-    "Thiết kế và triển khai mô hình học máy để suy luận chân dung theo thời gian thực",
-  "Optimize model performance for sub-50ms latency at scale":
-    "Tối ưu hiệu năng mô hình để đạt độ trễ dưới 50ms ở quy mô lớn",
+  "We're looking for a Senior Machine Learning Engineer to build the models behind Pulse's decisions: reading product evidence, ranking which catalogue gaps are worth fixing, and deciding live which products meet a shopper's requirements. This is a high-impact role where your work decides what merchants fix and what shoppers are shown.":
+    "Chúng tôi đang tìm một Senior Machine Learning Engineer để xây dựng các mô hình đứng sau quyết định của Pulse: đọc bằng chứng sản phẩm, xếp hạng khoảng trống nào trong danh mục đáng sửa, và quyết định trực tiếp sản phẩm nào đáp ứng yêu cầu của người mua. Đây là vị trí có ảnh hưởng lớn, nơi công việc của bạn quyết định người bán sửa gì và người mua được thấy gì.",
+  "Design and implement models that read product evidence and decide what fits a requirement":
+    "Thiết kế và triển khai mô hình đọc bằng chứng sản phẩm và quyết định điều gì đáp ứng một yêu cầu",
+  "Keep model inference fast enough for the live storefront path":
+    "Giữ cho mô hình suy luận đủ nhanh cho luồng cửa hàng trực tiếp",
   "Build and maintain our feature engineering pipeline":
     "Xây dựng và duy trì luồng xử lý đặc trưng dữ liệu",
   "Collaborate with product to translate business needs into ML solutions":
@@ -107,7 +107,8 @@ export const JOBS_VI: Record<string, string> = {
     "Viết kiểm thử và giữ chuẩn chất lượng mã nguồn",
   "3+ years of frontend development experience":
     "Từ 3 năm kinh nghiệm phát triển frontend trở lên",
-  "Expert-level React and TypeScript": "Thành thạo ở mức chuyên sâu React và TypeScript",
+  "Expert-level React and TypeScript":
+    "Thành thạo ở mức chuyên sâu React và TypeScript",
   "Experience with data visualization (D3, Recharts, or similar)":
     "Kinh nghiệm trực quan hoá dữ liệu (D3, Recharts hoặc tương đương)",
   "Strong eye for design and attention to UX details":
@@ -195,7 +196,8 @@ export const JOBS_VI: Record<string, string> = {
   /* ---- the careers index, whose summaries are shorter than the detail pages' -------------- */
   "Build and optimize our real-time inference engine. You'll work on ML models that process millions of requests per day with sub-50ms latency requirements.":
     "Xây dựng và tối ưu bộ máy suy luận thời gian thực. Bạn sẽ làm việc với các mô hình học máy xử lý hàng triệu yêu cầu mỗi ngày với yêu cầu độ trễ dưới 50ms.",
-  "5+ years of ML engineering experience": "Từ 5 năm kinh nghiệm kỹ sư học máy trở lên",
+  "5+ years of ML engineering experience":
+    "Từ 5 năm kinh nghiệm kỹ sư học máy trở lên",
   "Experience with real-time inference systems":
     "Kinh nghiệm với hệ thống suy luận thời gian thực",
   "Strong Python and PyTorch/TensorFlow skills":
@@ -215,7 +217,8 @@ export const JOBS_VI: Record<string, string> = {
   "3+ years frontend development experience":
     "Từ 3 năm kinh nghiệm phát triển frontend trở lên",
   "Experience with data visualization": "Kinh nghiệm trực quan hoá dữ liệu",
-  "Strong eye for design and UX": "Có mắt thẩm mỹ tốt về thiết kế và trải nghiệm người dùng",
+  "Strong eye for design and UX":
+    "Có mắt thẩm mỹ tốt về thiết kế và trải nghiệm người dùng",
   "Help customers integrate Pulse and maximize their results. Bridge the gap between technical implementation and business outcomes.":
     "Giúp khách hàng tích hợp Pulse và khai thác tối đa kết quả. Bắc cầu giữa phần triển khai kỹ thuật và kết quả kinh doanh.",
   "3+ years in solutions engineering or technical consulting":
@@ -231,5 +234,6 @@ export const JOBS_VI: Record<string, string> = {
   "Strong portfolio showing complex B2B products":
     "Hồ sơ năng lực tốt với các sản phẩm B2B phức tạp",
   "Proficiency in Figma": "Thành thạo Figma",
-  "Experience with data-heavy interfaces": "Kinh nghiệm với giao diện nhiều dữ liệu",
+  "Experience with data-heavy interfaces":
+    "Kinh nghiệm với giao diện nhiều dữ liệu",
 };

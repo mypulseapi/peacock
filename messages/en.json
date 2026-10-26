@@ -139,65 +139,6 @@
         "body": "This is a search-efficiency measurement against a known answer. It says nothing about whether shoppers would answer a question, and nothing about revenue. We have no measured commercial uplift, because we have not run a pilot with a control group yet. When we have one, it will be from your traffic, not someone else's store."
       }
     },
-    "flow": {
-      "title": "How a decision<br></br><accent>gets made.</accent>",
-      "description": "Pulse builds two vectors, one for the shopper in front of you, one for every product you sell, and matches them. Neither side needs a history, which is why it works on the first page view. What it cannot do is invent an attribute your catalogue never recorded.",
-      "cols": {
-        "send": "Send data",
-        "build": "Build the twin",
-        "get": "Get personalization"
-      },
-      "session": {
-        "eyebrow": "Real-time",
-        "title": "Anonymous session",
-        "meta": "1,000+ signals · every request"
-      },
-      "catalogue": {
-        "eyebrow": "Once at sync",
-        "title": "Your catalogue",
-        "meta": "synced once, updated on change"
-      },
-      "notRequired": {
-        "title": "Not required",
-        "items": [
-          "Cookies",
-          "Login",
-          "User Profile",
-          "Consent gate",
-          "Purchase History",
-          "Training Window"
-        ]
-      },
-      "persona": {
-        "eyebrow": "Visitor persona",
-        "title": "Bayesian scoring",
-        "meta": "readiness · price band · category affinity · temp",
-        "vector": "384-dim vector"
-      },
-      "twin": {
-        "eyebrow": "Product twin",
-        "title": "Persona-fit enrichment",
-        "meta": "suits[] · persona_fit'{}' · one twin per SKU",
-        "vector": "384-dim vector"
-      },
-      "match": {
-        "title": "Vector match",
-        "meta": "cosine similarity ranked by fit score",
-        "value": "target <50ms",
-        "footnote": "design budget, not a measurement<br></br>0 cookies · 0 PII"
-      },
-      "outputs": [
-        "Personalised homepage",
-        "Search & category ranking",
-        "Product Recommendation",
-        "Cart & Checkout upsell",
-        "Similar Products",
-        "Email & retention",
-        "Paid landing pages",
-        "Mobile app feed",
-        "Anywhere you render products"
-      ]
-    },
     "code": {
       "title": "<accent>One call. Ten lines.</accent><br></br>Same afternoon.",
       "description": "REST and SDKs for JavaScript, Python, PHP, and Go. The reasoning comes back with the ranking, so you can show a shopper why, or log it and argue with it later.",
@@ -257,8 +198,8 @@
       "allIndustries": "All Industries"
     },
     "meta": {
-      "title": "Know which product data to fix first",
-      "description": "Send one category export. We rank every missing attribute by how much it changes what a shopper is able to decide, and hand the list back in 48 hours."
+      "title": "Commerce decision intelligence for product data",
+      "description": "Pulse measures whether your catalogue holds the evidence shoppers and AI agents need to decide, ranks the data gaps worth fixing, and verifies the repair."
     }
   },
   "about": {
@@ -725,129 +666,6 @@
     "vi": "Tiếng Việt",
     "switchTo": "Switch language"
   },
-  "docs": {
-    "meta": {
-      "title": "API documentation: ten lines, or none at all",
-      "description": "Reference for the Pulse SDK and Decision API, including the ranking factors, the decision record and the holdback arm. The audit needs none of it.",
-      "ogTitle": "API documentation: ten lines, or none at all",
-      "ogDescription": "Reference for the Pulse SDK and Decision API, including the ranking factors, the decision record and the holdback arm. The audit needs none of it."
-    },
-    "title": "API Documentation",
-    "description": "Everything you need to integrate Pulse's real-time inference engine into your platform.",
-    "quickStart": {
-      "navTitle": "Quick Start",
-      "navDescription": "Add Pulse to your site in 3 steps",
-      "title": "Quick Start",
-      "description": "Add Pulse to your website in three steps. The SDK loads in the background, so it never slows your page down, and it only reads anonymous in-session signals. No cookies, nothing personal.",
-      "step1Title": "1. Add the SDK",
-      "step1Desc": "Drop this script tag into the head of your page. It loads asynchronously and never blocks rendering.",
-      "step2Title": "2. Initialize",
-      "step2Desc": "Initialize Pulse with your merchant ID and publishable key (pk_live_…). Automatic signal capture begins immediately.",
-      "step3Title": "3. Tag key elements (optional)",
-      "step3Desc": "Add a data-pulse-track attribute to sort dropdowns, filters, and CTAs to capture high-intent interactions automatically.",
-      "doneTitle": "That's it, you're live",
-      "doneDesc": "The SDK streams anonymous signals (device, referrer, scroll, clicks) to POST /v1/track and Pulse infers the visitor's persona in-session. Call the Inference API below from your backend to personalize search, recommendations, and layout."
-    },
-    "nav": {
-      "authTitle": "Authentication",
-      "authDesc": "Learn how to authenticate your API requests",
-      "inferTitle": "Inference API",
-      "inferDesc": "Get real-time persona predictions",
-      "personalizeTitle": "Decision API",
-      "personalizeDesc": "Reorder your storefront in real time",
-      "catalogTitle": "Catalog Sync",
-      "catalogDesc": "Sync products & categories in real time",
-      "webhooksTitle": "Webhooks",
-      "webhooksDesc": "Receive real-time event notifications"
-    },
-    "baseUrl": "Base URL",
-    "overview": {
-      "title": "How It Works",
-      "intro": "Pulse personalizes your storefront in three moves: capture anonymous in-session signals, tell us what you sell, then ask us how to order it for the visitor in front of you. The browser SDK handles the first; your backend handles the other two over a simple REST API.",
-      "step1Title": "1. Capture signals",
-      "step1Desc": "Drop in the SDK. It quietly streams anonymous behavior to Pulse in the background. No cookies, nothing personal.",
-      "step2Title": "2. Sync your catalog",
-      "step2Desc": "Push your products and categories so Pulse knows what it can recommend and rank.",
-      "step3Title": "3. Fetch personalization",
-      "step3Desc": "Call the Decision API to reorder grids and search results for the live visitor."
-    },
-    "auth": {
-      "title": "Authentication",
-      "signupNote": "You'll need a Pulse account first. Sign up to create your organization, then generate and manage your API keys from the dashboard.",
-      "signupCta": "Sign up to get your API keys →",
-      "intro": "All API requests require authentication using an API key. Include your key in the <code>Authorization</code> header.",
-      "securityLabel": "Security Note",
-      "securityNote": "Never expose your secret API key in client-side code. All inference and catalog requests should be made from your backend servers. The browser SDK uses a publishable key (pk_live_…) scoped to event ingestion only."
-    },
-    "inference": {
-      "title": "Inference API",
-      "desc": "Rank a visitor session against the catalogue. Returns the ranking factors, confidence scores and the product order, with the decision record behind each one.",
-      "latency": "Target latency: <50ms (p95)",
-      "requestBody": "Request Body",
-      "response": "Response"
-    },
-    "catalog": {
-      "title": "Catalog Sync, Products & Categories",
-      "intro": "Push your products and categories to Pulse so the engine knows what it can personalize. Send a full catalog once, then keep it in sync by sending each create, update, or delete as it happens in your store.",
-      "async": "Enrichment and attribute tagging run asynchronously in the ingestion pipeline, the upsert call returns <code>202 Accepted</code> immediately and the <code>products.tagged</code> webhook fires when a product becomes available for inference. Inference itself stays on the request path.",
-      "upsertDesc": "Create or update products. The call is idempotent on <code>id</code>, send the same product again with new fields to update it. Accepts one product or a batch.",
-      "categoriesDesc": "Sync your category tree so Pulse understands how products relate. Set <code>parent_id</code> to mirror your store's hierarchy. Upserted the same way as products.",
-      "deleteDesc": "Remove a product when it is deleted or permanently out of stock. It stops appearing in recommendations immediately. Use the same pattern to delete categories.",
-      "syncLabel": "Keeping in sync",
-      "syncNote": "Most merchants wire these calls to their store's product/category change events (e.g. a Shopify webhook or a save hook in a custom backend) so the Pulse catalog always mirrors what shoppers see. A nightly full re-sync is recommended as a safety net."
-    },
-    "personalize": {
-      "title": "Decision API",
-      "desc": "Once the SDK is capturing signals and your catalog is synced, call these endpoints to reorder your storefront in real time for the current visitor. Call them from your backend with a Bearer token, passing the session_id the SDK created in the browser.",
-      "recommendDesc": "Return a ranked list of products personalized to the visitor's live persona, use it for \"For You\" grids, related products, and homepage rails.",
-      "searchDesc": "Re-rank your search results by intent. Send the shopper's query and Pulse orders the matching products by the persona inferred this session. Results are cursor-paginated."
-    },
-    "webhooks": {
-      "title": "Webhooks",
-      "intro": "Configure webhooks to receive real-time notifications for events like persona updates, conversion tracking, and model improvements.",
-      "eventsTitle": "Available Events",
-      "converted": "Conversion attributed to Pulse",
-      "tagged": "Product tagging completed",
-      "updated": "Inference model improved"
-    },
-    "errors": {
-      "title": "Errors",
-      "intro": "Pulse uses standard HTTP status codes and returns errors in the RFC 7807 Problem Details format, so every error includes a machine-readable type and a human-readable detail.",
-      "codesTitle": "Common Status Codes",
-      "codeCol": "Code",
-      "meaningCol": "Meaning",
-      "e400": "Bad Request, the payload is malformed or a required field is missing.",
-      "e401": "Unauthorized, the API key is missing or invalid.",
-      "e403": "Forbidden, the key is valid but not permitted for this resource.",
-      "e404": "Not Found, the session, product, or endpoint does not exist.",
-      "e422": "Unprocessable Entity, the request is well-formed but fails validation.",
-      "e429": "Too Many Requests, you have exceeded your plan's rate limit.",
-      "e500": "Server Error, something went wrong on our side; retry with backoff."
-    },
-    "rateLimits": {
-      "title": "Rate Limits",
-      "planCol": "Plan",
-      "inferCol": "Inference API",
-      "catalogCol": "Catalog API",
-      "custom": "Custom"
-    },
-    "sdks": {
-      "title": "SDKs & Libraries"
-    },
-    "needHelp": "Need Help?",
-    "helpDescription": "Our solutions engineering team is here to help you integrate Pulse successfully.",
-    "getSupport": "Get Integration Support",
-    "contactSupport": "Contact Support",
-    "heroAlt": "A developer at a laptop, with API resources flowing out of it: a schema, a folder, a chart, a webhook and a rate limit.",
-    "gateTitle": "Want the whole thing as one document?",
-    "gateBody": "Leave an email and we will send the full integration guide, both worked examples and the endpoint reference, in a single file you can forward to whoever has to approve it.",
-    "gateCta": "Send it to me",
-    "gateSuccess": "On its way. Check your inbox for the documentation.",
-    "differentCredential": "Different credential:",
-    "catalogueWriteAuth": "catalogue writes are authenticated as a signed-in dashboard session, not with the publishable",
-    "keyUsedAbove": "key used for the calls above.",
-    "exampleAuthRequest": "# Example request with authentication"
-  },
   "integrations": {
     "meta": {
       "title": "Integrations: read the export you already produce",
@@ -892,10 +710,10 @@
   },
   "product": {
     "meta": {
-      "title": "Product: measure, then rank the storefront",
-      "description": "Decision Audit, Verification and Monitor for product data, plus Search, Recommendations, Pages and the Studio. A staircase with an exit at each step.",
-      "ogTitle": "Product: measure, then rank the storefront",
-      "ogDescription": "Decision Audit, Verification and Monitor for product data, plus Search, Recommendations, Pages and the Studio. A staircase with an exit at each step."
+      "title": "Commerce decision intelligence for product data",
+      "description": "Pulse audits product catalogues against real buying requirements, ranks the product-data gaps worth fixing, verifies enrichment and monitors decision readiness.",
+      "ogTitle": "Commerce decision intelligence for product data",
+      "ogDescription": "Pulse audits product catalogues against real buying requirements, ranks the product-data gaps worth fixing, verifies enrichment and monitors decision readiness."
     },
     "badge": "The engine",
     "title": "The system that knows what it",

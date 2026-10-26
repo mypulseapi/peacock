@@ -1,6 +1,9 @@
 import { byLocale } from "@/content/locale";
 import { Undo2, Wrench, Scale, CircleSlash, FlaskConical } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
+import type { PromotionsArtText } from "@/components/designed/product/chapter-art";
+
+type Content = ChapterContent & { art: PromotionsArtText };
 
 /**
  * Promotion Audit. Grounded in what rainbow ships (ODIN/strategy/INTERVENTION-INTELLIGENCE.md §11):
@@ -13,7 +16,7 @@ import type { StoryContent } from "@/components/StoryPage";
  * so the copy describes what is measured and the "will not" list says the rest. No competitor or
  * marketplace is named as failing.
  */
-export const PROMOTION_AUDIT: StoryContent = {
+export const PROMOTION_AUDIT: Content = {
   meta: {
     title: "Promotion Audit: which discounts paid for themselves",
     description:
@@ -22,6 +25,28 @@ export const PROMOTION_AUDIT: StoryContent = {
   eyebrow: "Promotion Audit",
   title: "Find out which promotions paid for themselves, after the returns.",
   lede: "Send the history of your vouchers, price cuts and free-shipping offers with the orders, returns and failed deliveries they produced. We work out which ones left you better off than doing nothing, for which shoppers, and where fixing the listing beats a discount.",
+
+  // The words inside the hero panel and the chain chart (chapter-art.tsx). The offers are the ones
+  // this page names; nothing here is a measured result.
+  art: {
+    note: "Illustration",
+    heading: "Offers",
+    offers: [
+      "No offer",
+      "Voucher",
+      "Price cut",
+      "Free shipping",
+      "Listing repair",
+    ],
+    beats: "Beats doing nothing",
+    test: "Test first",
+    nothing: "Doing nothing was better",
+    baseline: "Doing nothing",
+    orders: "Orders",
+    failed: "Failed deliveries",
+    returned: "Returns",
+    kept: "Stay bought",
+  },
 
   chainBlock: {
     eyebrow: "More orders is not the goal",
@@ -144,7 +169,7 @@ export const PROMOTION_AUDIT: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const PROMOTION_AUDIT_VI: StoryContent = {
+export const PROMOTION_AUDIT_VI: Content = {
   meta: {
     title: "Promotion Audit: khuyến mãi nào thực sự có lãi",
     description:
@@ -153,6 +178,26 @@ export const PROMOTION_AUDIT_VI: StoryContent = {
   eyebrow: "Promotion Audit",
   title: "Biết khuyến mãi nào thực sự có lãi, sau khi đã tính hàng bị trả.",
   lede: "Gửi lịch sử voucher, giảm giá và miễn phí vận chuyển của bạn kèm số đơn, hàng bị trả và đơn giao thất bại mà chúng tạo ra. Chúng tôi tính xem ưu đãi nào giúp bạn tốt hơn so với không làm gì, cho nhóm người mua nào, và ở đâu sửa trang sản phẩm có lợi hơn giảm giá.",
+
+  art: {
+    note: "Minh hoạ",
+    heading: "Ưu đãi",
+    offers: [
+      "Không ưu đãi",
+      "Voucher",
+      "Giảm giá",
+      "Miễn phí vận chuyển",
+      "Sửa trang sản phẩm",
+    ],
+    beats: "Tốt hơn không làm gì",
+    test: "Thử trước",
+    nothing: "Không làm gì tốt hơn",
+    baseline: "Không làm gì",
+    orders: "Đơn hàng",
+    failed: "Giao thất bại",
+    returned: "Hàng bị trả",
+    kept: "Được giữ lại",
+  },
 
   chainBlock: {
     eyebrow: "Nhiều đơn hơn không phải là mục tiêu",

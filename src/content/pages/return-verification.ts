@@ -1,6 +1,9 @@
 import { byLocale } from "@/content/locale";
 import { Split, ListOrdered, GitCompare, Coins, Repeat } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
+import type { ReturnsArtText } from "@/components/designed/product/chapter-art";
+
+type Content = ChapterContent & { art: ReturnsArtText };
 
 /**
  * Return Verification. Grounded in what rainbow actually ships (ODIN/strategy/RETURN-AWARE-DECISIONS.md
@@ -12,7 +15,7 @@ import type { StoryContent } from "@/components/StoryPage";
  * returns, or any figure. Everything has run on simulated orders only, so the copy describes what is
  * measured and how, and the "will not" list says the rest.
  */
-export const RETURN_VERIFICATION: StoryContent = {
+export const RETURN_VERIFICATION: Content = {
   meta: {
     title: "Return Verification: missing facts behind returns",
     description:
@@ -21,6 +24,26 @@ export const RETURN_VERIFICATION: StoryContent = {
   eyebrow: "Return Verification",
   title: "Find the missing facts your returns are telling you about.",
   lede: "Send your order history with the reasons people gave. We join it to your catalogue, show which missing product information goes with returns, and after a repair, whether that slice of returns actually moved.",
+
+  // The words inside the hero panel and the chain chart (chapter-art.tsx). Reasons and facts are the
+  // situation's own examples; nothing here is a measured result.
+  art: {
+    note: "Illustration",
+    heading: "Returns",
+    missing: "missing",
+    setAside: "Set aside",
+    reasons: [
+      "Too large",
+      "Does not work with my device",
+      "Not as described",
+      "Transit damage",
+      "Failed delivery",
+    ],
+    facts: ["Dimensions", "Compatibility", "Material"],
+    yours: "A product fact could have prevented it",
+    notYours: "Not product information",
+    rate: "Return rate",
+  },
 
   chainBlock: {
     eyebrow: "Returns are not one number",
@@ -143,7 +166,7 @@ export const RETURN_VERIFICATION: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const RETURN_VERIFICATION_VI: StoryContent = {
+export const RETURN_VERIFICATION_VI: Content = {
   meta: {
     title: "Return Verification: thông tin thiếu sau hàng bị trả",
     description:
@@ -152,6 +175,24 @@ export const RETURN_VERIFICATION_VI: StoryContent = {
   eyebrow: "Return Verification",
   title: "Tìm ra những thông tin còn thiếu mà hàng bị trả đang chỉ cho bạn.",
   lede: "Gửi lịch sử đơn hàng kèm lý do người mua đưa ra. Chúng tôi nối nó với danh mục của bạn, chỉ ra thông tin sản phẩm còn thiếu nào đi cùng hàng bị trả, và sau khi sửa, phần hàng bị trả đó có thực sự giảm hay không.",
+
+  art: {
+    note: "Minh hoạ",
+    heading: "Hàng bị trả",
+    missing: "thiếu",
+    setAside: "Để riêng",
+    reasons: [
+      "Quá to",
+      "Không dùng được với thiết bị của tôi",
+      "Không giống mô tả",
+      "Hư hỏng khi vận chuyển",
+      "Giao hàng thất bại",
+    ],
+    facts: ["Kích thước", "Khả năng tương thích", "Chất liệu"],
+    yours: "Thông tin sản phẩm có thể ngăn được",
+    notYours: "Không phải thông tin sản phẩm",
+    rate: "Tỷ lệ trả hàng",
+  },
 
   chainBlock: {
     eyebrow: "Hàng bị trả không chỉ là một con số",

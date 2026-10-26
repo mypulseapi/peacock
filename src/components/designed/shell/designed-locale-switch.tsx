@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LOCALES, isLocale } from "@/i18n/locales";
 
@@ -23,6 +22,12 @@ import { LOCALES, isLocale } from "@/i18n/locales";
  * has nothing to resolve during a static prerender, which made the link dead for crawlers and
  * for anyone whose JavaScript had not arrived. Swapping the first path segment needs no
  * request, so it survives prerendering.
+ *
+ * ponytail: a plain `<a>`, not `next/link`, so switching language is a full page load. The
+ * `[locale]` layout renders `<html>`, so a client navigation to another locale remounts it, and
+ * React strips every attribute from `<html>` on unmount. That took the `data-theme` and `data-js`
+ * the inline theme script stamps: a light-mode visitor on a dark OS saw the page flash dark, then
+ * fade back. A full load runs that script before first paint again.
  *
  * The `<details>` wrapper, the classes and the icon references are the designer's, unchanged,
  * so this looks identical to the menu it replaces.
@@ -77,7 +82,7 @@ export function DesignedLocaleSwitch({ heading }: { heading: string }) {
                 </svg>
               </span>
             ) : (
-              <Link
+              <a
                 key={l.code}
                 href={hrefFor(l.code)}
                 hrefLang={l.tag}
@@ -85,7 +90,7 @@ export function DesignedLocaleSwitch({ heading }: { heading: string }) {
                 className="mt-1 flex min-h-11 items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:bg-surface-1"
               >
                 <span aria-hidden="true">{l.flag}</span> {l.label}
-              </Link>
+              </a>
             ),
           )}
         </div>

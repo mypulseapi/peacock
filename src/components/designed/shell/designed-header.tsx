@@ -99,7 +99,10 @@ export function DesignedHeader() {
                   data-panel
                   className="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none"
                 >
-                  <div data-nav-content className="nav-content flex flex-col">
+                  {/* A fixed width, three columns' worth like Templates (2026-10-26). Its columns grow to fill
+                      (`flex-1`), so without one it took whatever width the viewport had when the script
+                      measured it: 608px on first open or after Resources, 912px after Templates. */}
+                  <div data-nav-content className="nav-content flex w-228 flex-col">
                     {/* The catalogue tools side by side; the storefront, which comes later, as a row under them. */}
                     <div className="flex w-full justify-center">
                       <div className="nav-column min-w-76 flex-1 p-3">
@@ -158,7 +161,9 @@ export function DesignedHeader() {
                         <ul className="space-y-1">
                           <li>
                             <Link
-                              href={designedHref("/en/product/decision-monitor")}
+                              href={designedHref(
+                                "/en/product/decision-monitor",
+                              )}
                               className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                             >
                               <span className="nav-icon-tile">
@@ -197,6 +202,26 @@ export function DesignedHeader() {
                                 </span>
                                 <span className="mt-1 block text-sm text-pretty text-muted">
                                   {t("returnBlurb")}
+                                </span>
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href={designedHref("/en/product/promotion-audit")}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="nav-icon-tile">
+                                <svg className="size-4" aria-hidden="true">
+                                  <use href="#i-chart-pie" />
+                                </svg>
+                              </span>
+                              <span className="min-w-0">
+                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                  {t("promotionName")}
+                                </span>
+                                <span className="mt-1 block text-sm text-pretty text-muted">
+                                  {t("promotionBlurb")}
                                 </span>
                               </span>
                             </Link>
@@ -640,6 +665,19 @@ export function DesignedHeader() {
                     </svg>
                   </span>
                   {t("returnName")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={designedHref("/en/product/promotion-audit")}
+                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                >
+                  <span className="nav-icon-tile size-9">
+                    <svg className="size-4" aria-hidden="true">
+                      <use href="#i-chart-pie" />
+                    </svg>
+                  </span>
+                  {t("promotionName")}
                 </Link>
               </li>
             </ul>

@@ -20,8 +20,11 @@ export function HeroSection() {
       data-hero
     >
       <div className="w-full">
-        <div className="frame grid grid-cols-1 items-center gap-12 py-12 xl:grid-cols-10 xl:gap-14">
-          <div className="@container xl:col-span-3">
+        <div className="frame grid grid-cols-1 items-center gap-12 py-12 xl:grid-cols-3 xl:gap-10">
+          {/* Title one third, demo two thirds (26 Oct 2026, owner: a bigger title, same layout). At
+              1440px that is 347px beside 733px: the widest title column that still leaves the demo
+              table room for all four attribute columns, which clip below about 700px. */}
+          <div className="@container">
             {/*
                       `xl:whitespace-nowrap` is gone from both lines.
 
@@ -34,14 +37,16 @@ export function HeroSection() {
                       Wrapping costs the English headline nothing: `text-hero` and the two
                       blocks still set the two lines, and a line that does not fit now takes a
                       second row instead of disappearing under the panel. */}
-            <h1 className="reveal text-hero">
+            {/* No `reveal` on the hero (26 Oct 2026, the site review's Direction A): it is the first
+                thing on screen, so it is drawn on first paint rather than faded in over a second. */}
+            <h1 className="text-hero">
               <span className="block text-balance">{t("1")}</span>
               <span className="block text-balance">{t("2")}</span>
             </h1>
-            <p className="reveal mt-6 max-w-md text-lg leading-relaxed text-pretty text-muted delay-200">
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-pretty text-muted">
               {t("3")}
             </p>
-            <div className="reveal mt-8 flex flex-wrap gap-3 delay-300">
+            <div className="mt-8 flex flex-wrap gap-3">
               <Link href={designedHref("/en/contact")} className="btn-primary">
                 {t("4")}
               </Link>
@@ -51,7 +56,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="reveal delay-400 xl:col-span-7">
+          <div className="xl:col-span-2">
             <div className="hero-glow">
               <div className="relative" data-demo data-pausable>
                 {/* Timeline: one segment per step; the active segment fills while its step plays (demo-timer), done steps stay full */}
@@ -164,7 +169,7 @@ export function HeroSection() {
                 </div>
                 {/* App window (attio.com style): a light frame with the window controls, the app panel inset in it */}
                 <div
-                  className="rounded-2xl border border-line bg-surface-1 p-1.5 shadow-sm"
+                  className="rounded-2xl border border-line bg-surface-1 p-1.5 shadow-window"
                   data-demo-window
                 >
                   <div className="flex h-8 items-center gap-3 px-2.5">

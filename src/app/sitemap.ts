@@ -39,6 +39,7 @@ const staticPages = [
   "/product/decision-audit",
   "/product/decision-verification",
   "/product/return-verification",
+  "/product/promotion-audit",
   "/product/decision-monitor",
   "/product/decision-api",
   // The four storefront surfaces the Decision API serves.
@@ -77,6 +78,7 @@ const pagePriorities: Record<string, number> = {
   "/product/decision-audit": 0.9,
   "/product/decision-verification": 0.8,
   "/product/return-verification": 0.8,
+  "/product/promotion-audit": 0.8,
   "/product/decision-monitor": 0.8,
   "/product/decision-api": 0.7,
   "/product/search": 0.9,
@@ -114,6 +116,7 @@ const changeFrequencies: Record<
   "/product/decision-audit": "monthly",
   "/product/decision-verification": "monthly",
   "/product/return-verification": "monthly",
+  "/product/promotion-audit": "monthly",
   "/product/decision-monitor": "monthly",
   "/product/decision-api": "monthly",
   "/product/search": "monthly",

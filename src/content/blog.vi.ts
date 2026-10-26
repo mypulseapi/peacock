@@ -24,8 +24,8 @@ export const BLOG_VI: Record<string, string> = {
   Measurement: "Phép đo",
   Method: "Phương pháp",
   Positioning: "Định vị",
-  "Marketplaces": "Sàn thương mại",
-  "B2B": "B2B",
+  Marketplaces: "Sàn thương mại",
+  B2B: "B2B",
   Travel: "Du lịch",
   Advertising: "Quảng cáo",
   "AI search": "Tìm kiếm AI",
@@ -66,16 +66,16 @@ export const BLOG_VI: Record<string, string> = {
     "Giả sử bạn chấp nhận chẩn đoán này và quyết định sửa. Vậy bạn sẽ cấu trúc hoá thuộc tính nào trước?",
   "The usual answer is to rank by how empty each field is, because that is the number a completeness report gives you. That ranking is close to arbitrary for this purpose. A field that is 90% empty and that nobody chooses on is worth less than a field that is 40% empty and decides every purchase in the category.":
     "Câu trả lời quen thuộc là xếp hạng theo mức độ trống của từng trường, vì đó chính là con số mà một báo cáo mức hoàn thiện đưa cho bạn. Với mục đích này, cách xếp hạng đó gần như tuỳ tiện. Một trường trống 90% mà không ai dựa vào để chọn thì đáng giá ít hơn một trường trống 40% nhưng quyết định mọi giao dịch trong ngành hàng.",
-  "On one laptop shelf we measured ourselves, ranking by absence and ranking by what shoppers said they needed disagreed completely. Processor was missing on 162 of 216 products, which put it third by absence. Only 2 of 32 stated buying requirements mentioned a processor at all, which put it last by demand. Storage and processor traded places, and fixing processor first would have been the most expensive way to change nothing.":
-    "Trên một kệ laptop mà chúng tôi tự đo, cách xếp theo sự vắng mặt và cách xếp theo điều người mua nói là họ cần đã hoàn toàn bất đồng. Vi xử lý thiếu ở 162 trên 216 sản phẩm, đưa nó lên hạng ba theo sự vắng mặt. Chỉ 2 trên 32 yêu cầu mua hàng được nêu ra có nhắc tới vi xử lý, đưa nó xuống hạng chót theo nhu cầu. Dung lượng và vi xử lý đổi chỗ cho nhau, và sửa vi xử lý trước sẽ là cách tốn kém nhất để chẳng thay đổi được gì.",
+  "On a 216-product test shelf we built ourselves, ranking by absence and ranking by what shoppers said they needed disagreed completely. Processor was missing on 162 of 216 products, which put it third by absence. Only 2 of 32 stated buying requirements mentioned a processor at all, which put it last by demand. Storage and processor traded places, and fixing processor first would have been the most expensive way to change nothing.":
+    "Trên một kệ thử nghiệm 216 sản phẩm do chúng tôi tự dựng, cách xếp theo sự vắng mặt và cách xếp theo điều người mua nói là họ cần đã hoàn toàn bất đồng. Vi xử lý thiếu ở 162 trên 216 sản phẩm, đưa nó lên hạng ba theo sự vắng mặt. Chỉ 2 trên 32 yêu cầu mua hàng được nêu ra có nhắc tới vi xử lý, đưa nó xuống hạng chót theo nhu cầu. Dung lượng và vi xử lý đổi chỗ cho nhau, và sửa vi xử lý trước sẽ là cách tốn kém nhất để chẳng thay đổi được gì.",
   "94 of 216": "94 trên 216",
   "products on that shelf still indistinguishable after every question the catalogue could answer":
     "sản phẩm trên kệ đó vẫn không phân biệt được, sau khi danh mục đã trả lời mọi câu hỏi nó có thể trả lời",
   "our own measurement, reproducible from the repository":
     "phép đo của chính chúng tôi, có thể tái lập từ kho mã nguồn",
   "What to do about it this quarter": "Quý này nên làm gì",
-  "That last point is the one that changes project sizing. On the shelf we measured, 161 of 216 missing values were sitting in the merchant's own product titles, recoverable with a script. A quarter-long enrichment programme and a week of extraction look identical on a completeness dashboard and cost very different amounts.":
-    "Điểm cuối cùng mới là điểm làm thay đổi quy mô dự án. Trên kệ hàng chúng tôi đo, 161 trên 216 giá trị còn thiếu vốn đã nằm sẵn trong chính tiêu đề sản phẩm của nhà bán, và có thể lấy lại bằng một đoạn script. Một chương trình làm giàu dữ liệu kéo dài cả quý và một tuần trích xuất trông y hệt nhau trên bảng điều khiển mức hoàn thiện, nhưng chi phí thì khác nhau rất xa.",
+  "That last point is the one that changes project sizing. On our test shelf, storage was sitting in the product titles for 161 of 216 products, recoverable with a script. A quarter-long enrichment programme and a week of extraction look identical on a completeness dashboard and cost very different amounts.":
+    "Điểm cuối cùng mới là điểm làm thay đổi quy mô dự án. Trên kệ thử nghiệm của chúng tôi, dung lượng nằm sẵn trong tiêu đề ở 161 trên 216 sản phẩm, và có thể lấy lại bằng một đoạn script. Một chương trình làm giàu dữ liệu kéo dài cả quý và một tuần trích xuất trông y hệt nhau trên bảng điều khiển mức hoàn thiện, nhưng chi phí thì khác nhau rất xa.",
   "Open your worst-performing category as a shopper, not as an admin, and try to narrow it the way a buyer would":
     "Hãy mở ngành hàng kém hiệu quả nhất của bạn với tư cách người mua chứ không phải quản trị viên, và thử thu hẹp nó theo cách một người mua sẽ làm",
   "List the attributes printed on the card that you cannot filter on. That list is usually shorter and more actionable than a completeness report":
@@ -106,7 +106,8 @@ export const BLOG_VI: Record<string, string> = {
     "Khảo sát PX Pulse 2025 của Akeneo cho thấy tỷ lệ người tiêu dùng bực bội vì mô tả sản phẩm thiếu hoặc không rõ ràng đã tăng lên 34%, từ mức 28% của năm trước. Đó là khảo sát do một nhà cung cấp thực hiện và nên được đọc với đúng tư cách đó, nhưng chiều hướng của nó thống nhất với các nghiên cứu khả dụng: vấn đề đang xấu đi khi danh mục ngày càng sâu hơn.",
   "of consumers frustrated by incomplete or unclear product information, up from 28% a year earlier":
     "người tiêu dùng bực bội vì thông tin sản phẩm thiếu hoặc không rõ ràng, tăng từ mức 28% một năm trước đó",
-  "Two ways of scoring the same laptop shelf": "Hai cách chấm điểm cùng một kệ laptop",
+  "Two ways of scoring the same test shelf":
+    "Hai cách chấm điểm cùng một kệ thử nghiệm",
   "Products on the shelf": "Sản phẩm trên kệ",
   "Fields populated (93.1%)": "Trường đã điền (93,1%)",
   "Still indistinguishable": "Vẫn không phân biệt được",
@@ -117,9 +118,10 @@ export const BLOG_VI: Record<string, string> = {
     "Thay vì hỏi các trường đã đầy đến đâu, hãy hỏi thế này: sau khi danh mục của bạn đã trả lời hết mọi câu hỏi nó có thể trả lời, người mua vẫn còn phải chọn giữa bao nhiêu sản phẩm?",
   "That number has a property completeness does not. It gets worse when you add products without adding facts, which is what actually happens as a range grows. And it improves only when you record something a decision turns on, which is exactly the behaviour you want from a metric that is supposed to direct work.":
     "Con số đó có một đặc tính mà mức hoàn thiện không có. Nó xấu đi khi bạn thêm sản phẩm mà không thêm dữ kiện, và đó chính là điều thực sự xảy ra khi một dòng hàng mở rộng. Và nó chỉ cải thiện khi bạn ghi nhận một thứ mà quyết định mua xoay quanh nó, đúng như cách bạn muốn một chỉ số dùng để dẫn dắt công việc phải hành xử.",
-  "On the laptop shelf we measured, the catalogue scored 93.1% complete and still left 94 of its 216 products indistinguishable once every question it supported had been answered. Both numbers describe the same shelf. Only one of them describes the shopper's experience of it.":
-    "Trên kệ laptop chúng tôi đo, danh mục đạt mức hoàn thiện 93,1% mà vẫn để lại 94 trên 216 sản phẩm không phân biệt được, sau khi mọi câu hỏi nó hỗ trợ đều đã được trả lời. Cả hai con số đều mô tả cùng một kệ hàng. Chỉ một trong hai mô tả trải nghiệm của người mua trên kệ đó.",
-  "Why this is not an argument against your PIM": "Vì sao đây không phải lập luận chống lại PIM của bạn",
+  "On our test shelf, the catalogue scored 93.1% complete and still left 94 of its 216 products indistinguishable once every question it supported had been answered. Both numbers describe the same shelf. Only one of them describes the shopper's experience of it.":
+    "Trên kệ thử nghiệm của chúng tôi, danh mục đạt mức hoàn thiện 93,1% mà vẫn để lại 94 trên 216 sản phẩm không phân biệt được, sau khi mọi câu hỏi nó hỗ trợ đều đã được trả lời. Cả hai con số đều mô tả cùng một kệ hàng. Chỉ một trong hai mô tả trải nghiệm của người mua trên kệ đó.",
+  "Why this is not an argument against your PIM":
+    "Vì sao đây không phải lập luận chống lại PIM của bạn",
   "A PIM governs, enriches and distributes product information, and it does that well. Completeness is the right metric for the job a PIM is doing: it tells you whether the process is running. It was never designed to tell you whether the schema is right, and holding it to that is unfair to a tool that is doing what it was built for.":
     "Một hệ PIM quản trị, làm giàu và phân phối thông tin sản phẩm, và nó làm tốt việc đó. Mức hoàn thiện là chỉ số đúng cho công việc mà một PIM đang làm: nó cho bạn biết quy trình có đang chạy hay không. Nó chưa bao giờ được thiết kế để nói cho bạn biết lược đồ dữ liệu có đúng hay không, và đòi hỏi điều đó là không công bằng với một công cụ đang làm đúng việc nó được tạo ra để làm.",
   "Completeness is a process metric. Readiness is an outcome metric. Reporting the first and managing to the second is the mismatch.":
@@ -160,7 +162,8 @@ export const BLOG_VI: Record<string, string> = {
   "Return terms": "Điều khoản đổi trả",
   "Two of the facts buyers most often decide on, and almost nobody publishes them in a form anything but a human can read.":
     "Hai trong số những dữ kiện mà người mua thường dựa vào để quyết định nhất, vậy mà gần như không ai xuất bản chúng ở dạng mà thứ gì khác ngoài con người có thể đọc.",
-  "Why the product page is the hard one": "Vì sao trang sản phẩm mới là trang khó",
+  "Why the product page is the hard one":
+    "Vì sao trang sản phẩm mới là trang khó",
   "A homepage has a handful of things on it and they are mostly navigational, so marking them up is tractable. A product page has to express everything that distinguishes one item from a near-identical one, and most of that distinguishing detail was written as prose because prose is what sells.":
     "Một trang chủ chỉ có vài thứ trên đó và phần lớn mang tính điều hướng, nên việc đánh dấu dữ liệu là khả thi. Một trang sản phẩm phải diễn đạt mọi thứ phân biệt món hàng này với một món gần như y hệt, và phần lớn những chi tiết phân biệt ấy được viết dưới dạng văn xuôi, vì văn xuôi mới là thứ bán được hàng.",
   "So the richer your product copy, the larger the gap between what you have said and what a structured consumer can use. A beautifully written description is an asset to a human reader and invisible to an agent applying a filter.":
@@ -173,7 +176,8 @@ export const BLOG_VI: Record<string, string> = {
     "Bạn không thể đánh dấu một dữ kiện mà bạn không có. Độ phủ lược đồ bị chặn trên bởi độ phủ thuộc tính.",
   "Which puts the work in an order: find out which attributes a decision in your category actually turns on, check which of those you record, recover what is recoverable from the text you already publish, and only then argue about markup. Doing markup first produces a well-structured statement of the things you happened to have.":
     "Điều đó xếp công việc theo một thứ tự: tìm ra những thuộc tính mà một quyết định trong ngành hàng của bạn thực sự xoay quanh, kiểm tra xem bạn ghi nhận được bao nhiêu trong số đó, lấy lại những gì có thể lấy từ phần văn bản bạn vốn đã xuất bản, và chỉ sau đó mới bàn tới việc đánh dấu. Làm đánh dấu trước sẽ tạo ra một bản khai có cấu trúc chỉn chu về những thứ bạn tình cờ đang có.",
-  "What to check on your own catalogue": "Nên kiểm tra gì trên danh mục của chính bạn",
+  "What to check on your own catalogue":
+    "Nên kiểm tra gì trên danh mục của chính bạn",
   "Take one category and list the constraints a buyer would filter on. Not the fields you have, the constraints they have":
     "Hãy lấy một ngành hàng và liệt kê những ràng buộc mà người mua sẽ lọc theo. Không phải những trường bạn đang có, mà là những ràng buộc họ đang có",
   "For each, check whether it exists as a value rather than as a sentence in the description":
@@ -213,7 +217,8 @@ export const BLOG_VI: Record<string, string> = {
     "Một cú đảo chiều 80 điểm trong mười hai tháng. Adobe cũng báo cáo mức tương tác tăng 12%, thời gian trên website tăng 48%, số trang mỗi lượt ghé tăng 13% và doanh thu mỗi lượt ghé tăng 37%.",
   "year-on-year growth in AI-driven traffic to US retail sites, Q1 2026":
     "mức tăng trưởng so với cùng kỳ của lưu lượng do AI dẫn tới các website bán lẻ Mỹ, quý 1 năm 2026",
-  "What that changes for product data": "Điều đó thay đổi gì với dữ liệu sản phẩm",
+  "What that changes for product data":
+    "Điều đó thay đổi gì với dữ liệu sản phẩm",
   "A visitor who arrives through an assistant has usually had a set of constraints applied on their behalf before they ever see your page. They are further down the decision than organic traffic, which is a plausible reason for the conversion reversal.":
     "Một người ghé thăm đến qua trợ lý AI thường đã được áp một bộ ràng buộc thay cho họ, từ trước khi họ nhìn thấy trang của bạn. Họ đã đi xa hơn trong quá trình quyết định so với lưu lượng tự nhiên, và đó là một lý do hợp lý cho cú đảo chiều về chuyển đổi.",
   "It also means the filtering happened somewhere you cannot see, against whatever attributes were available. If a constraint could not be evaluated against your product, your product was not in the set that got shown. There is no partial credit and no benefit of the doubt: an agent applying a filter treats a missing value as not qualifying, because that is the safe behaviour for it.":
@@ -246,7 +251,8 @@ export const BLOG_VI: Record<string, string> = {
   "Where retail search money and clicks actually go":
     "Tiền và lượt nhấp trong tìm kiếm ngành bán lẻ thực sự chảy về đâu",
   "Retail search spend on Shopping": "Chi tiêu tìm kiếm bán lẻ cho Shopping",
-  "Retail ad clicks from Shopping": "Lượt nhấp quảng cáo bán lẻ đến từ Shopping",
+  "Retail ad clicks from Shopping":
+    "Lượt nhấp quảng cáo bán lẻ đến từ Shopping",
   "Both are matched on feed attributes rather than on ad copy or landing page.":
     "Cả hai đều được khớp theo thuộc tính nguồn cấp dữ liệu, chứ không theo nội dung quảng cáo hay trang đích.",
   "The expensive half is the one that looks fine":
@@ -257,7 +263,8 @@ export const BLOG_VI: Record<string, string> = {
     "Kết cục thứ hai mới là vấn đề, và báo cáo chiến dịch không phân biệt được nó với tình trạng kém hiệu quả thông thường. Nó hiện ra như một lượt nhấp không chuyển đổi. Phản ứng tự nhiên là chỉnh giá thầu và siết từ khoá phủ định, mà cả hai đều không chạm tới nguyên nhân.",
   "A missing feed attribute does not look like a data problem in your reporting. It looks like a click that did not convert.":
     "Một thuộc tính nguồn cấp còn thiếu không hiện ra như một vấn đề dữ liệu trong báo cáo của bạn. Nó hiện ra như một lượt nhấp không chuyển đổi.",
-  "What the platforms say about identifiers": "Các nền tảng nói gì về mã định danh",
+  "What the platforms say about identifiers":
+    "Các nền tảng nói gì về mã định danh",
   "Google reports that retailers who added correct GTINs to their product data saw a 20% increase in clicks on average. Agency analyses of feed optimisation programmes report larger effects, including a roughly 70% ROAS improvement and 4.4% CTR growth in one published case, though those come from practitioners describing their own work and should be read with that in mind.":
     "Google cho biết những nhà bán lẻ bổ sung mã GTIN chính xác vào dữ liệu sản phẩm ghi nhận mức tăng trung bình 20% về lượt nhấp. Các phân tích của agency về chương trình tối ưu nguồn cấp báo cáo hiệu quả lớn hơn, trong đó có một trường hợp công bố mức cải thiện ROAS khoảng 70% và CTR tăng 4,4%, dù những con số đó đến từ chính những người làm nghề mô tả công việc của họ và nên được đọc với lưu ý đó.",
   "The point is not the specific numbers. It is that the lever sits upstream of everything a paid media team normally controls.":
@@ -338,12 +345,14 @@ export const BLOG_VI: Record<string, string> = {
     "Thế là họ gọi điện. Bộ phận bán hàng trả lời đi trả lời lại cùng một câu hỏi kỹ thuật và xếp nó vào mục chăm sóc khách hàng, vì danh mục vốn chưa bao giờ được kỳ vọng sẽ trả lời câu hỏi đó. Với một danh mục dựng từ bảng giá in thì niềm tin ấy là hợp lý, nhưng nó không còn đúng với điều người mua kỳ vọng ngày nay.",
   "The spec is not missing. It is in a PDF, which is the same as missing to everyone except the person who already knows the part number.":
     "Thông số không hề thiếu. Nó nằm trong một file PDF, mà điều đó tương đương với việc thiếu đối với tất cả mọi người, trừ người đã biết sẵn mã linh kiện.",
-  "Why this sector is the cheapest to fix": "Vì sao ngành này lại rẻ nhất để sửa",
+  "Why this sector is the cheapest to fix":
+    "Vì sao ngành này lại rẻ nhất để sửa",
   "The distinguishing fact about distribution is that the data almost always exists. It arrived with the range, in a supplier datasheet, as a table in a PDF. Nobody mapped it into a field because nobody needed it in a field while part-number search was sufficient.":
     "Điểm đặc trưng của ngành phân phối là dữ liệu gần như luôn luôn tồn tại. Nó đến cùng với dải hàng, trong một bảng thông số của nhà cung cấp, dưới dạng một bảng trong file PDF. Không ai ánh xạ nó vào một trường dữ liệu, vì không ai cần nó nằm trong một trường khi tìm theo mã linh kiện vẫn còn đủ dùng.",
   "That makes most of the work mapping rather than acquisition, and the two differ by an order of magnitude in cost. The question worth answering before budgeting is which of your gaps are which.":
     "Điều đó khiến phần lớn công việc là ánh xạ chứ không phải đi thu thập, và chi phí của hai việc này chênh nhau cả một bậc. Câu hỏi đáng trả lời trước khi lập ngân sách là trong các khoảng trống của bạn, cái nào thuộc loại nào.",
-  "The argument that lands internally": "Lập luận có sức thuyết phục trong nội bộ",
+  "The argument that lands internally":
+    "Lập luận có sức thuyết phục trong nội bộ",
   "Specification search is not a better version of part-number search. It serves a different customer: the one evaluating you against an alternative, and the one specifying a new build who has no incumbent relationship with you at all.":
     "Tìm kiếm theo thông số kỹ thuật không phải là phiên bản tốt hơn của tìm kiếm theo mã linh kiện. Nó phục vụ một nhóm khách khác: người đang cân nhắc bạn với một lựa chọn thay thế, và người đang lên cấu hình cho một công trình mới mà chưa từng có quan hệ sẵn có nào với bạn.",
   "Part-number search serves the customers you already have. Specification search is how you get the next ones, and it is also the most direct route to reducing the load on a sales desk that is currently acting as the catalogue's query interface.":
@@ -356,7 +365,8 @@ export const BLOG_VI: Record<string, string> = {
     "Bộ lọc du lịch trả về gần như mọi thứ, vì gần như chẳng có gì được gắn thẻ",
   "A traveller who needs step-free access and a cot is reading forty descriptions looking for two sentences. The facts are usually written down. They are just not fields.":
     "Một du khách cần lối vào không bậc thang và một chiếc cũi trẻ em đang phải đọc bốn mươi bản mô tả để tìm hai câu văn. Những dữ kiện đó thường đã được viết ra. Chỉ là chúng không phải trường dữ liệu.",
-  "Travel filters return almost everything": "Bộ lọc du lịch trả về gần như mọi thứ",
+  "Travel filters return almost everything":
+    "Bộ lọc du lịch trả về gần như mọi thứ",
   "A traveller needing step-free access and a cot reads forty descriptions looking for two sentences. The facts are written down. They are just not fields.":
     "Du khách cần lối vào không bậc thang và một chiếc cũi phải đọc bốn mươi bản mô tả để tìm hai câu. Dữ kiện đã được viết ra, chỉ là không phải trường dữ liệu.",
   "31 July 2026": "Ngày 31 tháng 7 năm 2026",
@@ -379,17 +389,18 @@ export const BLOG_VI: Record<string, string> = {
   "Late check-in": "Nhận phòng muộn",
   "Cot available": "Có cũi trẻ em",
   "Step-free access": "Lối vào không bậc thang",
-  "The attribute recorded almost everywhere is the one almost nobody decides on. The measured figures on this site are the laptop shelf's, on the method page.":
-    "Thuộc tính được ghi nhận ở gần như mọi nơi lại là thuộc tính gần như không ai dựa vào để quyết định. Những con số đo được trên website này là của kệ laptop, nằm ở trang phương pháp.",
-  "The cost lands after the booking": "Cái giá phải trả rơi xuống sau khi đã đặt phòng",
+  "The attribute recorded almost everywhere is the one almost nobody decides on. The measured figures on this site are the test shelf's, on the method page.":
+    "Thuộc tính được ghi nhận ở gần như mọi nơi lại là thuộc tính gần như không ai dựa vào để quyết định. Những con số đo được trên website này là của kệ thử nghiệm, nằm ở trang phương pháp.",
+  "The cost lands after the booking":
+    "Cái giá phải trả rơi xuống sau khi đã đặt phòng",
   "In retail, an unfilterable attribute costs you a sale you never see. In travel it frequently costs more than that, because the traveller books anyway and finds out on arrival.":
     "Trong bán lẻ, một thuộc tính không lọc được khiến bạn mất một đơn hàng mà bạn không bao giờ nhìn thấy. Trong du lịch, nó thường tốn kém hơn thế, vì du khách vẫn cứ đặt phòng rồi mới phát hiện ra khi tới nơi.",
   "Someone who needed step-free access and got three flights of stairs generates a complaint, a refund, and a review that outlives both. The attribute would have been cheaper than any one of those.":
     "Một người cần lối vào không bậc thang mà nhận được ba tầng cầu thang sẽ tạo ra một khiếu nại, một khoản hoàn tiền, và một bài đánh giá sống lâu hơn cả hai thứ kia. Ghi nhận thuộc tính đó hẳn đã rẻ hơn bất kỳ thứ nào trong số đó.",
   "Most of it is extraction, not acquisition":
     "Phần lớn công việc là trích xuất, không phải đi thu thập",
-  "The encouraging part is that the facts are usually already written. \"Lift to all floors\" is in the description. \"Cots available on request\" is in the description. They are sentences rather than fields, which is exactly the case that is cheap to recover from text you already hold.":
-    "Phần đáng mừng là những dữ kiện đó thường đã được viết ra sẵn. \"Thang máy tới mọi tầng\" nằm trong phần mô tả. \"Có cũi trẻ em theo yêu cầu\" nằm trong phần mô tả. Chúng là những câu văn chứ không phải trường dữ liệu, mà đó đúng là trường hợp rẻ nhất để lấy lại từ phần văn bản bạn vốn đã có.",
+  'The encouraging part is that the facts are usually already written. "Lift to all floors" is in the description. "Cots available on request" is in the description. They are sentences rather than fields, which is exactly the case that is cheap to recover from text you already hold.':
+    'Phần đáng mừng là những dữ kiện đó thường đã được viết ra sẵn. "Thang máy tới mọi tầng" nằm trong phần mô tả. "Có cũi trẻ em theo yêu cầu" nằm trong phần mô tả. Chúng là những câu văn chứ không phải trường dữ liệu, mà đó đúng là trường hợp rẻ nhất để lấy lại từ phần văn bản bạn vốn đã có.',
   "Whether a recovered fact is accurate enough to publish is a judgement only you can make, particularly for accessibility, where being wrong is worse than being silent. What a measurement can tell you is which absent facts are costing the most, so the verification effort goes somewhere useful.":
     "Một dữ kiện lấy lại được có đủ chính xác để xuất bản hay không là phán đoán chỉ bạn mới đưa ra được, nhất là với khả năng tiếp cận, nơi mà sai còn tệ hơn là im lặng. Thứ một phép đo có thể nói cho bạn biết là những dữ kiện còn vắng mặt nào đang gây tốn kém nhất, để công sức xác minh được dồn vào chỗ có ích.",
   "Take one property set and list the constraints travellers cannot compromise on: access, family, late arrival, parking":
@@ -406,7 +417,8 @@ export const BLOG_VI: Record<string, string> = {
     "Một bit thông tin quyết định thực sự mua được gì cho bạn",
   "A bit is one halving of the shelf. That fixed meaning is the only reason two attributes as different as screen size and processor can be compared at all.":
     "Một bit là một lần chia đôi kệ hàng. Chính ý nghĩa cố định đó là lý do duy nhất khiến hai thuộc tính khác nhau như kích thước màn hình và vi xử lý có thể đem ra so sánh với nhau.",
-  "What one bit of decision information buys": "Một bit thông tin quyết định mua được gì",
+  "What one bit of decision information buys":
+    "Một bit thông tin quyết định mua được gì",
   "A bit is one halving of the shelf. That fixed meaning is why two attributes as unlike as screen size and processor can be compared against each other at all.":
     "Một bit là một lần chia đôi kệ hàng. Ý nghĩa cố định đó là lý do hai thuộc tính khác nhau như kích thước màn hình và vi xử lý so sánh được với nhau.",
   "24 July 2026": "Ngày 24 tháng 7 năm 2026",
@@ -415,8 +427,10 @@ export const BLOG_VI: Record<string, string> = {
   "The reason is that the question is genuinely about information. A shopper facing a shelf has a set of candidates and is trying to reduce it. Every fact they learn removes some of that uncertainty. Information theory has measured exactly that since 1948, and the unit it measures it in is the bit.":
     "Lý do là vì câu hỏi ở đây thực sự là câu hỏi về thông tin. Một người mua đứng trước kệ hàng có một tập ứng viên và đang cố thu hẹp nó lại. Mỗi dữ kiện họ biết thêm sẽ gỡ bỏ một phần của sự bất định đó. Lý thuyết thông tin đã đo đúng điều này từ năm 1948, và đơn vị nó dùng để đo chính là bit.",
   "1 bit": "1 bit",
-  "means a shopper can rule out half the shelf": "nghĩa là người mua loại được một nửa kệ hàng",
-  "the definition, not a scaled score": "là định nghĩa, không phải một điểm số quy đổi",
+  "means a shopper can rule out half the shelf":
+    "nghĩa là người mua loại được một nửa kệ hàng",
+  "the definition, not a scaled score":
+    "là định nghĩa, không phải một điểm số quy đổi",
   "Why not a percentage complete": "Vì sao không dùng phần trăm hoàn thiện",
   "Completeness cannot compare unlike fields. Screen size at 60% and processor at 25% tells you which is emptier and nothing about which is worth filling. They are the same unit measuring different things.":
     "Mức hoàn thiện không so sánh được những trường khác loại nhau. Kích thước màn hình đạt 60% và vi xử lý đạt 25% chỉ cho bạn biết trường nào trống hơn, chứ không nói gì về trường nào đáng điền. Chúng là cùng một đơn vị dùng để đo những thứ khác nhau.",
@@ -434,8 +448,8 @@ export const BLOG_VI: Record<string, string> = {
   "The second half is demand": "Nửa còn lại là nhu cầu",
   "Information alone is not enough. A field could partition the catalogue perfectly and still be worthless if no purchase decision turns on it. So each attribute is also scored against the stated requirements for the category, and a field nobody's decision depends on scores near zero however neatly it divides the shelf.":
     "Chỉ riêng thông tin thì chưa đủ. Một trường dữ liệu có thể chia tách danh mục một cách hoàn hảo mà vẫn vô giá trị, nếu không quyết định mua nào xoay quanh nó. Vậy nên mỗi thuộc tính còn được chấm theo những yêu cầu đã được nêu ra của ngành hàng, và một trường mà không quyết định của ai phụ thuộc vào thì sẽ gần như 0 điểm, dù nó chia kệ hàng gọn gàng đến đâu.",
-  "This is where our ranking and a coverage ranking come apart. On the laptop shelf, processor was missing on 162 of 216 products, third by absence. Only 2 of 32 stated requirements mentioned a processor, which put it last by demand. Storage and processor swapped places, and that swap is the entire argument for measuring demand rather than absence.":
-    "Đây chính là chỗ bảng xếp hạng của chúng tôi và bảng xếp hạng theo độ phủ tách khỏi nhau. Trên kệ laptop, vi xử lý thiếu ở 162 trên 216 sản phẩm, đứng hạng ba theo sự vắng mặt. Chỉ 2 trên 32 yêu cầu được nêu ra có nhắc tới vi xử lý, đưa nó xuống hạng chót theo nhu cầu. Dung lượng và vi xử lý đổi chỗ cho nhau, và chính cú đổi chỗ đó là toàn bộ lập luận cho việc đo nhu cầu thay vì đo sự vắng mặt.",
+  "This is where our ranking and a coverage ranking come apart. On our test shelf, processor was missing on 162 of 216 products, third by absence. Only 2 of 32 stated requirements mentioned a processor, which put it last by demand. Storage and processor swapped places, and that swap is the entire argument for measuring demand rather than absence.":
+    "Đây chính là chỗ bảng xếp hạng của chúng tôi và bảng xếp hạng theo độ phủ tách khỏi nhau. Trên kệ thử nghiệm, vi xử lý thiếu ở 162 trên 216 sản phẩm, đứng hạng ba theo sự vắng mặt. Chỉ 2 trên 32 yêu cầu được nêu ra có nhắc tới vi xử lý, đưa nó xuống hạng chót theo nhu cầu. Dung lượng và vi xử lý đổi chỗ cho nhau, và chính cú đổi chỗ đó là toàn bộ lập luận cho việc đo nhu cầu thay vì đo sự vắng mặt.",
   "Fixing the emptiest field first would have been the most expensive way to change nothing.":
     "Sửa trường trống nhất trước sẽ là cách tốn kém nhất để chẳng thay đổi được gì.",
   "What we cannot stand behind": "Điều chúng tôi không thể bảo chứng",
@@ -451,7 +465,8 @@ export const BLOG_VI: Record<string, string> = {
     "Vì sao không có con số chuyển đổi nào trên khắp website này",
   "We have run no live experiment on merchant traffic, so we have no uplift number. Here is the experiment we would run instead, and why publishing the design is worth more than publishing a percentage.":
     "Chúng tôi chưa chạy thử nghiệm thực tế nào trên lưu lượng của nhà bán, nên chúng tôi không có con số cải thiện nào. Dưới đây là thử nghiệm mà chúng tôi sẽ chạy để thay thế, và vì sao công bố thiết kế của nó đáng giá hơn công bố một con số phần trăm.",
-  "Why there is no conversion figure here": "Vì sao ở đây không có con số chuyển đổi nào",
+  "Why there is no conversion figure here":
+    "Vì sao ở đây không có con số chuyển đổi nào",
   "We have run no live experiment on merchant traffic, so we publish no uplift number. Here is the experiment we would run, and why its design is worth more.":
     "Chúng tôi chưa chạy thử nghiệm thực tế nào trên lưu lượng của nhà bán, nên không công bố con số cải thiện nào. Đây là thử nghiệm chúng tôi sẽ chạy thay vào đó.",
   "How we work": "Cách chúng tôi làm việc",
@@ -475,7 +490,8 @@ export const BLOG_VI: Record<string, string> = {
   "Effect on revenue": "Tác động tới doanh thu",
   "The first two are properties of your catalogue and available immediately. The third is a property of your visitors and is not.":
     "Hai điều đầu là đặc tính của danh mục của bạn và có ngay lập tức. Điều thứ ba là đặc tính của những người ghé thăm bạn, và nó thì không.",
-  "What we can measure without an experiment": "Điều chúng tôi đo được mà không cần thử nghiệm",
+  "What we can measure without an experiment":
+    "Điều chúng tôi đo được mà không cần thử nghiệm",
   "There is a whole class of claim that does not need traffic, because it is a property of your catalogue rather than of your visitors.":
     "Có hẳn một nhóm tuyên bố không cần tới lưu lượng truy cập, vì chúng là đặc tính của danh mục của bạn chứ không phải của những người ghé thăm bạn.",
   "Whether your shelf can support the decisions buyers are trying to make is measurable the day you send an export. Whether a repair improved it is measurable the week you finish. Neither of those is a revenue claim and we are careful not to let them sound like one, but both are checkable immediately and both are actionable.":
@@ -505,7 +521,8 @@ export const BLOG_VI: Record<string, string> = {
     "Pulse: phương pháp, kèm câu lệnh tái tạo lại mọi con số",
   "Pulse: the method, and the command that reproduces it":
     "Pulse: phương pháp, và câu lệnh tái tạo lại nó",
-  "Pulse: what we cannot claim yet": "Pulse: những điều chúng tôi chưa thể khẳng định",
+  "Pulse: what we cannot claim yet":
+    "Pulse: những điều chúng tôi chưa thể khẳng định",
 
   /* A description of a source rather than the name of one. */
   "industry reporting on Google Ads retail spend":

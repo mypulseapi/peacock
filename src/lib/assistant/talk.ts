@@ -166,6 +166,21 @@ const TERMS: {
     }),
   },
   {
+    names: [
+      "promotion audit",
+      "promotions",
+      "promotion",
+      "voucher",
+      "vouchers",
+      "free shipping",
+      "khuyen mai",
+    ],
+    reply: (l) => ({
+      en: `The **Promotion Audit** judges your vouchers, price cuts and free-shipping offers on the orders that stayed bought, after returns and failed deliveries, against doing nothing. It says where no offer paid, for how many shoppers, and where fixing the listing beats a discount; where the history is too thin it asks for a test instead of guessing. It runs on your own history through \`POST /interventions/audit\`. [Read more](${l.site}/product/promotion-audit) · [API](${l.docs}/api/v1/interventions).`,
+      vi: `**Promotion Audit** đánh giá voucher, giảm giá và miễn phí vận chuyển theo những đơn được giữ lại, sau khi trừ hàng bị trả và giao thất bại, so với việc không làm gì. Nó chỉ ra chỗ nào không ưu đãi nào có lãi, cho bao nhiêu người mua, và chỗ nào sửa trang sản phẩm có lợi hơn giảm giá; khi dữ liệu quá mỏng, nó đề nghị thử nghiệm thay vì đoán. Chạy trên lịch sử của chính bạn qua \`POST /interventions/audit\`. [Xem thêm](${l.site}/product/promotion-audit) · [API](${l.docs}/api/v1/interventions).`,
+    }),
+  },
+  {
     names: ["return verification", "returns", "return"],
     reply: (l) => ({
       en: `**Return Verification** reads your orders and their return reasons against your catalogue. It shows which missing product facts go with returns, whether a repair moved them, and what that was worth at your own costs. You report each order line to \`POST /outcomes\`, which is free. It does not promise fewer returns; it measures your own history. [Read more](${l.catalogue}/return-verification).`,
@@ -265,6 +280,7 @@ const TERMS: {
       "how much",
       "plans",
       "subscription",
+      "rate card",
       "free tier",
       "trial",
       "gia",
@@ -273,8 +289,42 @@ const TERMS: {
       "bao nhieu tien",
     ],
     reply: (l) => ({
-      en: `Pulse is a paid merchant subscription; your plan sets how many requests your key can make. The plans are on the [pricing page](${l.pricing}). Measurement is never billed: \`/event\`, \`/exposure\`, \`/outcomes\` and \`/suggest\` are free, so proving the results never costs you anything. To talk about a pilot, [contact the team](${l.contact}).`,
-      vi: `Pulse là gói đăng ký trả phí cho người bán; gói của bạn quyết định số yêu cầu key được phép gửi. Các gói có trên [trang bảng giá](${l.pricing}). Việc đo lường không bao giờ bị tính phí: \`/event\`, \`/exposure\`, \`/outcomes\` và \`/suggest\` miễn phí, nên chứng minh kết quả không tốn gì của bạn. Muốn trao đổi về chương trình thử nghiệm, hãy [liên hệ đội ngũ](${l.contact}).`,
+      en: `One API key covers every product, and you pay for decisions, never for measurement. There is no rate card yet. **Build** is free: the open-source SDK, MCP server and templates. **Fix your catalogue**: the Decision Audit is free; repair and verification are priced per cycle, and Decision Monitor is recurring. **Decide live**: the Decision API, Search, Recommendations, Pages and the Promotion Audit API are priced per decision, agreed after a pilot. [Pricing](${l.pricing}) · [What counts toward usage](${l.pricing}#what-counts). To agree a pilot, [contact the team](${l.contact}).`,
+      vi: `Một API key dùng cho mọi sản phẩm, và bạn trả cho quyết định, không bao giờ cho đo lường. Hiện chưa có bảng giá cố định. **Xây dựng** miễn phí: SDK mã nguồn mở, máy chủ MCP và các mẫu. **Sửa danh mục của bạn**: Decision Audit miễn phí; sửa và xác minh tính theo từng chu kỳ, còn Decision Monitor tính định kỳ. **Quyết định trực tiếp**: Decision API, Search, Recommendations, Pages và Promotion Audit API tính theo quyết định, thoả thuận sau chương trình thử nghiệm. [Bảng giá](${l.pricing}) · [Những gì được tính vào mức sử dụng](${l.pricing}#what-counts). Muốn thoả thuận thử nghiệm, hãy [liên hệ đội ngũ](${l.contact}).`,
+    }),
+  },
+  {
+    names: [
+      "research",
+      "proof",
+      "evidence",
+      "is it proven",
+      "case study",
+      "case studies",
+      "nghien cuu",
+      "bang chung",
+    ],
+    reply: (l) => ({
+      en: `Every Pulse product rests on a measurement, and the [research page](${l.site}/research) lists each one with its data and its limit. Pulse has not yet run on a real merchant's own data, and it has no uplift figure: that needs a holdback on live traffic, which has not run. Products still waiting on a first merchant are marked as such. To run the measurement on your catalogue, [request a free Decision Audit](${l.contact}).`,
+      vi: `Mỗi sản phẩm Pulse dựa trên một phép đo, và [trang nghiên cứu](${l.site}/research) liệt kê từng phép đo kèm dữ liệu và giới hạn. Pulse chưa chạy trên dữ liệu của người bán thật, và chưa có con số tăng trưởng: con số đó cần một nhóm đối chứng trên lưu lượng thật, việc chưa diễn ra. Sản phẩm nào còn chờ người bán đầu tiên đều được ghi rõ. Để chạy phép đo trên danh mục của bạn, hãy [yêu cầu Decision Audit miễn phí](${l.contact}).`,
+    }),
+  },
+  {
+    names: [
+      "usage",
+      "what counts",
+      "counted",
+      "billed",
+      "billing",
+      "metered",
+      "quota",
+      "count toward usage",
+      "muc su dung",
+      "tinh phi",
+    ],
+    reply: (l) => ({
+      en: `Calls that read a visit or return a decision count toward usage: \`POST /decide\`, \`/search\` and \`/rerank\`, \`/catalog/ranked\`, \`/track\` and \`/session\`, the Promotion Audit API (\`/interventions/*\`), and \`/catalog/audit\` and \`/catalog/verify\`. Measurement never counts: \`/event\`, \`/exposure\`, \`/outcomes\` and \`/suggest\` are free, and so are the open-source SDK and MCP server. The full list is on the [pricing page](${l.pricing}#what-counts).`,
+      vi: `Những lệnh đọc lượt truy cập hoặc trả về quyết định được tính vào mức sử dụng: \`POST /decide\`, \`/search\` và \`/rerank\`, \`/catalog/ranked\`, \`/track\` và \`/session\`, Promotion Audit API (\`/interventions/*\`), cùng \`/catalog/audit\` và \`/catalog/verify\`. Đo lường không bao giờ được tính: \`/event\`, \`/exposure\`, \`/outcomes\` và \`/suggest\` miễn phí, SDK mã nguồn mở và máy chủ MCP cũng vậy. Danh sách đầy đủ có trên [trang bảng giá](${l.pricing}#what-counts).`,
     }),
   },
   {
@@ -346,6 +396,20 @@ const TERMS: {
     reply: (l) => ({
       en: `Pulse works with merchants in Vietnam and across Southeast Asia, starting with one category each. Search reads Vietnamese, Thai, Bahasa and English, and the catalogue products work on any export, wherever you sell. Headquarters are in Singapore, engineering in Ho Chi Minh City. [Talk to the team](${l.contact}).`,
       vi: `Pulse làm việc với người bán ở Việt Nam và khắp Đông Nam Á, mỗi nơi bắt đầu với một ngành hàng. Tìm kiếm hiểu tiếng Việt, Thái, Bahasa và tiếng Anh, còn các sản phẩm cho danh mục dùng được với mọi bản xuất, dù bạn bán ở đâu. Trụ sở chính ở Singapore, đội kỹ thuật ở Thành phố Hồ Chí Minh. [Liên hệ đội ngũ](${l.contact}).`,
+    }),
+  },
+  {
+    names: [
+      "open source",
+      "opensource",
+      "github",
+      "license",
+      "licence",
+      "ma nguon mo",
+    ],
+    reply: (l) => ({
+      en: `The browser SDK (\`@thepulseapi/sdk\`) and the MCP server for agents are **MIT licensed**. The query parser, evidence formats and return-reason taxonomy are planned. Finding problems is open; deciding what is worth fixing is the API. [Opensource](${l.site}/opensource) · [For developers](${l.docs}/opensource).`,
+      vi: `SDK cho trình duyệt (\`@thepulseapi/sdk\`) và máy chủ MCP cho tác tử AI dùng **giấy phép MIT**. Bộ phân tích câu tìm kiếm, định dạng bằng chứng và bảng phân loại lý do trả hàng đang được dự kiến. Tìm vấn đề là mở; quyết định điều gì đáng sửa là API. [Mã nguồn mở](${l.site}/opensource) · [Cho lập trình viên](${l.docs}/opensource).`,
     }),
   },
 ];

@@ -53,10 +53,18 @@ What Pulse does NOT do or claim:
 - The live session layer is optional and is the only part that touches a storefront.
 - We generate presentation. We never generate an unverified product fact.
 
+## For AI agents
+PULSE is a decision call: requirements and evidence in; for every option, fits, fails or cannot tell, with what is missing. Any domain whose options carry attributes. MCP server: \`npx -y @thepulseapi/mcp\` (open source, github.com/mypulseapi/open-pulse).
+- [Shopping assistants](${en("/agents/shopping-assistants")}): recommend only what a listing proves.
+- [Procurement agents](${en("/agents/procurement")}): check suppliers and parts against a spec.
+- [Travel and booking agents](${en("/agents/travel")}): match hotels, fares and plans to needs.
+- [Coding agents](${en("/agents/coding-agents")}): Claude Code, Cursor and Codex read the current docs and call the API.
+
 ## Product
 - [Decision Audit](${en("/product/decision-audit")}): which product data to fix first, ranked by how many shoppers need it.
 - [Decision Verification](${en("/product/decision-verification")}): the same measurement on the repaired export, so a fix can be proved without traffic.
 - [Return Verification](${en("/product/return-verification")}): which missing product facts go with returns in your order history, and whether a repair moved them.
+- [Promotion Audit](${en("/product/promotion-audit")}): which vouchers, price cuts and free-shipping offers paid for themselves after returns and failed deliveries, where to give nothing, and where a listing repair beats a discount.
 - [Decision Monitor](${en("/product/decision-monitor")}): what decays in a catalogue over time, and where.
 - [Decision API](${en("/product/decision-api")}): the endpoints behind all of it.
 
@@ -75,11 +83,13 @@ What Pulse does NOT do or claim:
 ## Company
 - [About Resolve Labs](${en("/about")}): who builds this, and what we cannot show yet.
 - [Pricing](${en("/pricing")}): how it is charged.
+- [Research](${en("/research")}): what we measured for each product, on what data, and the limit of each result; products not yet run on a real merchant are marked.
 - [Contact](${en("/contact")}): how to reach the team.
 
 ## For developers
 - [Developer handbook](${SITE.docs}): the API reference, SDK and integration guides. English and Vietnamese.
 - [API reference](${SITE.docs}/api/v1): endpoints, authentication and the shared error envelope.
+- [Opensource](${en("/opensource")}): what is MIT licensed (the SDK, the MCP server), what is planned, and how to contribute.
 `;
 
   return new Response(body, {

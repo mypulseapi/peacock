@@ -27,6 +27,7 @@ export type ProductArea =
   | "audit"
   | "verification"
   | "returns"
+  | "promotions"
   | "monitor"
   | "api"
   | "search"
@@ -127,6 +128,13 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     decides: ["what-it-does", "how-it-works"],
   },
   {
+    route: "/product/promotion-audit",
+    audience: "merchant",
+    area: "promotions",
+    depth: "explainer",
+    decides: ["what-it-does", "how-it-works"],
+  },
+  {
     route: "/product/decision-monitor",
     audience: "merchant",
     area: "monitor",
@@ -214,6 +222,15 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     decides: ["is-it-proven", "how-it-works"],
   },
 
+  // Research, product by product; the photograph study above is one of its entries.
+  {
+    route: "/research",
+    audience: "any",
+    area: "none",
+    depth: "proof",
+    decides: ["is-it-proven"],
+  },
+
   // Use cases and industries
   {
     route: "/use-cases/seo-aeo",
@@ -242,6 +259,13 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     area: "none",
     depth: "explainer",
     decides: ["does-it-fit-me"],
+  },
+  {
+    route: "/agents/[slug]",
+    audience: "developer",
+    area: "api",
+    depth: "explainer",
+    decides: ["does-it-fit-me", "how-to-integrate"],
   },
 
   // Commercial
@@ -290,6 +314,13 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     area: "none",
     depth: "explainer",
     decides: ["who-are-they"],
+  },
+  {
+    route: "/opensource",
+    audience: "developer",
+    area: "none",
+    depth: "explainer",
+    decides: ["is-it-safe", "how-do-i-start"],
   },
   {
     route: "/blog",

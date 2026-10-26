@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { sectorSlugs } from "@/content/industries";
+import { AGENT_SLUGS } from "@/content/pages/agents";
 import { blogSlugs } from "@/data/blog-slugs";
 import { careerIds } from "@/data/career-ids";
 import { SITE } from "@/lib/site";
@@ -39,6 +40,7 @@ const staticPages = [
   "/product/decision-audit",
   "/product/decision-verification",
   "/product/return-verification",
+  "/product/promotion-audit",
   "/product/decision-monitor",
   "/product/decision-api",
   // The four storefront surfaces the Decision API serves.
@@ -54,6 +56,8 @@ const staticPages = [
   "/why/limits",
   "/pricing",
   "/about",
+  "/opensource",
+  "/research",
   "/blog",
   "/careers",
   "/contact",
@@ -77,6 +81,7 @@ const pagePriorities: Record<string, number> = {
   "/product/decision-audit": 0.9,
   "/product/decision-verification": 0.8,
   "/product/return-verification": 0.8,
+  "/product/promotion-audit": 0.8,
   "/product/decision-monitor": 0.8,
   "/product/decision-api": 0.7,
   "/product/search": 0.9,
@@ -92,6 +97,8 @@ const pagePriorities: Record<string, number> = {
   "/pricing": 0.9,
   "/industries": 0.9,
   "/about": 0.8,
+  "/opensource": 0.7,
+  "/research": 0.7,
   "/blog": 0.8,
   "/docs": 0.8,
   "/integrations": 0.8,
@@ -114,6 +121,7 @@ const changeFrequencies: Record<
   "/product/decision-audit": "monthly",
   "/product/decision-verification": "monthly",
   "/product/return-verification": "monthly",
+  "/product/promotion-audit": "monthly",
   "/product/decision-monitor": "monthly",
   "/product/decision-api": "monthly",
   "/product/search": "monthly",
@@ -129,6 +137,8 @@ const changeFrequencies: Record<
   "/pricing": "weekly",
   "/industries": "monthly",
   "/about": "monthly",
+  "/opensource": "monthly",
+  "/research": "monthly",
   "/blog": "weekly",
   "/docs": "weekly",
   "/integrations": "monthly",
@@ -170,6 +180,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     for (const slug of sectorSlugs) {
       const path = `/industries/${slug}`;
+      sitemapEntries.push({
+        url: `${baseUrl}/${locale}${path}`,
+        changeFrequency: "monthly",
+        priority: 0.8,
+        alternates: makeAlternates(path),
+      });
+    }
+  }
+
+  // The "For AI agents" pages
+  for (const locale of locales) {
+    for (const slug of AGENT_SLUGS) {
+      const path = `/agents/${slug}`;
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${path}`,
         changeFrequency: "monthly",

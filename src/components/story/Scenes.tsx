@@ -133,9 +133,12 @@ function Lanes({ s }: { s: LanesSpec }) {
               <span className="grid h-9 w-9 place-items-center rounded-xl" style={{ background: h.fg }}>
                 <Icon className="h-4 w-4 text-[color:var(--on-sig)]" aria-hidden />
               </span>
-              <span className="text-[0.6875rem] font-bold tracking-[0.14em] uppercase" style={{ color: h.fg }}>
-                {lane.eyebrow}
-              </span>
+              {/* No label where a page asks for plain headings (StoryPage `plainHeadings` passes ""). */}
+              {lane.eyebrow && (
+                <span className="text-[0.6875rem] font-bold tracking-[0.14em] uppercase" style={{ color: h.fg }}>
+                  {lane.eyebrow}
+                </span>
+              )}
             </span>
             <h3 className="ed-d4 mt-4" style={{ color: C.ink }}>{lane.title}</h3>
             <p className="ed-body mt-2.5 max-w-[46ch]">{lane.body}</p>

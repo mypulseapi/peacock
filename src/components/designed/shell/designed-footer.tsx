@@ -15,6 +15,50 @@ import Link from "next/link";
 
 const COMPANY_FACTS = ["founded", "hq", "engineering", "builtFor"];
 
+/** Three link columns of five rows each, so they line up row for row; the header's grouping. */
+const COLUMNS: Array<{ heading: string; links: Array<[string, string]> }> = [
+  {
+    heading: "measureHeading",
+    links: [
+      ["/en/product/decision-audit", "2"],
+      ["/en/product/decision-verification", "3"],
+      ["/en/product/return-verification", "returnName"],
+      ["/en/product/promotion-audit", "promotionName"],
+      ["/en/product/decision-monitor", "4"],
+    ],
+  },
+  {
+    heading: "liveHeading",
+    links: [
+      ["/en/product/decision-api", "apiName"],
+      ["/en/product/search", "searchName"],
+      ["/en/product/recommendations", "recsName"],
+      ["/en/product/pages", "pagesName"],
+      ["/en/product/merchandising-studio", "studioName"],
+    ],
+  },
+  {
+    heading: "6",
+    links: [
+      ["/en/about", "7"],
+      ["/en/opensource", "opensourceLink"],
+      ["/en/pricing", "5"],
+      ["/en/contact", "8"],
+      ["/en/careers", "9"],
+    ],
+  },
+];
+
+const SOCIALS = [
+  { name: "LinkedIn", href: SOCIAL.linkedin, icon: "i-linkedin" },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/people/The-Pulse-API/61591908084667/",
+    icon: "i-facebook",
+  },
+  { name: "GitHub", href: SOCIAL.github, icon: "i-github" },
+];
+
 export function DesignedFooter() {
   const t = designedText("shell.designed-footer");
   return (
@@ -48,129 +92,48 @@ export function DesignedFooter() {
             <p className="mt-4 max-w-xs text-sm text-pretty text-muted">
               {t("tagline")}
             </p>
-          </div>
-          <div>
-            <h2 className="text-nav font-semibold">{t("1")}</h2>
-            <ul className="mt-6 space-y-5 text-sm text-muted">
-              <li>
-                <Link
-                  href={designedHref("/en/product/decision-audit")}
-                  className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                >
-                  {t("2")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/product/decision-verification")}
-                  className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                >
-                  {t("3")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/product/return-verification")}
-                  className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                >
-                  {t("returnName")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/product/decision-monitor")}
-                  className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                >
-                  {t("4")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/pricing")}
-                  className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                >
-                  {t("5")}
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-nav font-semibold">{t("6")}</h2>
-            <ul className="mt-6 space-y-5 text-sm text-muted">
-              <li>
-                <Link
-                  href={designedHref("/en/about")}
-                  className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                >
-                  {t("7")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/contact")}
-                  className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                >
-                  {t("8")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/careers")}
-                  className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
-                >
-                  {t("9")}
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-nav font-semibold">{t("10")}</h2>
+            {/* Contact sits under the logo (2026-10-26): the brand column carries who we are and
+                how to reach us, so the three link columns can line up row for row. */}
             <div className="mt-6 flex gap-3">
-              <a
-                href={SOCIAL.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Pulse on LinkedIn (opens in a new tab)"
-                className="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
-              >
-                <svg className="size-5" aria-hidden="true">
-                  <use href="#i-linkedin" />
-                </svg>
-              </a>
-              <a
-                href="https://www.facebook.com/people/The-Pulse-API/61591908084667/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Pulse on Facebook (opens in a new tab)"
-                className="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
-              >
-                <svg className="size-5" aria-hidden="true">
-                  <use href="#i-facebook" />
-                </svg>
-              </a>
-              <a
-                href={SOCIAL.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Pulse on GitHub (opens in a new tab)"
-                className="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
-              >
-                <svg className="size-5" aria-hidden="true">
-                  <use href="#i-github" />
-                </svg>
-              </a>
-            </div>
-            <ul className="mt-5 space-y-3.5 text-sm text-muted">
-              <li>
+              {SOCIALS.map((s) => (
                 <a
-                  href="mailto:getintouch@thepulseapi.com"
-                  className="-my-2.5 inline-flex min-h-11 items-center wrap-anywhere transition-colors duration-200 ease-out-soft hover:text-ink"
+                  key={s.icon}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Pulse on ${s.name} (opens in a new tab)`}
+                  className="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
                 >
-                  {t("11")}
+                  <svg className="size-5" aria-hidden="true">
+                    <use href={`#${s.icon}`} />
+                  </svg>
                 </a>
-              </li>
-            </ul>
+              ))}
+            </div>
+            <a
+              href="mailto:getintouch@thepulseapi.com"
+              className="mt-3 inline-flex min-h-11 items-center text-sm wrap-anywhere text-muted transition-colors duration-200 ease-out-soft hover:text-ink"
+            >
+              {t("11")}
+            </a>
           </div>
+          {COLUMNS.map((col) => (
+            <div key={col.heading}>
+              <h2 className="text-nav font-semibold">{t(col.heading)}</h2>
+              <ul className="mt-6 space-y-5 text-sm text-muted">
+                {col.links.map(([href, key]) => (
+                  <li key={href}>
+                    <Link
+                      href={designedHref(href)}
+                      className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                    >
+                      {t(key)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
         {/* Company facts, the owner's Direction A (mockup pin 9): who and where, the first thing an
             investor looks for. Same wording as the About page. Hairlines are a 1px gap over `line`. */}

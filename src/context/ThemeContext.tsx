@@ -1,34 +1,35 @@
 "use client";
 
-import { createContext, useContext, useEffect, useSyncExternalStore, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useSyncExternalStore,
+  ReactNode,
+} from "react";
 import { useMounted, useStored, writeStored } from "@/lib/client-hooks";
 
 type Theme = "light" | "dark";
-/**
- * What the visitor picked. `"system"` is a choice like any other, not the absence of one.
- *
- * It used to be that no stored value meant "follow the system", because there was no control
- * anywhere to choose with, and pinning everyone to light would have made the dark half of the
- * palette unreachable. There is a control now, in the header, so the default can be a decision
- * again: the site is a light design and opens light, and anyone who wants dark or wants to
- * follow their OS says so and is remembered.
+/** Where the change started on screen, so the new theme can grow out of it. */
+type Origin = { x: number; y: number };
+
+/*
+ * Light or dark, chosen with the header switch. The site opens light (owner, 26 Oct 2026, which
+ * also removed the "System" option). A browser that stored "system" from the old menu keeps
+ * following the OS until the switch is pressed once; the inline script and the effect below still
+ * read that value, and a press writes a fixed theme over it.
  */
-export type Preference = Theme | "system";
-const DEFAULT_PREFERENCE: Preference = "light";
+const DEFAULT_THEME: Theme = "light";
 
 interface ThemeContextType {
-  /** What is actually on screen, which is what the toggle's icon and label describe. */
+  /** What is actually on screen, which is what the switch shows. */
   theme: Theme;
-  /** What the visitor chose: a fixed theme, or `"system"` to follow the OS. */
-  preference: Preference;
-  toggleTheme: () => void;
-  setTheme: (preference: Preference) => void;
+  /** Set a theme; `origin` is where it was asked for, and the change grows out from there. */
+  setTheme: (theme: Theme, origin?: Origin) => void;
 }
 
 const defaultContext: ThemeContextType = {
-  theme: "light",
-  preference: DEFAULT_PREFERENCE,
-  toggleTheme: () => {},
+  theme: DEFAULT_THEME,
   setTheme: () => {},
 };
 
@@ -60,69 +61,96 @@ function useSystemTheme(): Theme {
   );
 }
 
+/** Set by `setTheme` just before the write, read once by the effect that applies the theme. */
+let pendingOrigin: Origin | null = null;
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const mounted = useMounted();
-  // The stored preference IS the state, so there is nothing to copy into React on mount and no
-  // setState during hydration.
   const stored = useStored("pulse-theme", null);
-  const preference: Preference =
-    stored === "light" || stored === "dark" || stored === "system" ? stored : DEFAULT_PREFERENCE;
   const system = useSystemTheme();
-  const theme: Theme = preference === "system" ? system : preference;
+  const theme: Theme =
+    stored === "light" || stored === "dark"
+      ? stored
+      : stored === "system"
+        ? system
+        : DEFAULT_THEME;
 
-  /*
-   * Write the attribute unless the visitor asked to follow the OS.
-   *
-   * Removing it is what hands control back to `color-scheme: light dark`, and so to the system,
-   * which is exactly and only what `"system"` should mean. Every other value is a decision the
-   * visitor made and the attribute states it.
-   */
   useEffect(() => {
     const root = document.documentElement;
     /*
-     * Driven by what is stored, not by the defaulted preference.
+     * Driven by what is stored, not by the default.
      *
      * `useStored` has to return its server snapshot on the hydration render to match the HTML,
-     * so for one render `stored` is null and `preference` is the default. Acting on that meant
-     * React stamped `light` over the `dark` the inline script had already applied, and a chosen
-     * theme did not survive a reload. The inline script owns the first paint; React only acts
-     * once the visitor's actual choice is readable.
+     * so for one render `stored` is null. Acting on that meant React stamped `light` over the
+     * `dark` the inline script had already applied, and a chosen theme did not survive a reload.
+     * The inline script owns the first paint; React only acts once the choice is readable.
      */
     if (stored === null) return;
     const next = stored === "system" ? null : stored;
-    // On first mount the inline theme script has already stamped the attribute, so there is
-    // nothing to change and nothing to animate. Without this guard every page load would open
-    // with a cross-fade of one frame against an identical frame.
+    const origin = pendingOrigin;
+    pendingOrigin = null;
     if (root.getAttribute("data-theme") === next) return;
 
     const apply = () => {
       if (next) root.setAttribute("data-theme", next);
       else root.removeAttribute("data-theme");
     };
+    if (!document.startViewTransition) return apply();
 
-    // The cross-fade itself is styled in globals.css. Browsers without the API just swap.
+    /*
+     * The new theme grows out of the switch as a circle when there is an origin and motion is
+     * allowed; otherwise the cross-fade in globals.css runs (or, with reduced motion, an instant
+     * swap). `data-theme-reveal` turns that cross-fade off while the circle plays.
+     */
+    const reveal =
+      origin && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reveal) root.setAttribute("data-theme-reveal", "");
+    const vt = document.startViewTransition(apply);
     // A transition started before this one finishes skips it, and the skip rejects `ready` with
-    // an AbortError. The theme is still applied, so the rejection is expected: catch it, or it
-    // surfaces as an unhandled rejection (dev runs this effect twice on mount, which triggers it).
-    if (document.startViewTransition) document.startViewTransition(apply).ready.catch(() => {});
-    else apply();
+    // an AbortError. The theme is still applied, so the rejection is expected: catch it.
+    vt.ready
+      .then(() => {
+        if (!reveal || !origin) return;
+        const r = Math.hypot(
+          Math.max(origin.x, innerWidth - origin.x),
+          Math.max(origin.y, innerHeight - origin.y),
+        );
+        root.animate(
+          {
+            clipPath: [
+              `circle(0 at ${origin.x}px ${origin.y}px)`,
+              `circle(${r}px at ${origin.x}px ${origin.y}px)`,
+            ],
+          },
+          {
+            duration: 550,
+            easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+            pseudoElement: "::view-transition-new(root)",
+          },
+        );
+      })
+      .catch(() => {});
+    vt.finished
+      .finally(() => root.removeAttribute("data-theme-reveal"))
+      .catch(() => {});
   }, [stored]);
 
-  const setTheme = (next: Preference) => {
+  const setTheme = (next: Theme, origin?: Origin) => {
+    pendingOrigin = origin ?? null;
     writeStored("pulse-theme", next);
   };
 
-  // Toggling while following the system flips away from whatever is currently on screen, which is
-  // the only behaviour that matches what the visitor can actually see.
-  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
-
-  // Prevent a flash of the wrong theme before the preference is known.
+  // Prevent a flash of the wrong theme before the choice is known.
   if (!mounted) {
-    return <ThemeContext.Provider value={defaultContext}>{children}</ThemeContext.Provider>;
+    return (
+      <ThemeContext.Provider value={defaultContext}>
+        {children}
+      </ThemeContext.Provider>
+    );
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, preference, toggleTheme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );

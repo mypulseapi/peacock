@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
 import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
-import { StoryPage, storyFaqSchema } from "@/components/StoryPage";
+import { storyFaqSchema } from "@/components/StoryPage";
+import { ChapterPage } from "@/components/designed/product/chapters";
+import {
+  StorefrontScene,
+  StudioOutput,
+} from "@/components/designed/product/storefront-art";
+import { STOREFRONT_DRAWINGS } from "@/components/designed/product/storefront-drawings";
 import { PageSchema } from "@/components/PageSchema";
-import { StudioVisual } from "@/components/StoryVisual";
 import { merchandisingStudio } from "@/content/pages/merchandising-studio";
 
-interface PageProps { params: Promise<{ locale: string }> }
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { locale } = await params;
   // Was a hardcoded English title and description, so /vi shipped
   // English metadata. Reads the locale's own copy now.
@@ -23,13 +32,33 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
+  const c = merchandisingStudio(locale);
   return (
     <>
-      {/* Headings are the questions a merchant types, and each answer leads with
-          a complete sentence, so an answer engine can lift and attribute one
-          without the surrounding page. */}
-      <PageSchema locale={locale} path="/product/merchandising-studio" nodes={[storyFaqSchema(merchandisingStudio(locale))]} />
-      <StoryPage layout={{ steps: "cards", gets: "manifest", limits: "ledger" }} visual={<StudioVisual />} c={merchandisingStudio(locale)} />
+      {/* Headings on this page are the questions a merchant types, and the
+          answers lead with a complete sentence, so an answer engine can lift and
+          attribute one without the surrounding page. */}
+      <PageSchema
+        locale={locale}
+        path="/product/merchandising-studio"
+        nodes={[storyFaqSchema(c)]}
+      />
+      {/* The owner's direction of 26 Oct 2026: the blocks of Return Verification and Promotion
+          Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero figure and
+          the step and gain drawings (storefront-drawings.tsx) stand in until the owner's images exist. */}
+      <ChapterPage
+        c={c}
+        figure={<StorefrontScene spec={c.scenes?.hero} />}
+        chain={<StorefrontScene spec={c.scenes?.chain} />}
+        chainFramed={false}
+        art={{
+          situation: <StorefrontScene spec={c.scenes?.situation} />,
+          steps: STOREFRONT_DRAWINGS["merchandising-studio"].steps,
+          situationIsPanel: true,
+        }}
+        gainPictures={STOREFRONT_DRAWINGS["merchandising-studio"].gains}
+        output={{ panel: <StudioOutput />, layout: "band" }}
+      />
     </>
   );
 }

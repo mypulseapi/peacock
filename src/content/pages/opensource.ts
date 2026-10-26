@@ -16,7 +16,7 @@ export const OPENSOURCE: StoryContent = {
     description:
       "The Pulse SDK and MCP server are MIT licensed. See what is released, what is planned and how to contribute. Finding problems is open; deciding is the API.",
   },
-  eyebrow: "Open source",
+  eyebrow: "Opensource",
   title: "Open Pulse: grounded decisions for any AI agent, in any industry.",
   lede: "Send requirements and the options you are choosing between: products, suppliers, hotels, plans. For each one Pulse answers fits, fails, or cannot tell, with what is missing. Claude, ChatGPT, Claude Code and your own code can call it. The client code is open source; the decision engine is the Pulse API.",
 

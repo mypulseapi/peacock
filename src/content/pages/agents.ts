@@ -104,7 +104,7 @@ const SHARED_EN = {
   cta: {
     title: "Add it to your agent.",
     body: "Install the MCP server with one line, or call the API from your code. The open-source repository has runnable examples.",
-    label: "Open source",
+    label: "Opensource",
     href: "/opensource",
     note: "An API key comes from the Pulse dashboard.",
   },

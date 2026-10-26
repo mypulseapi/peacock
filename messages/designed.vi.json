@@ -16,7 +16,16 @@
       "14": "Điều khoản dịch vụ",
       "15": "Chính sách cookie",
       "16": "GDPR",
-      "returnName": "Return Verification"
+      "returnName": "Return Verification",
+      "tagline": "Biết chính xác nên sửa dữ liệu sản phẩm nào trước",
+      "foundedLabel": "Thành lập",
+      "foundedValue": "Tháng 3 năm 2026",
+      "hqLabel": "Trụ sở chính",
+      "hqValue": "Singapore",
+      "engineeringLabel": "Kỹ thuật",
+      "engineeringValue": "Thành phố Hồ Chí Minh, Việt Nam",
+      "builtForLabel": "Dành cho",
+      "builtForValue": "Các nhà bán hàng tại Việt Nam và Đông Nam Á"
     },
     "designed-header": {
       "1": "Sản phẩm",

@@ -103,29 +103,33 @@ export function ProductsSection() {
               `outline-none!` is needed because globals.css styles `*:focus-visible` outside a layer,
               which no plain utility can override, and the name would get a second ring. */}
           <article className="group reveal relative flex flex-col rounded-2xl border border-primary-line bg-primary-wash p-6 transition-colors duration-150 ease-out-soft hover:border-primary lg:col-span-7 lg:p-10">
-            <svg
-              className="absolute top-6 right-6 size-5 -rotate-45 text-muted transition-[rotate,translate,color] duration-200 ease-out-soft group-focus-within:rotate-0 group-focus-within:text-primary group-hover:translate-x-0.5 group-hover:rotate-0 group-hover:text-primary motion-reduce:transition-none lg:top-10 lg:right-10"
-              aria-hidden="true"
-            >
-              <use href="#i-arrow-right" />
-            </svg>
-            <h3 className="flex flex-wrap items-center gap-3 pr-8 text-h2 text-ink">
-              <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-card text-primary">
-                <svg className="size-5" aria-hidden="true">
-                  <use href="#i-clipboard-check" />
-                </svg>
-              </span>
-              <Link
-                href={designedHref("/en/product/decision-audit")}
-                className="after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none! focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-focus"
+            {/* The arrow sits in the title row, centred on its first line (the 40px icon tile, so
+                mt-2.5 for a 20px arrow), and stays there when the tag wraps on a phone. */}
+            <div className="flex items-start justify-between gap-3">
+              <h3 className="flex flex-wrap items-center gap-3 text-h2 text-ink">
+                <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-card text-primary">
+                  <svg className="size-5" aria-hidden="true">
+                    <use href="#i-clipboard-check" />
+                  </svg>
+                </span>
+                <Link
+                  href={designedHref("/en/product/decision-audit")}
+                  className="after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none! focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-focus"
+                >
+                  {t("auditName")}
+                </Link>
+                {/* No pill: on the wash a bordered badge read as a second card; the tag is just a label. */}
+                <span className="text-sm font-semibold text-primary">
+                  {t("auditTag")}
+                </span>
+              </h3>
+              <svg
+                className="mt-2.5 size-5 shrink-0 -rotate-45 text-muted transition-[rotate,translate,color] duration-200 ease-out-soft group-focus-within:rotate-0 group-focus-within:text-primary group-hover:translate-x-0.5 group-hover:rotate-0 group-hover:text-primary motion-reduce:transition-none"
+                aria-hidden="true"
               >
-                {t("auditName")}
-              </Link>
-              {/* No pill: on the wash a bordered badge read as a second card; the tag is just a label. */}
-              <span className="text-sm font-semibold text-primary">
-                {t("auditTag")}
-              </span>
-            </h3>
+                <use href="#i-arrow-right" />
+              </svg>
+            </div>
             <p className="mt-4 max-w-2xl text-body text-pretty text-ink">
               {t("auditBlurb")}
             </p>
@@ -232,17 +236,20 @@ function ProductGrid({
                 <use href={`#${o.icon}`} />
               </svg>
             </span>
-            {/* Points out of the card at rest, turns to point along the reading line on hover. */}
-            <svg
-              className="absolute top-6 right-6 size-5 -rotate-45 text-muted transition-[rotate,translate,color] duration-200 ease-out-soft group-hover:translate-x-0.5 group-hover:rotate-0 group-hover:text-primary group-focus-visible:rotate-0 group-focus-visible:text-primary motion-reduce:transition-none"
-              aria-hidden="true"
-            >
-              <use href="#i-arrow-right" />
-            </svg>
-            <span className="min-w-0">
-              <span className="flex flex-wrap items-center gap-2 pr-8 font-semibold text-ink">
-                {t(o.name)}
-                {o.tag ? <span className="badge">{t(o.tag)}</span> : null}
+            <span className="min-w-0 flex-1">
+              <span className="flex items-start justify-between gap-3">
+                <span className="flex flex-wrap items-center gap-2 font-semibold text-ink">
+                  {t(o.name)}
+                  {o.tag ? <span className="badge">{t(o.tag)}</span> : null}
+                </span>
+                {/* Points out of the card at rest, turns to point along the reading line on hover.
+                    In the title row, centred on its first line (24px, so mt-0.5 for a 20px arrow). */}
+                <svg
+                  className="mt-0.5 size-5 shrink-0 -rotate-45 text-muted transition-[rotate,translate,color] duration-200 ease-out-soft group-hover:translate-x-0.5 group-hover:rotate-0 group-hover:text-primary group-focus-visible:rotate-0 group-focus-visible:text-primary motion-reduce:transition-none"
+                  aria-hidden="true"
+                >
+                  <use href="#i-arrow-right" />
+                </svg>
               </span>
               <span className="mt-2 block text-sm text-pretty text-muted">
                 {t(o.blurb)}

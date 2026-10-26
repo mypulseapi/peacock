@@ -96,7 +96,7 @@ export function Section4Section() {
                         </dt>
                         <dd className="mt-1 text-body text-pretty text-muted">
                           {t('threeWays')}{" "}
-                          <Link                         href={designedHref("/en/visual-evidence")}
+                          <Link                         href={designedHref("/en/research/photographs")}
                             className="text-link underline underline-offset-4 hover:text-primary-hover"
                             >{t('16')}</Link>.
                         </dd>

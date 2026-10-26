@@ -4021,6 +4021,13 @@ a.inline-flex {
   animation: pulse-theme-in 420ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 
+/* While the header switch grows the new theme out of itself (ThemeContext), the new layer is
+   clipped by a circle instead of faded, so both layers hold still here. */
+:root[data-theme-reveal]::view-transition-old(root),
+:root[data-theme-reveal]::view-transition-new(root) {
+  animation: none;
+}
+
 @keyframes pulse-theme-in {
   from {
     opacity: 0;

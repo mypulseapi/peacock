@@ -1,6 +1,5 @@
 import { renderLocale } from "@/i18n/render-locale";
 import { ui } from "@/content/locale";
-import { ArrowRight } from "lucide-react";
 import {
   StepsBlock, GetsBlock, LimitsBlock,
   type StepsShape, type GetsShape, type LimitsShape,
@@ -341,22 +340,17 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
         </div>
       </Section>
 
-      <section className="ed-canvas">
-        <div className="mx-auto max-w-shell px-5 pb-28 sm:px-6">
-          <div className="ed-ink-panel relative overflow-hidden rounded-3xl px-8 py-14 sm:px-14 lg:px-20 lg:py-16">
-            <div className="max-w-2xl">
-              <h2 className="ed-d2 text-[color:var(--on-panel)]">{c.cta.title}</h2>
-              <p className="ed-lede mt-6 text-[color:var(--on-panel-2)]">{c.cta.body}</p>
-              <Link
-                locale={locale}
-                href={c.cta.href}
-                className="sig-cta group mt-10 inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-[0.9375rem]"
-              >
-                {c.cta.label}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
-              </Link>
-              {c.cta.note && <p className="mt-6 text-sm text-[color:var(--on-panel-2)]">{c.cta.note}</p>}
-            </div>
+      {/* The closing band every designed page ends on (home, about, careers): same classes, so a
+          story page closes the way the rest of the site does. The copy stays this page's own. */}
+      <section id="request" className="cta-dots scroll-mt-16 border-t border-line" data-cta>
+        <div className="frame py-24 text-center lg:py-32">
+          <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">{c.cta.title}</h2>
+          <p className="reveal mx-auto mt-6 max-w-xl text-lg text-pretty text-muted delay-100">{c.cta.body}</p>
+          <div className="reveal mt-8 flex flex-col items-center delay-200">
+            <Link locale={locale} href={c.cta.href} className="btn-primary">
+              {c.cta.label}
+            </Link>
+            {c.cta.note && <p className="mt-4 text-sm text-muted">{c.cta.note}</p>}
           </div>
         </div>
       </section>

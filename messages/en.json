@@ -77,7 +77,7 @@
     },
     "problem": {
       "eyebrow": "Measured, not asserted",
-      "title": "47 of 216 laptops record nothing a shopper could filter on.",
+      "title": "47 of the 216 products on our test shelf record nothing a shopper could filter on.",
       "body": "We took one real merchant catalogue and looked at a single shelf. No screen size. No memory. No storage. No processor. Those specifications are unavailable to anything that depends on structured catalogue attributes, filters cannot use them, guided selling cannot reason over them as explicit fields, and every system downstream has to re-infer what the catalogue should already state.",
       "caption": "Often the fact exists, somewhere less useful. Here it is in the title, queryable by nothing. Sometimes it is in a supplier feed nobody mapped. Sometimes it was never recorded at all. The audit tells you which."
     },
@@ -113,7 +113,7 @@
         "complete": "Potential if complete",
         "gap": "Decision-information gap",
         "missing": "Missing on",
-        "foot": "Measured in bits of decision information, not revenue, not conversions. On a real 216-product shelf, reproducible from the repository (ODIN/research/SPIKE-VOI.md §9.4)."
+        "foot": "Measured in bits of decision information, not revenue, not conversions. On a 216-product test shelf, reproducible from the repository (ODIN/research/SPIKE-VOI.md §9.4)."
       }
     },
     "proof": {
@@ -281,7 +281,7 @@
       "title": "How we got here",
       "problem": {
         "title": "What we found",
-        "description": "We asked how many questions a shopper would need to answer before we could confidently show them the right laptop. The answer was none, ever: 47 of the 216 products on the shelf record nothing a shopper could filter on, so they survive every question and the shelf can never be narrowed. The specifications were not missing, they were sitting inside the product titles, where no filter can reach them."
+        "description": "We asked how many questions a shopper would need to answer before we could confidently show them the right laptop. The answer was none, ever: 47 of the 216 products on our test shelf, accessories and software listed beside the laptops, record nothing a shopper could filter on, so they survive every question and the shelf can never be narrowed. The specifications were not missing, they were sitting inside the product titles, where no filter can reach them."
       },
       "solution": {
         "title": "What we built instead",

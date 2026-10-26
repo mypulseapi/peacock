@@ -154,8 +154,15 @@ export default async function LocaleLayout({
    */
   const clientSide = clientMessages(messages as Record<string, unknown>);
 
+  /*
+   * `data-scroll-behavior="smooth"` lets Next switch off the stylesheet's `scroll-behavior: smooth`
+   * while it scrolls a new page into place. Next 16 stopped doing that by default. Without it, its
+   * `scrollTop = 0` animated instead of jumping, its "is the page visible yet" check ran mid-scroll
+   * and failed, and it fell back to `scrollIntoView()`, which put the page top under the sticky
+   * header: every page opened from a scrolled position landed 69px down, hero title clipped.
+   */
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         {/*
             The Content-Security-Policy, as a meta tag rather than a response header.
@@ -208,7 +215,7 @@ export default async function LocaleLayout({
             static export has no request, so every page in the site failed to prerender -- and the
             error names headers() rather than this line, which is why it reads as 139 unrelated
             failures instead of one. */}
-        {/* 41 symbols, defined once. Every designed page references them by `<use href="#i-...">`,
+        {/* 43 symbols, defined once. Every designed page references them by `<use href="#i-...">`,
             so this has to be in the document before any of them render. */}
         <IconSprite />
         <NextIntlClientProvider locale={locale} messages={clientSide}>

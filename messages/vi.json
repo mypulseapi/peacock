@@ -77,7 +77,7 @@
     },
     "problem": {
       "eyebrow": "Đo được, không phải khẳng định suông",
-      "title": "47 trong số 216 laptop không ghi nhận bất kỳ thuộc tính nào để lọc.",
+      "title": "47 trong số 216 sản phẩm của kệ thử nghiệm không ghi nhận bất kỳ thuộc tính nào để lọc.",
       "body": "Chúng tôi lấy một danh mục thật của nhà bán hàng và xem xét đúng một kệ hàng. Không kích thước màn hình. Không RAM. Không dung lượng lưu trữ. Không CPU. Những thông số đó không dùng được với bất kỳ hệ thống nào dựa trên thuộc tính có cấu trúc, bộ lọc không dùng được, logic tư vấn không suy luận được trên chúng như các trường rõ ràng, và mọi hệ thống phía sau đều phải suy đoán lại điều mà danh mục lẽ ra đã phải ghi rõ.",
       "caption": "Thông tin thường vẫn tồn tại, chỉ ở nơi kém hữu ích hơn. Ở đây nó nằm trong tên sản phẩm, không hệ thống nào truy vấn được. Đôi khi nó nằm trong feed nhà cung cấp mà không ai ánh xạ. Đôi khi nó chưa từng được ghi lại. Bản audit cho bạn biết đó là trường hợp nào."
     },
@@ -113,7 +113,7 @@
         "complete": "Tiềm năng nếu đầy đủ",
         "gap": "Chênh lệch thông tin quyết định",
         "missing": "Thiếu trên",
-        "foot": "Đo bằng bit thông tin quyết định, không phải doanh thu, không phải tỷ lệ chuyển đổi. Trên kệ hàng thật gồm 216 sản phẩm, tái lập được từ repository (ODIN/research/SPIKE-VOI.md §9.4)."
+        "foot": "Đo bằng bit thông tin quyết định, không phải doanh thu, không phải tỷ lệ chuyển đổi. Trên một kệ thử nghiệm 216 sản phẩm, tái lập được từ repository (ODIN/research/SPIKE-VOI.md §9.4)."
       }
     },
     "proof": {
@@ -281,7 +281,7 @@
       "title": "Chúng tôi đã đi đến đây thế nào",
       "problem": {
         "title": "Điều chúng tôi phát hiện",
-        "description": "Chúng tôi hỏi: khách cần trả lời bao nhiêu câu hỏi trước khi có thể tự tin giới thiệu đúng chiếc laptop? Câu trả lời là: không bao giờ đủ. 47 trong số 216 sản phẩm trên kệ không ghi nhận bất kỳ thuộc tính nào để lọc, nên chúng sống sót qua mọi câu hỏi và kệ hàng không bao giờ thu hẹp được. Thông số không hề thiếu, chúng nằm ngay trong tên sản phẩm, nơi không bộ lọc nào chạm tới."
+        "description": "Chúng tôi hỏi: khách cần trả lời bao nhiêu câu hỏi trước khi có thể tự tin giới thiệu đúng chiếc laptop? Câu trả lời là: không bao giờ đủ. 47 trong số 216 sản phẩm trên kệ thử nghiệm, là phụ kiện và phần mềm xếp cùng laptop, không ghi nhận bất kỳ thuộc tính nào để lọc, nên chúng sống sót qua mọi câu hỏi và kệ hàng không bao giờ thu hẹp được. Thông số không hề thiếu, chúng nằm ngay trong tên sản phẩm, nơi không bộ lọc nào chạm tới."
       },
       "solution": {
         "title": "Thứ chúng tôi xây thay vào đó",

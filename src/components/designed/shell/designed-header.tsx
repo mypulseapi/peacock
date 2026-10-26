@@ -78,7 +78,7 @@ export function DesignedHeader() {
             */}
         <nav
           aria-label="Main"
-          className="relative hidden xl:block"
+          className="relative hidden self-stretch xl:flex xl:items-center"
           data-mega-nav
         >
           <ul className="flex items-center gap-0.5">
@@ -99,96 +99,135 @@ export function DesignedHeader() {
                   data-panel
                   className="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none"
                 >
-                  <div data-nav-content className="nav-content flex">
-                    <div className="nav-column w-76 p-3">
-                      <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                        {t("2")}
-                      </p>
-                      <ul className="space-y-1">
-                        <li>
-                          <Link
-                            href={designedHref("/en/product/decision-audit")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("3")}
-                            </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("4")}
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href={designedHref(
-                              "/en/product/decision-verification",
-                            )}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("5")}
-                            </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("6")}
-                            </span>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="nav-column w-76 p-3">
-                      <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                        {t("7")}
-                      </p>
-                      <ul className="space-y-1">
-                        <li>
-                          <Link
-                            href={designedHref("/en/product/decision-monitor")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("8")}
-                              <span className="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase">
-                                {t("9")}
+                  <div data-nav-content className="nav-content flex flex-col">
+                    {/* The catalogue tools side by side; the storefront, which comes later, as a row under them. */}
+                    <div className="flex w-full justify-center">
+                      <div className="nav-column min-w-76 flex-1 p-3">
+                        <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
+                          {t("2")}
+                        </p>
+                        <ul className="space-y-1">
+                          <li>
+                            <Link
+                              href={designedHref("/en/product/decision-audit")}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="nav-icon-tile">
+                                <svg className="size-4" aria-hidden="true">
+                                  <use href="#i-clipboard-check" />
+                                </svg>
                               </span>
-                            </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("10")}
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href={designedHref(
-                              "/en/product/return-verification",
-                            )}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("returnName")}
-                            </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("returnBlurb")}
-                            </span>
-                          </Link>
-                        </li>
-                      </ul>
+                              <span className="min-w-0">
+                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                  {t("3")}
+                                </span>
+                                <span className="mt-1 block text-sm text-pretty text-muted">
+                                  {t("4")}
+                                </span>
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href={designedHref(
+                                "/en/product/decision-verification",
+                              )}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="nav-icon-tile">
+                                <svg className="size-4" aria-hidden="true">
+                                  <use href="#i-compare" />
+                                </svg>
+                              </span>
+                              <span className="min-w-0">
+                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                  {t("5")}
+                                </span>
+                                <span className="mt-1 block text-sm text-pretty text-muted">
+                                  {t("6")}
+                                </span>
+                              </span>
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="nav-column min-w-76 flex-1 p-3">
+                        <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
+                          {t("7")}
+                        </p>
+                        <ul className="space-y-1">
+                          <li>
+                            <Link
+                              href={designedHref("/en/product/decision-monitor")}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="nav-icon-tile">
+                                <svg className="size-4" aria-hidden="true">
+                                  <use href="#i-bell-ring" />
+                                </svg>
+                              </span>
+                              <span className="min-w-0">
+                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                  {t("8")}
+                                  <span className="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase">
+                                    {t("9")}
+                                  </span>
+                                </span>
+                                <span className="mt-1 block text-sm text-pretty text-muted">
+                                  {t("10")}
+                                </span>
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href={designedHref(
+                                "/en/product/return-verification",
+                              )}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="nav-icon-tile">
+                                <svg className="size-4" aria-hidden="true">
+                                  <use href="#i-undo" />
+                                </svg>
+                              </span>
+                              <span className="min-w-0">
+                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                  {t("returnName")}
+                                </span>
+                                <span className="mt-1 block text-sm text-pretty text-muted">
+                                  {t("returnBlurb")}
+                                </span>
+                              </span>
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                    <div className="nav-column w-76 p-3">
-                      <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
+                    <div className="relative py-3 before:absolute before:inset-x-6 before:top-0 before:h-px before:bg-line/60 before:content-['']">
+                      {/* No side padding here: each cell carries the columns' p-3, so the grid lines up with them. */}
+                      <p className="mx-3 px-3 pt-1 pb-2 text-xs font-medium text-muted">
                         {t("storefront")}
                       </p>
-                      <ul className="space-y-1">
+                      <ul className="grid grid-cols-2 gap-y-1">
                         {STOREFRONT.map((p) => (
-                          <li key={p.href}>
+                          <li key={p.href} className="px-3">
                             <Link
                               href={designedHref(p.href)}
-                              className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                             >
-                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                {t(`${p.key}Name`)}
+                              <span className="nav-icon-tile">
+                                <svg className="size-4" aria-hidden="true">
+                                  <use href={`#${p.icon}`} />
+                                </svg>
                               </span>
-                              <span className="mt-1 block text-sm text-pretty text-muted">
-                                {t(`${p.key}Blurb`)}
+                              <span className="min-w-0">
+                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                  {t(`${p.key}Name`)}
+                                </span>
+                                <span className="mt-1 block text-sm text-pretty text-muted">
+                                  {t(`${p.key}Blurb`)}
+                                </span>
                               </span>
                             </Link>
                           </li>
@@ -224,26 +263,40 @@ export function DesignedHeader() {
                         <li>
                           <Link
                             href={designedHref("/en/industries/ecommerce")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("15")}
+                            <span className="nav-icon-tile">
+                              <svg className="size-4" aria-hidden="true">
+                                <use href="#i-cart" />
+                              </svg>
                             </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("16")}
+                            <span className="min-w-0">
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                {t("15")}
+                              </span>
+                              <span className="mt-1 block text-sm text-pretty text-muted">
+                                {t("16")}
+                              </span>
                             </span>
                           </Link>
                         </li>
                         <li>
                           <Link
                             href={designedHref("/en/industries/fmcg")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("17")}
+                            <span className="nav-icon-tile">
+                              <svg className="size-4" aria-hidden="true">
+                                <use href="#i-basket" />
+                              </svg>
                             </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("18")}
+                            <span className="min-w-0">
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                {t("17")}
+                              </span>
+                              <span className="mt-1 block text-sm text-pretty text-muted">
+                                {t("18")}
+                              </span>
                             </span>
                           </Link>
                         </li>
@@ -257,26 +310,40 @@ export function DesignedHeader() {
                         <li>
                           <Link
                             href={designedHref("/en/industries/furniture")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("20")}
+                            <span className="nav-icon-tile">
+                              <svg className="size-4" aria-hidden="true">
+                                <use href="#i-sofa" />
+                              </svg>
                             </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("21")}
+                            <span className="min-w-0">
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                {t("20")}
+                              </span>
+                              <span className="mt-1 block text-sm text-pretty text-muted">
+                                {t("21")}
+                              </span>
                             </span>
                           </Link>
                         </li>
                         <li>
                           <Link
                             href={designedHref("/en/industries/cosmetics")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("22")}
+                            <span className="nav-icon-tile">
+                              <svg className="size-4" aria-hidden="true">
+                                <use href="#i-sparkles" />
+                              </svg>
                             </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("23")}
+                            <span className="min-w-0">
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                {t("22")}
+                              </span>
+                              <span className="mt-1 block text-sm text-pretty text-muted">
+                                {t("23")}
+                              </span>
                             </span>
                           </Link>
                         </li>
@@ -290,26 +357,40 @@ export function DesignedHeader() {
                         <li>
                           <Link
                             href={designedHref("/en/industries/technology")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("25")}
+                            <span className="nav-icon-tile">
+                              <svg className="size-4" aria-hidden="true">
+                                <use href="#i-cpu" />
+                              </svg>
                             </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("26")}
+                            <span className="min-w-0">
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                {t("25")}
+                              </span>
+                              <span className="mt-1 block text-sm text-pretty text-muted">
+                                {t("26")}
+                              </span>
                             </span>
                           </Link>
                         </li>
                         <li>
                           <Link
                             href={designedHref("/en/industries/distribution")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("27")}
+                            <span className="nav-icon-tile">
+                              <svg className="size-4" aria-hidden="true">
+                                <use href="#i-factory" />
+                              </svg>
                             </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("28")}
+                            <span className="min-w-0">
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                {t("27")}
+                              </span>
+                              <span className="mt-1 block text-sm text-pretty text-muted">
+                                {t("28")}
+                              </span>
                             </span>
                           </Link>
                         </li>
@@ -336,13 +417,13 @@ export function DesignedHeader() {
                   className="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none"
                 >
                   {/*
-                        One column, and no section headings.
+                        Two columns of two, and no section headings.
 
                         It used to be Learn and Company side by side, three items against one.
                         Once Documentation was promoted to the top bar, Learn held nothing but
-                        Research, and a heading over a single link is a label doing no work. With
-                        four links in one list there is one group, so naming it says nothing the
-                        panel does not already say.
+                        Research, and a heading over a single link is a label doing no work. The
+                        four links are one group, so they stay unnamed; since 2026-10-26 they are
+                        laid out as two columns, matching the Product menu, rather than one list.
                       */}
                   <div data-nav-content className="nav-content flex">
                     <div className="nav-column w-76 p-3">
@@ -350,52 +431,84 @@ export function DesignedHeader() {
                         <li>
                           <Link
                             href={designedHref("/en/visual-evidence")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("33")}
+                            <span className="nav-icon-tile">
+                              <svg className="size-4" aria-hidden="true">
+                                <use href="#i-flask" />
+                              </svg>
                             </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("34")}
+                            <span className="min-w-0">
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                {t("33")}
+                              </span>
+                              <span className="mt-1 block text-sm text-pretty text-muted">
+                                {t("34")}
+                              </span>
                             </span>
                           </Link>
                         </li>
                         <li>
                           <Link
                             href={designedHref("/en/about")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("36")}
+                            <span className="nav-icon-tile">
+                              <svg className="size-4" aria-hidden="true">
+                                <use href="#i-user-round" />
+                              </svg>
                             </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("37")}
+                            <span className="min-w-0">
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                {t("36")}
+                              </span>
+                              <span className="mt-1 block text-sm text-pretty text-muted">
+                                {t("37")}
+                              </span>
                             </span>
                           </Link>
                         </li>
+                      </ul>
+                    </div>
+                    <div className="nav-column w-76 p-3">
+                      <ul className="space-y-1">
                         <li>
                           <Link
                             href={designedHref("/en/contact")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("38")}
+                            <span className="nav-icon-tile">
+                              <svg className="size-4" aria-hidden="true">
+                                <use href="#i-message-circle" />
+                              </svg>
                             </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("39")}
+                            <span className="min-w-0">
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                {t("38")}
+                              </span>
+                              <span className="mt-1 block text-sm text-pretty text-muted">
+                                {t("39")}
+                              </span>
                             </span>
                           </Link>
                         </li>
                         <li>
                           <Link
                             href={designedHref("/en/careers")}
-                            className="block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
-                            <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                              {t("40")}
+                            <span className="nav-icon-tile">
+                              <svg className="size-4" aria-hidden="true">
+                                <use href="#i-briefcase" />
+                              </svg>
                             </span>
-                            <span className="mt-1 block text-sm text-pretty text-muted">
-                              {t("41")}
+                            <span className="min-w-0">
+                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                {t("40")}
+                              </span>
+                              <span className="mt-1 block text-sm text-pretty text-muted">
+                                {t("41")}
+                              </span>
                             </span>
                           </Link>
                         </li>
@@ -431,8 +544,9 @@ export function DesignedHeader() {
         </nav>
 
         {/* Desktop actions */}
-        <div className="hidden items-center gap-2 xl:flex">
+        <div className="hidden items-center gap-2 self-stretch xl:flex">
           <DesignedThemeSwitch
+            attached
             heading={t("theme")}
             labels={{
               light: t("themeLight"),
@@ -440,7 +554,7 @@ export function DesignedHeader() {
               system: t("themeSystem"),
             }}
           />
-          <DesignedLocaleSwitch heading={t("44")} />
+          <DesignedLocaleSwitch attached heading={t("44")} />
           <Link href={designedHref("/en/signin")} className="nav-link">
             {t("46")}
           </Link>
@@ -522,7 +636,7 @@ export function DesignedHeader() {
                 >
                   <span className="nav-icon-tile size-9">
                     <svg className="size-4" aria-hidden="true">
-                      <use href="#i-circle-check" />
+                      <use href="#i-undo" />
                     </svg>
                   </span>
                   {t("returnName")}
@@ -691,7 +805,7 @@ export function DesignedHeader() {
               >
                 {t("65")}
                 <svg className="size-3.5" aria-hidden="true">
-                  <use href="#i-arrow-right" />
+                  <use href="#i-message-circle" />
                 </svg>
               </Link>
 

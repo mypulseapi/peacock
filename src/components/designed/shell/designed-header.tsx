@@ -452,7 +452,7 @@ export function DesignedHeader() {
                       <ul className="space-y-1">
                         <li>
                           <Link
-                            href={designedHref("/en/visual-evidence")}
+                            href={designedHref("/en/research")}
                             className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                           >
                             <span className="nav-icon-tile">
@@ -826,7 +826,7 @@ export function DesignedHeader() {
             <ul className="mt-2">
               <li>
                 <Link
-                  href={designedHref("/en/visual-evidence")}
+                  href={designedHref("/en/research")}
                   className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
                 >
                   <span className="nav-icon-tile size-9">

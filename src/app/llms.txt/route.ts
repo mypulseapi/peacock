@@ -83,6 +83,7 @@ PULSE is a decision call: requirements and evidence in; for every option, fits, 
 ## Company
 - [About Resolve Labs](${en("/about")}): who builds this, and what we cannot show yet.
 - [Pricing](${en("/pricing")}): how it is charged.
+- [Research](${en("/research")}): what we measured for each product, on what data, and the limit of each result; products not yet run on a real merchant are marked.
 - [Contact](${en("/contact")}): how to reach the team.
 
 ## For developers

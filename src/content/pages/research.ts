@@ -1,0 +1,342 @@
+import { byLocale } from "@/content/locale";
+
+/**
+ * Research: what we measured, product by product. The hub the Resources menu points at; the
+ * photograph study it used to point at is one entry, still at /visual-evidence.
+ *
+ * Every number is copied from rainbow's ODIN, checked 2026-10-26: SPIKE-VOI-DV.md §11.2 (audit),
+ * THE-THIRD-IGNORANCE.md (photographs), TWO-IGNORANCES.md §3 (1.20 and 4.24 bits, recomputed),
+ * NEMOTRON-PERSONAS-VIETNAM.md (parser), AGENTS-READ-PROSE.md §6 (nine listings),
+ * INTERVENTION-INTELLIGENCE.md §11 (Promotion Audit: no figure on the site, by decision).
+ * Synthetic data is called synthetic, no marketplace or competitor is named, and nothing here is a
+ * lift, latency or returns claim (hires/07-WHAT-WE-DO-NOT-CLAIM.md).
+ */
+export interface Finding {
+  product: string;
+  /** measured: a number exists. waiting: built, not yet run on a real merchant's data. */
+  status: "measured" | "waiting";
+  title: string;
+  body: string;
+  data: string;
+  limit: string;
+  href: string;
+  link: string;
+}
+
+export interface ResearchContent {
+  meta: { title: string; description: string };
+  eyebrow: string;
+  title: string;
+  lede: string;
+  labels: { measured: string; waiting: string; data: string; limit: string };
+  findingsHeading: string;
+  findings: Finding[];
+  method: { heading: string; items: { title: string; body: string }[] };
+  faqHeading: string;
+  faq: { q: string; a: string }[];
+  cta: { title: string; body: string; label: string; href: string };
+}
+
+const EN: ResearchContent = {
+  meta: {
+    title: "Research: what we measured, product by product",
+    description:
+      "The measurement behind each Pulse product: what we ran, on what data, the result and its limit, and which products have not yet met a real merchant's data.",
+  },
+  eyebrow: "Research",
+  title: "What we measured, and what it does not prove yet.",
+  lede: "Every Pulse product rests on a measurement. Here is each one: what we ran, on what data, the result, and the limit you would want to know before buying. Where a product has not met a real merchant's data yet, we say that too.",
+  labels: {
+    measured: "Measured",
+    waiting: "Waiting on a first merchant",
+    data: "Data",
+    limit: "Limit",
+  },
+  findingsHeading: "Findings, product by product",
+  findings: [
+    {
+      product: "Decision Audit",
+      status: "measured",
+      title: "How empty a field is and how much shoppers need it disagree.",
+      body: "Ranking attributes by the buying requirements shoppers state gave a different order from ranking by how empty each field is. Processor was missing on 162 products, so coverage puts it near the top; only 2 of 32 stated requirements mention a processor, so demand puts it last. Screen size came first under both.",
+      data: "A 216-product laptop shelf, 156 of them synthetic, and 32 written buying requirements. Criteria fixed before the run.",
+      limit:
+        "Only the top position is stable; positions two to four move with the method. One shelf.",
+      href: "/product/decision-audit",
+      link: "About the Decision Audit",
+    },
+    {
+      product: "Catalogue and photographs",
+      status: "measured",
+      title: "Half of what a catalogue records, the photograph already shows.",
+      body: "Across our 2,176-product demonstration catalogue, 52.6% of recorded attribute values repeat what the product photograph shows. On the nine facets a laptop buyer weighs, the catalogue and the photograph overlap on none.",
+      data: "2,176 products, one image each, counted attribute by attribute.",
+      limit:
+        "It measures the overlap, not lost sales. Whether a photograph shows a fact is our judgement.",
+      href: "/visual-evidence",
+      link: "Read the full study",
+    },
+    {
+      product: "Search, Recommendations and Pages",
+      status: "measured",
+      title: "Knowing the products is worth more than knowing the shopper.",
+      body: "On the laptop shelf, learning what a shopper needs narrowed 216 products to about 94, which is 1.20 bits. Knowing the products' facts narrowed those 94 to 5, which is 4.24 bits. That is why the catalogue products come first, and why live ranking needs the facts to rank on.",
+      data: "The same 216-product shelf, scored in bits of decision information.",
+      limit:
+        "One shelf, partly synthetic. It compares two kinds of missing information; it is not a ranking result.",
+      href: "/product/search",
+      link: "About Search",
+    },
+    {
+      product: "Search",
+      status: "measured",
+      title: "Our query parser misread most Thai searches. Now it does not.",
+      body: "A test set of shopping searches found the parser misreading 29% of Vietnamese, 94% of Thai, 78% of Bahasa Indonesia and 34% of English searches outside Vietnam. After the fix it misreads none of the four, with held-out cases kept back to check.",
+      data: "Searches phrased with help from a public set of synthetic Vietnamese personas, used for variety of wording only. English priced in six Southeast Asian currencies.",
+      limit:
+        "Synthetic searches, not real search logs. It shows the parser reads the words, not that results improved.",
+      href: "/product/search",
+      link: "About Search",
+    },
+    {
+      product: "Decision API for AI agents",
+      status: "measured",
+      title:
+        "A fact missing from a listing's fields is usually still on the page.",
+      body: "On nine laptop listings from a large Vietnamese marketplace, 17 of 36 facet readings were missing from the structured fields, and all 17 were in the title or the description. An agent that reads can find them. The hard part is reading correctly: two values for one fact, units, and saying it cannot tell when the page is silent. That is what the Decision API answers.",
+      data: "Nine public listings, fetched once.",
+      limit:
+        "We pre-registered 60 listings and reached 9, so there is no verdict. We stopped rather than get around the site's access limits.",
+      href: "/product/decision-api",
+      link: "About the Decision API",
+    },
+    {
+      product: "Promotion Audit",
+      status: "waiting",
+      title: "Built, and tested only on a synthetic seller.",
+      body: "The Promotion Audit judges vouchers, price cuts and free shipping on orders that stayed bought, after returns and failed deliveries, against doing nothing. An offer that wins only within noise is marked as one to test, not one to run.",
+      data: "A synthetic seller built from published fee, delivery and payment figures, with assumptions where no source exists.",
+      limit:
+        "No real seller yet, so no figure is published. A real result needs the seller's own order history.",
+      href: "/product/promotion-audit",
+      link: "About the Promotion Audit",
+    },
+    {
+      product: "Return Verification",
+      status: "waiting",
+      title: "Ready to read a merchant's returns. It has not read one yet.",
+      body: "Return Verification reads order lines and return reasons against the catalogue, to show which missing facts go with returns and whether a repair moved them. The method and the free /outcomes endpoint are built and tested on fixtures.",
+      data: "Test fixtures only.",
+      limit:
+        "We do not claim Pulse reduces returns. It measures your own history.",
+      href: "/product/return-verification",
+      link: "About Return Verification",
+    },
+    {
+      product: "Decision Verification and Monitor",
+      status: "waiting",
+      title: "The audit's measurement, run again.",
+      body: "Verification re-runs the audit after a repair and reports what moved. Monitor re-runs it on a schedule and says when a shelf slips. Both use the audit's measurement, so they carry its limits.",
+      data: "No real repaired catalogue yet.",
+      limit: "Neither has run on a merchant's repaired catalogue.",
+      href: "/product/decision-verification",
+      link: "About Decision Verification",
+    },
+  ],
+  method: {
+    heading: "How we run research",
+    items: [
+      {
+        title: "Criteria first",
+        body: "What would count as success or failure is written down and committed before any data is fetched, so a result cannot be chosen after it is seen.",
+      },
+      {
+        title: "Failures stay up",
+        body: "A run that fails its own test is kept and published with the reason. So is a run stopped short, like the nine listings above.",
+      },
+      {
+        title: "Data is labelled",
+        body: "Synthetic data is called synthetic, and no number becomes a claim about results until it has run on a merchant's own data.",
+      },
+    ],
+  },
+  faqHeading: "Questions about the research",
+  faq: [
+    {
+      q: "Has Pulse been proven on a real merchant?",
+      a: "Not yet. The measurements here run on our own laptop shelf, our demonstration catalogue, synthetic data or a small public sample. A first merchant's own data is the next milestone, and results will be published here.",
+    },
+    {
+      q: "Why publish results that are unfavourable?",
+      a: "Because a buyer will find the limits eventually, and it is better they hear them from us. The photograph study exists because a result contradicted our own product.",
+    },
+    {
+      q: "Do you have an uplift figure?",
+      a: "No. An uplift figure needs a holdback on a merchant's live traffic, and none has run. We will not quote one before it has.",
+    },
+    {
+      q: "Can I see the method behind a number?",
+      a: "Yes. Ask us for the write-up behind any finding on this page. Each one has its pre-registered criteria, its data and its caveats.",
+    },
+  ],
+  cta: {
+    title: "Run the measurement on your own catalogue.",
+    body: "The Decision Audit is free. Send one category and get back which missing facts cost the most buying decisions, with the limits stated.",
+    label: "Request a Decision Audit",
+    href: "/contact",
+  },
+};
+
+const VI: ResearchContent = {
+  meta: {
+    title: "Nghiên cứu: chúng tôi đã đo gì, từng sản phẩm",
+    description:
+      "Phép đo đứng sau mỗi sản phẩm Pulse: chạy gì, trên dữ liệu nào, kết quả và giới hạn, và sản phẩm nào chưa chạy trên dữ liệu của người bán thật.",
+  },
+  eyebrow: "Nghiên cứu",
+  title: "Chúng tôi đã đo gì, và điều đó chưa chứng minh được gì.",
+  lede: "Mỗi sản phẩm Pulse dựa trên một phép đo. Dưới đây là từng phép đo: chúng tôi chạy gì, trên dữ liệu nào, kết quả ra sao, và giới hạn bạn nên biết trước khi mua. Sản phẩm nào chưa chạy trên dữ liệu của người bán thật, chúng tôi cũng nói rõ.",
+  labels: {
+    measured: "Đã đo",
+    waiting: "Chờ người bán đầu tiên",
+    data: "Dữ liệu",
+    limit: "Giới hạn",
+  },
+  findingsHeading: "Kết quả, từng sản phẩm",
+  findings: [
+    {
+      product: "Decision Audit",
+      status: "measured",
+      title:
+        "Mức độ trống của một trường và mức người mua cần nó không trùng nhau.",
+      body: "Xếp hạng thuộc tính theo yêu cầu mua mà người mua nêu ra cho thứ tự khác với xếp theo mức độ trống của từng trường. Bộ xử lý thiếu trên 162 sản phẩm, nên theo độ phủ nó gần đầu; chỉ 2 trong 32 yêu cầu nhắc tới bộ xử lý, nên theo nhu cầu nó đứng cuối. Kích thước màn hình đứng đầu theo cả hai cách.",
+      data: "Một kệ 216 laptop, trong đó 156 là dữ liệu tổng hợp, và 32 yêu cầu mua viết sẵn. Tiêu chí cố định trước khi chạy.",
+      limit:
+        "Chỉ vị trí đầu là ổn định; vị trí hai đến bốn thay đổi theo phương pháp. Một kệ hàng.",
+      href: "/product/decision-audit",
+      link: "Về Decision Audit",
+    },
+    {
+      product: "Danh mục và ảnh sản phẩm",
+      status: "measured",
+      title: "Một nửa những gì danh mục ghi lại, ảnh sản phẩm đã cho thấy.",
+      body: "Trên danh mục trình diễn 2.176 sản phẩm của chúng tôi, 52,6% giá trị thuộc tính được ghi lặp lại điều ảnh sản phẩm đã cho thấy. Với chín yếu tố người mua laptop cân nhắc, danh mục và ảnh không trùng nhau ở yếu tố nào.",
+      data: "2.176 sản phẩm, mỗi sản phẩm một ảnh, đếm từng thuộc tính.",
+      limit:
+        "Nó đo phần trùng lặp, không đo doanh số bị mất. Việc ảnh có cho thấy một thông tin hay không là đánh giá của chúng tôi.",
+      href: "/visual-evidence",
+      link: "Đọc toàn bộ nghiên cứu",
+    },
+    {
+      product: "Search, Recommendations và Pages",
+      status: "measured",
+      title: "Hiểu sản phẩm đáng giá hơn hiểu người mua.",
+      body: "Trên kệ laptop, biết người mua cần gì thu hẹp 216 sản phẩm còn khoảng 94, tức 1,20 bit. Biết thông tin của sản phẩm thu hẹp 94 còn 5, tức 4,24 bit. Vì vậy các sản phẩm cho danh mục đi trước, và xếp hạng trực tiếp cần có thông tin để xếp.",
+      data: "Cùng kệ 216 sản phẩm, tính bằng bit thông tin quyết định.",
+      limit:
+        "Một kệ hàng, một phần là dữ liệu tổng hợp. Nó so sánh hai loại thông tin còn thiếu; không phải kết quả xếp hạng.",
+      href: "/product/search",
+      link: "Về Search",
+    },
+    {
+      product: "Search",
+      status: "measured",
+      title:
+        "Bộ phân tích truy vấn từng đọc sai hầu hết tìm kiếm tiếng Thái. Giờ thì không.",
+      body: "Một bộ tìm kiếm thử nghiệm cho thấy bộ phân tích đọc sai 29% tìm kiếm tiếng Việt, 94% tiếng Thái, 78% tiếng Bahasa Indonesia và 34% tiếng Anh ngoài Việt Nam. Sau khi sửa, nó không đọc sai tìm kiếm nào ở cả bốn ngôn ngữ, với các trường hợp giữ riêng để kiểm tra.",
+      data: "Các tìm kiếm được diễn đạt với sự hỗ trợ của một bộ nhân vật tiếng Việt tổng hợp công khai, chỉ để đa dạng cách nói. Tiếng Anh dùng giá theo sáu loại tiền Đông Nam Á.",
+      limit:
+        "Tìm kiếm tổng hợp, không phải nhật ký tìm kiếm thật. Nó cho thấy bộ phân tích đọc đúng câu chữ, không phải kết quả đã tốt hơn.",
+      href: "/product/search",
+      link: "Về Search",
+    },
+    {
+      product: "Decision API cho AI agent",
+      status: "measured",
+      title:
+        "Thông tin thiếu trong các trường của trang sản phẩm thường vẫn có trên trang.",
+      body: "Trên chín trang laptop của một sàn thương mại điện tử lớn ở Việt Nam, 17 trong 36 lượt đọc thông tin không có trong các trường cấu trúc, và cả 17 đều nằm trong tiêu đề hoặc mô tả. Agent biết đọc có thể tìm ra. Phần khó là đọc đúng: hai giá trị cho một thông tin, đơn vị, và nói không xác định được khi trang không nói gì. Đó là điều Decision API trả lời.",
+      data: "Chín trang công khai, lấy một lần.",
+      limit:
+        "Chúng tôi đăng ký trước 60 trang và chỉ đạt 9, nên chưa có kết luận. Chúng tôi dừng lại thay vì vượt qua giới hạn truy cập của trang.",
+      href: "/product/decision-api",
+      link: "Về Decision API",
+    },
+    {
+      product: "Promotion Audit",
+      status: "waiting",
+      title: "Đã xây dựng, và mới chỉ thử trên một người bán tổng hợp.",
+      body: "Promotion Audit đánh giá voucher, giảm giá và miễn phí vận chuyển theo những đơn được giữ lại, sau khi trừ hàng trả và giao thất bại, so với việc không làm gì. Ưu đãi chỉ thắng trong phạm vi nhiễu được đánh dấu là cần thử nghiệm, không phải nên chạy.",
+      data: "Một người bán tổng hợp dựng từ các số liệu công bố về phí, giao hàng và thanh toán, kèm giả định ở chỗ không có nguồn.",
+      limit:
+        "Chưa có người bán thật, nên chưa công bố con số nào. Kết quả thật cần lịch sử đơn hàng của chính người bán.",
+      href: "/product/promotion-audit",
+      link: "Về Promotion Audit",
+    },
+    {
+      product: "Return Verification",
+      status: "waiting",
+      title: "Sẵn sàng đọc hàng trả của người bán. Chưa đọc lần nào.",
+      body: "Return Verification đối chiếu dòng đơn hàng và lý do trả hàng với danh mục, để cho thấy thông tin còn thiếu nào đi cùng hàng bị trả và bản sửa có làm chúng thay đổi không. Phương pháp và endpoint /outcomes miễn phí đã được xây dựng và kiểm thử trên dữ liệu mẫu.",
+      data: "Chỉ dữ liệu kiểm thử.",
+      limit:
+        "Chúng tôi không nói Pulse giảm hàng trả. Nó đo lịch sử của chính bạn.",
+      href: "/product/return-verification",
+      link: "Về Return Verification",
+    },
+    {
+      product: "Decision Verification và Monitor",
+      status: "waiting",
+      title: "Phép đo của bản kiểm tra, chạy lại.",
+      body: "Verification chạy lại bản kiểm tra sau khi sửa và báo những gì đã thay đổi. Monitor chạy lại theo lịch và báo khi một kệ hàng sa sút. Cả hai dùng phép đo của bản kiểm tra, nên mang theo giới hạn của nó.",
+      data: "Chưa có danh mục thật đã sửa.",
+      limit: "Chưa cái nào chạy trên danh mục đã sửa của người bán.",
+      href: "/product/decision-verification",
+      link: "Về Decision Verification",
+    },
+  ],
+  method: {
+    heading: "Chúng tôi nghiên cứu như thế nào",
+    items: [
+      {
+        title: "Tiêu chí trước",
+        body: "Điều gì được tính là thành công hay thất bại được viết ra và lưu lại trước khi lấy dữ liệu, để không ai chọn kết quả sau khi đã thấy nó.",
+      },
+      {
+        title: "Thất bại vẫn được công bố",
+        body: "Một lần chạy không đạt tiêu chí của chính nó vẫn được giữ và công bố kèm lý do. Lần chạy dừng giữa chừng cũng vậy, như chín trang ở trên.",
+      },
+      {
+        title: "Dữ liệu được ghi rõ",
+        body: "Dữ liệu tổng hợp được gọi là tổng hợp, và không con số nào trở thành tuyên bố về kết quả cho tới khi chạy trên dữ liệu của chính người bán.",
+      },
+    ],
+  },
+  faqHeading: "Câu hỏi về nghiên cứu",
+  faq: [
+    {
+      q: "Pulse đã được chứng minh trên người bán thật chưa?",
+      a: "Chưa. Các phép đo ở đây chạy trên kệ laptop của chúng tôi, danh mục trình diễn, dữ liệu tổng hợp hoặc một mẫu công khai nhỏ. Dữ liệu của người bán đầu tiên là cột mốc tiếp theo, và kết quả sẽ được công bố tại đây.",
+    },
+    {
+      q: "Tại sao công bố cả kết quả bất lợi?",
+      a: "Vì sớm muộn người mua cũng thấy các giới hạn, và tốt hơn là họ nghe từ chúng tôi. Nghiên cứu về ảnh sản phẩm ra đời vì một kết quả mâu thuẫn với chính sản phẩm của chúng tôi.",
+    },
+    {
+      q: "Pulse có con số tăng trưởng không?",
+      a: "Không. Con số tăng trưởng cần một nhóm đối chứng trên lưu lượng thật của người bán, và chưa có lần nào chạy. Chúng tôi sẽ không nêu con số trước khi có.",
+    },
+    {
+      q: "Tôi có thể xem phương pháp đằng sau một con số không?",
+      a: "Có. Hãy hỏi chúng tôi bản mô tả đằng sau bất kỳ kết quả nào trên trang này. Mỗi kết quả có tiêu chí đăng ký trước, dữ liệu và các lưu ý.",
+    },
+  ],
+  cta: {
+    title: "Chạy phép đo trên danh mục của chính bạn.",
+    body: "Decision Audit miễn phí. Gửi một ngành hàng và nhận lại những thông tin còn thiếu làm mất nhiều quyết định mua nhất, kèm các giới hạn.",
+    label: "Yêu cầu Decision Audit",
+    href: "/contact",
+  },
+};
+
+export const research = (l: string) => byLocale({ en: EN, vi: VI }, l);

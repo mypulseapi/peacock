@@ -1,0 +1,27 @@
+{
+  "audit": {
+    "Missing specs": "Thiếu thông số",
+    "Conflicting info": "Thông tin mâu thuẫn",
+    "Buried in titles": "Nằm trong tiêu đề",
+    "Complete details": "Đã đủ thông tin"
+  },
+  "repair": {
+    "✓ Verified": "✓ Xác minh",
+    "Add missing specs": "Bổ sung thông số",
+    "Recover from titles": "Lấy lại từ tiêu đề",
+    "Resolve conflicts": "Giải quyết mâu thuẫn",
+    "Re-measure": "Đo lại"
+  },
+  "monitor": {
+    "New issues detected": "Phát hiện vấn đề mới",
+    "12 products affected": "12 sản phẩm bị ảnh hưởng",
+    "Resolved": "Đã xử lý",
+    "In progress": "Đang xử lý",
+    "New issues": "Vấn đề mới"
+  },
+  "decision-api": {
+    "Rank each visit": "Xếp hạng mỗi lượt",
+    "Connect your systems": "Kết nối hệ thống",
+    "Automate decisions": "Tự động hóa quyết định"
+  }
+}

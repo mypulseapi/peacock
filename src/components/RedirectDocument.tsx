@@ -5,6 +5,8 @@ import { SITE } from "@/lib/site";
 export function RedirectDocument({ target }: { target: string }) {
   return (
     <html lang={DEFAULT_LOCALE}>
+      {/* A whole document on purpose: these redirect pages render their own <html> (see app/page.tsx). */}
+      {/* eslint-disable-next-line @next/next/no-head-element */}
       <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="refresh" content={`0;url=${target}`} />

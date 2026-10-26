@@ -600,10 +600,10 @@
   },
   "pricing": {
     "meta": {
-      "title": "Bảng giá: phí cố định cho bản kiểm tra",
-      "description": "Decision Audit có giá cố định cho mỗi danh mục. Bộ máy thời gian thực được định giá theo từng chương trình thử nghiệm, không bao giờ trước đó.",
-      "ogTitle": "Bảng giá: phí cố định cho bản kiểm tra",
-      "ogDescription": "Decision Audit có giá cố định cho mỗi danh mục. Bộ máy thời gian thực được định giá theo từng chương trình thử nghiệm, không bao giờ trước đó."
+      "title": "Bảng giá: trả cho quyết định, không cho đo lường",
+      "description": "Công cụ mã nguồn mở miễn phí, Decision Audit miễn phí, sau đó trả theo đợt sửa hoặc theo quyết định. Đo lường kết quả không bao giờ được tính phí.",
+      "ogTitle": "Bảng giá: trả cho quyết định, không cho đo lường",
+      "ogDescription": "Công cụ mã nguồn mở miễn phí, Decision Audit miễn phí, sau đó trả theo đợt sửa hoặc theo quyết định. Đo lường kết quả không bao giờ được tính phí."
     },
     "title": "Tính theo quyết định tạo ra.",
     "titleHighlight": "Không tính theo dữ liệu lưu trữ.",

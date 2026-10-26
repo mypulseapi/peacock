@@ -600,10 +600,10 @@
   },
   "pricing": {
     "meta": {
-      "title": "Pricing: a fixed fee for the audit",
-      "description": "The Decision Audit has a fixed price per catalogue. The runtime is priced per pilot, never before one, and this page explains why there is no rate card.",
-      "ogTitle": "Pricing: a fixed fee for the audit",
-      "ogDescription": "The Decision Audit has a fixed price per catalogue. The runtime is priced per pilot, never before one, and this page explains why there is no rate card."
+      "title": "Pricing: pay for decisions, never for measurement",
+      "description": "Open-source tools free, the Decision Audit free, then pay per repair cycle or per decision served. Measuring results is never counted. See what counts.",
+      "ogTitle": "Pricing: pay for decisions, never for measurement",
+      "ogDescription": "Open-source tools free, the Decision Audit free, then pay per repair cycle or per decision served. Measuring results is never counted. See what counts."
     },
     "title": "Priced on what it decides.",
     "titleHighlight": "Not on what it stores.",

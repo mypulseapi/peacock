@@ -7,8 +7,8 @@ import type { StoryContent } from "@/components/StoryPage";
  * exactly what is released today and what is only planned.
  *
  * Checked 2026-10-26: `@thepulseapi/sdk` 0.2.0 is on npm (MIT) with its source in a private
- * repository, so it is readable through npm, not GitHub; `@thepulseapi/docs-mcp` has public source
- * on GitHub and is not yet on npm. Planned items carry "planned", never a date. No competitor named.
+ * repository, so it is readable through npm, not GitHub; `@thepulseapi/mcp` has public source and is not yet
+ * on npm. Both live in the public monorepo github.com/mypulseapi/pulse since 2026-10-26. Planned items carry "planned", never a date. No competitor named.
  */
 export const OPENSOURCE: StoryContent = {
   meta: {
@@ -43,13 +43,13 @@ export const OPENSOURCE: StoryContent = {
         n: "01",
         meta: "Install",
         title: "Install from npm",
-        body: "npm install @thepulseapi/sdk. The MCP server's source is on GitHub; its npm package is being published.",
+        body: "npm install @thepulseapi/sdk. The MCP server, @thepulseapi/mcp, is being published to npm.",
       },
       {
         n: "02",
         meta: "Read",
         title: "Read the source",
-        body: "The MCP server lives in the mypulseapi/handbook repository on GitHub. The SDK's published code is readable on npm.",
+        body: "Both packages live in one public repository, mypulseapi/pulse on GitHub.",
       },
       {
         n: "03",
@@ -70,7 +70,7 @@ export const OPENSOURCE: StoryContent = {
       },
       {
         icon: Bot,
-        title: "@thepulseapi/docs-mcp: source public",
+        title: "@thepulseapi/mcp: source public",
         body: "An MCP server for Claude, ChatGPT and other agents: search the docs, and with a key, ask the Decision API which products meet a shopper's requirements. MIT, source on GitHub.",
       },
       {
@@ -114,7 +114,7 @@ export const OPENSOURCE: StoryContent = {
     },
     {
       q: "Where is the code?",
-      a: "On GitHub under mypulseapi and on npm under @thepulseapi. The MCP server's source is in the mypulseapi/handbook repository; the SDK is published on npm.",
+      a: "In one public repository, mypulseapi/pulse on GitHub, and on npm under @thepulseapi.",
     },
     {
       q: "Can I contribute?",
@@ -175,13 +175,13 @@ export const OPENSOURCE_VI: StoryContent = {
         n: "01",
         meta: "Cài đặt",
         title: "Cài từ npm",
-        body: "npm install @thepulseapi/sdk. Mã nguồn máy chủ MCP có trên GitHub; gói npm của nó đang được phát hành.",
+        body: "npm install @thepulseapi/sdk. Máy chủ MCP, @thepulseapi/mcp, đang được phát hành lên npm.",
       },
       {
         n: "02",
         meta: "Đọc",
         title: "Đọc mã nguồn",
-        body: "Máy chủ MCP nằm trong kho mypulseapi/handbook trên GitHub. Mã đã phát hành của SDK đọc được trên npm.",
+        body: "Cả hai gói nằm trong một kho công khai, mypulseapi/pulse trên GitHub.",
       },
       {
         n: "03",
@@ -202,7 +202,7 @@ export const OPENSOURCE_VI: StoryContent = {
       },
       {
         icon: Bot,
-        title: "@thepulseapi/docs-mcp: mã nguồn công khai",
+        title: "@thepulseapi/mcp: mã nguồn công khai",
         body: "Máy chủ MCP cho Claude, ChatGPT và các tác tử khác: tìm trong tài liệu, và khi có khóa, hỏi Decision API sản phẩm nào đáp ứng yêu cầu của người mua. MIT, mã nguồn trên GitHub.",
       },
       {
@@ -246,7 +246,7 @@ export const OPENSOURCE_VI: StoryContent = {
     },
     {
       q: "Mã nguồn ở đâu?",
-      a: "Trên GitHub dưới mypulseapi và trên npm dưới @thepulseapi. Mã nguồn máy chủ MCP nằm trong kho mypulseapi/handbook; SDK được phát hành trên npm.",
+      a: "Trong một kho công khai, mypulseapi/pulse trên GitHub, và trên npm dưới @thepulseapi.",
     },
     {
       q: "Tôi có thể đóng góp không?",

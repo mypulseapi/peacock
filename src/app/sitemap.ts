@@ -38,6 +38,7 @@ const staticPages = [
   // find. Each is a separate story with its own FAQPage schema.
   "/product/decision-audit",
   "/product/decision-verification",
+  "/product/return-verification",
   "/product/decision-monitor",
   "/product/decision-api",
   // The four storefront surfaces the Decision API serves.
@@ -75,6 +76,7 @@ const pagePriorities: Record<string, number> = {
   "/product": 0.9,
   "/product/decision-audit": 0.9,
   "/product/decision-verification": 0.8,
+  "/product/return-verification": 0.8,
   "/product/decision-monitor": 0.8,
   "/product/decision-api": 0.7,
   "/product/search": 0.9,
@@ -103,11 +105,15 @@ const pagePriorities: Record<string, number> = {
 };
 
 // Change frequencies based on content type
-const changeFrequencies: Record<string, MetadataRoute.Sitemap[number]["changeFrequency"]> = {
+const changeFrequencies: Record<
+  string,
+  MetadataRoute.Sitemap[number]["changeFrequency"]
+> = {
   "": "weekly",
   "/product": "monthly",
   "/product/decision-audit": "monthly",
   "/product/decision-verification": "monthly",
+  "/product/return-verification": "monthly",
   "/product/decision-monitor": "monthly",
   "/product/decision-api": "monthly",
   "/product/search": "monthly",

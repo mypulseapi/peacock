@@ -24,23 +24,21 @@ export const CLIENT_NAMESPACES = [
   "contact",
   "cookies",
   "docs",
-  "footer",
   "gdpr",
   "industryShell",
   "integrations",
   "intentPanel",
   "jobForm",
-  "language",
-  "nav",
   "nextBest",
-  "notFound",
   "privacy",
   "status",
   "terms",
 ] as const;
 
 /** The subset of a catalogue that the browser actually needs. */
-export function clientMessages(all: Record<string, unknown>): Record<string, unknown> {
+export function clientMessages(
+  all: Record<string, unknown>,
+): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const ns of CLIENT_NAMESPACES) {
     if (ns in all) out[ns] = all[ns];

@@ -1,5 +1,10 @@
 import { byLocale } from "@/content/locale";
-import { LayoutGrid, Megaphone, Blocks, SplitSquareHorizontal } from "lucide-react";
+import {
+  LayoutGrid,
+  Megaphone,
+  Blocks,
+  SplitSquareHorizontal,
+} from "lucide-react";
 import type { StoryContent } from "@/components/StoryPage";
 
 /**
@@ -16,8 +21,7 @@ export const PAGES: StoryContent = {
   },
   eyebrow: "Pages",
   title: "Category and landing pages ordered for whoever arrived.",
-  lede:
-    "A campaign sends a thousand people to one page and every one of them sees the same grid. This orders that grid against what each visit implies, from the first page view, with a share of traffic held back so you can tell whether it helped.",
+  lede: "A campaign sends a thousand people to one page and every one of them sees the same grid. This orders that grid against what each visit implies, from the first page view, with a share of traffic held back so you can tell whether it helped.",
 
   visualHeading: "One page, two arms.",
   visualBody:
@@ -36,7 +40,11 @@ export const PAGES: StoryContent = {
       rows: [
         { label: "The keyword they searched", eg: "in the request", ok: true },
         { label: "The creative they clicked", eg: "in the request", ok: true },
-        { label: "Used to order the grid", eg: "discarded on arrival", ok: false },
+        {
+          label: "Used to order the grid",
+          eg: "discarded on arrival",
+          ok: false,
+        },
       ],
       okLabel: "Known",
       noLabel: "Thrown away",
@@ -48,8 +56,16 @@ export const PAGES: StoryContent = {
       steps: [
         { k: "The ad", v: "a keyword, a creative, a promise", tone: "good" },
         { k: "The click", v: "carries all three in the request", tone: "good" },
-        { k: "The landing page", v: "discards them and renders the default grid", tone: "warn" },
-        { k: "The shopper", v: "scrolls a grid built before you knew they existed", tone: "hold" },
+        {
+          k: "The landing page",
+          v: "discards them and renders the default grid",
+          tone: "warn",
+        },
+        {
+          k: "The shopper",
+          v: "scrolls a grid built before you knew they existed",
+          tone: "hold",
+        },
       ],
       note: "The ordering rule on most category pages was written once, for nobody in particular, and has not been revisited since.",
     },
@@ -70,26 +86,56 @@ export const PAGES: StoryContent = {
       "So it gets ordered by a rule written months earlier. Newest first, or bestsellers, or a manual pin from a campaign that ended. The rule is not wrong exactly, it is just the same for a first-time visitor from a price comparison ad and a returning customer browsing on a phone at midnight.",
       "The visit itself carries more than the rule does, and it carries it immediately. Which campaign, which device, what they touched in the first fifteen seconds. None of that needs an identity and all of it is available before the second page view.",
     ],
-    pull:
-      "The grid you paid to put someone in front of is usually ordered by a rule written before you knew they existed.",
+    pull: "The grid you paid to put someone in front of is usually ordered by a rule written before you knew they existed.",
   },
 
   steps: {
     heading: "How a page gets ordered",
     items: [
-      { n: "01", meta: "Arrival", title: "The visit starts with context", body: "Referrer, device and the campaign that sent them are available on the first request, before anybody has clicked anything. That is enough to start from something better than a static rule." },
-      { n: "02", meta: "Live", title: "It re-ranks as they move", body: "Every view, filter and search inside the visit updates the ordering of what has not been seen yet. The grid is not decided once at page load and then frozen." },
-      { n: "03", meta: "Measured", title: "A share sees your rule", body: "The held-back arm renders the page your existing way, stable per session, so the two orderings can be compared on your own traffic rather than in principle." },
+      {
+        n: "01",
+        meta: "Arrival",
+        title: "The visit starts with context",
+        body: "Referrer, device and the campaign that sent them are available on the first request, before anybody has clicked anything. That is enough to start from something better than a static rule.",
+      },
+      {
+        n: "02",
+        meta: "Live",
+        title: "It re-ranks as they move",
+        body: "Every view, filter and search inside the visit updates the ordering of what has not been seen yet. The grid is not decided once at page load and then frozen.",
+      },
+      {
+        n: "03",
+        meta: "Measured",
+        title: "A share sees your rule",
+        body: "The held-back arm renders the page your existing way, stable per session, so the two orderings can be compared on your own traffic rather than in principle.",
+      },
     ],
   },
 
   gets: {
     heading: "What you get",
     items: [
-      { icon: LayoutGrid, title: "Any grid, any page", body: "Category listings, landing pages, collection pages, the home grid. The engine is asked to order a set of products and does not need to know what the page is for." },
-      { icon: Megaphone, title: "Campaign context from the first request", body: "The referrer and campaign that delivered the visit are signals like any other, so paid traffic is not starting from nothing the way a profile-based system makes it." },
-      { icon: Blocks, title: "Your layout, untouched", body: "It orders products. It does not template your page, own your components or ask you to move to a new page builder, because ordering is the part that was wrong." },
-      { icon: SplitSquareHorizontal, title: "A control arm on every page", body: "A share of sessions always sees your existing order. That is how any claim about this page, including ours, gets to be checked rather than believed." },
+      {
+        icon: LayoutGrid,
+        title: "Any grid, any page",
+        body: "Category listings, landing pages, collection pages, the home grid. The engine is asked to order a set of products and does not need to know what the page is for.",
+      },
+      {
+        icon: Megaphone,
+        title: "Campaign context from the first request",
+        body: "The referrer and campaign that delivered the visit are signals like any other, so paid traffic is not starting from nothing the way a profile-based system makes it.",
+      },
+      {
+        icon: Blocks,
+        title: "Your layout, untouched",
+        body: "It orders products. It does not template your page, own your components or ask you to move to a new page builder, because ordering is the part that was wrong.",
+      },
+      {
+        icon: SplitSquareHorizontal,
+        title: "A control arm on every page",
+        body: "A share of sessions always sees your existing order. That is how any claim about this page, including ours, gets to be checked rather than believed.",
+      },
     ],
   },
 
@@ -110,11 +156,26 @@ export const PAGES: StoryContent = {
   },
 
   faq: [
-    { q: "Do we have to rebuild our pages?", a: "No. It changes the order of the products in a grid and nothing else. Your templates, components and page tooling stay where they are, and if you switch it off the grid renders in your original order because that order is the fallback." },
-    { q: "What does it know about a visitor who just arrived?", a: "The referrer, the campaign that delivered them and their device, all available on the first request. That is materially more than a profile-based system has on an anonymous arrival, which is nothing, and it needs no cookie or consent to read." },
-    { q: "Does it work on paid landing pages?", a: "That is the case it is most useful for, because you have already paid for the click and the page is otherwise ordered by a rule written before the campaign existed. It is also the case where a held-back arm matters most, since you can put a number on what the ordering did." },
-    { q: "How is this different from your recommendations?", a: "Only in where it points. Recommendations order a slot, pages order a grid, and search orders a result set. One ranker, four factors, three surfaces, which is why understanding one of these pages means you understand the other two." },
-    { q: "Can we still pin products?", a: "Not yet, and we would rather say so than imply otherwise. Merchandiser overrides are described on the Merchandising Studio page along with what is and is not built today." },
+    {
+      q: "Do we have to rebuild our pages?",
+      a: "No. It changes the order of the products in a grid and nothing else. Your templates, components and page tooling stay where they are, and if you switch it off the grid renders in your original order because that order is the fallback.",
+    },
+    {
+      q: "What does it know about a visitor who just arrived?",
+      a: "The referrer, the campaign that delivered them and their device, all available on the first request. That is materially more than a profile-based system has on an anonymous arrival, which is nothing, and it needs no cookie or consent to read.",
+    },
+    {
+      q: "Does it work on paid landing pages?",
+      a: "That is the case it is most useful for, because you have already paid for the click and the page is otherwise ordered by a rule written before the campaign existed. It is also the case where a held-back arm matters most, since you can put a number on what the ordering did.",
+    },
+    {
+      q: "How is this different from your recommendations?",
+      a: "Only in where it points. Recommendations order a slot, pages order a grid, and search orders a result set. One ranker, one set of factors, three surfaces, which is why understanding one of these pages means you understand the other two.",
+    },
+    {
+      q: "Can we still pin products?",
+      a: "Not yet, and we would rather say so than imply otherwise. Merchandiser overrides are described on the Merchandising Studio page along with what is and is not built today.",
+    },
   ],
 
   cta: {
@@ -135,8 +196,7 @@ export const PAGES_VI: StoryContent = {
   },
   eyebrow: "Trang danh mục",
   title: "Trang ngành hàng và trang đích được sắp xếp cho đúng người vừa tới.",
-  lede:
-    "Một chiến dịch đưa một nghìn người tới cùng một trang và tất cả đều thấy chung một lưới sản phẩm. Cái này sắp xếp lưới đó theo những gì từng lần ghé hàm ý, ngay từ lượt xem trang đầu tiên, với một phần lưu lượng được giữ lại để bạn biết nó có giúp ích hay không.",
+  lede: "Một chiến dịch đưa một nghìn người tới cùng một trang và tất cả đều thấy chung một lưới sản phẩm. Cái này sắp xếp lưới đó theo những gì từng lần ghé hàm ý, ngay từ lượt xem trang đầu tiên, với một phần lưu lượng được giữ lại để bạn biết nó có giúp ích hay không.",
 
   visualHeading: "Một trang, hai nhánh.",
   visualBody:
@@ -165,10 +225,26 @@ export const PAGES_VI: StoryContent = {
     hero: {
       kind: "flow",
       steps: [
-        { k: "Quảng cáo", v: "một từ khoá, một mẫu hình, một lời hứa", tone: "good" },
-        { k: "Cú nhấp", v: "mang theo cả ba trong yêu cầu gửi lên", tone: "good" },
-        { k: "Trang đích", v: "vứt hết đi và dựng lưới mặc định", tone: "warn" },
-        { k: "Người mua", v: "cuộn một lưới dựng ra trước khi bạn biết họ tồn tại", tone: "hold" },
+        {
+          k: "Quảng cáo",
+          v: "một từ khoá, một mẫu hình, một lời hứa",
+          tone: "good",
+        },
+        {
+          k: "Cú nhấp",
+          v: "mang theo cả ba trong yêu cầu gửi lên",
+          tone: "good",
+        },
+        {
+          k: "Trang đích",
+          v: "vứt hết đi và dựng lưới mặc định",
+          tone: "warn",
+        },
+        {
+          k: "Người mua",
+          v: "cuộn một lưới dựng ra trước khi bạn biết họ tồn tại",
+          tone: "hold",
+        },
       ],
       note: "Quy tắc sắp xếp trên phần lớn trang ngành hàng được viết một lần, cho không ai cụ thể, và từ đó không ai xem lại.",
     },
@@ -183,32 +259,63 @@ export const PAGES_VI: StoryContent = {
   },
 
   situation: {
-    heading: "Bạn trả tiền cho lượt nhấp, rồi cho mọi người xem cùng một trang.",
+    heading:
+      "Bạn trả tiền cho lượt nhấp, rồi cho mọi người xem cùng một trang.",
     body: [
       "Lưu lượng trả phí đáp xuống một trang ngành hàng hoặc một trang đích, và lưới đó thường là bề mặt đắt nhất trên cả website: bạn đã bỏ tiền để đặt ai đó trước nó. Nó cũng là bề mặt biết ít nhất về người đó, vì họ vừa tới cách đây một giây.",
       "Thế là nó được sắp bởi một quy tắc viết từ nhiều tháng trước. Mới nhất lên đầu, hoặc hàng bán chạy, hoặc một lượt ghim thủ công từ một chiến dịch đã kết thúc. Quy tắc đó không hẳn là sai, nó chỉ giống hệt nhau với một khách lần đầu đến từ quảng cáo so giá và một khách quen đang lướt điện thoại lúc nửa đêm.",
       "Bản thân lần ghé mang nhiều thông tin hơn quy tắc đó, và mang ngay lập tức. Chiến dịch nào, thiết bị nào, họ chạm vào gì trong mười lăm giây đầu. Không điều nào cần tới danh tính và tất cả đều có sẵn trước lượt xem trang thứ hai.",
     ],
-    pull:
-      "Cái lưới sản phẩm mà bạn trả tiền để đặt ai đó trước nó thường được sắp bởi một quy tắc viết từ trước khi bạn biết người đó tồn tại.",
+    pull: "Cái lưới sản phẩm mà bạn trả tiền để đặt ai đó trước nó thường được sắp bởi một quy tắc viết từ trước khi bạn biết người đó tồn tại.",
   },
 
   steps: {
     heading: "Một trang được sắp xếp ra sao",
     items: [
-      { n: "01", meta: "Lúc tới", title: "Lần ghé bắt đầu đã có bối cảnh", body: "Nguồn giới thiệu, thiết bị và chiến dịch đưa họ tới đều có sẵn ngay ở yêu cầu đầu tiên, trước khi ai kịp nhấp vào gì. Chừng đó đủ để xuất phát từ một thứ tốt hơn một quy tắc tĩnh." },
-      { n: "02", meta: "Trực tiếp", title: "Nó xếp lại khi họ di chuyển", body: "Mọi lượt xem, lượt lọc và lượt tìm trong lần ghé đều cập nhật thứ tự của những gì chưa được nhìn thấy. Lưới sản phẩm không bị quyết định một lần lúc tải trang rồi đóng băng." },
-      { n: "03", meta: "Đo được", title: "Một phần thấy quy tắc của bạn", body: "Nhánh được giữ lại hiển thị trang theo cách sẵn có của bạn, ổn định theo phiên, nên hai cách sắp xếp so sánh được trên chính lưu lượng của bạn chứ không phải trên lý thuyết." },
+      {
+        n: "01",
+        meta: "Lúc tới",
+        title: "Lần ghé bắt đầu đã có bối cảnh",
+        body: "Nguồn giới thiệu, thiết bị và chiến dịch đưa họ tới đều có sẵn ngay ở yêu cầu đầu tiên, trước khi ai kịp nhấp vào gì. Chừng đó đủ để xuất phát từ một thứ tốt hơn một quy tắc tĩnh.",
+      },
+      {
+        n: "02",
+        meta: "Trực tiếp",
+        title: "Nó xếp lại khi họ di chuyển",
+        body: "Mọi lượt xem, lượt lọc và lượt tìm trong lần ghé đều cập nhật thứ tự của những gì chưa được nhìn thấy. Lưới sản phẩm không bị quyết định một lần lúc tải trang rồi đóng băng.",
+      },
+      {
+        n: "03",
+        meta: "Đo được",
+        title: "Một phần thấy quy tắc của bạn",
+        body: "Nhánh được giữ lại hiển thị trang theo cách sẵn có của bạn, ổn định theo phiên, nên hai cách sắp xếp so sánh được trên chính lưu lượng của bạn chứ không phải trên lý thuyết.",
+      },
     ],
   },
 
   gets: {
     heading: "Bạn nhận được gì",
     items: [
-      { icon: LayoutGrid, title: "Mọi lưới, mọi trang", body: "Trang liệt kê ngành hàng, trang đích, trang bộ sưu tập, lưới trang chủ. Bộ máy được yêu cầu sắp xếp một tập sản phẩm và không cần biết trang đó dùng để làm gì." },
-      { icon: Megaphone, title: "Bối cảnh chiến dịch ngay từ yêu cầu đầu tiên", body: "Nguồn giới thiệu và chiến dịch đưa lần ghé tới là tín hiệu như mọi tín hiệu khác, nên lưu lượng trả phí không phải xuất phát từ con số không như cách một hệ dựa trên hồ sơ bắt nó phải vậy." },
-      { icon: Blocks, title: "Bố cục của bạn, không bị đụng tới", body: "Nó sắp xếp sản phẩm. Nó không dựng khuôn trang, không sở hữu component của bạn và không đòi bạn chuyển sang một trình dựng trang mới, bởi khâu sắp xếp mới là khâu sai." },
-      { icon: SplitSquareHorizontal, title: "Một nhánh đối chứng trên mọi trang", body: "Một phần phiên truy cập luôn thấy thứ tự sẵn có của bạn. Đó là cách để mọi khẳng định về trang này, kể cả của chúng tôi, được kiểm chứng thay vì được tin theo." },
+      {
+        icon: LayoutGrid,
+        title: "Mọi lưới, mọi trang",
+        body: "Trang liệt kê ngành hàng, trang đích, trang bộ sưu tập, lưới trang chủ. Bộ máy được yêu cầu sắp xếp một tập sản phẩm và không cần biết trang đó dùng để làm gì.",
+      },
+      {
+        icon: Megaphone,
+        title: "Bối cảnh chiến dịch ngay từ yêu cầu đầu tiên",
+        body: "Nguồn giới thiệu và chiến dịch đưa lần ghé tới là tín hiệu như mọi tín hiệu khác, nên lưu lượng trả phí không phải xuất phát từ con số không như cách một hệ dựa trên hồ sơ bắt nó phải vậy.",
+      },
+      {
+        icon: Blocks,
+        title: "Bố cục của bạn, không bị đụng tới",
+        body: "Nó sắp xếp sản phẩm. Nó không dựng khuôn trang, không sở hữu component của bạn và không đòi bạn chuyển sang một trình dựng trang mới, bởi khâu sắp xếp mới là khâu sai.",
+      },
+      {
+        icon: SplitSquareHorizontal,
+        title: "Một nhánh đối chứng trên mọi trang",
+        body: "Một phần phiên truy cập luôn thấy thứ tự sẵn có của bạn. Đó là cách để mọi khẳng định về trang này, kể cả của chúng tôi, được kiểm chứng thay vì được tin theo.",
+      },
     ],
   },
 
@@ -229,11 +336,26 @@ export const PAGES_VI: StoryContent = {
   },
 
   faq: [
-    { q: "Chúng tôi có phải dựng lại các trang không?", a: "Không. Nó đổi thứ tự các sản phẩm trong một lưới và không đổi gì khác. Khuôn trang, component và công cụ dựng trang của bạn vẫn ở nguyên chỗ, và nếu bạn tắt đi thì lưới hiển thị theo thứ tự gốc của bạn, bởi thứ tự đó là phương án dự phòng." },
-    { q: "Nó biết gì về một khách vừa mới tới?", a: "Nguồn giới thiệu, chiến dịch đã đưa họ tới và thiết bị của họ, tất cả đều có ở yêu cầu đầu tiên. Chừng đó nhiều hơn hẳn những gì một hệ dựa trên hồ sơ có được với một lượt tới ẩn danh, vốn là không có gì, và nó không cần cookie hay sự đồng ý nào để đọc." },
-    { q: "Nó có chạy trên trang đích trả phí không?", a: "Đó là trường hợp nó hữu ích nhất, vì bạn đã trả tiền cho lượt nhấp và trang đó vốn đang được sắp bởi một quy tắc viết từ trước khi chiến dịch tồn tại. Đó cũng là trường hợp mà nhánh được giữ lại quan trọng nhất, bởi bạn có thể gán một con số cho việc sắp xếp ấy đã làm được gì." },
-    { q: "Việc này khác gì phần gợi ý sản phẩm của các bạn?", a: "Chỉ khác ở chỗ nó chĩa vào đâu. Gợi ý sản phẩm sắp một ô hiển thị, trang danh mục sắp một lưới, và tìm kiếm sắp một tập kết quả. Một bộ xếp hạng, bốn yếu tố, ba bề mặt, đó là lý do hiểu một trong ba trang này nghĩa là bạn đã hiểu hai trang còn lại." },
-    { q: "Chúng tôi còn ghim được sản phẩm không?", a: "Chưa, và chúng tôi thà nói vậy còn hơn ám chỉ ngược lại. Các quyền ghi đè của người phụ trách trưng bày hàng hoá được mô tả ở trang Merchandising Studio, kèm những gì đã và chưa được xây dựng tới hôm nay." },
+    {
+      q: "Chúng tôi có phải dựng lại các trang không?",
+      a: "Không. Nó đổi thứ tự các sản phẩm trong một lưới và không đổi gì khác. Khuôn trang, component và công cụ dựng trang của bạn vẫn ở nguyên chỗ, và nếu bạn tắt đi thì lưới hiển thị theo thứ tự gốc của bạn, bởi thứ tự đó là phương án dự phòng.",
+    },
+    {
+      q: "Nó biết gì về một khách vừa mới tới?",
+      a: "Nguồn giới thiệu, chiến dịch đã đưa họ tới và thiết bị của họ, tất cả đều có ở yêu cầu đầu tiên. Chừng đó nhiều hơn hẳn những gì một hệ dựa trên hồ sơ có được với một lượt tới ẩn danh, vốn là không có gì, và nó không cần cookie hay sự đồng ý nào để đọc.",
+    },
+    {
+      q: "Nó có chạy trên trang đích trả phí không?",
+      a: "Đó là trường hợp nó hữu ích nhất, vì bạn đã trả tiền cho lượt nhấp và trang đó vốn đang được sắp bởi một quy tắc viết từ trước khi chiến dịch tồn tại. Đó cũng là trường hợp mà nhánh được giữ lại quan trọng nhất, bởi bạn có thể gán một con số cho việc sắp xếp ấy đã làm được gì.",
+    },
+    {
+      q: "Việc này khác gì phần gợi ý sản phẩm của các bạn?",
+      a: "Chỉ khác ở chỗ nó chĩa vào đâu. Gợi ý sản phẩm sắp một ô hiển thị, trang danh mục sắp một lưới, và tìm kiếm sắp một tập kết quả. Một bộ xếp hạng, một bộ yếu tố, ba bề mặt, đó là lý do hiểu một trong ba trang này nghĩa là bạn đã hiểu hai trang còn lại.",
+    },
+    {
+      q: "Chúng tôi còn ghim được sản phẩm không?",
+      a: "Chưa, và chúng tôi thà nói vậy còn hơn ám chỉ ngược lại. Các quyền ghi đè của người phụ trách trưng bày hàng hoá được mô tả ở trang Merchandising Studio, kèm những gì đã và chưa được xây dựng tới hôm nay.",
+    },
   ],
 
   cta: {

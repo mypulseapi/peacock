@@ -80,7 +80,11 @@ function website(locale: string): GraphNode {
  * Any crumb whose URL already appears is dropped, so a section index renders `Home > Product`
  * rather than `Home > Product > Product`.
  */
-function breadcrumbList(locale: string, url: string, crumbs: Crumb[]): GraphNode {
+function breadcrumbList(
+  locale: string,
+  url: string,
+  crumbs: Crumb[],
+): GraphNode {
   const items = [{ name: "Home", path: "" }, ...crumbs];
   const seen = new Set<string>();
   const unique = items.filter((c) => {
@@ -117,7 +121,12 @@ export interface GraphOptions {
  *
  * The home page gets no BreadcrumbList, because a one-item trail is noise.
  */
-export function buildGraph({ locale, path = "", crumbs = [], nodes = [] }: GraphOptions) {
+export function buildGraph({
+  locale,
+  path = "",
+  crumbs = [],
+  nodes = [],
+}: GraphOptions) {
   const url = pageUrl(locale, path);
   const isHome = path === "" || path === "/";
 
@@ -150,7 +159,10 @@ export function buildGraph({ locale, path = "", crumbs = [], nodes = [] }: Graph
   const identified = nodes.map((n) =>
     n["@id"]
       ? n
-      : { ...n, "@id": `${url}#${String([].concat(n["@type"] as never)[0]).toLowerCase()}` },
+      : {
+          ...n,
+          "@id": `${url}#${String([].concat(n["@type"] as never)[0]).toLowerCase()}`,
+        },
   );
 
   const graph: GraphNode[] = [
@@ -165,7 +177,9 @@ export function buildGraph({ locale, path = "", crumbs = [], nodes = [] }: Graph
   const ids = graph.map((n) => n["@id"]).filter(Boolean) as string[];
   const dupes = ids.filter((id, i) => ids.indexOf(id) !== i);
   if (dupes.length > 0) {
-    throw new Error(`Duplicate JSON-LD @id on ${url}: ${[...new Set(dupes)].join(", ")}`);
+    throw new Error(
+      `Duplicate JSON-LD @id on ${url}: ${[...new Set(dupes)].join(", ")}`,
+    );
   }
 
   return { "@context": "https://schema.org", "@graph": graph };
@@ -175,8 +189,8 @@ export function buildGraph({ locale, path = "", crumbs = [], nodes = [] }: Graph
  * Breadcrumb labels, by route prefix.
  *
  * The standard says the crumb label is the navigation label rather than the SERP title:
- * "Decision Audit", not "Decision Audit: which product data to fix first". Those live in
- * src/content/nav.ts for the routes that appear in the menu, but the menu does not cover legal
+ * "Decision Audit", not "Decision Audit: which product data to fix first". Those live in the
+ * header menu (`shell` in messages/designed.*.json), but the menu does not cover legal
  * pages, `/why/*` or `/use-cases/*`, so the trail would break exactly where the hierarchy is
  * deepest. One explicit map covers every route instead, and `check-page-catalogue.mjs` already
  * fails the build when a route exists without a catalogue entry.
@@ -187,13 +201,26 @@ export function buildGraph({ locale, path = "", crumbs = [], nodes = [] }: Graph
 const CRUMB_LABELS: Record<string, { en: string; vi: string }> = {
   "/product": { en: "Product", vi: "Sản phẩm" },
   "/product/decision-audit": { en: "Decision Audit", vi: "Decision Audit" },
-  "/product/decision-verification": { en: "Decision Verification", vi: "Decision Verification" },
-  "/product/decision-monitor": { en: "Decision Monitor", vi: "Decision Monitor" },
+  "/product/decision-verification": {
+    en: "Decision Verification",
+    vi: "Decision Verification",
+  },
+  "/product/return-verification": {
+    en: "Return Verification",
+    vi: "Return Verification",
+  },
+  "/product/decision-monitor": {
+    en: "Decision Monitor",
+    vi: "Decision Monitor",
+  },
   "/product/decision-api": { en: "Decision API", vi: "Decision API" },
   "/product/search": { en: "Search", vi: "Tìm kiếm" },
   "/product/recommendations": { en: "Recommendations", vi: "Gợi ý" },
   "/product/pages": { en: "Pages", vi: "Trang" },
-  "/product/merchandising-studio": { en: "Merchandising Studio", vi: "Merchandising Studio" },
+  "/product/merchandising-studio": {
+    en: "Merchandising Studio",
+    vi: "Merchandising Studio",
+  },
   "/why": { en: "Why Pulse", vi: "Vì sao Pulse" },
   "/why/method": { en: "Method", vi: "Phương pháp" },
   "/why/limits": { en: "Limits", vi: "Giới hạn" },
@@ -227,7 +254,11 @@ const CRUMB_LABELS: Record<string, { en: string; vi: string }> = {
  * A `/use-cases` segment has no page of its own; it is kept in the trail because dropping it
  * would claim `/use-cases/seo-aeo` sits directly under Home, which is not where it is.
  */
-export function crumbsFor(locale: string, path: string, leaf?: string): Crumb[] {
+export function crumbsFor(
+  locale: string,
+  path: string,
+  leaf?: string,
+): Crumb[] {
   const lang = locale === "vi" ? "vi" : "en";
   const segments = path.split("/").filter(Boolean);
   const crumbs: Crumb[] = [];

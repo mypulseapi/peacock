@@ -24,8 +24,7 @@ export const MERCHANDISING_STUDIO: StoryContent = {
   },
   eyebrow: "Merchandising Studio",
   title: "The console, and an honest list of what it cannot do yet.",
-  lede:
-    "Where you manage the catalogue the engine reads, set how much traffic is held back, and pull the record behind any ranking decision. Overrides are not built yet, and this page says which ones and why rather than leaving you to find out in a pilot.",
+  lede: "Where you manage the catalogue the engine reads, set how much traffic is held back, and pull the record behind any ranking decision. Overrides are not built yet, and this page says which ones and why rather than leaving you to find out in a pilot.",
 
   visualHeading: "What the console holds today.",
   visualBody:
@@ -33,7 +32,8 @@ export const MERCHANDISING_STUDIO: StoryContent = {
 
   chainBlock: {
     eyebrow: "Why this page reads oddly",
-    heading: "Most console pages describe the console somebody is planning to build.",
+    heading:
+      "Most console pages describe the console somebody is planning to build.",
     body: "There is a cheap version of this page and an expensive one. The cheap one costs us a conversation.",
   },
 
@@ -41,9 +41,24 @@ export const MERCHANDISING_STUDIO: StoryContent = {
     situation: {
       kind: "facts",
       facts: [
-        { value: "4", label: "Built and in the console", note: "catalogue, persona tags, holdback, decision record", tone: "good" },
-        { value: "2", label: "Named here, not built", note: "position overrides and scheduled merchandising", tone: "warn" },
-        { value: "5%", label: "Held back by default", note: "switching measurement off has to be deliberate", tone: "work" },
+        {
+          value: "4",
+          label: "Built and in the console",
+          note: "catalogue, persona tags, holdback, decision record",
+          tone: "good",
+        },
+        {
+          value: "2",
+          label: "Named here, not built",
+          note: "position overrides and scheduled merchandising",
+          tone: "warn",
+        },
+        {
+          value: "5%",
+          label: "Held back by default",
+          note: "switching measurement off has to be deliberate",
+          tone: "work",
+        },
       ],
       note: "Counted from the codebase rather than the roadmap. The second figure is the one most console pages leave out.",
     },
@@ -51,11 +66,31 @@ export const MERCHANDISING_STUDIO: StoryContent = {
     hero: {
       kind: "flow",
       steps: [
-        { k: "Open a shelf", v: "the catalogue the engine actually reads", tone: "good" },
-        { k: "Inspect a ranking", v: "any result, any session, any time", tone: "good" },
-        { k: "Read the record", v: "the factors behind that exact position", tone: "good" },
-        { k: "Set the holdback", v: "how much traffic never sees the engine", tone: "work" },
-        { k: "Override a position", v: "not built, and dated below", tone: "warn" },
+        {
+          k: "Open a shelf",
+          v: "the catalogue the engine actually reads",
+          tone: "good",
+        },
+        {
+          k: "Inspect a ranking",
+          v: "any result, any session, any time",
+          tone: "good",
+        },
+        {
+          k: "Read the record",
+          v: "the factors behind that exact position",
+          tone: "good",
+        },
+        {
+          k: "Set the holdback",
+          v: "how much traffic never sees the engine",
+          tone: "work",
+        },
+        {
+          k: "Override a position",
+          v: "not built, and dated below",
+          tone: "warn",
+        },
       ],
       note: "Four of these exist today. The fifth is the one every merchandiser asks about first, which is why it is on the screen rather than left out of it.",
     },
@@ -81,32 +116,63 @@ export const MERCHANDISING_STUDIO: StoryContent = {
   },
 
   situation: {
-    heading: "A control surface is the first thing a merchandiser asks for and the last thing most vendors are straight about.",
+    heading:
+      "A control surface is the first thing a merchandiser asks for and the last thing most vendors are straight about.",
     body: [
       "The question always arrives in the same shape. If the engine ranks the catalogue, what happens when a buyer needs a product up for a reason the engine cannot see: a supplier commitment, an overstock, a range launch on Thursday. That is a fair question and the honest answer today is that you cannot pin it.",
       "We could describe the roadmap in the present tense and nobody would catch it until a pilot. That is how vendors end up with a checklist that matches the brief and a product that does not, and it is a worse outcome for us than losing the deal now.",
       "What the console does hold is the part the engine depends on: the catalogue and its attributes, the personas products are tagged against, the share of traffic held back, and the record behind any individual decision. That is a real surface, it is just a smaller one than the name suggests.",
     ],
-    pull:
-      "If we described overrides we have not built, you would discover it in a pilot. Finding out here costs us a conversation and costs you nothing.",
+    pull: "If we described overrides we have not built, you would discover it in a pilot. Finding out here costs us a conversation and costs you nothing.",
   },
 
   steps: {
     heading: "What you can do in the console today",
     items: [
-      { n: "01", meta: "Catalogue", title: "Manage what the engine reads", body: "Products, categories, brands and the attribute schema behind them. This is upstream of every ranking: an attribute the catalogue does not carry is one no surface can order on." },
-      { n: "02", meta: "Control", title: "Set the holdback", body: "The share of sessions that never see the engine, stable per session. It is an organisation setting, it defaults on, and it is what makes any later comparison possible." },
-      { n: "03", meta: "Audit", title: "Pull a decision record", body: "Any ranked response carries an id and the four factors behind each score. When somebody asks why a product placed where it did, the answer is retrievable." },
+      {
+        n: "01",
+        meta: "Catalogue",
+        title: "Manage what the engine reads",
+        body: "Products, categories, brands and the attribute schema behind them. This is upstream of every ranking: an attribute the catalogue does not carry is one no surface can order on.",
+      },
+      {
+        n: "02",
+        meta: "Control",
+        title: "Set the holdback",
+        body: "The share of sessions that never see the engine, stable per session. It is an organisation setting, it defaults on, and it is what makes any later comparison possible.",
+      },
+      {
+        n: "03",
+        meta: "Audit",
+        title: "Pull a decision record",
+        body: "Any ranked response carries an id and the factors behind each score. When somebody asks why a product placed where it did, the answer is retrievable.",
+      },
     ],
   },
 
   gets: {
     heading: "What the console gives you",
     items: [
-      { icon: SlidersHorizontal, title: "Catalogue and attribute management", body: "The products, categories, brands and attribute schema the engine ranks against, in one place, with the taxonomy that the audit measured." },
-      { icon: Users, title: "Persona tagging", body: "Which products are associated with which personas, which is one of the four ranking factors and the one a merchandiser has the most useful opinion about." },
-      { icon: Gauge, title: "Holdback control", body: "What share of traffic never sees the engine. On by default, because a runtime without a control arm produces numbers nobody should act on, ours included." },
-      { icon: ScrollText, title: "The decision record", body: "Per-request id, the factors, and what was shown. Enough to answer why a product ranked where it did without reconstructing it from logs." },
+      {
+        icon: SlidersHorizontal,
+        title: "Catalogue and attribute management",
+        body: "The products, categories, brands and attribute schema the engine ranks against, in one place, with the taxonomy that the audit measured.",
+      },
+      {
+        icon: Users,
+        title: "Persona tagging",
+        body: "Which products are associated with which personas, which is one of the ranking factors and the one a merchandiser has the most useful opinion about.",
+      },
+      {
+        icon: Gauge,
+        title: "Holdback control",
+        body: "What share of traffic never sees the engine. On by default, because a runtime without a control arm produces numbers nobody should act on, ours included.",
+      },
+      {
+        icon: ScrollText,
+        title: "The decision record",
+        body: "Per-request id, the factors, and what was shown. Enough to answer why a product ranked where it did without reconstructing it from logs.",
+      },
     ],
   },
 
@@ -127,11 +193,26 @@ export const MERCHANDISING_STUDIO: StoryContent = {
   },
 
   faq: [
-    { q: "Can a merchandiser pin or boost a product?", a: "Not today. There is no merchandiser override in the ranking path, and we are not going to describe one in the present tense because it is on a roadmap. The engine has internal boosts for persona and price fit, but those are how it scores rather than controls anybody can reach. If pinning is a requirement for you, this is the honest moment to say so." },
-    { q: "Then what is the point of the console today?", a: "It holds the things the engine depends on: the catalogue and attribute schema it ranks against, the persona tags, the holdback percentage, and the decision record. Those are upstream of every ranking. It is a smaller surface than the name suggests, which is why the name is followed by this list rather than a feature grid." },
-    { q: "Why is the holdback on by default?", a: "Because a runtime with no control arm produces numbers nobody should act on, and that includes anything we would report to you. Making it opt-in would mean most deployments could never be evaluated, which is the situation we built this company to argue against." },
-    { q: "When will overrides ship?", a: "We are not going to give you a date, for the same reason we will not give you an uplift figure: we would be guessing, and a guess in a sales conversation becomes a commitment. What we will do is tell you what exists when you ask, which is what this page is." },
-    { q: "Can we still control what shoppers see?", a: "Yes, upstream rather than at ranking time. Persona tags, the attribute schema and what is in the catalogue at all are all under your control and all feed the ranking. What you cannot do yet is reach into an individual result and move one product." },
+    {
+      q: "Can a merchandiser pin or boost a product?",
+      a: "Not today. There is no merchandiser override in the ranking path, and we are not going to describe one in the present tense because it is on a roadmap. The engine has internal boosts for persona and price fit, but those are how it scores rather than controls anybody can reach. If pinning is a requirement for you, this is the honest moment to say so.",
+    },
+    {
+      q: "Then what is the point of the console today?",
+      a: "It holds the things the engine depends on: the catalogue and attribute schema it ranks against, the persona tags, the holdback percentage, and the decision record. Those are upstream of every ranking. It is a smaller surface than the name suggests, which is why the name is followed by this list rather than a feature grid.",
+    },
+    {
+      q: "Why is the holdback on by default?",
+      a: "Because a runtime with no control arm produces numbers nobody should act on, and that includes anything we would report to you. Making it opt-in would mean most deployments could never be evaluated, which is the situation we built this company to argue against.",
+    },
+    {
+      q: "When will overrides ship?",
+      a: "We are not going to give you a date, for the same reason we will not give you an uplift figure: we would be guessing, and a guess in a sales conversation becomes a commitment. What we will do is tell you what exists when you ask, which is what this page is.",
+    },
+    {
+      q: "Can we still control what shoppers see?",
+      a: "Yes, upstream rather than at ranking time. Persona tags, the attribute schema and what is in the catalogue at all are all under your control and all feed the ranking. What you cannot do yet is reach into an individual result and move one product.",
+    },
   ],
 
   cta: {
@@ -151,9 +232,9 @@ export const MERCHANDISING_STUDIO_VI: StoryContent = {
       "Quản lý danh mục bộ máy đọc, đặt mức giữ lại, tra bản ghi sau mọi quyết định xếp hạng. Các quyền ghi đè chưa được xây và trang này nói rõ điều đó.",
   },
   eyebrow: "Merchandising Studio",
-  title: "Bảng điều khiển, và một danh sách trung thực những gì nó chưa làm được.",
-  lede:
-    "Nơi bạn quản lý danh mục mà bộ máy đọc, đặt mức lưu lượng được giữ lại, và tra ra bản ghi đằng sau bất kỳ quyết định xếp hạng nào. Các quyền ghi đè chưa được xây dựng, và trang này nói rõ là những quyền nào cùng lý do, thay vì để bạn tự phát hiện giữa một chương trình thử nghiệm.",
+  title:
+    "Bảng điều khiển, và một danh sách trung thực những gì nó chưa làm được.",
+  lede: "Nơi bạn quản lý danh mục mà bộ máy đọc, đặt mức lưu lượng được giữ lại, và tra ra bản ghi đằng sau bất kỳ quyết định xếp hạng nào. Các quyền ghi đè chưa được xây dựng, và trang này nói rõ là những quyền nào cùng lý do, thay vì để bạn tự phát hiện giữa một chương trình thử nghiệm.",
 
   visualHeading: "Bảng điều khiển hiện có những gì.",
   visualBody:
@@ -161,7 +242,8 @@ export const MERCHANDISING_STUDIO_VI: StoryContent = {
 
   chainBlock: {
     eyebrow: "Vì sao trang này đọc hơi lạ",
-    heading: "Phần lớn trang giới thiệu bảng điều khiển mô tả cái bảng điều khiển ai đó đang định xây.",
+    heading:
+      "Phần lớn trang giới thiệu bảng điều khiển mô tả cái bảng điều khiển ai đó đang định xây.",
     body: "Có một phiên bản rẻ và một phiên bản đắt cho trang này. Bản rẻ khiến chúng tôi mất một cuộc trò chuyện.",
   },
 
@@ -169,9 +251,24 @@ export const MERCHANDISING_STUDIO_VI: StoryContent = {
     situation: {
       kind: "facts",
       facts: [
-        { value: "4", label: "Đã xây và có trong bảng điều khiển", note: "danh mục, thẻ chân dung, mức giữ lại, bản ghi quyết định", tone: "good" },
-        { value: "2", label: "Nêu tên ở đây, chưa xây", note: "ghi đè vị trí và trưng bày theo lịch", tone: "warn" },
-        { value: "5%", label: "Giữ lại theo mặc định", note: "tắt đo lường phải là hành động có chủ ý", tone: "work" },
+        {
+          value: "4",
+          label: "Đã xây và có trong bảng điều khiển",
+          note: "danh mục, thẻ chân dung, mức giữ lại, bản ghi quyết định",
+          tone: "good",
+        },
+        {
+          value: "2",
+          label: "Nêu tên ở đây, chưa xây",
+          note: "ghi đè vị trí và trưng bày theo lịch",
+          tone: "warn",
+        },
+        {
+          value: "5%",
+          label: "Giữ lại theo mặc định",
+          note: "tắt đo lường phải là hành động có chủ ý",
+          tone: "work",
+        },
       ],
       note: "Đếm từ mã nguồn chứ không phải từ lộ trình. Con số thứ hai là thứ phần lớn trang giới thiệu bảng điều khiển bỏ qua.",
     },
@@ -179,11 +276,31 @@ export const MERCHANDISING_STUDIO_VI: StoryContent = {
     hero: {
       kind: "flow",
       steps: [
-        { k: "Mở một kệ hàng", v: "đúng danh mục mà bộ máy đang đọc", tone: "good" },
-        { k: "Soi một bảng xếp hạng", v: "kết quả nào, phiên nào, lúc nào cũng được", tone: "good" },
-        { k: "Đọc bản ghi", v: "các yếu tố dẫn tới đúng vị trí đó", tone: "good" },
-        { k: "Đặt mức giữ lại", v: "bao nhiêu lưu lượng không bao giờ thấy bộ máy", tone: "work" },
-        { k: "Ghi đè một vị trí", v: "chưa xây, và có nêu rõ bên dưới", tone: "warn" },
+        {
+          k: "Mở một kệ hàng",
+          v: "đúng danh mục mà bộ máy đang đọc",
+          tone: "good",
+        },
+        {
+          k: "Soi một bảng xếp hạng",
+          v: "kết quả nào, phiên nào, lúc nào cũng được",
+          tone: "good",
+        },
+        {
+          k: "Đọc bản ghi",
+          v: "các yếu tố dẫn tới đúng vị trí đó",
+          tone: "good",
+        },
+        {
+          k: "Đặt mức giữ lại",
+          v: "bao nhiêu lưu lượng không bao giờ thấy bộ máy",
+          tone: "work",
+        },
+        {
+          k: "Ghi đè một vị trí",
+          v: "chưa xây, và có nêu rõ bên dưới",
+          tone: "warn",
+        },
       ],
       note: "Bốn trong số này đã có hôm nay. Cái thứ năm là thứ mọi người làm trưng bày hàng hỏi đầu tiên, nên nó nằm trên màn hình chứ không bị giấu đi.",
     },
@@ -209,32 +326,63 @@ export const MERCHANDISING_STUDIO_VI: StoryContent = {
   },
 
   situation: {
-    heading: "Bề mặt điều khiển là thứ đầu tiên người phụ trách trưng bày hàng hoá hỏi tới và là thứ cuối cùng phần lớn nhà cung cấp nói thẳng.",
+    heading:
+      "Bề mặt điều khiển là thứ đầu tiên người phụ trách trưng bày hàng hoá hỏi tới và là thứ cuối cùng phần lớn nhà cung cấp nói thẳng.",
     body: [
       "Câu hỏi luôn tới dưới cùng một hình dạng. Nếu bộ máy xếp hạng danh mục, thì chuyện gì xảy ra khi người mua hàng cần đẩy một sản phẩm lên vì một lý do bộ máy không thấy được: một cam kết với nhà cung cấp, một lô hàng tồn, một dòng sản phẩm ra mắt thứ Năm. Đó là câu hỏi chính đáng và câu trả lời trung thực hôm nay là bạn không ghim nó được.",
       "Chúng tôi có thể mô tả lộ trình ở thì hiện tại và sẽ không ai phát hiện ra cho tới lúc chạy thử nghiệm. Đó là cách các nhà cung cấp kết thúc với một bảng tính năng khớp với yêu cầu và một sản phẩm thì không, và với chúng tôi kết cục đó còn tệ hơn việc mất thương vụ ngay bây giờ.",
       "Thứ bảng điều khiển thực sự nắm giữ là phần mà bộ máy phụ thuộc vào: danh mục cùng các thuộc tính của nó, các chân dung mà sản phẩm được gắn thẻ theo, tỷ lệ lưu lượng được giữ lại, và bản ghi đằng sau từng quyết định riêng lẻ. Đó là một bề mặt có thật, chỉ là nhỏ hơn cái tên gợi ra.",
     ],
-    pull:
-      "Nếu chúng tôi mô tả những quyền ghi đè chưa xây, bạn sẽ phát hiện ra giữa một chương trình thử nghiệm. Biết được ở đây khiến chúng tôi mất một cuộc trò chuyện và khiến bạn không mất gì.",
+    pull: "Nếu chúng tôi mô tả những quyền ghi đè chưa xây, bạn sẽ phát hiện ra giữa một chương trình thử nghiệm. Biết được ở đây khiến chúng tôi mất một cuộc trò chuyện và khiến bạn không mất gì.",
   },
 
   steps: {
     heading: "Hôm nay bạn làm được gì trong bảng điều khiển",
     items: [
-      { n: "01", meta: "Danh mục", title: "Quản lý thứ bộ máy đọc", body: "Sản phẩm, ngành hàng, thương hiệu và lược đồ thuộc tính đứng sau chúng. Đây là phần thượng nguồn của mọi thứ hạng: một thuộc tính danh mục không mang theo là thuộc tính không bề mặt nào sắp xếp theo được." },
-      { n: "02", meta: "Điều khiển", title: "Đặt mức giữ lại", body: "Tỷ lệ phiên truy cập không bao giờ thấy bộ máy, ổn định theo từng phiên. Đây là thiết lập ở cấp tổ chức, mặc định bật, và là thứ khiến mọi phép so sánh về sau trở nên khả thi." },
-      { n: "03", meta: "Truy vết", title: "Tra một bản ghi quyết định", body: "Mọi phản hồi đã xếp hạng đều mang một mã và bốn yếu tố đứng sau từng điểm số. Khi ai đó hỏi vì sao một sản phẩm nằm ở vị trí đó, câu trả lời là thứ tra ra được." },
+      {
+        n: "01",
+        meta: "Danh mục",
+        title: "Quản lý thứ bộ máy đọc",
+        body: "Sản phẩm, ngành hàng, thương hiệu và lược đồ thuộc tính đứng sau chúng. Đây là phần thượng nguồn của mọi thứ hạng: một thuộc tính danh mục không mang theo là thuộc tính không bề mặt nào sắp xếp theo được.",
+      },
+      {
+        n: "02",
+        meta: "Điều khiển",
+        title: "Đặt mức giữ lại",
+        body: "Tỷ lệ phiên truy cập không bao giờ thấy bộ máy, ổn định theo từng phiên. Đây là thiết lập ở cấp tổ chức, mặc định bật, và là thứ khiến mọi phép so sánh về sau trở nên khả thi.",
+      },
+      {
+        n: "03",
+        meta: "Truy vết",
+        title: "Tra một bản ghi quyết định",
+        body: "Mọi phản hồi đã xếp hạng đều mang một mã và các yếu tố đứng sau từng điểm số. Khi ai đó hỏi vì sao một sản phẩm nằm ở vị trí đó, câu trả lời là thứ tra ra được.",
+      },
     ],
   },
 
   gets: {
     heading: "Bảng điều khiển mang lại gì cho bạn",
     items: [
-      { icon: SlidersHorizontal, title: "Quản lý danh mục và thuộc tính", body: "Sản phẩm, ngành hàng, thương hiệu và lược đồ thuộc tính mà bộ máy xếp hạng dựa trên đó, ở cùng một nơi, với đúng hệ phân loại mà bản kiểm tra đã đo." },
-      { icon: Users, title: "Gắn thẻ chân dung", body: "Sản phẩm nào gắn với chân dung nào, vốn là một trong bốn yếu tố xếp hạng và là yếu tố mà người phụ trách trưng bày hàng hoá có ý kiến hữu ích nhất." },
-      { icon: Gauge, title: "Điều khiển mức giữ lại", body: "Bao nhiêu phần lưu lượng không bao giờ thấy bộ máy. Mặc định bật, vì một bộ máy thời gian thực không có nhánh đối chứng sẽ tạo ra những con số không ai nên hành động theo, kể cả con số của chúng tôi." },
-      { icon: ScrollText, title: "Bản ghi quyết định", body: "Mã theo từng yêu cầu, các yếu tố, và những gì đã hiển thị. Đủ để trả lời vì sao một sản phẩm xếp ở vị trí đó mà không phải dựng lại từ nhật ký hệ thống." },
+      {
+        icon: SlidersHorizontal,
+        title: "Quản lý danh mục và thuộc tính",
+        body: "Sản phẩm, ngành hàng, thương hiệu và lược đồ thuộc tính mà bộ máy xếp hạng dựa trên đó, ở cùng một nơi, với đúng hệ phân loại mà bản kiểm tra đã đo.",
+      },
+      {
+        icon: Users,
+        title: "Gắn thẻ chân dung",
+        body: "Sản phẩm nào gắn với chân dung nào, vốn là một trong các yếu tố xếp hạng và là yếu tố mà người phụ trách trưng bày hàng hoá có ý kiến hữu ích nhất.",
+      },
+      {
+        icon: Gauge,
+        title: "Điều khiển mức giữ lại",
+        body: "Bao nhiêu phần lưu lượng không bao giờ thấy bộ máy. Mặc định bật, vì một bộ máy thời gian thực không có nhánh đối chứng sẽ tạo ra những con số không ai nên hành động theo, kể cả con số của chúng tôi.",
+      },
+      {
+        icon: ScrollText,
+        title: "Bản ghi quyết định",
+        body: "Mã theo từng yêu cầu, các yếu tố, và những gì đã hiển thị. Đủ để trả lời vì sao một sản phẩm xếp ở vị trí đó mà không phải dựng lại từ nhật ký hệ thống.",
+      },
     ],
   },
 
@@ -255,11 +403,26 @@ export const MERCHANDISING_STUDIO_VI: StoryContent = {
   },
 
   faq: [
-    { q: "Người phụ trách trưng bày hàng hoá có ghim hay đẩy sản phẩm được không?", a: "Hôm nay thì không. Không có quyền ghi đè nào trong đường xếp hạng, và chúng tôi sẽ không mô tả nó ở thì hiện tại chỉ vì nó nằm trên lộ trình. Bộ máy có các mức đẩy nội bộ cho mức khớp chân dung và giá, nhưng đó là cách nó chấm điểm chứ không phải những điều khiển ai đó với tới được. Nếu việc ghim là yêu cầu bắt buộc với bạn, đây là thời điểm trung thực để nói ra." },
-    { q: "Vậy hôm nay bảng điều khiển có ý nghĩa gì?", a: "Nó nắm giữ những thứ bộ máy phụ thuộc vào: danh mục và lược đồ thuộc tính mà nó xếp hạng dựa trên đó, các thẻ chân dung, tỷ lệ giữ lại, và bản ghi quyết định. Đó đều là phần thượng nguồn của mọi thứ hạng. Đây là một bề mặt nhỏ hơn cái tên gợi ra, và đó là lý do sau cái tên là danh sách này thay vì một bảng tính năng." },
-    { q: "Vì sao mức giữ lại mặc định bật?", a: "Vì một bộ máy thời gian thực không có nhánh đối chứng sẽ tạo ra những con số không ai nên hành động theo, và điều đó gồm cả bất cứ thứ gì chúng tôi báo cáo cho bạn. Để nó ở chế độ tự bật sẽ khiến phần lớn triển khai không bao giờ đánh giá được, đó chính là tình trạng mà chúng tôi lập ra công ty này để phản đối." },
-    { q: "Khi nào các quyền ghi đè sẽ có?", a: "Chúng tôi sẽ không đưa bạn một ngày cụ thể, cùng lý do với việc không đưa con số tăng trưởng: chúng tôi sẽ phải đoán, và một lời đoán trong cuộc trò chuyện bán hàng sẽ thành một cam kết. Điều chúng tôi sẽ làm là nói cho bạn biết hiện có những gì khi bạn hỏi, và đó chính là trang này." },
-    { q: "Chúng tôi còn kiểm soát được thứ người mua nhìn thấy không?", a: "Có, ở phía thượng nguồn thay vì tại thời điểm xếp hạng. Thẻ chân dung, lược đồ thuộc tính và việc có gì trong danh mục đều nằm trong tầm kiểm soát của bạn và đều là đầu vào cho thứ hạng. Thứ bạn chưa làm được là thò tay vào một kết quả cụ thể và dịch chuyển một sản phẩm." },
+    {
+      q: "Người phụ trách trưng bày hàng hoá có ghim hay đẩy sản phẩm được không?",
+      a: "Hôm nay thì không. Không có quyền ghi đè nào trong đường xếp hạng, và chúng tôi sẽ không mô tả nó ở thì hiện tại chỉ vì nó nằm trên lộ trình. Bộ máy có các mức đẩy nội bộ cho mức khớp chân dung và giá, nhưng đó là cách nó chấm điểm chứ không phải những điều khiển ai đó với tới được. Nếu việc ghim là yêu cầu bắt buộc với bạn, đây là thời điểm trung thực để nói ra.",
+    },
+    {
+      q: "Vậy hôm nay bảng điều khiển có ý nghĩa gì?",
+      a: "Nó nắm giữ những thứ bộ máy phụ thuộc vào: danh mục và lược đồ thuộc tính mà nó xếp hạng dựa trên đó, các thẻ chân dung, tỷ lệ giữ lại, và bản ghi quyết định. Đó đều là phần thượng nguồn của mọi thứ hạng. Đây là một bề mặt nhỏ hơn cái tên gợi ra, và đó là lý do sau cái tên là danh sách này thay vì một bảng tính năng.",
+    },
+    {
+      q: "Vì sao mức giữ lại mặc định bật?",
+      a: "Vì một bộ máy thời gian thực không có nhánh đối chứng sẽ tạo ra những con số không ai nên hành động theo, và điều đó gồm cả bất cứ thứ gì chúng tôi báo cáo cho bạn. Để nó ở chế độ tự bật sẽ khiến phần lớn triển khai không bao giờ đánh giá được, đó chính là tình trạng mà chúng tôi lập ra công ty này để phản đối.",
+    },
+    {
+      q: "Khi nào các quyền ghi đè sẽ có?",
+      a: "Chúng tôi sẽ không đưa bạn một ngày cụ thể, cùng lý do với việc không đưa con số tăng trưởng: chúng tôi sẽ phải đoán, và một lời đoán trong cuộc trò chuyện bán hàng sẽ thành một cam kết. Điều chúng tôi sẽ làm là nói cho bạn biết hiện có những gì khi bạn hỏi, và đó chính là trang này.",
+    },
+    {
+      q: "Chúng tôi còn kiểm soát được thứ người mua nhìn thấy không?",
+      a: "Có, ở phía thượng nguồn thay vì tại thời điểm xếp hạng. Thẻ chân dung, lược đồ thuộc tính và việc có gì trong danh mục đều nằm trong tầm kiểm soát của bạn và đều là đầu vào cho thứ hạng. Thứ bạn chưa làm được là thò tay vào một kết quả cụ thể và dịch chuyển một sản phẩm.",
+    },
   ],
 
   cta: {
@@ -271,4 +434,5 @@ export const MERCHANDISING_STUDIO_VI: StoryContent = {
   },
 };
 
-export const merchandisingStudio = (l: string) => byLocale({ en: MERCHANDISING_STUDIO, vi: MERCHANDISING_STUDIO_VI }, l);
+export const merchandisingStudio = (l: string) =>
+  byLocale({ en: MERCHANDISING_STUDIO, vi: MERCHANDISING_STUDIO_VI }, l);

@@ -13,16 +13,22 @@
  * vectors that shipped with the page. The alternative is embedding every chunk in the browser on
  * first open, which is the same arithmetic done once per visitor instead of once per change.
  */
-import { createHash } from 'node:crypto';
-import { readFileSync, readdirSync, statSync, writeFileSync, mkdirSync } from 'node:fs';
-import { dirname, join, relative } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { createHash } from "node:crypto";
+import {
+  readFileSync,
+  readdirSync,
+  statSync,
+  writeFileSync,
+  mkdirSync,
+} from "node:fs";
+import { dirname, join, relative } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const ROOT = join(here, '..');
-const OUT = join(ROOT, 'out');
-const OUT_DIR = join(ROOT, 'src', 'lib', 'assistant');
-const NOTES_OUT = join(OUT_DIR, 'page-notes.json');
+const ROOT = join(here, "..");
+const OUT = join(ROOT, "out");
+const OUT_DIR = join(ROOT, "src", "lib", "assistant");
+const NOTES_OUT = join(OUT_DIR, "page-notes.json");
 
 /**
  * One index per language, because vectors from different models are not comparable.
@@ -32,39 +38,59 @@ const NOTES_OUT = join(OUT_DIR, 'page-notes.json');
  * one that handles the language at all, and it is trained with these prefixes.
  */
 const MODELS = [
-  { id: 'Xenova/all-MiniLM-L6-v2', file: 'search-index.json', lang: 'en', query: '', passage: '' },
   {
-    id: 'Xenova/multilingual-e5-small',
-    file: 'search-index.vi.json',
-    lang: 'vi',
-    query: 'query: ',
-    passage: 'passage: ',
+    id: "Xenova/all-MiniLM-L6-v2",
+    file: "search-index.json",
+    lang: "en",
+    query: "",
+    passage: "",
+  },
+  {
+    id: "Xenova/multilingual-e5-small",
+    file: "search-index.vi.json",
+    lang: "vi",
+    query: "query: ",
+    passage: "passage: ",
   },
 ];
 
 /** Pages that are redirects, duplicates or machine endpoints: nothing to answer from. */
-const SKIP = /^\/(404|_not-found|llms\.txt|robots\.txt|sitemap\.xml)?$|preview-home/;
+const SKIP =
+  /^\/(404|_not-found|llms\.txt|robots\.txt|sitemap\.xml)?$|preview-home/;
 
 function walk(dir) {
   const out = [];
   for (const name of readdirSync(dir)) {
     const full = join(dir, name);
     if (statSync(full).isDirectory()) out.push(...walk(full));
-    else if (name.endsWith('.html')) out.push(full);
+    else if (name.endsWith(".html")) out.push(full);
   }
   return out;
 }
 
 const ENTITIES = {
-  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
-  rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“',
-  hellip: '…', ndash: '–', mdash: '—', times: '×',
+  amp: "&",
+  lt: "<",
+  gt: ">",
+  quot: '"',
+  apos: "'",
+  nbsp: " ",
+  rsquo: "’",
+  lsquo: "‘",
+  rdquo: "”",
+  ldquo: "“",
+  hellip: "…",
+  ndash: "–",
+  mdash: "—",
+  times: "×",
 };
 
 function decode(s) {
   return s
     .replace(/&#(\d+);/g, (_m, d) => String.fromCodePoint(Number(d)))
-    .replace(/&#x([0-9a-f]+);/gi, (_m, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#x([0-9a-f]+);/gi, (_m, h) =>
+      String.fromCodePoint(parseInt(h, 16)),
+    )
     .replace(/&([a-z]+);/gi, (m, name) => ENTITIES[name] ?? m);
 }
 
@@ -77,26 +103,30 @@ function decode(s) {
  * which is a worse trade than the occasional extra space inside a bolded fragment.
  */
 function text(html) {
-  return decode(html.replace(/<[^>]+>/g, ' '))
-    .replace(/\s+/g, ' ')
+  return decode(html.replace(/<[^>]+>/g, " "))
+    .replace(/\s+/g, " ")
     .trim();
 }
 
 export function slugify(heading) {
   return heading
     .toLowerCase()
-    .replace(/[^\p{L}\p{N}]+/gu, '-')
-    .replace(/^-|-$/g, '');
+    .replace(/[^\p{L}\p{N}]+/gu, "-")
+    .replace(/^-|-$/g, "");
 }
 
 /** The finished page, split at its own headings. */
 function chunkPage(file) {
-  const raw = readFileSync(file, 'utf8');
-  let url = '/' + relative(OUT, file).replace(/\.html$/, '').replace(/\/?index$/, '');
-  if (url !== '/' && url.endsWith('/')) url = url.slice(0, -1);
+  const raw = readFileSync(file, "utf8");
+  let url =
+    "/" +
+    relative(OUT, file)
+      .replace(/\.html$/, "")
+      .replace(/\/?index$/, "");
+  if (url !== "/" && url.endsWith("/")) url = url.slice(0, -1);
   if (SKIP.test(url)) return [];
 
-  const lang = /^\/vi(\/|$)/.test(url) ? 'vi' : 'en';
+  const lang = /^\/vi(\/|$)/.test(url) ? "vi" : "en";
 
   /*
    * The whole body, not `<main>`.
@@ -110,7 +140,10 @@ function chunkPage(file) {
   const bodyTag = /<body\b[^>]*>([\s\S]*)<\/body>/i.exec(raw);
   if (!bodyTag) return [];
   const body = bodyTag[1]
-    .replace(/<(script|style|template|noscript|svg|header|footer|nav|aside)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(
+      /<(script|style|template|noscript|svg|header|footer|nav|aside)\b[^>]*>[\s\S]*?<\/\1>/gi,
+      " ",
+    )
     /*
      * Page chrome that is not content.
      *
@@ -119,15 +152,24 @@ function chunkPage(file) {
      * status text and the launcher are the same kind of thing: every answer began "Skip to
      * content Loading Ask Pulse" before these came out.
      */
-    .replace(/<(div|section)\b[^>]*\brole="dialog"[\s\S]*?<\/\1>/gi, ' ')
-    .replace(/<a\b[^>]*href="#main"[^>]*>[\s\S]*?<\/a>/gi, ' ')
-    .replace(/<span\b[^>]*class="[^"]*\bsr-only\b[^"]*"[^>]*>[\s\S]*?<\/span>/gi, ' ')
-    .replace(/<button\b[^>]*aria-label="(?:Ask Pulse|H\u1ecfi Pulse)"[\s\S]*?<\/button>/gi, ' ')
-    .replace(/<!--[\s\S]*?-->/g, ' ');
+    .replace(/<(div|section)\b[^>]*\brole="dialog"[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<a\b[^>]*href="#main"[^>]*>[\s\S]*?<\/a>/gi, " ")
+    .replace(
+      /<span\b[^>]*class="[^"]*\bsr-only\b[^"]*"[^>]*>[\s\S]*?<\/span>/gi,
+      " ",
+    )
+    .replace(
+      /<button\b[^>]*aria-label="(?:Ask Pulse|H\u1ecfi Pulse)"[\s\S]*?<\/button>/gi,
+      " ",
+    )
+    .replace(/<!--[\s\S]*?-->/g, " ");
 
   const titleTag = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(raw);
   const h1 = /<h1\b[^>]*>([\s\S]*?)<\/h1>/i.exec(body);
-  const pageTitle = text(h1?.[1] ?? titleTag?.[1] ?? url).replace(/\s*[|–]\s*Pulse.*$/, '');
+  const pageTitle = text(h1?.[1] ?? titleTag?.[1] ?? url).replace(
+    /\s*[|–]\s*Pulse.*$/,
+    "",
+  );
 
   // Split at every h2/h3; the text before the first one belongs to the page itself.
   const parts = body.split(/(?=<h[23]\b)/i);
@@ -136,12 +178,19 @@ function chunkPage(file) {
     const head = /<h([23])\b([^>]*)>([\s\S]*?)<\/h\1>/i.exec(part);
     const heading = head ? text(head[3]) : pageTitle;
     const idAttr = head ? /\bid="([^"]+)"/.exec(head[2]) : null;
-    const anchor = head ? (idAttr?.[1] ?? slugify(heading)) : '';
+    const anchor = head ? (idAttr?.[1] ?? slugify(heading)) : "";
     const rest = head ? part.slice(head.index + head[0].length) : part;
     const t = text(rest);
     // A heading with two words under it is a label, not an answer.
     if (t.length < 80) continue;
-    chunks.push({ url, anchor, pageTitle, heading, text: t.slice(0, 1600), lang });
+    chunks.push({
+      url,
+      anchor,
+      pageTitle,
+      heading,
+      text: t.slice(0, 1600),
+      lang,
+    });
   }
   return chunks;
 }
@@ -150,24 +199,29 @@ function quantise(vectors) {
   const flat = new Int8Array(vectors.length * (vectors[0]?.length ?? 0));
   let i = 0;
   for (const v of vectors) {
-    for (const x of v) flat[i++] = Math.max(-127, Math.min(127, Math.round(x * 127)));
+    for (const x of v)
+      flat[i++] = Math.max(-127, Math.min(127, Math.round(x * 127)));
   }
-  return Buffer.from(flat.buffer).toString('base64');
+  return Buffer.from(flat.buffer).toString("base64");
 }
 
 function contentHash(chunks) {
-  const h = createHash('sha256');
-  for (const c of chunks) h.update(c.url).update('\u0000').update(c.text).update('\u0000');
-  return h.digest('hex').slice(0, 16);
+  const h = createHash("sha256");
+  for (const c of chunks)
+    h.update(c.url).update("\u0000").update(c.text).update("\u0000");
+  return h.digest("hex").slice(0, 16);
 }
 
 const embedText = (c) => `${c.pageTitle} — ${c.heading}\n${c.text}`;
 
 async function main() {
-  const { pipeline } = await import('@huggingface/transformers');
+  const { pipeline } = await import("@huggingface/transformers");
 
   const found = walk(OUT).flatMap(chunkPage);
-  if (found.length === 0) throw new Error('No chunks. Run `pnpm build` first; refusing to write an empty index.');
+  if (found.length === 0)
+    throw new Error(
+      "No chunks. Run `pnpm build` first; refusing to write an empty index.",
+    );
 
   /*
    * One copy of each passage.
@@ -184,25 +238,31 @@ async function main() {
     seen.add(key);
     return true;
   });
-  console.log(`${found.length} chunks, ${found.length - all.length} duplicates dropped`);
+  console.log(
+    `${found.length} chunks, ${found.length - all.length} duplicates dropped`,
+  );
 
   for (const model of MODELS) {
     const source = all.filter((c) => c.lang === model.lang);
     if (source.length === 0) throw new Error(`No ${model.lang} pages in out/.`);
 
-    const embed = await pipeline('feature-extraction', model.id, { dtype: 'q8' });
+    const embed = await pipeline("feature-extraction", model.id, {
+      dtype: "q8",
+    });
     const vectors = [];
     for (let i = 0; i < source.length; i += 1) {
       const out = await embed(model.passage + embedText(source[i]), {
-        pooling: 'mean',
+        pooling: "mean",
         normalize: true,
       });
       vectors.push(Array.from(out.data));
-      if ((i + 1) % 50 === 0) console.log(`  ${model.id}: ${i + 1}/${source.length}`);
+      if ((i + 1) % 50 === 0)
+        console.log(`  ${model.id}: ${i + 1}/${source.length}`);
     }
 
     const dims = vectors[0].length;
-    if (!vectors.every((v) => v.length === dims)) throw new Error('Ragged vectors.');
+    if (!vectors.every((v) => v.length === dims))
+      throw new Error("Ragged vectors.");
 
     const json = JSON.stringify({
       // Recorded so the runtime can refuse a query embedded by a different model. A cosine
@@ -213,13 +273,21 @@ async function main() {
       builtAt: new Date().toISOString().slice(0, 10),
       contentHash: contentHash(source),
       chunks: source.map((c) => ({
-        u: c.url, a: c.anchor, p: c.pageTitle, h: c.heading, t: c.text, l: c.lang,
+        u: c.url,
+        a: c.anchor,
+        p: c.pageTitle,
+        h: c.heading,
+        t: c.text,
+        l: c.lang,
       })),
       vectors: quantise(vectors),
     });
 
     mkdirSync(OUT_DIR, { recursive: true });
     writeFileSync(join(OUT_DIR, model.file), json);
+    // Also at the site root, so the handbook's assistant can answer pricing and product
+    // questions from it (the handbook publishes its own the same way). Pages serves it with CORS.
+    writeFileSync(join(ROOT, "public", model.file), json);
     console.log(
       `wrote ${model.file} — ${source.length} chunks, ${dims} dims, ` +
         `${(Buffer.byteLength(json) / 1024).toFixed(0)} KB`,
@@ -232,7 +300,12 @@ async function main() {
   for (const c of all) {
     const existing = notes[c.url];
     if (!existing) {
-      notes[c.url] = { title: c.pageTitle, lang: c.lang, summary: c.text.slice(0, 190), topics: [] };
+      notes[c.url] = {
+        title: c.pageTitle,
+        lang: c.lang,
+        summary: c.text.slice(0, 190),
+        topics: [],
+      };
       continue;
     }
     if (c.anchor && c.heading !== c.pageTitle && existing.topics.length < 3) {
@@ -240,9 +313,14 @@ async function main() {
     }
   }
   writeFileSync(NOTES_OUT, JSON.stringify(notes));
-  console.log(`wrote ${relative(ROOT, NOTES_OUT)} — ${Object.keys(notes).length} pages`);
+  console.log(
+    `wrote ${relative(ROOT, NOTES_OUT)} — ${Object.keys(notes).length} pages`,
+  );
 }
 
-if (process.argv[1] && process.argv[1].endsWith('build-search-index.mjs')) {
-  main().catch((err) => { console.error(err); process.exit(1); });
+if (process.argv[1] && process.argv[1].endsWith("build-search-index.mjs")) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
 }

@@ -15,7 +15,8 @@
       "13": "Chính sách bảo mật",
       "14": "Điều khoản dịch vụ",
       "15": "Chính sách cookie",
-      "16": "GDPR"
+      "16": "GDPR",
+      "returnName": "Return Verification"
     },
     "designed-header": {
       "1": "Sản phẩm",
@@ -75,7 +76,26 @@
       "theme": "Giao diện",
       "themeLight": "Sáng",
       "themeDark": "Tối",
-      "themeSystem": "Hệ thống"
+      "themeSystem": "Hệ thống",
+      "returnName": "Return Verification",
+      "returnBlurb": "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không",
+      "storefront": "Cá nhân hoá cửa hàng",
+      "apiName": "Decision API",
+      "apiBlurb": "Xếp hạng danh mục cho lượt truy cập đang diễn ra",
+      "searchName": "Search",
+      "searchBlurb": "Sắp xếp kết quả tìm kiếm theo điều người mua đang cân nhắc",
+      "recsName": "Recommendations",
+      "recsBlurb": "Hữu ích ngay từ lượt truy cập đầu tiên, không cần lịch sử mua hàng",
+      "pagesName": "Pages",
+      "pagesBlurb": "Sắp xếp trang danh mục cho người vừa ghé vào",
+      "studioName": "Merchandising Studio",
+      "studioBlurb": "Quản lý danh mục và xem vì sao mỗi sản phẩm được xếp ở vị trí đó"
+    },
+    "notFound": {
+      "title": "Trang này không tồn tại",
+      "body": "Đường dẫn có thể đã cũ hoặc gõ sai. Trang chủ liệt kê mọi sản phẩm Pulse cung cấp.",
+      "home": "Về trang chủ",
+      "audit": "Xem Decision Audit"
     }
   },
   "home": {
@@ -406,6 +426,32 @@
       "35": "Phát hiện những insight người khác bỏ sót hoặc không thu thập được",
       "36": "Pulse đo những thuộc tính người mua cần nhưng danh mục của bạn chưa bao giờ ghi nhận: những lỗ hổng mà một báo cáo độ đầy đủ không nhìn thấy.",
       "37": "Tiếp theo: Ý định người mua"
+    },
+    "products": {
+      "title": "Bắt đầu với Decision Audit",
+      "auditName": "Decision Audit",
+      "auditTag": "Bắt đầu ở đây",
+      "auditBlurb": "Trường dữ liệu nào nên bổ sung trước, xếp hạng trên chính danh mục của bạn.",
+      "auditMore": "Mọi việc khác đi theo từ đó: kiểm tra bản sửa đã thay đổi điều gì, giữ cho từng nhóm hàng luôn được đo, và xem thông tin còn thiếu nào đi cùng hàng bị trả.",
+      "auditCta": "Xem Decision Audit",
+      "verifyName": "Decision Verification",
+      "verifyBlurb": "Đo lại sau khi sửa và thấy chính xác điều gì đã thay đổi. Không cần lưu lượng truy cập.",
+      "monitorName": "Decision Monitor",
+      "monitorTag": "Định kỳ",
+      "monitorBlurb": "Danh mục xuống cấp theo thời gian. Được báo khi một nhóm hàng tụt, kèm nguyên nhân.",
+      "returnsName": "Return Verification",
+      "returnsBlurb": "Xem thông tin còn thiếu nào đi cùng hàng bị trả, và bản sửa có làm chúng giảm không.",
+      "storefrontTitle": "Rồi cá nhân hoá cửa hàng",
+      "apiName": "Decision API",
+      "apiBlurb": "Xếp hạng danh mục cho lượt truy cập đang diễn ra",
+      "searchName": "Search",
+      "searchBlurb": "Sắp xếp kết quả tìm kiếm theo điều người mua đang cân nhắc",
+      "recsName": "Recommendations",
+      "recsBlurb": "Hữu ích ngay từ lượt truy cập đầu tiên, không cần lịch sử mua hàng",
+      "pagesName": "Pages",
+      "pagesBlurb": "Sắp xếp trang danh mục cho người vừa ghé vào",
+      "studioName": "Merchandising Studio",
+      "studioBlurb": "Quản lý danh mục và xem vì sao mỗi sản phẩm được xếp ở vị trí đó"
     }
   },
   "pricing": {

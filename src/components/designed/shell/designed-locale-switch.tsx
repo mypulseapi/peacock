@@ -11,8 +11,8 @@ import { LOCALES, isLocale } from "@/i18n/locales";
  * back "when the Vietnamese page exists". It exists now, and until this was fixed the menu
  * offered a visitor on `/vi` exactly one choice: the language they were already reading.
  *
- * Languages come from `i18n/locales.ts` rather than being written out here, which is the same
- * rule `LanguageSwitcher` follows: a second hand-kept copy of the list is how a locale ends up
+ * Languages come from `i18n/locales.ts` rather than being written out here: a second
+ * hand-kept copy of the list is how a locale ends up
  * routing and rendering but never appearing in the menu.
  *
  * A client component, for the one thing the server cannot do: read the path, so that switching

@@ -37,7 +37,9 @@ export function AuthShell({
         <div className="glass-card p-6 sm:p-8">{children}</div>
 
         {footer && (
-          <p className="mt-6 text-center text-sm text-[var(--text-secondary)]">{footer}</p>
+          <p className="mt-6 text-center text-sm text-[var(--text-secondary)]">
+            {footer}
+          </p>
         )}
       </div>
     </div>
@@ -154,7 +156,13 @@ export function SubmitButton({
   );
 }
 
-export function AuthLink({ href, children }: { href: string; children: ReactNode }) {
+export function AuthLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
   return (
     /* min-h-6: WCAG 2.2 AA 2.5.8 wants a 24px target, and the line box alone was 19px. These sit
        on their own line rather than inside a sentence, so the standard's in-text exemption does

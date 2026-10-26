@@ -38,7 +38,9 @@ export default async function Page({ params }: PageProps) {
   const t = await getTranslations("auth.entry");
 
   return (
-    <Suspense fallback={<AuthShell title={t("title")} subtitle={t("subtitle")} />}>
+    <Suspense
+      fallback={<AuthShell title={t("title")} subtitle={t("subtitle")} />}
+    >
       <SignInForm />
     </Suspense>
   );

@@ -6,7 +6,13 @@ import { useSearchParams } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { safeReturnUrl } from "@/lib/return-url";
 import { SITE } from "@/lib/site";
-import { AuthShell, Field, FormError, SubmitButton, AuthLink } from "../AuthShell";
+import {
+  AuthShell,
+  Field,
+  FormError,
+  SubmitButton,
+  AuthLink,
+} from "../AuthShell";
 import { GoogleButton } from "../GoogleButton";
 
 /** The server's cooldown between codes (D-WSI-05). Only drives the countdown; the server enforces it. */
@@ -39,7 +45,9 @@ export function SignInForm() {
   const [step, setStep] = useState<"email" | "code">("email");
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
-  const [error, setError] = useState(params.has("error") ? t("entry.googleFailed") : "");
+  const [error, setError] = useState(
+    params.has("error") ? t("entry.googleFailed") : "",
+  );
   const [pending, setPending] = useState(false);
   const [wrong, setWrong] = useState(0);
   const [resendAt, setResendAt] = useState(0);
@@ -54,7 +62,9 @@ export function SignInForm() {
 
   /** Q-WSI-05: whole seconds under a minute, otherwise whole minutes rounded up. */
   const duration = (seconds: number) =>
-    seconds < 60 ? t("entry.seconds", { count: seconds }) : t("entry.minutes", { count: Math.ceil(seconds / 60) });
+    seconds < 60
+      ? t("entry.seconds", { count: seconds })
+      : t("entry.minutes", { count: Math.ceil(seconds / 60) });
 
   /** The server's codes, mapped to §5's messages. Anything unknown gets the generic line. */
   function describe(e: ApiError, wrongSoFar = wrong): string {
@@ -67,7 +77,9 @@ export function SignInForm() {
       case "INVALID_EMAIL":
         return t("entry.errors.invalidEmail");
       case "INVALID_OTP":
-        return wrongSoFar >= MAX_WRONG ? t("entry.errors.locked") : t("entry.errors.incorrect");
+        return wrongSoFar >= MAX_WRONG
+          ? t("entry.errors.locked")
+          : t("entry.errors.incorrect");
       case "OTP_EXPIRED":
         return t("entry.errors.expired");
       case "TOO_MANY_ATTEMPTS":
@@ -112,7 +124,10 @@ export function SignInForm() {
     }
     setError("");
     setPending(true);
-    const { error: verifyError } = await authClient.signIn.emailOtp({ email, otp: code });
+    const { error: verifyError } = await authClient.signIn.emailOtp({
+      email,
+      otp: code,
+    });
 
     if (!verifyError) {
       // A full navigation: the dashboard is another app on another origin. `pending` stays on, so
@@ -223,7 +238,9 @@ export function SignInForm() {
             disabled={pending || waitSeconds > 0}
             className="inline-flex min-h-6 items-center text-[var(--accent-primary-light)] hover:underline disabled:cursor-not-allowed disabled:text-[var(--text-muted)] disabled:no-underline"
           >
-            {waitSeconds > 0 ? t("entry.resendIn", { seconds: waitSeconds }) : t("entry.resend")}
+            {waitSeconds > 0
+              ? t("entry.resendIn", { seconds: waitSeconds })
+              : t("entry.resend")}
           </button>
           <button
             type="button"
@@ -235,7 +252,9 @@ export function SignInForm() {
           </button>
         </div>
 
-        <p className="text-xs text-[var(--text-muted)]">{t("entry.delivery")}</p>
+        <p className="text-xs text-[var(--text-muted)]">
+          {t("entry.delivery")}
+        </p>
       </form>
     </AuthShell>
   );

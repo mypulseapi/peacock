@@ -31,13 +31,13 @@ site, at [/why/limits](https://thepulseapi.com/en/why/limits).
 Pulse is built by **Resolve Labs**, a small team working on one question: which product
 information is worth paying to fix.
 
-| | |
-| --- | --- |
-| Website | [thepulseapi.com](https://thepulseapi.com) |
-| Developer handbook | [developer.thepulseapi.com](https://developer.thepulseapi.com) |
-| Dashboard | [app.thepulseapi.com](https://app.thepulseapi.com) |
-| SDK | [`@thepulseapi/sdk`](https://www.npmjs.com/package/@thepulseapi/sdk), MIT licensed |
-| LinkedIn | [thepulseapi](https://www.linkedin.com/company/thepulseapi/) |
+|                    |                                                                                    |
+| ------------------ | ---------------------------------------------------------------------------------- |
+| Website            | [thepulseapi.com](https://thepulseapi.com)                                         |
+| Developer handbook | [developer.thepulseapi.com](https://developer.thepulseapi.com)                     |
+| Dashboard          | [app.thepulseapi.com](https://app.thepulseapi.com)                                 |
+| SDK                | [`@thepulseapi/sdk`](https://www.npmjs.com/package/@thepulseapi/sdk), MIT licensed |
+| LinkedIn           | [thepulseapi](https://www.linkedin.com/company/thepulseapi/)                       |
 
 The site is published in **English and Vietnamese**. A bare URL resolves to Vietnamese, because
 Vietnam is the market being sold into; `/en` is the English tree.

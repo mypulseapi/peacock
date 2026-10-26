@@ -9,7 +9,10 @@ import { SITE } from "./site";
  * `//evil.com`, `javascript:`, `https://app.thepulseapi.com.evil.com`, and every other
  * `thepulseapi.com` subdomain. Comparing parsed origins, never prefixes, is what makes those safe.
  */
-export function safeReturnUrl(raw: string | null | undefined, app: string = SITE.app): string {
+export function safeReturnUrl(
+  raw: string | null | undefined,
+  app: string = SITE.app,
+): string {
   if (!raw) return app;
   try {
     const home = new URL(app);

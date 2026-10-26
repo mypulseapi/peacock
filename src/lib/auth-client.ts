@@ -1,7 +1,10 @@
 "use client";
 
 import { createAuthClient } from "better-auth/react";
-import { emailOTPClient, inferAdditionalFields } from "better-auth/client/plugins";
+import {
+  emailOTPClient,
+  inferAdditionalFields,
+} from "better-auth/client/plugins";
 
 import { SITE } from "./site";
 
@@ -59,4 +62,5 @@ export const authClient = createAuthClient({
  * nothing is worse than a button that is not there. The server makes the same check against
  * GOOGLE_CLIENT_ID, so the two cannot disagree about whether the provider exists.
  */
-export const isGoogleEnabled = () => Boolean(process.env.NEXT_PUBLIC_GOOGLE_ENABLED === "true");
+export const isGoogleEnabled = () =>
+  Boolean(process.env.NEXT_PUBLIC_GOOGLE_ENABLED === "true");

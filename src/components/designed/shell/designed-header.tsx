@@ -560,7 +560,14 @@ export function DesignedHeader() {
               </Link>
             </li>
             <li>
-              <Link href={designedHref("/en/opensource")} className="nav-link">
+              {/* The selling point, so it stands apart: the GitHub mark and the primary colour. */}
+              <Link
+                href={designedHref("/en/opensource")}
+                className="nav-link gap-1.5 font-semibold text-primary! hover:bg-primary-tint!"
+              >
+                <svg className="size-4" aria-hidden="true">
+                  <use href="#i-github" />
+                </svg>
                 {t("opensource")}
               </Link>
             </li>
@@ -872,8 +879,11 @@ export function DesignedHeader() {
               </Link>
               <Link
                 href={designedHref("/en/opensource")}
-                className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
+                className="flex items-center gap-2 rounded-control px-4 py-3 text-lg font-semibold text-primary"
               >
+                <svg className="size-5" aria-hidden="true">
+                  <use href="#i-github" />
+                </svg>
                 {t("opensource")}
               </Link>
 

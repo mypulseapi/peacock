@@ -1353,7 +1353,17 @@
       "finalTitle": "Start with one category.",
       "finalLede": "We will tell you which product information is worth fixing before you commit to a larger project.",
       "finalCta": "Request a Decision Audit",
-      "finalNote": "One export · No integration · 48 hours"
+      "finalNote": "One export · No integration · 48 hours",
+      "growsEyebrow": "How it works",
+      "growsIntro": "A clear path from insight to measurable impact.",
+      "grows1Copy": "Analyze your catalog to find what matters.",
+      "grows1Alt": "Product audit showing missing and conflicting evidence",
+      "grows2Copy": "Fix the issues with a ranked plan and measure the results.",
+      "grows2Alt": "Ranked product repair plan with completed fixes",
+      "grows3Copy": "Track your catalog continuously and stay ahead of new issues.",
+      "grows3Alt": "Monitoring dashboard with trend chart and issue alerts",
+      "grows4Copy": "Use live product intelligence to automate decisions.",
+      "grows4Alt": "Products connected to the Pulse Decision API"
     }
   },
   "privacy": {

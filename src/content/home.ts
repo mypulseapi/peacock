@@ -298,7 +298,7 @@ export const FINAL_CTA = {
   title: "Send us one category. See what comes back.",
   body: "Pick the shelf where you suspect shoppers struggle most. You get the ranked list, the products affected, and half an hour with whoever owns merchandising to walk through it.",
   primary: { label: "Request a Decision Audit", href: "/contact" },
-  secondary: { label: "Read the method first", href: "/docs" },
+  secondary: { label: "Read the method first", href: "/research" },
   reassure:
     "No obligation at any step. And if your catalogue turns out to be fine, we will tell you that too.",
 } as const;

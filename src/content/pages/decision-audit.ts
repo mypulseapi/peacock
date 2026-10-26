@@ -12,7 +12,7 @@ import type { StoryContent } from "@/components/StoryPage";
  */
 export const DECISION_AUDIT: StoryContent = {
   meta: {
-    title: "Decision Audit: which product data to fix first",
+    title: "Product data decision audit: find what to fix first",
     description:
       "Send one category export. In 48 hours, a ranked list of the attributes worth recording, the products missing each, and where each fact already lives.",
   },
@@ -32,7 +32,8 @@ export const DECISION_AUDIT: StoryContent = {
 
   steps: {
     heading: "How does the audit work?",
-    intro: "Three things happen, and only the first one needs anything from you.",
+    intro:
+      "Three things happen, and only the first one needs anything from you.",
     items: [
       {
         n: "01",
@@ -82,7 +83,7 @@ export const DECISION_AUDIT: StoryContent = {
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
 export const DECISION_AUDIT_VI: StoryContent = {
   meta: {
-    title: "Decision Audit: nên sửa dữ liệu sản phẩm nào trước",
+    title: "Decision Audit: kiểm tra dữ liệu, nên sửa gì trước",
     description:
       "Gửi một tệp xuất ngành hàng. Trong 48 giờ, nhận danh sách xếp hạng các thuộc tính đáng ghi, sản phẩm còn thiếu, và nơi từng dữ kiện đang nằm.",
   },

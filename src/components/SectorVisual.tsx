@@ -17,7 +17,7 @@ import { ui } from "@/content/locale";
  * The values come from each sector's own `attributes`, so the picture differs
  * by sector while the argument stays identical.
  */
-const INK = "#16181d", MID = "#4c5563", MUTE = "#9aa1ad";
+const INK = "#16181d", MID = "#4c5563", MUTE = "#5f6773";
 const GOOD = "var(--sig-deep)", WARN = "#b91c1c", WARN_BG = "#fdeceb";
 
 export function SectorVisual({ attributes, caption }: { attributes: SectorAttribute[]; caption: string }) {

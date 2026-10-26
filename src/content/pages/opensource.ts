@@ -6,9 +6,9 @@ import type { StoryContent } from "@/components/StoryPage";
  * Open source. ODIN/strategy/OPEN-SOURCE.md: detection is open, decision is paid, and the page says
  * exactly what is released today and what is only planned.
  *
- * Checked 2026-10-26: `@thepulseapi/sdk` 0.2.0 is on npm (MIT) with its source in a private
- * repository, so it is readable through npm, not GitHub; `@thepulseapi/mcp` has public source and is not yet
- * on npm. Both live in the public monorepo github.com/mypulseapi/open-pulse since 2026-10-26. Planned items carry "planned", never a date. No competitor named.
+ * Checked 2026-10-26: `@thepulseapi/sdk` and `@thepulseapi/mcp` are both on npm at 0.2.0 (MIT), and
+ * both live in the public monorepo github.com/mypulseapi/open-pulse. `npx -y @thepulseapi/mcp` was
+ * run against the registry and listed its four tools. Planned items carry "planned", never a date. No competitor named.
  */
 export const OPENSOURCE: StoryContent = {
   meta: {
@@ -44,7 +44,7 @@ export const OPENSOURCE: StoryContent = {
         n: "01",
         meta: "Install",
         title: "Install from npm",
-        body: "npm install @thepulseapi/sdk. The MCP server, @thepulseapi/mcp, is being published to npm.",
+        body: "npm install @thepulseapi/sdk for a site, or npx -y @thepulseapi/mcp for an agent.",
       },
       {
         n: "02",
@@ -71,8 +71,8 @@ export const OPENSOURCE: StoryContent = {
       },
       {
         icon: Bot,
-        title: "@thepulseapi/mcp: source public",
-        body: "An MCP server for Claude, ChatGPT and other agents: search the docs, and with a key, ask the Decision API which products meet a shopper's requirements. MIT, source on GitHub.",
+        title: "@thepulseapi/mcp: released",
+        body: "An MCP server for Claude, Cursor, Codex and other agents: verdicts on any options with a key, and the docs without one. MIT, version 0.2.0 on npm.",
       },
       {
         icon: Search,
@@ -175,7 +175,7 @@ export const OPENSOURCE_VI: StoryContent = {
         n: "01",
         meta: "Cài đặt",
         title: "Cài từ npm",
-        body: "npm install @thepulseapi/sdk. Máy chủ MCP, @thepulseapi/mcp, đang được phát hành lên npm.",
+        body: "npm install @thepulseapi/sdk cho website, hoặc npx -y @thepulseapi/mcp cho tác tử AI.",
       },
       {
         n: "02",
@@ -202,8 +202,8 @@ export const OPENSOURCE_VI: StoryContent = {
       },
       {
         icon: Bot,
-        title: "@thepulseapi/mcp: mã nguồn công khai",
-        body: "Máy chủ MCP cho Claude, ChatGPT và các tác tử khác: tìm trong tài liệu, và khi có khóa, hỏi Decision API sản phẩm nào đáp ứng yêu cầu của người mua. MIT, mã nguồn trên GitHub.",
+        title: "@thepulseapi/mcp: đã phát hành",
+        body: "Máy chủ MCP cho Claude, Cursor, Codex và các tác tử khác: phán quyết cho mọi lựa chọn khi có khóa, và tài liệu khi không có. MIT, phiên bản 0.2.0 trên npm.",
       },
       {
         icon: Search,

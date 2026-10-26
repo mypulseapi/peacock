@@ -1726,7 +1726,6 @@
   },
   "shell": {
     "designed-footer": {
-      "1": "Product",
       "2": "Decision Audit",
       "3": "Decision Verification",
       "4": "Decision Monitor",
@@ -1735,7 +1734,6 @@
       "7": "About us",
       "8": "Contact",
       "9": "Career",
-      "10": "Contact point",
       "11": "getintouch@thepulseapi.com",
       "12": "© 2026 Pulse. All rights reserved.",
       "13": "Privacy Policy",
@@ -1753,7 +1751,14 @@
       "engineeringLabel": "Engineering",
       "engineeringValue": "Ho Chi Minh City, Vietnam",
       "builtForLabel": "Built for",
-      "builtForValue": "Merchants in Vietnam and Southeast Asia"
+      "builtForValue": "Merchants in Vietnam and Southeast Asia",
+      "measureHeading": "Measure & Repair",
+      "liveHeading": "Decide Live",
+      "apiName": "Decision API",
+      "searchName": "Search",
+      "recsName": "Recommendations",
+      "pagesName": "Pages",
+      "studioName": "Merchandising Studio"
     },
     "designed-header": {
       "1": "Product",

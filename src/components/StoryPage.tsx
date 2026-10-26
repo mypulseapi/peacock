@@ -354,21 +354,29 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
         </div>
       </Section>
 
-      {/* The closing band every designed page ends on (home, about, careers): same classes, so a
-          story page closes the way the rest of the site does. The copy stays this page's own. */}
-      <section id="request" className="cta-dots scroll-mt-16 border-t border-line" data-cta>
-        <div className="frame py-24 text-center lg:py-32">
-          <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">{h(c.cta.title)}</h2>
-          <p className="reveal mx-auto mt-6 max-w-xl text-lg text-pretty text-muted delay-100">{c.cta.body}</p>
-          <div className="reveal mt-8 flex flex-col items-center delay-200">
-            <Link locale={locale} href={c.cta.href} className="btn-primary">
-              {c.cta.label}
-            </Link>
-            {c.cta.note && <p className="mt-4 text-sm text-muted">{c.cta.note}</p>}
-          </div>
-        </div>
-      </section>
+      <StoryCta c={c} title={h(c.cta.title)} />
     </>
+  );
+}
+
+/** The closing call to action, shared with the product pages that do not use this template. */
+export function StoryCta({ c, title = c.cta.title }: { c: StoryContent; title?: string }) {
+  const locale = renderLocale();
+  // The closing band every designed page ends on (home, about, careers): same classes, so a
+  // story page closes the way the rest of the site does. The copy stays this page's own.
+  return (
+    <section id="request" className="cta-dots scroll-mt-16 border-t border-line" data-cta>
+      <div className="frame py-24 text-center lg:py-32">
+        <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">{title}</h2>
+        <p className="reveal mx-auto mt-6 max-w-xl text-lg text-pretty text-muted delay-100">{c.cta.body}</p>
+        <div className="reveal mt-8 flex flex-col items-center delay-200">
+          <Link locale={locale} href={c.cta.href} className="btn-primary">
+            {c.cta.label}
+          </Link>
+          {c.cta.note && <p className="mt-4 text-sm text-muted">{c.cta.note}</p>}
+        </div>
+      </div>
+    </section>
   );
 }
 

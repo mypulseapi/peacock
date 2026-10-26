@@ -35,6 +35,8 @@ export default async function Page({ params }: PageProps) {
         nodes={[storyFaqSchema(promotionAudit(locale))]}
       />
       <StoryPage
+        titleClassName="text-hero"
+        plainHeadings
         layout={{ steps: "cards", gets: "showcase", limits: "split" }}
         c={promotionAudit(locale)}
       />

@@ -229,13 +229,16 @@ function ProductGrid({
         <li key={o.href} className="reveal">
           <Link
             href={designedHref(o.href)}
-            className="group relative flex h-full gap-4 rounded-2xl border border-line bg-card p-6 shadow-sm transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+            className="group relative flex h-full items-center gap-4 rounded-2xl border border-line bg-card p-6 shadow-sm transition-colors duration-150 ease-out-soft hover:bg-surface-1"
           >
             <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-surface-1 text-muted transition-colors duration-150 ease-out-soft group-hover:text-primary group-focus-visible:text-primary">
               <svg className="size-5" aria-hidden="true">
                 <use href={`#${o.icon}`} />
               </svg>
             </span>
+            {/* Centred in the card (owner, 26 Oct 2026): beside the tall audit card the three cards stretch to share its
+                height, and top-aligned content left the space all below it. The arrow is in the title row, so it moves
+                with the title. */}
             <span className="min-w-0 flex-1">
               <span className="flex items-start justify-between gap-3">
                 <span className="flex flex-wrap items-center gap-2 font-semibold text-ink">

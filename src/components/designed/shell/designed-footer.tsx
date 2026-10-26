@@ -115,6 +115,14 @@ export function DesignedFooter() {
               </li>
               <li>
                 <Link
+                  href={designedHref("/en/opensource")}
+                  className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                >
+                  {t("opensourceLink")}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={designedHref("/en/contact")}
                   className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
                 >

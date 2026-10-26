@@ -1,5 +1,5 @@
 import { DEFAULT_LOCALE } from "@/i18n/locales";
-import { SITE } from "@/lib/site";
+import { RedirectDocument } from "@/components/RedirectDocument";
 
 /**
  * The bare `/` URL.
@@ -24,26 +24,5 @@ import { SITE } from "@/lib/site";
  * is a pass-through: `[locale]/layout.tsx` is what wraps every other page in a document.
  */
 export default function RootRedirect() {
-  const target = `/${DEFAULT_LOCALE}`;
-
-  return (
-    <html lang={DEFAULT_LOCALE}>
-      <head>
-        <meta charSet="utf-8" />
-        <meta httpEquiv="refresh" content={`0;url=${target}`} />
-        <link rel="canonical" href={`${SITE.www}${target}`} />
-        {/* Nothing here should be indexed in its own right; the destination carries the content. */}
-        <meta name="robots" content="noindex, follow" />
-        <title>Pulse</title>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `location.replace(${JSON.stringify(target)} + location.search + location.hash)`,
-          }}
-        />
-      </head>
-      <body>
-        <a href={target}>Continue to Pulse</a>
-      </body>
-    </html>
-  );
+  return <RedirectDocument target={`/${DEFAULT_LOCALE}`} />;
 }

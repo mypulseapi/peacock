@@ -1809,7 +1809,7 @@ html[data-theme="dark"] .logo-dark { display: block; }
   /* Vietnamese hero capped at 42px: above that, in the 347px column beside the demo,
      it breaks "ý định của / người mua", splitting "của người mua". At 42px every line is a phrase:
      "Khám phá ý định / của người mua / và lỗ hổng / danh mục". */
-  :lang(vi) .text-hero {
+  :lang(vi) [data-hero] .text-hero {
     font-size: min(var(--text-hero), 2.625rem);
   }
 }
@@ -2021,7 +2021,7 @@ html[data-theme="dark"] {
     3.375rem
   ); /* 32px on a phone → 54px from 1280px, where the title sits beside the demo in a 347px column: English takes
         three lines per phrase and every word fits ("catalogue" is the widest). Vietnamese is capped at 42px by
-        `:lang(vi) .text-hero` (with the title font, above). It no longer shrinks to keep each phrase on one line:
+        `:lang(vi) [data-hero] .text-hero` (with the title font, above; home only, product pages fit 54px). It no longer shrinks to keep each phrase on one line:
         that held it near 28px. */
   --text-hero--line-height: 1.1; /* not tighter: Vietnamese stacks marks above and below (ổ, ị) */
   --text-hero--font-weight: 620;
@@ -3590,6 +3590,11 @@ html[data-theme="dark"] {
   }
 }
 /* Coloured shadow behind the product demo: the Signal gradient, blurred, under the window */
+/* The soft lift under the floating cards in the drawn gains pictures (product/gains.tsx): Pulse Blue on
+   light, a plain dark shadow on dark. Only those pictures use it. */
+@utility illo-lift {
+  filter: drop-shadow(0 18px 22px light-dark(rgb(37 82 255 / 0.18), rgb(0 0 0 / 0.55)));
+}
 @utility hero-glow {
   position: relative;
   isolation: isolate;

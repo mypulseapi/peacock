@@ -40,7 +40,7 @@ export function DesignedLocaleSwitch({ heading }: { heading: string }) {
     <nav
       aria-label={heading}
       data-locale-switch
-      className="flex h-9 shrink-0 items-center rounded-lg border border-line px-1 text-sm font-medium"
+      className="flex h-9 shrink-0 items-center text-sm font-medium"
     >
       {[...LOCALES].reverse().map((l, i) => (
         <span key={l.code} className="flex items-center">

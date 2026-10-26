@@ -49,7 +49,7 @@ Every colour is defined once, in the `COLOURS` block of `@theme` in `src/input.c
    that stored it from the old menu follows the OS (`color-scheme: light dark` on `:root`) until the switch is
    pressed. The switch's knob slides and its sun turns to a moon in 300ms `ease-out-soft`, and the page changes
    from the switch outward, a circle grown by a view transition (`data-theme-reveal`, 550ms); with reduced motion
-   the knob jumps and the page swaps at once. Beside it, the languages as one "VI | EN" pair
+   the knob jumps and the page swaps at once. Beside it, the languages as one borderless "VI | EN" pair
    (`designed-locale-switch.tsx`), the current one marked, the other a link to the same page. Because every role is
    `light-dark()`, nothing else is needed for dark mode — no `dark:` classes in HTML. Dark surfaces are cool black
    (Night `#0B0D12`, cards `#14171F`), not navy (final guide, 19 Oct 2026). The one exception is what a token cannot switch,

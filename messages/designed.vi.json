@@ -451,7 +451,23 @@
       "pagesName": "Pages",
       "pagesBlurb": "Sắp xếp trang danh mục cho người vừa ghé vào",
       "studioName": "Merchandising Studio",
-      "studioBlurb": "Quản lý danh mục và xem vì sao mỗi sản phẩm được xếp ở vị trí đó"
+      "studioBlurb": "Quản lý danh mục và xem vì sao mỗi sản phẩm được xếp ở vị trí đó",
+      "facts": "Một bản xuất · Không cần tích hợp · 48 giờ",
+      "exampleTitle": "Theo điều người mua cần, trên 32 yêu cầu",
+      "exampleNote": "Dữ liệu ví dụ",
+      "exampleCaption": "Vi xử lý thiếu ở 162 sản phẩm, nhưng chỉ 2 trên 32 yêu cầu của người mua nhắc đến nó.",
+      "ex1Name": "Kích thước màn hình",
+      "ex1Need": "15 trên 32",
+      "ex1Missing": "thiếu 80",
+      "ex2Name": "RAM",
+      "ex2Need": "13 trên 32",
+      "ex2Missing": "thiếu 60",
+      "ex3Name": "Lưu trữ",
+      "ex3Need": "10 trên 32",
+      "ex3Missing": "thiếu 55",
+      "ex4Name": "Vi xử lý",
+      "ex4Need": "2 trên 32",
+      "ex4Missing": "thiếu 162"
     }
   },
   "pricing": {

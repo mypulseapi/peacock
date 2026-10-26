@@ -27,8 +27,11 @@ export type ChapterContent = StoryContent &
   Required<
     Pick<StoryContent, "situation" | "gets" | "limits" | "chainBlock">
   > & {
-    /** The hero figure, on the CDN like the other product heroes; the alt text localises. */
-    heroImage: { src: string; alt: string; width: number; height: number };
+    /**
+     * The hero figure, on the CDN like the other product heroes; the alt text localises. A page whose
+     * image is not made yet passes `figure` to `ChapterPage` instead.
+     */
+    heroImage?: { src: string; alt: string; width: number; height: number };
   };
 
 const h = (s: string) => s.replace(/\.\s*$/, "");
@@ -60,15 +63,35 @@ const Mark = ({ ok }: { ok: boolean }) => (
 export function ChapterPage({
   c,
   chain,
+  chainFramed = true,
   art,
   gains,
+  gainPictures,
+  figure,
+  output,
 }: {
   c: ChapterContent;
   /** The chart beside the chain chapter. */
   chain: ReactNode;
-  art: { situation: ReactNode; steps: ReactNode[] };
-  /** One drawing per gain, in order (`gains.tsx`). */
-  gains: GainsArt[];
+  /**
+   * Frame `chain` in a card (the default). Off for charts that bring their own card, such as the
+   * storefront panels and their two stacked comparison cards: framed twice, a white strip showed
+   * between the two cards (owner, 26 Oct 2026).
+   */
+  chainFramed?: boolean;
+  /** `situationIsPanel`: the situation picture is a data panel, so it sizes to its content instead of a 3:2 frame. */
+  art: { situation: ReactNode; steps: ReactNode[]; situationIsPanel?: boolean };
+  /** One drawing per gain, in order (`gains.tsx`); or `gainPictures`, any picture per gain. */
+  gains?: GainsArt[];
+  gainPictures?: ReactNode[];
+  /** The hero figure while `c.heroImage` does not exist yet. */
+  figure?: ReactNode;
+  /**
+   * The product's own output, under `c.visualHeading` and `c.visualBody` (the storefront pages).
+   * Three layouts, for the owner to choose (26 Oct 2026): words beside the panel, words over it, or
+   * both inside a wash panel as on Decision Verification's comparison.
+   */
+  output?: { panel: ReactNode; layout?: "split" | "centre" | "band" };
 }) {
   const locale = renderLocale();
   const t = ui(locale);
@@ -92,17 +115,25 @@ export function ChapterPage({
             </div>
             {/* The owner's image as supplied. `bleed-x` gives back the page margins and the section
                 clips; the `svh` cap keeps the whole figure above the fold, as on the other heroes. */}
-            <div className="reveal mt-8 delay-200 lg:mt-10 lg:bleed-x">
-              <Image
-                src={img(c.heroImage.src)}
-                alt={c.heroImage.alt}
-                width={c.heroImage.width}
-                height={c.heroImage.height}
-                sizes="100vw"
-                priority
-                className="mx-auto h-auto w-full object-contain lg:max-h-[calc(100svh-28rem)]"
-              />
-            </div>
+            {c.heroImage ? (
+              <div className="reveal mt-8 delay-200 lg:mt-10 lg:bleed-x">
+                <Image
+                  src={img(c.heroImage.src)}
+                  alt={c.heroImage.alt}
+                  width={c.heroImage.width}
+                  height={c.heroImage.height}
+                  sizes="100vw"
+                  priority
+                  className="mx-auto h-auto w-full object-contain lg:max-h-[calc(100svh-28rem)]"
+                />
+              </div>
+            ) : (
+              <div className="reveal mx-auto mt-8 max-w-3xl pb-16 delay-200 lg:mt-10 lg:pb-20">
+                <div className="rounded-3xl border border-line bg-primary-wash p-4 sm:p-8">
+                  <div className="shadow-window rounded-2xl">{figure}</div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -110,7 +141,13 @@ export function ChapterPage({
       <section className="border-b border-line bg-card">
         <div className="frame grid items-center gap-10 py-20 lg:grid-cols-2 lg:gap-16 lg:py-28">
           <div className="reveal">
-            <Picture>{art.situation}</Picture>
+            {art.situationIsPanel ? (
+              <div className="rounded-3xl border border-line bg-primary-wash p-4 sm:p-6">
+                {art.situation}
+              </div>
+            ) : (
+              <Picture>{art.situation}</Picture>
+            )}
           </div>
           <div className="reveal delay-100">
             <h2 className="text-title text-balance">
@@ -147,11 +184,17 @@ export function ChapterPage({
               </p>
             )}
           </div>
-          <div className="reveal rounded-2xl border border-line bg-card shadow-sm delay-100">
+          <div
+            className={`reveal delay-100 ${chainFramed ? "rounded-2xl border border-line bg-card shadow-sm" : ""}`}
+          >
             {chain}
           </div>
         </div>
       </section>
+
+      {output && c.visualHeading && (
+        <Output heading={h(c.visualHeading)} body={c.visualBody} {...output} />
+      )}
 
       <StepsZigzag
         heading={h(c.steps.heading)}
@@ -179,7 +222,8 @@ export function ChapterPage({
           </div>
           <GainsCards
             items={c.gets.items.map((g, i) => ({
-              art: gains[i],
+              art: gains?.[i],
+              picture: gainPictures?.[i],
               title: g.title,
               body: g.body,
             }))}
@@ -248,5 +292,56 @@ export function ChapterPage({
 
       <StoryCta c={c} title={h(c.cta.title)} />
     </>
+  );
+}
+
+/** The output section's three layouts; see `output` on `ChapterPage`. */
+function Output({
+  heading,
+  body,
+  panel,
+  layout = "split",
+}: {
+  heading: string;
+  body?: string;
+  panel: ReactNode;
+  layout?: "split" | "centre" | "band";
+}) {
+  const words = (
+    <>
+      <h2 className="text-title text-balance">{heading}</h2>
+      {body && <p className="mt-4 text-lg text-pretty text-muted">{body}</p>}
+    </>
+  );
+  const figure = (
+    <div className="reveal rounded-2xl shadow-window delay-100">{panel}</div>
+  );
+  if (layout === "centre")
+    return (
+      <section className="border-b border-line">
+        <div className="frame py-20 lg:py-28">
+          <div className="reveal mx-auto max-w-2xl text-center">{words}</div>
+          <div className="mx-auto mt-12 max-w-3xl lg:mt-14">{figure}</div>
+        </div>
+      </section>
+    );
+  if (layout === "band")
+    return (
+      <section className="border-b border-line">
+        <div className="frame py-20 lg:py-28">
+          <div className="grid items-center gap-10 rounded-3xl border border-line bg-primary-wash p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:p-14">
+            <div className="reveal">{words}</div>
+            {figure}
+          </div>
+        </div>
+      </section>
+    );
+  return (
+    <section className="border-b border-line">
+      <div className="frame grid items-center gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-28">
+        <div className="reveal lg:col-span-5">{words}</div>
+        <div className="lg:col-span-7">{figure}</div>
+      </div>
+    </section>
   );
 }

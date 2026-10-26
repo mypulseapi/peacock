@@ -2214,6 +2214,15 @@ html[data-theme="dark"] {
       translate: 0 -0.25rem;
     }
   }
+  /* A panel hanging from the header's bottom edge unrolls downward instead of sliding in from
+     above, so no frame of it is ever drawn over the navbar. */
+  --animate-dropdown-attached: dropdown-attached 150ms var(--ease-out-soft);
+  @keyframes dropdown-attached {
+    from {
+      opacity: 0;
+      clip-path: inset(0 0 100% 0);
+    }
+  }
 
   @keyframes demo-timer {
     from {
@@ -3211,24 +3220,27 @@ html[data-theme="dark"] {
   }
 }
 
+/* Hangs from the header's bottom edge (2026-10-26): the nav is the bar's full height, so top: 100%
+   is the bar's bottom, and 1px more clears the header's border. Square top corners, so it reads
+   as part of the bar. It opens by unrolling downward (clip-path), never sliding over the bar. */
 @utility nav-viewport {
   position: absolute;
   top: 100%;
   left: var(--nav-viewport-x, 0);
-  margin-top: 0.5rem;
+  margin-top: 1px;
   width: var(--nav-viewport-width, auto);
   height: var(--nav-viewport-height, auto);
   overflow: hidden;
-  border-radius: var(--radius-2xl);
+  border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
   background-color: var(--color-card);
   box-shadow: var(--shadow-nav);
-  transition-property: width, height, left, translate, opacity, visibility;
+  transition-property: width, height, left, clip-path, opacity, visibility;
   transition-duration: 150ms, 150ms, 150ms, 150ms, 150ms, 0s;
   transition-delay: 0s, 0s, 0s, 0s, 0s, 150ms;
   transition-timing-function: var(--ease-in-out-cubic);
   &:not([data-open]) {
     opacity: 0;
-    translate: 0 -0.25rem;
+    clip-path: inset(0 0 100% 0);
     visibility: hidden;
     pointer-events: none;
   }
@@ -3237,11 +3249,13 @@ html[data-theme="dark"] {
   }
   /* first open: appear at the new size without animating width/height */
   &[data-instant] {
-    transition-property: translate, opacity, visibility;
+    transition-property: clip-path, opacity, visibility;
   }
   @media (prefers-reduced-motion: reduce) {
     transition-property: opacity, visibility;
-    translate: none;
+    &:not([data-open]) {
+      clip-path: none;
+    }
   }
 }
 

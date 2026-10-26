@@ -215,7 +215,7 @@ export default async function LocaleLayout({
             static export has no request, so every page in the site failed to prerender -- and the
             error names headers() rather than this line, which is why it reads as 139 unrelated
             failures instead of one. */}
-        {/* 41 symbols, defined once. Every designed page references them by `<use href="#i-...">`,
+        {/* 43 symbols, defined once. Every designed page references them by `<use href="#i-...">`,
             so this has to be in the document before any of them render. */}
         <IconSprite />
         <NextIntlClientProvider locale={locale} messages={clientSide}>

@@ -23,8 +23,14 @@ const ORDER: Preference[] = ["light", "dark", "system"];
 export function DesignedThemeSwitch({
   heading,
   labels,
+  attached = false,
 }: {
   heading: string;
+  /**
+   * In the desktop bar: hang the panel from the header's bottom edge, square-topped, instead of
+   * 8px under the button. The wrapper takes the bar's full height so `top-full` is that edge.
+   */
+  attached?: boolean;
   /** Translated, because "Light" and "Dark" are words a Vietnamese reader should get too. */
   labels: Record<Preference, string>;
 }) {
@@ -34,7 +40,7 @@ export function DesignedThemeSwitch({
   const Current = theme === "dark" ? Moon : Sun;
 
   return (
-    <div className="relative">
+    <div className={attached ? "relative flex items-center self-stretch" : "relative"}>
       <details className="group" data-dropdown>
         <summary
           className="hit-area flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-line px-3 text-sm font-medium text-ink transition-colors duration-150 ease-out-soft hover:border-ink"
@@ -52,7 +58,11 @@ export function DesignedThemeSwitch({
         </summary>
         <div
           data-panel
-          className="absolute top-full right-0 mt-2 w-44 animate-dropdown rounded-2xl border border-line bg-card p-1.5 shadow-xl motion-reduce:animate-none"
+          className={`absolute top-full right-0 w-44 border border-line bg-card p-1.5 shadow-xl motion-reduce:animate-none ${
+            attached
+              ? "mt-px animate-dropdown-attached rounded-b-2xl border-t-0"
+              : "mt-2 animate-dropdown rounded-2xl"
+          }`}
         >
           <p className="border-b border-line px-3 py-2 text-label font-medium text-muted uppercase">
             {heading}

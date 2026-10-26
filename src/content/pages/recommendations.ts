@@ -1,6 +1,6 @@
 import { byLocale } from "@/content/locale";
 import { Layers, UserSearch, Shuffle, ShieldCheck } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
 
 /**
  * Recommendations. The engine behind it is `rankedCatalog()` in the SDK and
@@ -8,7 +8,7 @@ import type { StoryContent } from "@/components/StoryPage";
  * pointed at a slot instead of a result set. The page says that outright
  * rather than implying a second model, because there is not one.
  */
-export const RECOMMENDATIONS: StoryContent = {
+export const RECOMMENDATIONS: ChapterContent = {
   meta: {
     title: "Recommendations that work on a first visit",
     description:
@@ -62,20 +62,11 @@ export const RECOMMENDATIONS: StoryContent = {
     },
   },
 
-  situationImage: {
-    src: "product/untargeted-recommended-for-you-strip.webp",
-    alt: "A storefront showing a strip headed Recommended Just For You, with three unrelated products under it.",
-    caption:
-      "The strip a first-time visitor actually gets. Nothing here was chosen for them, because nothing was known about them, and the heading says otherwise.",
-  },
-
   situation: {
     heading:
       "Your recommendation engine is quietest exactly when it matters most.",
     body: [
       "Collaborative filtering needs a history to filter against. On a visitor with no history it has nothing, so it falls back to what sold well last week, which is the same strip every anonymous visitor sees. That is most of your traffic on most storefronts.",
-      "The usual fix is to shorten the cold-start window by collecting more: a login prompt, a cookie, a profile stitched across devices. Each of those adds a consent surface, a regulatory question and an engineering commitment, and none of them help the person who is on your site right now for the first and possibly only time.",
-      "The information you need is already in front of you. Somebody who has opened three products under a price point and filtered twice has told you a great deal, and none of it required knowing who they are.",
     ],
     pull: "A recommendation engine that needs to know who somebody is cannot help on the visit where it would matter most.",
   },
@@ -89,7 +80,7 @@ export const RECOMMENDATIONS: StoryContent = {
         n: "01",
         meta: "Signals",
         title: "The visit emits",
-        body: "Views, searches, filters and cart actions in this session. Each one moves persona weight and attribute affinity. Nothing is stored against a person, because there is no person to store it against.",
+        body: "Views, searches, filters and cart actions in this session. Each one moves persona weight and attribute affinity.",
       },
       {
         n: "02",
@@ -112,7 +103,7 @@ export const RECOMMENDATIONS: StoryContent = {
       {
         icon: UserSearch,
         title: "Useful on visit one",
-        body: "No history required, because the ranking reads the session rather than a profile. The cold-start case is the normal case here rather than the degraded one.",
+        body: "No history required, because the ranking reads the session rather than a profile.",
       },
       {
         icon: Layers,
@@ -122,12 +113,12 @@ export const RECOMMENDATIONS: StoryContent = {
       {
         icon: Shuffle,
         title: "One ranker, not two",
-        body: "The strip and the search results are ordered by the same factors. A merchandiser who understands one understands the other, and there is no second model to keep in sync.",
+        body: "The strip and the search results are ordered by the same factors.",
       },
       {
         icon: ShieldCheck,
         title: "Falls back to your own strip",
-        body: "If the engine is slow or unreachable the surface renders whatever you had. Degrading quietly is the default path, not an error state in front of a live store.",
+        body: "If the engine is slow or unreachable the surface renders whatever you had.",
       },
     ],
   },
@@ -181,7 +172,7 @@ export const RECOMMENDATIONS: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const RECOMMENDATIONS_VI: StoryContent = {
+export const RECOMMENDATIONS_VI: ChapterContent = {
   meta: {
     title: "Gợi ý sản phẩm hoạt động ngay từ lần ghé đầu",
     description:
@@ -234,20 +225,11 @@ export const RECOMMENDATIONS_VI: StoryContent = {
     },
   },
 
-  situationImage: {
-    src: "product/untargeted-recommended-for-you-strip.webp",
-    alt: "Một gian hàng hiển thị dải gợi ý với tiêu đề Recommended Just For You và ba sản phẩm không liên quan bên dưới.",
-    caption:
-      "Đúng dải gợi ý mà một khách lần đầu nhận được. Không thứ nào ở đó được chọn cho họ, vì chẳng ai biết gì về họ, trong khi tiêu đề lại nói ngược lại.",
-  },
-
   situation: {
     heading:
       "Bộ máy gợi ý của bạn im lặng nhất đúng vào lúc nó quan trọng nhất.",
     body: [
       "Lọc cộng tác cần một lịch sử để mà lọc. Với khách chưa có lịch sử thì nó không có gì, nên nó lùi về thứ bán chạy tuần trước, và đó là cùng một dải sản phẩm mà mọi khách ẩn danh đều thấy. Trên phần lớn gian hàng, đó là phần lớn lưu lượng của bạn.",
-      "Cách chữa thường thấy là rút ngắn giai đoạn khởi đầu lạnh bằng cách thu thập nhiều hơn: nhắc đăng nhập, một cookie, một hồ sơ ghép qua nhiều thiết bị. Mỗi thứ đó thêm một bề mặt xin phép, một câu hỏi pháp lý và một cam kết kỹ thuật, và không thứ nào giúp được người đang ở trên website của bạn ngay lúc này, lần đầu và có thể là lần duy nhất.",
-      "Thông tin bạn cần vốn đã ở ngay trước mặt. Một người đã mở ba sản phẩm dưới một mức giá và lọc hai lần đã nói cho bạn biết rất nhiều, và không điều nào trong đó đòi hỏi phải biết họ là ai.",
     ],
     pull: "Một bộ máy gợi ý cần biết người ta là ai thì không giúp được gì ở đúng lần ghé mà nó quan trọng nhất.",
   },
@@ -261,7 +243,7 @@ export const RECOMMENDATIONS_VI: StoryContent = {
         n: "01",
         meta: "Tín hiệu",
         title: "Lần ghé phát tín hiệu",
-        body: "Lượt xem, lượt tìm, lượt lọc và thao tác giỏ hàng trong phiên này. Mỗi thứ làm dịch chuyển trọng số chân dung và độ tương hợp thuộc tính. Không gì được lưu gắn với một con người, vì không có con người nào để mà gắn vào.",
+        body: "Lượt xem, lượt tìm, lượt lọc và thao tác giỏ hàng trong phiên này. Mỗi thứ làm dịch chuyển trọng số chân dung và độ tương hợp thuộc tính.",
       },
       {
         n: "02",
@@ -284,7 +266,7 @@ export const RECOMMENDATIONS_VI: StoryContent = {
       {
         icon: UserSearch,
         title: "Hữu ích ngay từ lần ghé đầu",
-        body: "Không cần lịch sử, vì thứ hạng đọc phiên truy cập chứ không đọc hồ sơ. Ở đây trường hợp khởi đầu lạnh là trường hợp bình thường, không phải trường hợp suy giảm.",
+        body: "Không cần lịch sử, vì thứ hạng đọc phiên truy cập chứ không đọc hồ sơ.",
       },
       {
         icon: Layers,
@@ -294,12 +276,12 @@ export const RECOMMENDATIONS_VI: StoryContent = {
       {
         icon: Shuffle,
         title: "Một bộ xếp hạng, không phải hai",
-        body: "Dải gợi ý và kết quả tìm kiếm được sắp bởi cùng các yếu tố. Người phụ trách trưng bày hàng hoá hiểu được cái này thì hiểu được cái kia, và không có mô hình thứ hai nào phải giữ cho đồng bộ.",
+        body: "Dải gợi ý và kết quả tìm kiếm được sắp bởi cùng các yếu tố.",
       },
       {
         icon: ShieldCheck,
         title: "Lùi về dải gợi ý của chính bạn",
-        body: "Nếu bộ máy chậm hoặc không tới được, bề mặt đó hiển thị thứ bạn vốn có. Suy giảm êm ái là đường đi mặc định, không phải một trạng thái lỗi đặt trước một cửa hàng đang chạy thật.",
+        body: "Nếu bộ máy chậm hoặc không tới được, bề mặt đó hiển thị thứ bạn vốn có.",
       },
     ],
   },

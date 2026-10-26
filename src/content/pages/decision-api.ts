@@ -1,9 +1,9 @@
 import { byLocale } from "@/content/locale";
 import { Code2, ShieldCheck, SplitSquareHorizontal, Eye } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
 
 /** The runtime. Last on purpose, and the page says why. */
-export const DECISION_API: StoryContent = {
+export const DECISION_API: ChapterContent = {
   meta: {
     title: "Decision API: rank your catalogue live",
     description:
@@ -70,8 +70,6 @@ export const DECISION_API: StoryContent = {
   situation: {
     heading: "This is the last thing we would sell you, and that is deliberate.",
     body: [
-      "Every other page here describes work that touches nothing on your site. This one puts a script tag on your storefront, which is a different kind of decision and deserves a different level of scrutiny.",
-      "It is also the wrong place to start. Ranking a catalogue against what a visitor seems to need cannot help if the catalogue does not record the facts that visitor is deciding on. Running the engine over an unrepaired shelf produces a confident ordering of products that are still indistinguishable.",
       "So the audit comes first, the repair comes second, and this comes when you have a shelf worth ranking and a reason to believe ordering it live would change something.",
     ],
     pull:
@@ -93,7 +91,7 @@ export const DECISION_API: StoryContent = {
       { icon: Code2, title: "One script, no replatform", body: "It runs beside what you already have. If you turn it off, your store is exactly as it was, because your own order is the fallback." },
       { icon: Eye, title: "A breakdown on every product", body: "Base, persona, affinity and price, per product. Your merchandiser can see why anything moved, and override it." },
       { icon: SplitSquareHorizontal, title: "A control group by default", body: "Not an option you enable when you want to measure. A share of traffic always sees your original order, so the comparison is always available." },
-      { icon: ShieldCheck, title: "A fallback, not an error page", body: "If the engine is slow or unreachable, the storefront renders your own order. Degrading quietly is the default path, not the exception." },
+      { icon: ShieldCheck, title: "A fallback, not an error page", body: "If the engine is slow or unreachable, the storefront renders your own order." },
     ],
   },
 
@@ -131,7 +129,7 @@ export const DECISION_API: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const DECISION_API_VI: StoryContent = {
+export const DECISION_API_VI: ChapterContent = {
   meta: {
     title: "Decision API: xếp hạng danh mục theo thời gian thực",
     description:
@@ -198,8 +196,6 @@ export const DECISION_API_VI: StoryContent = {
   situation: {
     heading: "Đây là thứ cuối cùng chúng tôi muốn bán cho bạn, và điều đó là có chủ đích.",
     body: [
-      "Mọi trang khác ở đây mô tả những phần việc không đụng tới bất cứ thứ gì trên website của bạn. Trang này đặt một thẻ script lên gian hàng của bạn, vốn là một loại quyết định khác và xứng đáng được soi xét ở mức khác.",
-      "Nó cũng là điểm khởi đầu sai. Xếp hạng một danh mục theo nhu cầu có vẻ có của khách truy cập sẽ không giúp được gì nếu danh mục không ghi lại chính những dữ kiện mà khách đang dựa vào để quyết định. Chạy bộ máy trên một kệ hàng chưa sửa chỉ tạo ra một thứ tự đầy tự tin của những sản phẩm vẫn không phân biệt được với nhau.",
       "Nên bản kiểm tra đi trước, việc sửa đi thứ hai, và thứ này đến khi bạn đã có một kệ hàng đáng xếp hạng cùng một lý do để tin rằng sắp xếp nó theo thời gian thực sẽ thay đổi được điều gì đó.",
     ],
     pull:
@@ -221,7 +217,7 @@ export const DECISION_API_VI: StoryContent = {
       { icon: Code2, title: "Một thẻ script, không đổi nền tảng", body: "Nó chạy cạnh những gì bạn đang có. Nếu bạn tắt đi, cửa hàng của bạn y hệt như cũ, bởi thứ tự gốc của bạn chính là phương án dự phòng." },
       { icon: Eye, title: "Diễn giải trên từng sản phẩm", body: "Điểm nền, chân dung, độ tương hợp và giá, theo từng sản phẩm. Người phụ trách trưng bày hàng hoá thấy được vì sao một sản phẩm dịch chuyển, và có thể ghi đè." },
       { icon: SplitSquareHorizontal, title: "Nhóm đối chứng mặc định", body: "Không phải một tuỳ chọn bạn bật lên khi muốn đo. Luôn có một phần lưu lượng thấy thứ tự gốc của bạn, nên phép so sánh luôn sẵn sàng." },
-      { icon: ShieldCheck, title: "Một phương án dự phòng, không phải trang lỗi", body: "Nếu bộ máy chậm hoặc không tới được, gian hàng hiển thị theo thứ tự của bạn. Suy giảm êm ái là đường đi mặc định, không phải ngoại lệ." },
+      { icon: ShieldCheck, title: "Một phương án dự phòng, không phải trang lỗi", body: "Nếu bộ máy chậm hoặc không tới được, gian hàng hiển thị theo thứ tự của bạn." },
     ],
   },
 

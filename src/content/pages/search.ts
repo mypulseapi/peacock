@@ -5,7 +5,7 @@ import {
   Eye,
   SplitSquareHorizontal,
 } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
 
 /**
  * Search, as a surface the Decision API serves rather than as a product of its
@@ -14,7 +14,7 @@ import type { StoryContent } from "@/components/StoryPage";
  * `query-intent.ts`, and `holdback.service.ts`. Nothing here describes a
  * capability that is not in that directory with a spec beside it.
  */
-export const SEARCH: StoryContent = {
+export const SEARCH: ChapterContent = {
   meta: {
     title: "Search: rank results on what the shopper is deciding",
     description:
@@ -32,11 +32,6 @@ export const SEARCH: StoryContent = {
     eyebrow: "Matching is not ranking",
     heading: "Your search engine already found the right 200 results.",
     body: "The problem is the order they came back in, and that is a different problem with a different fix.",
-  },
-
-  heroImage: {
-    src: "product/shopper-search-bar-price-delivery-signals.webp",
-    alt: "A search bar surrounded by floating tokens for price, delivery, wallet and sentiment, the things a shopper is weighing while they type.",
   },
 
   scenes: {
@@ -114,9 +109,7 @@ export const SEARCH: StoryContent = {
     heading:
       "Keyword search is not the reason your shoppers cannot find things.",
     body: [
-      "Most search tools match the words in the box against the words in your catalogue, and they do it well. That is why replacing one with another rarely moves anything: the matching was never the weak part.",
       "The weak part is what happens after the match. A query returns ninety products that all genuinely match it, and the ordering has to decide which of the ninety this particular person should see first. Sorted by relevance they are near identical. Sorted by popularity you show everyone the same thing.",
-      "There is also a floor under all of it. If your catalogue never recorded the field your category decides on, no ranking can order by it and no shopper can filter on it, which is why the audit comes before this page in our own product order.",
     ],
     pull: "Ranking a set of results well is a different problem from matching them, and it is the one nobody solves by swapping search engines.",
   },
@@ -136,13 +129,13 @@ export const SEARCH: StoryContent = {
         n: "02",
         meta: "Session",
         title: "Weighted by the visit",
-        body: "What this person has browsed, searched and filtered in this visit moves persona, affinity and price-band fit. No cookie and no login, so it works on a first visit.",
+        body: "What this person has browsed, searched and filtered in this visit moves persona, affinity and price-band fit.",
       },
       {
         n: "03",
         meta: "Always",
         title: "A share never sees it",
-        body: "A held-back arm, stable for the session, ranks the same query your original way. That is what makes any number anyone reports about this measurable rather than asserted.",
+        body: "A held-back arm, stable for the session, ranks the same query your original way.",
       },
     ],
   },
@@ -158,7 +151,7 @@ export const SEARCH: StoryContent = {
       {
         icon: SlidersHorizontal,
         title: "The factors, named",
-        body: "Relevance, persona fit, quality, price band, attribute affinity and audience fit. Each contributes a visible amount to the score, and they are the same factors in the console and in the API response. A factor with no data behind it is left out, not scored as zero.",
+        body: "Relevance, persona fit, quality, price band, attribute affinity and audience fit. Each contributes a visible amount to the score, and they are the same factors in the console and in the API response.",
       },
       {
         icon: Eye,
@@ -222,7 +215,7 @@ export const SEARCH: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const SEARCH_VI: StoryContent = {
+export const SEARCH_VI: ChapterContent = {
   meta: {
     title: "Tìm kiếm: xếp hạng theo điều người mua cân nhắc",
     description:
@@ -240,11 +233,6 @@ export const SEARCH_VI: StoryContent = {
     eyebrow: "Khớp không phải là xếp hạng",
     heading: "Công cụ tìm kiếm của bạn đã tìm đúng 200 kết quả rồi.",
     body: "Vấn đề nằm ở thứ tự chúng trả về, và đó là một bài toán khác với một cách sửa khác.",
-  },
-
-  heroImage: {
-    src: "product/shopper-search-bar-price-delivery-signals.webp",
-    alt: "Một ô tìm kiếm với các biểu tượng lơ lửng quanh nó cho giá, giao hàng, ví tiền và cảm nhận, những thứ người mua đang cân nhắc khi gõ.",
   },
 
   scenes: {
@@ -310,9 +298,7 @@ export const SEARCH_VI: StoryContent = {
     heading:
       "Tìm kiếm theo từ khoá không phải lý do người mua của bạn không tìm thấy hàng.",
     body: [
-      "Phần lớn công cụ tìm kiếm khớp các từ trong ô tìm kiếm với các từ trong danh mục của bạn, và làm việc đó tốt. Đó là lý do thay công cụ này bằng công cụ khác hiếm khi thay đổi được gì: khâu khớp từ chưa bao giờ là điểm yếu.",
       "Điểm yếu nằm ở việc xảy ra sau khi khớp. Một truy vấn trả về chín mươi sản phẩm đều khớp đúng, và thứ tự phải quyết định trong chín mươi sản phẩm đó thì người này nên thấy cái nào trước. Sắp theo độ liên quan thì chúng gần như giống hệt nhau. Sắp theo mức phổ biến thì bạn cho mọi người thấy cùng một thứ.",
-      "Bên dưới tất cả còn có một cái sàn. Nếu danh mục của bạn chưa bao giờ ghi kích thước màn hình thì không thứ hạng nào sắp theo nó được và không người mua nào lọc theo nó được, và đó là lý do bản kiểm tra đứng trước trang này trong chính thứ tự sản phẩm của chúng tôi.",
     ],
     pull: "Xếp hạng tốt một tập kết quả là bài toán khác với việc tìm ra tập kết quả đó, và nó là bài toán không ai giải được bằng cách đổi công cụ tìm kiếm.",
   },
@@ -331,13 +317,13 @@ export const SEARCH_VI: StoryContent = {
         n: "02",
         meta: "Phiên",
         title: "Nhân trọng số theo lần ghé",
-        body: "Những gì người này đã duyệt, tìm và lọc trong lần ghé này làm dịch chuyển chân dung, độ tương hợp và mức khớp khoảng giá. Không cookie và không đăng nhập, nên nó chạy được ngay từ lần ghé đầu tiên.",
+        body: "Những gì người này đã duyệt, tìm và lọc trong lần ghé này làm dịch chuyển chân dung, độ tương hợp và mức khớp khoảng giá.",
       },
       {
         n: "03",
         meta: "Luôn luôn",
         title: "Một phần không bao giờ thấy nó",
-        body: "Một nhánh được giữ lại, ổn định theo phiên, xếp cùng truy vấn đó theo cách gốc của bạn. Đó là thứ khiến mọi con số ai đó báo cáo về việc này trở nên đo được thay vì chỉ được khẳng định suông.",
+        body: "Một nhánh được giữ lại, ổn định theo phiên, xếp cùng truy vấn đó theo cách gốc của bạn.",
       },
     ],
   },
@@ -353,7 +339,7 @@ export const SEARCH_VI: StoryContent = {
       {
         icon: SlidersHorizontal,
         title: "Các yếu tố, có tên rõ ràng",
-        body: "Độ liên quan, mức khớp chân dung, chất lượng, khoảng giá, độ tương hợp thuộc tính và mức khớp nhóm khách hàng. Mỗi yếu tố đóng góp một lượng nhìn thấy được vào điểm số, và chúng là cùng các yếu tố trong bảng điều khiển lẫn trong phản hồi API. Yếu tố nào không có dữ liệu thì được bỏ ra, không bị tính là 0.",
+        body: "Độ liên quan, mức khớp chân dung, chất lượng, khoảng giá, độ tương hợp thuộc tính và mức khớp nhóm khách hàng. Mỗi yếu tố đóng góp một lượng nhìn thấy được vào điểm số, và chúng là cùng các yếu tố trong bảng điều khiển lẫn trong phản hồi API.",
       },
       {
         icon: Eye,

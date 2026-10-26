@@ -101,7 +101,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     };
 
     // The cross-fade itself is styled in globals.css. Browsers without the API just swap.
-    if (document.startViewTransition) document.startViewTransition(apply);
+    // A transition started before this one finishes skips it, and the skip rejects `ready` with
+    // an AbortError. The theme is still applied, so the rejection is expected: catch it, or it
+    // surfaces as an unhandled rejection (dev runs this effect twice on mount, which triggers it).
+    if (document.startViewTransition) document.startViewTransition(apply).ready.catch(() => {});
     else apply();
   }, [stored]);
 

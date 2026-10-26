@@ -29,7 +29,7 @@ export default async function Page({ params }: PageProps) {
           answers lead with a complete sentence, so an answer engine can lift and
           attribute one without the surrounding page. */}
       <PageSchema locale={locale} path="/product/decision-api" nodes={[storyFaqSchema(decisionApi(locale))]} />
-      <StoryPage layout={{ steps: "rail", gets: "showcase", limits: "split" }} visual={<ApiVisual />} c={decisionApi(locale)} />
+      <StoryPage titleClassName="text-hero" layout={{ steps: "rail", gets: "showcase", limits: "split" }} visual={<ApiVisual />} c={decisionApi(locale)} />
     </>
   );
 }

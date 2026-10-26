@@ -29,8 +29,11 @@ export function Section1Section() {
                 and a 48px headline next to it was winning an argument nobody wanted it to win.
               */}
               <div className="pt-12 pb-0 lg:pt-16">
-                <div className="mx-auto max-w-2xl text-center">
-                  <h1 className="reveal text-title text-balance">
+                {/* The page headline at the home hero's size (owner's Version A, 26 Oct 2026); it was the
+                    section-title size, so it read no bigger than the headings below it. max-w-4xl so each
+                    of its two lines still fits at 54px, in Vietnamese too. */}
+                <div className="mx-auto max-w-4xl text-center">
+                  <h1 className="reveal text-hero text-balance">
                     {/*
                       `sm:block` only breaks the line from 640px up. Below that the two spans are
                       inline, and JSX drops the newline between them, so the headline rendered as

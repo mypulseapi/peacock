@@ -131,8 +131,10 @@ function SituationPull({ text, className = "" }: { text: string; className?: str
   );
 }
 
-export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual, layout }: {
+export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual, layout, titleClassName }: {
   c: StoryContent;
+  /** The hero headline's type style, passed to `PageHero`. Product pages set `text-hero`. */
+  titleClassName?: string;
   /**
    * Which shape each repeated block takes. Thirteen pages share this template
    * and rendered identically from "how it works" down; each route picks a
@@ -162,7 +164,7 @@ export function StoryPage({ c, visual, situationVisual, heroVisual, chainVisual,
   const hasSituationVisual = Boolean(situationVisual ?? c.scenes?.situation ?? c.situationImage);
   return (
     <>
-      <PageHero eyebrow={c.eyebrow} title={c.title} lede={c.lede}
+      <PageHero eyebrow={c.eyebrow} title={c.title} lede={c.lede} titleClassName={titleClassName}
                 aside={
                   heroVisual ??
                   (c.heroImage ? (

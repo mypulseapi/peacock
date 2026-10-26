@@ -88,7 +88,7 @@ PULSE is a decision call: requirements and evidence in; for every option, fits, 
 ## For developers
 - [Developer handbook](${SITE.docs}): the API reference, SDK and integration guides. English and Vietnamese.
 - [API reference](${SITE.docs}/api/v1): endpoints, authentication and the shared error envelope.
-- [Open source](${en("/opensource")}): what is MIT licensed (the SDK, the MCP server), what is planned, and how to contribute.
+- [Opensource](${en("/opensource")}): what is MIT licensed (the SDK, the MCP server), what is planned, and how to contribute.
 `;
 
   return new Response(body, {

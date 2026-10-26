@@ -12,7 +12,7 @@
  * Nothing here may state a conversion, revenue or uplift figure: ODIN/demo/DEMO.md §1.1.
  */
 
-/** The laptop shelf, 216 products. Both rankings, because their disagreement is the thesis. */
+/** The 216-product test shelf. Both rankings, because their disagreement is the thesis. */
 export interface AttributeRow {
   attribute: string;
   /** Key into `storyUi`, so the rendered label follows the locale. */
@@ -32,21 +32,95 @@ export const SHELF = {
   products: 216,
   category: "Laptops",
   rows: [
-    { attribute: "Screen size", key: "screenSize", missing: 80,  gap: 1.067, coverageRank: 1, decisionRank: 1, tasks: 13 },
-    { attribute: "Memory", key: "memory",      missing: 60,  gap: 1.012, coverageRank: 2, decisionRank: 2, tasks: 15 },
-    { attribute: "Processor", key: "processor",   missing: 162, gap: 0.747, coverageRank: 3, decisionRank: 4, tasks: 2  },
-    { attribute: "Storage", key: "storage",     missing: 55,  gap: 0.688, coverageRank: 4, decisionRank: 3, tasks: 10 },
+    {
+      attribute: "Screen size",
+      key: "screenSize",
+      missing: 80,
+      gap: 1.067,
+      coverageRank: 1,
+      decisionRank: 1,
+      tasks: 13,
+    },
+    {
+      attribute: "Memory",
+      key: "memory",
+      missing: 60,
+      gap: 1.012,
+      coverageRank: 2,
+      decisionRank: 2,
+      tasks: 15,
+    },
+    {
+      attribute: "Processor",
+      key: "processor",
+      missing: 162,
+      gap: 0.747,
+      coverageRank: 3,
+      decisionRank: 4,
+      tasks: 2,
+    },
+    {
+      attribute: "Storage",
+      key: "storage",
+      missing: 55,
+      gap: 0.688,
+      coverageRank: 4,
+      decisionRank: 3,
+      tasks: 10,
+    },
   ] satisfies AttributeRow[],
 } as const;
 
 /** Real product names from the measured shelf, for the hero table. */
 export const SHELF_ROWS = [
-  { name: "LG 16Z90TS-G",            sku: "A1B2C3D4", screen: "16.0\"", memory: null,    cpu: null, storage: "512GB" },
-  { name: "Spectre x360",            sku: "E5F6G7H8", screen: null,     memory: "16GB",  cpu: null, storage: null },
-  { name: "ThinkPad X1 Carbon Gen 9",sku: "I9J0K1L2", screen: null,     memory: "32GB",  cpu: null, storage: "1TB" },
-  { name: "Razer Blade",             sku: "M3N4O5P6", screen: "15.6\"", memory: null,    cpu: null, storage: null },
-  { name: "MacBook Pro",             sku: "Q7R8S9T0", screen: null,     memory: "18GB",  cpu: "M3",  storage: "512GB" },
-  { name: "MSI GS66",                sku: "Y5Z6A7B8", screen: null,     memory: null,    cpu: null, storage: null },
+  {
+    name: "LG 16Z90TS-G",
+    sku: "A1B2C3D4",
+    screen: '16.0"',
+    memory: null,
+    cpu: null,
+    storage: "512GB",
+  },
+  {
+    name: "Spectre x360",
+    sku: "E5F6G7H8",
+    screen: null,
+    memory: "16GB",
+    cpu: null,
+    storage: null,
+  },
+  {
+    name: "ThinkPad X1 Carbon Gen 9",
+    sku: "I9J0K1L2",
+    screen: null,
+    memory: "32GB",
+    cpu: null,
+    storage: "1TB",
+  },
+  {
+    name: "Razer Blade",
+    sku: "M3N4O5P6",
+    screen: '15.6"',
+    memory: null,
+    cpu: null,
+    storage: null,
+  },
+  {
+    name: "MacBook Pro",
+    sku: "Q7R8S9T0",
+    screen: null,
+    memory: "18GB",
+    cpu: "M3",
+    storage: "512GB",
+  },
+  {
+    name: "MSI GS66",
+    sku: "Y5Z6A7B8",
+    screen: null,
+    memory: null,
+    cpu: null,
+    storage: null,
+  },
 ] as const;
 
 export const HERO = {
@@ -63,15 +137,21 @@ export const HERO = {
   // Three lines, not one. The 2026-10 review asked the hero to say what Pulse
   // is, where it sits, and what you get, because a first-time reader met the
   // offer before they met the product.
-  lede:
-    "Pulse ranks the product data your catalogue is missing by how many shoppers need it, not by how empty a field is.",
+  lede: "Pulse ranks the product data your catalogue is missing by how many shoppers need it, not by how empty a field is.",
   primary: { label: "Request a Decision Audit", href: "/contact" },
   secondary: { label: "See how it works", href: "/product" },
-  reassure: "Product data only. No customer records, no integration, no commitment.",
+  reassure:
+    "Product data only. No customer records, no integration, no commitment.",
   /** Three capabilities, named the way a buyer would scan them. */
   pillars: [
-    { name: "Audit", body: "Rank what to record first, measured against real buying decisions." },
-    { name: "Verify", body: "Recompute after the repair and see exactly what moved." },
+    {
+      name: "Audit",
+      body: "Rank what to record first, measured against real buying decisions.",
+    },
+    {
+      name: "Verify",
+      body: "Recompute after the repair and see exactly what moved.",
+    },
     { name: "Monitor", body: "Catch a shelf slipping before a buyer does." },
   ],
 } as const;
@@ -97,7 +177,8 @@ export const DISAGREEMENT = {
   gainLabel: "Shoppers it helps",
   wrong: { effort: 162, gain: 6 },
   right: { effort: 80, gain: 94 },
-  caveat: "From the shelf we measured. Screen size came top in all 12 runs; positions two to four moved, and we would rather say so.",
+  caveat:
+    "From the shelf we measured. Screen size came top in all 12 runs; positions two to four moved, and we would rather say so.",
 } as const;
 
 /*
@@ -112,11 +193,11 @@ export const DISAGREEMENT = {
 export const PROBLEM = {
   eyebrow: "The blind spot",
   title: "One product in five records nothing a shopper can filter on.",
-  body:
-    "Not the size, not the capacity, not the material, not the fit. Whatever your category decides on, the fact is usually there somewhere. It is just not anywhere a filter can reach it. On the shelf we measured, that was 47 products out of 216.",
+  body: "Not the size, not the capacity, not the material, not the fit. Whatever your category decides on, the fact is usually there somewhere. It is just not anywhere a filter can reach it.",
   example: {
     title: "Dell XPS 15 512GB 32GB RAM, Platinum Silver",
-    caption: "One example: capacity and memory sitting in a text field instead of a field a filter can read. Your category has its own version of this line.",
+    caption:
+      "One example: capacity and memory sitting in a text field instead of a field a filter can read. Your category has its own version of this line.",
   },
   outcome:
     "So a shopper who knows exactly what they want cannot get to it. And you never find out whether they left because you had nothing suitable, or because they could not find the thing you did have.",
@@ -126,9 +207,24 @@ export const STEPS = {
   eyebrow: "How it works",
   title: "How does it work?",
   items: [
-    { n: "01", title: "Send one category", body: "A CSV or JSON export. Product name, description, category, price, and whatever attributes you already record. No code, no tag, no access to your systems.", meta: "You do this once" },
-    { n: "02", title: "Get the Decision Audit", body: "Within 48 hours: the ranked list of what to record first, the specific products missing each field, where each missing fact actually lives, and your decision-readiness number.", meta: "48 hours" },
-    { n: "03", title: "Fix it, then verify", body: "You may not need us for the fix at all. When it is done we recompute on the repaired catalogue and show you exactly what moved. No traffic, no test, no waiting.", meta: "Your team, or ours" },
+    {
+      n: "01",
+      title: "Send one category",
+      body: "A CSV or JSON export. Product name, description, category, price, and whatever attributes you already record. No code, no tag, no access to your systems.",
+      meta: "You do this once",
+    },
+    {
+      n: "02",
+      title: "Get the Decision Audit",
+      body: "Within 48 hours: the ranked list of what to record first, the specific products missing each field, where each missing fact actually lives, and your decision-readiness number.",
+      meta: "48 hours",
+    },
+    {
+      n: "03",
+      title: "Fix it, then verify",
+      body: "You may not need us for the fix at all. When it is done we recompute on the repaired catalogue and show you exactly what moved. No traffic, no test, no waiting.",
+      meta: "Your team, or ours",
+    },
   ],
 } as const;
 
@@ -137,9 +233,24 @@ export const PROVENANCE = {
   title: "Where does each missing fact actually live?",
   body: "Some gaps you can close with a script this week. Others mean going out and getting data you have never held. Knowing which is which before you commit is most of the value.",
   items: [
-    { label: "Extractable", body: "Already sitting in your titles and descriptions. Automated and cheap, and we show you how much we recovered.", stat: "Storage: recovered on 161 of 216", tone: "good" },
-    { label: "Mappable", body: "In a supplier feed you already receive, just unmapped. A one-off integration.", stat: "A scripting job, not a project", tone: "mid" },
-    { label: "Needs acquisition", body: "Genuinely not recorded anywhere. Real cost, and worth knowing before you commit to it.", stat: "Processor: only 54 of 216 recoverable", tone: "hard" },
+    {
+      label: "Extractable",
+      body: "Already sitting in your titles and descriptions. Automated and cheap, and we show you how much we recovered.",
+      stat: "Storage: recovered on 161 of 216",
+      tone: "good",
+    },
+    {
+      label: "Mappable",
+      body: "In a supplier feed you already receive, just unmapped. A one-off integration.",
+      stat: "A scripting job, not a project",
+      tone: "mid",
+    },
+    {
+      label: "Needs acquisition",
+      body: "Genuinely not recorded anywhere. Real cost, and worth knowing before you commit to it.",
+      stat: "Processor: only 54 of 216 recoverable",
+      tone: "hard",
+    },
   ],
 } as const;
 
@@ -164,10 +275,22 @@ export const PRIVACY = {
   eyebrow: "Your data",
   title: "What happens to my data?",
   points: [
-    { title: "Product data only", body: "No customer records, no order history, no personal data of any kind is needed to run the audit." },
-    { title: "No cookie, no login", body: "The runtime infers from what happens in the current visit. It does not need an identity to work." },
-    { title: "Tenant-isolated today", body: "Your catalogue is never pooled and never sold, and nothing crosses a tenant boundary. If we ever pool aggregate intent across merchants it will be opt-in, it will be counts rather than records, and we will ask you first." },
-    { title: "Deleted on request", body: "Including the catalogue export itself, at any point, on request." },
+    {
+      title: "Product data only",
+      body: "No customer records, no order history, no personal data of any kind is needed to run the audit.",
+    },
+    {
+      title: "No cookie, no login",
+      body: "The runtime infers from what happens in the current visit. It does not need an identity to work.",
+    },
+    {
+      title: "Tenant-isolated today",
+      body: "Your catalogue is never pooled and never sold, and nothing crosses a tenant boundary. If we ever pool aggregate intent across merchants it will be opt-in, it will be counts rather than records, and we will ask you first.",
+    },
+    {
+      title: "Deleted on request",
+      body: "Including the catalogue export itself, at any point, on request.",
+    },
   ],
 } as const;
 
@@ -176,9 +299,9 @@ export const FINAL_CTA = {
   body: "Pick the shelf where you suspect shoppers struggle most. You get the ranked list, the products affected, and half an hour with whoever owns merchandising to walk through it.",
   primary: { label: "Request a Decision Audit", href: "/contact" },
   secondary: { label: "Read the method first", href: "/docs" },
-  reassure: "No obligation at any step. And if your catalogue turns out to be fine, we will tell you that too.",
+  reassure:
+    "No obligation at any step. And if your catalogue turns out to be fine, we will tell you that too.",
 } as const;
-
 
 /**
  * Two examples, not four statistics.
@@ -197,14 +320,17 @@ export const EXAMPLES = {
     {
       sector: "Consumer goods",
       shopper: "A parent is buying washing powder for a baby's skin.",
-      missing: "Whether a pack is fragrance free is printed on the box and photographed, not recorded as a field.",
+      missing:
+        "Whether a pack is fragrance free is printed on the box and photographed, not recorded as a field.",
       cost: "The filter they need does not exist, so a shelf of forty packs stays a shelf of forty packs.",
     },
     {
       sector: "Ecommerce and electronics",
-      shopper: "A designer is buying a laptop and needs the screen big enough to work on.",
-      missing: "Screen size is in 136 of 216 product titles and in nobody's attributes.",
-      cost: "94 of those 216 products cannot be told apart once every question the catalogue supports has been answered.",
+      shopper:
+        "A designer is buying a laptop and needs the screen big enough to work on.",
+      missing:
+        "Screen size is in 136 of 216 product titles and in nobody's attributes.",
+      cost: "On our test shelf, 94 of 216 products cannot be told apart once every question the catalogue supports has been answered.",
     },
   ],
   note: "The second example is a shelf we measured. The first is the same failure in a category where nobody has measured it yet.",
@@ -220,9 +346,18 @@ export const REASONS = {
   eyebrow: "Why Pulse",
   title: "Five reasons this is worth half an hour.",
   usp: [
-    { label: "Customised", body: "Scored against your category's buying criteria, not a generic completeness rule." },
-    { label: "48 hours", body: "One category export in, a ranked repair list back, two days later." },
-    { label: "Real time", body: "The optional runtime ranks on the session in front of you, with a held-back control arm." },
+    {
+      label: "Customised",
+      body: "Scored against your category's buying criteria, not a generic completeness rule.",
+    },
+    {
+      label: "48 hours",
+      body: "One category export in, a ranked repair list back, two days later.",
+    },
+    {
+      label: "Real time",
+      body: "The optional runtime ranks on the session in front of you, with a held-back control arm.",
+    },
   ],
   items: [
     "You find out which missing field costs the most, instead of enriching in whatever order seemed sensible.",
@@ -243,18 +378,29 @@ export const REASONS = {
  * ------------------------------------------------------------------ */
 import { byLocale, pick, type Widen } from "./locale";
 import {
-  HERO_VI, PROBLEM_VI, STEPS_VI, PROVENANCE_VI,
-  HONESTY_VI, PRIVACY_VI, FINAL_CTA_VI, DISAGREEMENT_VI, EXAMPLES_VI, REASONS_VI,
+  HERO_VI,
+  PROBLEM_VI,
+  STEPS_VI,
+  PROVENANCE_VI,
+  HONESTY_VI,
+  PRIVACY_VI,
+  FINAL_CTA_VI,
+  DISAGREEMENT_VI,
+  EXAMPLES_VI,
+  REASONS_VI,
 } from "./home.vi";
 
-export const hero        = (l: string) => pick({ en: HERO,         vi: HERO_VI },         l);
-export const problem     = (l: string) => pick({ en: PROBLEM,      vi: PROBLEM_VI },      l);
-export const steps       = (l: string) => pick({ en: STEPS,        vi: STEPS_VI },        l);
-export const provenance  = (l: string) => pick({ en: PROVENANCE,   vi: PROVENANCE_VI },   l);
-export const honesty     = (l: string) => pick({ en: HONESTY,      vi: HONESTY_VI },      l);
-export const privacy     = (l: string) => pick({ en: PRIVACY,      vi: PRIVACY_VI },      l);
-export const finalCta    = (l: string) => pick({ en: FINAL_CTA,    vi: FINAL_CTA_VI },    l);
-export const disagreement= (l: string) => pick({ en: DISAGREEMENT, vi: DISAGREEMENT_VI }, l);
+export const hero = (l: string) => pick({ en: HERO, vi: HERO_VI }, l);
+export const problem = (l: string) => pick({ en: PROBLEM, vi: PROBLEM_VI }, l);
+export const steps = (l: string) => pick({ en: STEPS, vi: STEPS_VI }, l);
+export const provenance = (l: string) =>
+  pick({ en: PROVENANCE, vi: PROVENANCE_VI }, l);
+export const honesty = (l: string) => pick({ en: HONESTY, vi: HONESTY_VI }, l);
+export const privacy = (l: string) => pick({ en: PRIVACY, vi: PRIVACY_VI }, l);
+export const finalCta = (l: string) =>
+  pick({ en: FINAL_CTA, vi: FINAL_CTA_VI }, l);
+export const disagreement = (l: string) =>
+  pick({ en: DISAGREEMENT, vi: DISAGREEMENT_VI }, l);
 
 /* ------------------------------------------------------------------ *
  * Market context.
@@ -269,18 +415,30 @@ const MARKET_EN = {
   nowLabel: "2026",
   title: "Independent research says the same thing.",
   figures: [
-    { value: 38, unit: "%", tone: "warn" as const,
+    {
+      value: 38,
+      unit: "%",
+      tone: "warn" as const,
       label: "of retailers show an attribute and provide no filter for it",
       source: "Baymard Institute",
-      href: "https://baymard.com/blog/have-filters-for-list-item-info" },
-    { value: 79, unit: "%", tone: "warn" as const,
+      href: "https://baymard.com/blog/have-filters-for-list-item-info",
+    },
+    {
+      value: 79,
+      unit: "%",
+      tone: "warn" as const,
       label: "of product pages ship no full set of structured data",
       source: "Adobe Analytics",
-      href: "https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable" },
-    { value: 393, unit: "%", tone: "work" as const,
+      href: "https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable",
+    },
+    {
+      value: 393,
+      unit: "%",
+      tone: "work" as const,
       label: "growth in AI traffic to US retail, and agents do not guess",
       source: "Adobe Analytics",
-      href: "https://business.adobe.com/blog/ai-driven-traffic-surges-across-industries" },
+      href: "https://business.adobe.com/blog/ai-driven-traffic-surges-across-industries",
+    },
   ],
 };
 
@@ -290,22 +448,35 @@ const MARKET_VI: typeof MARKET_EN = {
   nowLabel: "2026",
   title: "Nghiên cứu độc lập cũng nói đúng điều đó.",
   figures: [
-    { value: 38, unit: "%", tone: "warn",
+    {
+      value: 38,
+      unit: "%",
+      tone: "warn",
       label: "nhà bán lẻ hiển thị một thuộc tính mà không có bộ lọc cho nó",
       source: "Baymard Institute",
-      href: "https://baymard.com/blog/have-filters-for-list-item-info" },
-    { value: 79, unit: "%", tone: "warn",
+      href: "https://baymard.com/blog/have-filters-for-list-item-info",
+    },
+    {
+      value: 79,
+      unit: "%",
+      tone: "warn",
       label: "trang sản phẩm không có bộ dữ liệu có cấu trúc đầy đủ",
       source: "Adobe Analytics",
-      href: "https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable" },
-    { value: 393, unit: "%", tone: "work",
+      href: "https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable",
+    },
+    {
+      value: 393,
+      unit: "%",
+      tone: "work",
       label: "mức tăng lưu lượng AI tới bán lẻ Mỹ, và tác tử thì không đoán",
       source: "Adobe Analytics",
-      href: "https://business.adobe.com/blog/ai-driven-traffic-surges-across-industries" },
+      href: "https://business.adobe.com/blog/ai-driven-traffic-surges-across-industries",
+    },
   ],
 };
 
-export const market = (l: string) => byLocale({ en: MARKET_EN, vi: MARKET_VI }, l);
+export const market = (l: string) =>
+  byLocale({ en: MARKET_EN, vi: MARKET_VI }, l);
 
 /* ------------------------------------------------------------------ *
  * The blind spot, generalised.
@@ -320,7 +491,13 @@ export const market = (l: string) => byLocale({ en: MARKET_EN, vi: MARKET_VI }, 
  * the attribute a buyer in each of them decides on, which is the argument that
  * the shelf we measured was not special.
  * ------------------------------------------------------------------ */
-export type ShelfKey = "beauty" | "apparel" | "electronics" | "grocery" | "furniture" | "parts";
+export type ShelfKey =
+  | "beauty"
+  | "apparel"
+  | "electronics"
+  | "grocery"
+  | "furniture"
+  | "parts";
 
 const BLIND_SPOT_EN = {
   eyebrow: "The blind spot",
@@ -354,7 +531,8 @@ const BLIND_SPOT_VI: typeof BLIND_SPOT_EN = {
   ],
 };
 
-export const blindSpot = (l: string) => byLocale({ en: BLIND_SPOT_EN, vi: BLIND_SPOT_VI }, l);
+export const blindSpot = (l: string) =>
+  byLocale({ en: BLIND_SPOT_EN, vi: BLIND_SPOT_VI }, l);
 
 /* ------------------------------------------------------------------ *
  * The mid-page ask.
@@ -382,7 +560,8 @@ const MID_CTA_VI: typeof MID_CTA_EN = {
   note: "Không mã nguồn. Không thẻ theo dõi. Không dữ liệu khách hàng.",
 };
 
-export const midCta = (l: string) => byLocale({ en: MID_CTA_EN, vi: MID_CTA_VI }, l);
+export const midCta = (l: string) =>
+  byLocale({ en: MID_CTA_EN, vi: MID_CTA_VI }, l);
 
 /* ------------------------------------------------------------------ *
  * Strings for the drawn scenes. Kept here rather than in the component
@@ -401,31 +580,36 @@ const SCENES_EN = {
   egPrice: "under $1,200",
   canFilter: "Can filter",
   cannotFilter: "No such field",
-  shopperNote: "of what they knew is not a field, so this visitor is shown the same order as everyone else.",
+  shopperNote:
+    "of what they knew is not a field, so this visitor is shown the same order as everyone else.",
 
   fieldsInSchema: "Fields your schema could hold",
   worthDoingFirst: "Worth recording first",
   everythingElse: "Everything else, eventually",
-  fieldGridAlt: (k: number, n: number) => `${k} of ${n} fields are worth recording first.`,
+  fieldGridAlt: (k: number, n: number) =>
+    `${k} of ${n} fields are worth recording first.`,
 
   extractTitle: "Where the fact actually is",
   inTheTitle: "In the product title",
   asAField: "As a field a filter can read",
   screenSizeField: "Screen size",
   empty: "empty",
-  extractNote: "161 of 216 missing values on the shelf we measured were recoverable from the merchant's own titles.",
+  extractNote:
+    "On our test shelf, storage could be read from the titles for 161 of 216 products.",
 
   controlTitle: "How any number gets checked",
   engineOn: "Sees the engine",
   heldBack: "Held back, sees your order",
-  controlNote: "A share of sessions never sees the engine. Without it, no figure anybody reports, including ours, can be checked.",
+  controlNote:
+    "A share of sessions never sees the engine. Without it, no figure anybody reports, including ours, can be checked.",
 
   privacyTitle: "What the audit reads",
   productData: "Product data: title, description, category, price, attributes",
   customerRecords: "Customer records",
   orderHistory: "Order history",
   cookies: "Cookies and logins",
-  privacyNote: "The audit runs on the first row alone. The rest is not collected, so there is nothing to leak or delete.",
+  privacyNote:
+    "The audit runs on the first row alone. The rest is not collected, so there is nothing to leak or delete.",
 };
 
 const SCENES_VI: typeof SCENES_EN = {
@@ -441,34 +625,40 @@ const SCENES_VI: typeof SCENES_EN = {
   egPrice: "dưới 1.200 đô",
   canFilter: "Lọc được",
   cannotFilter: "Không có trường này",
-  shopperNote: "điều họ đã biết không phải là trường, nên khách này vẫn thấy đúng thứ tự mà mọi người đều thấy.",
+  shopperNote:
+    "điều họ đã biết không phải là trường, nên khách này vẫn thấy đúng thứ tự mà mọi người đều thấy.",
 
   fieldsInSchema: "Số trường lược đồ có thể chứa",
   worthDoingFirst: "Đáng ghi trước",
   everythingElse: "Phần còn lại, để sau",
-  fieldGridAlt: (k: number, n: number) => `${k} trên ${n} trường đáng được ghi trước.`,
+  fieldGridAlt: (k: number, n: number) =>
+    `${k} trên ${n} trường đáng được ghi trước.`,
 
   extractTitle: "Dữ kiện thực sự đang nằm ở đâu",
   inTheTitle: "Trong tiêu đề sản phẩm",
   asAField: "Thành một trường mà bộ lọc đọc được",
   screenSizeField: "Kích thước màn hình",
   empty: "trống",
-  extractNote: "161 trên 216 giá trị còn thiếu ở kệ hàng chúng tôi đo đều lấy lại được từ chính tiêu đề của nhà bán.",
+  extractNote:
+    "161 trên 216 giá trị còn thiếu ở kệ hàng chúng tôi đo đều lấy lại được từ chính tiêu đề của nhà bán.",
 
   controlTitle: "Mọi con số được kiểm chứng ra sao",
   engineOn: "Thấy bộ máy",
   heldBack: "Được giữ lại, thấy thứ tự của bạn",
-  controlNote: "Một phần phiên truy cập không bao giờ thấy bộ máy. Không có nó, không con số nào ai báo cáo, kể cả của chúng tôi, kiểm chứng được.",
+  controlNote:
+    "Một phần phiên truy cập không bao giờ thấy bộ máy. Không có nó, không con số nào ai báo cáo, kể cả của chúng tôi, kiểm chứng được.",
 
   privacyTitle: "Bản kiểm tra đọc những gì",
   productData: "Dữ liệu sản phẩm: tên, mô tả, ngành hàng, giá, thuộc tính",
   customerRecords: "Hồ sơ khách hàng",
   orderHistory: "Lịch sử đơn hàng",
   cookies: "Cookie và đăng nhập",
-  privacyNote: "Bản kiểm tra chỉ chạy trên dòng đầu tiên. Phần còn lại không được thu thập, nên không có gì để rò rỉ hay phải xoá.",
+  privacyNote:
+    "Bản kiểm tra chỉ chạy trên dòng đầu tiên. Phần còn lại không được thu thập, nên không có gì để rò rỉ hay phải xoá.",
 };
 
-export const scenes = (l: string) => byLocale({ en: SCENES_EN, vi: SCENES_VI }, l);
+export const scenes = (l: string) =>
+  byLocale({ en: SCENES_EN, vi: SCENES_VI }, l);
 
 /**
  * The session chain, and the two ways of knowing where it breaks.
@@ -493,15 +683,13 @@ const CHAIN_EN = {
   themLane: {
     eyebrow: "Every engagement-ranked tool",
     title: "Has to wait for the chain to run, and still cannot see the gap.",
-    body:
-      "Click and conversion models weigh the fields that already exist. A field nobody recorded generates no clicks, so it scores zero and stays invisible no matter how much traffic you send at it.",
+    body: "Click and conversion models weigh the fields that already exist. A field nobody recorded generates no clicks, so it scores zero and stays invisible no matter how much traffic you send at it.",
     needs: "Needs months of traffic. Never surfaces the missing field.",
   },
   usLane: {
     eyebrow: "The Decision Audit",
     title: "Computes the break point before a single session runs.",
-    body:
-      "Where the chain breaks is a property of your catalogue, not of your visitors, so it can be measured from an export. That is why this works on a new category, a new market or a launch range with no history at all.",
+    body: "Where the chain breaks is a property of your catalogue, not of your visitors, so it can be measured from an export. That is why this works on a new category, a new market or a launch range with no history at all.",
     needs: "Needs one CSV. Works on day one, with zero traffic.",
   },
 } as const;
@@ -522,20 +710,19 @@ const CHAIN_VI: Widen<typeof CHAIN_EN> = {
   themLane: {
     eyebrow: "Mọi công cụ xếp hạng theo tương tác",
     title: "Phải đợi chuỗi chạy xong, mà vẫn không thấy được khoảng trống.",
-    body:
-      "Các mô hình dựa trên lượt nhấp và chuyển đổi chỉ cân đo những trường đã có sẵn. Một trường không ai ghi lại thì không sinh ra lượt nhấp nào, nên nó bị chấm bằng không và mãi vô hình dù bạn đổ bao nhiêu lưu lượng vào.",
+    body: "Các mô hình dựa trên lượt nhấp và chuyển đổi chỉ cân đo những trường đã có sẵn. Một trường không ai ghi lại thì không sinh ra lượt nhấp nào, nên nó bị chấm bằng không và mãi vô hình dù bạn đổ bao nhiêu lưu lượng vào.",
     needs: "Cần nhiều tháng lưu lượng. Không bao giờ lộ ra trường còn thiếu.",
   },
   usLane: {
     eyebrow: "Decision Audit",
     title: "Tính ra điểm đứt gãy trước cả khi có một phiên truy cập nào.",
-    body:
-      "Chỗ chuỗi đứt là thuộc tính của danh mục chứ không phải của khách truy cập, nên đo được từ một tệp xuất. Vì vậy cách này chạy được trên một ngành hàng mới, một thị trường mới, hay một dòng hàng vừa ra mắt chưa có lịch sử gì.",
+    body: "Chỗ chuỗi đứt là thuộc tính của danh mục chứ không phải của khách truy cập, nên đo được từ một tệp xuất. Vì vậy cách này chạy được trên một ngành hàng mới, một thị trường mới, hay một dòng hàng vừa ra mắt chưa có lịch sử gì.",
     needs: "Cần một tệp CSV. Chạy được ngay ngày đầu, không cần lưu lượng.",
   },
 };
 
-export const chain = (l: string) => byLocale<Widen<typeof CHAIN_EN>>({ en: CHAIN_EN, vi: CHAIN_VI }, l);
+export const chain = (l: string) =>
+  byLocale<Widen<typeof CHAIN_EN>>({ en: CHAIN_EN, vi: CHAIN_VI }, l);
 
 /**
  * Decision Verification scenes.
@@ -554,11 +741,13 @@ const VERIFY_EN = {
   afterLabel: "After one attribute",
   answerNote:
     "One attribute populated on the shelf we measured. Same method both runs, so the two numbers are comparable.",
-  sameWeek: "Answered the week the work finished. No traffic, no test to design.",
+  sameWeek:
+    "Answered the week the work finished. No traffic, no test to design.",
   filledLabel: "Fields filled",
   filledNote: "A quarter of work, and the dashboard agrees.",
   provenLabel: "Right fields?",
-  provenNote: "Completeness cannot answer this. It only counts the fields you thought to define.",
+  provenNote:
+    "Completeness cannot answer this. It only counts the fields you thought to define.",
   unknown: "Nobody can say",
   slowPath: {
     title: "Prove it with a live test",
@@ -568,7 +757,8 @@ const VERIFY_EN = {
       "Wait for a full business cycle, twice",
       "Read a result six other changes also touched",
     ],
-    verdict: "Needs the traffic to power it, and still cannot isolate the enrichment.",
+    verdict:
+      "Needs the traffic to power it, and still cannot isolate the enrichment.",
   },
   fastPath: {
     title: "Recompute the catalogue",
@@ -578,7 +768,8 @@ const VERIFY_EN = {
       "Run the identical measurement",
       "Read the difference, attribute by attribute",
     ],
-    verdict: "Deterministic, and it isolates exactly the thing your team changed.",
+    verdict:
+      "Deterministic, and it isolates exactly the thing your team changed.",
   },
 } as const;
 
@@ -590,11 +781,13 @@ const VERIFY_VI: Widen<typeof VERIFY_EN> = {
   afterLabel: "Sau một thuộc tính",
   answerNote:
     "Một thuộc tính được điền trên kệ hàng chúng tôi đã đo. Cùng một phương pháp ở cả hai lần chạy, nên hai con số so sánh được.",
-  sameWeek: "Có câu trả lời ngay trong tuần hoàn tất công việc. Không cần lưu lượng, không phải thiết kế thử nghiệm.",
+  sameWeek:
+    "Có câu trả lời ngay trong tuần hoàn tất công việc. Không cần lưu lượng, không phải thiết kế thử nghiệm.",
   filledLabel: "Trường đã điền",
   filledNote: "Cả một quý làm việc, và bảng điều khiển đồng ý.",
   provenLabel: "Đúng trường chưa?",
-  provenNote: "Mức hoàn thiện không trả lời được. Nó chỉ đếm những trường bạn nghĩ ra để định nghĩa.",
+  provenNote:
+    "Mức hoàn thiện không trả lời được. Nó chỉ đếm những trường bạn nghĩ ra để định nghĩa.",
   unknown: "Không ai nói được",
   slowPath: {
     title: "Chứng minh bằng thử nghiệm trực tiếp",
@@ -604,7 +797,8 @@ const VERIFY_VI: Widen<typeof VERIFY_EN> = {
       "Chờ hết một chu kỳ kinh doanh, hai lần",
       "Đọc một kết quả mà sáu thay đổi khác cũng tác động vào",
     ],
-    verdict: "Cần đủ lưu lượng để chạy, mà vẫn không tách riêng được phần làm giàu dữ liệu.",
+    verdict:
+      "Cần đủ lưu lượng để chạy, mà vẫn không tách riêng được phần làm giàu dữ liệu.",
   },
   fastPath: {
     title: "Đo lại danh mục",
@@ -618,7 +812,8 @@ const VERIFY_VI: Widen<typeof VERIFY_EN> = {
   },
 };
 
-export const verify = (l: string) => byLocale<Widen<typeof VERIFY_EN>>({ en: VERIFY_EN, vi: VERIFY_VI }, l);
+export const verify = (l: string) =>
+  byLocale<Widen<typeof VERIFY_EN>>({ en: VERIFY_EN, vi: VERIFY_VI }, l);
 
 /**
  * Decision Monitor scenes.
@@ -637,9 +832,18 @@ const MONITOR_EN = {
   driftNote:
     "Laptops fell from 71 to 62 while 340 products arrived without processor data. No single week looked like a problem, which is exactly why nobody caught it.",
   causes: [
-    { k: "A supplier changed their export", v: "and the fields quietly stopped mapping" },
-    { k: "A range was onboarded in a hurry", v: "because the deadline was the launch, not the data" },
-    { k: "The person who knew the taxonomy left", v: "and the convention left with them" },
+    {
+      k: "A supplier changed their export",
+      v: "and the fields quietly stopped mapping",
+    },
+    {
+      k: "A range was onboarded in a hurry",
+      v: "because the deadline was the launch, not the data",
+    },
+    {
+      k: "The person who knew the taxonomy left",
+      v: "and the convention left with them",
+    },
   ],
   causesOut: "-9",
   causesOutLabel: "Readiness, one quarter",
@@ -647,7 +851,10 @@ const MONITOR_EN = {
     { when: "Week 1", cost: "One export to remap. Nobody to ask." },
     { when: "Month 1", cost: "A backlog item, done inside a sprint." },
     { when: "Month 3", cost: "A project, and a conversation about it." },
-    { when: "Month 6", cost: "A second budget request for work already paid for once." },
+    {
+      when: "Month 6",
+      cost: "A second budget request for work already paid for once.",
+    },
   ],
   costNote:
     "Products carrying the gap, at the arrival rate in the example above. The defect does not change; only the number of products wearing it, and who has to approve the fix.",
@@ -663,22 +870,36 @@ const MONITOR_VI: Widen<typeof MONITOR_EN> = {
   driftNote:
     "Laptop tụt từ 71 xuống 62 trong khi 340 sản phẩm về mà không có dữ liệu bộ xử lý. Không tuần nào trông giống một vấn đề, và đó chính là lý do không ai bắt được.",
   causes: [
-    { k: "Một nhà cung cấp đổi định dạng xuất dữ liệu", v: "và các trường lặng lẽ thôi khớp" },
-    { k: "Một dòng hàng được đưa lên vội", v: "vì hạn chót là ngày ra mắt, không phải dữ liệu" },
+    {
+      k: "Một nhà cung cấp đổi định dạng xuất dữ liệu",
+      v: "và các trường lặng lẽ thôi khớp",
+    },
+    {
+      k: "Một dòng hàng được đưa lên vội",
+      v: "vì hạn chót là ngày ra mắt, không phải dữ liệu",
+    },
     { k: "Người hiểu bộ phân loại đã nghỉ", v: "và quy ước đó nghỉ theo" },
   ],
   causesOut: "-9",
   causesOutLabel: "Mức sẵn sàng, một quý",
   costSteps: [
     { when: "Tuần 1", cost: "Một tệp xuất cần ánh xạ lại. Không phải hỏi ai." },
-    { when: "Tháng 1", cost: "Một việc trong hàng đợi, xong trong một sprint." },
+    {
+      when: "Tháng 1",
+      cost: "Một việc trong hàng đợi, xong trong một sprint.",
+    },
     { when: "Tháng 3", cost: "Một dự án, và một cuộc trao đổi về nó." },
-    { when: "Tháng 6", cost: "Một lần xin ngân sách nữa cho việc đã trả tiền một lần." },
+    {
+      when: "Tháng 6",
+      cost: "Một lần xin ngân sách nữa cho việc đã trả tiền một lần.",
+    },
   ],
   costNote:
     "Số sản phẩm mang khoảng trống này, theo tốc độ hàng về trong ví dụ bên trên. Bản thân lỗi không đổi; chỉ có số sản phẩm dính nó, và người phải duyệt khoản sửa.",
 };
 
-export const monitor = (l: string) => byLocale<Widen<typeof MONITOR_EN>>({ en: MONITOR_EN, vi: MONITOR_VI }, l);
-export const examples    = (l: string) => pick({ en: EXAMPLES,     vi: EXAMPLES_VI },     l);
-export const reasons     = (l: string) => pick({ en: REASONS,      vi: REASONS_VI },      l);
+export const monitor = (l: string) =>
+  byLocale<Widen<typeof MONITOR_EN>>({ en: MONITOR_EN, vi: MONITOR_VI }, l);
+export const examples = (l: string) =>
+  pick({ en: EXAMPLES, vi: EXAMPLES_VI }, l);
+export const reasons = (l: string) => pick({ en: REASONS, vi: REASONS_VI }, l);

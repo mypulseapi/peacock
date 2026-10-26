@@ -35,9 +35,9 @@ export function GET() {
 > no traffic history is needed.
 
 Key facts, each one checkable:
-- On a 216-product laptop shelf we measured, 94 products remain indistinguishable after every
+- On a 216-product test shelf (156 generated laptop listings and 60 real marketplace listings), 94 products remain indistinguishable after every
   question a shopper could answer, because the attributes that would separate them are recorded
-  nowhere. (Internal laptop-shelf dataset, 216 products, 9 facets.)
+  nowhere; 47 of them are accessories and software no laptop question can rule out. (Internal test-shelf dataset, 216 products, 9 facets.)
 - Across a 2,176-product catalogue we measured, 52.6% of recorded attribute values duplicate what
   the product photograph already shows, and 0.90 attributes per product are genuinely
   complementary to it. (Internal catalogue dataset, 2,176 products.)

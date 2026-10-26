@@ -73,6 +73,15 @@ localhost, for `pnpm dev`.
 In CI the values come from repository variables (Settings → Secrets and variables → Actions →
 Variables). None of them is a secret; all of them are visible in the shipped HTML.
 
+### Sign-in
+
+`/{locale}/signin` is the one entry page for new and returning merchants: an email, then a
+6-digit code from the auth service, or Google. There is no password on the website. A successful
+sign-in goes to the dashboard page in `?redirect=`, but only if it is on `NEXT_PUBLIC_APP_URL`
+(`src/lib/return-url.ts`, checked by `check:return-url` in `build`); anything else goes to the
+dashboard's default. No variable was added for it. The requirement, design and server half live in
+rainbow: `ODIN/design/01-auth/01-website-sign-in/task.md`.
+
 ### SEO and AEO
 
 `node scripts/check-seo.mjs` enforces the engineering standard against the **exported HTML** rather

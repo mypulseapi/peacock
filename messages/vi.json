@@ -1344,21 +1344,6 @@
         "passwordWeak": "Mật khẩu chưa đáp ứng các yêu cầu bên dưới."
       }
     },
-    "signIn": {
-      "title": "Chào mừng trở lại",
-      "subtitle": "Đăng nhập vào bảng điều khiển PULSE.",
-      "email": "Email công việc",
-      "emailPlaceholder": "an@congty.com",
-      "password": "Mật khẩu",
-      "forgot": "Quên mật khẩu?",
-      "submit": "Đăng nhập",
-      "submitting": "Đang đăng nhập…",
-      "noAccount": "Chưa dùng PULSE?",
-      "signUpLink": "Tạo tài khoản",
-      "errors": {
-        "invalid": "Email và mật khẩu không khớp với tài khoản nào."
-      }
-    },
     "forgot": {
       "title": "Đặt lại mật khẩu",
       "subtitle": "Chúng tôi sẽ gửi email kèm liên kết để bạn đặt mật khẩu mới.",
@@ -1397,6 +1382,32 @@
       "resending": "Đang gửi…",
       "resent": "Đã gửi. Vui lòng kiểm tra lại hộp thư.",
       "backToSignIn": "Quay lại đăng nhập"
+    },
+    "entry": {
+      "title": "Đăng nhập hoặc tạo tài khoản",
+      "subtitle": "Chúng tôi sẽ gửi mã 6 số đến email của bạn. Không cần mật khẩu.",
+      "email": "Email",
+      "continue": "Tiếp tục với email",
+      "continuing": "Đang gửi…",
+      "sent": "Chúng tôi đã gửi mã 6 số đến {email}.",
+      "code": "Mã 6 số",
+      "verify": "Xác minh và tiếp tục",
+      "verifying": "Đang xác minh…",
+      "resend": "Gửi lại mã",
+      "resendIn": "Gửi lại mã sau {seconds} giây",
+      "changeEmail": "Đổi email",
+      "delivery": "Email có thể đến chậm. Kiểm tra thư rác, gửi lại khi được phép hoặc sửa địa chỉ.",
+      "consent": "Bằng việc tiếp tục, bạn đồng ý với <terms>Điều khoản</terms> và <privacy>Chính sách quyền riêng tư</privacy>.",
+      "googleFailed": "Đăng nhập Google chưa hoàn tất. Hãy thử lại hoặc tiếp tục với email.",
+      "seconds": "{count} giây",
+      "minutes": "{count} phút",
+      "errors": {
+        "invalidEmail": "Vui lòng nhập địa chỉ email hợp lệ.",
+        "incorrect": "Mã không đúng. Vui lòng thử lại.",
+        "expired": "Mã không còn hiệu lực. Vui lòng yêu cầu mã mới.",
+        "locked": "Bạn đã nhập sai quá số lần cho phép. Vui lòng yêu cầu mã mới.",
+        "throttled": "Quá nhiều yêu cầu. Vui lòng thử lại sau {time}."
+      }
     }
   },
   "industryShell": {

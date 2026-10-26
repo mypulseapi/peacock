@@ -1,7 +1,7 @@
 "use client";
 
 import { createAuthClient } from "better-auth/react";
-import { inferAdditionalFields } from "better-auth/client/plugins";
+import { emailOTPClient, inferAdditionalFields } from "better-auth/client/plugins";
 
 import { SITE } from "./site";
 
@@ -23,6 +23,9 @@ export const authClient = createAuthClient({
   baseURL: SITE.auth,
 
   plugins: [
+    // The website's sign-in: a 6-digit emailed code (ODIN website sign-in, F1).
+    emailOTPClient(),
+
     // Teaches the client about the columns our `users` table carries beyond Better Auth's core, so
     // `session.user.firstName` is typed rather than `any`. The shape must match the
     // `additionalFields` in packages/api/auth/src/better-auth/auth.ts — they are two halves of one

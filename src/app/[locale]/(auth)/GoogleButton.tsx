@@ -14,7 +14,14 @@ import { authClient, isGoogleEnabled } from "@/lib/auth-client";
  * The server makes the same check against GOOGLE_CLIENT_ID, so the two cannot disagree about
  * whether the provider exists.
  */
-export function GoogleButton({ callbackURL }: { callbackURL: string }) {
+export function GoogleButton({
+  callbackURL,
+  errorCallbackURL,
+}: {
+  callbackURL: string;
+  /** Where a cancelled or failed Google sign-in lands, with `?error=` added by Better Auth. */
+  errorCallbackURL?: string;
+}) {
   const t = useTranslations("auth");
   const [pending, setPending] = useState(false);
 
@@ -28,7 +35,7 @@ export function GoogleButton({ callbackURL }: { callbackURL: string }) {
         onClick={async () => {
           setPending(true);
           try {
-            await authClient.signIn.social({ provider: "google", callbackURL });
+            await authClient.signIn.social({ provider: "google", callbackURL, errorCallbackURL });
           } finally {
             // The redirect usually takes over before this runs. It matters when the merchant
             // abandons the provider flow and comes back: they land on a working button, not a

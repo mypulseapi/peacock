@@ -1344,21 +1344,6 @@
         "passwordWeak": "Your password does not meet the rules below."
       }
     },
-    "signIn": {
-      "title": "Welcome back",
-      "subtitle": "Sign in to your PULSE dashboard.",
-      "email": "Work email",
-      "emailPlaceholder": "john@company.com",
-      "password": "Password",
-      "forgot": "Forgot password?",
-      "submit": "Sign in",
-      "submitting": "Signing you in…",
-      "noAccount": "New to PULSE?",
-      "signUpLink": "Create an account",
-      "errors": {
-        "invalid": "That email and password do not match an account."
-      }
-    },
     "forgot": {
       "title": "Reset your password",
       "subtitle": "We will email you a link to set a new one.",
@@ -1397,6 +1382,32 @@
       "resending": "Sending…",
       "resent": "Sent. Check your inbox again.",
       "backToSignIn": "Back to sign in"
+    },
+    "entry": {
+      "title": "Sign in or create an account",
+      "subtitle": "We will email you a 6-digit code. No password needed.",
+      "email": "Email",
+      "continue": "Continue with email",
+      "continuing": "Sending…",
+      "sent": "We've sent a 6-digit code to {email}.",
+      "code": "6-digit code",
+      "verify": "Verify and continue",
+      "verifying": "Verifying…",
+      "resend": "Resend code",
+      "resendIn": "Resend code in {seconds} s",
+      "changeEmail": "Change email",
+      "delivery": "Email may be delayed. Check spam, resend when available, or change the address.",
+      "consent": "By continuing you agree to the <terms>Terms</terms> and <privacy>Privacy Policy</privacy>.",
+      "googleFailed": "Google sign-in didn't complete. Try again, or continue with email.",
+      "seconds": "{count, plural, one {# second} other {# seconds}}",
+      "minutes": "{count, plural, one {# minute} other {# minutes}}",
+      "errors": {
+        "invalidEmail": "Enter a valid email address.",
+        "incorrect": "This code is incorrect. Try again.",
+        "expired": "This code is no longer valid. Request a new code.",
+        "locked": "Too many incorrect attempts. Request a new code.",
+        "throttled": "Too many requests. Try again in {time}."
+      }
     }
   },
   "industryShell": {

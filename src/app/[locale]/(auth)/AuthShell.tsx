@@ -56,6 +56,9 @@ export function Field({
   autoComplete,
   required,
   disabled,
+  inputMode,
+  maxLength,
+  autoFocus,
   children,
 }: {
   id: string;
@@ -68,6 +71,9 @@ export function Field({
   autoComplete?: string;
   required?: boolean;
   disabled?: boolean;
+  inputMode?: "numeric" | "email";
+  maxLength?: number;
+  autoFocus?: boolean;
   children?: ReactNode;
 }) {
   return (
@@ -88,6 +94,9 @@ export function Field({
         placeholder={placeholder}
         autoComplete={autoComplete}
         disabled={disabled}
+        inputMode={inputMode}
+        maxLength={maxLength}
+        autoFocus={autoFocus}
         // The message belongs to the field, so the field owns it. A screen reader that announces
         // the error without saying which box it belongs to has not communicated anything.
         aria-invalid={Boolean(error)}

@@ -27,6 +27,7 @@ export type ProductArea =
   | "audit"
   | "verification"
   | "returns"
+  | "promotions"
   | "monitor"
   | "api"
   | "search"
@@ -123,6 +124,13 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     route: "/product/return-verification",
     audience: "merchant",
     area: "returns",
+    depth: "explainer",
+    decides: ["what-it-does", "how-it-works"],
+  },
+  {
+    route: "/product/promotion-audit",
+    audience: "merchant",
+    area: "promotions",
     depth: "explainer",
     decides: ["what-it-does", "how-it-works"],
   },

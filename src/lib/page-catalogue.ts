@@ -222,6 +222,15 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     decides: ["is-it-proven", "how-it-works"],
   },
 
+  // Research, product by product; the photograph study above is one of its entries.
+  {
+    route: "/research",
+    audience: "any",
+    area: "none",
+    depth: "proof",
+    decides: ["is-it-proven"],
+  },
+
   // Use cases and industries
   {
     route: "/use-cases/seo-aeo",

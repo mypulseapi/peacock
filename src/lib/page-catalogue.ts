@@ -215,13 +215,21 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
   },
   // The catalogue measurement: how much of what a catalogue records the photograph already shows.
   {
-    route: "/visual-evidence",
+    route: "/research/photographs",
     audience: "any",
     area: "audit",
     depth: "proof",
     decides: ["is-it-proven", "how-it-works"],
   },
 
+  // The old address of the photograph study and the Research menu item; redirects to /research.
+  {
+    route: "/visual-evidence",
+    audience: "any",
+    area: "none",
+    depth: "proof",
+    decides: ["is-it-proven"],
+  },
   // Research, product by product; the photograph study above is one of its entries.
   {
     route: "/research",

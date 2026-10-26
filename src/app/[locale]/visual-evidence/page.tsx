@@ -1,47 +1,53 @@
-import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { prepareLocale } from "@/i18n/render-locale";
-import { buildAlternates } from "@/lib/seo";
-import { PageSchema } from "@/components/PageSchema";
-import { DesignedVisualEvidence } from "@/components/designed/visual-evidence";
+import { Link } from "@/i18n/routing";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
 /**
- * The visual-evidence research page.
+ * /visual-evidence was the photograph study, and the Research menu item. Since 2026-10-26 research
+ * covers every product at /research, and the study lives at /research/photographs.
  *
- * It existed on the designer's site and never had a route here, which is why it vanished when the
- * Next app replaced the HTML one. It carries the catalogue measurement -- how much of what a
- * catalogue records the photograph already shows -- and twenty-three pages link to it.
- *
- * English only for now, like the other converted pages: the source is `lang="en"` and rendering it
- * under /vi would put English on a Vietnamese page. A Vietnamese reader is redirected to the
- * English copy rather than shown a 404, because the page exists and the alternative is pretending
- * it does not.
+ * A page rather than `redirect()`: in a static export that builds a script-only shell marked
+ * indexable, with the home page's title and no refresh. This one is noindex, points its canonical
+ * at the hub, forwards at once, and still reads as a page with a link if scripts are off.
  */
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  prepareLocale(locale);
-  const t = await getTranslations({ locale, namespace: "visualEvidence.meta" }).catch(() => null);
-
   return {
-    title: t ? t("title") : "What the photograph already shows",
-    description: t
-      ? t("description")
-      : "Across a 2,176-product catalogue, 52.6% of recorded attribute values duplicate what the product photograph already shows. What that leaves, and what it means for which field to fix.",
-    alternates: buildAlternates(locale, "/visual-evidence"),
+    title: locale === "vi" ? "Nghiên cứu đã chuyển" : "Research has moved",
+    robots: { index: false, follow: true },
+    alternates: { canonical: `/${locale}/research` },
   };
 }
 
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
-
+  const target = `/${locale}/research`;
   return (
-    <>
-      <PageSchema locale={locale} path="/visual-evidence" />
-      <DesignedVisualEvidence />
-    </>
+    <section className="frame py-32 text-center">
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `location.replace(${JSON.stringify(target)} + location.hash)`,
+        }}
+      />
+      <h1 className="text-title">
+        {locale === "vi"
+          ? "Nghiên cứu giờ bao gồm mọi sản phẩm"
+          : "Research now covers every product"}
+      </h1>
+      <Link
+        locale={locale}
+        href="/research"
+        className="btn-primary mt-8 inline-flex"
+      >
+        {locale === "vi" ? "Tới trang Nghiên cứu" : "Go to Research"}
+      </Link>
+    </section>
   );
 }

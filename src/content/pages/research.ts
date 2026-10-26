@@ -2,7 +2,8 @@ import { byLocale } from "@/content/locale";
 
 /**
  * Research: what we measured, product by product. The hub the Resources menu points at; the
- * photograph study it used to point at is one entry, still at /visual-evidence.
+ * photograph study it used to point at is one entry, at /research/photographs; /visual-evidence
+ * redirects here.
  *
  * Every number is copied from rainbow's ODIN, checked 2026-10-26: SPIKE-VOI-DV.md §11.2 (audit),
  * THE-THIRD-IGNORANCE.md (photographs), TWO-IGNORANCES.md §3 (1.20 and 4.24 bits, recomputed),
@@ -73,7 +74,7 @@ const EN: ResearchContent = {
       data: "2,176 products, one image each, counted attribute by attribute.",
       limit:
         "It measures the overlap, not lost sales. Whether a photograph shows a fact is our judgement.",
-      href: "/visual-evidence",
+      href: "/research/photographs",
       link: "Read the full study",
     },
     {
@@ -224,7 +225,7 @@ const VI: ResearchContent = {
       data: "2.176 sản phẩm, mỗi sản phẩm một ảnh, đếm từng thuộc tính.",
       limit:
         "Nó đo phần trùng lặp, không đo doanh số bị mất. Việc ảnh có cho thấy một thông tin hay không là đánh giá của chúng tôi.",
-      href: "/visual-evidence",
+      href: "/research/photographs",
       link: "Đọc toàn bộ nghiên cứu",
     },
     {

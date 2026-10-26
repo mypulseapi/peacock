@@ -679,7 +679,6 @@
       "auditTag": "Start here",
       "auditBlurb": "Which missing field to record first, ranked, in your own catalogue.",
       "auditMore": "Everything else follows from it: check what the repair moved, keep each shelf measured, and see which missing facts go with returns.",
-      "auditCta": "See the Decision Audit",
       "verifyName": "Decision Verification",
       "verifyBlurb": "Recompute after the repair and see exactly what moved. No traffic needed.",
       "monitorName": "Decision Monitor",

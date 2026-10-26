@@ -9,7 +9,9 @@
  * 2026-10-26, from the Impeccable critique: the audit card was distinct by size alone and only
  * described the output. It now sits on the primary wash with the About page's example ranking
  * (same numbers, same "Example data" label, nothing new claimed). Requesting the audit stays the
- * header's and the closing band's job, so the card has one action: read about it.
+ * header's and the closing band's job, so the card has one action: read about it. Since
+ * 2026-10-26 that action is the whole card, as on the three beside it, and the "See the Decision
+ * Audit" link under it is gone (owner's request).
  *
  * 2026-10-26, the owner's Direction A ("Pulse site directions" mockup, pin 4): a bento. The
  * "everything else follows" line leads the section beside the heading, the audit card takes 7 of
@@ -95,19 +97,39 @@ export function ProductsSection() {
           </p>
         </div>
         <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-12">
-          <article className="reveal flex flex-col rounded-2xl border border-primary-line bg-primary-wash p-6 lg:col-span-7 lg:p-10">
-            <h3 className="flex flex-wrap items-center gap-3 text-h2 text-ink">
-              <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-card text-primary">
-                <svg className="size-5" aria-hidden="true">
-                  <use href="#i-clipboard-check" />
-                </svg>
-              </span>
-              {t("auditName")}
-              {/* No pill: on the wash a bordered badge read as a second card; the tag is just a label. */}
-              <span className="text-sm font-semibold text-primary">
-                {t("auditTag")}
-              </span>
-            </h3>
+          {/* The whole card is the link, like the three beside it. The anchor wraps only the name and
+              its ::after covers the card, so a screen reader hears "Decision Audit" rather than the
+              whole example ranking read out as one link name. The focus ring moves to that ::after;
+              `outline-none!` is needed because globals.css styles `*:focus-visible` outside a layer,
+              which no plain utility can override, and the name would get a second ring. */}
+          <article className="group reveal relative flex flex-col rounded-2xl border border-primary-line bg-primary-wash p-6 transition-colors duration-150 ease-out-soft hover:border-primary lg:col-span-7 lg:p-10">
+            {/* The arrow sits in the title row, centred on its first line (the 40px icon tile, so
+                mt-2.5 for a 20px arrow), and stays there when the tag wraps on a phone. */}
+            <div className="flex items-start justify-between gap-3">
+              <h3 className="flex flex-wrap items-center gap-3 text-h2 text-ink">
+                <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-card text-primary">
+                  <svg className="size-5" aria-hidden="true">
+                    <use href="#i-clipboard-check" />
+                  </svg>
+                </span>
+                <Link
+                  href={designedHref("/en/product/decision-audit")}
+                  className="after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none! focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-focus"
+                >
+                  {t("auditName")}
+                </Link>
+                {/* No pill: on the wash a bordered badge read as a second card; the tag is just a label. */}
+                <span className="text-sm font-semibold text-primary">
+                  {t("auditTag")}
+                </span>
+              </h3>
+              <svg
+                className="mt-2.5 size-5 shrink-0 -rotate-45 text-muted transition-[rotate,translate,color] duration-200 ease-out-soft group-focus-within:rotate-0 group-focus-within:text-primary group-hover:translate-x-0.5 group-hover:rotate-0 group-hover:text-primary motion-reduce:transition-none"
+                aria-hidden="true"
+              >
+                <use href="#i-arrow-right" />
+              </svg>
+            </div>
             <p className="mt-4 max-w-2xl text-body text-pretty text-ink">
               {t("auditBlurb")}
             </p>
@@ -149,17 +171,9 @@ export function ProductsSection() {
                 {t("exampleCaption")}
               </figcaption>
             </figure>
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
-              <Link
-                href={designedHref("/en/product/decision-audit")}
-                className="font-semibold text-primary underline-offset-4 hover:underline"
-              >
-                {t("auditCta")}
-              </Link>
-              <p className="text-sm font-medium tabular-nums text-ink">
-                {t("facts")}
-              </p>
-            </div>
+            <p className="mt-6 text-sm font-medium tabular-nums text-ink">
+              {t("facts")}
+            </p>
           </article>
           <ProductGrid items={OFFERINGS} t={t} />
         </div>
@@ -215,24 +229,30 @@ function ProductGrid({
         <li key={o.href} className="reveal">
           <Link
             href={designedHref(o.href)}
-            className="group relative flex h-full gap-4 rounded-2xl border border-line bg-card p-6 shadow-sm transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+            className="group relative flex h-full items-center gap-4 rounded-2xl border border-line bg-card p-6 shadow-sm transition-colors duration-150 ease-out-soft hover:bg-surface-1"
           >
             <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-surface-1 text-muted transition-colors duration-150 ease-out-soft group-hover:text-primary group-focus-visible:text-primary">
               <svg className="size-5" aria-hidden="true">
                 <use href={`#${o.icon}`} />
               </svg>
             </span>
-            {/* Points out of the card at rest, turns to point along the reading line on hover. */}
-            <svg
-              className="absolute top-6 right-6 size-5 -rotate-45 text-muted transition-[rotate,translate,color] duration-200 ease-out-soft group-hover:translate-x-0.5 group-hover:rotate-0 group-hover:text-primary group-focus-visible:rotate-0 group-focus-visible:text-primary motion-reduce:transition-none"
-              aria-hidden="true"
-            >
-              <use href="#i-arrow-right" />
-            </svg>
-            <span className="min-w-0">
-              <span className="flex flex-wrap items-center gap-2 pr-8 font-semibold text-ink">
-                {t(o.name)}
-                {o.tag ? <span className="badge">{t(o.tag)}</span> : null}
+            {/* Centred in the card (owner, 26 Oct 2026): beside the tall audit card the three cards stretch to share its
+                height, and top-aligned content left the space all below it. The arrow is in the title row, so it moves
+                with the title. */}
+            <span className="min-w-0 flex-1">
+              <span className="flex items-start justify-between gap-3">
+                <span className="flex flex-wrap items-center gap-2 font-semibold text-ink">
+                  {t(o.name)}
+                  {o.tag ? <span className="badge">{t(o.tag)}</span> : null}
+                </span>
+                {/* Points out of the card at rest, turns to point along the reading line on hover.
+                    In the title row, centred on its first line (24px, so mt-0.5 for a 20px arrow). */}
+                <svg
+                  className="mt-0.5 size-5 shrink-0 -rotate-45 text-muted transition-[rotate,translate,color] duration-200 ease-out-soft group-hover:translate-x-0.5 group-hover:rotate-0 group-hover:text-primary group-focus-visible:rotate-0 group-focus-visible:text-primary motion-reduce:transition-none"
+                  aria-hidden="true"
+                >
+                  <use href="#i-arrow-right" />
+                </svg>
               </span>
               <span className="mt-2 block text-sm text-pretty text-muted">
                 {t(o.blurb)}

@@ -99,7 +99,10 @@ export function DesignedHeader() {
                   data-panel
                   className="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none"
                 >
-                  <div data-nav-content className="nav-content flex flex-col">
+                  {/* A fixed width, three columns' worth like Templates (2026-10-26). Its columns grow to fill
+                      (`flex-1`), so without one it took whatever width the viewport had when the script
+                      measured it: 608px on first open or after Resources, 912px after Templates. */}
+                  <div data-nav-content className="nav-content flex w-228 flex-col">
                     {/* The catalogue tools side by side; the storefront, which comes later, as a row under them. */}
                     <div className="flex w-full justify-center">
                       <div className="nav-column min-w-76 flex-1 p-3">

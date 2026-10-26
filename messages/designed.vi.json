@@ -4,13 +4,11 @@
       "1": "Chuyển đến nội dung"
     },
     "designed-footer": {
-      "1": "Sản phẩm",
       "5": "Bảng giá",
       "6": "Công ty",
       "7": "Về chúng tôi",
       "8": "Liên hệ",
       "9": "Tuyển dụng",
-      "10": "Đầu mối liên hệ",
       "12": "© 2026 Pulse. Bảo lưu mọi quyền.",
       "13": "Chính sách bảo mật",
       "14": "Điều khoản dịch vụ",
@@ -27,7 +25,14 @@
       "engineeringLabel": "Kỹ thuật",
       "engineeringValue": "Thành phố Hồ Chí Minh, Việt Nam",
       "builtForLabel": "Dành cho",
-      "builtForValue": "Các nhà bán hàng tại Việt Nam và Đông Nam Á"
+      "builtForValue": "Các nhà bán hàng tại Việt Nam và Đông Nam Á",
+      "measureHeading": "Đo và sửa",
+      "liveHeading": "Quyết định trực tiếp",
+      "apiName": "Decision API",
+      "searchName": "Search",
+      "recsName": "Recommendations",
+      "pagesName": "Pages",
+      "studioName": "Merchandising Studio"
     },
     "designed-header": {
       "1": "Sản phẩm",

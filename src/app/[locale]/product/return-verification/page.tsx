@@ -34,7 +34,7 @@ export default async function Page({ params }: PageProps) {
         path="/product/return-verification"
         nodes={[storyFaqSchema(returnVerification(locale))]}
       />
-      <StoryPage titleClassName="text-hero"
+      <StoryPage titleClassName="text-hero" plainHeadings
         layout={{ steps: "cards", gets: "showcase", limits: "split" }}
         c={returnVerification(locale)}
       />

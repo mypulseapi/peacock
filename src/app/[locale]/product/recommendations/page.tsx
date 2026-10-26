@@ -29,7 +29,7 @@ export default async function Page({ params }: PageProps) {
           a complete sentence, so an answer engine can lift and attribute one
           without the surrounding page. */}
       <PageSchema locale={locale} path="/product/recommendations" nodes={[storyFaqSchema(recommendations(locale))]} />
-      <StoryPage titleClassName="text-hero" layout={{ steps: "timeline", gets: "grid", limits: "ledger" }} visual={<RecommendationsVisual />} c={recommendations(locale)} />
+      <StoryPage titleClassName="text-hero" plainHeadings layout={{ steps: "timeline", gets: "grid", limits: "ledger" }} visual={<RecommendationsVisual />} c={recommendations(locale)} />
     </>
   );
 }

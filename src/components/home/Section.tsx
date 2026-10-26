@@ -33,15 +33,20 @@ export function Section({
  */
 export function SectionHead({
   eyebrow, title, body, invert = false, align = "left",
-}: { eyebrow: string; title: string; body?: string; invert?: boolean; align?: "left" | "center" }) {
+}: { eyebrow?: string; title: string; body?: string; invert?: boolean; align?: "left" | "center" }) {
   const ink = invert ? "text-[color:var(--on-panel)]" : "text-[color:var(--ed-ink)]";
   const sub = invert ? "text-[color:var(--on-panel-2)]" : "";
+  // Optional since 26 Oct 2026: the product pages pass none (the owner's rule, no label over a heading).
+  const label = eyebrow ? (
+    <p className={`ed-eyebrow ${invert ? "text-[color:var(--on-panel-2)]" : ""}`}>{eyebrow}</p>
+  ) : null;
+  const gap = eyebrow ? "mt-5 " : "";
 
   if (align === "center") {
     return (
       <header className="mx-auto max-w-2xl text-center">
-        <p className={`ed-eyebrow ${invert ? "text-[color:var(--on-panel-2)]" : ""}`}>{eyebrow}</p>
-        <h2 className={`ed-d2 mt-5 ${ink}`}>{title}</h2>
+        {label}
+        <h2 className={`ed-d2 ${gap}${ink}`}>{title}</h2>
         {body && <p className={`ed-lede mt-7 ${sub}`}>{body}</p>}
       </header>
     );
@@ -50,8 +55,8 @@ export function SectionHead({
   if (!body) {
     return (
       <header className="max-w-3xl">
-        <p className={`ed-eyebrow ${invert ? "text-[color:var(--on-panel-2)]" : ""}`}>{eyebrow}</p>
-        <h2 className={`ed-d2 mt-5 ${ink}`}>{title}</h2>
+        {label}
+        <h2 className={`ed-d2 ${gap}${ink}`}>{title}</h2>
       </header>
     );
   }
@@ -59,8 +64,8 @@ export function SectionHead({
   return (
     <header className="grid gap-x-14 gap-y-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-end">
       <div>
-        <p className={`ed-eyebrow ${invert ? "text-[color:var(--on-panel-2)]" : ""}`}>{eyebrow}</p>
-        <h2 className={`ed-d2 mt-5 text-balance ${ink}`}>{title}</h2>
+        {label}
+        <h2 className={`ed-d2 ${gap}text-balance ${ink}`}>{title}</h2>
       </div>
       <p className={`ed-lede max-w-[54ch] lg:pb-1 ${sub}`}>{body}</p>
     </header>

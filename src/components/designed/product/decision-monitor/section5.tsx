@@ -7,7 +7,7 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { designedText } from "../../t";
-import { Figure } from "../figures/figure";
+import { GainsCards } from "../gains";
 export function Section5Section() {
   const t = designedText("product.decision-monitor.section5");
   return (
@@ -18,11 +18,15 @@ export function Section5Section() {
                   {t('1')}
                 </h2>
               </div>
-              {/*
-                The designer's exported figure, in place of the three hand-converted cards. Same
-                titles and bodies, localized from `text.json`, and the counters now animate.
-              */}
-              <Figure product="decision-monitor" name="decision-monitor-gains" className="reveal mt-14" />
+              {/* One card per benefit, each with a drawn picture (owner's layout A, 26 Oct 2026). It replaces
+                  the exported figure, whose three cards had only an icon each; titles and bodies unchanged. */}
+              <GainsCards
+                items={[
+                  { art: "decay", title: t("2"), body: t("3") },
+                  { art: "cause", title: t("4"), body: t("5") },
+                  { art: "quarters", title: t("6"), body: t("7") },
+                ]}
+              />
             </div>
           </section>
   );

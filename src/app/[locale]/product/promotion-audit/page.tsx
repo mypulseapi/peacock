@@ -4,10 +4,10 @@ import { buildAlternates } from "@/lib/seo";
 import { storyFaqSchema } from "@/components/StoryPage";
 import { ChapterPage } from "@/components/designed/product/chapters";
 import {
-  PromotionsReport,
   PromotionsChain,
   PROMOTIONS_ART,
 } from "@/components/designed/product/chapter-art";
+import { PromotionsHero } from "@/components/designed/product/chapter-hero";
 import { PageSchema } from "@/components/PageSchema";
 import { promotionAudit } from "@/content/pages/promotion-audit";
 
@@ -43,7 +43,7 @@ export default async function Page({ params }: PageProps) {
       {/* The owner's mockup of 26 Oct 2026: hero A, sections C. See chapters.tsx. */}
       <ChapterPage
         c={c}
-        report={<PromotionsReport l={c.art} />}
+        figure={<PromotionsHero c={c} />}
         chain={<PromotionsChain l={c.art} />}
         art={PROMOTIONS_ART}
       />

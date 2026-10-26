@@ -3,7 +3,7 @@
  * the sections of version C.
  *
  * The hero is the one the designed product pages use: the headline centred at the home hero's size,
- * and under it a window showing what the merchant gets back. Below it the page reads as chapters,
+ * and under it a figure composed like theirs (`chapter-hero.tsx`). Below it the page reads as chapters,
  * picture beside text, alternating; the steps on a zig-zag with their numbers large; the gains on the
  * home research section's hairline grid; the limits on a well. Each section is a plain tone step from
  * its neighbours (owner, 20 Oct 2026: no dark band, no pattern).
@@ -49,13 +49,13 @@ const Mark = ({ ok }: { ok: boolean }) => (
 
 export function ChapterPage({
   c,
-  report,
+  figure,
   chain,
   art,
 }: {
   c: ChapterContent;
-  /** The hero window: what the merchant gets back. */
-  report: ReactNode;
+  /** The hero figure (`chapter-hero.tsx`): the product's screen, its gains and its steps. */
+  figure: ReactNode;
   /** The chart beside the chain chapter. */
   chain: ReactNode;
   art: { situation: ReactNode; steps: ReactNode[] };
@@ -72,9 +72,7 @@ export function ChapterPage({
               {c.lede}
             </p>
           </div>
-          <div className="reveal mx-auto mt-12 max-w-3xl rounded-2xl border border-line bg-card shadow-window delay-200 lg:mt-16">
-            {report}
-          </div>
+          <div className="reveal mt-10 delay-200 lg:mt-14">{figure}</div>
         </div>
       </section>
 

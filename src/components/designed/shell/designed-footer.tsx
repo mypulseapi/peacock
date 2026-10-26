@@ -13,6 +13,8 @@ import Image from "next/image";
 
 import Link from "next/link";
 
+const COMPANY_FACTS = ["founded", "hq", "engineering", "builtFor"];
+
 export function DesignedFooter() {
   const t = designedText("shell.designed-footer");
   return (
@@ -43,6 +45,9 @@ export function DesignedFooter() {
                 aria-hidden="true"
               />
             </Link>
+            <p className="mt-4 max-w-xs text-sm text-pretty text-muted">
+              {t("tagline")}
+            </p>
           </div>
           <div>
             <h2 className="text-nav font-semibold">{t("1")}</h2>
@@ -167,6 +172,18 @@ export function DesignedFooter() {
             </ul>
           </div>
         </div>
+        {/* Company facts, the owner's Direction A (mockup pin 9): who and where, the first thing an
+            investor looks for. Same wording as the About page. Hairlines are a 1px gap over `line`. */}
+        <dl className="mt-14 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          {COMPANY_FACTS.map((key) => (
+            <div key={key} className="bg-card px-5 py-4">
+              <dt className="text-caption text-muted">{t(`${key}Label`)}</dt>
+              <dd className="mt-1 text-sm font-medium text-ink">
+                {t(`${key}Value`)}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
       <div className="border-t border-line">
         <div className="frame flex flex-col gap-3 py-4 text-data text-ink sm:flex-row sm:items-center sm:justify-between">

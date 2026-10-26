@@ -1731,7 +1731,16 @@
       "14": "Terms of Service",
       "15": "Cookie Policy",
       "16": "GDPR",
-      "returnName": "Return Verification"
+      "returnName": "Return Verification",
+      "tagline": "Know which product data to fix first",
+      "foundedLabel": "Founded",
+      "foundedValue": "March 2026",
+      "hqLabel": "Headquarters",
+      "hqValue": "Singapore",
+      "engineeringLabel": "Engineering",
+      "engineeringValue": "Ho Chi Minh City, Vietnam",
+      "builtForLabel": "Built for",
+      "builtForValue": "Merchants in Vietnam and Southeast Asia"
     },
     "designed-header": {
       "1": "Product",

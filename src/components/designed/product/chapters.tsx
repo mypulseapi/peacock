@@ -4,8 +4,8 @@
  *
  * The hero is the one the designed product pages use: the headline centred at the home hero's size,
  * a call to action, and the owner's figure under it from the CDN. Below it the page reads as chapters,
- * picture beside text, alternating; the steps on a zig-zag with their numbers large; the gains on the
- * home research section's hairline grid; the limits on a well. Each section is a plain tone step from
+ * picture beside text, alternating; the steps on the shared zig-zag (`steps-zigzag.tsx`); the gains as the
+ * older product pages' picture cards; the limits on a well. Each section is a plain tone step from
  * its neighbours (owner, 20 Oct 2026: no dark band, no pattern).
  *
  * The copy is the story template's, unchanged, from the page's content module, so the FAQ schema
@@ -20,6 +20,8 @@ import Image from "next/image";
 import { img } from "@/lib/cdn";
 import { Link } from "@/i18n/routing";
 import { StoryCta, type StoryContent } from "@/components/StoryPage";
+import { GainsCards, type GainsArt } from "./gains";
+import { StepsZigzag } from "./steps-zigzag";
 
 export type ChapterContent = StoryContent &
   Required<
@@ -59,15 +61,17 @@ export function ChapterPage({
   c,
   chain,
   art,
+  gains,
 }: {
   c: ChapterContent;
   /** The chart beside the chain chapter. */
   chain: ReactNode;
   art: { situation: ReactNode; steps: ReactNode[] };
+  /** One drawing per gain, in order (`gains.tsx`). */
+  gains: GainsArt[];
 }) {
   const locale = renderLocale();
   const t = ui(locale);
-  const divide = ["", "lg:border-l", "", "lg:border-l", "lg:border-l"];
   return (
     <>
       {/* The hero of the designed product pages (decision-audit/section1.tsx), class for class:
@@ -149,68 +153,37 @@ export function ChapterPage({
         </div>
       </section>
 
-      <section className="border-b border-line bg-primary-wash">
-        <div className="frame py-20 lg:py-28">
-          <div className="reveal mx-auto max-w-3xl text-center">
-            <h2 className="text-title text-balance">{h(c.steps.heading)}</h2>
-            {c.steps.intro && (
-              <p className="mt-4 text-lg text-pretty text-muted">
-                {c.steps.intro}
-              </p>
-            )}
-          </div>
-          <ol className="mt-14 grid gap-14 lg:mt-20 lg:gap-20">
-            {c.steps.items.map((s, i) => (
-              <li
-                key={s.n}
-                className="reveal grid items-center gap-8 lg:grid-cols-2 lg:gap-16"
-              >
-                {/* The picture leads on a phone; only the desktop row mirrors. */}
-                <Picture
-                  className={`border border-line bg-card ${i % 2 ? "" : "lg:order-last"}`}
-                >
-                  {art.steps[i]}
-                </Picture>
-                <div>
-                  <p className="flex items-baseline gap-4">
-                    <span className="font-title text-display text-primary">
-                      {s.n}
-                    </span>
-                    {s.meta && <span className="badge-primary">{s.meta}</span>}
-                  </p>
-                  <h3 className="mt-4 text-h2 text-balance text-ink">
-                    {s.title}
-                  </h3>
-                  <p className="mt-3 text-body text-pretty text-muted">
-                    {s.body}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <StepsZigzag
+        heading={h(c.steps.heading)}
+        intro={c.steps.intro}
+        steps={c.steps.items.map((s, i) => ({
+          label: s.meta ?? "",
+          title: s.title,
+          body: s.body,
+          picture: (
+            <Picture className="border border-line bg-card">
+              {art.steps[i]}
+            </Picture>
+          ),
+        }))}
+      />
 
-      <section className="border-b border-line bg-card">
+      {/* The gains as the older product pages show theirs (`gains.tsx`): one card per benefit, a
+          drawn picture on one side, alternating (owner, 26 Oct 2026). */}
+      <section className="bg-soft-gradient scroll-mt-16 border-b border-line">
         <div className="frame py-20 lg:py-28">
-          <h2 className="reveal text-title text-balance">
-            {h(c.gets.heading)}
-          </h2>
-          {/* Two across, then three, so five items fill their rows with no orphan. */}
-          <div className="mt-12 grid border-t border-line lg:mt-16 lg:grid-cols-6">
-            {c.gets.items.map(({ icon: GetIcon, title, body }, i) => (
-              <div
-                key={title}
-                className={`reveal grid content-start gap-3 border-b border-line py-8 lg:px-8 lg:py-10 ${i < 2 ? "lg:col-span-3" : "lg:col-span-2"} ${i === 0 || i === 2 ? "lg:pl-0" : ""} ${divide[i]}`}
-              >
-                <span className="grid size-10 place-items-center rounded-xl bg-primary-tint text-primary">
-                  <GetIcon aria-hidden className="size-5" />
-                </span>
-                <h3 className="mt-1 text-h3 text-balance text-ink">{title}</h3>
-                <p className="text-body text-pretty text-muted">{body}</p>
-              </div>
-            ))}
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="reveal text-title text-balance">
+              {h(c.gets.heading)}
+            </h2>
           </div>
+          <GainsCards
+            items={c.gets.items.map((g, i) => ({
+              art: gains[i],
+              title: g.title,
+              body: g.body,
+            }))}
+          />
         </div>
       </section>
 

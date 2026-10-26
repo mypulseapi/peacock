@@ -288,79 +288,66 @@ const Diverge = () => (
 );
 
 export const RETURNS_ART = {
-  /** Returns, sorted into the ones a listing could have prevented and the ones it could not. */
+  /** The reasons sit in a report; the product page they describe never hears of them. */
   situation: (
     <Drawing>
-      {[
-        [96, 14],
-        [114, 9],
-        [132, 16],
-        [105, 30],
-        [123, 28],
-      ].map(([x, y], i) => (
-        <rect
-          key={i}
-          x={x}
-          y={y}
-          width="16"
-          height="13"
-          rx="3"
-          className={i % 2 ? "fill-baseline" : "fill-primary"}
-        />
-      ))}
-      <path
-        d="M120 50v12M120 62L68 86M120 62l52 24"
-        className="fill-none stroke-line"
-        strokeWidth="2.5"
-      />
-      <path
-        d="M26 92h84l-7 46H33z"
-        className="fill-card stroke-line"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M130 92h84l-7 46h-70z"
-        className="fill-card stroke-line"
-        strokeWidth="1.5"
-      />
-      {[0, 1, 2].map((i) => (
-        <rect
-          key={i}
-          x={42 + i * 19}
-          y="104"
-          width="15"
-          height="12"
-          rx="3"
-          className="fill-primary"
-        />
-      ))}
-      {[0, 1].map((i) => (
-        <rect
-          key={i}
-          x={153 + i * 22}
-          y="104"
-          width="15"
-          height="12"
-          rx="3"
-          className="fill-baseline"
-        />
-      ))}
+      <Sheet x={14} y={26} w={90} rows={5} />
       <rect
-        x="50"
-        y="124"
-        width="36"
-        height="5"
-        rx="2.5"
+        x="136"
+        y="26"
+        width="90"
+        height="112"
+        rx="10"
+        className="fill-card stroke-line"
+        strokeWidth="1.5"
+      />
+      <rect
+        x="146"
+        y="36"
+        width="70"
+        height="44"
+        rx="6"
+        className="fill-surface-1"
+      />
+      <rect
+        x="146"
+        y="90"
+        width="56"
+        height="7"
+        rx="3.5"
+        className="fill-surface-1"
+      />
+      <rect
+        x="146"
+        y="104"
+        width="44"
+        height="7"
+        rx="3.5"
         className="fill-primary-tint"
       />
       <rect
-        x="154"
-        y="124"
-        width="36"
-        height="5"
-        rx="2.5"
-        className="fill-surface-1"
+        x="146"
+        y="117"
+        width="62"
+        height="12"
+        rx="4"
+        className="fill-gap-fill stroke-gap-strong"
+        strokeWidth="1.2"
+        strokeDasharray="4 4"
       />
+      <path
+        d="M106 82h8M126 82h8"
+        className="stroke-baseline"
+        strokeWidth="2.5"
+      />
+      <circle
+        cx="120"
+        cy="82"
+        r="7"
+        className="fill-card stroke-baseline"
+        strokeWidth="2"
+      />
+      <path d="M115 87l10-10" className="stroke-baseline" strokeWidth="2" />
     </Drawing>
   ),
   steps: [
@@ -400,52 +387,60 @@ export const RETURNS_ART = {
 };
 
 export const PROMOTIONS_ART = {
-  /** An offer's orders, with the returned and refused ones cut off the end. */
+  /** Orders jump the day an offer runs; the returns come back weeks later, after the report. */
   situation: (
     <Drawing>
       <rect
-        x="22"
-        y="30"
-        width="196"
-        height="100"
+        x="16"
+        y="16"
+        width="208"
+        height="128"
         rx="12"
         className="fill-card stroke-line"
         strokeWidth="1.5"
       />
-      <rect
-        x="40"
-        y="50"
-        width="160"
-        height="20"
-        rx="5"
-        className="fill-primary/35"
-      />
-      <rect
-        x="40"
-        y="90"
-        width="108"
-        height="20"
-        rx="5"
-        className="fill-primary"
-      />
-      <rect
-        x="152"
-        y="90"
-        width="24"
-        height="20"
-        rx="5"
-        className="fill-baseline"
-      />
-      <rect
-        x="180"
-        y="90"
-        width="20"
-        height="20"
-        rx="5"
-        className="fill-none stroke-baseline"
+      <path d="M30 88h180" className="stroke-line" strokeWidth="1.5" />
+      <path
+        d="M62 28v100"
+        className="stroke-baseline"
         strokeWidth="1.5"
         strokeDasharray="4 4"
       />
+      <rect
+        x="40"
+        y="34"
+        width="14"
+        height="54"
+        rx="3"
+        className="fill-primary"
+      />
+      <rect
+        x="70"
+        y="62"
+        width="14"
+        height="26"
+        rx="3"
+        className="fill-primary/60"
+      />
+      <rect
+        x="96"
+        y="74"
+        width="14"
+        height="14"
+        rx="3"
+        className="fill-primary/40"
+      />
+      {[122, 148, 174].map((x, i) => (
+        <rect
+          key={x}
+          x={x}
+          y="90"
+          width="14"
+          height={[18, 26, 14][i]}
+          rx="3"
+          className="fill-baseline"
+        />
+      ))}
     </Drawing>
   ),
   steps: [

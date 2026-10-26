@@ -40,7 +40,18 @@ export default async function Page({ params }: PageProps) {
         nodes={[storyFaqSchema(c)]}
       />
       {/* The owner's mockup of 26 Oct 2026: hero A, sections C. See chapters.tsx. */}
-      <ChapterPage c={c} chain={<ReturnsChain l={c.art} />} art={RETURNS_ART} />
+      <ChapterPage
+        c={c}
+        chain={<ReturnsChain l={c.art} />}
+        art={RETURNS_ART}
+        gains={[
+          "returnsSplit",
+          "factsRanked",
+          "repairProof",
+          "ownCosts",
+          "staysBought",
+        ]}
+      />
     </>
   );
 }

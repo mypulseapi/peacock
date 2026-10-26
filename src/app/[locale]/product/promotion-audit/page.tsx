@@ -44,6 +44,13 @@ export default async function Page({ params }: PageProps) {
         c={c}
         chain={<PromotionsChain l={c.art} />}
         art={PROMOTIONS_ART}
+        gains={[
+          "offerNet",
+          "giveNothing",
+          "repairVsDiscount",
+          "landedPrice",
+          "testUnknown",
+        ]}
       />
     </>
   );

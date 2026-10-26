@@ -53,6 +53,13 @@ What Pulse does NOT do or claim:
 - The live session layer is optional and is the only part that touches a storefront.
 - We generate presentation. We never generate an unverified product fact.
 
+## For AI agents
+PULSE is a decision call: requirements and evidence in; for every option, fits, fails or cannot tell, with what is missing. Any domain whose options carry attributes. MCP server: \`npx -y @thepulseapi/mcp\` (open source, github.com/mypulseapi/open-pulse).
+- [Shopping assistants](${en("/agents/shopping-assistants")}): recommend only what a listing proves.
+- [Procurement agents](${en("/agents/procurement")}): check suppliers and parts against a spec.
+- [Travel and booking agents](${en("/agents/travel")}): match hotels, fares and plans to needs.
+- [Coding agents](${en("/agents/coding-agents")}): Claude Code, Cursor and Codex read the current docs and call the API.
+
 ## Product
 - [Decision Audit](${en("/product/decision-audit")}): which product data to fix first, ranked by how many shoppers need it.
 - [Decision Verification](${en("/product/decision-verification")}): the same measurement on the repaired export, so a fix can be proved without traffic.

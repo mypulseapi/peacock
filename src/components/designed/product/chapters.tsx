@@ -63,6 +63,7 @@ const Mark = ({ ok }: { ok: boolean }) => (
 export function ChapterPage({
   c,
   chain,
+  chainFramed = true,
   art,
   gains,
   gainPictures,
@@ -72,6 +73,12 @@ export function ChapterPage({
   c: ChapterContent;
   /** The chart beside the chain chapter. */
   chain: ReactNode;
+  /**
+   * Frame `chain` in a card (the default). Off for charts that bring their own card, such as the
+   * storefront panels and their two stacked comparison cards: framed twice, a white strip showed
+   * between the two cards (owner, 26 Oct 2026).
+   */
+  chainFramed?: boolean;
   /** `situationIsPanel`: the situation picture is a data panel, so it sizes to its content instead of a 3:2 frame. */
   art: { situation: ReactNode; steps: ReactNode[]; situationIsPanel?: boolean };
   /** One drawing per gain, in order (`gains.tsx`); or `gainPictures`, any picture per gain. */
@@ -177,7 +184,9 @@ export function ChapterPage({
               </p>
             )}
           </div>
-          <div className="reveal rounded-2xl border border-line bg-card shadow-sm delay-100">
+          <div
+            className={`reveal delay-100 ${chainFramed ? "rounded-2xl border border-line bg-card shadow-sm" : ""}`}
+          >
             {chain}
           </div>
         </div>

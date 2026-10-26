@@ -5,15 +5,14 @@
  *
  * Two kinds, as in `chapter-art.tsx`. The panels are markup, because their words must localise: the
  * scene data comes from each page's content module (`scenes`), the panel labels from `ui()`. The
- * drawings (the step pictures, the gains pictures, the first-visit strip) are inline SVG with no
- * words, painted from the tokens, and stand in until the owner's images replace them.
+ * first-visit strip below is inline SVG with no words; the step and gain drawings are in
+ * `storefront-drawings.tsx`.
  *
  * These replace `ApiVisual`, `SearchVisual`, `RecommendationsVisual`, `PagesVisual` and
  * `StudioVisual`, which drew in hard-coded hex and red, and the story scenes' versions of the same
  * data, which waited for an animation before showing anything. Everything here reads at rest.
  */
 import type { ReactNode } from "react";
-import type { LucideIcon } from "lucide-react";
 import { renderLocale } from "@/i18n/render-locale";
 import { ui } from "@/content/locale";
 import type {
@@ -583,74 +582,6 @@ const Drawing = ({ children }: { children: ReactNode }) => (
   </svg>
 );
 
-/**
- * A storefront shelf in three states, one per step: as it arrives, ordered for the visit, and with
- * the held-back arm beside it in your own order. Every storefront page's three steps are those.
- */
-function Shelf({ state }: { state: 0 | 1 | 2 }) {
-  return (
-    <Drawing>
-      <rect
-        x="16"
-        y="14"
-        width="208"
-        height="132"
-        rx="12"
-        className="fill-card stroke-line"
-        strokeWidth="1.5"
-      />
-      <rect
-        x="16"
-        y="14"
-        width="208"
-        height="20"
-        rx="12"
-        className="fill-surface-1"
-      />
-      <rect x="16" y="26" width="208" height="8" className="fill-surface-1" />
-      {[0, 1].map((row) =>
-        [0, 1, 2, 3].map((k) => {
-          const on = state === 1 ? row === 0 : state === 2 && row === 0;
-          const held = state === 2 && row === 1;
-          return (
-            <rect
-              key={`${row}-${k}`}
-              x={30 + k * 48}
-              y={46 + row * 48}
-              width="38"
-              height="38"
-              rx="7"
-              className={
-                on
-                  ? "fill-primary-tint stroke-primary"
-                  : held
-                    ? "fill-surface-1 stroke-baseline"
-                    : "fill-surface-1"
-              }
-              strokeWidth={on || held ? 1.5 : 0}
-              strokeDasharray={held ? "4 3" : undefined}
-            />
-          );
-        }),
-      )}
-      {state === 2 && (
-        <path
-          d="M28 90h184"
-          className="stroke-line"
-          strokeWidth="1.5"
-          strokeDasharray="4 4"
-        />
-      )}
-    </Drawing>
-  );
-}
-
-export const SHELF_STEPS = [
-  <Shelf key="0" state={0} />,
-  <Shelf key="1" state={1} />,
-  <Shelf key="2" state={2} />,
-];
-
 /** Recommendations' situation, redrawn from a stock illustration: one bestseller strip, three first-time visitors. */
 export const SAME_STRIP = (
   <Drawing>
@@ -686,18 +617,3 @@ export const SAME_STRIP = (
     ))}
   </Drawing>
 );
-
-/** A gain's own icon on a lifted card, standing in until the owner's picture for that gain exists. */
-export function IconPicture({ icon: GainIcon }: { icon: LucideIcon }) {
-  return (
-    <div className="grid size-full place-items-center">
-      <span className="illo-lift grid size-28 place-items-center rounded-3xl bg-card text-primary sm:size-32">
-        <GainIcon
-          aria-hidden
-          className="size-12 sm:size-14"
-          strokeWidth={1.5}
-        />
-      </span>
-    </div>
-  );
-}

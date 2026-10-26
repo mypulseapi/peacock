@@ -4,11 +4,10 @@ import { buildAlternates } from "@/lib/seo";
 import { storyFaqSchema } from "@/components/StoryPage";
 import { ChapterPage } from "@/components/designed/product/chapters";
 import {
-  IconPicture,
-  SHELF_STEPS,
   SearchOutput,
   StorefrontScene,
 } from "@/components/designed/product/storefront-art";
+import { STOREFRONT_DRAWINGS } from "@/components/designed/product/storefront-drawings";
 import { PageSchema } from "@/components/PageSchema";
 import { search } from "@/content/pages/search";
 
@@ -46,20 +45,19 @@ export default async function Page({ params }: PageProps) {
       />
       {/* The owner's direction of 26 Oct 2026: the blocks of Return Verification and Promotion
           Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero figure and
-          the step and gain pictures stand in until the owner's images exist. */}
+          the step and gain drawings (storefront-drawings.tsx) stand in until the owner's images exist. */}
       <ChapterPage
         c={c}
         figure={<SearchOutput />}
         chain={<StorefrontScene spec={c.scenes?.chain} />}
+        chainFramed={false}
         art={{
           situation: <StorefrontScene spec={c.scenes?.situation} missing />,
-          steps: SHELF_STEPS,
+          steps: STOREFRONT_DRAWINGS["search"].steps,
           situationIsPanel: true,
         }}
-        gainPictures={c.gets.items.map((g) => (
-          <IconPicture key={g.title} icon={g.icon} />
-        ))}
-        output={{ panel: <SearchOutput />, layout: "centre" }}
+        gainPictures={STOREFRONT_DRAWINGS["search"].gains}
+        output={{ panel: <SearchOutput />, layout: "band" }}
       />
     </>
   );

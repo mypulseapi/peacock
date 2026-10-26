@@ -4,12 +4,11 @@ import { buildAlternates } from "@/lib/seo";
 import { storyFaqSchema } from "@/components/StoryPage";
 import { ChapterPage } from "@/components/designed/product/chapters";
 import {
-  IconPicture,
   RecommendationsOutput,
   SAME_STRIP,
-  SHELF_STEPS,
   StorefrontScene,
 } from "@/components/designed/product/storefront-art";
+import { STOREFRONT_DRAWINGS } from "@/components/designed/product/storefront-drawings";
 import { PageSchema } from "@/components/PageSchema";
 import { recommendations } from "@/content/pages/recommendations";
 
@@ -47,15 +46,17 @@ export default async function Page({ params }: PageProps) {
       />
       {/* The owner's direction of 26 Oct 2026: the blocks of Return Verification and Promotion
           Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero figure and
-          the step and gain pictures stand in until the owner's images exist. */}
+          the step and gain drawings (storefront-drawings.tsx) stand in until the owner's images exist. */}
       <ChapterPage
         c={c}
         figure={<StorefrontScene spec={c.scenes?.hero} />}
         chain={<StorefrontScene spec={c.scenes?.chain} />}
-        art={{ situation: SAME_STRIP, steps: SHELF_STEPS }}
-        gainPictures={c.gets.items.map((g) => (
-          <IconPicture key={g.title} icon={g.icon} />
-        ))}
+        chainFramed={false}
+        art={{
+          situation: SAME_STRIP,
+          steps: STOREFRONT_DRAWINGS["recommendations"].steps,
+        }}
+        gainPictures={STOREFRONT_DRAWINGS["recommendations"].gains}
         output={{ panel: <RecommendationsOutput />, layout: "band" }}
       />
     </>

@@ -697,7 +697,23 @@
       "pagesName": "Pages",
       "pagesBlurb": "Order category pages for the shopper who just arrived",
       "studioName": "Merchandising Studio",
-      "studioBlurb": "Manage the catalogue and see why each product ranked where it did"
+      "studioBlurb": "Manage the catalogue and see why each product ranked where it did",
+      "facts": "One export · No integration · 48 hours",
+      "exampleTitle": "By what shoppers need, of 32 requirements",
+      "exampleNote": "Example data",
+      "exampleCaption": "Processor is missing from 162 products, but only 2 of 32 shopper requirements mention it.",
+      "ex1Name": "Screen size",
+      "ex1Need": "15 of 32",
+      "ex1Missing": "80 missing",
+      "ex2Name": "Memory",
+      "ex2Need": "13 of 32",
+      "ex2Missing": "60 missing",
+      "ex3Name": "Storage",
+      "ex3Need": "10 of 32",
+      "ex3Missing": "55 missing",
+      "ex4Name": "Processor",
+      "ex4Need": "2 of 32",
+      "ex4Missing": "162 missing"
     }
   },
   "industries": {

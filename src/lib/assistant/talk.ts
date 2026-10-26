@@ -134,6 +134,7 @@ const SMALL_TALK: {
 
 const TERMS: {
   names: string[];
+  any?: boolean;
   reply: (l: ReturnType<typeof links>) => Reply;
 }[] = [
   {
@@ -283,6 +284,70 @@ const TERMS: {
       vi: `Các AI agent và trợ lý lập trình có thể đọc tài liệu này qua máy chủ MCP của chúng tôi, để trả lời từ tài liệu mới nhất thay vì trí nhớ. [MCP cho agent](${l.docs}/mcp).`,
     }),
   },
+  // The three broad questions page text answers badly: retrieval put the careers page ahead of
+  // the industry pages. `any`: answered whenever the question names them, at any length.
+  {
+    names: [
+      "industries",
+      "industry",
+      "sectors",
+      "sector",
+      "verticals",
+      "nganh nghe",
+      "linh vuc nao",
+    ],
+    any: true,
+    reply: (l) => ({
+      en: `Pulse works on any product catalogue, and the site has a page for six sectors: [Ecommerce and retail](${l.site}/industries/ecommerce), [FMCG and consumer goods](${l.site}/industries/fmcg), [Technology and electronics](${l.site}/industries/technology), [Furniture and homewares](${l.site}/industries/furniture), [Cosmetics and personal care](${l.site}/industries/cosmetics) and [B2B and industrial](${l.site}/industries/distribution). Each starts the same way: a Decision Audit on one category.`,
+      vi: `Pulse dùng được với mọi danh mục sản phẩm, và trang web có một trang cho sáu lĩnh vực: [Thương mại điện tử và bán lẻ](${l.site}/industries/ecommerce), [Hàng tiêu dùng nhanh](${l.site}/industries/fmcg), [Công nghệ và điện tử](${l.site}/industries/technology), [Nội thất và gia dụng](${l.site}/industries/furniture), [Mỹ phẩm và chăm sóc cá nhân](${l.site}/industries/cosmetics) và [B2B và công nghiệp](${l.site}/industries/distribution). Lĩnh vực nào cũng bắt đầu giống nhau: một Decision Audit trên một ngành hàng.`,
+    }),
+  },
+  {
+    names: [
+      "resolve labs",
+      "founder",
+      "founders",
+      "founded",
+      "who made",
+      "who built",
+      "who is behind",
+      "behind pulse",
+      "headquarters",
+      "the company",
+      "your company",
+      "nha sang lap",
+      "ai lam ra",
+      "cong ty",
+    ],
+    any: true,
+    reply: (l) => ({
+      en: `Pulse is made by **Resolve Labs**, founded in March 2026, with headquarters in Singapore and engineering in Ho Chi Minh City. It started with one shelf of 216 laptops, where ranking the gaps by how much data was missing gave almost the opposite order to ranking them by what shoppers said they needed. [About us](${l.site}/about).`,
+      vi: `Pulse do **Resolve Labs** làm ra, thành lập tháng 3 năm 2026, trụ sở chính ở Singapore và đội kỹ thuật ở Thành phố Hồ Chí Minh. Mọi thứ bắt đầu từ một kệ 216 chiếc laptop, nơi xếp hạng khoảng trống theo lượng dữ liệu còn thiếu cho ra thứ tự gần như ngược với xếp theo điều người mua nói họ cần. [Về chúng tôi](${l.site}/about).`,
+    }),
+  },
+  {
+    names: [
+      "markets",
+      "countries",
+      "which country",
+      "southeast asia",
+      "vietnam",
+      "viet nam",
+      "where is pulse",
+      "where are you",
+      "where do you work",
+      "where does pulse work",
+      "available in",
+      "o dau",
+      "hoat dong o dau",
+      "o nuoc nao",
+    ],
+    any: true,
+    reply: (l) => ({
+      en: `Pulse works with merchants in Vietnam and across Southeast Asia, starting with one category each. Search reads Vietnamese, Thai, Bahasa and English, and the catalogue products work on any export, wherever you sell. Headquarters are in Singapore, engineering in Ho Chi Minh City. [Talk to the team](${l.contact}).`,
+      vi: `Pulse làm việc với người bán ở Việt Nam và khắp Đông Nam Á, mỗi nơi bắt đầu với một ngành hàng. Tìm kiếm hiểu tiếng Việt, Thái, Bahasa và tiếng Anh, còn các sản phẩm cho danh mục dùng được với mọi bản xuất, dù bạn bán ở đâu. Trụ sở chính ở Singapore, đội kỹ thuật ở Thành phố Hồ Chí Minh. [Liên hệ đội ngũ](${l.contact}).`,
+    }),
+  },
 ];
 
 const ASKING_ABOUT =
@@ -332,7 +397,7 @@ export function talk(
   // Only when the question is about the term itself, so "how do I call the audit from Python"
   // still goes to retrieval and gets the Python page rather than a definition.
   const term = matchTerm(q);
-  if (term && (n <= 4 || ASKING_ABOUT.test(q))) {
+  if (term && (n <= 4 || term.any || ASKING_ABOUT.test(q))) {
     return {
       answer: { body: term.reply(href)[l], sources: [], kind: "answer" },
       final: false,

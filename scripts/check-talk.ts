@@ -56,4 +56,15 @@ assert.match(
   /Decision Verification/,
 );
 assert.match(talk("api key", "en", o)!.answer.body, /x-api-key/);
+// Broad questions get the reviewed answer at any length, not the closest page.
+assert.match(
+  talk("which industries is pulse built for", "en", o)!.answer.body,
+  /Cosmetics/,
+);
+assert.match(talk("who founded pulse", "en", o)!.answer.body, /Resolve Labs/);
+assert.match(
+  talk("does pulse work for shops in vietnam", "en", o)!.answer.body,
+  /Southeast Asia/,
+);
+assert.match(talk("Pulse hoạt động ở đâu", "vi", o)!.answer.body, /Đông Nam Á/);
 console.log("talk ok");

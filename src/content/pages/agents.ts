@@ -34,7 +34,7 @@ const SHARED_EN = {
         n: "01",
         meta: "Ask",
         title: "State what is needed",
-        body: "As requirements such as "voltage = 24V", or in plain words; a budget in the words becomes a price requirement.",
+        body: 'As requirements such as "voltage = 24V", or in plain words; a budget in the words becomes a price requirement.',
       },
       {
         n: "02",
@@ -120,7 +120,7 @@ const SHARED_VI = {
         n: "01",
         meta: "Hỏi",
         title: "Nêu điều cần có",
-        body: "Dưới dạng yêu cầu như "voltage = 24V", hoặc bằng lời thường; ngân sách trong câu sẽ thành yêu cầu về giá.",
+        body: 'Dưới dạng yêu cầu như "voltage = 24V", hoặc bằng lời thường; ngân sách trong câu sẽ thành yêu cầu về giá.',
       },
       {
         n: "02",

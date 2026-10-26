@@ -3,7 +3,7 @@
  * the sections of version C.
  *
  * The hero is the one the designed product pages use: the headline centred at the home hero's size,
- * and under it a figure composed like theirs (`chapter-hero.tsx`). Below it the page reads as chapters,
+ * a call to action, and the owner's figure under it from the CDN. Below it the page reads as chapters,
  * picture beside text, alternating; the steps on a zig-zag with their numbers large; the gains on the
  * home research section's hairline grid; the limits on a well. Each section is a plain tone step from
  * its neighbours (owner, 20 Oct 2026: no dark band, no pattern).
@@ -16,10 +16,18 @@
 import type { ReactNode } from "react";
 import { renderLocale } from "@/i18n/render-locale";
 import { ui } from "@/content/locale";
+import Image from "next/image";
+import { img } from "@/lib/cdn";
+import { Link } from "@/i18n/routing";
 import { StoryCta, type StoryContent } from "@/components/StoryPage";
 
 export type ChapterContent = StoryContent &
-  Required<Pick<StoryContent, "situation" | "gets" | "limits" | "chainBlock">>;
+  Required<
+    Pick<StoryContent, "situation" | "gets" | "limits" | "chainBlock">
+  > & {
+    /** The hero figure, on the CDN like the other product heroes; the alt text localises. */
+    heroImage: { src: string; alt: string; width: number; height: number };
+  };
 
 const h = (s: string) => s.replace(/\.\s*$/, "");
 
@@ -49,30 +57,49 @@ const Mark = ({ ok }: { ok: boolean }) => (
 
 export function ChapterPage({
   c,
-  figure,
   chain,
   art,
 }: {
   c: ChapterContent;
-  /** The hero figure (`chapter-hero.tsx`): the product's screen, its gains and its steps. */
-  figure: ReactNode;
   /** The chart beside the chain chapter. */
   chain: ReactNode;
   art: { situation: ReactNode; steps: ReactNode[] };
 }) {
-  const t = ui(renderLocale());
+  const locale = renderLocale();
+  const t = ui(locale);
   const divide = ["", "lg:border-l", "", "lg:border-l", "lg:border-l"];
   return (
     <>
-      <section className="border-b border-line">
-        <div className="frame pt-12 pb-20 lg:pt-16 lg:pb-28">
-          <div className="mx-auto max-w-4xl text-center">
-            <h1 className="reveal text-hero text-balance">{h(c.title)}</h1>
-            <p className="reveal mx-auto mt-6 max-w-2xl text-lg text-pretty text-muted delay-100">
-              {c.lede}
-            </p>
+      {/* The hero of the designed product pages (decision-audit/section1.tsx), class for class:
+          the words centred over a narrow column, then the figure across the whole screen. */}
+      <section className="relative isolate overflow-hidden border-b border-line">
+        <div className="frame">
+          <div className="pt-12 pb-0 lg:pt-16">
+            <div className="mx-auto max-w-4xl text-center">
+              <h1 className="reveal text-hero text-balance">{h(c.title)}</h1>
+              <p className="reveal mx-auto mt-4 max-w-xl text-body leading-relaxed text-pretty text-muted delay-100">
+                {c.lede}
+              </p>
+              <div className="reveal mt-7 flex flex-wrap justify-center gap-3 delay-200">
+                <Link locale={locale} href={c.cta.href} className="btn-primary">
+                  {c.cta.label}
+                </Link>
+              </div>
+            </div>
+            {/* The owner's image as supplied. `bleed-x` gives back the page margins and the section
+                clips; the `svh` cap keeps the whole figure above the fold, as on the other heroes. */}
+            <div className="reveal mt-8 delay-200 lg:mt-10 lg:bleed-x">
+              <Image
+                src={img(c.heroImage.src)}
+                alt={c.heroImage.alt}
+                width={c.heroImage.width}
+                height={c.heroImage.height}
+                sizes="100vw"
+                priority
+                className="mx-auto h-auto w-full object-contain lg:max-h-[calc(100svh-28rem)]"
+              />
+            </div>
           </div>
-          <div className="reveal mt-10 delay-200 lg:mt-14">{figure}</div>
         </div>
       </section>
 

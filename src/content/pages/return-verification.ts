@@ -25,24 +25,19 @@ export const RETURN_VERIFICATION: Content = {
   title: "Find the missing facts your returns are telling you about.",
   lede: "Send your order history with the reasons people gave. We join it to your catalogue, show which missing product information goes with returns, and after a repair, whether that slice of returns actually moved.",
 
-  // The words inside the hero panel and the chain chart (chapter-art.tsx). Reasons and facts are the
-  // situation's own examples; nothing here is a measured result.
+  // The words in the chain chart (chapter-art.tsx), and the hero image, on the CDN like the other
+  // product heroes (owner's image, 26 Oct 2026). Nothing in either is a measured result.
   art: {
     note: "Illustration",
-    heading: "Returns",
-    missing: "missing",
-    setAside: "Set aside",
-    reasons: [
-      "Too large",
-      "Does not work with my device",
-      "Not as described",
-      "Transit damage",
-      "Failed delivery",
-    ],
-    facts: ["Dimensions", "Compatibility", "Material"],
-    yours: "A product fact could have prevented it",
-    notYours: "Not product information",
     rate: "Return rate",
+    facts: ["Dimensions", "Compatibility", "Material"],
+    others: ["Transit damage", "Failed delivery"],
+  },
+  heroImage: {
+    src: "product/return-verification-returns-joined-to-missing-facts.webp",
+    width: 1946,
+    height: 808,
+    alt: "Return Verification on one laptop. A table reads five return reasons: too large, does not work with my device and not as described each point to a missing fact, the dimensions, the compatibility and the material, while transit damage and failed delivery are set aside. Cards beside it split returns into yours and not yours, rank the facts that go with returns, show a repaired product's returns falling away from unrepaired ones, and value the change at your own costs. Three steps run beneath: export orders and returns, we join returns to the evidence, repair then verify.",
   },
 
   chainBlock: {
@@ -178,20 +173,15 @@ export const RETURN_VERIFICATION_VI: Content = {
 
   art: {
     note: "Minh hoạ",
-    heading: "Hàng bị trả",
-    missing: "thiếu",
-    setAside: "Để riêng",
-    reasons: [
-      "Quá to",
-      "Không dùng được với thiết bị của tôi",
-      "Không giống mô tả",
-      "Hư hỏng khi vận chuyển",
-      "Giao hàng thất bại",
-    ],
-    facts: ["Kích thước", "Khả năng tương thích", "Chất liệu"],
-    yours: "Thông tin sản phẩm có thể ngăn được",
-    notYours: "Không phải thông tin sản phẩm",
     rate: "Tỷ lệ trả hàng",
+    facts: ["Kích thước", "Khả năng tương thích", "Chất liệu"],
+    others: ["Hư hỏng khi vận chuyển", "Giao hàng thất bại"],
+  },
+  heroImage: {
+    src: "product/return-verification-returns-joined-to-missing-facts.webp",
+    width: 1946,
+    height: 808,
+    alt: "Return Verification trên một máy tính xách tay. Một bảng đọc năm lý do trả hàng: quá to, không dùng được với thiết bị của tôi và không giống mô tả, mỗi lý do chỉ tới một thông tin còn thiếu là kích thước, khả năng tương thích và chất liệu, còn hư hỏng khi vận chuyển và giao hàng thất bại được để riêng. Các thẻ bên cạnh tách hàng bị trả thành phần của bạn và phần không phải, xếp thứ tự các thông tin đi cùng hàng bị trả, cho thấy hàng bị trả của sản phẩm đã sửa giảm xuống so với sản phẩm chưa sửa, và định giá thay đổi theo chi phí của bạn. Ba bước ở bên dưới: xuất đơn hàng và hàng bị trả, nối hàng bị trả với bằng chứng, sửa rồi kiểm chứng.",
   },
 
   chainBlock: {

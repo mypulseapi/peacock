@@ -26,26 +26,21 @@ export const PROMOTION_AUDIT: Content = {
   title: "Find out which promotions paid for themselves, after the returns.",
   lede: "Send the history of your vouchers, price cuts and free-shipping offers with the orders, returns and failed deliveries they produced. We work out which ones left you better off than doing nothing, for which shoppers, and where fixing the listing beats a discount.",
 
-  // The words inside the hero panel and the chain chart (chapter-art.tsx). The offers are the ones
-  // this page names; nothing here is a measured result.
+  // The words in the chain chart (chapter-art.tsx), and the hero image, on the CDN like the other
+  // product heroes (owner's image, 26 Oct 2026). Nothing in either is a measured result.
   art: {
     note: "Illustration",
-    heading: "Offers",
-    offers: [
-      "No offer",
-      "Voucher",
-      "Price cut",
-      "Free shipping",
-      "Listing repair",
-    ],
-    beats: "Beats doing nothing",
-    test: "Test first",
-    nothing: "Doing nothing was better",
-    baseline: "Doing nothing",
+    voucher: "Voucher",
     orders: "Orders",
     failed: "Failed deliveries",
     returned: "Returns",
     kept: "Stay bought",
+  },
+  heroImage: {
+    src: "product/promotion-audit-offers-against-doing-nothing.webp",
+    width: 1913,
+    height: 822,
+    alt: "Promotion Audit on one laptop. A table sets each offer against doing nothing: a voucher is marked test first, a price cut did worse than doing nothing, and free shipping and a listing repair beat doing nothing. Cards beside it show an offer's orders net of returns and failed deliveries, where to give nothing, a listing repair priced against a price cut, and a test where the history cannot tell. Three steps run beneath: export your promotion history, we measure each offer against doing nothing, test what is not yet proven.",
   },
 
   chainBlock: {
@@ -181,22 +176,17 @@ export const PROMOTION_AUDIT_VI: Content = {
 
   art: {
     note: "Minh hoạ",
-    heading: "Ưu đãi",
-    offers: [
-      "Không ưu đãi",
-      "Voucher",
-      "Giảm giá",
-      "Miễn phí vận chuyển",
-      "Sửa trang sản phẩm",
-    ],
-    beats: "Tốt hơn không làm gì",
-    test: "Thử trước",
-    nothing: "Không làm gì tốt hơn",
-    baseline: "Không làm gì",
+    voucher: "Voucher",
     orders: "Đơn hàng",
     failed: "Giao thất bại",
     returned: "Hàng bị trả",
     kept: "Được giữ lại",
+  },
+  heroImage: {
+    src: "product/promotion-audit-offers-against-doing-nothing.webp",
+    width: 1913,
+    height: 822,
+    alt: "Promotion Audit trên một máy tính xách tay. Một bảng đặt từng ưu đãi cạnh việc không làm gì: voucher được đánh dấu thử trước, giảm giá kém hơn không làm gì, còn miễn phí vận chuyển và sửa trang sản phẩm tốt hơn không làm gì. Các thẻ bên cạnh cho thấy đơn hàng của một ưu đãi sau khi trừ hàng bị trả và giao thất bại, chỗ nào không nên ưu đãi, việc sửa trang sản phẩm đặt cạnh giảm giá, và một thử nghiệm khi lịch sử không đủ để biết. Ba bước ở bên dưới: xuất lịch sử khuyến mãi, đo mỗi ưu đãi so với không làm gì, thử nghiệm những gì chưa được chứng minh.",
   },
 
   chainBlock: {

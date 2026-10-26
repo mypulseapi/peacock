@@ -7,7 +7,6 @@ import {
   ReturnsChain,
   RETURNS_ART,
 } from "@/components/designed/product/chapter-art";
-import { ReturnsHero } from "@/components/designed/product/chapter-hero";
 import { PageSchema } from "@/components/PageSchema";
 import { returnVerification } from "@/content/pages/return-verification";
 
@@ -41,12 +40,7 @@ export default async function Page({ params }: PageProps) {
         nodes={[storyFaqSchema(c)]}
       />
       {/* The owner's mockup of 26 Oct 2026: hero A, sections C. See chapters.tsx. */}
-      <ChapterPage
-        c={c}
-        figure={<ReturnsHero c={c} />}
-        chain={<ReturnsChain l={c.art} />}
-        art={RETURNS_ART}
-      />
+      <ChapterPage c={c} chain={<ReturnsChain l={c.art} />} art={RETURNS_ART} />
     </>
   );
 }

@@ -1,56 +1,32 @@
 /**
  * The pictures on Return Verification and Promotion Audit (owner's mockup, 26 Oct 2026: hero A, sections C).
  *
- * Two kinds. The hero panel and the chain chart are markup, because their labels are words a reader
- * needs and must localise; their words come from each page's content module (`art`). The step and
+ * Two kinds. The chain chart is markup, because its labels are words a reader needs and must
+ * localise; their words come from each page's content module (`art`). The step and
  * chapter drawings are inline SVG with no text and no figures, painted from the theme tokens, like
  * the gains pictures in `gains.tsx` (ODIN design/IMAGE-PLAN.md, "data gets drawn").
  *
- * Nothing here is measured. Every panel carries the page's "Illustration" badge, bar lengths are
+ * Nothing here is measured. Each chart carries the page's "Illustration" badge, bar lengths are
  * shapes rather than values, and no number appears (ODIN hires/07-WHAT-WE-DO-NOT-CLAIM.md rule 9).
  */
 import type { ReactNode } from "react";
 
 export interface ReturnsArtText {
   note: string;
-  heading: string;
-  missing: string;
-  setAside: string;
-  /** Three reasons a listing fact could have prevented, then two it could not. */
-  reasons: [string, string, string, string, string];
-  /** The fact each of the first three reasons names. */
-  facts: [string, string, string];
-  yours: string;
-  notYours: string;
   rate: string;
+  /** Three facts a return reason can name, then two reasons no listing could fix. */
+  facts: [string, string, string];
+  others: [string, string];
 }
 
 export interface PromotionsArtText {
   note: string;
-  heading: string;
-  /** No offer first, then voucher, price cut, free shipping, listing repair. */
-  offers: [string, string, string, string, string];
-  beats: string;
-  test: string;
-  nothing: string;
-  baseline: string;
+  voucher: string;
   orders: string;
   failed: string;
   returned: string;
   kept: string;
 }
-
-const Icon = ({
-  id,
-  className = "size-3.5",
-}: {
-  id: string;
-  className?: string;
-}) => (
-  <svg className={`shrink-0 ${className}`} aria-hidden="true">
-    <use href={`#i-${id}`} />
-  </svg>
-);
 
 function Panel({
   heading,
@@ -81,161 +57,6 @@ const Swatch = ({ className }: { className: string }) => (
   />
 );
 
-/** Return reasons read for the fact they name; the ones no listing could fix are set aside. */
-export function ReturnsReport({ l }: { l: ReturnsArtText }) {
-  return (
-    <Panel heading={l.heading} note={l.note}>
-      <ul>
-        {l.reasons.map((reason, i) => (
-          <li
-            key={reason}
-            className={`grid gap-1.5 border-b border-line py-3 text-data last:border-b-0 @md:grid-cols-2 @md:items-center @md:gap-4 ${i < 3 ? "text-ink" : "text-muted"}`}
-          >
-            <span>{reason}</span>
-            <span className="flex items-center gap-3">
-              <Icon
-                id="arrow-right"
-                className="hidden size-4 text-line-control @md:block"
-              />
-              {i < 3 ? (
-                <span className="missing-flag">
-                  {l.facts[i]} · {l.missing}
-                </span>
-              ) : (
-                <span className="badge border-line bg-surface-1 text-muted">
-                  {l.setAside}
-                </span>
-              )}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <div className="flex flex-wrap gap-x-5 gap-y-2 border-t border-line pt-3 text-xs text-muted">
-        <span className="inline-flex items-center gap-2">
-          <Swatch className="bg-chart-missing" />
-          {l.yours}
-        </span>
-        <span className="inline-flex items-center gap-2">
-          <Swatch className="bg-chart-baseline" />
-          {l.notYours}
-        </span>
-      </div>
-    </Panel>
-  );
-}
-
-/**
- * Each offer's range against doing nothing (the dashed line). Recommended only when the cautious
- * end of the range still clears the line; one that straddles it is a test, one below it is not
- * worth giving. The positions are shapes, not results.
- */
-const OFFER_RANGES: [number, number, "test" | "nothing" | "beats"][] = [
-  [28, 55, "test"],
-  [12, 34, "nothing"],
-  [46, 72, "beats"],
-  [52, 84, "beats"],
-];
-
-function Track({ range }: { range?: [number, number, string] }) {
-  const fill =
-    range?.[2] === "beats"
-      ? "fill-chart-main"
-      : range?.[2] === "test"
-        ? "fill-chart-second"
-        : "fill-chart-baseline";
-  return (
-    <svg
-      viewBox="0 0 100 20"
-      preserveAspectRatio="none"
-      className="h-5 w-full"
-      aria-hidden="true"
-    >
-      <line
-        x1="40"
-        x2="40"
-        y1="0"
-        y2="20"
-        className="stroke-chart-baseline"
-        strokeWidth="2"
-        strokeDasharray="3 3"
-        vectorEffect="non-scaling-stroke"
-      />
-      {range ? (
-        <rect
-          x={range[0]}
-          y="6"
-          width={range[1] - range[0]}
-          height="8"
-          rx="2"
-          className={fill}
-        />
-      ) : (
-        <rect
-          x="39"
-          y="4"
-          width="2"
-          height="12"
-          className="fill-chart-baseline"
-        />
-      )}
-    </svg>
-  );
-}
-
-export function PromotionsReport({ l }: { l: PromotionsArtText }) {
-  const chip = {
-    beats: (
-      <span className="badge-primary">
-        <Icon id="check" />
-        {l.beats}
-      </span>
-    ),
-    test: (
-      <span className="badge-warning">
-        <Icon id="flask" />
-        {l.test}
-      </span>
-    ),
-    nothing: (
-      <span className="badge border-line bg-surface-1 text-muted">
-        {l.nothing}
-      </span>
-    ),
-  };
-  return (
-    <Panel heading={l.heading} note={l.note}>
-      <ul>
-        {l.offers.map((offer, i) => {
-          const range = OFFER_RANGES[i - 1];
-          return (
-            <li
-              key={offer}
-              className="grid grid-cols-12 items-center gap-x-3 gap-y-2 border-b border-line py-3 text-data text-ink last:border-b-0"
-            >
-              <span className="col-span-7 @md:col-span-3">{offer}</span>
-              <span className="col-span-5 justify-self-end text-right @md:order-last @md:col-span-4">
-                {range && chip[range[2]]}
-              </span>
-              <span className="col-span-12 @md:col-span-5">
-                <Track range={range} />
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-      <div className="flex border-t border-line pt-3 text-xs text-muted">
-        <span className="inline-flex items-center gap-2">
-          <span
-            className="h-3 border-l-2 border-dashed border-chart-baseline"
-            aria-hidden="true"
-          />
-          {l.baseline}
-        </span>
-      </div>
-    </Panel>
-  );
-}
-
 /** One return rate, then the same returns split by the reason given. */
 export function ReturnsChain({ l }: { l: ReturnsArtText }) {
   const segs = [
@@ -246,13 +67,13 @@ export function ReturnsChain({ l }: { l: ReturnsArtText }) {
       w: 28,
       c: "fill-chart-baseline",
       s: "bg-chart-baseline",
-      t: l.reasons[3],
+      t: l.others[0],
     },
     {
       w: 22,
       c: "fill-chart-baseline/55",
       s: "bg-chart-baseline/55",
-      t: l.reasons[4],
+      t: l.others[1],
     },
   ];
   let x = 0;
@@ -304,7 +125,7 @@ export function PromotionsChain({ l }: { l: PromotionsArtText }) {
     [l.kept, 0, 62, "fill-chart-main"],
   ];
   return (
-    <Panel heading={l.offers[1]} note={l.note}>
+    <Panel heading={l.voucher} note={l.note}>
       <ul className="mt-4 grid gap-3">
         {rows.map(([t, x, w, c]) => (
           <li

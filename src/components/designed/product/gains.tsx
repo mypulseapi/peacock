@@ -1449,19 +1449,20 @@ export type GainsArt = keyof typeof ART;
 export function GainsCards({
   items,
 }: {
-  items: { art: GainsArt; title: string; body: string }[];
+  /** `art` is one of the drawings above; `picture` is any other picture, such as an owner's image. */
+  items: { art?: GainsArt; picture?: ReactNode; title: string; body: string }[];
 }) {
   return (
     <div className="mt-14 grid gap-4">
       {items.map((item, i) => (
         <article
-          key={item.art}
+          key={item.title}
           className="reveal grid items-center gap-6 rounded-2xl border border-line bg-card p-4 lg:grid-cols-2 lg:gap-14 lg:p-5"
         >
           <div
             className={`aspect-3/2 overflow-hidden rounded-xl border border-line bg-primary-wash ${i % 2 ? "lg:order-last" : ""}`}
           >
-            {ART[item.art]}
+            {item.picture ?? (item.art && ART[item.art])}
           </div>
           <div
             className={`px-2 pb-4 lg:px-0 lg:pb-0 ${i % 2 ? "lg:pl-6" : "lg:pr-6"}`}

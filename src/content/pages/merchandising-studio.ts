@@ -1,6 +1,6 @@
 import { byLocale } from "@/content/locale";
 import { SlidersHorizontal, Gauge, ScrollText, Users } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
 
 /**
  * The console.
@@ -16,7 +16,7 @@ import type { StoryContent } from "@/components/StoryPage";
  * `/why/limits` gives the missing uplift figure, and it is the reason anything
  * else on this site can be read at face value.
  */
-export const MERCHANDISING_STUDIO: StoryContent = {
+export const MERCHANDISING_STUDIO: ChapterContent = {
   meta: {
     title: "Merchandising Studio: the console, and its limits",
     description:
@@ -119,8 +119,6 @@ export const MERCHANDISING_STUDIO: StoryContent = {
     heading:
       "A control surface is the first thing a merchandiser asks for and the last thing most vendors are straight about.",
     body: [
-      "The question always arrives in the same shape. If the engine ranks the catalogue, what happens when a buyer needs a product up for a reason the engine cannot see: a supplier commitment, an overstock, a range launch on Thursday. That is a fair question and the honest answer today is that you cannot pin it.",
-      "We could describe the roadmap in the present tense and nobody would catch it until a pilot. That is how vendors end up with a checklist that matches the brief and a product that does not, and it is a worse outcome for us than losing the deal now.",
       "What the console does hold is the part the engine depends on: the catalogue and its attributes, the personas products are tagged against, the share of traffic held back, and the record behind any individual decision. That is a real surface, it is just a smaller one than the name suggests.",
     ],
     pull: "If we described overrides we have not built, you would discover it in a pilot. Finding out here costs us a conversation and costs you nothing.",
@@ -145,7 +143,7 @@ export const MERCHANDISING_STUDIO: StoryContent = {
         n: "03",
         meta: "Audit",
         title: "Pull a decision record",
-        body: "Any ranked response carries an id and the factors behind each score. When somebody asks why a product placed where it did, the answer is retrievable.",
+        body: "Any ranked response carries an id and the factors behind each score.",
       },
     ],
   },
@@ -225,7 +223,7 @@ export const MERCHANDISING_STUDIO: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const MERCHANDISING_STUDIO_VI: StoryContent = {
+export const MERCHANDISING_STUDIO_VI: ChapterContent = {
   meta: {
     title: "Merchandising Studio: bảng điều khiển",
     description:
@@ -329,8 +327,6 @@ export const MERCHANDISING_STUDIO_VI: StoryContent = {
     heading:
       "Bề mặt điều khiển là thứ đầu tiên người phụ trách trưng bày hàng hoá hỏi tới và là thứ cuối cùng phần lớn nhà cung cấp nói thẳng.",
     body: [
-      "Câu hỏi luôn tới dưới cùng một hình dạng. Nếu bộ máy xếp hạng danh mục, thì chuyện gì xảy ra khi người mua hàng cần đẩy một sản phẩm lên vì một lý do bộ máy không thấy được: một cam kết với nhà cung cấp, một lô hàng tồn, một dòng sản phẩm ra mắt thứ Năm. Đó là câu hỏi chính đáng và câu trả lời trung thực hôm nay là bạn không ghim nó được.",
-      "Chúng tôi có thể mô tả lộ trình ở thì hiện tại và sẽ không ai phát hiện ra cho tới lúc chạy thử nghiệm. Đó là cách các nhà cung cấp kết thúc với một bảng tính năng khớp với yêu cầu và một sản phẩm thì không, và với chúng tôi kết cục đó còn tệ hơn việc mất thương vụ ngay bây giờ.",
       "Thứ bảng điều khiển thực sự nắm giữ là phần mà bộ máy phụ thuộc vào: danh mục cùng các thuộc tính của nó, các chân dung mà sản phẩm được gắn thẻ theo, tỷ lệ lưu lượng được giữ lại, và bản ghi đằng sau từng quyết định riêng lẻ. Đó là một bề mặt có thật, chỉ là nhỏ hơn cái tên gợi ra.",
     ],
     pull: "Nếu chúng tôi mô tả những quyền ghi đè chưa xây, bạn sẽ phát hiện ra giữa một chương trình thử nghiệm. Biết được ở đây khiến chúng tôi mất một cuộc trò chuyện và khiến bạn không mất gì.",
@@ -355,7 +351,7 @@ export const MERCHANDISING_STUDIO_VI: StoryContent = {
         n: "03",
         meta: "Truy vết",
         title: "Tra một bản ghi quyết định",
-        body: "Mọi phản hồi đã xếp hạng đều mang một mã và các yếu tố đứng sau từng điểm số. Khi ai đó hỏi vì sao một sản phẩm nằm ở vị trí đó, câu trả lời là thứ tra ra được.",
+        body: "Mọi phản hồi đã xếp hạng đều mang một mã và các yếu tố đứng sau từng điểm số.",
       },
     ],
   },

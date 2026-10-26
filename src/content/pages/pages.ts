@@ -5,7 +5,7 @@ import {
   Blocks,
   SplitSquareHorizontal,
 } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
 
 /**
  * Landing and category pages. Same ranker again, applied to the grid rather
@@ -13,7 +13,7 @@ import type { StoryContent } from "@/components/StoryPage";
  * easiest surface to personalise and the one where a wrong order costs most,
  * because it is usually the first thing paid traffic sees.
  */
-export const PAGES: StoryContent = {
+export const PAGES: ChapterContent = {
   meta: {
     title: "Pages: category grids ordered for whoever arrived",
     description:
@@ -82,8 +82,6 @@ export const PAGES: StoryContent = {
   situation: {
     heading: "You pay for the click, then show everyone the same page.",
     body: [
-      "Paid traffic lands on a category or a landing page, and that grid is usually the single most expensive surface on the site: you have already spent money to put somebody in front of it. It is also the surface with the least information about them, because they arrived one second ago.",
-      "So it gets ordered by a rule written months earlier. Newest first, or bestsellers, or a manual pin from a campaign that ended. The rule is not wrong exactly, it is just the same for a first-time visitor from a price comparison ad and a returning customer browsing on a phone at midnight.",
       "The visit itself carries more than the rule does, and it carries it immediately. Which campaign, which device, what they touched in the first fifteen seconds. None of that needs an identity and all of it is available before the second page view.",
     ],
     pull: "The grid you paid to put someone in front of is usually ordered by a rule written before you knew they existed.",
@@ -96,13 +94,13 @@ export const PAGES: StoryContent = {
         n: "01",
         meta: "Arrival",
         title: "The visit starts with context",
-        body: "Referrer, device and the campaign that sent them are available on the first request, before anybody has clicked anything. That is enough to start from something better than a static rule.",
+        body: "Referrer, device and the campaign that sent them are available on the first request, before anybody has clicked anything.",
       },
       {
         n: "02",
         meta: "Live",
         title: "It re-ranks as they move",
-        body: "Every view, filter and search inside the visit updates the ordering of what has not been seen yet. The grid is not decided once at page load and then frozen.",
+        body: "Every view, filter and search inside the visit updates the ordering of what has not been seen yet.",
       },
       {
         n: "03",
@@ -188,7 +186,7 @@ export const PAGES: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const PAGES_VI: StoryContent = {
+export const PAGES_VI: ChapterContent = {
   meta: {
     title: "Trang danh mục: lưới hàng sắp cho đúng người vừa tới",
     description:
@@ -262,8 +260,6 @@ export const PAGES_VI: StoryContent = {
     heading:
       "Bạn trả tiền cho lượt nhấp, rồi cho mọi người xem cùng một trang.",
     body: [
-      "Lưu lượng trả phí đáp xuống một trang ngành hàng hoặc một trang đích, và lưới đó thường là bề mặt đắt nhất trên cả website: bạn đã bỏ tiền để đặt ai đó trước nó. Nó cũng là bề mặt biết ít nhất về người đó, vì họ vừa tới cách đây một giây.",
-      "Thế là nó được sắp bởi một quy tắc viết từ nhiều tháng trước. Mới nhất lên đầu, hoặc hàng bán chạy, hoặc một lượt ghim thủ công từ một chiến dịch đã kết thúc. Quy tắc đó không hẳn là sai, nó chỉ giống hệt nhau với một khách lần đầu đến từ quảng cáo so giá và một khách quen đang lướt điện thoại lúc nửa đêm.",
       "Bản thân lần ghé mang nhiều thông tin hơn quy tắc đó, và mang ngay lập tức. Chiến dịch nào, thiết bị nào, họ chạm vào gì trong mười lăm giây đầu. Không điều nào cần tới danh tính và tất cả đều có sẵn trước lượt xem trang thứ hai.",
     ],
     pull: "Cái lưới sản phẩm mà bạn trả tiền để đặt ai đó trước nó thường được sắp bởi một quy tắc viết từ trước khi bạn biết người đó tồn tại.",
@@ -276,13 +272,13 @@ export const PAGES_VI: StoryContent = {
         n: "01",
         meta: "Lúc tới",
         title: "Lần ghé bắt đầu đã có bối cảnh",
-        body: "Nguồn giới thiệu, thiết bị và chiến dịch đưa họ tới đều có sẵn ngay ở yêu cầu đầu tiên, trước khi ai kịp nhấp vào gì. Chừng đó đủ để xuất phát từ một thứ tốt hơn một quy tắc tĩnh.",
+        body: "Nguồn giới thiệu, thiết bị và chiến dịch đưa họ tới đều có sẵn ngay ở yêu cầu đầu tiên, trước khi ai kịp nhấp vào gì.",
       },
       {
         n: "02",
         meta: "Trực tiếp",
         title: "Nó xếp lại khi họ di chuyển",
-        body: "Mọi lượt xem, lượt lọc và lượt tìm trong lần ghé đều cập nhật thứ tự của những gì chưa được nhìn thấy. Lưới sản phẩm không bị quyết định một lần lúc tải trang rồi đóng băng.",
+        body: "Mọi lượt xem, lượt lọc và lượt tìm trong lần ghé đều cập nhật thứ tự của những gì chưa được nhìn thấy.",
       },
       {
         n: "03",

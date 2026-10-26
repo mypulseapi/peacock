@@ -300,6 +300,13 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     decides: ["who-are-they"],
   },
   {
+    route: "/opensource",
+    audience: "developer",
+    area: "none",
+    depth: "explainer",
+    decides: ["is-it-safe", "how-do-i-start"],
+  },
+  {
     route: "/blog",
     audience: "any",
     area: "none",

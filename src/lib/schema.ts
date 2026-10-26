@@ -240,6 +240,7 @@ const CRUMB_LABELS: Record<string, { en: string; vi: string }> = {
   "/integrations": { en: "Integrations", vi: "Tích hợp" },
   "/status": { en: "Status", vi: "Trạng thái" },
   "/about": { en: "About us", vi: "Về chúng tôi" },
+  "/opensource": { en: "Open source", vi: "Mã nguồn mở" },
   "/blog": { en: "Notes", vi: "Ghi chép" },
   "/careers": { en: "Careers", vi: "Tuyển dụng" },
   "/privacy": { en: "Privacy", vi: "Quyền riêng tư" },

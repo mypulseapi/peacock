@@ -3,7 +3,6 @@ import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
 import { Eye, Lock, Tag } from "lucide-react";
 import { Link } from "@/i18n/routing";
-import { PageHero } from "@/components/PageHero";
 import { PageSchema } from "@/components/PageSchema";
 import { ResearchIndex } from "@/components/designed/research/research-index";
 import { research } from "@/content/pages/research";
@@ -56,7 +55,18 @@ export default async function Page({ params }: PageProps) {
           },
         ]}
       />
-      <PageHero title={h(c.title)} lede={c.lede} titleClassName="text-hero" />
+      {/* The designed hero, as on the use-case and sector pages: `PageHero` paints its own older
+          canvas, which did not match them in the dark theme (owner, 27 Oct 2026). */}
+      <section className="hero-bg overflow-hidden border-b border-line">
+        <div className="frame pt-12 pb-20 lg:pt-16 lg:pb-28">
+          <h1 className="reveal max-w-[20ch] text-hero text-balance">
+            {h(c.title)}
+          </h1>
+          <p className="reveal mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted delay-100">
+            {c.lede}
+          </p>
+        </div>
+      </section>
 
       <section className="border-b border-line bg-card">
         <div className="frame py-16 lg:py-24">

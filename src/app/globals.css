@@ -2922,6 +2922,19 @@ html[data-theme="dark"] {
     transition: none;
   }
 }
+/* A dashed connector in a drawing whose dashes travel along it: a fact on its way somewhere
+   (use-case drawings). Stands still under reduced motion. */
+@utility dash-flow {
+  stroke-dasharray: 5 5;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: dash-flow 1.2s linear infinite;
+  }
+}
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
 
 /* `pre-shown:` — the state before a .reveal ancestor is shown (src/main.js sets data-shown). Only with JS and
    motion allowed, so without JS or with reduced motion the final state shows at once. Stagger with delay-*. */

@@ -138,7 +138,7 @@ const UI = {
     byDecision: "By decision value",
     explainInvert: "Missing on the most products. Needed by the fewest shoppers.",
 
-    // TimeToMarketVisual
+    // TwoPlans, use-case figures (designed/use-cases/charts.tsx)
     twoPlans: "Two plans for the same range",
     beforeLaunch: "Before launch",
     fullEnrichment: "Enrich the whole schema",
@@ -146,7 +146,7 @@ const UI = {
     nFields: (n: number) => `${n} fields`,
     twoPlansNote: "Both end in the same place. Only one of them ends before the date.",
 
-    // SeoAeoVisual
+    // SchemaBands, use-case figures (designed/use-cases/charts.tsx)
     schemaCeiling: "Where schema coverage stops",
     markedUp: "Marked up today",
     heldNotExpressed: "Held, but written as prose",

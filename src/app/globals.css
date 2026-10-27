@@ -1815,12 +1815,13 @@ html[data-theme="dark"] .logo-dark { display: block; }
   }
 }
 
-/* The Vietnamese header keeps the compact menu to 86rem. Its full row is wider than the English
-   one and needs 1350px of page, so from `xl` (1280px) to 1349px every /vi page scrolled sideways,
-   35px at 1280 (measured 27 Oct 2026). 86rem leaves room for a 17px classic scrollbar. Same reason
-   as the header's own `xl`: a menu for one band beats a nav that drops items in one language.
+/* The Vietnamese header keeps the compact menu to 88rem. Its full row is wider than the English
+   one and needs 1380px of page since the flag toggle (1350px before it), so from `xl` (1280px) up
+   every /vi page scrolled sideways, 35px at 1280 (measured 27 Oct 2026). 88rem leaves room for a
+   17px classic scrollbar. Same reason as the header's own `xl`: a menu for one band beats a nav
+   that drops items in one language.
    Unlayered, so it outranks the `xl:` utilities it overrides. */
-@media (width >= 80rem) and (width < 86rem) {
+@media (width >= 80rem) and (width < 88rem) {
   :lang(vi) [data-nav] :is([data-mega-nav], [data-nav-actions]) {
     display: none;
   }

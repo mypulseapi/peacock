@@ -1,6 +1,7 @@
 import "./globals.css";
 import { THEME_SCRIPT } from "@/lib/theme-script";
 import { setRenderLocale } from "@/i18n/render-locale";
+import { DEFAULT_LOCALE } from "@/i18n/locales";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { IconSprite } from "@/components/designed/icon-sprite";
 import {
@@ -18,13 +19,14 @@ import { DesignedNotFound } from "@/components/designed/not-found";
 const TRAILING_SLASH = `(function(){var p=location.pathname;if(p.length>1&&p.slice(-1)==='/'){location.replace(p.slice(0,-1)+location.search+location.hash)}})();`;
 
 // The 404.html GitHub Pages serves for every missing path, with a 404 status. It sits outside
-// [locale], so it renders the designed shell itself, in English: one file serves both locales.
+// [locale], so it renders the designed shell itself, in the default language, Vietnamese (owner,
+// 27 Oct 2026): one file serves both locales.
 export default function RootNotFound() {
-  setRenderLocale("en");
+  setRenderLocale(DEFAULT_LOCALE);
 
   return (
     // Same as the [locale] layout: see the note on data-scroll-behavior there.
-    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang={DEFAULT_LOCALE} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: TRAILING_SLASH }} />
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />

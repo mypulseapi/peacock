@@ -5,74 +5,54 @@ import { usePathname } from "next/navigation";
 import { LOCALES, isLocale } from "@/i18n/locales";
 
 /**
- * The language switch as two small segments, "[flag] VI  [flag] EN", in a pill the height and
- * border of the theme switch beside it (owner, 27 Oct 2026, replacing the flag toggle of the same
- * morning, which replaced "VI | EN"). The current language is raised like the theme knob; the other
- * is the link. Vietnamese stays first, the owner's order; English is the UK flag, the owner's choice.
+ * The language switch: plain flags, no capsule, no motion (owner, 27 Oct 2026, the third version
+ * that day, after a flag toggle and then flag segments in a pill). On a wide screen both flags sit in
+ * the bar and the other language's flag is the link; on a phone a small dropdown sits beside the
+ * menu button. Vietnamese first, the owner's order, and the site's default; English is the UK flag.
  *
- * Languages come from `i18n/locales.ts` rather than being written out here: a second hand-kept copy
- * of the list is how a locale ends up routing and rendering but never appearing in the switch.
+ * Languages come from `i18n/locales.ts`. The current one is passed in from the header's
+ * `renderLocale()`, not read from the path, which can carry `.html` or be null in prerender.
  *
- * A client component, for the one thing the server cannot do: read the path, so that switching
- * language keeps you on the page you were reading instead of returning you to the home page.
- *
- * The href is built here rather than handed to next-intl's `Link locale=`. That version rendered
- * an `<a>` with no `href` at all in the export, because next-intl's `usePathname` has nothing to
- * resolve during a static prerender, which made the link dead for crawlers and for anyone whose
- * JavaScript had not arrived. Swapping the first path segment needs no request, so it survives
- * prerendering.
- *
- * ponytail: a plain `<a>`, not `next/link`, so switching language is a full page load. The
- * `[locale]` layout renders `<html>`, so a client navigation to another locale remounts it, and
- * React strips every attribute from `<html>` on unmount, taking the `data-theme` the inline theme
- * script stamps: a light-mode visitor on a dark OS saw the page flash dark. A full load runs that
- * script before first paint again.
+ * The href swaps the first path segment here rather than using next-intl's `Link locale=`, which
+ * rendered an `<a>` with no `href` in the static export. A plain `<a>`, so switching is a full page
+ * load: a client navigation remounts `<html>` and React strips the `data-theme` the theme script sets.
  */
+function useLocaleLinks(current: string) {
+  // `usePathname` can be null before the router is ready; the locale root is still a working link.
+  const pathname = usePathname() ?? "/";
+  const [, first = ""] = pathname.split("/");
+  const hrefFor = (code: string) =>
+    isLocale(first) ? pathname.replace(/^\/[^/]+/, `/${code}`) : `/${code}`;
+  const ordered = [...LOCALES].reverse(); // VI, EN
+  return { ordered, hrefFor, currentMeta: ordered.find((l) => l.code === current) ?? ordered[0] };
+}
+
+function Flag({ code, className = "size-5" }: { code: string; className?: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`block shrink-0 overflow-hidden rounded-full ring-1 ring-black/10 ${className}`}
+    >
+      {code === "vi" ? <FlagVN /> : <FlagUK />}
+    </span>
+  );
+}
+
+/** Wide screens: both flags; the current one is marked, the other changes the language. */
 export function DesignedLocaleSwitch({
   heading,
   current,
 }: {
   heading: string;
-  /** The page's locale, from the server's render store; the path can carry `.html` or be null. */
   current: string;
 }) {
-  // `usePathname` can be null before the router is ready; the locale root is the honest
-  // fallback, and it is still a working link rather than no link.
-  const pathname = usePathname() ?? "/";
-  const [, first = ""] = pathname.split("/");
-  const ordered = [...LOCALES].reverse(); // VI, EN
-  const hrefFor = (code: string) =>
-    isLocale(first) ? pathname.replace(/^\/[^/]+/, `/${code}`) : `/${code}`;
-
+  const { ordered, hrefFor } = useLocaleLinks(current);
   return (
-    <nav
-      aria-label={heading}
-      data-locale-switch
-      className="flex h-9 shrink-0 items-center gap-0.5 rounded-full border border-line bg-surface-1 p-0.75"
-    >
-      {ordered.map((l) => {
-        const Flag = l.code === "vi" ? FlagVN : FlagUK;
-        const inner = (
-          <>
-            <span
-              aria-hidden="true"
-              className="block size-4 shrink-0 overflow-hidden rounded-full ring-1 ring-black/10"
-            >
-              <Flag />
-            </span>
-            <span aria-hidden="true">{l.shortLabel}</span>
-          </>
-        );
-        const base =
-          "flex h-7 items-center gap-1.5 rounded-full px-2.5 text-xs font-semibold tracking-wide";
-        return l.code === current ? (
-          <span
-            key={l.code}
-            aria-current="true"
-            title={l.label}
-            className={`${base} bg-card text-ink shadow-sm`}
-          >
-            {inner}
+    <nav aria-label={heading} data-locale-switch className="flex shrink-0 items-center gap-2">
+      {ordered.map((l) =>
+        l.code === current ? (
+          <span key={l.code} aria-current="true" title={l.label} className="p-1">
+            <Flag code={l.code} />
             <span className="sr-only">{l.label}</span>
           </span>
         ) : (
@@ -83,13 +63,53 @@ export function DesignedLocaleSwitch({
             lang={l.tag}
             title={l.label}
             aria-label={l.label}
-            className={`${base} hit-area text-muted transition-colors duration-200 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus`}
+            className="hit-area rounded-full p-1 opacity-50 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
           >
-            {inner}
+            <Flag code={l.code} />
           </a>
-        );
-      })}
+        ),
+      )}
     </nav>
+  );
+}
+
+/** Phones: the current flag beside the menu button, opening a short list of languages. */
+export function DesignedLocaleMenu({
+  heading,
+  current,
+}: {
+  heading: string;
+  current: string;
+}) {
+  const { ordered, hrefFor, currentMeta } = useLocaleLinks(current);
+  return (
+    <details className="group relative" data-locale-menu>
+      <summary
+        className="hit-area flex h-9 cursor-pointer list-none items-center gap-1 rounded-control px-1.5 text-ink [&::-webkit-details-marker]:hidden"
+        aria-label={`${heading}: ${currentMeta.label}`}
+      >
+        <Flag code={currentMeta.code} />
+        <svg className="size-3.5 text-muted" aria-hidden="true">
+          <use href="#i-chevron-down" />
+        </svg>
+      </summary>
+      <ul className="absolute right-0 top-full z-50 mt-1 min-w-40 rounded-control border border-line bg-card p-1 shadow-md">
+        {ordered.map((l) => (
+          <li key={l.code}>
+            <a
+              href={hrefFor(l.code)}
+              hrefLang={l.tag}
+              lang={l.tag}
+              aria-current={l.code === current ? "true" : undefined}
+              className="flex items-center gap-2 rounded-control px-2.5 py-2 text-sm text-ink hover:bg-surface-1 aria-[current=true]:font-semibold"
+            >
+              <Flag code={l.code} className="size-4" />
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
   );
 }
 

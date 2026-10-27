@@ -9,7 +9,7 @@
 import type { ReactNode } from "react";
 import { asset } from "@/lib/cdn";
 import { renderLocale } from "@/i18n/render-locale";
-import { DesignedLocaleSwitch } from "./designed-locale-switch";
+import { DesignedLocaleMenu, DesignedLocaleSwitch } from "./designed-locale-switch";
 import { DesignedThemeSwitch } from "./designed-theme-switch";
 import { designedHref, designedText } from "../t";
 import Image from "next/image";
@@ -606,6 +606,11 @@ export function DesignedHeader() {
           </Link>
         </div>
 
+        {/* Phones: the language dropdown beside the menu button, outside the menu. */}
+        <div className="ml-auto xl:hidden">
+          <DesignedLocaleMenu heading={t("44")} current={renderLocale()} />
+        </div>
+
         {/* Mobile menu */}
         <details className="group xl:hidden" data-mobile-menu>
           <summary
@@ -917,9 +922,8 @@ export function DesignedHeader() {
                   </svg>
                 </Link>
               </div>
-              <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
                 <DesignedThemeSwitch label={t("themeDark")} />
-                <DesignedLocaleSwitch heading={t("44")} current={renderLocale()} />
               </div>
             </div>
           </div>

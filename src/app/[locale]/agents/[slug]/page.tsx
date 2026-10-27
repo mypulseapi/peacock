@@ -7,6 +7,10 @@ import { storyFaqSchema } from "@/components/StoryPage";
 import { ChapterPage } from "@/components/designed/product/chapters";
 import { AgentDemo } from "@/components/designed/agents/demo";
 import { agentDrawings } from "@/components/designed/agents/drawings";
+import {
+  AgentGets,
+  AgentPipeline,
+} from "@/components/designed/agents/sections";
 import { PageSchema } from "@/components/PageSchema";
 import { AGENT_SLUGS, agentPage, type AgentSlug } from "@/content/pages/agents";
 
@@ -36,8 +40,9 @@ export async function generateMetadata({
 
 /**
  * The "For AI agents" pages, on the product pages' chapters (owner's layout A, 27 Oct 2026): the worked
- * example as the hero, the situation, the shared zig-zag and gains, then before and after on a slider.
- * The pictures are drawings until the owner's images exist (`designed/agents/drawings.tsx`).
+ * example as the hero, the situation, How it works as the call's pipeline and the worked example beside
+ * the gains (`designed/agents/sections.tsx`), then before and after on a slider. The pictures are
+ * drawings until the owner's images exist (`designed/agents/drawings.tsx`).
  */
 export default async function Page({ params }: PageProps) {
   const { locale, slug } = await params;
@@ -55,8 +60,9 @@ export default async function Page({ params }: PageProps) {
       <ChapterPage
         c={c}
         figure={<AgentDemo c={c} />}
-        art={{ situation: art.situation, steps: art.steps }}
-        gainPictures={art.gains}
+        art={{ situation: art.situation }}
+        howItWorks={<AgentPipeline c={c} />}
+        whatYouGet={<AgentGets c={c} />}
         beforeAfter={{ before: art.before, after: art.after }}
       />
     </>

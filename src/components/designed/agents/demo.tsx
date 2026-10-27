@@ -13,6 +13,37 @@ const TAG: Record<Verdict, string> = {
   cannot_tell: "badge border-dashed border-gap bg-gap-fill text-gap-strong",
 };
 
+/** The options with their verdicts: the hero, the pipeline's last step and the worked example. */
+export function VerdictRows({
+  options,
+  verdicts,
+  boxed = false,
+}: {
+  options: Extract<AgentContent["demo"], { ask: string }>["options"];
+  verdicts: AgentContent["labels"]["verdicts"];
+  /** Each option its own small card, for a wash background; otherwise rows ruled by hairlines. */
+  boxed?: boolean;
+}) {
+  return (
+    <ul className={boxed ? "grid gap-2" : ""}>
+      {options.map((o) => (
+        <li
+          key={o.name}
+          className={`flex items-center justify-between gap-4 ${boxed ? "rounded-xl border border-line bg-card px-4 py-3" : "border-b border-line px-5 py-4 last:border-b-0"}`}
+        >
+          <span className="min-w-0">
+            <span className="block font-medium text-ink">{o.name}</span>
+            <span className="block text-sm text-muted">{o.note}</span>
+          </span>
+          <span className={`shrink-0 ${TAG[o.verdict]}`}>
+            {verdicts[o.verdict]}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function AgentDemo({ c }: { c: AgentContent }) {
   const d = c.demo;
   if ("install" in d)
@@ -40,22 +71,7 @@ export function AgentDemo({ c }: { c: AgentContent }) {
         <p className="text-sm text-muted">{c.labels.request}</p>
         <p className="mt-1 text-h3 text-ink">{d.ask}</p>
       </div>
-      <ul>
-        {d.options.map((o) => (
-          <li
-            key={o.name}
-            className="flex items-center justify-between gap-4 border-b border-line px-5 py-4 last:border-b-0"
-          >
-            <span className="min-w-0">
-              <span className="block font-medium text-ink">{o.name}</span>
-              <span className="block text-sm text-muted">{o.note}</span>
-            </span>
-            <span className={`shrink-0 ${TAG[o.verdict]}`}>
-              {c.labels.verdicts[o.verdict]}
-            </span>
-          </li>
-        ))}
-      </ul>
+      <VerdictRows options={d.options} verdicts={c.labels.verdicts} />
     </div>
   );
 }

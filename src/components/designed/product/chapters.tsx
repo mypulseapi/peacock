@@ -69,6 +69,8 @@ export function ChapterPage({
   figure,
   output,
   beforeAfter,
+  howItWorks,
+  whatYouGet,
 }: {
   c: ChapterContent;
   /** The chart beside the chain chapter. Without it, or without `c.chainBlock`, there is no chain chapter. */
@@ -80,7 +82,11 @@ export function ChapterPage({
    */
   chainFramed?: boolean;
   /** `situationIsPanel`: the situation picture is a data panel, so it sizes to its content instead of a 3:2 frame. */
-  art: { situation: ReactNode; steps: ReactNode[]; situationIsPanel?: boolean };
+  art: {
+    situation: ReactNode;
+    steps?: ReactNode[];
+    situationIsPanel?: boolean;
+  };
   /** One drawing per gain, in order (`gains.tsx`); or `gainPictures`, any picture per gain. */
   gains?: GainsArt[];
   gainPictures?: ReactNode[];
@@ -97,6 +103,9 @@ export function ChapterPage({
    * wipe from one to the other, the two lists under it, after the gains.
    */
   beforeAfter?: { before: ReactNode; after: ReactNode };
+  /** Sections of a page's own in place of the shared zig-zag and gains (the agent pages, 27 Oct 2026). */
+  howItWorks?: ReactNode;
+  whatYouGet?: ReactNode;
 }) {
   const locale = renderLocale();
   const t = ui(locale);
@@ -203,40 +212,46 @@ export function ChapterPage({
         <Output heading={h(c.visualHeading)} body={c.visualBody} {...output} />
       )}
 
-      <StepsZigzag
-        heading={h(c.steps.heading)}
-        intro={c.steps.intro}
-        steps={c.steps.items.map((s, i) => ({
-          label: s.meta ?? "",
-          title: s.title,
-          body: s.body,
-          picture: (
-            <Picture className="border border-line bg-card">
-              {art.steps[i]}
-            </Picture>
-          ),
-        }))}
-      />
+      {howItWorks ?? (
+        <StepsZigzag
+          heading={h(c.steps.heading)}
+          intro={c.steps.intro}
+          steps={c.steps.items.map((s, i) => ({
+            label: s.meta ?? "",
+            title: s.title,
+            body: s.body,
+            picture: (
+              <Picture className="border border-line bg-card">
+                {art.steps?.[i]}
+              </Picture>
+            ),
+          }))}
+        />
+      )}
 
-      {/* The gains as the older product pages show theirs (`gains.tsx`): one card per benefit, a
+      {whatYouGet ?? (
+        <>
+          {/* The gains as the older product pages show theirs (`gains.tsx`): one card per benefit, a
           drawn picture on one side, alternating (owner, 26 Oct 2026). */}
-      <section className="bg-soft-gradient scroll-mt-16 border-b border-line">
-        <div className="frame py-20 lg:py-28">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="reveal text-title text-balance">
-              {h(c.gets.heading)}
-            </h2>
-          </div>
-          <GainsCards
-            items={c.gets.items.map((g, i) => ({
-              art: gains?.[i],
-              picture: gainPictures?.[i],
-              title: g.title,
-              body: g.body,
-            }))}
-          />
-        </div>
-      </section>
+          <section className="bg-soft-gradient scroll-mt-16 border-b border-line">
+            <div className="frame py-20 lg:py-28">
+              <div className="mx-auto max-w-2xl text-center">
+                <h2 className="reveal text-title text-balance">
+                  {h(c.gets.heading)}
+                </h2>
+              </div>
+              <GainsCards
+                items={c.gets.items.map((g, i) => ({
+                  art: gains?.[i],
+                  picture: gainPictures?.[i],
+                  title: g.title,
+                  body: g.body,
+                }))}
+              />
+            </div>
+          </section>
+        </>
+      )}
 
       {beforeAfter && c.beforeAfter && (
         <section className="border-b border-line">

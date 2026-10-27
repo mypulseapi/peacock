@@ -26,6 +26,8 @@ export type AgentSlug = (typeof AGENT_SLUGS)[number];
 export type AgentDemo =
   | {
       ask: string;
+      /** What the ask becomes, as the call states it: code, so the same in both locales. */
+      requirements: string[];
       options: { name: string; note: string; verdict: Verdict }[];
     }
   | { install: string; tools: string[] };
@@ -44,6 +46,8 @@ type Specific = Pick<
 const SHARED_EN = {
   verdicts: { fits: "Fits", fails: "Fails", cannot_tell: "Cannot tell" },
   request: "The request",
+  plainWords: "In plain words",
+  upTo: "…up to 50",
   steps: {
     heading: "How does it work?",
     intro: "One call, from MCP or HTTP. Nothing to train, nothing stored.",
@@ -135,6 +139,8 @@ const SHARED_VI = {
     cannot_tell: "Không đủ thông tin",
   },
   request: "Yêu cầu",
+  plainWords: "Bằng lời thường",
+  upTo: "…tối đa 50",
   steps: {
     heading: "Nó hoạt động thế nào?",
     intro:
@@ -260,6 +266,7 @@ const EN: Record<AgentSlug, Specific> = {
       '"Laptop under $1,500 with 16GB RAM": one fits, one fails on price, one cannot tell because its listing never states the RAM.',
     demo: {
       ask: "Laptop under $1,500 with 16GB RAM",
+      requirements: ["ram ≥ 16", "price ≤ 1500"],
       options: [
         { name: "Laptop A", note: "Over the budget", verdict: "fails" },
         {
@@ -316,6 +323,7 @@ const EN: Record<AgentSlug, Specific> = {
       "Spec IP67, 24V, delivery within 14 days: Acme fits, Borealis fails on IP rating, Corvid fails on lead time and leaves its IP rating unstated.",
     demo: {
       ask: "IP67, 24V, delivered within 14 days",
+      requirements: ["ip_rating = IP67", "voltage = 24", "lead_days ≤ 14"],
       options: [
         { name: "Acme", note: "Meets every requirement", verdict: "fits" },
         { name: "Borealis", note: "Fails on IP rating", verdict: "fails" },
@@ -372,6 +380,7 @@ const EN: Record<AgentSlug, Specific> = {
       '"Hotel near the venue under $180" with breakfast required: Harbour fits, Summit fails on price, Lotus cannot tell because it never states breakfast.',
     demo: {
       ask: "Hotel near the venue under $180, breakfast required",
+      requirements: ["breakfast = true", "price ≤ 180"],
       options: [
         {
           name: "Harbour",
@@ -483,6 +492,7 @@ const VI: Record<AgentSlug, Specific> = {
       '"Laptop dưới 1.500 USD có 16GB RAM": một chiếc đạt, một chiếc không đạt vì giá, một chiếc không đủ thông tin vì trang không ghi RAM.',
     demo: {
       ask: "Laptop dưới 1.500 USD có 16GB RAM",
+      requirements: ["ram ≥ 16", "price ≤ 1500"],
       options: [
         { name: "Laptop A", note: "Vượt ngân sách", verdict: "fails" },
         {
@@ -539,6 +549,7 @@ const VI: Record<AgentSlug, Specific> = {
       "Thông số IP67, 24V, giao trong 14 ngày: Acme đạt, Borealis không đạt vì chỉ số IP, Corvid không đạt vì thời gian giao và không ghi chỉ số IP.",
     demo: {
       ask: "IP67, 24V, giao trong 14 ngày",
+      requirements: ["ip_rating = IP67", "voltage = 24", "lead_days ≤ 14"],
       options: [
         { name: "Acme", note: "Đáp ứng mọi yêu cầu", verdict: "fits" },
         { name: "Borealis", note: "Không đạt vì chỉ số IP", verdict: "fails" },
@@ -595,6 +606,7 @@ const VI: Record<AgentSlug, Specific> = {
       '"Khách sạn gần địa điểm dưới 180 USD" và bắt buộc có bữa sáng: Harbour đạt, Summit không đạt vì giá, Lotus không đủ thông tin vì không ghi bữa sáng.',
     demo: {
       ask: "Khách sạn gần địa điểm dưới 180 USD, bắt buộc có bữa sáng",
+      requirements: ["breakfast = true", "price ≤ 180"],
       options: [
         {
           name: "Harbour",
@@ -665,13 +677,34 @@ const VI: Record<AgentSlug, Specific> = {
 /** An agent page: the chapter layout's content, plus the hero's worked example and its labels. */
 export type AgentContent = ChapterContent & {
   demo: AgentDemo;
-  labels: { request: string; verdicts: Record<Verdict, string> };
+  /**
+   * The example the How it works pipeline walks through: the page's own, or, on the coding agents
+   * page, whose example is an install line, the shopping one.
+   */
+  sample: Extract<AgentDemo, { ask: string }>;
+  labels: {
+    request: string;
+    plainWords: string;
+    upTo: string;
+    verdicts: Record<Verdict, string>;
+  };
 };
 
-function build(s: Specific, shared: typeof SHARED_EN): AgentContent {
+function build(
+  s: Specific,
+  shared: typeof SHARED_EN,
+  fallback: Specific,
+): AgentContent {
+  const sample = "ask" in s.demo ? s.demo : fallback.demo;
   return {
     demo: s.demo,
-    labels: { request: shared.request, verdicts: shared.verdicts },
+    sample: sample as AgentContent["sample"],
+    labels: {
+      request: shared.request,
+      plainWords: shared.plainWords,
+      upTo: shared.upTo,
+      verdicts: shared.verdicts,
+    },
     meta: s.meta,
     eyebrow: s.eyebrow,
     title: s.title,
@@ -687,4 +720,6 @@ function build(s: Specific, shared: typeof SHARED_EN): AgentContent {
 }
 
 export const agentPage = (locale: string, slug: AgentSlug): AgentContent =>
-  locale === "vi" ? build(VI[slug], SHARED_VI) : build(EN[slug], SHARED_EN);
+  locale === "vi"
+    ? build(VI[slug], SHARED_VI, VI["shopping-assistants"])
+    : build(EN[slug], SHARED_EN, EN["shopping-assistants"]);

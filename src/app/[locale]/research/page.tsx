@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
+import { Eye, Lock, Tag } from "lucide-react";
 import { Link } from "@/i18n/routing";
-import { PageHero } from "@/components/PageHero";
 import { PageSchema } from "@/components/PageSchema";
+import { ResearchIndex } from "@/components/designed/research/research-index";
 import { research } from "@/content/pages/research";
 
 interface PageProps {
@@ -23,10 +24,17 @@ export async function generateMetadata({
 }
 
 /**
- * Research, product by product: each finding with its data and its limit, and a plain marker where
- * a product has not yet run on a real merchant. Its own layout because every card links on, which
- * the story template's items cannot. Content and sources: `content/pages/research.ts`.
+ * Research (owner's version 3, 27 Oct 2026): every finding as a row of one index that opens row by
+ * row, then how the research is run, the questions and the call to action. No finding is led large:
+ * the owner had the featured one put back in the list like the others (27 Oct 2026). The method
+ * follows the findings because its own words point back at "the nine listings above".
+ *
+ * Every word is the content module's (`content/pages/research.ts`, both locales). Headings carry no
+ * label and no trailing full stop.
  */
+const h = (s: string) => s.replace(/\.\s*$/, "");
+const METHOD_ICONS = [Lock, Eye, Tag];
+
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
@@ -47,120 +55,91 @@ export default async function Page({ params }: PageProps) {
           },
         ]}
       />
-      <PageHero
-        eyebrow={c.eyebrow}
-        title={c.title}
-        lede={c.lede}
-        titleClassName="text-hero"
-      />
-
-      <section className="border-b border-line">
-        <div className="frame py-16 lg:py-20">
-          <h2 className="text-title text-balance">{c.findingsHeading}</h2>
-          <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
-            {c.findings.map((f) => (
-              <li
-                key={f.title}
-                className="flex flex-col rounded-2xl border border-line bg-card p-6"
-              >
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="eyebrow-primary">{f.product}</p>
-                  <span
-                    className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                      f.status === "measured"
-                        ? "bg-primary-tint text-primary"
-                        : "border border-line text-muted"
-                    }`}
-                  >
-                    {c.labels[f.status]}
-                  </span>
-                </div>
-                <h3 className="mt-3 text-xl leading-snug font-bold text-balance text-ink">
-                  {f.title}
-                </h3>
-                <p className="mt-3 text-body text-pretty text-muted">
-                  {f.body}
-                </p>
-                <dl className="mt-4 space-y-2 border-t border-line pt-4 text-sm">
-                  <div>
-                    <dt className="inline font-semibold text-ink">
-                      {c.labels.data}:{" "}
-                    </dt>
-                    <dd className="inline text-muted">{f.data}</dd>
-                  </div>
-                  <div>
-                    <dt className="inline font-semibold text-ink">
-                      {c.labels.limit}:{" "}
-                    </dt>
-                    <dd className="inline text-muted">{f.limit}</dd>
-                  </div>
-                </dl>
-                <Link
-                  locale={locale}
-                  href={f.href}
-                  className="mt-auto inline-flex min-h-11 items-center pt-4 text-sm font-semibold text-primary hover:underline"
-                >
-                  {f.link} →
-                </Link>
-              </li>
-            ))}
-          </ul>
+      {/* The designed hero, as on the use-case and sector pages: `PageHero` paints its own older
+          canvas, which did not match them in the dark theme (owner, 27 Oct 2026). */}
+      <section className="hero-bg overflow-hidden border-b border-line">
+        <div className="frame pt-12 pb-20 lg:pt-16 lg:pb-28">
+          <h1 className="reveal max-w-[20ch] text-hero text-balance">
+            {h(c.title)}
+          </h1>
+          <p className="reveal mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted delay-100">
+            {c.lede}
+          </p>
         </div>
       </section>
 
-      <section className="border-b border-line bg-surface-1/50">
-        <div className="frame py-16 lg:py-20">
-          <h2 className="text-title text-balance">{c.method.heading}</h2>
-          <ol className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
-            {c.method.items.map((m, i) => (
-              <li
-                key={m.title}
-                className="rounded-2xl border border-line bg-card p-6"
-              >
-                <span className="font-mono text-sm text-primary">
-                  0{i + 1}
-                </span>
-                <h3 className="mt-2 text-lg font-bold text-ink">{m.title}</h3>
-                <p className="mt-2 text-body text-pretty text-muted">
-                  {m.body}
-                </p>
-              </li>
-            ))}
+      <section className="border-b border-line bg-card">
+        <div className="frame py-16 lg:py-24">
+          <ResearchIndex
+            findings={c.findings}
+            labels={c.labels}
+            heading={c.findingsHeading}
+            locale={locale}
+          />
+        </div>
+      </section>
+
+      <section className="border-b border-line bg-surface-1">
+        <div className="frame py-16 lg:py-24">
+          <h2 className="reveal text-title text-balance">{c.method.heading}</h2>
+          <ol className="reveal mt-10 grid overflow-hidden rounded-3xl border border-line bg-card md:grid-cols-3">
+            {c.method.items.map((m, i) => {
+              const Icon = METHOD_ICONS[i] ?? Lock;
+              return (
+                <li
+                  key={m.title}
+                  className="grid content-start gap-3 border-line p-6 not-first:border-t md:not-first:border-t-0 md:not-first:border-l"
+                >
+                  <span
+                    className="grid size-11 place-items-center rounded-xl bg-primary-tint text-primary"
+                    aria-hidden
+                  >
+                    <Icon className="size-5" />
+                  </span>
+                  <h3 className="text-lg font-semibold text-ink">{m.title}</h3>
+                  <p className="text-body text-pretty text-muted">{m.body}</p>
+                </li>
+              );
+            })}
           </ol>
         </div>
       </section>
 
       <section className="border-b border-line">
-        <div className="frame max-w-3xl py-16 lg:py-20">
-          <h2 className="text-title text-balance">{c.faqHeading}</h2>
-          <div className="mt-8 divide-y divide-line border-y border-line">
+        <div className="frame grid gap-10 py-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16 lg:py-24">
+          <h2 className="reveal text-title text-balance">{c.faqHeading}</h2>
+          <div className="reveal border-t border-line">
             {c.faq.map((f) => (
-              <details key={f.q} className="group py-4">
-                <summary className="cursor-pointer list-none font-semibold text-ink">
+              <details key={f.q} className="group border-b border-line">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-6 py-5 text-lg font-semibold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus [&::-webkit-details-marker]:hidden">
                   {f.q}
+                  <span
+                    aria-hidden
+                    className="relative size-4 shrink-0 text-primary before:absolute before:top-1/2 before:left-0 before:h-0.5 before:w-4 before:-translate-y-1/2 before:bg-current after:absolute after:top-0 after:left-1/2 after:h-4 after:w-0.5 after:-translate-x-1/2 after:bg-current after:transition-transform group-open:after:scale-y-0"
+                  />
                 </summary>
-                <p className="mt-3 text-body text-pretty text-muted">{f.a}</p>
+                <p className="max-w-[68ch] pb-6 text-body text-pretty text-muted">
+                  {f.a}
+                </p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section>
-        <div className="frame py-16 text-center lg:py-20">
-          <h2 className="mx-auto max-w-2xl text-title text-balance">
-            {c.cta.title}
+      <section className="cta-dots" data-cta>
+        <div className="frame py-24 text-center lg:py-32">
+          <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
+            {h(c.cta.title)}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-body text-pretty text-muted">
+          <p className="reveal mx-auto mt-6 max-w-xl text-lg text-pretty text-muted delay-100">
             {c.cta.body}
           </p>
-          <Link
-            locale={locale}
-            href={c.cta.href}
-            className="btn-primary mt-8 inline-flex"
-          >
-            {c.cta.label}
-          </Link>
+          <div className="reveal mt-8 delay-200">
+            <Link locale={locale} href={c.cta.href} className="btn-primary">
+              {c.cta.label}
+            </Link>
+          </div>
         </div>
       </section>
     </>

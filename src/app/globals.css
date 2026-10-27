@@ -1815,6 +1815,21 @@ html[data-theme="dark"] .logo-dark { display: block; }
   }
 }
 
+/* The Vietnamese header keeps the compact menu to 88rem. Its full row is wider than the English
+   one and needs 1380px of page since the flag toggle (1350px before it), so from `xl` (1280px) up
+   every /vi page scrolled sideways, 35px at 1280 (measured 27 Oct 2026). 88rem leaves room for a
+   17px classic scrollbar. Same reason as the header's own `xl`: a menu for one band beats a nav
+   that drops items in one language.
+   Unlayered, so it outranks the `xl:` utilities it overrides. */
+@media (width >= 80rem) and (width < 88rem) {
+  :lang(vi) [data-nav] :is([data-mega-nav], [data-nav-actions]) {
+    display: none;
+  }
+  :lang(vi) [data-nav] [data-mobile-menu] {
+    display: block;
+  }
+}
+
 /* Arial and Courier New scaled to Geist's metrics, measured with fontTools. Shown while Geist
    loads (font-display: swap), so lines do not re-wrap when it arrives: without these the whole
    page shifts on first paint, which is the most visible thing a self-hosted font can get wrong. */
@@ -2920,6 +2935,19 @@ html[data-theme="dark"] {
   }
   @media (prefers-reduced-motion: reduce) {
     transition: none;
+  }
+}
+/* A dashed connector in a drawing whose dashes travel along it: a fact on its way somewhere
+   (use-case drawings). Stands still under reduced motion. */
+@utility dash-flow {
+  stroke-dasharray: 5 5;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: dash-flow 1.2s linear infinite;
+  }
+}
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -20;
   }
 }
 
@@ -5729,4 +5757,51 @@ html[data-js] .figure-hold *::after {
   .ec-products { grid-template-columns: repeat(2, 1fr); }
   .ec-product:nth-child(n + 5) { display: none; }
   .ec-filters { padding-left: 12px; }
+}
+
+/* Before and after on a slider (`designed/product/compare-slider.tsx`, owner 27 Oct 2026, the agent pages).
+   The slider's value is `--pos`; the after picture is clipped to the right of it, the line and the knob sit
+   on it. The range input covers the whole frame, so dragging anywhere and the arrow keys both move it. */
+@utility compare {
+  --pos: 50%;
+  &:has(:focus-visible) {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+}
+@utility compare-after {
+  clip-path: inset(0 0 0 var(--pos));
+}
+@utility compare-line {
+  position: absolute;
+  inset-block: 0;
+  left: var(--pos);
+  width: 2px;
+  translate: -1px 0;
+  background: var(--color-primary);
+  pointer-events: none;
+}
+@utility compare-knob {
+  position: absolute;
+  top: 50%;
+  left: var(--pos);
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  translate: -50% -50%;
+  border-radius: 9999px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--shadow-window);
+  pointer-events: none;
+}
+@utility compare-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
 }

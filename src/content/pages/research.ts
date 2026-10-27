@@ -29,7 +29,7 @@ export interface ResearchContent {
   eyebrow: string;
   title: string;
   lede: string;
-  labels: { measured: string; waiting: string; data: string; limit: string };
+  labels: { measured: string; waiting: string; data: string; limit: string; all: string };
   findingsHeading: string;
   findings: Finding[];
   method: { heading: string; items: { title: string; body: string }[] };
@@ -52,6 +52,7 @@ const EN: ResearchContent = {
     waiting: "Waiting on a first merchant",
     data: "Data",
     limit: "Limit",
+    all: "All",
   },
   findingsHeading: "Findings, product by product",
   findings: [
@@ -202,6 +203,7 @@ const VI: ResearchContent = {
     waiting: "Chờ người bán đầu tiên",
     data: "Dữ liệu",
     limit: "Giới hạn",
+    all: "Tất cả",
   },
   findingsHeading: "Kết quả, từng sản phẩm",
   findings: [

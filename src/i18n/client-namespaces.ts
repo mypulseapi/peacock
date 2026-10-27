@@ -16,7 +16,6 @@
  * in production, which is what makes a missing namespace expensive to find.
  */
 export const CLIENT_NAMESPACES = [
-  "auth",
   "blog",
   "careers",
   "common",

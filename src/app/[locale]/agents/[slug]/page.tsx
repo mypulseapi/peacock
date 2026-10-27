@@ -3,7 +3,14 @@ import { notFound } from "next/navigation";
 import { prepareLocale } from "@/i18n/render-locale";
 import { forEachLocale } from "@/i18n/locales";
 import { buildAlternates } from "@/lib/seo";
-import { StoryPage, storyFaqSchema } from "@/components/StoryPage";
+import { storyFaqSchema } from "@/components/StoryPage";
+import { ChapterPage } from "@/components/designed/product/chapters";
+import { AgentDemo } from "@/components/designed/agents/demo";
+import { agentDrawings } from "@/components/designed/agents/drawings";
+import {
+  AgentGets,
+  AgentPipeline,
+} from "@/components/designed/agents/sections";
 import { PageSchema } from "@/components/PageSchema";
 import { AGENT_SLUGS, agentPage, type AgentSlug } from "@/content/pages/agents";
 
@@ -31,12 +38,18 @@ export async function generateMetadata({
   };
 }
 
-/** The "For AI agents" pages: the story template, with a before-and-after for the agent. */
+/**
+ * The "For AI agents" pages, on the product pages' chapters (owner's layout A, 27 Oct 2026): the worked
+ * example as the hero, the situation, How it works as the call's pipeline and the worked example beside
+ * the gains (`designed/agents/sections.tsx`), then before and after on a slider. The pictures are
+ * drawings until the owner's images exist (`designed/agents/drawings.tsx`).
+ */
 export default async function Page({ params }: PageProps) {
   const { locale, slug } = await params;
   if (!isAgent(slug)) notFound();
   prepareLocale(locale);
   const c = agentPage(locale, slug);
+  const art = agentDrawings(slug);
   return (
     <>
       <PageSchema
@@ -44,9 +57,13 @@ export default async function Page({ params }: PageProps) {
         path={`/agents/${slug}`}
         nodes={[storyFaqSchema(c)]}
       />
-      <StoryPage
-        layout={{ steps: "cards", gets: "showcase", limits: "split" }}
+      <ChapterPage
         c={c}
+        figure={<AgentDemo c={c} />}
+        art={{ situation: art.situation }}
+        howItWorks={<AgentPipeline c={c} />}
+        whatYouGet={<AgentGets c={c} />}
+        beforeAfter={{ before: art.before, after: art.after }}
       />
     </>
   );

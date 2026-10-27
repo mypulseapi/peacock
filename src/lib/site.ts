@@ -73,8 +73,9 @@ export const SITE = {
 
 /** Paths on the dashboard that the site deep-links to. */
 export const APP_PATHS = {
-  signIn: process.env.NEXT_PUBLIC_APP_SIGNIN_PATH || "/signin",
-  signUp: process.env.NEXT_PUBLIC_APP_SIGNUP_PATH || "/register",
+  // Merchant sign-in lives in the dashboard: one page, Create account a mode of it.
+  signIn: process.env.NEXT_PUBLIC_APP_SIGNIN_PATH || "/sign-in",
+  signUp: process.env.NEXT_PUBLIC_APP_SIGNUP_PATH || "/sign-in?mode=create",
   apiKey: process.env.NEXT_PUBLIC_APP_API_KEY_PATH || "/settings/api",
 } as const;
 
@@ -85,7 +86,8 @@ export const API_BASE_PATH = process.env.NEXT_PUBLIC_API_BASE_PATH || "/api/v1";
 export const SDK_SRC = `${SITE.cdn}${process.env.NEXT_PUBLIC_SDK_PATH || "/sdk/v0/pulse.iife.js"}`;
 
 /** Absolute URL on the marketing site, for canonicals and structured data. */
-export const url = (path = "/") => `${SITE.www}${path.startsWith("/") ? path : `/${path}`}`;
+export const url = (path = "/") =>
+  `${SITE.www}${path.startsWith("/") ? path : `/${path}`}`;
 
 /** Absolute URL on the dashboard. `appUrl(APP_PATHS.apiKey)` is the API key screen. */
 export const appUrl = (path = "/") =>

@@ -1,5 +1,6 @@
 import { Scale, CircleHelp, ListChecks, Plug, ShieldCheck } from "lucide-react";
 import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
 
 /**
  * The four "For AI agents" pages. ODIN/strategy/OPEN-SOURCE.md §0: PULSE is a domain-free decision
@@ -17,15 +18,36 @@ export const AGENT_SLUGS = [
 ] as const;
 export type AgentSlug = (typeof AGENT_SLUGS)[number];
 
+/**
+ * The page's worked example, as the hero shows it (owner's layout A, 27 Oct 2026): the request and
+ * each option's verdict, word for word from `example`; or, for coding agents, the install line and
+ * the four tools. The names are the example's own.
+ */
+export type AgentDemo =
+  | {
+      ask: string;
+      /** What the ask becomes, as the call states it: code, so the same in both locales. */
+      requirements: string[];
+      options: { name: string; note: string; verdict: Verdict }[];
+    }
+  | { install: string; tools: string[] };
+export type Verdict = "fits" | "fails" | "cannot_tell";
+
 type Specific = Pick<
   StoryContent,
-  "meta" | "eyebrow" | "title" | "lede" | "situation" | "beforeAfter"
-> & {
-  example: string;
-  faq: StoryContent["faq"];
-};
+  "meta" | "eyebrow" | "title" | "lede" | "beforeAfter"
+> &
+  Required<Pick<StoryContent, "situation">> & {
+    example: string;
+    demo: AgentDemo;
+    faq: StoryContent["faq"];
+  };
 
 const SHARED_EN = {
+  verdicts: { fits: "Fits", fails: "Fails", cannot_tell: "Cannot tell" },
+  request: "The request",
+  plainWords: "In plain words",
+  upTo: "…up to 50",
   steps: {
     heading: "How does it work?",
     intro: "One call, from MCP or HTTP. Nothing to train, nothing stored.",
@@ -50,7 +72,7 @@ const SHARED_EN = {
       },
     ],
   },
-  gets: (example: string): StoryContent["gets"] => ({
+  gets: (example: string): NonNullable<StoryContent["gets"]> => ({
     heading: "What the agent gets",
     items: [
       {
@@ -111,6 +133,14 @@ const SHARED_EN = {
 };
 
 const SHARED_VI = {
+  verdicts: {
+    fits: "Đạt",
+    fails: "Không đạt",
+    cannot_tell: "Không đủ thông tin",
+  },
+  request: "Yêu cầu",
+  plainWords: "Bằng lời thường",
+  upTo: "…tối đa 50",
   steps: {
     heading: "Nó hoạt động thế nào?",
     intro:
@@ -136,7 +166,7 @@ const SHARED_VI = {
       },
     ],
   },
-  gets: (example: string): StoryContent["gets"] => ({
+  gets: (example: string): NonNullable<StoryContent["gets"]> => ({
     heading: "Tác tử nhận được gì",
     items: [
       {
@@ -234,6 +264,19 @@ const EN: Record<AgentSlug, Specific> = {
     },
     example:
       '"Laptop under $1,500 with 16GB RAM": one fits, one fails on price, one cannot tell because its listing never states the RAM.',
+    demo: {
+      ask: "Laptop under $1,500 with 16GB RAM",
+      requirements: ["ram ≥ 16", "price ≤ 1500"],
+      options: [
+        { name: "Laptop A", note: "Over the budget", verdict: "fails" },
+        {
+          name: "Laptop B",
+          note: "The listing never states the RAM",
+          verdict: "cannot_tell",
+        },
+        { name: "Laptop C", note: "16GB RAM, under $1,500", verdict: "fits" },
+      ],
+    },
     faq: [
       {
         q: "Does it rank products for the shopper?",
@@ -278,6 +321,19 @@ const EN: Record<AgentSlug, Specific> = {
     },
     example:
       "Spec IP67, 24V, delivery within 14 days: Acme fits, Borealis fails on IP rating, Corvid fails on lead time and leaves its IP rating unstated.",
+    demo: {
+      ask: "IP67, 24V, delivered within 14 days",
+      requirements: ["ip_rating = IP67", "voltage = 24", "lead_days ≤ 14"],
+      options: [
+        { name: "Acme", note: "Meets every requirement", verdict: "fits" },
+        { name: "Borealis", note: "Fails on IP rating", verdict: "fails" },
+        {
+          name: "Corvid",
+          note: "Fails on lead time, IP rating unstated",
+          verdict: "fails",
+        },
+      ],
+    },
     faq: [
       {
         q: "Does it work with our own supplier fields?",
@@ -322,6 +378,23 @@ const EN: Record<AgentSlug, Specific> = {
     },
     example:
       '"Hotel near the venue under $180" with breakfast required: Harbour fits, Summit fails on price, Lotus cannot tell because it never states breakfast.',
+    demo: {
+      ask: "Hotel near the venue under $180, breakfast required",
+      requirements: ["breakfast = true", "price ≤ 180"],
+      options: [
+        {
+          name: "Harbour",
+          note: "Breakfast stated, under $180",
+          verdict: "fits",
+        },
+        { name: "Summit", note: "Over the budget", verdict: "fails" },
+        {
+          name: "Lotus",
+          note: "Never states breakfast",
+          verdict: "cannot_tell",
+        },
+      ],
+    },
     faq: [
       {
         q: "Can it read the budget from the traveller's words?",
@@ -366,6 +439,10 @@ const EN: Record<AgentSlug, Specific> = {
     },
     example:
       "In Claude Code: claude mcp add pulse -- npx -y @thepulseapi/mcp. The agent gets four tools: search_docs, get_page, list_pages and resolve_products.",
+    demo: {
+      install: "claude mcp add pulse -- npx -y @thepulseapi/mcp",
+      tools: ["search_docs", "get_page", "list_pages", "resolve_products"],
+    },
     faq: [
       {
         q: "Does the MCP server send my code anywhere?",
@@ -413,6 +490,19 @@ const VI: Record<AgentSlug, Specific> = {
     },
     example:
       '"Laptop dưới 1.500 USD có 16GB RAM": một chiếc đạt, một chiếc không đạt vì giá, một chiếc không đủ thông tin vì trang không ghi RAM.',
+    demo: {
+      ask: "Laptop dưới 1.500 USD có 16GB RAM",
+      requirements: ["ram ≥ 16", "price ≤ 1500"],
+      options: [
+        { name: "Laptop A", note: "Vượt ngân sách", verdict: "fails" },
+        {
+          name: "Laptop B",
+          note: "Trang sản phẩm không ghi RAM",
+          verdict: "cannot_tell",
+        },
+        { name: "Laptop C", note: "16GB RAM, dưới 1.500 USD", verdict: "fits" },
+      ],
+    },
     faq: [
       {
         q: "Nó có xếp hạng sản phẩm cho người mua không?",
@@ -457,6 +547,19 @@ const VI: Record<AgentSlug, Specific> = {
     },
     example:
       "Thông số IP67, 24V, giao trong 14 ngày: Acme đạt, Borealis không đạt vì chỉ số IP, Corvid không đạt vì thời gian giao và không ghi chỉ số IP.",
+    demo: {
+      ask: "IP67, 24V, giao trong 14 ngày",
+      requirements: ["ip_rating = IP67", "voltage = 24", "lead_days ≤ 14"],
+      options: [
+        { name: "Acme", note: "Đáp ứng mọi yêu cầu", verdict: "fits" },
+        { name: "Borealis", note: "Không đạt vì chỉ số IP", verdict: "fails" },
+        {
+          name: "Corvid",
+          note: "Không đạt vì thời gian giao, không ghi chỉ số IP",
+          verdict: "fails",
+        },
+      ],
+    },
     faq: [
       {
         q: "Nó có dùng được với các trường nhà cung cấp của chúng tôi không?",
@@ -501,6 +604,19 @@ const VI: Record<AgentSlug, Specific> = {
     },
     example:
       '"Khách sạn gần địa điểm dưới 180 USD" và bắt buộc có bữa sáng: Harbour đạt, Summit không đạt vì giá, Lotus không đủ thông tin vì không ghi bữa sáng.',
+    demo: {
+      ask: "Khách sạn gần địa điểm dưới 180 USD, bắt buộc có bữa sáng",
+      requirements: ["breakfast = true", "price ≤ 180"],
+      options: [
+        {
+          name: "Harbour",
+          note: "Có ghi bữa sáng, dưới 180 USD",
+          verdict: "fits",
+        },
+        { name: "Summit", note: "Vượt ngân sách", verdict: "fails" },
+        { name: "Lotus", note: "Không ghi bữa sáng", verdict: "cannot_tell" },
+      ],
+    },
     faq: [
       {
         q: "Nó có đọc được ngân sách từ lời của khách không?",
@@ -545,6 +661,10 @@ const VI: Record<AgentSlug, Specific> = {
     },
     example:
       "Trong Claude Code: claude mcp add pulse -- npx -y @thepulseapi/mcp. Tác tử có bốn công cụ: search_docs, get_page, list_pages và resolve_products.",
+    demo: {
+      install: "claude mcp add pulse -- npx -y @thepulseapi/mcp",
+      tools: ["search_docs", "get_page", "list_pages", "resolve_products"],
+    },
     faq: [
       {
         q: "Máy chủ MCP có gửi mã của tôi đi đâu không?",
@@ -554,8 +674,37 @@ const VI: Record<AgentSlug, Specific> = {
   },
 };
 
-function build(s: Specific, shared: typeof SHARED_EN): StoryContent {
+/** An agent page: the chapter layout's content, plus the hero's worked example and its labels. */
+export type AgentContent = ChapterContent & {
+  demo: AgentDemo;
+  /**
+   * The example the How it works pipeline walks through: the page's own, or, on the coding agents
+   * page, whose example is an install line, the shopping one.
+   */
+  sample: Extract<AgentDemo, { ask: string }>;
+  labels: {
+    request: string;
+    plainWords: string;
+    upTo: string;
+    verdicts: Record<Verdict, string>;
+  };
+};
+
+function build(
+  s: Specific,
+  shared: typeof SHARED_EN,
+  fallback: Specific,
+): AgentContent {
+  const sample = "ask" in s.demo ? s.demo : fallback.demo;
   return {
+    demo: s.demo,
+    sample: sample as AgentContent["sample"],
+    labels: {
+      request: shared.request,
+      plainWords: shared.plainWords,
+      upTo: shared.upTo,
+      verdicts: shared.verdicts,
+    },
     meta: s.meta,
     eyebrow: s.eyebrow,
     title: s.title,
@@ -570,5 +719,7 @@ function build(s: Specific, shared: typeof SHARED_EN): StoryContent {
   };
 }
 
-export const agentPage = (locale: string, slug: AgentSlug): StoryContent =>
-  locale === "vi" ? build(VI[slug], SHARED_VI) : build(EN[slug], SHARED_EN);
+export const agentPage = (locale: string, slug: AgentSlug): AgentContent =>
+  locale === "vi"
+    ? build(VI[slug], SHARED_VI, VI["shopping-assistants"])
+    : build(EN[slug], SHARED_EN, EN["shopping-assistants"]);

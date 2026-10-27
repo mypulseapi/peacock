@@ -5730,3 +5730,50 @@ html[data-js] .figure-hold *::after {
   .ec-product:nth-child(n + 5) { display: none; }
   .ec-filters { padding-left: 12px; }
 }
+
+/* Before and after on a slider (`designed/product/compare-slider.tsx`, owner 27 Oct 2026, the agent pages).
+   The slider's value is `--pos`; the after picture is clipped to the right of it, the line and the knob sit
+   on it. The range input covers the whole frame, so dragging anywhere and the arrow keys both move it. */
+@utility compare {
+  --pos: 50%;
+  &:has(:focus-visible) {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+}
+@utility compare-after {
+  clip-path: inset(0 0 0 var(--pos));
+}
+@utility compare-line {
+  position: absolute;
+  inset-block: 0;
+  left: var(--pos);
+  width: 2px;
+  translate: -1px 0;
+  background: var(--color-primary);
+  pointer-events: none;
+}
+@utility compare-knob {
+  position: absolute;
+  top: 50%;
+  left: var(--pos);
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  translate: -50% -50%;
+  border-radius: 9999px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--shadow-window);
+  pointer-events: none;
+}
+@utility compare-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}

@@ -740,7 +740,8 @@
         "2": "of consumers frustrated by incomplete product information, up from 28%",
         "3": "Akeneo PX Pulse 2025",
         "4": "of product pages ship no full set of structured data",
-        "5": "Adobe Analytics"
+        "5": "Adobe Analytics",
+        "sceneAlt": "A tall bathroom shelf of skincare bottles and jars in pale colours, with a hand reaching for one."
       },
       "section3": {
         "1": "What usually goes wrong in Cosmetics and personal care",
@@ -763,7 +764,8 @@
         "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries.",
         "source1": "Ingredient lists",
         "source2": "Supplier compliance data",
-        "source3": "Pack and product copy"
+        "source3": "Pack and product copy",
+        "figureAlt": "A row of serum bottles, one with its facts drawn on, skin type dry and key ingredient niacinamide, and concern addressed an empty dashed box."
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -775,7 +777,9 @@
         "7": "The same buyer narrows on Concern addressed and reaches a shortlist they can choose from.",
         "8": "Concern addressed came first on the ranked list, measured against what buyers in this sector actually ask, not against how much data was missing.",
         "9": "The remaining gaps are still ranked, so the next round of work is already ordered and costed.",
-        "10": "Coverage figures illustrate the shape of a catalogue in this sector."
+        "10": "Coverage figures illustrate the shape of a catalogue in this sector.",
+        "beforeAlt": "Three serum bottles on a shelf, with concern addressed, skin type and key ingredient each shown as an unanswered question, beside a listing card carrying only a photograph and a rating.",
+        "afterAlt": "The same bottles with each fact recorded, concern dullness, skin type dry, key ingredient niacinamide and volume 30 ml, beside a filter panel a shopper can now set each of those to."
       },
       "section5": {
         "1": "What we do about it",
@@ -823,7 +827,8 @@
         "4": "average machine readability of US retail product pages, lowest of any page type",
         "5": "Adobe Analytics",
         "6": "of product pages ship no full set of structured data",
-        "7": "Adobe Analytics"
+        "7": "Adobe Analytics",
+        "sceneAlt": "A tall warehouse aisle of shelving with bins of industrial fittings and fasteners, each bin labelled only with an order code."
       },
       "section3": {
         "1": "What usually goes wrong in B2B and industrial",
@@ -843,7 +848,8 @@
         "18": "Voltage rating",
         "19": "Thread size",
         "20": "Pack quantity",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries.",
+        "figureAlt": "A metal fitting on a workbench beside its supplier datasheet, with voltage rating 24 V, thread size M12 and pack quantity 10 drawn from the sheet, and tolerance class an empty dashed box."
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -855,7 +861,9 @@
         "7": "The same buyer narrows on Tolerance class and reaches a shortlist they can choose from.",
         "8": "Tolerance class came first on the ranked list, measured against what buyers in this sector actually ask, not against how much data was missing.",
         "9": "The remaining gaps are still ranked, so the next round of work is already ordered and costed.",
-        "10": "Coverage figures illustrate the shape of a catalogue in this sector."
+        "10": "Coverage figures illustrate the shape of a catalogue in this sector.",
+        "beforeAlt": "A bin of near-identical fittings, with tolerance class, voltage rating and thread size each shown as an unanswered question, the bins labelled only with a part code.",
+        "afterAlt": "The same bin with each fact recorded, tolerance class H7, voltage rating 24 V, thread size M12 and pack quantity 10, beside a filter panel a buyer can now set each of those to."
       },
       "section5": {
         "1": "What we do about it",
@@ -928,7 +936,8 @@
         "2": "of tested retailers offer no filter for information they already display",
         "3": "Baymard Institute",
         "4": "of consumers frustrated by incomplete product information, up from 28%",
-        "5": "Akeneo PX Pulse 2025"
+        "5": "Akeneo PX Pulse 2025",
+        "sceneAlt": "A long, bright store aisle of near-identical laptops in plain boxes, with one shopper small at the far end."
       },
       "section3": {
         "1": "What usually goes wrong in Ecommerce and retail",
@@ -950,7 +959,8 @@
         "20": "Processor",
         "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries.",
         "source1": "Product titles",
-        "source2": "Product descriptions"
+        "source2": "Product descriptions",
+        "figureAlt": "A shopper browsing laptops on a category page, the filter panel showing memory, storage and processor, and screen size as an empty dashed box, so the shelf behind barely narrows."
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -1046,7 +1056,8 @@
         "4": "of consumers frustrated by incomplete product information, up from 28%",
         "5": "Akeneo PX Pulse 2025",
         "6": "of product pages ship no full set of structured data",
-        "7": "Adobe Analytics"
+        "7": "Adobe Analytics",
+        "sceneAlt": "A tall supermarket aisle of near-identical whole-grain cereal boxes, with a shopper and her basket further down the aisle."
       },
       "section3": {
         "2": "What a buyer here is trying to decide:",
@@ -1088,7 +1099,9 @@
         "7": "The same buyer narrows on Concentration and reaches a shortlist they can choose from.",
         "8": "Concentration came first on the ranked list, measured against what buyers in this sector actually ask, not against how much data was missing.",
         "9": "The remaining gaps are still ranked, so the next round of work is already ordered and costed.",
-        "10": "Coverage figures illustrate the shape of a catalogue in this sector."
+        "10": "Coverage figures illustrate the shape of a catalogue in this sector.",
+        "beforeAlt": "Three near-identical cereal boxes on a shelf, with concentration, pack size and dietary claim each marked not stated, beside a listing card carrying only a photograph and a rating.",
+        "afterAlt": "The same boxes with each fact recorded: concentration whole grain 60%, pack size 500 g, dietary claim high fibre, beside a filter panel a shopper can now set each of those to."
       },
       "section5": {
         "1": "What we do about it",
@@ -1219,7 +1232,8 @@
         "2": "of tested retailers offer no filter for information they already display",
         "3": "Baymard Institute",
         "4": "of product pages ship no full set of structured data",
-        "5": "Adobe Analytics"
+        "5": "Adobe Analytics",
+        "sceneAlt": "Two nearly identical open laptops side by side on a bright desk, with a phone and a notebook beside them."
       },
       "section3": {
         "1": "What usually goes wrong in Technology and electronics",
@@ -1242,7 +1256,8 @@
         "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries.",
         "source1": "Product titles",
         "source2": "Product descriptions",
-        "source3": "Supplier specification sheet"
+        "source3": "Supplier specification sheet",
+        "figureAlt": "Two near-identical laptops with their specs drawn on, memory 16 GB, storage 512 GB and processor i7 for each, and screen size an empty dashed box between them."
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -1254,7 +1269,9 @@
         "7": "The same buyer narrows on Screen size and reaches a shortlist they can choose from.",
         "8": "Screen size came first on the ranked list, measured against what buyers in this sector actually ask, not against how much data was missing.",
         "9": "The remaining gaps are still ranked, so the next round of work is already ordered and costed.",
-        "10": "Coverage figures illustrate the shape of a catalogue in this sector."
+        "10": "Coverage figures illustrate the shape of a catalogue in this sector.",
+        "beforeAlt": "A laptop on a display stand, with screen size, memory and processor each shown as an unanswered question, beside a listing card carrying only a photograph and a rating.",
+        "afterAlt": "The same laptop with every spec recorded, screen size 15.6\", memory 16 GB, storage 512 GB and processor i7, beside a filter panel a shopper can now set each of those to."
       },
       "section5": {
         "1": "What we do about it",

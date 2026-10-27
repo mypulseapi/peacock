@@ -5,7 +5,10 @@
  */
 import {
   AlignLeft,
+  Armchair,
+  SprayCan,
   Boxes,
+  Cog,
   Cpu,
   Droplets,
   FileSpreadsheet,
@@ -16,9 +19,11 @@ import {
   Heading,
   Image,
   Layers,
+  Laptop,
   Leaf,
   MemoryStick,
   Megaphone,
+  Milk,
   Monitor,
   Package,
   Palette,
@@ -43,6 +48,7 @@ const pct = (n: number) => Math.round((100 * n) / SHELF);
 export const SECTORS: Record<string, Sector> = {
   ecommerce: {
     slug: "ecommerce",
+    product: Laptop,
     icons: [Monitor, MemoryStick, HardDrive, Cpu],
     sourceIcons: [Heading, AlignLeft],
     stats: ["38%", "34%"],
@@ -52,6 +58,7 @@ export const SECTORS: Record<string, Sector> = {
   },
   fmcg: {
     slug: "fmcg",
+    product: Milk,
     icons: [FlaskConical, Package, Leaf, Tag],
     sourceIcons: [Package, FileSpreadsheet, AlignLeft, Megaphone],
     stats: ["38%", "34%", "79%"],
@@ -72,6 +79,7 @@ export const SECTORS: Record<string, Sector> = {
   },
   technology: {
     slug: "technology",
+    product: Laptop,
     icons: [Monitor, MemoryStick, HardDrive, Cpu],
     sourceIcons: [Heading, AlignLeft, FileSpreadsheet],
     stats: ["38%", "79%"],
@@ -85,6 +93,7 @@ export const SECTORS: Record<string, Sector> = {
   },
   furniture: {
     slug: "furniture",
+    product: Armchair,
     icons: [Weight, Ruler, Layers, Palette],
     sourceIcons: [FileSpreadsheet, AlignLeft, Image],
     stats: ["38%", "34%"],
@@ -124,6 +133,7 @@ export const SECTORS: Record<string, Sector> = {
   },
   cosmetics: {
     slug: "cosmetics",
+    product: SprayCan,
     icons: [Target, Droplets, Pipette, FlaskConical],
     sourceIcons: [ScrollText, FileText, Package],
     stats: ["34%", "79%"],
@@ -137,6 +147,7 @@ export const SECTORS: Record<string, Sector> = {
   },
   distribution: {
     slug: "distribution",
+    product: Cog,
     icons: [Gauge, Zap, Wrench, Boxes],
     sourceIcons: [],
     stats: ["36%", "66%", "79%"],

@@ -10,7 +10,7 @@
  *   hero         the headline centred, the picture under it, the three beats under that
  *   right now    the figures, beside the sector's scene
  *   problem      the buyer's question and what goes wrong, beside the sector's picture
- *                (a marked placeholder wherever a sector has no picture yet)
+ *                (a drawn mockup, `drawings.tsx`, wherever a sector has no picture yet)
  *   coverage     the ranked list, drawn like the Decision Audit's, then where the fact lives
  *   the shelf    before and after: a slider where there are two pictures, else the two lists
  *   what we do   the three steps as a pipeline, then the four things it does not take
@@ -19,7 +19,8 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Image as ImageIcon, type LucideIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { ProblemDrawing, SceneDrawing, ShelfDrawing } from "./drawings";
 import { img } from "@/lib/cdn";
 import { designedHref, designedText } from "../t";
 import { CompareSlider } from "../product/compare-slider";
@@ -42,6 +43,8 @@ export interface Sector {
   hero: SectorPicture | ReactNode;
   scene?: SectorPicture;
   problem?: SectorPicture;
+  /** The sector's product, as a mark: what its drawn pictures show on the shelf. */
+  product: LucideIcon;
   /** One mark per ranked attribute, in the coverage order: the icon beside it in the list and the row. */
   icons: LucideIcon[];
   /** One mark per place the fact already lives (`section3.source1`…), for the source map. */
@@ -215,11 +218,9 @@ export function SectorPage({ s }: { s: Sector }) {
                 sizes="(min-width: 1024px) 24rem, 90vw"
               />
             ) : (
-              <Placeholder
-                name={`sectors/${s.slug}-scene.webp`}
-                size="760 × 1230"
-                aspect="aspect-[760/1230]"
-              />
+              <div className="aspect-[760/1230]">
+                <SceneDrawing product={s.product} icons={s.icons} />
+              </div>
             )}
           </div>
         </div>
@@ -236,11 +237,9 @@ export function SectorPage({ s }: { s: Sector }) {
                 sizes="(min-width: 1024px) 48vw, 92vw"
               />
             ) : (
-              <Placeholder
-                name={`sectors/${s.slug}-problem.webp`}
-                size="1100 × 755"
-                aspect="aspect-[1100/755]"
-              />
+              <div className="aspect-[1100/755]">
+                <ProblemDrawing product={s.product} icons={s.icons} />
+              </div>
             )}
           </div>
           <div className="reveal delay-100">
@@ -378,21 +377,10 @@ export function SectorPage({ s }: { s: Sector }) {
                 ) : (
                   <CompareSlider
                     before={
-                      <Placeholder
-                        name={`sectors/${s.slug}-shelf-before.webp`}
-                        size="760 × 882"
-                        aspect="size-full justify-items-start pl-[6%]"
-                        half
-                      />
+                      <ShelfDrawing product={s.product} icons={s.icons} />
                     }
                     after={
-                      <Placeholder
-                        name={`sectors/${s.slug}-shelf-after.webp`}
-                        size="760 × 882"
-                        aspect="size-full justify-items-end pr-[6%]"
-                        half
-                        after
-                      />
+                      <ShelfDrawing product={s.product} icons={s.icons} after />
                     }
                     beforeLabel={t4("2")}
                     afterLabel={t4("6")}
@@ -516,42 +504,6 @@ export function SectorPage({ s }: { s: Sector }) {
         </div>
       </section>
     </>
-  );
-}
-
-/**
- * Where a sector has no picture yet (owner, 27 Oct 2026): a marked box with the file name and size
- * the picture needs, so the layout is the one it will have. Remove each as its picture lands.
- * ponytail: placeholders are for local preview; the build's placeholder gate does not cover them.
- */
-function Placeholder({
-  name,
-  size,
-  aspect,
-  after = false,
-  half = false,
-}: {
-  name: string;
-  size: string;
-  aspect: string;
-  after?: boolean;
-  /** One side of the slider: keep the label in its own half so the two never overlap. */
-  half?: boolean;
-}) {
-  return (
-    <div
-      className={`grid ${aspect} items-center rounded-2xl border-2 border-dashed border-line-control p-4 text-center ${after ? "bg-primary-wash" : "bg-surface-1"}`}
-    >
-      <div
-        className={`grid justify-items-center gap-2 text-muted ${half ? "max-w-[40%]" : ""}`}
-      >
-        <ImageIcon className="size-6" aria-hidden="true" />
-        <code className="rounded-md bg-card px-2 py-0.5 font-mono text-caption break-all text-ink">
-          {name}
-        </code>
-        <span className="text-caption">{size}</span>
-      </div>
-    </div>
   );
 }
 

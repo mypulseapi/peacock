@@ -63,8 +63,8 @@ export function DesignedFooter() {
   const t = designedText("shell.designed-footer");
   return (
     <footer className="border-t border-line bg-card">
-      <div className="frame pt-20 pb-12 lg:pt-24">
-        <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+      <div className="frame pt-12 pb-10 sm:pt-20 sm:pb-12 lg:pt-24">
+        <div className="grid gap-8 sm:grid-cols-2 sm:gap-14 lg:grid-cols-4 lg:gap-10">
           <div>
             <Link
               href={designedHref("/en")}
@@ -94,38 +94,42 @@ export function DesignedFooter() {
             </p>
             {/* Contact sits under the logo (2026-10-26): the brand column carries who we are and
                 how to reach us, so the three link columns can line up row for row. */}
-            <div className="mt-6 flex gap-3">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.icon}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Pulse on ${s.name} (opens in a new tab)`}
-                  className="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
-                >
-                  <svg className="size-5" aria-hidden="true">
-                    <use href={`#${s.icon}`} />
-                  </svg>
-                </a>
-              ))}
+            {/* On a phone, the email and the social icons share one row (owner's version 2, 27 Oct
+                2026); from `sm` they stack as before. */}
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 sm:mt-6 sm:block">
+              <div className="flex gap-3">
+                {SOCIALS.map((s) => (
+                  <a
+                    key={s.icon}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Pulse on ${s.name} (opens in a new tab)`}
+                    className="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors duration-200 ease-out-soft hover:border-primary hover:text-primary"
+                  >
+                    <svg className="size-5" aria-hidden="true">
+                      <use href={`#${s.icon}`} />
+                    </svg>
+                  </a>
+                ))}
+              </div>
+              <a
+                href="mailto:getintouch@thepulseapi.com"
+                className="inline-flex min-h-11 items-center text-sm wrap-anywhere text-muted transition-colors duration-200 ease-out-soft hover:text-ink max-sm:order-first sm:mt-3"
+              >
+                {t("11")}
+              </a>
             </div>
-            <a
-              href="mailto:getintouch@thepulseapi.com"
-              className="mt-3 inline-flex min-h-11 items-center text-sm wrap-anywhere text-muted transition-colors duration-200 ease-out-soft hover:text-ink"
-            >
-              {t("11")}
-            </a>
           </div>
           {COLUMNS.map((col) => (
             <div key={col.heading}>
               <h2 className="text-nav font-semibold">{t(col.heading)}</h2>
-              <ul className="mt-6 space-y-5 text-sm text-muted">
+              <ul className="mt-2 grid grid-cols-2 gap-x-4 text-sm text-muted sm:mt-6 sm:block sm:space-y-5">
                 {col.links.map(([href, key]) => (
                   <li key={href}>
                     <Link
                       href={designedHref(href)}
-                      className="-my-2.5 inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink"
+                      className="inline-flex min-h-11 items-center transition-colors duration-200 ease-out-soft hover:text-ink sm:-my-2.5"
                     >
                       {t(key)}
                     </Link>
@@ -137,11 +141,14 @@ export function DesignedFooter() {
         </div>
         {/* Company facts, the owner's Direction A (mockup pin 9): who and where, the first thing an
             investor looks for. Same wording as the About page. Hairlines are a 1px gap over `line`. */}
-        <dl className="mt-14 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        <dl className="mt-10 grid sm:mt-14 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {COMPANY_FACTS.map((key) => (
-            <div key={key} className="bg-card px-5 py-4">
+            <div
+              key={key}
+              className="bg-card px-4 py-3 max-sm:grid max-sm:grid-cols-[7rem_minmax(0,1fr)] max-sm:items-baseline max-sm:gap-3 sm:px-5 sm:py-4"
+            >
               <dt className="text-caption text-muted">{t(`${key}Label`)}</dt>
-              <dd className="mt-1 text-sm font-medium text-ink">
+              <dd className="text-sm font-medium text-ink sm:mt-1">
                 {t(`${key}Value`)}
               </dd>
             </div>
@@ -151,7 +158,7 @@ export function DesignedFooter() {
       <div className="border-t border-line">
         <div className="frame flex flex-col gap-3 py-4 text-data text-ink sm:flex-row sm:items-center sm:justify-between">
           <p>{t("12")}</p>
-          <ul className="flex flex-wrap items-center gap-x-7 gap-y-5">
+          <ul className="flex flex-wrap items-center gap-x-5 sm:gap-x-7 sm:gap-y-5">
             <li>
               <Link
                 href={designedHref("/en/privacy")}
@@ -179,7 +186,7 @@ export function DesignedFooter() {
             <li>
               <Link
                 href={designedHref("/en/gdpr")}
-                className="-my-2.5 inline-flex min-h-11 min-w-11 items-center justify-center transition-colors duration-200 ease-out-soft hover:text-primary"
+                className="-my-2.5 inline-flex min-h-11 min-w-11 items-center sm:justify-center transition-colors duration-200 ease-out-soft hover:text-primary"
               >
                 {t("16")}
               </Link>

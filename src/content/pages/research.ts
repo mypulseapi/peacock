@@ -22,6 +22,11 @@ export interface Finding {
   limit: string;
   href: string;
   link: string;
+  /**
+   * The finding the page leads with, and its figure: the shelf at each step and the bits each step
+   * is worth, written per locale ("1.20 bits", "1,20 bit"). One finding carries it.
+   */
+  featured?: { steps: number[]; bits: string[] };
 }
 
 export interface ResearchContent {
@@ -29,7 +34,7 @@ export interface ResearchContent {
   eyebrow: string;
   title: string;
   lede: string;
-  labels: { measured: string; waiting: string; data: string; limit: string };
+  labels: { measured: string; waiting: string; data: string; limit: string; all: string };
   findingsHeading: string;
   findings: Finding[];
   method: { heading: string; items: { title: string; body: string }[] };
@@ -52,6 +57,7 @@ const EN: ResearchContent = {
     waiting: "Waiting on a first merchant",
     data: "Data",
     limit: "Limit",
+    all: "All",
   },
   findingsHeading: "Findings, product by product",
   findings: [
@@ -87,6 +93,7 @@ const EN: ResearchContent = {
         "One shelf, partly synthetic. It compares two kinds of missing information; it is not a ranking result.",
       href: "/product/search",
       link: "About Search",
+      featured: { steps: [216, 94, 5], bits: ["1.20 bits", "4.24 bits"] },
     },
     {
       product: "Search",
@@ -202,6 +209,7 @@ const VI: ResearchContent = {
     waiting: "Chờ người bán đầu tiên",
     data: "Dữ liệu",
     limit: "Giới hạn",
+    all: "Tất cả",
   },
   findingsHeading: "Kết quả, từng sản phẩm",
   findings: [
@@ -238,6 +246,7 @@ const VI: ResearchContent = {
         "Một kệ hàng, một phần là dữ liệu tổng hợp. Nó so sánh hai loại thông tin còn thiếu; không phải kết quả xếp hạng.",
       href: "/product/search",
       link: "Về Search",
+      featured: { steps: [216, 94, 5], bits: ["1,20 bit", "4,24 bit"] },
     },
     {
       product: "Search",

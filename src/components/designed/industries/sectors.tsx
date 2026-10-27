@@ -108,7 +108,6 @@ export const SECTORS: Record<string, Sector> = {
         alt: "section4.afterAlt",
       },
     },
-    shelfAspect: "aspect-square",
   },
   technology: {
     slug: "technology",
@@ -149,7 +148,6 @@ export const SECTORS: Record<string, Sector> = {
         alt: "section4.afterAlt",
       },
     },
-    shelfAspect: "aspect-square",
   },
   furniture: {
     slug: "furniture",
@@ -178,15 +176,15 @@ export const SECTORS: Record<string, Sector> = {
     },
     shelf: {
       before: {
-        src: "sectors/furniture-shelf-before-unanswered.webp",
-        width: 760,
-        height: 882,
+        src: "sectors/furniture-shelf-before.webp",
+        width: 1000,
+        height: 1000,
         alt: "section4.beforeAlt",
       },
       after: {
-        src: "sectors/furniture-shelf-after-filters-usable.webp",
-        width: 960,
-        height: 872,
+        src: "sectors/furniture-shelf-after.webp",
+        width: 1000,
+        height: 1000,
         alt: "section4.afterAlt",
       },
     },
@@ -230,7 +228,6 @@ export const SECTORS: Record<string, Sector> = {
         alt: "section4.afterAlt",
       },
     },
-    shelfAspect: "aspect-square",
   },
   distribution: {
     slug: "distribution",
@@ -272,6 +269,5 @@ export const SECTORS: Record<string, Sector> = {
         alt: "section4.afterAlt",
       },
     },
-    shelfAspect: "aspect-square",
   },
 };

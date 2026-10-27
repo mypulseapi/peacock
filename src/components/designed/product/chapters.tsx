@@ -22,11 +22,10 @@ import { Link } from "@/i18n/routing";
 import { StoryCta, type StoryContent } from "@/components/StoryPage";
 import { GainsCards, type GainsArt } from "./gains";
 import { StepsZigzag } from "./steps-zigzag";
+import { CompareSlider } from "./compare-slider";
 
 export type ChapterContent = StoryContent &
-  Required<
-    Pick<StoryContent, "situation" | "gets" | "limits" | "chainBlock">
-  > & {
+  Required<Pick<StoryContent, "situation" | "gets" | "limits">> & {
     /**
      * The hero figure, on the CDN like the other product heroes; the alt text localises. A page whose
      * image is not made yet passes `figure` to `ChapterPage` instead.
@@ -69,10 +68,11 @@ export function ChapterPage({
   gainPictures,
   figure,
   output,
+  beforeAfter,
 }: {
   c: ChapterContent;
-  /** The chart beside the chain chapter. */
-  chain: ReactNode;
+  /** The chart beside the chain chapter. Without it, or without `c.chainBlock`, there is no chain chapter. */
+  chain?: ReactNode;
   /**
    * Frame `chain` in a card (the default). Off for charts that bring their own card, such as the
    * storefront panels and their two stacked comparison cards: framed twice, a white strip showed
@@ -92,6 +92,11 @@ export function ChapterPage({
    * both inside a wash panel as on Decision Verification's comparison.
    */
   output?: { panel: ReactNode; layout?: "split" | "centre" | "band" };
+  /**
+   * The two pictures of `c.beforeAfter`, on a slider (owner, 27 Oct 2026, the agent pages): drag to
+   * wipe from one to the other, the two lists under it, after the gains.
+   */
+  beforeAfter?: { before: ReactNode; after: ReactNode };
 }) {
   const locale = renderLocale();
   const t = ui(locale);
@@ -172,25 +177,27 @@ export function ChapterPage({
         </div>
       </section>
 
-      <section className="border-b border-line">
-        <div className="frame grid items-center gap-10 py-20 lg:grid-cols-2 lg:gap-16 lg:py-28">
-          <div className="reveal">
-            <h2 className="text-title text-balance">
-              {h(c.chainBlock.heading)}
-            </h2>
-            {c.chainBlock.body && (
-              <p className="mt-6 text-lg text-pretty text-muted">
-                {c.chainBlock.body}
-              </p>
-            )}
+      {chain && c.chainBlock && (
+        <section className="border-b border-line">
+          <div className="frame grid items-center gap-10 py-20 lg:grid-cols-2 lg:gap-16 lg:py-28">
+            <div className="reveal">
+              <h2 className="text-title text-balance">
+                {h(c.chainBlock.heading)}
+              </h2>
+              {c.chainBlock.body && (
+                <p className="mt-6 text-lg text-pretty text-muted">
+                  {c.chainBlock.body}
+                </p>
+              )}
+            </div>
+            <div
+              className={`reveal delay-100 ${chainFramed ? "rounded-2xl border border-line bg-card shadow-sm" : ""}`}
+            >
+              {chain}
+            </div>
           </div>
-          <div
-            className={`reveal delay-100 ${chainFramed ? "rounded-2xl border border-line bg-card shadow-sm" : ""}`}
-          >
-            {chain}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {output && c.visualHeading && (
         <Output heading={h(c.visualHeading)} body={c.visualBody} {...output} />
@@ -230,6 +237,48 @@ export function ChapterPage({
           />
         </div>
       </section>
+
+      {beforeAfter && c.beforeAfter && (
+        <section className="border-b border-line">
+          <div className="frame py-20 lg:py-28">
+            <h2 className="reveal text-title text-balance">
+              {h(c.beforeAfter.heading)}
+            </h2>
+            <div className="reveal mx-auto mt-12 max-w-4xl delay-100 lg:mt-14">
+              <CompareSlider
+                before={beforeAfter.before}
+                after={beforeAfter.after}
+                beforeLabel={c.beforeAfter.before.label}
+                afterLabel={c.beforeAfter.after.label}
+              />
+            </div>
+            <div className="mx-auto mt-10 grid max-w-4xl gap-10 lg:grid-cols-2 lg:gap-16">
+              {(
+                [
+                  [c.beforeAfter.before, false],
+                  [c.beforeAfter.after, true],
+                ] as const
+              ).map(([side, ok]) => (
+                <div key={side.label} className="reveal">
+                  <h3 className="text-h3 text-ink">{side.label}</h3>
+                  <ul className="mt-4">
+                    {side.items.map((item) => (
+                      <li key={item} className="flex gap-3 py-2">
+                        <Mark ok={ok} />
+                        <span
+                          className={`text-body text-pretty ${ok ? "text-ink" : "text-muted"}`}
+                        >
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="border-b border-line bg-surface-1">
         <div className="frame py-20 lg:py-28">

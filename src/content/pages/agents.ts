@@ -1,5 +1,6 @@
 import { Scale, CircleHelp, ListChecks, Plug, ShieldCheck } from "lucide-react";
 import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
 
 /**
  * The four "For AI agents" pages. ODIN/strategy/OPEN-SOURCE.md §0: PULSE is a domain-free decision
@@ -17,15 +18,32 @@ export const AGENT_SLUGS = [
 ] as const;
 export type AgentSlug = (typeof AGENT_SLUGS)[number];
 
+/**
+ * The page's worked example, as the hero shows it (owner's layout A, 27 Oct 2026): the request and
+ * each option's verdict, word for word from `example`; or, for coding agents, the install line and
+ * the four tools. The names are the example's own.
+ */
+export type AgentDemo =
+  | {
+      ask: string;
+      options: { name: string; note: string; verdict: Verdict }[];
+    }
+  | { install: string; tools: string[] };
+export type Verdict = "fits" | "fails" | "cannot_tell";
+
 type Specific = Pick<
   StoryContent,
-  "meta" | "eyebrow" | "title" | "lede" | "situation" | "beforeAfter"
-> & {
-  example: string;
-  faq: StoryContent["faq"];
-};
+  "meta" | "eyebrow" | "title" | "lede" | "beforeAfter"
+> &
+  Required<Pick<StoryContent, "situation">> & {
+    example: string;
+    demo: AgentDemo;
+    faq: StoryContent["faq"];
+  };
 
 const SHARED_EN = {
+  verdicts: { fits: "Fits", fails: "Fails", cannot_tell: "Cannot tell" },
+  request: "The request",
   steps: {
     heading: "How does it work?",
     intro: "One call, from MCP or HTTP. Nothing to train, nothing stored.",
@@ -40,17 +58,17 @@ const SHARED_EN = {
         n: "02",
         meta: "Send",
         title: "Pass the options",
-        body: "Up to 50 at a time, with whatever fields and text you have. A stated field always wins over text read off a page.",
+        body: "Up to 50 at a time, with whatever fields and text you have.",
       },
       {
         n: "03",
         meta: "Answer",
         title: "Answer from the verdicts",
-        body: "Each option comes back fits, fails or cannot tell, with the attributes that are missing. The agent says what the evidence shows, and only that.",
+        body: "Each option comes back fits, fails or cannot tell, with the attributes that are missing.",
       },
     ],
   },
-  gets: (example: string): StoryContent["gets"] => ({
+  gets: (example: string): NonNullable<StoryContent["gets"]> => ({
     heading: "What the agent gets",
     items: [
       {
@@ -103,7 +121,7 @@ const SHARED_EN = {
   ],
   cta: {
     title: "Add it to your agent.",
-    body: "Install the MCP server with one line, or call the API from your code. The open-source repository has runnable examples.",
+    body: "Install the MCP server with one line, or call the API from your code.",
     label: "Opensource",
     href: "/opensource",
     note: "An API key comes from the Pulse dashboard.",
@@ -111,6 +129,12 @@ const SHARED_EN = {
 };
 
 const SHARED_VI = {
+  verdicts: {
+    fits: "Đạt",
+    fails: "Không đạt",
+    cannot_tell: "Không đủ thông tin",
+  },
+  request: "Yêu cầu",
   steps: {
     heading: "Nó hoạt động thế nào?",
     intro:
@@ -126,17 +150,17 @@ const SHARED_VI = {
         n: "02",
         meta: "Gửi",
         title: "Đưa các lựa chọn",
-        body: "Tối đa 50 lựa chọn mỗi lần, kèm mọi trường và văn bản bạn có. Một trường đã ghi luôn thắng văn bản đọc từ trang.",
+        body: "Tối đa 50 lựa chọn mỗi lần, kèm mọi trường và văn bản bạn có.",
       },
       {
         n: "03",
         meta: "Trả lời",
         title: "Trả lời theo phán quyết",
-        body: "Mỗi lựa chọn trả về đạt, không đạt hoặc không đủ thông tin, kèm các thuộc tính còn thiếu. Tác tử nói đúng điều bằng chứng cho thấy, và chỉ điều đó.",
+        body: "Mỗi lựa chọn trả về đạt, không đạt hoặc không đủ thông tin, kèm các thuộc tính còn thiếu.",
       },
     ],
   },
-  gets: (example: string): StoryContent["gets"] => ({
+  gets: (example: string): NonNullable<StoryContent["gets"]> => ({
     heading: "Tác tử nhận được gì",
     items: [
       {
@@ -189,7 +213,7 @@ const SHARED_VI = {
   ],
   cta: {
     title: "Thêm vào tác tử của bạn.",
-    body: "Cài máy chủ MCP bằng một dòng, hoặc gọi API từ mã của bạn. Kho mã nguồn mở có ví dụ chạy được.",
+    body: "Cài máy chủ MCP bằng một dòng, hoặc gọi API từ mã của bạn.",
     label: "Mã nguồn mở",
     href: "/opensource",
     note: "Khóa API lấy từ bảng điều khiển Pulse.",
@@ -205,7 +229,7 @@ const EN: Record<AgentSlug, Specific> = {
     },
     eyebrow: "For AI agents",
     title: "A shopping assistant that never invents a spec.",
-    lede: "Your assistant knows what the shopper asked for. Pulse tells it which products the listings prove fit, which fail, and which say nothing, so it recommends from evidence and says plainly what it cannot tell.",
+    lede: "Pulse tells it which products the listings prove fit, which fail, and which say nothing, so it recommends from evidence and says plainly what it cannot tell.",
     situation: {
       heading: "Assistants are built to answer.",
       body: [
@@ -234,6 +258,18 @@ const EN: Record<AgentSlug, Specific> = {
     },
     example:
       '"Laptop under $1,500 with 16GB RAM": one fits, one fails on price, one cannot tell because its listing never states the RAM.',
+    demo: {
+      ask: "Laptop under $1,500 with 16GB RAM",
+      options: [
+        { name: "Laptop A", note: "Over the budget", verdict: "fails" },
+        {
+          name: "Laptop B",
+          note: "The listing never states the RAM",
+          verdict: "cannot_tell",
+        },
+        { name: "Laptop C", note: "16GB RAM, under $1,500", verdict: "fits" },
+      ],
+    },
     faq: [
       {
         q: "Does it rank products for the shopper?",
@@ -249,7 +285,7 @@ const EN: Record<AgentSlug, Specific> = {
     },
     eyebrow: "For AI agents",
     title: "A procurement agent that checks the spec, not the brochure.",
-    lede: "Give the agent the spec and the candidate suppliers or parts. Pulse returns, for each one, which requirements its data meets, which it fails, and which it leaves blank, so the shortlist is defensible and the follow-up questions write themselves.",
+    lede: "Pulse returns, for each supplier or part, which requirements its data meets, which it fails, and which it leaves blank, so the shortlist is defensible and the follow-up questions write themselves.",
     situation: {
       heading: "A missing rating is not a pass.",
       body: [
@@ -278,6 +314,18 @@ const EN: Record<AgentSlug, Specific> = {
     },
     example:
       "Spec IP67, 24V, delivery within 14 days: Acme fits, Borealis fails on IP rating, Corvid fails on lead time and leaves its IP rating unstated.",
+    demo: {
+      ask: "IP67, 24V, delivered within 14 days",
+      options: [
+        { name: "Acme", note: "Meets every requirement", verdict: "fits" },
+        { name: "Borealis", note: "Fails on IP rating", verdict: "fails" },
+        {
+          name: "Corvid",
+          note: "Fails on lead time, IP rating unstated",
+          verdict: "fails",
+        },
+      ],
+    },
     faq: [
       {
         q: "Does it work with our own supplier fields?",
@@ -322,6 +370,22 @@ const EN: Record<AgentSlug, Specific> = {
     },
     example:
       '"Hotel near the venue under $180" with breakfast required: Harbour fits, Summit fails on price, Lotus cannot tell because it never states breakfast.',
+    demo: {
+      ask: "Hotel near the venue under $180, breakfast required",
+      options: [
+        {
+          name: "Harbour",
+          note: "Breakfast stated, under $180",
+          verdict: "fits",
+        },
+        { name: "Summit", note: "Over the budget", verdict: "fails" },
+        {
+          name: "Lotus",
+          note: "Never states breakfast",
+          verdict: "cannot_tell",
+        },
+      ],
+    },
     faq: [
       {
         q: "Can it read the budget from the traveller's words?",
@@ -337,7 +401,7 @@ const EN: Record<AgentSlug, Specific> = {
     },
     eyebrow: "For AI agents",
     title: "Coding agents that build on Pulse without guessing the API.",
-    lede: "Add the open-source MCP server to Claude Code, Cursor or Codex. The agent searches the current Pulse documentation instead of recalling an endpoint that may not exist, and wires the decision call into whatever it is building.",
+    lede: "The agent searches the current Pulse documentation instead of recalling an endpoint that may not exist, and wires the decision call into whatever it is building.",
     situation: {
       heading: "Coding agents remember APIs that changed.",
       body: [
@@ -366,6 +430,10 @@ const EN: Record<AgentSlug, Specific> = {
     },
     example:
       "In Claude Code: claude mcp add pulse -- npx -y @thepulseapi/mcp. The agent gets four tools: search_docs, get_page, list_pages and resolve_products.",
+    demo: {
+      install: "claude mcp add pulse -- npx -y @thepulseapi/mcp",
+      tools: ["search_docs", "get_page", "list_pages", "resolve_products"],
+    },
     faq: [
       {
         q: "Does the MCP server send my code anywhere?",
@@ -384,7 +452,7 @@ const VI: Record<AgentSlug, Specific> = {
     },
     eyebrow: "Cho tác tử AI",
     title: "Một trợ lý mua sắm không bao giờ bịa thông số.",
-    lede: "Trợ lý của bạn biết người mua đã hỏi gì. Pulse cho nó biết sản phẩm nào trang sản phẩm chứng minh là đạt, sản phẩm nào không, và sản phẩm nào không nói gì, để nó đề xuất dựa trên bằng chứng và nói rõ điều nó không biết.",
+    lede: "Pulse cho nó biết sản phẩm nào trang sản phẩm chứng minh là đạt, sản phẩm nào không, và sản phẩm nào không nói gì, để nó đề xuất dựa trên bằng chứng và nói rõ điều nó không biết.",
     situation: {
       heading: "Trợ lý được tạo ra để trả lời.",
       body: [
@@ -413,6 +481,18 @@ const VI: Record<AgentSlug, Specific> = {
     },
     example:
       '"Laptop dưới 1.500 USD có 16GB RAM": một chiếc đạt, một chiếc không đạt vì giá, một chiếc không đủ thông tin vì trang không ghi RAM.',
+    demo: {
+      ask: "Laptop dưới 1.500 USD có 16GB RAM",
+      options: [
+        { name: "Laptop A", note: "Vượt ngân sách", verdict: "fails" },
+        {
+          name: "Laptop B",
+          note: "Trang sản phẩm không ghi RAM",
+          verdict: "cannot_tell",
+        },
+        { name: "Laptop C", note: "16GB RAM, dưới 1.500 USD", verdict: "fits" },
+      ],
+    },
     faq: [
       {
         q: "Nó có xếp hạng sản phẩm cho người mua không?",
@@ -428,7 +508,7 @@ const VI: Record<AgentSlug, Specific> = {
     },
     eyebrow: "Cho tác tử AI",
     title: "Một tác tử mua hàng kiểm tra thông số, không phải tờ quảng cáo.",
-    lede: "Đưa cho tác tử thông số và các nhà cung cấp hay linh kiện ứng viên. Pulse trả về, cho từng ứng viên, yêu cầu nào dữ liệu đáp ứng, yêu cầu nào không, và yêu cầu nào bỏ trống, để danh sách rút gọn có căn cứ và câu hỏi cần hỏi tự hiện ra.",
+    lede: "Pulse trả về, cho từng nhà cung cấp hay linh kiện, yêu cầu nào dữ liệu đáp ứng, yêu cầu nào không, và yêu cầu nào bỏ trống, để danh sách rút gọn có căn cứ và câu hỏi cần hỏi tự hiện ra.",
     situation: {
       heading: "Một chỉ số bị thiếu không phải là đạt.",
       body: [
@@ -457,6 +537,18 @@ const VI: Record<AgentSlug, Specific> = {
     },
     example:
       "Thông số IP67, 24V, giao trong 14 ngày: Acme đạt, Borealis không đạt vì chỉ số IP, Corvid không đạt vì thời gian giao và không ghi chỉ số IP.",
+    demo: {
+      ask: "IP67, 24V, giao trong 14 ngày",
+      options: [
+        { name: "Acme", note: "Đáp ứng mọi yêu cầu", verdict: "fits" },
+        { name: "Borealis", note: "Không đạt vì chỉ số IP", verdict: "fails" },
+        {
+          name: "Corvid",
+          note: "Không đạt vì thời gian giao, không ghi chỉ số IP",
+          verdict: "fails",
+        },
+      ],
+    },
     faq: [
       {
         q: "Nó có dùng được với các trường nhà cung cấp của chúng tôi không?",
@@ -501,6 +593,18 @@ const VI: Record<AgentSlug, Specific> = {
     },
     example:
       '"Khách sạn gần địa điểm dưới 180 USD" và bắt buộc có bữa sáng: Harbour đạt, Summit không đạt vì giá, Lotus không đủ thông tin vì không ghi bữa sáng.',
+    demo: {
+      ask: "Khách sạn gần địa điểm dưới 180 USD, bắt buộc có bữa sáng",
+      options: [
+        {
+          name: "Harbour",
+          note: "Có ghi bữa sáng, dưới 180 USD",
+          verdict: "fits",
+        },
+        { name: "Summit", note: "Vượt ngân sách", verdict: "fails" },
+        { name: "Lotus", note: "Không ghi bữa sáng", verdict: "cannot_tell" },
+      ],
+    },
     faq: [
       {
         q: "Nó có đọc được ngân sách từ lời của khách không?",
@@ -516,7 +620,7 @@ const VI: Record<AgentSlug, Specific> = {
     },
     eyebrow: "Cho tác tử AI",
     title: "Tác tử lập trình xây trên Pulse mà không phải đoán API.",
-    lede: "Thêm máy chủ MCP mã nguồn mở vào Claude Code, Cursor hay Codex. Tác tử tìm trong tài liệu Pulse mới nhất thay vì nhớ một endpoint có thể không tồn tại, và đưa lệnh gọi quyết định vào bất cứ thứ gì nó đang xây.",
+    lede: "Tác tử tìm trong tài liệu Pulse mới nhất thay vì nhớ một endpoint có thể không tồn tại, và đưa lệnh gọi quyết định vào bất cứ thứ gì nó đang xây.",
     situation: {
       heading: "Tác tử lập trình nhớ những API đã thay đổi.",
       body: [
@@ -545,6 +649,10 @@ const VI: Record<AgentSlug, Specific> = {
     },
     example:
       "Trong Claude Code: claude mcp add pulse -- npx -y @thepulseapi/mcp. Tác tử có bốn công cụ: search_docs, get_page, list_pages và resolve_products.",
+    demo: {
+      install: "claude mcp add pulse -- npx -y @thepulseapi/mcp",
+      tools: ["search_docs", "get_page", "list_pages", "resolve_products"],
+    },
     faq: [
       {
         q: "Máy chủ MCP có gửi mã của tôi đi đâu không?",
@@ -554,8 +662,16 @@ const VI: Record<AgentSlug, Specific> = {
   },
 };
 
-function build(s: Specific, shared: typeof SHARED_EN): StoryContent {
+/** An agent page: the chapter layout's content, plus the hero's worked example and its labels. */
+export type AgentContent = ChapterContent & {
+  demo: AgentDemo;
+  labels: { request: string; verdicts: Record<Verdict, string> };
+};
+
+function build(s: Specific, shared: typeof SHARED_EN): AgentContent {
   return {
+    demo: s.demo,
+    labels: { request: shared.request, verdicts: shared.verdicts },
     meta: s.meta,
     eyebrow: s.eyebrow,
     title: s.title,
@@ -570,5 +686,5 @@ function build(s: Specific, shared: typeof SHARED_EN): StoryContent {
   };
 }
 
-export const agentPage = (locale: string, slug: AgentSlug): StoryContent =>
+export const agentPage = (locale: string, slug: AgentSlug): AgentContent =>
   locale === "vi" ? build(VI[slug], SHARED_VI) : build(EN[slug], SHARED_EN);

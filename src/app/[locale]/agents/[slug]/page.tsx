@@ -3,7 +3,10 @@ import { notFound } from "next/navigation";
 import { prepareLocale } from "@/i18n/render-locale";
 import { forEachLocale } from "@/i18n/locales";
 import { buildAlternates } from "@/lib/seo";
-import { StoryPage, storyFaqSchema } from "@/components/StoryPage";
+import { storyFaqSchema } from "@/components/StoryPage";
+import { ChapterPage } from "@/components/designed/product/chapters";
+import { AgentDemo } from "@/components/designed/agents/demo";
+import { agentDrawings } from "@/components/designed/agents/drawings";
 import { PageSchema } from "@/components/PageSchema";
 import { AGENT_SLUGS, agentPage, type AgentSlug } from "@/content/pages/agents";
 
@@ -31,12 +34,17 @@ export async function generateMetadata({
   };
 }
 
-/** The "For AI agents" pages: the story template, with a before-and-after for the agent. */
+/**
+ * The "For AI agents" pages, on the product pages' chapters (owner's layout A, 27 Oct 2026): the worked
+ * example as the hero, the situation, the shared zig-zag and gains, then before and after on a slider.
+ * The pictures are drawings until the owner's images exist (`designed/agents/drawings.tsx`).
+ */
 export default async function Page({ params }: PageProps) {
   const { locale, slug } = await params;
   if (!isAgent(slug)) notFound();
   prepareLocale(locale);
   const c = agentPage(locale, slug);
+  const art = agentDrawings(slug);
   return (
     <>
       <PageSchema
@@ -44,9 +52,12 @@ export default async function Page({ params }: PageProps) {
         path={`/agents/${slug}`}
         nodes={[storyFaqSchema(c)]}
       />
-      <StoryPage
-        layout={{ steps: "cards", gets: "showcase", limits: "split" }}
+      <ChapterPage
         c={c}
+        figure={<AgentDemo c={c} />}
+        art={{ situation: art.situation, steps: art.steps }}
+        gainPictures={art.gains}
+        beforeAfter={{ before: art.before, after: art.after }}
       />
     </>
   );

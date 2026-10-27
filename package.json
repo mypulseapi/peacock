@@ -5,7 +5,7 @@
   "packageManager": "pnpm@12.9.1",
   "scripts": {
     "dev": "next dev --port 3003",
-    "build": "node scripts/check-client-namespaces.mjs && node scripts/check-page-catalogue.mjs && node scripts/check-placeholders.mjs && tsx scripts/check-intent-ranking.ts && tsx scripts/check-requirement-parser.ts && tsx scripts/check-semantic-fallback.ts && tsx scripts/check-return-url.ts && next build && node scripts/check-seo.mjs",
+    "build": "node scripts/check-client-namespaces.mjs && node scripts/check-page-catalogue.mjs && node scripts/check-placeholders.mjs && tsx scripts/check-intent-ranking.ts && tsx scripts/check-requirement-parser.ts && tsx scripts/check-semantic-fallback.ts && next build && node scripts/check-seo.mjs",
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -17,7 +17,6 @@
     "check:parser": "tsx scripts/check-requirement-parser.ts",
     "check:talk": "tsx scripts/check-talk.ts",
     "check:fallback": "tsx scripts/check-semantic-fallback.ts",
-    "check:return-url": "tsx scripts/check-return-url.ts",
     "check:placeholders": "node scripts/check-placeholders.mjs",
     "check:seo": "node scripts/check-seo.mjs",
     "build:search-index": "node scripts/build-search-index.mjs",

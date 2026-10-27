@@ -13,6 +13,7 @@ import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
 import Link from "next/link";
+import { SIGNIN_URL } from "@/lib/constants";
 
 /**
  * The storefront products, added 2026-10-25: Pulse personalises, tracks the visit and ranks
@@ -581,9 +582,10 @@ export function DesignedHeader() {
         <div className="hidden items-center gap-2 self-stretch xl:flex">
           <DesignedThemeSwitch label={t("themeDark")} />
           <DesignedLocaleSwitch heading={t("44")} />
-          <Link href={designedHref("/en/signin")} className="nav-link">
+          {/* Sign-in is the dashboard's own page, another origin: a plain link. */}
+          <a href={SIGNIN_URL} className="nav-link">
             {t("46")}
-          </Link>
+          </a>
           <Link
             href={designedHref("/en/contact")}
             className="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap"
@@ -879,12 +881,12 @@ export function DesignedHeader() {
                 {t("opensource")}
               </Link>
 
-              <Link
-                href={designedHref("/en/signin")}
+              <a
+                href={SIGNIN_URL}
                 className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
               >
                 {t("64")}
-              </Link>
+              </a>
               <Link
                 href={designedHref("/en/contact")}
                 className="btn-primary mt-4 w-full rounded-control text-nav"

@@ -1128,40 +1128,8 @@
     }
   },
   "auth": {
-    "google": {
-      "label": "Continue with Google",
-      "pending": "Redirecting…",
-      "or": "or"
-    },
-    "errors": {
-      "generic": "Something went wrong. Please try again.",
-      "tooManyAttempts": "Too many attempts. Please wait a moment and try again."
-    },
     "entry": {
-      "title": "Sign in or create an account",
-      "subtitle": "We will email you a 6-digit code. No password needed.",
-      "email": "Email",
-      "continue": "Continue with email",
-      "continuing": "Sending…",
-      "sent": "We've sent a 6-digit code to {email}.",
-      "code": "6-digit code",
-      "verify": "Verify and continue",
-      "verifying": "Verifying…",
-      "resend": "Resend code",
-      "resendIn": "Resend code in {seconds} s",
-      "changeEmail": "Change email",
-      "delivery": "Email may be delayed. Check spam, resend when available, or change the address.",
-      "consent": "By continuing you agree to the <terms>Terms</terms> and <privacy>Privacy Policy</privacy>.",
-      "googleFailed": "Google sign-in didn't complete. Try again, or continue with email.",
-      "seconds": "{count, plural, one {# second} other {# seconds}}",
-      "minutes": "{count, plural, one {# minute} other {# minutes}}",
-      "errors": {
-        "invalidEmail": "Enter a valid email address.",
-        "incorrect": "This code is incorrect. Try again.",
-        "expired": "This code is no longer valid. Request a new code.",
-        "locked": "Too many incorrect attempts. Request a new code.",
-        "throttled": "Too many requests. Try again in {time}."
-      }
+      "title": "Sign in or create an account"
     }
   },
   "industryShell": {

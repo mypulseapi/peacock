@@ -8,8 +8,9 @@
  * `sectors.tsx`: its figures, its pictures, and the two pieces only Ecommerce draws in code.
  *
  *   hero         the headline centred, the picture under it, the three beats under that
- *   right now    the figures, beside the sector's scene where it has one
+ *   right now    the figures, beside the sector's scene
  *   problem      the buyer's question and what goes wrong, beside the sector's picture
+ *                (a marked placeholder wherever a sector has no picture yet)
  *   coverage     the coverage ranking, beside where the facts already live
  *   the shelf    before and after: a slider where there are two pictures, else the two lists
  *   what we do   the three steps as a pipeline, then the four things it does not take
@@ -18,6 +19,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Image as ImageIcon } from "lucide-react";
 import { img } from "@/lib/cdn";
 import { designedHref, designedText } from "../t";
 import { CompareSlider } from "../product/compare-slider";
@@ -193,48 +195,50 @@ export function SectorPage({ s }: { s: Sector }) {
         </div>
       </section>
 
-      {/* Right now: the figures, beside the sector's scene where it has one. */}
+      {/* Right now: the figures, beside the sector's scene. */}
       <section className="border-b border-line bg-card">
-        <div
-          className={`frame grid items-center gap-12 py-20 lg:py-28 ${s.scene ? "lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-16" : "lg:grid-cols-12"}`}
-        >
-          <div className={s.scene ? "" : "lg:col-span-4 lg:pr-12"}>
+        <div className="frame grid items-center gap-12 py-20 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-16 lg:py-28">
+          <div>
             <h2 className="reveal text-title text-balance">{t2("1")}</h2>
-            {s.scene && <Stats s={s} t={t2} className="mt-10" />}
+            <Stats s={s} t={t2} className="mt-10" />
           </div>
-          {s.scene ? (
-            <div className="reveal mx-auto w-full max-w-sm delay-100 lg:mr-0">
+          <div className="reveal mx-auto w-full max-w-sm delay-100 lg:mr-0">
+            {s.scene ? (
               <Picture
                 slug={s.slug}
                 p={s.scene}
                 sizes="(min-width: 1024px) 24rem, 90vw"
               />
-            </div>
-          ) : (
-            <Stats s={s} t={t2} className="lg:col-span-8" />
-          )}
+            ) : (
+              <Placeholder
+                name={`sectors/${s.slug}-scene.webp`}
+                size="760 × 1230"
+                aspect="aspect-[760/1230]"
+              />
+            )}
+          </div>
         </div>
       </section>
 
       {/* The problem, as a chapter: the sector's picture beside the buyer's question. */}
       <section className="border-b border-line">
-        <div
-          className={`frame grid items-center gap-12 py-20 lg:py-28 ${s.problem ? "lg:grid-cols-2 lg:gap-16" : "lg:grid-cols-12"}`}
-        >
-          {s.problem && (
-            <div className="reveal">
+        <div className="frame grid items-center gap-12 py-20 lg:grid-cols-2 lg:gap-16 lg:py-28">
+          <div className="reveal">
+            {s.problem ? (
               <Picture
                 slug={s.slug}
                 p={s.problem}
                 sizes="(min-width: 1024px) 48vw, 92vw"
               />
-            </div>
-          )}
-          <div
-            className={
-              s.problem ? "reveal delay-100" : "reveal lg:col-span-5 lg:pr-16"
-            }
-          >
+            ) : (
+              <Placeholder
+                name={`sectors/${s.slug}-problem.webp`}
+                size="1100 × 755"
+                aspect="aspect-[1100/755]"
+              />
+            )}
+          </div>
+          <div className="reveal delay-100">
             <h2 className="text-title text-balance">
               {s.labelledReasons ? t3("heading") : t3("1")}
             </h2>
@@ -242,13 +246,8 @@ export function SectorPage({ s }: { s: Sector }) {
             <p className="mt-2 font-title text-h2 text-balance text-ink">
               {t3("3")}
             </p>
-            {s.problem && <Reasons items={reasons} className="mt-8" />}
+            <Reasons items={reasons} className="mt-8" />
           </div>
-          {!s.problem && (
-            <div className="reveal rounded-2xl border border-line bg-card p-6 delay-100 lg:col-span-7 lg:p-8">
-              <Reasons items={reasons} />
-            </div>
-          )}
         </div>
       </section>
 
@@ -324,8 +323,8 @@ export function SectorPage({ s }: { s: Sector }) {
             s.repair
           ) : (
             <>
-              {s.shelf && (
-                <div className="reveal mx-auto mt-12 max-w-xl delay-100 lg:mt-14">
+              <div className="reveal mx-auto mt-12 max-w-xl delay-100 lg:mt-14">
+                {s.shelf ? (
                   <CompareSlider
                     before={
                       <Image
@@ -351,8 +350,31 @@ export function SectorPage({ s }: { s: Sector }) {
                     afterLabel={t4("6")}
                     aspect="aspect-[862/1000]"
                   />
-                </div>
-              )}
+                ) : (
+                  <CompareSlider
+                    before={
+                      <Placeholder
+                        name={`sectors/${s.slug}-shelf-before.webp`}
+                        size="760 × 882"
+                        aspect="size-full justify-items-start pl-[6%]"
+                        half
+                      />
+                    }
+                    after={
+                      <Placeholder
+                        name={`sectors/${s.slug}-shelf-after.webp`}
+                        size="760 × 882"
+                        aspect="size-full justify-items-end pr-[6%]"
+                        half
+                        after
+                      />
+                    }
+                    beforeLabel={t4("2")}
+                    afterLabel={t4("6")}
+                    aspect="aspect-[862/1000]"
+                  />
+                )}
+              </div>
               <div className="mx-auto mt-12 grid max-w-5xl gap-10 md:grid-cols-2 md:gap-16">
                 {(
                   [
@@ -469,6 +491,42 @@ export function SectorPage({ s }: { s: Sector }) {
         </div>
       </section>
     </>
+  );
+}
+
+/**
+ * Where a sector has no picture yet (owner, 27 Oct 2026): a marked box with the file name and size
+ * the picture needs, so the layout is the one it will have. Remove each as its picture lands.
+ * ponytail: placeholders are for local preview; the build's placeholder gate does not cover them.
+ */
+function Placeholder({
+  name,
+  size,
+  aspect,
+  after = false,
+  half = false,
+}: {
+  name: string;
+  size: string;
+  aspect: string;
+  after?: boolean;
+  /** One side of the slider: keep the label in its own half so the two never overlap. */
+  half?: boolean;
+}) {
+  return (
+    <div
+      className={`grid ${aspect} items-center rounded-2xl border-2 border-dashed border-line-control p-4 text-center ${after ? "bg-primary-wash" : "bg-surface-1"}`}
+    >
+      <div
+        className={`grid justify-items-center gap-2 text-muted ${half ? "max-w-[40%]" : ""}`}
+      >
+        <ImageIcon className="size-6" aria-hidden="true" />
+        <code className="rounded-md bg-card px-2 py-0.5 font-mono text-caption break-all text-ink">
+          {name}
+        </code>
+        <span className="text-caption">{size}</span>
+      </div>
+    </div>
   );
 }
 

@@ -702,9 +702,9 @@ const PICTURE_ALT: Record<
       situation:
         "A friendly robot assistant giving a thumbs up beside a laptop box whose screen size and storage are labelled and whose memory label is blank, while a shopper's hand reaches to buy it.",
       before:
-        "At a shop counter the robot hands a shopper the laptop box whose memory is blank, with a thumbs up, while the two boxes with their memory labelled slide off the counter unnoticed.",
+        'At a counter, under the request "Laptop under $1,500 with 16GB RAM", the robot hands a shopper Laptop B with a guessed "16 GB?" note stuck over its blank RAM, while Laptop A and Laptop C slide off the counter unnoticed.',
       after:
-        "The same counter: the two other boxes are marked does not fit, the box with the blank memory label is marked cannot tell, and the robot points at the blank instead of handing it over.",
+        "The same request: all three laptops stay on the counter, Laptop A marked fails, over budget, Laptop B cannot tell, RAM not stated, and Laptop C fits, which the robot hands to the shopper while pointing at Laptop B's blank.",
     },
     procurement: {
       situation:
@@ -736,9 +736,9 @@ const PICTURE_ALT: Record<
       situation:
         "Một chú robot trợ lý thân thiện giơ ngón cái bên một hộp laptop đã ghi kích thước màn hình và ổ lưu trữ nhưng để trống bộ nhớ, trong khi bàn tay người mua với tới để mua.",
       before:
-        "Tại quầy hàng, robot giơ ngón cái và trao cho người mua hộp laptop để trống bộ nhớ, trong khi hai hộp đã ghi bộ nhớ trượt khỏi quầy mà không ai để ý.",
+        'Tại quầy, dưới yêu cầu "Laptop dưới 1.500 đô với RAM 16GB", robot trao cho người mua Laptop B kèm mảnh giấy đoán "16 GB?" dán đè lên ô RAM để trống, trong khi Laptop A và Laptop C trượt khỏi quầy mà không ai để ý.',
       after:
-        "Cũng quầy hàng đó: hai hộp kia được đánh dấu không phù hợp, hộp để trống bộ nhớ được đánh dấu không xác định được, và robot chỉ vào ô trống thay vì trao hộp đi.",
+        "Cũng yêu cầu đó: cả ba laptop vẫn ở trên quầy, Laptop A không phù hợp vì vượt ngân sách, Laptop B không xác định được vì không ghi RAM, Laptop C phù hợp và được robot trao cho người mua, trong khi robot chỉ vào ô trống của Laptop B.",
     },
     procurement: {
       situation:

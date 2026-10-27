@@ -120,7 +120,7 @@ export function DesignedHeader() {
               Tightening gaps was the first instinct and it cannot work: clawing back 147px means
               dropping items, and a nav that differs by language is worse than a compact menu for
               one breakpoint band. Below `xl` the mobile sheet carries the same links, which is
-              what it is for. Vietnamese keeps the sheet to 86rem, where its row fits
+              what it is for. Vietnamese keeps the sheet to 88rem, where its row fits
               (`:lang(vi) [data-nav]` in globals.css).
             */}
         <nav

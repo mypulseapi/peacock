@@ -49,8 +49,11 @@ Every colour is defined once, in the `COLOURS` block of `@theme` in `src/input.c
    that stored it from the old menu follows the OS (`color-scheme: light dark` on `:root`) until the switch is
    pressed. The switch's knob slides and its sun turns to a moon in 300ms `ease-out-soft`, and the page changes
    from the switch outward, a circle grown by a view transition (`data-theme-reveal`, 550ms); with reduced motion
-   the knob jumps and the page swaps at once. Beside it, the languages as one borderless "VI | EN" pair
-   (`designed-locale-switch.tsx`), the current one marked, the other a link to the same page. Because every role is
+   the knob jumps and the page swaps at once. Beside it, the language switch
+   (`designed-locale-switch.tsx`, 27 Oct 2026): a toggle "VI [flag] EN", the pill filled with the current language's flag
+   (Viet Nam; English is the UK flag), a white knob on its side, the current label in ink. The whole toggle is one link
+   to the same page in the other language: the knob slides (200ms) and then the page loads; with reduced motion it loads
+   at once. Because every role is
    `light-dark()`, nothing else is needed for dark mode — no `dark:` classes in HTML. Dark surfaces are cool black
    (Night `#0B0D12`, cards `#14171F`), not navy (final guide, 19 Oct 2026). The one exception is what a token cannot switch,
    such as an image: use the `theme-dark:` variant (OS dark unless `data-theme="light"`, or `data-theme="dark"`),
@@ -204,7 +207,7 @@ separated by a horizontal hairline.
   sticky header keeps working). Content must also fit by itself: no `min-w-*` tables in sideways-scrolling boxes —
   hide less important columns on small screens instead (the hero demo tables show 2 attribute columns below `sm`,
   SKU from `lg`).
-- **The header's full nav starts at `xl` (1280px), and at 86rem in Vietnamese**, whose longer row needs 1350px of page;
+- **The header's full nav starts at `xl` (1280px), and at 88rem in Vietnamese**, whose longer row needs 1380px of page;
   below that the compact sheet carries the same links. A longer row in either language moves its own switch point
   (`:lang(vi) [data-nav]` in `globals.css`), never drops items.
 - At most one dark (`bg-void`) band per page.

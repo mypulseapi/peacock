@@ -17,15 +17,14 @@ export interface LocaleMeta {
   /** Endonym: what speakers call the language, not what English calls it. */
   label: string;
   shortLabel: string;
-  flag: string;
   /** BCP 47 tag for `hreflang` and `<html lang>`. */
   tag: string;
   dir?: "ltr" | "rtl";
 }
 
 export const LOCALES: LocaleMeta[] = [
-  { code: "en", label: "English", shortLabel: "EN", flag: "🇺🇸", tag: "en" },
-  { code: "vi", label: "Tiếng Việt", shortLabel: "VI", flag: "🇻🇳", tag: "vi" },
+  { code: "en", label: "English", shortLabel: "EN", tag: "en" },
+  { code: "vi", label: "Tiếng Việt", shortLabel: "VI", tag: "vi" },
 ];
 
 /**

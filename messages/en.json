@@ -320,7 +320,7 @@
       "title": "Send us a Message",
       "name": "Your Name",
       "namePlaceholder": "John Smith",
-      "email": "Work Email",
+      "email": "Email",
       "emailPlaceholder": "john@company.com",
       "company": "Company Name",
       "companyPlaceholder": "Acme Inc.",

@@ -23,9 +23,7 @@ const COPY = {
     /* Validation, client side. The same rules run again on the server, which is the one that
        counts: anything here can be removed with a devtools console. */
     required: "This field is required",
-    emailInvalid: "Enter a valid work email address",
-    emailFree:
-      "Please use your work email, not a personal one, so we can see which company is asking",
+    emailInvalid: "Enter a valid email address",
 
     /* Outcomes. */
     sending: "Sending…",
@@ -49,9 +47,7 @@ const COPY = {
     emailHint: "ban@congty.com",
 
     required: "Ô này là bắt buộc",
-    emailInvalid: "Hãy nhập một email công việc hợp lệ",
-    emailFree:
-      "Vui lòng dùng email công việc thay vì email cá nhân, để chúng tôi biết công ty nào đang hỏi",
+    emailInvalid: "Hãy nhập một địa chỉ email hợp lệ",
 
     sending: "Đang gửi…",
     sentShort: "Đã gửi",
@@ -69,31 +65,3 @@ const COPY = {
 /** The form's strings for the active locale. */
 export const contactForm = (locale: string) => byLocale(COPY, locale);
 
-/**
- * Free-mail domains, for the "use your work email" nudge.
- *
- * Deliberately short and deliberately a *nudge*, not a block: this is the frontend, the list can
- * never be complete, and a founder whose company really does run on Gmail is a lead, not a
- * mistake. The server does the checking that matters, including whether the domain can receive
- * mail at all.
- */
-export const FREE_MAIL_DOMAINS = [
-  "gmail.com",
-  "googlemail.com",
-  "yahoo.com",
-  "yahoo.co.uk",
-  "hotmail.com",
-  "outlook.com",
-  "live.com",
-  "icloud.com",
-  "me.com",
-  "aol.com",
-  "proton.me",
-  "protonmail.com",
-  "gmx.com",
-  "mail.com",
-  "yandex.com",
-  "zoho.com",
-  "qq.com",
-  "163.com",
-];

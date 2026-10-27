@@ -16,17 +16,20 @@ export function CompareSlider({
   after,
   beforeLabel,
   afterLabel,
+  aspect = "aspect-16/10",
 }: {
   before: ReactNode;
   after: ReactNode;
   beforeLabel: string;
   afterLabel: string;
+  /** The frame's shape, the pictures' own: 16:10 unless they were drawn otherwise. */
+  aspect?: string;
 }) {
   const frame = useRef<HTMLDivElement>(null);
   return (
     <div
       ref={frame}
-      className="compare relative aspect-16/10 overflow-hidden rounded-3xl border border-line bg-surface-1"
+      className={`compare relative ${aspect} overflow-hidden rounded-3xl border border-line bg-surface-1`}
     >
       <div className="absolute inset-0">{before}</div>
       <div className="compare-after absolute inset-0">{after}</div>

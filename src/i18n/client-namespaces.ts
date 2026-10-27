@@ -22,7 +22,6 @@ export const CLIENT_NAMESPACES = [
   "configurator",
   "contact",
   "cookies",
-  "docs",
   "gdpr",
   "industryShell",
   "integrations",

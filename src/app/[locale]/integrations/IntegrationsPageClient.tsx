@@ -5,7 +5,16 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/home/Section";
 import { Link } from "@/i18n/routing";
 import { DEMO_URL } from "@/lib/constants";
-import { ShoppingCart, Code, Zap, ArrowRight, Check, Clock, Sparkles } from "lucide-react";
+import { docsUrl } from "@/lib/site";
+import {
+  ShoppingCart,
+  Code,
+  Zap,
+  ArrowRight,
+  Check,
+  Clock,
+  Sparkles,
+} from "lucide-react";
 import { useLocale } from "next-intl";
 
 /**
@@ -68,16 +77,23 @@ const VI: Record<string, string> = {
     "Chuyển sự kiện Pulse qua luồng dữ liệu Segment của bạn",
   "Enrich email campaigns with persona insights":
     "Làm giàu chiến dịch email bằng thông tin chân dung",
-  "Power SMS personalization with Pulse data": "Cá nhân hoá SMS bằng dữ liệu Pulse",
+  "Power SMS personalization with Pulse data":
+    "Cá nhân hoá SMS bằng dữ liệu Pulse",
 };
 
 const platforms = [
   {
     name: "Shopify",
-    description: "Native app with one-click installation. Full support for Shopify Plus.",
+    description:
+      "Native app with one-click installation. Full support for Shopify Plus.",
     logo: "🛍️",
     status: "available",
-    features: ["One-click install", "Automatic product sync", "Theme integration", "Shopify Flow support"],
+    features: [
+      "One-click install",
+      "Automatic product sync",
+      "Theme integration",
+      "Shopify Flow support",
+    ],
     setupTime: "5 minutes",
   },
   {
@@ -85,7 +101,12 @@ const platforms = [
     description: "Full-featured extension for Magento 2.x and Adobe Commerce.",
     logo: "🔶",
     status: "available",
-    features: ["Composer installation", "Multi-store support", "GraphQL API", "Page Builder compatible"],
+    features: [
+      "Composer installation",
+      "Multi-store support",
+      "GraphQL API",
+      "Page Builder compatible",
+    ],
     setupTime: "30 minutes",
   },
   {
@@ -93,7 +114,12 @@ const platforms = [
     description: "WordPress plugin with deep WooCommerce integration.",
     logo: "🟣",
     status: "available",
-    features: ["Plugin installation", "Block editor support", "Gutenberg blocks", "REST API integration"],
+    features: [
+      "Plugin installation",
+      "Block editor support",
+      "Gutenberg blocks",
+      "REST API integration",
+    ],
     setupTime: "10 minutes",
   },
   {
@@ -101,7 +127,12 @@ const platforms = [
     description: "Native app available in the BigCommerce marketplace.",
     logo: "🔷",
     status: "available",
-    features: ["Marketplace app", "Stencil theme support", "Headless compatible", "Multi-channel support"],
+    features: [
+      "Marketplace app",
+      "Stencil theme support",
+      "Headless compatible",
+      "Multi-channel support",
+    ],
     setupTime: "10 minutes",
   },
   {
@@ -109,15 +140,26 @@ const platforms = [
     description: "SFRA cartridge for B2C Commerce Cloud integration.",
     logo: "☁️",
     status: "available",
-    features: ["SFRA cartridge", "OCAPI integration", "Einstein compatible", "Multi-site support"],
+    features: [
+      "SFRA cartridge",
+      "OCAPI integration",
+      "Einstein compatible",
+      "Multi-site support",
+    ],
     setupTime: "1 hour",
   },
   {
     name: "Custom / Headless",
-    description: "REST API and SDKs for custom integrations and headless commerce.",
+    description:
+      "REST API and SDKs for custom integrations and headless commerce.",
     logo: "⚡",
     status: "available",
-    features: ["REST API", "GraphQL support", "JavaScript SDK", "Server-side rendering"],
+    features: [
+      "REST API",
+      "GraphQL support",
+      "JavaScript SDK",
+      "Server-side rendering",
+    ],
     setupTime: "Varies",
   },
 ];
@@ -159,27 +201,31 @@ export default function IntegrationsPage() {
         lede={<>{t("description")}</>}
       />
       <Section>
-
-
         {/* Key Benefits */}
         <div className="grid sm:grid-cols-3 gap-6 mb-12 sm:mb-16">
           <div className="glass-card p-6 text-center">
             <Clock className="w-8 h-8 text-[var(--accent-secondary-light)] mx-auto mb-3" />
-            <h3 className="font-semibold text-[var(--text-primary)] mb-2">{t("quickSetup")}</h3>
+            <h3 className="font-semibold text-[var(--text-primary)] mb-2">
+              {t("quickSetup")}
+            </h3>
             <p className="text-sm text-[var(--text-secondary)]">
               {t("quickSetupDesc")}
             </p>
           </div>
           <div className="glass-card p-6 text-center">
             <Code className="w-8 h-8 text-[var(--accent-primary-light)] mx-auto mb-3" />
-            <h3 className="font-semibold text-[var(--text-primary)] mb-2">{t("noCodeChanges")}</h3>
+            <h3 className="font-semibold text-[var(--text-primary)] mb-2">
+              {t("noCodeChanges")}
+            </h3>
             <p className="text-sm text-[var(--text-secondary)]">
               {t("noCodeChangesDesc")}
             </p>
           </div>
           <div className="glass-card p-6 text-center">
             <Sparkles className="w-8 h-8 text-[var(--accent-tertiary-light)] mx-auto mb-3" />
-            <h3 className="font-semibold text-[var(--text-primary)] mb-2">{t("instantValue")}</h3>
+            <h3 className="font-semibold text-[var(--text-primary)] mb-2">
+              {t("instantValue")}
+            </h3>
             <p className="text-sm text-[var(--text-secondary)]">
               {t("instantValueDesc")}
             </p>
@@ -206,7 +252,9 @@ export default function IntegrationsPage() {
                     </h3>
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-[var(--accent-secondary)]" />
-                      <span className="text-xs text-[var(--accent-secondary-light)]">{t('available')}</span>
+                      <span className="text-xs text-[var(--accent-secondary-light)]">
+                        {t("available")}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -218,7 +266,10 @@ export default function IntegrationsPage() {
                 <div className="mb-4 flex-grow">
                   <ul className="space-y-1.5">
                     {platform.features.map((feature, featureIdx) => (
-                      <li key={featureIdx} className="flex items-center gap-2 text-sm text-[var(--text-muted)]">
+                      <li
+                        key={featureIdx}
+                        className="flex items-center gap-2 text-sm text-[var(--text-muted)]"
+                      >
                         <Check className="w-3.5 h-3.5 text-[var(--accent-secondary-light)]" />
                         {tr(feature)}
                       </li>
@@ -228,13 +279,13 @@ export default function IntegrationsPage() {
 
                 <div className="flex items-center justify-between pt-4 border-t border-[var(--surface-border)]">
                   <span className="text-xs text-[var(--text-muted)]">
-                    {t('setupLabel')}: {tr(platform.setupTime)}
+                    {t("setupLabel")}: {tr(platform.setupTime)}
                   </span>
                   <Link
-                    href="/docs"
+                    href={docsUrl(isVi ? "/vi" : "/")}
                     className="text-sm text-[var(--accent-primary-light)] hover:underline inline-flex min-h-6 items-center gap-1 py-0.5"
                   >
-                    {t('viewDocs')}
+                    {t("viewDocs")}
                     <ArrowRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -276,9 +327,13 @@ export default function IntegrationsPage() {
           <div className="grid sm:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-12 h-12 rounded-full bg-[var(--accent-primary)]/10 flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-bold text-[var(--accent-primary-light)]">1</span>
+                <span className="text-xl font-bold text-[var(--accent-primary-light)]">
+                  1
+                </span>
               </div>
-              <h3 className="font-semibold text-[var(--text-primary)] mb-2">{t("install")}</h3>
+              <h3 className="font-semibold text-[var(--text-primary)] mb-2">
+                {t("install")}
+              </h3>
               <p className="text-sm text-[var(--text-secondary)]">
                 {t("installDesc")}
               </p>
@@ -286,9 +341,13 @@ export default function IntegrationsPage() {
 
             <div className="text-center">
               <div className="w-12 h-12 rounded-full bg-[var(--accent-secondary)]/10 flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-bold text-[var(--accent-secondary-light)]">2</span>
+                <span className="text-xl font-bold text-[var(--accent-secondary-light)]">
+                  2
+                </span>
               </div>
-              <h3 className="font-semibold text-[var(--text-primary)] mb-2">{t("connect")}</h3>
+              <h3 className="font-semibold text-[var(--text-primary)] mb-2">
+                {t("connect")}
+              </h3>
               <p className="text-sm text-[var(--text-secondary)]">
                 {t("connectDesc")}
               </p>
@@ -296,9 +355,13 @@ export default function IntegrationsPage() {
 
             <div className="text-center">
               <div className="w-12 h-12 rounded-full bg-[var(--accent-tertiary)]/10 flex items-center justify-center mx-auto mb-4">
-                <span className="text-xl font-bold text-[var(--accent-tertiary-light)]">3</span>
+                <span className="text-xl font-bold text-[var(--accent-tertiary-light)]">
+                  3
+                </span>
               </div>
-              <h3 className="font-semibold text-[var(--text-primary)] mb-2">{t("personalize")}</h3>
+              <h3 className="font-semibold text-[var(--text-primary)] mb-2">
+                {t("personalize")}
+              </h3>
               <p className="text-sm text-[var(--text-secondary)]">
                 {t("personalizeDesc")}
               </p>
@@ -312,40 +375,62 @@ export default function IntegrationsPage() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--accent-primary)]/10 mb-4">
                 <Zap className="w-4 h-4 text-[var(--accent-primary-light)]" />
-                <span className="text-sm text-[var(--accent-primary-light)]">REST API</span>
+                <span className="text-sm text-[var(--accent-primary-light)]">
+                  REST API
+                </span>
               </div>
               <h2 className="ed-d4 text-[var(--text-primary)] mb-4">
-                {t('customIntegrations')}
+                {t("customIntegrations")}
               </h2>
               <p className="text-[var(--text-secondary)] mb-6">
-                {t('customIntegrationsDesc')}
+                {t("customIntegrationsDesc")}
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-center gap-2 text-[var(--text-secondary)]">
                   <Check className="w-4 h-4 text-[var(--accent-secondary-light)]" />
-                  {t('apiDocsItem')}
+                  {t("apiDocsItem")}
                 </li>
                 <li className="flex items-center gap-2 text-[var(--text-secondary)]">
                   <Check className="w-4 h-4 text-[var(--accent-secondary-light)]" />
-                  {t('apiSdksItem')}
+                  {t("apiSdksItem")}
                 </li>
                 <li className="flex items-center gap-2 text-[var(--text-secondary)]">
                   <Check className="w-4 h-4 text-[var(--accent-secondary-light)]" />
-                  {t('apiWebhooksItem')}
+                  {t("apiWebhooksItem")}
                 </li>
               </ul>
-              <Link href="/docs" className="btn-primary inline-flex items-center gap-2">
-                {t('viewApiDocs')}
+              <Link
+                href={docsUrl(isVi ? "/vi" : "/")}
+                className="btn-primary inline-flex items-center gap-2"
+              >
+                {t("viewApiDocs")}
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
             <div className="bg-[var(--bg-tertiary)] rounded-xl p-6 font-mono text-sm overflow-hidden">
-              <div className="text-[var(--text-muted)] mb-2">{t('codeGetInference')}</div>
+              <div className="text-[var(--text-muted)] mb-2">
+                {t("codeGetInference")}
+              </div>
               <div className="text-[var(--text-secondary)]">
-                <span className="text-[var(--accent-tertiary-light)]">const</span> response = <span className="text-[var(--accent-tertiary-light)]">await</span> pulse.<span className="text-[var(--accent-secondary-light)]">infer</span>({`{`}
+                <span className="text-[var(--accent-tertiary-light)]">
+                  const
+                </span>{" "}
+                response ={" "}
+                <span className="text-[var(--accent-tertiary-light)]">
+                  await
+                </span>{" "}
+                pulse.
+                <span className="text-[var(--accent-secondary-light)]">
+                  infer
+                </span>
+                ({`{`}
               </div>
               <div className="text-[var(--text-secondary)] ml-4">
-                sessionId: <span className="text-[var(--accent-highlight)]">&apos;sess_123&apos;</span>,
+                sessionId:{" "}
+                <span className="text-[var(--accent-highlight)]">
+                  &apos;sess_123&apos;
+                </span>
+                ,
               </div>
               <div className="text-[var(--text-secondary)] ml-4">
                 context: {`{`} device, referrer {`}`},
@@ -354,7 +439,9 @@ export default function IntegrationsPage() {
                 behavior: {`{`} search, filters {`}`}
               </div>
               <div className="text-[var(--text-secondary)]">{`}`});</div>
-              <div className="mt-4 text-[var(--text-muted)]">{t('codeReturns')}</div>
+              <div className="mt-4 text-[var(--text-muted)]">
+                {t("codeReturns")}
+              </div>
             </div>
           </div>
         </div>
@@ -378,12 +465,15 @@ export default function IntegrationsPage() {
               {t("getStarted")}
               <ArrowRight className="w-4 h-4" />
             </a>
-            <Link href="/docs" className="btn-secondary inline-flex items-center gap-2">
+            <Link
+              href={docsUrl(isVi ? "/vi" : "/")}
+              className="btn-secondary inline-flex items-center gap-2"
+            >
               {t("readDocs")}
             </Link>
           </div>
         </div>
-    </Section>
-  </>
+      </Section>
+    </>
   );
 }

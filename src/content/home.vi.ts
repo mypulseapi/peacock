@@ -139,7 +139,7 @@ export const FINAL_CTA_VI = {
   title: "Gửi cho chúng tôi một ngành hàng. Xem kết quả trả về.",
   body: "Chọn nhóm hàng bạn nghi ngờ người mua gặp khó nhất. Bạn nhận được danh sách xếp hạng, các sản phẩm bị ảnh hưởng, và nửa giờ với người phụ trách trưng bày hàng hoá.",
   primary: { label: "Yêu cầu Decision Audit", href: "/contact" },
-  secondary: { label: "Đọc phương pháp trước", href: "/docs" },
+  secondary: { label: "Đọc phương pháp trước", href: "/research" },
   reassure:
     "Không ràng buộc ở bất kỳ bước nào. Và nếu danh mục của bạn vốn đã ổn, chúng tôi cũng sẽ nói vậy.",
 } as const;

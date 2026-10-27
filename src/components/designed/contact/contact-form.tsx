@@ -5,7 +5,7 @@ import { useLocale } from "next-intl";
 import { AlertCircle, Loader2, Send } from "lucide-react";
 import { Turnstile } from "@/components/Turnstile";
 import { postForm } from "@/lib/forms";
-import { contactForm, FREE_MAIL_DOMAINS } from "@/content/contact-form";
+import { contactForm } from "@/content/contact-form";
 import { contactEmail } from "@/lib/contact-emails";
 
 /**
@@ -46,7 +46,7 @@ const EMAIL = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
 export function ContactForm({
   labels,
 }: {
-  /** Heading, company name, work email, submit: all four already translated in the catalogue. */
+  /** Heading, company name, email, submit: all four already translated in the catalogue. */
   labels: { heading: string; company: string; email: string; submit: string };
 }) {
   const C = contactForm(useLocale());
@@ -62,9 +62,9 @@ export function ContactForm({
     const e: Partial<Record<Field, string>> = {};
     if (!v.company.trim()) e.company = C.required;
     if (!v.email.trim()) e.email = C.required;
+    // Any address, Gmail and Yahoo included (2026-10-27): the server checks the domain can
+    // receive mail before anything is sent.
     else if (!EMAIL.test(v.email.trim())) e.email = C.emailInvalid;
-    else if (FREE_MAIL_DOMAINS.includes(v.email.trim().split("@")[1].toLowerCase()))
-      e.email = C.emailFree;
     return e;
   };
 

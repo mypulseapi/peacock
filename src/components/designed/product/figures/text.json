@@ -39,6 +39,18 @@
     "card-2-caption": {
       "en": "shopper requirements need screen size, so it ranks first",
       "vi": "yêu cầu của người mua cần đến kích thước màn hình, nên nó xếp đầu tiên"
+    },
+    "text-11": {
+      "en": "What your business gains from the Decision Audit",
+      "vi": "Doanh nghiệp của bạn nhận được gì từ Decision Audit"
+    },
+    "text-12": {
+      "en": "Example data: 357 missing fields found on the example test shelf (screen size 80, memory 60, processor 162, storage 55). 15 of 32 shopper requirements need screen size, so it ranks first.",
+      "vi": "Dữ liệu ví dụ: tìm thấy 357 trường còn thiếu trên kệ thử nghiệm ví dụ (kích thước màn hình 80, bộ nhớ 60, bộ xử lý 162, ổ lưu trữ 55). 15 trong 32 yêu cầu của người mua cần kích thước màn hình, nên nó xếp đầu."
+    },
+    "text-13": {
+      "en": "Screen size: 15 of 32 requirements",
+      "vi": "Kích thước màn hình: 15 trong 32 yêu cầu"
     }
   },
   "decision-audit/decision-audit-how-it-works": {
@@ -77,6 +89,14 @@
     "step-3-body": {
       "en": "Receive a ranked list of attributes and supporting files. We walk you through the findings and discuss what it would take to act on them.",
       "vi": "Nhận một danh sách thuộc tính đã xếp hạng cùng các tệp kèm theo. Chúng tôi sẽ đi qua kết quả cùng bạn và trao đổi xem cần gì để hành động dựa trên đó."
+    },
+    "text-10": {
+      "en": "How does the audit work?",
+      "vi": "Bản kiểm tra hoạt động thế nào?"
+    },
+    "text-11": {
+      "en": "You: Send one category. Provide a CSV or JSON file containing product names, descriptions, categories, prices, and existing attributes. Choose a category where shoppers struggle to find the right product. Us: We measure it. Within 48 hours, we measure how much each attribute helps tell products apart, and what it would be worth if recorded across the category, in bits rather than clicks. Both: We walk you through it. Receive a ranked list of attributes and supporting files. We walk you through the findings and discuss what it would take to act on them.",
+      "vi": "Bạn: Gửi một ngành hàng. Cung cấp tệp CSV hoặc JSON gồm tên sản phẩm, mô tả, ngành hàng, giá và các thuộc tính hiện có. Chọn ngành hàng mà người mua khó tìm đúng sản phẩm. Chúng tôi: Đo lường. Trong 48 giờ, chúng tôi đo mỗi thuộc tính giúp phân biệt sản phẩm đến mức nào, và nó đáng giá bao nhiêu nếu được ghi trên cả ngành hàng, tính bằng bit chứ không phải lượt nhấp. Cả hai: Cùng xem kết quả. Nhận danh sách thuộc tính đã xếp hạng và các tệp đi kèm. Chúng tôi giải thích kết quả và bàn về những gì cần để hành động."
     }
   },
   "decision-monitor/decision-monitor-gap-grows": {
@@ -95,6 +115,34 @@
     "row-4-note": {
       "en": "A second budget request for work already paid for once.",
       "vi": "Một đề nghị ngân sách thứ hai cho công việc đã từng được trả tiền một lần."
+    },
+    "text-5": {
+      "en": "Products carrying the gap",
+      "vi": "Sản phẩm mang khoảng trống"
+    },
+    "text-6": {
+      "en": "Example data: week 1, 26 products; month 1, 105; month 3, 340; month 6, 680.",
+      "vi": "Dữ liệu ví dụ: tuần 1, 26 sản phẩm; tháng 1, 105; tháng 3, 340; tháng 6, 680."
+    },
+    "text-7": {
+      "en": "Example data",
+      "vi": "Dữ liệu ví dụ"
+    },
+    "text-8": {
+      "en": "Week 1",
+      "vi": "Tuần 1"
+    },
+    "text-9": {
+      "en": "Month 1",
+      "vi": "Tháng 1"
+    },
+    "text-10": {
+      "en": "Month 3",
+      "vi": "Tháng 3"
+    },
+    "text-11": {
+      "en": "Month 6",
+      "vi": "Tháng 6"
     }
   },
   "decision-monitor/decision-monitor-how-it-works": {
@@ -133,6 +181,14 @@
     "step-3-body": {
       "en": "Not a dashboard you have to remember to open. An alert naming the shelf, the attribute and what caused the drop.",
       "vi": "Không phải một bảng điều khiển mà bạn phải nhớ để mở. Một cảnh báo nêu rõ kệ hàng, thuộc tính và nguyên nhân khiến nó tụt."
+    },
+    "text-10": {
+      "en": "Set it once, then hear about it when it matters",
+      "vi": "Thiết lập một lần, rồi được báo khi điều đó quan trọng"
+    },
+    "text-11": {
+      "en": "Once: Set the cadence. Weekly or monthly, matched to how often your catalogue changes. It reads the same export the audit read, so there is nothing new to build and no integration to maintain. Ongoing: Monitor re-measures. The same method on every run, so the numbers are comparable over time rather than a series of unrelated snapshots. When it matters: You get told, with the reason. Not a dashboard you have to remember to open. An alert naming the shelf, the attribute and what caused the drop.",
+      "vi": "Một lần: Đặt nhịp. Hằng tuần hoặc hằng tháng, theo mức danh mục của bạn thay đổi. Nó đọc đúng tệp xuất mà bản kiểm tra đã đọc, nên không có gì mới phải xây và không có tích hợp nào phải duy trì. Liên tục: Monitor đo lại. Cùng một phương pháp mỗi lần chạy, nên các con số so sánh được theo thời gian thay vì là những ảnh chụp rời rạc. Khi quan trọng: Bạn được báo, kèm lý do. Không phải một bảng điều khiển bạn phải nhớ mở. Một cảnh báo nêu tên kệ hàng, thuộc tính và nguyên nhân sụt giảm."
     }
   },
   "decision-monitor/decision-monitor-shelf-slips": {
@@ -147,6 +203,46 @@
     "card-subtitle": {
       "en": "Example data: the test shelf from the home page.",
       "vi": "Dữ liệu ví dụ: kệ thử nghiệm từ trang chủ."
+    },
+    "text-4": {
+      "en": "What does a shelf look like when it slips?",
+      "vi": "Một kệ hàng sa sút trông như thế nào?"
+    },
+    "text-5": {
+      "en": "Example data: 94 of 216 products a shopper still cannot tell apart. Requirements needing each attribute: screen size 15 of 32, processor 2 of 32.",
+      "vi": "Dữ liệu ví dụ: 94 trong 216 sản phẩm người mua vẫn không phân biệt được. Số yêu cầu cần từng thuộc tính: kích thước màn hình 15 trong 32, bộ xử lý 2 trong 32."
+    },
+    "text-6": {
+      "en": "of 216 products a shopper still cannot tell apart, on the shelf we measured",
+      "vi": "trong 216 sản phẩm người mua vẫn không phân biệt được, trên kệ hàng chúng tôi đã đo"
+    },
+    "text-7": {
+      "en": "Not every missing attribute is worth an alert",
+      "vi": "Không phải thuộc tính thiếu nào cũng đáng cảnh báo"
+    },
+    "text-8": {
+      "en": "A completeness dashboard reports the same green number whether a shelf gained ten well-recorded products or ten blank ones.",
+      "vi": "Bảng điều khiển độ đầy đủ báo cùng một con số xanh dù kệ hàng thêm mười sản phẩm được ghi đầy đủ hay mười sản phẩm trống."
+    },
+    "text-9": {
+      "en": "So the decay is invisible until a buyer complains, a filter returns nothing, or someone asks why a category stopped converting and nobody can name the week it changed.",
+      "vi": "Vì vậy sự xuống cấp vô hình cho tới khi người mua phàn nàn, bộ lọc không trả về gì, hoặc có người hỏi vì sao một ngành hàng ngừng chuyển đổi mà không ai chỉ ra được tuần nó thay đổi."
+    },
+    "text-10": {
+      "en": "Monitor tells you the week that number moved, and which attribute moved it.",
+      "vi": "Monitor cho bạn biết tuần con số đó thay đổi, và thuộc tính nào làm nó thay đổi."
+    },
+    "text-11": {
+      "en": "Screen size",
+      "vi": "Kích thước màn hình"
+    },
+    "text-12": {
+      "en": "Processor",
+      "vi": "Bộ xử lý"
+    },
+    "text-13": {
+      "en": "Note: Figures are hypothetical and for illustrative purposes only.",
+      "vi": "Lưu ý: Các con số là giả định và chỉ để minh hoạ."
     }
   },
   "decision-verification/decision-verification-how-it-works": {
@@ -185,6 +281,14 @@
     "step-3-body": {
       "en": "Track product attribute coverage, measure catalogue gap improvements, and assess your readiness score in a clear, shareable report for business decision-makers.",
       "vi": "Theo dõi độ bao phủ thuộc tính sản phẩm, đo mức cải thiện của lỗ hổng danh mục, và đánh giá chỉ số sẵn sàng của bạn trong một báo cáo rõ ràng, dễ chia sẻ cho người ra quyết định."
+    },
+    "text-10": {
+      "en": "How does the verification work?",
+      "vi": "Việc xác minh hoạt động thế nào?"
+    },
+    "text-11": {
+      "en": "You: Re-export the category. Export your shelf with current progress. Partial data is saved and supported, no need to wait for a full completion. Us: Comparable before & after results. We use the same method and product attributes in both audits, ensuring accurate and reliable before-and-after comparisons without changing the evaluation criteria. Both: See what has improved. Track product attribute coverage, measure catalogue gap improvements, and assess your readiness score in a clear, shareable report for business decision-makers.",
+      "vi": "Bạn: Xuất lại ngành hàng. Xuất kệ hàng với tiến độ hiện tại. Dữ liệu một phần vẫn được lưu và hỗ trợ, không cần chờ hoàn tất. Chúng tôi: Kết quả trước và sau so sánh được. Chúng tôi dùng cùng phương pháp và thuộc tính sản phẩm ở cả hai lần kiểm tra, để so sánh trước và sau chính xác, đáng tin mà không đổi tiêu chí đánh giá. Cả hai: Xem điều gì đã cải thiện. Theo dõi độ phủ thuộc tính, đo mức khoảng trống danh mục được thu hẹp, và đánh giá điểm sẵn sàng trong một báo cáo rõ ràng, dễ chia sẻ cho người ra quyết định."
     }
   },
   "decision-verification/decision-verification-meter": {
@@ -207,6 +311,186 @@
     "caption": {
       "en": "The catalogue is 22 percentage points fuller. Example data.",
       "vi": "Danh mục đầy hơn 22 điểm phần trăm. Dữ liệu ví dụ."
+    },
+    "text-6": {
+      "en": "Fields filled, before and after",
+      "vi": "Trường đã điền, trước và sau"
+    },
+    "text-7": {
+      "en": "Example data: fields filled went from 71% before to 93% after, 22 percentage points fuller.",
+      "vi": "Dữ liệu ví dụ: tỷ lệ trường đã điền tăng từ 71% trước lên 93% sau, đầy hơn 22 điểm phần trăm."
+    },
+    "text-8": {
+      "en": "+22 points",
+      "vi": "+22 điểm"
+    }
+  },
+  "decision-audit/decision-audit-repair-list": {
+    "text-1": {
+      "en": "Your ranked repair list",
+      "vi": "Danh sách sửa đã xếp hạng của bạn"
+    },
+    "text-2": {
+      "en": "Example data, ranked by bits of decision information: 1 Screen size, 80 of 216 products missing it, 1.067 bits; 2 Memory, 60 of 216, 1.012 bits; 3 Processor, 162 of 216, 0.747 bits; 4 Storage, 55 of 216, 0.688 bits. Back within 48 hours.",
+      "vi": "Dữ liệu ví dụ, xếp theo bit thông tin quyết định: 1 Kích thước màn hình, 80 trong 216 sản phẩm thiếu, 1,067 bit; 2 Bộ nhớ, 60 trong 216, 1,012 bit; 3 Bộ xử lý, 162 trong 216, 0,747 bit; 4 Ổ lưu trữ, 55 trong 216, 0,688 bit. Có kết quả trong 48 giờ."
+    },
+    "text-3": {
+      "en": "Back within 48 hours",
+      "vi": "Có kết quả trong 48 giờ"
+    },
+    "text-4": {
+      "en": "Screen size",
+      "vi": "Kích thước màn hình"
+    },
+    "text-5": {
+      "en": "Memory",
+      "vi": "Bộ nhớ"
+    },
+    "text-6": {
+      "en": "Processor",
+      "vi": "Bộ xử lý"
+    },
+    "text-7": {
+      "en": "Storage",
+      "vi": "Ổ lưu trữ"
+    },
+    "text-8": {
+      "en": "Ranked by bits of decision information, not by how much is absent. Example data.",
+      "vi": "Xếp theo bit thông tin quyết định, không theo mức độ thiếu. Dữ liệu ví dụ."
+    },
+    "text-9": {
+      "en": "Attribute",
+      "vi": "Thuộc tính"
+    },
+    "text-10": {
+      "en": "Products missing it",
+      "vi": "Sản phẩm còn thiếu"
+    },
+    "text-11": {
+      "en": "Decision information",
+      "vi": "Thông tin quyết định"
+    },
+    "text-12": {
+      "en": "Bits",
+      "vi": "Bit"
+    }
+  },
+  "decision-audit/decision-audit-shelf-story": {
+    "text-1": {
+      "en": "One shelf, from the gap to the fix",
+      "vi": "Một kệ hàng, từ khoảng trống tới bản sửa"
+    },
+    "text-2": {
+      "en": "Example data, a 216-product test shelf. 1: 357 fields missing, 94 cannot be told apart. 2: attributes scored against 32 shopper requirements. 3: screen size first, processor third though 162 miss it. 4: screen size on all 216, 185 told apart, up from 122.",
+      "vi": "Dữ liệu ví dụ, kệ thử nghiệm 216 sản phẩm. 1: thiếu 357 trường, 94 sản phẩm không phân biệt được. 2: thuộc tính được chấm theo 32 yêu cầu của người mua. 3: kích thước màn hình đứng đầu, bộ xử lý thứ ba dù 162 sản phẩm thiếu. 4: kích thước màn hình có trên cả 216, 185 sản phẩm phân biệt được, tăng từ 122."
+    },
+    "text-3": {
+      "en": "Test shelf, 216 products",
+      "vi": "Kệ thử nghiệm, 216 sản phẩm"
+    },
+    "text-4": {
+      "en": "Example data",
+      "vi": "Dữ liệu ví dụ"
+    },
+    "text-5": {
+      "en": "can be told apart",
+      "vi": "phân biệt được"
+    },
+    "text-6": {
+      "en": "cannot",
+      "vi": "không"
+    },
+    "text-7": {
+      "en": "Products missing each attribute, of 216",
+      "vi": "Sản phẩm thiếu từng thuộc tính, trên 216"
+    },
+    "text-8": {
+      "en": "Ranked by bits of decision information",
+      "vi": "Xếp theo bit thông tin quyết định"
+    },
+    "text-9": {
+      "en": "Screen size",
+      "vi": "Kích thước màn hình"
+    },
+    "text-10": {
+      "en": "1.067 bits",
+      "vi": "1,067 bit"
+    },
+    "text-11": {
+      "en": "80 missing",
+      "vi": "thiếu 80"
+    },
+    "text-12": {
+      "en": "Memory",
+      "vi": "Bộ nhớ"
+    },
+    "text-13": {
+      "en": "1.012 bits",
+      "vi": "1,012 bit"
+    },
+    "text-14": {
+      "en": "60 missing",
+      "vi": "thiếu 60"
+    },
+    "text-15": {
+      "en": "Processor",
+      "vi": "Bộ xử lý"
+    },
+    "text-16": {
+      "en": "0.747 bits",
+      "vi": "0,747 bit"
+    },
+    "text-17": {
+      "en": "162 missing",
+      "vi": "thiếu 162"
+    },
+    "text-18": {
+      "en": "Storage",
+      "vi": "Ổ lưu trữ"
+    },
+    "text-19": {
+      "en": "0.688 bits",
+      "vi": "0,688 bit"
+    },
+    "text-20": {
+      "en": "55 missing",
+      "vi": "thiếu 55"
+    },
+    "text-21": {
+      "en": "216 test-shelf products: 94 cannot be told apart. 357 fields are missing.",
+      "vi": "216 sản phẩm trên kệ thử nghiệm: 94 không phân biệt được. Thiếu 357 trường."
+    },
+    "text-22": {
+      "en": "Every attribute is scored against 32 shopper requirements.",
+      "vi": "Mỗi thuộc tính được chấm theo 32 yêu cầu của người mua."
+    },
+    "text-23": {
+      "en": "Screen size comes first. Processor, the emptiest, is only third.",
+      "vi": "Kích thước màn hình đứng đầu. Bộ xử lý, trống nhiều nhất, chỉ đứng thứ ba."
+    },
+    "text-24": {
+      "en": "Screen size recorded on all 216: 185 products can now be told apart, up from 122.",
+      "vi": "Kích thước màn hình được ghi trên cả 216: giờ 185 sản phẩm phân biệt được, tăng từ 122."
+    },
+    "text-25": {
+      "en": "Example data: a test shelf of 216 products. 1, the problem: 357 fields are missing and 94 products cannot be told apart. 2, the audit: each attribute is scored against 32 shopper requirements. 3, the priority: ranked by bits of decision information, screen size comes first and processor is only third, although 162 products miss it. 4, the repair: screen size is recorded on all 216 products, and 185 of 216 can now be told apart, up from 122.",
+      "vi": "Dữ liệu ví dụ: kệ thử nghiệm 216 sản phẩm. 1, vấn đề: thiếu 357 trường và 94 sản phẩm không phân biệt được. 2, bản kiểm tra: mỗi thuộc tính được chấm theo 32 yêu cầu của người mua. 3, ưu tiên: xếp theo bit thông tin quyết định, kích thước màn hình đứng đầu và bộ xử lý chỉ thứ ba, dù 162 sản phẩm thiếu. 4, bản sửa: kích thước màn hình được ghi trên cả 216 sản phẩm, và 185 trong 216 giờ đã phân biệt được, tăng từ 122."
+    },
+    "text-26": {
+      "en": "The problem",
+      "vi": "Vấn đề"
+    },
+    "text-27": {
+      "en": "The audit",
+      "vi": "Bản kiểm tra"
+    },
+    "text-28": {
+      "en": "The priority",
+      "vi": "Ưu tiên"
+    },
+    "text-29": {
+      "en": "The repair",
+      "vi": "Bản sửa"
     }
   }
 }

@@ -671,7 +671,7 @@
       "4": "Có kết quả trong vòng 48 giờ kể từ khi nhận được bản xuất",
       "5": "Không cần code, không gắn thẻ trên website, không cần dữ liệu khách hàng",
       "6": "Yêu cầu đánh giá của bạn",
-      "8": "Email công việc",
+      "8": "Email",
       "9": "Tên công ty",
       "16": "Gửi yêu cầu",
       "18": "Hoặc liên hệ trực tiếp với chúng tôi",
@@ -1324,7 +1324,10 @@
         "18": "Loại da",
         "19": "Thành phần chính",
         "20": "Dung tích",
-        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi."
+        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi.",
+        "source1": "Danh sách thành phần",
+        "source2": "Dữ liệu tuân thủ của nhà cung cấp",
+        "source3": "Bao bì và nội dung sản phẩm"
       },
       "section4": {
         "1": "Vẫn kệ hàng đó, sau khi lỗ hổng lớn nhất được lấp",
@@ -1505,7 +1508,9 @@
         "18": "RAM",
         "19": "Lưu trữ",
         "20": "Vi xử lý",
-        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi."
+        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi.",
+        "source1": "Tiêu đề sản phẩm",
+        "source2": "Mô tả sản phẩm"
       },
       "section4": {
         "1": "Vẫn kệ hàng đó, sau khi lỗ hổng lớn nhất được lấp",
@@ -1623,7 +1628,11 @@
         "18": "Quy cách đóng gói",
         "19": "Công bố về chế độ ăn",
         "20": "Thương hiệu",
-        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi."
+        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi.",
+        "source1": "Bao bì",
+        "source2": "Thông số nhà cung cấp",
+        "source3": "Mô tả",
+        "source4": "Nội dung tiếp thị"
       },
       "section4": {
         "1": "Vẫn kệ hàng đó, sau khi lỗ hổng lớn nhất được lấp",
@@ -1701,7 +1710,10 @@
         "18": "Chiều sâu khi lắp xong",
         "19": "Chất liệu chính",
         "20": "Màu sắc",
-        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi."
+        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi.",
+        "source1": "Bảng thông số nhà cung cấp",
+        "source2": "Mô tả của chính bạn",
+        "source3": "Ảnh đăng bán"
       },
       "section4": {
         "1": "Vẫn kệ hàng đó, sau khi lỗ hổng lớn nhất được lấp",
@@ -1780,7 +1792,10 @@
         "18": "RAM",
         "19": "Lưu trữ",
         "20": "Vi xử lý",
-        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi."
+        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi.",
+        "source1": "Tiêu đề sản phẩm",
+        "source2": "Mô tả sản phẩm",
+        "source3": "Bảng thông số nhà cung cấp"
       },
       "section4": {
         "1": "Vẫn kệ hàng đó, sau khi lỗ hổng lớn nhất được lấp",
@@ -1820,6 +1835,10 @@
         "2": "nhà bán lẻ được thử nghiệm không có bộ lọc cho chính thông tin họ đang hiển thị",
         "4": "trang sản phẩm không có đủ bộ dữ liệu có cấu trúc"
       }
+    },
+    "sectorPage": {
+      "notRecorded": "Chưa ghi nhận",
+      "catalogueRow": "Danh mục của bạn · một sản phẩm"
     }
   },
   "privacy": {

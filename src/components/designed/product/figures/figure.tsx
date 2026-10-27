@@ -23,9 +23,19 @@ import TEXT from "./text.json";
  * `role="img"` and `aria-labelledby`, so there is no accessible name to add here. The ids are
  * prefixed per file (`das-`, `dah-`, ...), which is what lets four of them share one page.
  */
-const DIR = join(process.cwd(), "src", "components", "designed", "product", "figures");
+const DIR = join(
+  process.cwd(),
+  "src",
+  "components",
+  "designed",
+  "product",
+  "figures",
+);
 
-export type FigureProduct = "decision-audit" | "decision-verification" | "decision-monitor";
+export type FigureProduct =
+  | "decision-audit"
+  | "decision-verification"
+  | "decision-monitor";
 
 type Line = { en: string; vi: string };
 const LINES = TEXT as Record<string, Record<string, Line>>;
@@ -54,7 +64,7 @@ function localize(svg: string, id: string, locale: string): string {
   const lines = LINES[id];
   if (!lines) return svg;
 
-  return svg.replace(
+  const marked = svg.replace(
     // The same two shapes the import script matches, and the same exclusion: the optional middle
     // group sees through one presentational wrapper but not past a nested `data-edit`, so a
     // container of editable children is left alone rather than flattened into one string.
@@ -66,6 +76,21 @@ function localize(svg: string, id: string, locale: string): string {
       return translated ? `${open}${escape(translated)}` : whole;
     },
   );
+
+  // Second pass, by text rather than by key: any text node that is exactly a known English line.
+  // The mobile exports lost their `data-edit` attributes, and `<title>`/`<desc>` never had them,
+  // so both rendered English on /vi (found 2026-10-27, 45 strings on two product pages).
+  const byText = new Map(
+    Object.values(lines).map((l) => [l.en.trim(), l[locale as keyof Line]]),
+  );
+  const unescape = (s: string) =>
+    s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+  return marked.replace(/>([^<]+)</g, (whole, text: string) => {
+    const translated = byText.get(unescape(text).trim());
+    return translated
+      ? `>${text.replace(text.trim(), escape(translated))}<`
+      : whole;
+  });
 }
 
 export function Figure({
@@ -87,7 +112,11 @@ export function Figure({
 }) {
   const locale = renderLocale();
   const read = (file: string) =>
-    localize(readFileSync(join(DIR, product, file), "utf8"), `${product}/${name}`, locale);
+    localize(
+      readFileSync(join(DIR, product, file), "utf8"),
+      `${product}/${name}`,
+      locale,
+    );
 
   const svg = read(`${name}.svg`);
 
@@ -105,7 +134,9 @@ export function Figure({
    * both in one document.
    */
   const mobileFile = `${name}-mobile.svg`;
-  const mobile = existsSync(join(DIR, product, mobileFile)) ? read(mobileFile) : null;
+  const mobile = existsSync(join(DIR, product, mobileFile))
+    ? read(mobileFile)
+    : null;
 
   const hold = priority ? "" : " figure-hold";
 

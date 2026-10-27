@@ -139,65 +139,6 @@
         "body": "Đây là phép đo hiệu quả tìm kiếm với đáp án đã biết trước. Nó không nói gì về việc khách có chịu trả lời câu hỏi hay không, và không nói gì về doanh thu. Chúng tôi chưa có con số tăng trưởng thương mại nào đo được, vì chưa chạy pilot có nhóm đối chứng. Khi có, con số đó sẽ đến từ traffic của bạn, không phải cửa hàng của người khác."
       }
     },
-    "flow": {
-      "title": "Một quyết định<br></br><accent>được đưa ra thế nào.</accent>",
-      "description": "Pulse dựng hai vector, một cho khách đang đứng trước bạn, một cho từng sản phẩm bạn bán, rồi so khớp. Không bên nào cần lịch sử, nên nó hoạt động ngay từ lượt xem trang đầu tiên. Điều nó không làm được là bịa ra một thuộc tính mà danh mục của bạn chưa bao giờ ghi nhận.",
-      "cols": {
-        "send": "Gửi dữ liệu",
-        "build": "Dựng bản sao",
-        "get": "Nhận cá nhân hóa"
-      },
-      "session": {
-        "eyebrow": "Thời gian thực",
-        "title": "Phiên ẩn danh",
-        "meta": "1.000+ tín hiệu · mỗi request"
-      },
-      "catalogue": {
-        "eyebrow": "Đồng bộ một lần",
-        "title": "Danh mục của bạn",
-        "meta": "đồng bộ một lần, cập nhật khi thay đổi"
-      },
-      "notRequired": {
-        "title": "Không cần",
-        "items": [
-          "Cookie",
-          "Đăng nhập",
-          "Hồ sơ người dùng",
-          "Cổng đồng ý",
-          "Lịch sử mua hàng",
-          "Thời gian huấn luyện"
-        ]
-      },
-      "persona": {
-        "eyebrow": "Chân dung khách",
-        "title": "Chấm điểm Bayesian",
-        "meta": "mức sẵn sàng · phân khúc giá · sở thích danh mục · độ nóng",
-        "vector": "vector 384 chiều"
-      },
-      "twin": {
-        "eyebrow": "Bản sao sản phẩm",
-        "title": "Làm giàu theo chân dung",
-        "meta": "suits[] · persona_fit'{}' · một bản sao cho mỗi SKU",
-        "vector": "vector 384 chiều"
-      },
-      "match": {
-        "title": "Khớp vector",
-        "meta": "độ tương đồng cosine, xếp hạng theo điểm phù hợp",
-        "value": "mục tiêu <50ms",
-        "footnote": "ngân sách thiết kế, không phải số đo<br></br>0 cookie · 0 PII"
-      },
-      "outputs": [
-        "Trang chủ cá nhân hóa",
-        "Xếp hạng tìm kiếm & danh mục",
-        "Gợi ý sản phẩm",
-        "Upsell giỏ hàng & thanh toán",
-        "Sản phẩm tương tự",
-        "Email & giữ chân khách",
-        "Trang đích quảng cáo",
-        "Feed ứng dụng di động",
-        "Bất cứ đâu bạn hiển thị sản phẩm"
-      ]
-    },
     "code": {
       "title": "<accent>Một lệnh gọi. Mười dòng.</accent><br></br>Xong ngay chiều nay.",
       "description": "REST và SDK cho JavaScript, Python, PHP và Go. Lý do xếp hạng được trả về cùng kết quả, nên bạn có thể giải thích cho khách vì sao, hoặc ghi lại để phản biện sau.",
@@ -257,8 +198,8 @@
       "allIndustries": "Tất cả ngành nghề"
     },
     "meta": {
-      "title": "Biết chính xác nên sửa dữ liệu sản phẩm nào trước",
-      "description": "Gửi một tệp xuất ngành hàng. Chúng tôi xếp hạng từng thuộc tính còn thiếu theo mức ảnh hưởng tới quyết định của người mua, trả kết quả trong 48 giờ."
+      "title": "Pulse: trí tuệ quyết định cho dữ liệu sản phẩm",
+      "description": "Pulse đo xem danh mục có đủ bằng chứng để người mua và tác tử AI quyết định không, xếp hạng khoảng trống dữ liệu đáng sửa, và xác minh kết quả sửa."
     }
   },
   "about": {
@@ -379,7 +320,7 @@
       "title": "Gửi tin nhắn cho chúng tôi",
       "name": "Họ và tên",
       "namePlaceholder": "Nguyễn Văn A",
-      "email": "Email công việc",
+      "email": "Email",
       "emailPlaceholder": "a@congty.com",
       "company": "Tên công ty",
       "companyPlaceholder": "Công ty ABC",
@@ -707,129 +648,6 @@
     "vi": "Tiếng Việt",
     "switchTo": "Đổi ngôn ngữ"
   },
-  "docs": {
-    "meta": {
-      "title": "Tài liệu API: tích hợp trong mười dòng",
-      "description": "Tài liệu tham chiếu cho SDK Pulse và Decision API, gồm các yếu tố xếp hạng, bản ghi quyết định và nhánh đối chứng. Bản kiểm tra không cần tới thứ nào cả.",
-      "ogTitle": "Tài liệu API: tích hợp trong mười dòng",
-      "ogDescription": "Tài liệu tham chiếu cho SDK Pulse và Decision API, gồm các yếu tố xếp hạng, bản ghi quyết định và nhánh đối chứng. Bản kiểm tra không cần tới thứ nào cả."
-    },
-    "title": "Tài liệu API",
-    "description": "Mọi thứ bạn cần để tích hợp công cụ suy luận thời gian thực của Pulse vào nền tảng thương mại điện tử.",
-    "quickStart": {
-      "navTitle": "Bắt đầu nhanh",
-      "navDescription": "Thêm Pulse vào trang web của bạn trong 3 bước",
-      "title": "Bắt đầu nhanh",
-      "description": "Thêm Pulse vào trang web của bạn trong ba bước. SDK tải ngầm nên không bao giờ làm chậm trang, và chỉ đọc tín hiệu ẩn danh trong phiên. Không cookie, không lưu gì riêng tư.",
-      "step1Title": "1. Thêm SDK",
-      "step1Desc": "Chèn thẻ script này vào phần head của trang. Nó tải bất đồng bộ và không bao giờ chặn quá trình hiển thị.",
-      "step2Title": "2. Khởi tạo",
-      "step2Desc": "Khởi tạo Pulse bằng merchant ID và khóa công khai (pk_live_…) của bạn. Việc thu thập tín hiệu tự động bắt đầu ngay lập tức.",
-      "step3Title": "3. Gắn thẻ các phần tử chính (tùy chọn)",
-      "step3Desc": "Thêm thuộc tính data-pulse-track vào các menu sắp xếp, bộ lọc và nút CTA để tự động ghi nhận các tương tác có ý định cao.",
-      "doneTitle": "Vậy là xong, bạn đã hoạt động",
-      "doneDesc": "SDK gửi các tín hiệu ẩn danh (thiết bị, nguồn truy cập, cuộn trang, lượt nhấp) tới POST /v1/track và Pulse suy luận persona của khách ngay trong phiên. Gọi Inference API bên dưới từ backend của bạn để cá nhân hoá tìm kiếm, gợi ý và bố cục."
-    },
-    "nav": {
-      "authTitle": "Xác thực",
-      "authDesc": "Tìm hiểu cách xác thực các yêu cầu API của bạn",
-      "inferTitle": "API Suy luận",
-      "inferDesc": "Nhận dự đoán persona thời gian thực",
-      "personalizeTitle": "Decision API",
-      "personalizeDesc": "Sắp xếp lại cửa hàng của bạn theo thời gian thực",
-      "catalogTitle": "Đồng bộ Danh mục",
-      "catalogDesc": "Đồng bộ sản phẩm & danh mục theo thời gian thực",
-      "webhooksTitle": "Webhooks",
-      "webhooksDesc": "Nhận thông báo sự kiện thời gian thực"
-    },
-    "baseUrl": "URL cơ sở",
-    "overview": {
-      "title": "Cách hoạt động",
-      "intro": "Pulse cá nhân hóa cửa hàng của bạn qua ba bước: thu thập tín hiệu ẩn danh trong phiên, cho chúng tôi biết bạn bán gì, rồi hỏi chúng tôi cách sắp xếp sản phẩm cho khách đang truy cập. SDK trình duyệt xử lý bước đầu; backend của bạn xử lý hai bước còn lại qua một REST API đơn giản.",
-      "step1Title": "1. Thu thập tín hiệu",
-      "step1Desc": "Chèn SDK vào. Nó lặng lẽ truyền hành vi ẩn danh đến Pulse ở chế độ nền. Không cookie, không gì riêng tư.",
-      "step2Title": "2. Đồng bộ danh mục",
-      "step2Desc": "Đẩy sản phẩm và danh mục của bạn để Pulse biết những gì có thể đề xuất và xếp hạng.",
-      "step3Title": "3. Lấy dữ liệu cá nhân hóa",
-      "step3Desc": "Gọi API Cá nhân hóa để sắp xếp lại lưới sản phẩm và kết quả tìm kiếm cho khách đang truy cập."
-    },
-    "auth": {
-      "title": "Xác thực",
-      "signupNote": "Trước tiên bạn cần một tài khoản Pulse. Đăng ký để tạo tổ chức của bạn, sau đó tạo và quản lý các khóa API từ bảng điều khiển.",
-      "signupCta": "Đăng ký để nhận khóa API →",
-      "intro": "Tất cả các yêu cầu API đều cần xác thực bằng khóa API. Đưa khóa của bạn vào header <code>Authorization</code>.",
-      "securityLabel": "Lưu ý bảo mật",
-      "securityNote": "Không bao giờ để lộ khóa API bí mật của bạn trong mã phía client. Mọi yêu cầu suy luận và danh mục nên được thực hiện từ máy chủ backend của bạn. SDK trình duyệt sử dụng khóa công khai (pk_live_…) chỉ giới hạn cho việc thu thập sự kiện."
-    },
-    "inference": {
-      "title": "API Suy luận",
-      "desc": "Nhận suy luận persona thời gian thực cho một phiên truy cập. Trả về các thuộc tính persona, điểm tin cậy và thứ hạng sản phẩm được đề xuất.",
-      "latency": "Độ trễ mục tiêu: <50ms (p95)",
-      "requestBody": "Nội dung yêu cầu",
-      "response": "Phản hồi"
-    },
-    "catalog": {
-      "title": "Đồng bộ Danh mục, Sản phẩm & Danh mục",
-      "intro": "Đẩy sản phẩm và danh mục của bạn lên Pulse để công cụ biết những gì có thể cá nhân hóa. Gửi toàn bộ danh mục một lần, sau đó giữ đồng bộ bằng cách gửi từng thao tác tạo, cập nhật hoặc xóa ngay khi nó xảy ra trong cửa hàng của bạn.",
-      "async": "Làm giàu dữ liệu và gắn thẻ thuộc tính chạy bất đồng bộ trong pipeline nạp dữ liệu, lệnh upsert trả về <code>202 Accepted</code> ngay lập tức và webhook <code>products.tagged</code> kích hoạt khi một sản phẩm sẵn sàng cho suy luận. Bản thân việc suy luận vẫn nằm trên đường xử lý yêu cầu.",
-      "upsertDesc": "Tạo hoặc cập nhật sản phẩm. Lệnh này có tính bất biến (idempotent) theo <code>id</code>, gửi lại cùng một sản phẩm với các trường mới để cập nhật nó. Chấp nhận một sản phẩm hoặc một lô.",
-      "categoriesDesc": "Đồng bộ cây danh mục của bạn để Pulse hiểu mối quan hệ giữa các sản phẩm. Đặt <code>parent_id</code> để phản ánh cấu trúc phân cấp của cửa hàng. Được upsert giống như sản phẩm.",
-      "deleteDesc": "Xóa một sản phẩm khi nó bị xóa hoặc hết hàng vĩnh viễn. Nó sẽ ngừng xuất hiện trong các đề xuất ngay lập tức. Sử dụng cùng mẫu để xóa danh mục.",
-      "syncLabel": "Giữ đồng bộ",
-      "syncNote": "Hầu hết các nhà bán hàng kết nối các lệnh gọi này với sự kiện thay đổi sản phẩm/danh mục của cửa hàng (ví dụ: một webhook Shopify hoặc một save hook trong backend tùy chỉnh) để danh mục Pulse luôn phản ánh đúng những gì người mua nhìn thấy. Nên đồng bộ lại toàn bộ hằng đêm như một biện pháp dự phòng."
-    },
-    "personalize": {
-      "title": "Decision API",
-      "desc": "Khi SDK đã thu thập tín hiệu và danh mục của bạn đã được đồng bộ, hãy gọi các endpoint này để sắp xếp lại cửa hàng theo thời gian thực cho khách hiện tại. Gọi chúng từ backend của bạn bằng Bearer token, truyền session_id mà SDK đã tạo trong trình duyệt.",
-      "recommendDesc": "Trả về danh sách sản phẩm được xếp hạng và cá nhân hóa theo persona trực tiếp của khách, dùng cho lưới \"Dành cho bạn\", sản phẩm liên quan và các dải trên trang chủ.",
-      "searchDesc": "Xếp hạng lại kết quả tìm kiếm theo ý định. Gửi truy vấn của người mua và Pulse sắp xếp các sản phẩm phù hợp theo persona được suy luận trong phiên này. Kết quả được phân trang bằng con trỏ (cursor)."
-    },
-    "webhooks": {
-      "title": "Webhooks",
-      "intro": "Cấu hình webhooks để nhận thông báo thời gian thực cho các sự kiện như cập nhật persona, theo dõi chuyển đổi và cải tiến mô hình.",
-      "eventsTitle": "Sự kiện có sẵn",
-      "converted": "Chuyển đổi được ghi nhận cho Pulse",
-      "tagged": "Hoàn tất gắn thẻ sản phẩm",
-      "updated": "Mô hình suy luận được cải tiến"
-    },
-    "errors": {
-      "title": "Lỗi",
-      "intro": "Pulse sử dụng các mã trạng thái HTTP tiêu chuẩn và trả về lỗi theo định dạng RFC 7807 Problem Details, vì vậy mỗi lỗi đều bao gồm một type mà máy đọc được và một detail mà người đọc được.",
-      "codesTitle": "Các mã trạng thái phổ biến",
-      "codeCol": "Mã",
-      "meaningCol": "Ý nghĩa",
-      "e400": "Bad Request, payload không đúng định dạng hoặc thiếu trường bắt buộc.",
-      "e401": "Unauthorized, khóa API bị thiếu hoặc không hợp lệ.",
-      "e403": "Forbidden, khóa hợp lệ nhưng không được phép truy cập tài nguyên này.",
-      "e404": "Not Found, phiên, sản phẩm hoặc endpoint không tồn tại.",
-      "e422": "Unprocessable Entity, yêu cầu đúng định dạng nhưng không qua được kiểm tra hợp lệ.",
-      "e429": "Too Many Requests, bạn đã vượt quá giới hạn tần suất của gói.",
-      "e500": "Server Error, đã xảy ra lỗi từ phía chúng tôi; thử lại với backoff."
-    },
-    "rateLimits": {
-      "title": "Giới hạn tần suất",
-      "planCol": "Gói",
-      "inferCol": "API Suy luận",
-      "catalogCol": "API Danh mục",
-      "custom": "Tùy chỉnh"
-    },
-    "sdks": {
-      "title": "SDK & Thư viện"
-    },
-    "needHelp": "Cần trợ giúp?",
-    "helpDescription": "Đội ngũ kỹ sư giải pháp của chúng tôi sẵn sàng giúp bạn tích hợp Pulse thành công.",
-    "getSupport": "Nhận hỗ trợ tích hợp",
-    "contactSupport": "Liên hệ hỗ trợ",
-    "heroAlt": "Một lập trình viên bên laptop, với các tài nguyên API toả ra từ đó: lược đồ, thư mục, biểu đồ, webhook và giới hạn tần suất.",
-    "gateTitle": "Muốn nhận trọn bộ trong một tài liệu?",
-    "gateBody": "Để lại email và chúng tôi sẽ gửi toàn bộ hướng dẫn tích hợp, cả hai ví dụ mẫu và tài liệu tham chiếu endpoint, gói trong một tệp duy nhất để bạn chuyển cho người phải phê duyệt.",
-    "gateCta": "Gửi cho tôi",
-    "gateSuccess": "Đang gửi. Kiểm tra hộp thư của bạn để nhận tài liệu.",
-    "differentCredential": "Thông tin xác thực khác:",
-    "catalogueWriteAuth": "thao tác ghi vào danh mục được xác thực bằng phiên đăng nhập trên bảng điều khiển, không phải bằng khoá công khai",
-    "keyUsedAbove": "dùng cho các lệnh gọi ở trên.",
-    "exampleAuthRequest": "# Ví dụ lệnh gọi có xác thực"
-  },
   "integrations": {
     "meta": {
       "title": "Tích hợp: đọc chính tệp xuất bạn vốn đã tạo ra",
@@ -874,10 +692,10 @@
   },
   "product": {
     "meta": {
-      "title": "Sản phẩm: đo danh mục trước, rồi xếp hạng",
-      "description": "Decision Audit, Verification và Monitor cho dữ liệu sản phẩm, cùng Tìm kiếm, Gợi ý, Trang danh mục và Merchandising Studio. Một cầu thang có lối ra ở mọi bậc.",
-      "ogTitle": "Sản phẩm: đo danh mục trước, rồi xếp hạng",
-      "ogDescription": "Decision Audit, Verification và Monitor cho dữ liệu sản phẩm, cùng Tìm kiếm, Gợi ý, Trang danh mục và Merchandising Studio. Một cầu thang có lối ra ở mọi bậc."
+      "title": "Trí tuệ quyết định thương mại cho dữ liệu sản phẩm",
+      "description": "Pulse kiểm tra danh mục theo yêu cầu mua thật, xếp hạng khoảng trống dữ liệu đáng sửa, xác minh việc làm giàu dữ liệu và theo dõi mức sẵn sàng cho quyết định.",
+      "ogTitle": "Trí tuệ quyết định thương mại cho dữ liệu sản phẩm",
+      "ogDescription": "Pulse kiểm tra danh mục theo yêu cầu mua thật, xếp hạng khoảng trống dữ liệu đáng sửa, xác minh việc làm giàu dữ liệu và theo dõi mức sẵn sàng cho quyết định."
     },
     "badge": "Engine",
     "title": "Hệ thống biết rõ mình",

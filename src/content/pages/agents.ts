@@ -58,13 +58,13 @@ const SHARED_EN = {
         n: "02",
         meta: "Send",
         title: "Pass the options",
-        body: "Up to 50 at a time, with whatever fields and text you have.",
+        body: "Up to 50 at a time, with whatever fields and text you have. A stated field always wins over text read off a page.",
       },
       {
         n: "03",
         meta: "Answer",
         title: "Answer from the verdicts",
-        body: "Each option comes back fits, fails or cannot tell, with the attributes that are missing.",
+        body: "Each option comes back fits, fails or cannot tell, with the attributes that are missing. The agent says what the evidence shows, and only that.",
       },
     ],
   },
@@ -121,7 +121,7 @@ const SHARED_EN = {
   ],
   cta: {
     title: "Add it to your agent.",
-    body: "Install the MCP server with one line, or call the API from your code.",
+    body: "Install the MCP server with one line, or call the API from your code. The open-source repository has runnable examples.",
     label: "Opensource",
     href: "/opensource",
     note: "An API key comes from the Pulse dashboard.",
@@ -150,13 +150,13 @@ const SHARED_VI = {
         n: "02",
         meta: "Gửi",
         title: "Đưa các lựa chọn",
-        body: "Tối đa 50 lựa chọn mỗi lần, kèm mọi trường và văn bản bạn có.",
+        body: "Tối đa 50 lựa chọn mỗi lần, kèm mọi trường và văn bản bạn có. Một trường đã ghi luôn thắng văn bản đọc từ trang.",
       },
       {
         n: "03",
         meta: "Trả lời",
         title: "Trả lời theo phán quyết",
-        body: "Mỗi lựa chọn trả về đạt, không đạt hoặc không đủ thông tin, kèm các thuộc tính còn thiếu.",
+        body: "Mỗi lựa chọn trả về đạt, không đạt hoặc không đủ thông tin, kèm các thuộc tính còn thiếu. Tác tử nói đúng điều bằng chứng cho thấy, và chỉ điều đó.",
       },
     ],
   },
@@ -213,7 +213,7 @@ const SHARED_VI = {
   ],
   cta: {
     title: "Thêm vào tác tử của bạn.",
-    body: "Cài máy chủ MCP bằng một dòng, hoặc gọi API từ mã của bạn.",
+    body: "Cài máy chủ MCP bằng một dòng, hoặc gọi API từ mã của bạn. Kho mã nguồn mở có ví dụ chạy được.",
     label: "Mã nguồn mở",
     href: "/opensource",
     note: "Khóa API lấy từ bảng điều khiển Pulse.",
@@ -229,7 +229,7 @@ const EN: Record<AgentSlug, Specific> = {
     },
     eyebrow: "For AI agents",
     title: "A shopping assistant that never invents a spec.",
-    lede: "Pulse tells it which products the listings prove fit, which fail, and which say nothing, so it recommends from evidence and says plainly what it cannot tell.",
+    lede: "Your assistant knows what the shopper asked for. Pulse tells it which products the listings prove fit, which fail, and which say nothing, so it recommends from evidence and says plainly what it cannot tell.",
     situation: {
       heading: "Assistants are built to answer.",
       body: [
@@ -285,7 +285,7 @@ const EN: Record<AgentSlug, Specific> = {
     },
     eyebrow: "For AI agents",
     title: "A procurement agent that checks the spec, not the brochure.",
-    lede: "Pulse returns, for each supplier or part, which requirements its data meets, which it fails, and which it leaves blank, so the shortlist is defensible and the follow-up questions write themselves.",
+    lede: "Give the agent the spec and the candidate suppliers or parts. Pulse returns, for each one, which requirements its data meets, which it fails, and which it leaves blank, so the shortlist is defensible and the follow-up questions write themselves.",
     situation: {
       heading: "A missing rating is not a pass.",
       body: [
@@ -401,7 +401,7 @@ const EN: Record<AgentSlug, Specific> = {
     },
     eyebrow: "For AI agents",
     title: "Coding agents that build on Pulse without guessing the API.",
-    lede: "The agent searches the current Pulse documentation instead of recalling an endpoint that may not exist, and wires the decision call into whatever it is building.",
+    lede: "Add the open-source MCP server to Claude Code, Cursor or Codex. The agent searches the current Pulse documentation instead of recalling an endpoint that may not exist, and wires the decision call into whatever it is building.",
     situation: {
       heading: "Coding agents remember APIs that changed.",
       body: [
@@ -452,7 +452,7 @@ const VI: Record<AgentSlug, Specific> = {
     },
     eyebrow: "Cho tác tử AI",
     title: "Một trợ lý mua sắm không bao giờ bịa thông số.",
-    lede: "Pulse cho nó biết sản phẩm nào trang sản phẩm chứng minh là đạt, sản phẩm nào không, và sản phẩm nào không nói gì, để nó đề xuất dựa trên bằng chứng và nói rõ điều nó không biết.",
+    lede: "Trợ lý của bạn biết người mua đã hỏi gì. Pulse cho nó biết sản phẩm nào trang sản phẩm chứng minh là đạt, sản phẩm nào không, và sản phẩm nào không nói gì, để nó đề xuất dựa trên bằng chứng và nói rõ điều nó không biết.",
     situation: {
       heading: "Trợ lý được tạo ra để trả lời.",
       body: [
@@ -508,7 +508,7 @@ const VI: Record<AgentSlug, Specific> = {
     },
     eyebrow: "Cho tác tử AI",
     title: "Một tác tử mua hàng kiểm tra thông số, không phải tờ quảng cáo.",
-    lede: "Pulse trả về, cho từng nhà cung cấp hay linh kiện, yêu cầu nào dữ liệu đáp ứng, yêu cầu nào không, và yêu cầu nào bỏ trống, để danh sách rút gọn có căn cứ và câu hỏi cần hỏi tự hiện ra.",
+    lede: "Đưa cho tác tử thông số và các nhà cung cấp hay linh kiện ứng viên. Pulse trả về, cho từng ứng viên, yêu cầu nào dữ liệu đáp ứng, yêu cầu nào không, và yêu cầu nào bỏ trống, để danh sách rút gọn có căn cứ và câu hỏi cần hỏi tự hiện ra.",
     situation: {
       heading: "Một chỉ số bị thiếu không phải là đạt.",
       body: [
@@ -620,7 +620,7 @@ const VI: Record<AgentSlug, Specific> = {
     },
     eyebrow: "Cho tác tử AI",
     title: "Tác tử lập trình xây trên Pulse mà không phải đoán API.",
-    lede: "Tác tử tìm trong tài liệu Pulse mới nhất thay vì nhớ một endpoint có thể không tồn tại, và đưa lệnh gọi quyết định vào bất cứ thứ gì nó đang xây.",
+    lede: "Thêm máy chủ MCP mã nguồn mở vào Claude Code, Cursor hay Codex. Tác tử tìm trong tài liệu Pulse mới nhất thay vì nhớ một endpoint có thể không tồn tại, và đưa lệnh gọi quyết định vào bất cứ thứ gì nó đang xây.",
     situation: {
       heading: "Tác tử lập trình nhớ những API đã thay đổi.",
       body: [

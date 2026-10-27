@@ -22,11 +22,6 @@ export interface Finding {
   limit: string;
   href: string;
   link: string;
-  /**
-   * The finding the page leads with, and its figure: the shelf at each step and the bits each step
-   * is worth, written per locale ("1.20 bits", "1,20 bit"). One finding carries it.
-   */
-  featured?: { steps: number[]; bits: string[] };
 }
 
 export interface ResearchContent {
@@ -93,7 +88,6 @@ const EN: ResearchContent = {
         "One shelf, partly synthetic. It compares two kinds of missing information; it is not a ranking result.",
       href: "/product/search",
       link: "About Search",
-      featured: { steps: [216, 94, 5], bits: ["1.20 bits", "4.24 bits"] },
     },
     {
       product: "Search",
@@ -246,7 +240,6 @@ const VI: ResearchContent = {
         "Một kệ hàng, một phần là dữ liệu tổng hợp. Nó so sánh hai loại thông tin còn thiếu; không phải kết quả xếp hạng.",
       href: "/product/search",
       link: "Về Search",
-      featured: { steps: [216, 94, 5], bits: ["1,20 bit", "4,24 bit"] },
     },
     {
       product: "Search",

@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
-import { ArrowRight, Eye, Lock, Tag } from "lucide-react";
+import { Eye, Lock, Tag } from "lucide-react";
 import { Link } from "@/i18n/routing";
-import { PageHero } from "@/components/PageHero";
 import { PageSchema } from "@/components/PageSchema";
-import {
-  ResearchIndex,
-  Status,
-} from "@/components/designed/research/research-index";
+import { ResearchIndex } from "@/components/designed/research/research-index";
 import { research } from "@/content/pages/research";
 
 interface PageProps {
@@ -28,24 +24,21 @@ export async function generateMetadata({
 }
 
 /**
- * Research (owner's version 3, 27 Oct 2026): one finding led large with its figure, the rest as an
- * index that opens row by row, then how the research is run, the questions and the call to action.
- * The method follows the findings because its own words point back at "the nine listings above".
+ * Research (owner's version 3, 27 Oct 2026): every finding as a row of one index that opens row by
+ * row, then how the research is run, the questions and the call to action. No finding is led large:
+ * the owner had the featured one put back in the list like the others (27 Oct 2026). The method
+ * follows the findings because its own words point back at "the nine listings above".
  *
- * Every word is the content module's (`content/pages/research.ts`, both locales); the only figure is
- * the featured finding's own numbers. Headings carry no label and no trailing full stop.
+ * Every word is the content module's (`content/pages/research.ts`, both locales). Headings carry no
+ * label and no trailing full stop.
  */
 const h = (s: string) => s.replace(/\.\s*$/, "");
 const METHOD_ICONS = [Lock, Eye, Tag];
-const BAR = ["bg-baseline", "bg-sky", "bg-primary"];
 
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
   const c = research(locale);
-  const lead = c.findings.find((f) => f.featured) ?? c.findings[0];
-  const steps = lead.featured?.steps ?? [];
-  const bits = lead.featured?.bits ?? [];
   return (
     <>
       <PageSchema
@@ -62,94 +55,23 @@ export default async function Page({ params }: PageProps) {
           },
         ]}
       />
-      <PageHero title={h(c.title)} lede={c.lede} titleClassName="text-hero" />
-
-      <section className="border-b border-line">
-        <div className="frame py-16 lg:py-24">
-          <article className="reveal grid items-center gap-10 rounded-3xl border border-primary-line bg-card p-6 sm:p-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-12">
-            <div className="grid gap-4">
-              <h2 className="text-title text-balance">{h(lead.title)}</h2>
-              <p className="text-lg leading-relaxed text-pretty text-muted">
-                {lead.body}
-              </p>
-              <dl className="grid gap-3 text-sm">
-                <div>
-                  <dt className="font-semibold text-ink">{c.labels.data}</dt>
-                  <dd className="mt-0.5 text-muted">{lead.data}</dd>
-                </div>
-                <div className="missing-cell rounded-xl p-3.5">
-                  <dt className="font-semibold">{c.labels.limit}</dt>
-                  <dd className="mt-0.5 text-ink">{lead.limit}</dd>
-                </div>
-              </dl>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                <span className="text-sm font-semibold text-muted">
-                  {lead.product}
-                </span>
-                <Status status={lead.status} label={c.labels[lead.status]} />
-                <Link
-                  locale={locale}
-                  href={lead.href}
-                  className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-primary hover:underline sm:ml-auto"
-                >
-                  {lead.link}
-                  <ArrowRight className="size-4" aria-hidden />
-                </Link>
-              </div>
-            </div>
-            {steps.length > 0 && (
-              <figure className="reveal m-0 rounded-2xl bg-primary-wash p-6 sm:p-8">
-                {/* The shelf at each step, on one scale: what the shopper's needs leave, then what
-                    the products' facts leave. The bars rise and the counts run when it comes in. */}
-                <div
-                  className="grid h-44 grid-cols-3 items-end gap-3"
-                  aria-hidden
-                >
-                  {steps.map((n, i) => (
-                    <div
-                      key={n}
-                      className="flex h-full flex-col items-center justify-end gap-2"
-                    >
-                      <span
-                        data-count={n}
-                        className="font-display text-xl font-semibold tabular-nums text-ink"
-                      >
-                        {n}
-                      </span>
-                      <span
-                        className={`block w-full origin-bottom rounded-lg transition-[scale] duration-1000 ease-(--ease-emphasized) pre-shown:scale-y-0 ${BAR[i]}`}
-                        style={{
-                          height: `${Math.max(6, Math.round((n / steps[0]) * 128))}px`,
-                          transitionDelay: `${i * 250}ms`,
-                        }}
-                      />
-                    </div>
-                  ))}
-                </div>
-                <figcaption className="mt-4 flex flex-wrap justify-between gap-2 text-sm">
-                  {bits.map((b, i) => (
-                    <span
-                      key={b}
-                      className={
-                        i === bits.length - 1
-                          ? "font-semibold text-ink"
-                          : "text-muted"
-                      }
-                    >
-                      {steps[i]} → {steps[i + 1]} · {b}
-                    </span>
-                  ))}
-                </figcaption>
-              </figure>
-            )}
-          </article>
+      {/* The designed hero, as on the use-case and sector pages: `PageHero` paints its own older
+          canvas, which did not match them in the dark theme (owner, 27 Oct 2026). */}
+      <section className="hero-bg overflow-hidden border-b border-line">
+        <div className="frame pt-12 pb-20 lg:pt-16 lg:pb-28">
+          <h1 className="reveal max-w-[20ch] text-hero text-balance">
+            {h(c.title)}
+          </h1>
+          <p className="reveal mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted delay-100">
+            {c.lede}
+          </p>
         </div>
       </section>
 
       <section className="border-b border-line bg-card">
         <div className="frame py-16 lg:py-24">
           <ResearchIndex
-            findings={c.findings.filter((f) => f !== lead)}
+            findings={c.findings}
             labels={c.labels}
             heading={c.findingsHeading}
             locale={locale}

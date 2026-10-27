@@ -1,8 +1,8 @@
 "use client";
 
 /**
- * The Research page's index (owner's version 3, 27 Oct 2026): every finding but the featured one,
- * a line each, with chips to show the measured ones or the ones waiting on a merchant.
+ * The Research page's index (owner's version 3, 27 Oct 2026): every finding, a line each, with
+ * chips to show the measured ones or the ones waiting on a merchant.
  *
  * The whole row is the `<summary>`, so a click anywhere on it opens the finding, not only on its
  * title (owner, 27 Oct 2026). Open, it shows the finding, its data and its limit, the limit in the
@@ -15,7 +15,7 @@ import type { Finding, ResearchContent } from "@/content/pages/research";
 
 type Filter = "all" | Finding["status"];
 
-export function Status({
+function Status({
   status,
   label,
 }: {

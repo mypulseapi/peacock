@@ -688,13 +688,90 @@ export type AgentContent = ChapterContent & {
     upTo: string;
     verdicts: Record<Verdict, string>;
   };
+  /** What each of the page's three pictures shows (`designed/agents/pictures.tsx`), per locale. */
+  pictureAlt: { situation: string; before: string; after: string };
+};
+
+/** Alt text for the owner's generated pictures (27 Oct 2026), describing what each one shows. */
+const PICTURE_ALT: Record<
+  "en" | "vi",
+  Record<AgentSlug, AgentContent["pictureAlt"]>
+> = {
+  en: {
+    "shopping-assistants": {
+      situation:
+        "A friendly robot assistant giving a thumbs up beside a laptop box whose screen size and storage are labelled and whose memory label is blank, while a shopper's hand reaches to buy it.",
+      before:
+        'At a counter, under the request "Laptop under $1,500 with 16GB RAM", the robot hands a shopper Laptop B with a guessed "16 GB?" note stuck over its blank RAM, while Laptop A and Laptop C slide off the counter unnoticed.',
+      after:
+        "The same request: all three laptops stay on the counter, Laptop A marked fails, over budget, Laptop B cannot tell, RAM not stated, and Laptop C fits, which the robot hands to the shopper while pointing at Laptop B's blank.",
+    },
+    procurement: {
+      situation:
+        "A robot stamping a purchase order approved beside the part's datasheet, where thread size, voltage rating and pack quantity are filled in and pressure rating is blank.",
+      before:
+        "The robot sends off an approved purchase order from beside a tall stack of supplier brochures, while the part's datasheet, its pressure rating blank, lies unread under the stack.",
+      after:
+        "The same desk: the purchase order is on hold while the robot checks three supplier datasheets against a spec, one ticked and two crossed, with a note to ask the supplier clipped to the blank pressure rating.",
+    },
+    travel: {
+      situation:
+        "A traveller's hand holding a booking card whose breakfast line is blank, beside a closed hotel breakfast room door, with the robot looking surprised.",
+      before:
+        "Three hotel booking cards on a desk; the robot stamps booked on the one whose breakfast line is blank, as if breakfast were included.",
+      after:
+        "The same three hotel cards under a budget line: one ticked, one crossed, and the one with the blank breakfast line marked with a question and a note to check before booking, while the robot looks through a magnifying glass.",
+    },
+    "coding-agents": {
+      situation:
+        "A robot forcing a part from an old, faded blueprint into a machine where it does not fit, while a current blueprint lies unopened beside it.",
+      before:
+        "At a workbench the robot reaches into a box of old parts from memory and jams a piece that does not fit into a machine.",
+      after:
+        "The same workbench: the robot reads an open, current reference book and fits the right part, which clicks into place with a tick and a tag reading source: docs.",
+    },
+  },
+  vi: {
+    "shopping-assistants": {
+      situation:
+        "Một chú robot trợ lý thân thiện giơ ngón cái bên một hộp laptop đã ghi kích thước màn hình và ổ lưu trữ nhưng để trống bộ nhớ, trong khi bàn tay người mua với tới để mua.",
+      before:
+        'Tại quầy, dưới yêu cầu "Laptop dưới 1.500 đô với RAM 16GB", robot trao cho người mua Laptop B kèm mảnh giấy đoán "16 GB?" dán đè lên ô RAM để trống, trong khi Laptop A và Laptop C trượt khỏi quầy mà không ai để ý.',
+      after:
+        "Cũng yêu cầu đó: cả ba laptop vẫn ở trên quầy, Laptop A không phù hợp vì vượt ngân sách, Laptop B không xác định được vì không ghi RAM, Laptop C phù hợp và được robot trao cho người mua, trong khi robot chỉ vào ô trống của Laptop B.",
+    },
+    procurement: {
+      situation:
+        "Một robot đóng dấu duyệt lên đơn mua hàng, bên cạnh bảng thông số của linh kiện đã có cỡ ren, điện áp định mức và số lượng mỗi gói nhưng để trống áp suất định mức.",
+      before:
+        "Robot gửi đi một đơn mua hàng đã duyệt bên cạnh chồng tờ quảng cáo cao của nhà cung cấp, trong khi bảng thông số để trống áp suất định mức nằm dưới chồng giấy, chưa ai đọc.",
+      after:
+        "Cũng bàn làm việc đó: đơn mua hàng tạm giữ trong khi robot đối chiếu ba bảng thông số với yêu cầu, một bảng được tích và hai bảng bị gạch, kèm ghi chú hỏi nhà cung cấp kẹp vào ô áp suất để trống.",
+    },
+    travel: {
+      situation:
+        "Bàn tay du khách cầm thẻ đặt phòng có dòng bữa sáng để trống, bên cánh cửa phòng ăn sáng của khách sạn đang đóng, với chú robot đang ngạc nhiên.",
+      before:
+        "Ba thẻ khách sạn trên bàn; robot đóng dấu đã đặt lên thẻ có dòng bữa sáng để trống, như thể đã bao gồm bữa sáng.",
+      after:
+        "Cũng ba thẻ khách sạn đó dưới một vạch ngân sách: một thẻ được tích, một thẻ bị gạch, thẻ có dòng bữa sáng để trống được đánh dấu hỏi kèm ghi chú kiểm tra trước khi đặt, trong khi robot soi bằng kính lúp.",
+    },
+    "coding-agents": {
+      situation:
+        "Một robot cố lắp một chi tiết theo bản vẽ cũ đã phai vào cỗ máy không vừa, trong khi bản vẽ mới nằm bên cạnh chưa được mở.",
+      before:
+        "Tại bàn làm việc, robot với vào thùng linh kiện cũ theo trí nhớ và cố ép một chi tiết không vừa vào cỗ máy.",
+      after:
+        "Cũng bàn làm việc đó: robot đọc một cuốn tài liệu mới đang mở và lắp đúng chi tiết, khớp vào chỗ với dấu tích và nhãn ghi nguồn: tài liệu.",
+    },
+  },
 };
 
 function build(
   s: Specific,
   shared: typeof SHARED_EN,
   fallback: Specific,
-): AgentContent {
+): Omit<AgentContent, "pictureAlt"> {
   const sample = "ask" in s.demo ? s.demo : fallback.demo;
   return {
     demo: s.demo,
@@ -721,5 +798,11 @@ function build(
 
 export const agentPage = (locale: string, slug: AgentSlug): AgentContent =>
   locale === "vi"
-    ? build(VI[slug], SHARED_VI, VI["shopping-assistants"])
-    : build(EN[slug], SHARED_EN, EN["shopping-assistants"]);
+    ? {
+        ...build(VI[slug], SHARED_VI, VI["shopping-assistants"]),
+        pictureAlt: PICTURE_ALT.vi[slug],
+      }
+    : {
+        ...build(EN[slug], SHARED_EN, EN["shopping-assistants"]),
+        pictureAlt: PICTURE_ALT.en[slug],
+      };

@@ -75,12 +75,12 @@ Variables). None of them is a secret; all of them are visible in the shipped HTM
 
 ### Sign-in
 
-`/{locale}/signin` is the one entry page for new and returning merchants: an email, then a
-6-digit code from the auth service, or Google. There is no password on the website. A successful
-sign-in goes to the dashboard page in `?redirect=`, but only if it is on `NEXT_PUBLIC_APP_URL`
-(`src/lib/return-url.ts`, checked by `check:return-url` in `build`); anything else goes to the
-dashboard's default. No variable was added for it. The requirement, design and server half live in
-rainbow: `ODIN/design/01-auth/01-website-sign-in/task.md`.
+Merchants sign in and create accounts in the dashboard, not here: **Sign in** opens
+`NEXT_PUBLIC_APP_URL` + `NEXT_PUBLIC_APP_SIGNIN_PATH` (`/sign-in`), and a sign-up link
+`NEXT_PUBLIC_APP_SIGNUP_PATH` (`/sign-in?mode=create`). The site's old `/signin`, `/signup`,
+`/forgot-password`, `/reset-password` and `/verify-email` forward there, keeping the query, so old
+links and emails still work. The requirement and design live in rainbow:
+`ODIN/design/01-auth/02-merchant-sign-in/task.md`.
 
 ### SEO and AEO
 

@@ -120,7 +120,8 @@ export function DesignedHeader() {
               Tightening gaps was the first instinct and it cannot work: clawing back 147px means
               dropping items, and a nav that differs by language is worse than a compact menu for
               one breakpoint band. Below `xl` the mobile sheet carries the same links, which is
-              what it is for.
+              what it is for. Vietnamese keeps the sheet to 86rem, where its row fits
+              (`:lang(vi) [data-nav]` in globals.css).
             */}
         <nav
           aria-label="Main"
@@ -579,7 +580,10 @@ export function DesignedHeader() {
         </nav>
 
         {/* Desktop actions */}
-        <div className="hidden items-center gap-2 self-stretch xl:flex">
+        <div
+          className="hidden items-center gap-2 self-stretch xl:flex"
+          data-nav-actions
+        >
           <DesignedThemeSwitch label={t("themeDark")} />
           <DesignedLocaleSwitch heading={t("44")} />
           {/* Sign-in is the dashboard's own page, another origin: a plain link. */}

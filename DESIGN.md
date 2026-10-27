@@ -204,6 +204,9 @@ separated by a horizontal hairline.
   sticky header keeps working). Content must also fit by itself: no `min-w-*` tables in sideways-scrolling boxes —
   hide less important columns on small screens instead (the hero demo tables show 2 attribute columns below `sm`,
   SKU from `lg`).
+- **The header's full nav starts at `xl` (1280px), and at 86rem in Vietnamese**, whose longer row needs 1350px of page;
+  below that the compact sheet carries the same links. A longer row in either language moves its own switch point
+  (`:lang(vi) [data-nav]` in `globals.css`), never drops items.
 - At most one dark (`bg-void`) band per page.
 - Inside cards: `p-6` (compact `p-4`/`p-5`), gaps `gap-4`–`gap-6`.
 - Radius: `rounded-xl` cards and windows, `rounded-lg` buttons and inner panels, `rounded` chips,

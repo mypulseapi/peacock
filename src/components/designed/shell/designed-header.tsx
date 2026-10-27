@@ -607,7 +607,7 @@ export function DesignedHeader() {
         </div>
 
         {/* Phones: the language dropdown beside the menu button, outside the menu. */}
-        <div className="ml-auto xl:hidden">
+        <div className="ml-auto flex self-stretch xl:hidden">
           <DesignedLocaleMenu heading={t("44")} current={renderLocale()} />
         </div>
 

@@ -11,7 +11,7 @@
  *   right now    the figures, beside the sector's scene
  *   problem      the buyer's question and what goes wrong, beside the sector's picture
  *                (a marked placeholder wherever a sector has no picture yet)
- *   coverage     the coverage ranking, beside where the facts already live
+ *   coverage     the ranked list, drawn like the Decision Audit's, then where the fact lives
  *   the shelf    before and after: a slider where there are two pictures, else the two lists
  *   what we do   the three steps as a pipeline, then the four things it does not take
  *   closing      the call to action, as before
@@ -19,7 +19,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Image as ImageIcon } from "lucide-react";
+import { Image as ImageIcon, type LucideIcon } from "lucide-react";
 import { img } from "@/lib/cdn";
 import { designedHref, designedText } from "../t";
 import { CompareSlider } from "../product/compare-slider";
@@ -42,8 +42,12 @@ export interface Sector {
   hero: SectorPicture | ReactNode;
   scene?: SectorPicture;
   problem?: SectorPicture;
-  /** Anything a sector shows under the coverage chapter (Distribution's datasheet map). */
-  coverageExtra?: ReactNode;
+  /** One mark per ranked attribute, in the coverage order: the icon beside it in the list and the row. */
+  icons: LucideIcon[];
+  /** One mark per place the fact already lives (`section3.source1`…), for the source map. */
+  sourceIcons: LucideIcon[];
+  /** A sector's own picture of where the fact lives, in place of the source map (Distribution's). */
+  livesFigure?: ReactNode;
   /** Two pictures of the same shelf, for the slider. */
   shelf?: { before: SectorPicture; after: SectorPicture };
   /** A sector's own before-and-after figure, in place of the two lists (Ecommerce). */
@@ -110,6 +114,7 @@ export function SectorPage({ s }: { s: Sector }) {
   const t4 = designedText(`${ns}.section4`);
   const t5 = designedText(`${ns}.section5`);
   const t6 = designedText(`${ns}.section6`);
+  const tp = designedText("industries.sectorPage");
   // Ecommerce's lede is key 2 and it has no beats; the others use `lede` and three beats.
   const lede = t1("lede") === "lede" ? t1("2") : t1("lede");
   const hasBeats = t1("step1") !== "step1";
@@ -251,65 +256,85 @@ export function SectorPage({ s }: { s: Sector }) {
         </div>
       </section>
 
-      {/* Coverage: the ranking, beside where the facts already live. */}
+      {/* Coverage: the ranked list, as the Decision Audit's "The list you actually receive" draws it,
+          then where the rank-1 fact already lives, wired into the catalogue row that lacks it. */}
       <section className="border-b border-line bg-surface-1">
         <div className="frame py-20 lg:py-28">
-          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
-            <div className="reveal rounded-2xl border border-line bg-card p-6 lg:p-8">
-              <h2 className="text-h3 text-balance text-ink">{t3("14")}</h2>
-              <ol className="mt-6">
-                {s.coverage.map((pct, i) => (
+          <div className="reveal mx-auto max-w-5xl rounded-2xl border border-line bg-card p-5 sm:p-7">
+            <h2 className="text-body font-semibold text-balance text-ink">
+              {t3("14")}
+            </h2>
+            <div className="mt-5 hidden grid-cols-[minmax(0,1.2fr)_minmax(0,1.6fr)_4.5rem] gap-6 px-3 text-caption text-muted sm:grid">
+              <span>{t3("15")}</span>
+              <span aria-hidden="true" />
+              <span className="text-right">{t3("16")}</span>
+            </div>
+            <ol className="mt-2 grid gap-1">
+              {s.coverage.map((pct, i) => {
+                const Icon = s.icons[i];
+                const top = i === 0;
+                return (
                   <li
                     key={covLabels[i]}
-                    className="grid grid-cols-[1.75rem_minmax(0,1fr)_3.5rem] items-center gap-3 border-t border-line py-3.5 first:border-t-0 first:pt-0"
+                    className={`reveal grid grid-cols-[minmax(0,1fr)_4.5rem] items-center gap-x-6 gap-y-2 rounded-xl px-3 py-3 sm:grid-cols-[minmax(0,1.2fr)_minmax(0,1.6fr)_4.5rem] ${top ? "border border-signal bg-signal-tint" : "border border-transparent"} delay-${(i + 1) * 100}`}
                   >
-                    <span
-                      className={`grid size-7 place-items-center rounded-lg text-caption font-semibold tabular-nums ${i === 0 ? "bg-signal text-on-step" : "bg-surface-1 text-muted"}`}
-                    >
-                      {i + 1}
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-body font-medium text-ink">
-                        {covLabels[i]}
-                      </span>
+                    <span className="flex min-w-0 items-center gap-3">
                       <span
-                        className="mt-1.5 block h-2 overflow-hidden rounded-full border border-dashed border-gap bg-gap-fill"
+                        className={`grid size-8 shrink-0 place-items-center rounded-lg ${top ? "bg-signal text-on-step" : "bg-baseline text-on-primary"}`}
                         aria-hidden="true"
                       >
-                        <span
-                          className="block h-full rounded-full bg-chart-main"
-                          style={{ width: `${pct}%` }}
-                        />
+                        <Icon className="size-4.5" strokeWidth={2} />
                       </span>
+                      <span className="text-h3 text-ink">{covLabels[i]}</span>
                     </span>
-                    <span className="text-right font-title text-h3 tabular-nums text-ink">
+                    <span
+                      className="col-span-full block h-2 overflow-hidden rounded-full bg-surface-1 sm:col-span-1"
+                      aria-hidden="true"
+                    >
+                      <span
+                        className="reveal-bar block h-full rounded-full bg-chart-main"
+                        style={{ width: `${pct}%` }}
+                      />
+                    </span>
+                    <span className="row-start-1 text-right font-mono text-h3 tabular-nums text-primary sm:row-start-auto">
                       {pct}%
                     </span>
                   </li>
-                ))}
-              </ol>
-              <p className="mt-5 text-caption text-pretty text-muted">
-                {t3("21")}
-              </p>
-            </div>
-            <div className="reveal delay-100 lg:pt-6">
-              <p className="font-title text-h2 text-balance text-ink">
-                {lives.label.replace(/:\s*$/, "")}
-              </p>
-              <div className="mt-6 flex gap-4 rounded-2xl border border-primary-line bg-primary-wash p-6">
-                <svg
-                  className="mt-0.5 size-5 shrink-0 text-primary"
-                  aria-hidden="true"
-                >
-                  <use href="#i-file-text" />
-                </svg>
-                <p className="text-body text-pretty text-ink">{lives.text}</p>
-              </div>
-            </div>
+                );
+              })}
+            </ol>
+            <p className="mt-4 px-3 text-caption text-pretty text-muted">
+              {t3("21")}
+            </p>
           </div>
-          {s.coverageExtra && (
-            <div className="reveal mt-12 delay-100">{s.coverageExtra}</div>
-          )}
+
+          <div className="mx-auto mt-16 max-w-5xl lg:mt-20">
+            <h2 className="reveal text-title text-balance">
+              {lives.label.replace(/:\s*$/, "")}
+            </h2>
+            {s.livesFigure ? (
+              <div className="reveal mt-10 delay-100">{s.livesFigure}</div>
+            ) : (
+              <SourceMap
+                sources={s.sourceIcons.map((I, n) => ({
+                  Icon: I,
+                  name: t3(`source${n + 1}`),
+                }))}
+                fields={covLabels.map((label, i) => ({
+                  label,
+                  Icon: s.icons[i],
+                }))}
+                rowLabel={tp("catalogueRow")}
+                missing={tp("notRecorded")}
+              />
+            )}
+            {/* FMCG's sentence is the list of its sources, which the map already names. */}
+            {!s.labelledReasons && (
+              <p className="reveal mt-6 max-w-2xl text-body text-pretty text-muted delay-200">
+                {lives.text}
+              </p>
+            )}
+          </div>
         </div>
       </section>
 
@@ -525,6 +550,101 @@ function Placeholder({
           {name}
         </code>
         <span className="text-caption">{size}</span>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Where the rank-1 fact already lives: each source wired into one catalogue row, where that field is
+ * the amber missing blank and the others are recorded. The sources and the wires fade in after the
+ * row, so the eye goes source, wire, gap; with reduced motion all of it shows at once.
+ */
+function SourceMap({
+  sources,
+  fields,
+  rowLabel,
+  missing,
+}: {
+  sources: { Icon: LucideIcon; name: string }[];
+  fields: { label: string; Icon: LucideIcon }[];
+  rowLabel: string;
+  missing: string;
+}) {
+  const n = sources.length;
+  // Each wire leaves its source card's middle and meets the first field of the row.
+  const ys = sources.map((_, i) => ((i + 0.5) / n) * 100);
+  return (
+    <div className="mt-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_7rem_minmax(0,1.15fr)] lg:gap-0">
+      <ul className="grid gap-3">
+        {sources.map(({ Icon, name }, i) => (
+          <li
+            key={name}
+            className={`reveal flex items-center gap-3 rounded-2xl border border-line bg-card px-4 py-3.5 delay-${(i + 1) * 100}`}
+          >
+            <span
+              className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary-tint text-primary"
+              aria-hidden="true"
+            >
+              <Icon className="size-4.5" strokeWidth={2} />
+            </span>
+            <span className="text-body font-medium text-ink">{name}</span>
+          </li>
+        ))}
+      </ul>
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        className="reveal hidden h-full w-full delay-300 lg:block"
+        aria-hidden="true"
+      >
+        <g
+          fill="none"
+          className="stroke-primary"
+          strokeWidth="1.6"
+          strokeDasharray="4 3"
+          vectorEffect="non-scaling-stroke"
+        >
+          {ys.map((y) => (
+            <path
+              key={y}
+              d={`M0 ${y} C50 ${y} 50 30 100 30`}
+              vectorEffect="non-scaling-stroke"
+            />
+          ))}
+        </g>
+      </svg>
+      <div className="reveal overflow-hidden rounded-2xl border border-line bg-card delay-100">
+        <p className="border-b border-line bg-surface-1 px-4 py-2.5 text-caption text-muted">
+          {rowLabel}
+        </p>
+        <ul>
+          {fields.map(({ label, Icon }, i) => (
+            <li
+              key={label}
+              className={`grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-center gap-3 border-t border-line px-4 py-3 first:border-t-0 ${i === 0 ? "bg-gap-fill/60" : ""}`}
+            >
+              <span className="flex min-w-0 items-center gap-2.5 text-body text-ink">
+                <Icon
+                  className="size-4 shrink-0 text-muted"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+                {label}
+              </span>
+              {i === 0 ? (
+                <span className="justify-self-start rounded-md border border-dashed border-gap bg-gap-fill px-2 py-0.5 text-caption font-semibold text-gap-strong">
+                  {missing}
+                </span>
+              ) : (
+                <span
+                  className="block h-2 w-3/4 rounded-full bg-baseline/40"
+                  aria-hidden="true"
+                />
+              )}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

@@ -3,6 +3,34 @@
  * pictures, and Ecommerce's two figures drawn in code. Every number here was the one hard-coded
  * in that sector's converted sections, unchanged.
  */
+import {
+  AlignLeft,
+  Boxes,
+  Cpu,
+  Droplets,
+  FileSpreadsheet,
+  FileText,
+  FlaskConical,
+  Gauge,
+  HardDrive,
+  Heading,
+  Image,
+  Layers,
+  Leaf,
+  MemoryStick,
+  Megaphone,
+  Monitor,
+  Package,
+  Palette,
+  Pipette,
+  Ruler,
+  ScrollText,
+  Tag,
+  Target,
+  Weight,
+  Wrench,
+  Zap,
+} from "lucide-react";
 import type { Sector } from "./sector-page";
 import { EcommerceHeroFigure } from "./ecommerce/hero-figure";
 import { EcommerceRepairFlow } from "./ecommerce/repair-flow";
@@ -15,6 +43,8 @@ const pct = (n: number) => Math.round((100 * n) / SHELF);
 export const SECTORS: Record<string, Sector> = {
   ecommerce: {
     slug: "ecommerce",
+    icons: [Monitor, MemoryStick, HardDrive, Cpu],
+    sourceIcons: [Heading, AlignLeft],
     stats: ["38%", "34%"],
     coverage: [136, 156, 161, 54].map(pct),
     hero: <EcommerceHeroFigure />,
@@ -22,6 +52,8 @@ export const SECTORS: Record<string, Sector> = {
   },
   fmcg: {
     slug: "fmcg",
+    icons: [FlaskConical, Package, Leaf, Tag],
+    sourceIcons: [Package, FileSpreadsheet, AlignLeft, Megaphone],
     stats: ["38%", "34%", "79%"],
     coverage: [22, 58, 31, 97],
     hero: {
@@ -40,6 +72,8 @@ export const SECTORS: Record<string, Sector> = {
   },
   technology: {
     slug: "technology",
+    icons: [Monitor, MemoryStick, HardDrive, Cpu],
+    sourceIcons: [Heading, AlignLeft, FileSpreadsheet],
     stats: ["38%", "79%"],
     coverage: [63, 72, 74, 25],
     hero: {
@@ -51,6 +85,8 @@ export const SECTORS: Record<string, Sector> = {
   },
   furniture: {
     slug: "furniture",
+    icons: [Weight, Ruler, Layers, Palette],
+    sourceIcons: [FileSpreadsheet, AlignLeft, Image],
     stats: ["38%", "34%"],
     coverage: [18, 44, 52, 95],
     hero: {
@@ -88,6 +124,8 @@ export const SECTORS: Record<string, Sector> = {
   },
   cosmetics: {
     slug: "cosmetics",
+    icons: [Target, Droplets, Pipette, FlaskConical],
+    sourceIcons: [ScrollText, FileText, Package],
     stats: ["34%", "79%"],
     coverage: [24, 29, 41, 88],
     hero: {
@@ -99,6 +137,8 @@ export const SECTORS: Record<string, Sector> = {
   },
   distribution: {
     slug: "distribution",
+    icons: [Gauge, Zap, Wrench, Boxes],
+    sourceIcons: [],
     stats: ["36%", "66%", "79%"],
     coverage: [19, 34, 47, 91],
     hero: {
@@ -107,6 +147,6 @@ export const SECTORS: Record<string, Sector> = {
       height: 700,
       alt: "section1.figureAlt",
     },
-    coverageExtra: <SpecMap />,
+    livesFigure: <SpecMap />,
   },
 };

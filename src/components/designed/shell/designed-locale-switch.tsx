@@ -27,16 +27,13 @@ function useLocaleLinks(current: string) {
   return { ordered, hrefFor, currentMeta: ordered.find((l) => l.code === current) ?? ordered[0] };
 }
 
-const flagOf = (code: string) => (code === "vi" ? FlagVN : FlagUK);
-
 function Flag({ code, className = "size-5" }: { code: string; className?: string }) {
-  const F = flagOf(code);
   return (
     <span
       aria-hidden="true"
       className={`block shrink-0 overflow-hidden rounded-full ring-1 ring-black/10 ${className}`}
     >
-      <F />
+      {code === "vi" ? <FlagVN /> : <FlagUK />}
     </span>
   );
 }

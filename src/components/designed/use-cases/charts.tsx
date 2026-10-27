@@ -47,7 +47,7 @@ export function Panel({
           {title && (
             <span className="text-sm font-semibold text-ink">{title}</span>
           )}
-          {badge && <span className="badge-primary">{badge}</span>}
+          {badge && <span className="badge-primary shrink-0 whitespace-nowrap">{badge}</span>}
         </figcaption>
       )}
       {children}

@@ -10,7 +10,8 @@
  *
  *   hero         the headline and the page's first figure, then its picture
  *   situation    the argument, its pull quote and picture; the evidence pinned beside it
- *   the ceiling  where the usual plan stops, beside the figure that shows it and the page's own one
+ *   the ceiling  where the usual plan stops, beside the figure that shows it
+ *   the figure   the page's own figure (`SchemaBands`, `TwoPlans`), beside its heading
  *   steps        the three steps, each with its picture
  *   what changes the cards, each with its picture
  *   limits, questions, the call to action
@@ -109,14 +110,7 @@ export function UseCasePage({
       {c.chainBlock && (
         <section className="border-b border-line">
           <div className="frame py-20 lg:py-28">
-            <Essay
-              figure={
-                <>
-                  <UseCaseScene spec={c.scenes?.chain} />
-                  {figure}
-                </>
-              }
-            >
+            <Essay figure={<UseCaseScene spec={c.scenes?.chain} />}>
               <h2 className="reveal text-title text-balance">
                 {h(c.chainBlock.heading)}
               </h2>
@@ -125,20 +119,29 @@ export function UseCasePage({
                   {c.chainBlock.body}
                 </p>
               )}
-              {c.visualHeading && (
-                <h3 className="reveal mt-14 text-2xl font-semibold text-balance text-ink">
-                  {h(c.visualHeading)}
-                </h3>
-              )}
-              {c.visualBody && (
-                <p className="reveal mt-3 max-w-[64ch] text-body text-pretty text-muted delay-100">
-                  {c.visualBody}
-                </p>
-              )}
             </Essay>
           </div>
         </section>
       )}
+
+      {/* Its own section, not a sub-heading under the ceiling: it is the page's own figure and
+          answers a different question (owner, 27 Oct 2026). */}
+      <section className="border-b border-line bg-card">
+        <div className="frame py-20 lg:py-28">
+          <Essay figure={figure}>
+            {c.visualHeading && (
+              <h2 className="reveal text-title text-balance">
+                {h(c.visualHeading)}
+              </h2>
+            )}
+            {c.visualBody && (
+              <p className="reveal mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted delay-100">
+                {c.visualBody}
+              </p>
+            )}
+          </Essay>
+        </div>
+      </section>
 
       <section className="border-b border-line bg-primary-wash">
         <div className="frame grid gap-12 py-20 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start lg:gap-16 lg:py-28">

@@ -1327,7 +1327,8 @@
         "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi.",
         "source1": "Danh sách thành phần",
         "source2": "Dữ liệu tuân thủ của nhà cung cấp",
-        "source3": "Bao bì và nội dung sản phẩm"
+        "source3": "Bao bì và nội dung sản phẩm",
+        "figureAlt": "Một hàng chai serum, một chai có thông tin được vẽ lên, loại da khô và thành phần chính niacinamide, còn vấn đề da xử lý là một ô viền đứt để trống."
       },
       "section4": {
         "1": "Vẫn kệ hàng đó, sau khi lỗ hổng lớn nhất được lấp",
@@ -1339,7 +1340,9 @@
         "3": "Một người mua hỏi “Sản phẩm này có hợp với da tôi và với vấn đề tôi đang muốn xử lý không?” không có cách nào thu hẹp kệ hàng này.",
         "4": "Vấn đề được giải quyết là thứ quyết định việc mua hàng và chỉ được ghi nhận trên khoảng 24% danh mục, nên bộ lọc hoặc là không tồn tại, hoặc ẩn đi phần lớn dải sản phẩm của bạn.",
         "7": "Vẫn người mua đó thu hẹp theo Vấn đề được giải quyết và đi tới một danh sách rút gọn mà họ có thể chọn.",
-        "8": "Vấn đề được giải quyết đứng đầu danh sách xếp hạng, được đo theo điều người mua trong ngành này thực sự hỏi, chứ không theo lượng dữ liệu còn thiếu."
+        "8": "Vấn đề được giải quyết đứng đầu danh sách xếp hạng, được đo theo điều người mua trong ngành này thực sự hỏi, chứ không theo lượng dữ liệu còn thiếu.",
+        "beforeAlt": "Ba chai serum trên kệ, vấn đề da xử lý, loại da và thành phần chính đều là câu hỏi chưa có lời đáp, bên cạnh một thẻ sản phẩm chỉ có ảnh và điểm đánh giá.",
+        "afterAlt": "Cũng những chai đó với từng thông tin đã được ghi, vấn đề da xỉn màu, loại da khô, thành phần chính niacinamide và dung tích 30 ml, bên cạnh bảng lọc mà người mua giờ có thể chọn theo từng mục."
       },
       "section5": {
         "1": "Chúng tôi làm gì với chuyện đó",
@@ -1365,7 +1368,8 @@
       "section2": {
         "1": "Ngành mỹ phẩm và chăm sóc cá nhân hiện ra sao",
         "2": "người tiêu dùng thấy khó chịu vì thông tin sản phẩm không đầy đủ, tăng từ 28%",
-        "4": "trang sản phẩm không có đủ bộ dữ liệu có cấu trúc"
+        "4": "trang sản phẩm không có đủ bộ dữ liệu có cấu trúc",
+        "sceneAlt": "Một kệ phòng tắm cao toàn chai lọ chăm sóc da màu nhạt, một bàn tay đang với lấy một chai."
       }
     },
     "distribution": {
@@ -1403,7 +1407,8 @@
         "18": "Điện áp định mức",
         "19": "Kích thước ren",
         "20": "Số lượng mỗi gói",
-        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi."
+        "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi.",
+        "figureAlt": "Một phụ kiện kim loại trên bàn làm việc cạnh bảng thông số của nhà cung cấp, với điện áp định mức 24 V, cỡ ren M12 và số lượng mỗi gói 10 lấy từ bảng, còn cấp dung sai là một ô viền đứt để trống."
       },
       "section4": {
         "1": "Vẫn kệ hàng đó, sau khi lỗ hổng lớn nhất được lấp",
@@ -1415,7 +1420,9 @@
         "3": "Một người mua hỏi “Linh kiện nào đáp ứng đúng thông số tôi phải đạt?” không có cách nào thu hẹp kệ hàng này.",
         "4": "Cấp dung sai là thứ quyết định việc mua hàng và chỉ được ghi nhận trên khoảng 19% danh mục, nên bộ lọc hoặc là không tồn tại, hoặc ẩn đi phần lớn dải sản phẩm của bạn.",
         "7": "Vẫn người mua đó thu hẹp theo Cấp dung sai và đi tới một danh sách rút gọn mà họ có thể chọn.",
-        "8": "Cấp dung sai đứng đầu danh sách xếp hạng, được đo theo điều người mua trong ngành này thực sự hỏi, chứ không theo lượng dữ liệu còn thiếu."
+        "8": "Cấp dung sai đứng đầu danh sách xếp hạng, được đo theo điều người mua trong ngành này thực sự hỏi, chứ không theo lượng dữ liệu còn thiếu.",
+        "beforeAlt": "Một thùng phụ kiện gần như giống hệt nhau, cấp dung sai, điện áp định mức và cỡ ren đều là câu hỏi chưa có lời đáp, các thùng chỉ ghi mã linh kiện.",
+        "afterAlt": "Cũng thùng đó với từng thông tin đã được ghi, cấp dung sai H7, điện áp định mức 24 V, cỡ ren M12 và số lượng mỗi gói 10, bên cạnh bảng lọc mà người mua giờ có thể chọn theo từng mục."
       },
       "section5": {
         "1": "Chúng tôi làm gì với chuyện đó",
@@ -1443,7 +1450,8 @@
         "2": "quy mô ước tính của thị trường thương mại điện tử B2B toàn cầu năm 2026, gấp năm đến sáu lần B2C",
         "3": "ước tính ngành, CAGR 14,5%",
         "4": "mức độ máy đọc được trung bình của trang sản phẩm bán lẻ tại Mỹ, thấp nhất trong mọi loại trang",
-        "6": "trang sản phẩm không có đủ bộ dữ liệu có cấu trúc"
+        "6": "trang sản phẩm không có đủ bộ dữ liệu có cấu trúc",
+        "sceneAlt": "Một lối đi kho cao với các kệ chứa thùng phụ kiện công nghiệp và bu lông, mỗi thùng chỉ ghi một mã đặt hàng."
       },
       "figure": {
         "requirement": "Người mua phải đạt",
@@ -1510,7 +1518,8 @@
         "20": "Vi xử lý",
         "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi.",
         "source1": "Tiêu đề sản phẩm",
-        "source2": "Mô tả sản phẩm"
+        "source2": "Mô tả sản phẩm",
+        "figureAlt": "Một người mua đang xem laptop trên trang danh mục, bảng lọc có bộ nhớ, ổ lưu trữ và bộ xử lý, còn kích thước màn hình là một ô viền đứt để trống, nên kệ hàng phía sau gần như không thu hẹp."
       },
       "section4": {
         "1": "Vẫn kệ hàng đó, sau khi lỗ hổng lớn nhất được lấp",
@@ -1568,7 +1577,8 @@
       "section2": {
         "1": "Ngành thương mại điện tử và bán lẻ hiện ra sao",
         "2": "nhà bán lẻ được thử nghiệm không có bộ lọc cho chính thông tin họ đang hiển thị",
-        "4": "người tiêu dùng thấy khó chịu vì thông tin sản phẩm không đầy đủ, tăng từ 28%"
+        "4": "người tiêu dùng thấy khó chịu vì thông tin sản phẩm không đầy đủ, tăng từ 28%",
+        "sceneAlt": "Một dãy kệ dài, sáng sủa toàn những chiếc laptop gần như giống hệt nhau trong hộp trơn, một người mua nhỏ xíu ở cuối dãy."
       },
       "scene": {
         "category": "Laptop",
@@ -1644,7 +1654,9 @@
         "3": "Một người mua hỏi “Trong số này, cái nào phù hợp với gia đình tôi?” không có cách nào thu hẹp kệ hàng này.",
         "4": "Nồng độ là thứ quyết định việc mua hàng và chỉ được ghi nhận trên khoảng 22% danh mục, nên bộ lọc hoặc là không tồn tại, hoặc ẩn đi phần lớn dải sản phẩm của bạn.",
         "7": "Vẫn người mua đó thu hẹp theo Nồng độ và đi tới một danh sách rút gọn mà họ có thể chọn.",
-        "8": "Nồng độ đứng đầu danh sách xếp hạng, được đo theo điều người mua trong ngành này thực sự hỏi, chứ không theo lượng dữ liệu còn thiếu."
+        "8": "Nồng độ đứng đầu danh sách xếp hạng, được đo theo điều người mua trong ngành này thực sự hỏi, chứ không theo lượng dữ liệu còn thiếu.",
+        "beforeAlt": "Ba chai nước giặt trên kệ, nồng độ, dung tích và công bố chế độ ăn đều là câu hỏi chưa có lời đáp, bên cạnh một thẻ sản phẩm chỉ có ảnh và điểm đánh giá.",
+        "afterAlt": "Cũng những chai đó với từng thông tin đã được ghi: nồng độ đậm đặc, dung tích 1 L, công bố thuần chay, bên cạnh bảng lọc mà người mua giờ có thể chọn theo từng mục."
       },
       "section5": {
         "1": "Chúng tôi làm gì với chuyện đó",
@@ -1671,7 +1683,8 @@
         "1": "Ngành hàng tiêu dùng nhanh hiện ra sao",
         "2": "nhà bán lẻ được thử nghiệm không có bộ lọc cho chính thông tin họ đang hiển thị",
         "4": "người tiêu dùng thấy khó chịu vì thông tin sản phẩm không đầy đủ, tăng từ 28%",
-        "6": "trang sản phẩm không có đủ bộ dữ liệu có cấu trúc"
+        "6": "trang sản phẩm không có đủ bộ dữ liệu có cấu trúc",
+        "sceneAlt": "Một kệ siêu thị cao toàn những chai nước giặt gần như giống hệt nhau với màu nhạt, một người mua ở xa cuối lối đi."
       }
     },
     "furniture": {
@@ -1795,7 +1808,8 @@
         "21": "Các dòng được xếp theo điều quyết định việc mua hàng: hạng 1 trước. Đó chính là những dòng mà một bản kiểm tra làm nổi lên còn một báo cáo độ đầy đủ thì chôn đi.",
         "source1": "Tiêu đề sản phẩm",
         "source2": "Mô tả sản phẩm",
-        "source3": "Bảng thông số nhà cung cấp"
+        "source3": "Bảng thông số nhà cung cấp",
+        "figureAlt": "Hai chiếc laptop gần như giống hệt nhau với thông số được vẽ lên, mỗi máy có bộ nhớ 16 GB, ổ lưu trữ 512 GB và bộ xử lý i7, còn kích thước màn hình là một ô viền đứt để trống giữa hai máy."
       },
       "section4": {
         "1": "Vẫn kệ hàng đó, sau khi lỗ hổng lớn nhất được lấp",
@@ -1807,7 +1821,9 @@
         "3": "Một người mua hỏi “Trong các cấu hình này, cái nào thực sự hợp với nhu cầu của tôi?” không có cách nào thu hẹp kệ hàng này.",
         "4": "Kích thước màn hình là thứ quyết định việc mua hàng và chỉ được ghi nhận trên khoảng 63% danh mục, nên bộ lọc hoặc là không tồn tại, hoặc ẩn đi phần lớn dải sản phẩm của bạn.",
         "7": "Vẫn người mua đó thu hẹp theo Kích thước màn hình và đi tới một danh sách rút gọn mà họ có thể chọn.",
-        "8": "Kích thước màn hình đứng đầu danh sách xếp hạng, được đo theo điều người mua trong ngành này thực sự hỏi, chứ không theo lượng dữ liệu còn thiếu."
+        "8": "Kích thước màn hình đứng đầu danh sách xếp hạng, được đo theo điều người mua trong ngành này thực sự hỏi, chứ không theo lượng dữ liệu còn thiếu.",
+        "beforeAlt": "Một chiếc laptop trên kệ trưng bày, kích thước màn hình, bộ nhớ và bộ xử lý đều là câu hỏi chưa có lời đáp, bên cạnh một thẻ sản phẩm chỉ có ảnh và điểm đánh giá.",
+        "afterAlt": "Cũng chiếc laptop đó với mọi thông số đã được ghi, màn hình 15.6\", bộ nhớ 16 GB, ổ lưu trữ 512 GB và bộ xử lý i7, bên cạnh bảng lọc mà người mua giờ có thể chọn theo từng mục."
       },
       "section5": {
         "1": "Chúng tôi làm gì với chuyện đó",
@@ -1833,7 +1849,8 @@
       "section2": {
         "1": "Ngành công nghệ và điện tử hiện ra sao",
         "2": "nhà bán lẻ được thử nghiệm không có bộ lọc cho chính thông tin họ đang hiển thị",
-        "4": "trang sản phẩm không có đủ bộ dữ liệu có cấu trúc"
+        "4": "trang sản phẩm không có đủ bộ dữ liệu có cấu trúc",
+        "sceneAlt": "Hai chiếc laptop mở gần như giống hệt nhau đặt cạnh nhau trên một bàn làm việc sáng sủa, bên cạnh là điện thoại và cuốn sổ."
       }
     },
     "sectorPage": {

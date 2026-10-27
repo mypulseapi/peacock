@@ -53,6 +53,9 @@ export interface Sector {
   livesFigure?: ReactNode;
   /** Two pictures of the same shelf, for the slider. */
   shelf?: { before: SectorPicture; after: SectorPicture };
+  /** The slider's shape for those pictures, where it is not Furniture's 862 : 1000: the five sectors
+   *  generated on 27 Oct 2026 are square, with a filter panel at the edge a crop would cut. */
+  shelfAspect?: string;
   /** A sector's own before-and-after figure, in place of the two lists (Ecommerce). */
   repair?: ReactNode;
   /**
@@ -372,7 +375,7 @@ export function SectorPage({ s }: { s: Sector }) {
                     }
                     beforeLabel={t4("2")}
                     afterLabel={t4("6")}
-                    aspect="aspect-[862/1000]"
+                    aspect={s.shelfAspect ?? "aspect-[862/1000]"}
                   />
                 ) : (
                   <CompareSlider

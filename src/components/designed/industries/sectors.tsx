@@ -55,6 +55,18 @@ export const SECTORS: Record<string, Sector> = {
     coverage: [136, 156, 161, 54].map(pct),
     hero: <EcommerceHeroFigure />,
     repair: <EcommerceRepairFlow />,
+    scene: {
+      src: "sectors/ecommerce-scene.webp",
+      width: 760,
+      height: 1230,
+      alt: "section2.sceneAlt",
+    },
+    problem: {
+      src: "sectors/ecommerce-problem.webp",
+      width: 1100,
+      height: 755,
+      alt: "section3.figureAlt",
+    },
   },
   fmcg: {
     slug: "fmcg",
@@ -76,6 +88,27 @@ export const SECTORS: Record<string, Sector> = {
       alt: "section3.figureAlt",
     },
     labelledReasons: true,
+    scene: {
+      src: "sectors/fmcg-scene.webp",
+      width: 760,
+      height: 1230,
+      alt: "section2.sceneAlt",
+    },
+    shelf: {
+      before: {
+        src: "sectors/fmcg-shelf-before.webp",
+        width: 1000,
+        height: 1000,
+        alt: "section4.beforeAlt",
+      },
+      after: {
+        src: "sectors/fmcg-shelf-after.webp",
+        width: 1000,
+        height: 1000,
+        alt: "section4.afterAlt",
+      },
+    },
+    shelfAspect: "aspect-square",
   },
   technology: {
     slug: "technology",
@@ -90,6 +123,33 @@ export const SECTORS: Record<string, Sector> = {
       height: 1074,
       alt: "section1.figureAlt",
     },
+    scene: {
+      src: "sectors/technology-scene.webp",
+      width: 760,
+      height: 1230,
+      alt: "section2.sceneAlt",
+    },
+    problem: {
+      src: "sectors/technology-problem.webp",
+      width: 1100,
+      height: 755,
+      alt: "section3.figureAlt",
+    },
+    shelf: {
+      before: {
+        src: "sectors/technology-shelf-before.webp",
+        width: 1000,
+        height: 1000,
+        alt: "section4.beforeAlt",
+      },
+      after: {
+        src: "sectors/technology-shelf-after.webp",
+        width: 1000,
+        height: 1000,
+        alt: "section4.afterAlt",
+      },
+    },
+    shelfAspect: "aspect-square",
   },
   furniture: {
     slug: "furniture",
@@ -144,6 +204,33 @@ export const SECTORS: Record<string, Sector> = {
       height: 700,
       alt: "section1.figureAlt",
     },
+    scene: {
+      src: "sectors/cosmetics-scene.webp",
+      width: 760,
+      height: 1230,
+      alt: "section2.sceneAlt",
+    },
+    problem: {
+      src: "sectors/cosmetics-problem.webp",
+      width: 1100,
+      height: 755,
+      alt: "section3.figureAlt",
+    },
+    shelf: {
+      before: {
+        src: "sectors/cosmetics-shelf-before.webp",
+        width: 1000,
+        height: 1000,
+        alt: "section4.beforeAlt",
+      },
+      after: {
+        src: "sectors/cosmetics-shelf-after.webp",
+        width: 1000,
+        height: 1000,
+        alt: "section4.afterAlt",
+      },
+    },
+    shelfAspect: "aspect-square",
   },
   distribution: {
     slug: "distribution",
@@ -159,5 +246,32 @@ export const SECTORS: Record<string, Sector> = {
       alt: "section1.figureAlt",
     },
     livesFigure: <SpecMap />,
+    scene: {
+      src: "sectors/distribution-scene.webp",
+      width: 760,
+      height: 1230,
+      alt: "section2.sceneAlt",
+    },
+    problem: {
+      src: "sectors/distribution-problem.webp",
+      width: 1100,
+      height: 755,
+      alt: "section3.figureAlt",
+    },
+    shelf: {
+      before: {
+        src: "sectors/distribution-shelf-before.webp",
+        width: 1000,
+        height: 1000,
+        alt: "section4.beforeAlt",
+      },
+      after: {
+        src: "sectors/distribution-shelf-after.webp",
+        width: 1000,
+        height: 1000,
+        alt: "section4.afterAlt",
+      },
+    },
+    shelfAspect: "aspect-square",
   },
 };

@@ -1128,40 +1128,8 @@
     }
   },
   "auth": {
-    "google": {
-      "label": "Tiếp tục với Google",
-      "pending": "Đang chuyển hướng…",
-      "or": "hoặc"
-    },
-    "errors": {
-      "generic": "Đã có lỗi xảy ra. Vui lòng thử lại.",
-      "tooManyAttempts": "Quá nhiều lần thử. Vui lòng đợi một lát rồi thử lại."
-    },
     "entry": {
-      "title": "Đăng nhập hoặc tạo tài khoản",
-      "subtitle": "Chúng tôi sẽ gửi mã 6 số đến email của bạn. Không cần mật khẩu.",
-      "email": "Email",
-      "continue": "Tiếp tục với email",
-      "continuing": "Đang gửi…",
-      "sent": "Chúng tôi đã gửi mã 6 số đến {email}.",
-      "code": "Mã 6 số",
-      "verify": "Xác minh và tiếp tục",
-      "verifying": "Đang xác minh…",
-      "resend": "Gửi lại mã",
-      "resendIn": "Gửi lại mã sau {seconds} giây",
-      "changeEmail": "Đổi email",
-      "delivery": "Email có thể đến chậm. Kiểm tra thư rác, gửi lại khi được phép hoặc sửa địa chỉ.",
-      "consent": "Bằng việc tiếp tục, bạn đồng ý với <terms>Điều khoản</terms> và <privacy>Chính sách quyền riêng tư</privacy>.",
-      "googleFailed": "Đăng nhập Google chưa hoàn tất. Hãy thử lại hoặc tiếp tục với email.",
-      "seconds": "{count} giây",
-      "minutes": "{count} phút",
-      "errors": {
-        "invalidEmail": "Vui lòng nhập địa chỉ email hợp lệ.",
-        "incorrect": "Mã không đúng. Vui lòng thử lại.",
-        "expired": "Mã không còn hiệu lực. Vui lòng yêu cầu mã mới.",
-        "locked": "Bạn đã nhập sai quá số lần cho phép. Vui lòng yêu cầu mã mới.",
-        "throttled": "Quá nhiều yêu cầu. Vui lòng thử lại sau {time}."
-      }
+      "title": "Đăng nhập hoặc tạo tài khoản"
     }
   },
   "industryShell": {

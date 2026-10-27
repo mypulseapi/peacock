@@ -6,7 +6,9 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import type { ReactNode } from "react";
 import { asset } from "@/lib/cdn";
+import { renderLocale } from "@/i18n/render-locale";
 import { DesignedLocaleSwitch } from "./designed-locale-switch";
 import { DesignedThemeSwitch } from "./designed-theme-switch";
 import { designedHref, designedText } from "../t";
@@ -585,7 +587,7 @@ export function DesignedHeader() {
           data-nav-actions
         >
           <DesignedThemeSwitch label={t("themeDark")} />
-          <DesignedLocaleSwitch heading={t("44")} />
+          <DesignedLocaleSwitch heading={t("44")} current={renderLocale()} />
           {/* Sign-in is the dashboard's own page, another origin: a plain link. */}
           <a href={SIGNIN_URL} className="nav-link">
             {t("46")}
@@ -617,300 +619,354 @@ export function DesignedHeader() {
               <use href="#i-x" />
             </svg>
           </summary>
-          <div className="fixed inset-x-0 top-17 bottom-0 animate-dropdown overflow-y-auto border-t border-line bg-card pt-4 pb-10 motion-reduce:animate-none md:px-4">
-            {/* About us moved down into Resources, so the mobile menu lists it in the same
+          <div className="fixed inset-x-0 top-17 bottom-0 flex animate-dropdown flex-col border-t border-line bg-card motion-reduce:animate-none">
+            <div className="flex-1 overflow-y-auto overscroll-contain px-4 pt-1 pb-6 md:px-8">
+              {/* About us moved down into Resources, so the mobile menu lists it in the same
                      one place the desktop one does. */}
-            <p className="mt-6 px-4 eyebrow">{t("48")}</p>
-            <ul className="mt-2">
-              <li>
-                <Link
-                  href={designedHref("/en/product/decision-audit")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-clipboard-check" />
-                    </svg>
-                  </span>
-                  {t("49")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/product/decision-verification")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-compare" />
-                    </svg>
-                  </span>
-                  {t("50")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/product/decision-monitor")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-bell-ring" />
-                    </svg>
-                  </span>
-                  {t("51")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/product/return-verification")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-undo" />
-                    </svg>
-                  </span>
-                  {t("returnName")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/product/promotion-audit")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-chart-pie" />
-                    </svg>
-                  </span>
-                  {t("promotionName")}
-                </Link>
-              </li>
-            </ul>
+              <MenuGroup title={t("48")} count={5} open>
+                <ul>
+                  <li>
+                    <Link
+                      href={designedHref("/en/product/decision-audit")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-clipboard-check" />
+                        </svg>
+                      </span>
+                      {t("49")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={designedHref("/en/product/decision-verification")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-compare" />
+                        </svg>
+                      </span>
+                      {t("50")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={designedHref("/en/product/decision-monitor")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-bell-ring" />
+                        </svg>
+                      </span>
+                      {t("51")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={designedHref("/en/product/return-verification")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-undo" />
+                        </svg>
+                      </span>
+                      {t("returnName")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={designedHref("/en/product/promotion-audit")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-chart-pie" />
+                        </svg>
+                      </span>
+                      {t("promotionName")}
+                    </Link>
+                  </li>
+                </ul>
+              </MenuGroup>
 
-            <p className="mt-6 px-4 eyebrow">{t("storefront")}</p>
-            <ul className="mt-2">
-              {STOREFRONT.map((p) => (
-                <li key={p.href}>
-                  <Link
-                    href={designedHref(p.href)}
-                    className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                  >
-                    <span className="nav-icon-tile size-9">
-                      <svg className="size-4" aria-hidden="true">
-                        <use href={`#${p.icon}`} />
-                      </svg>
-                    </span>
-                    {t(`${p.key}Name`)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+              <MenuGroup title={t("storefront")} count={STOREFRONT.length}>
+                <ul>
+                  {STOREFRONT.map((p) => (
+                    <li key={p.href}>
+                      <Link
+                        href={designedHref(p.href)}
+                        className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                      >
+                        <span className="nav-icon-tile size-9">
+                          <svg className="size-4" aria-hidden="true">
+                            <use href={`#${p.icon}`} />
+                          </svg>
+                        </span>
+                        {t(`${p.key}Name`)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </MenuGroup>
 
-            <p className="mt-6 px-4 eyebrow">{t("agentsHeading")}</p>
-            <ul className="mt-2">
-              {AGENTS.map((p) => (
-                <li key={p.href}>
-                  <Link
-                    href={designedHref(p.href)}
-                    className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                  >
-                    <span className="nav-icon-tile size-9">
-                      <svg className="size-4" aria-hidden="true">
-                        <use href={`#${p.icon}`} />
-                      </svg>
-                    </span>
-                    {t(`${p.key}Name`)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+              <MenuGroup title={t("agentsHeading")} count={AGENTS.length}>
+                <ul>
+                  {AGENTS.map((p) => (
+                    <li key={p.href}>
+                      <Link
+                        href={designedHref(p.href)}
+                        className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                      >
+                        <span className="nav-icon-tile size-9">
+                          <svg className="size-4" aria-hidden="true">
+                            <use href={`#${p.icon}`} />
+                          </svg>
+                        </span>
+                        {t(`${p.key}Name`)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </MenuGroup>
 
-            <p className="mt-6 px-4 eyebrow">{t("industriesHeading")}</p>
-            <ul className="mt-2">
-              <li>
-                <Link
-                  href={designedHref("/en/industries/ecommerce")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-cart" />
-                    </svg>
-                  </span>
-                  {t("53")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/industries/fmcg")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-basket" />
-                    </svg>
-                  </span>
-                  {t("54")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/industries/technology")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-cpu" />
-                    </svg>
-                  </span>
-                  {t("55")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/industries/furniture")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-sofa" />
-                    </svg>
-                  </span>
-                  {t("56")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/industries/cosmetics")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-sparkles" />
-                    </svg>
-                  </span>
-                  {t("57")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={designedHref("/en/industries/distribution")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-factory" />
-                    </svg>
-                  </span>
-                  {t("58")}
-                </Link>
-              </li>
-            </ul>
+              <MenuGroup title={t("industriesHeading")} count={6}>
+                <ul>
+                  <li>
+                    <Link
+                      href={designedHref("/en/industries/ecommerce")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-cart" />
+                        </svg>
+                      </span>
+                      {t("53")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={designedHref("/en/industries/fmcg")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-basket" />
+                        </svg>
+                      </span>
+                      {t("54")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={designedHref("/en/industries/technology")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-cpu" />
+                        </svg>
+                      </span>
+                      {t("55")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={designedHref("/en/industries/furniture")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-sofa" />
+                        </svg>
+                      </span>
+                      {t("56")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={designedHref("/en/industries/cosmetics")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-sparkles" />
+                        </svg>
+                      </span>
+                      {t("57")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={designedHref("/en/industries/distribution")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-factory" />
+                        </svg>
+                      </span>
+                      {t("58")}
+                    </Link>
+                  </li>
+                </ul>
+              </MenuGroup>
 
-            <p className="mt-6 px-4 eyebrow">{t("goalsHeading")}</p>
-            <ul className="mt-2">
-              {GOALS.map((p) => (
-                <li key={p.href}>
-                  <Link
-                    href={designedHref(p.href)}
-                    className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                  >
-                    <span className="nav-icon-tile size-9">
-                      <svg className="size-4" aria-hidden="true">
-                        <use href={`#${p.icon}`} />
-                      </svg>
-                    </span>
-                    {t(`${p.key}Name`)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+              <MenuGroup title={t("goalsHeading")} count={GOALS.length}>
+                <ul>
+                  {GOALS.map((p) => (
+                    <li key={p.href}>
+                      <Link
+                        href={designedHref(p.href)}
+                        className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                      >
+                        <span className="nav-icon-tile size-9">
+                          <svg className="size-4" aria-hidden="true">
+                            <use href={`#${p.icon}`} />
+                          </svg>
+                        </span>
+                        {t(`${p.key}Name`)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </MenuGroup>
 
-            <p className="mt-6 px-4 eyebrow">{t("59")}</p>
-            <ul className="mt-2">
-              <li>
-                <Link
-                  href={designedHref("/en/research")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
-                >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-flask" />
-                    </svg>
-                  </span>
-                  {t("61")}
-                </Link>
-              </li>
-              {/* The desktop panel is one unlabelled list now, which is what this has
+              <MenuGroup title={t("59")} count={2}>
+                <ul>
+                  <li>
+                    <Link
+                      href={designedHref("/en/research")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-flask" />
+                        </svg>
+                      </span>
+                      {t("61")}
+                    </Link>
+                  </li>
+                  {/* The desktop panel is one unlabelled list now, which is what this has
                        always been. */}
-              <li>
-                <Link
-                  href={designedHref("/en/about")}
-                  className="flex items-center gap-4 rounded-control px-4 py-2.5 text-lg text-ink"
+                  <li>
+                    <Link
+                      href={designedHref("/en/about")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-user-round" />
+                        </svg>
+                      </span>
+                      {t("62")}
+                    </Link>
+                  </li>
+                </ul>
+              </MenuGroup>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                <a
+                  href="https://developer.thepulseapi.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center rounded-full border border-line px-4 font-medium text-ink"
                 >
-                  <span className="nav-icon-tile size-9">
-                    <svg className="size-4" aria-hidden="true">
-                      <use href="#i-user-round" />
-                    </svg>
-                  </span>
-                  {t("62")}
+                  {t("60")}
+                </a>
+                <Link
+                  href={designedHref("/en/pricing")}
+                  className="inline-flex min-h-11 items-center rounded-full border border-line px-4 font-medium text-ink"
+                >
+                  {t("63")}
                 </Link>
-              </li>
-            </ul>
+                <Link
+                  href={designedHref("/en/opensource")}
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-primary-line px-4 font-semibold text-primary"
+                >
+                  <svg className="size-4" aria-hidden="true">
+                    <use href="#i-github" />
+                  </svg>
+                  {t("opensource")}
+                </Link>
+              </div>
+            </div>
 
-            <div className="mt-6 border-t border-line pt-6">
-              <a
-                href="https://developer.thepulseapi.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
-              >
-                {t("60")}
-              </a>
-              <Link
-                href={designedHref("/en/pricing")}
-                className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
-              >
-                {t("63")}
-              </Link>
-              <Link
-                href={designedHref("/en/opensource")}
-                className="flex items-center gap-2 rounded-control px-4 py-3 text-lg font-semibold text-primary"
-              >
-                <svg className="size-5" aria-hidden="true">
-                  <use href="#i-github" />
-                </svg>
-                {t("opensource")}
-              </Link>
-
-              <a
-                href={SIGNIN_URL}
-                className="block rounded-control px-4 py-3 text-lg font-medium text-ink"
-              >
-                {t("64")}
-              </a>
-              <Link
-                href={designedHref("/en/contact")}
-                className="btn-primary mt-4 w-full rounded-control text-nav"
-              >
-                {t("65")}
-                <svg className="size-3.5" aria-hidden="true">
-                  <use href="#i-message-circle" />
-                </svg>
-              </Link>
-
-              {/* The theme and language controls live in the desktop actions, which are
-                       `hidden lg:flex`, so without these two a phone had neither. */}
-              <div className="mt-6 flex items-center gap-2 border-t border-line pt-6">
+            {/* Pinned under the list, always in view (owner's version 1, 27 Oct 2026): sign-in, the
+                call to action, and the theme and language controls, which live in the desktop
+                actions and so had to be here for a phone to have them at all. */}
+            <div className="grid gap-3 border-t border-line bg-card px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))] md:px-8">
+              <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-2">
+                <a
+                  href={SIGNIN_URL}
+                  className="btn-secondary rounded-control text-nav"
+                >
+                  {t("64")}
+                </a>
+                <Link
+                  href={designedHref("/en/contact")}
+                  className="btn-primary rounded-control text-nav"
+                >
+                  {t("65")}
+                  <svg className="size-3.5" aria-hidden="true">
+                    <use href="#i-message-circle" />
+                  </svg>
+                </Link>
+              </div>
+              <div className="flex items-center justify-between gap-2">
                 <DesignedThemeSwitch label={t("themeDark")} />
-                <DesignedLocaleSwitch heading={t("44")} />
+                <DesignedLocaleSwitch heading={t("44")} current={renderLocale()} />
               </div>
             </div>
           </div>
         </details>
       </div>
     </header>
+  );
+}
+
+/**
+ * One group of the mobile menu, folded (owner's version 1, 27 Oct 2026): its name as a heading, how
+ * many pages it holds, and a chevron. The six share a `name`, so the browser keeps one open at a
+ * time and the list stays about a screen long, with no script. Named `group/menu` so its open
+ * state never reads as the menu's own `group`.
+ */
+function MenuGroup({
+  title,
+  count,
+  open = false,
+  children,
+}: {
+  title: string;
+  count: number;
+  open?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <details
+      name="mobile-menu-group"
+      open={open}
+      className="group/menu border-b border-line"
+    >
+      <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus [&::-webkit-details-marker]:hidden">
+        <span className="flex-1 text-[1.0625rem] font-semibold text-ink">
+          {title}
+        </span>
+        <span className="rounded-full bg-surface-1 px-2 font-mono text-xs text-muted tabular-nums">
+          {count}
+        </span>
+        <svg
+          className="size-4 text-muted transition-transform duration-200 ease-out-soft group-open/menu:rotate-180 group-open/menu:text-primary"
+          aria-hidden="true"
+        >
+          <use href="#i-chevron-down" />
+        </svg>
+      </summary>
+      <div className="pb-3">{children}</div>
+    </details>
   );
 }

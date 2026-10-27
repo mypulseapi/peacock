@@ -210,6 +210,13 @@ separated by a horizontal hairline.
 - **The header's full nav starts at `xl` (1280px), and at 88rem in Vietnamese**, whose longer row needs 1380px of page;
   below that the compact sheet carries the same links. A longer row in either language moves its own switch point
   (`:lang(vi) [data-nav]` in `globals.css`), never drops items.
+- **On a phone, the compact sheet folds and its actions stay put** (owner's version 1, 27 Oct 2026). Each group is one
+  `<details>` row (`MenuGroup` in `designed-header.tsx`) with its name as a heading, its count and a chevron; the six share
+  `name="mobile-menu-group"`, so the browser keeps one open, Product first. Developers, Pricing and Open source sit under
+  them as pills. Sign In, the call to action, the theme switch and the language toggle are pinned below the list.
+- **On a phone, the footer is the same content, tighter** (owner's version 2, 27 Oct 2026; below `sm` only): the email and
+  the social icons share a row, each link column lays its links in two columns, the company facts are label and value
+  rows, and the legal links wrap on one line.
 - At most one dark (`bg-void`) band per page.
 - Inside cards: `p-6` (compact `p-4`/`p-5`), gaps `gap-4`–`gap-6`.
 - Radius: `rounded-xl` cards and windows, `rounded-lg` buttons and inner panels, `rounded` chips,

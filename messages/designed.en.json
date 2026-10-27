@@ -760,7 +760,10 @@
         "18": "Skin type",
         "19": "Key ingredient",
         "20": "Volume",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries.",
+        "source1": "Ingredient lists",
+        "source2": "Supplier compliance data",
+        "source3": "Pack and product copy"
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -945,7 +948,9 @@
         "18": "Memory",
         "19": "Storage",
         "20": "Processor",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries.",
+        "source1": "Product titles",
+        "source2": "Product descriptions"
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -1067,7 +1072,11 @@
         "18": "Pack size",
         "19": "Dietary claim",
         "20": "Brand",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries.",
+        "source1": "Packaging",
+        "source2": "Supplier specs",
+        "source3": "Descriptions",
+        "source4": "Marketing copy"
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -1147,7 +1156,10 @@
         "18": "Assembled depth",
         "19": "Primary material",
         "20": "Colour",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries.",
+        "source1": "Supplier specification sheet",
+        "source2": "Your own descriptions",
+        "source3": "Listing photograph"
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -1227,7 +1239,10 @@
         "18": "Memory",
         "19": "Storage",
         "20": "Processor",
-        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries."
+        "21": "Rows are ranked by what a purchase turns on: rank 1 first. Those are the rows an audit surfaces and a coverage report buries.",
+        "source1": "Product titles",
+        "source2": "Product descriptions",
+        "source3": "Supplier specification sheet"
       },
       "section4": {
         "1": "The same shelf, once the top gap is closed",
@@ -1262,6 +1277,10 @@
         "4": "View pricing",
         "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so."
       }
+    },
+    "sectorPage": {
+      "notRecorded": "Not recorded",
+      "catalogueRow": "Your catalogue · one product"
     }
   },
   "pricing": {

@@ -51,7 +51,7 @@ export interface Sector {
   sourceIcons: LucideIcon[];
   /** A sector's own picture of where the fact lives, in place of the source map (Distribution's). */
   livesFigure?: ReactNode;
-  /** Two pictures of the same shelf, for the slider. */
+  /** Two pictures of the same shelf, for the slider: square, one framing, so it wipes cleanly. */
   shelf?: { before: SectorPicture; after: SectorPicture };
   /** A sector's own before-and-after figure, in place of the two lists (Ecommerce). */
   repair?: ReactNode;
@@ -372,7 +372,7 @@ export function SectorPage({ s }: { s: Sector }) {
                     }
                     beforeLabel={t4("2")}
                     afterLabel={t4("6")}
-                    aspect="aspect-[862/1000]"
+                    aspect="aspect-square"
                   />
                 ) : (
                   <CompareSlider

@@ -1057,7 +1057,7 @@
         "5": "Akeneo PX Pulse 2025",
         "6": "of product pages ship no full set of structured data",
         "7": "Adobe Analytics",
-        "sceneAlt": "A tall supermarket shelf of near-identical detergent bottles in soft colours, with a shopper further down the aisle."
+        "sceneAlt": "A tall supermarket aisle of near-identical whole-grain cereal boxes, with a shopper and her basket further down the aisle."
       },
       "section3": {
         "2": "What a buyer here is trying to decide:",
@@ -1100,8 +1100,8 @@
         "8": "Concentration came first on the ranked list, measured against what buyers in this sector actually ask, not against how much data was missing.",
         "9": "The remaining gaps are still ranked, so the next round of work is already ordered and costed.",
         "10": "Coverage figures illustrate the shape of a catalogue in this sector.",
-        "beforeAlt": "Three detergent bottles on a shelf, with concentration, pack size and dietary claim each shown as an unanswered question, beside a listing card carrying only a photograph and a rating.",
-        "afterAlt": "The same bottles with each fact recorded: concentration concentrated, pack size 1 L, dietary claim vegan, beside a filter panel a shopper can now set each of those to."
+        "beforeAlt": "Three near-identical cereal boxes on a shelf, with concentration, pack size and dietary claim each marked not stated, beside a listing card carrying only a photograph and a rating.",
+        "afterAlt": "The same boxes with each fact recorded: concentration whole grain 60%, pack size 500 g, dietary claim high fibre, beside a filter panel a shopper can now set each of those to."
       },
       "section5": {
         "1": "What we do about it",

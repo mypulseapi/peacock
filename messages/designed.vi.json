@@ -1655,8 +1655,8 @@
         "4": "Nồng độ là thứ quyết định việc mua hàng và chỉ được ghi nhận trên khoảng 22% danh mục, nên bộ lọc hoặc là không tồn tại, hoặc ẩn đi phần lớn dải sản phẩm của bạn.",
         "7": "Vẫn người mua đó thu hẹp theo Nồng độ và đi tới một danh sách rút gọn mà họ có thể chọn.",
         "8": "Nồng độ đứng đầu danh sách xếp hạng, được đo theo điều người mua trong ngành này thực sự hỏi, chứ không theo lượng dữ liệu còn thiếu.",
-        "beforeAlt": "Ba chai nước giặt trên kệ, nồng độ, dung tích và công bố chế độ ăn đều là câu hỏi chưa có lời đáp, bên cạnh một thẻ sản phẩm chỉ có ảnh và điểm đánh giá.",
-        "afterAlt": "Cũng những chai đó với từng thông tin đã được ghi: nồng độ đậm đặc, dung tích 1 L, công bố thuần chay, bên cạnh bảng lọc mà người mua giờ có thể chọn theo từng mục."
+        "beforeAlt": "Ba hộp ngũ cốc gần như giống hệt nhau trên kệ, nồng độ, khối lượng và công bố dinh dưỡng đều ghi là chưa có, bên cạnh một thẻ sản phẩm chỉ có ảnh và điểm đánh giá.",
+        "afterAlt": "Cũng những hộp đó với từng thông tin đã được ghi: nồng độ ngũ cốc nguyên hạt 60%, khối lượng 500 g, công bố giàu chất xơ, bên cạnh bảng lọc mà người mua giờ có thể chọn theo từng mục."
       },
       "section5": {
         "1": "Chúng tôi làm gì với chuyện đó",
@@ -1684,7 +1684,7 @@
         "2": "nhà bán lẻ được thử nghiệm không có bộ lọc cho chính thông tin họ đang hiển thị",
         "4": "người tiêu dùng thấy khó chịu vì thông tin sản phẩm không đầy đủ, tăng từ 28%",
         "6": "trang sản phẩm không có đủ bộ dữ liệu có cấu trúc",
-        "sceneAlt": "Một kệ siêu thị cao toàn những chai nước giặt gần như giống hệt nhau với màu nhạt, một người mua ở xa cuối lối đi."
+        "sceneAlt": "Một lối đi siêu thị cao toàn những hộp ngũ cốc nguyên hạt gần như giống hệt nhau, một người mua cầm giỏ ở xa cuối lối đi."
       }
     },
     "furniture": {

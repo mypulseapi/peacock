@@ -24,6 +24,13 @@ export const SEARCH: ChapterContent = {
   title: "Search that ranks on what the shopper is deciding.",
   lede: "It runs beside the search you already have rather than replacing it, scores every result on factors you can read, and always holds a share of traffic back so you can see what it is actually doing.",
 
+  heroImage: {
+    src: "product/search-hero-ranks-on-what-the-shopper-is-deciding.webp",
+    width: 1600,
+    height: 703,
+    alt: "Search on one laptop. Each result for “lightweight laptop for travel” carries the factors that ranked it, relevance, persona fit and price band, and two panels sit beside the screen: the held-back share, served your original order, and the factors the ranking used.",
+  },
+
   visualHeading: "Why this result came first.",
   visualBody:
     "Base relevance, persona, affinity and price band, per result, with the held-back arm beside it.",
@@ -225,6 +232,13 @@ export const SEARCH_VI: ChapterContent = {
   title: "Tìm kiếm xếp hạng theo điều người mua đang cân nhắc.",
   lede: "Nó chạy song song với công cụ tìm kiếm bạn đang có thay vì thay thế, chấm điểm mọi kết quả theo các yếu tố bạn đọc được, và luôn giữ lại một phần lưu lượng để bạn thấy nó thực sự đang làm gì.",
 
+  heroImage: {
+    src: "product/search-hero-ranks-on-what-the-shopper-is-deciding.webp",
+    width: 1600,
+    height: 703,
+    alt: "Tìm kiếm trên một máy tính xách tay. Mỗi kết quả cho “lightweight laptop for travel” mang theo các yếu tố đã xếp hạng nó, độ liên quan, mức khớp chân dung và khoảng giá, và hai bảng nằm cạnh màn hình: phần được giữ lại, nhận thứ tự gốc của bạn, và các yếu tố mà thứ hạng đã dùng.",
+  },
+
   visualHeading: "Vì sao kết quả này đứng đầu.",
   visualBody:
     "Độ liên quan nền, chân dung, độ tương hợp và khoảng giá, theo từng kết quả, kèm nhánh đối chứng bên cạnh.",
@@ -403,3 +417,37 @@ export const SEARCH_VI: ChapterContent = {
 };
 
 export const search = (l: string) => byLocale({ en: SEARCH, vi: SEARCH_VI }, l);
+
+/** The alt text of the owner's step and gain pictures, in the order of `steps.items` and `gets.items`. */
+export const searchPictureAlt = (l: string) =>
+  byLocale(
+    {
+      en: {
+        steps: [
+          "The query “lightweight laptop for travel” read as three things, laptop, lightweight and travel, each matched against the same field on every result.",
+          "What this visit viewed, searched and filtered moves three sliders, persona, affinity and price band, and the results reorder from one to three.",
+          "One query and a crowd of shoppers: most go to the ranked results, and a smaller share is sent to a held-back list in the original order.",
+        ],
+        gains: [
+          "The query “15-inch laptop under 1.5 kg” split into a screen size of 15 inches and a weight under 1.5 kg, each set as a filter.",
+          "The first result with its score as one bar in six colours, one per factor: relevance, persona fit, quality, price band, attribute affinity and audience fit.",
+          "The first result linked to its decision record, an id and the six factors behind its place, each with its own bar.",
+          "Shoppers split in two, one side shown your ranking and the other the ranked results, side by side.",
+        ],
+      },
+      vi: {
+        steps: [
+          "Truy vấn “lightweight laptop for travel” được đọc thành ba ý, máy tính xách tay, nhẹ và du lịch, mỗi ý được đối chiếu với cùng trường đó trên mọi kết quả.",
+          "Những gì lần ghé này đã xem, tìm và lọc làm dịch ba thanh trượt, chân dung, độ tương hợp và khoảng giá, và các kết quả xếp lại từ một đến ba.",
+          "Một truy vấn và một đám đông người mua: phần lớn đi tới kết quả đã xếp hạng, còn một phần nhỏ hơn được đưa tới danh sách giữ lại theo thứ tự gốc.",
+        ],
+        gains: [
+          "Truy vấn “15-inch laptop under 1.5 kg” được tách thành kích thước màn hình 15 inch và cân nặng dưới 1,5 kg, mỗi thứ thành một bộ lọc.",
+          "Kết quả đầu tiên với điểm số là một thanh sáu màu, mỗi màu một yếu tố: độ liên quan, mức khớp chân dung, chất lượng, khoảng giá, độ tương hợp thuộc tính và mức khớp nhóm khách hàng.",
+          "Kết quả đầu tiên nối với bản ghi quyết định của nó, một mã và sáu yếu tố đứng sau vị trí của nó, mỗi yếu tố một thanh.",
+          "Người mua tách làm hai, một bên thấy thứ hạng của bạn và bên kia thấy kết quả đã xếp hạng, đặt cạnh nhau.",
+        ],
+      },
+    },
+    l,
+  );

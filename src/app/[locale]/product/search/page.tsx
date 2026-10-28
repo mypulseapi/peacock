@@ -7,9 +7,9 @@ import {
   SearchOutput,
   StorefrontScene,
 } from "@/components/designed/product/storefront-art";
-import { STOREFRONT_DRAWINGS } from "@/components/designed/product/storefront-drawings";
+import { storefrontPictures } from "@/components/designed/product/storefront-pictures";
 import { PageSchema } from "@/components/PageSchema";
-import { search } from "@/content/pages/search";
+import { search, searchPictureAlt } from "@/content/pages/search";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -33,6 +33,7 @@ export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
   const c = search(locale);
+  const pictures = storefrontPictures("search", searchPictureAlt(locale));
   return (
     <>
       {/* Headings on this page are the questions a merchant types, and the
@@ -44,19 +45,18 @@ export default async function Page({ params }: PageProps) {
         nodes={[storyFaqSchema(c)]}
       />
       {/* The owner's direction of 26 Oct 2026: the blocks of Return Verification and Promotion
-          Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero figure and
-          the step and gain drawings (storefront-drawings.tsx) stand in until the owner's images exist. */}
+          Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero, step and
+          gain pictures are the owner's (28 Oct 2026, storefront-pictures.tsx). */}
       <ChapterPage
         c={c}
-        figure={<SearchOutput />}
         chain={<StorefrontScene spec={c.scenes?.chain} />}
         chainFramed={false}
         art={{
           situation: <StorefrontScene spec={c.scenes?.situation} missing />,
-          steps: STOREFRONT_DRAWINGS["search"].steps,
+          steps: pictures.steps,
           situationIsPanel: true,
         }}
-        gainPictures={STOREFRONT_DRAWINGS["search"].gains}
+        gainPictures={pictures.gains}
         output={{ panel: <SearchOutput />, layout: "band" }}
       />
     </>

@@ -1,7 +1,6 @@
 /**
- * The storefront product pages' pictures, the owner's generated sets (Search, Recommendations, Pages
- * and Merchandising Studio, 28 Oct 2026), in place of the drawings in `storefront-drawings.tsx`, which
- * stay for the page whose set is not made yet. The hero is the page's `heroImage`, in its content.
+ * The five storefront product pages' pictures, the owner's generated sets (28 Oct 2026), in place of
+ * the drawings that stood in for them. The hero is the page's `heroImage`, in its content.
  *
  * Transparent PNGs served as WebP, 3 : 2 like the boxes `ChapterPage` sets them in, so the box's own
  * surface shows through and they follow the theme.
@@ -10,6 +9,19 @@ import Image from "next/image";
 import { img } from "@/lib/cdn";
 
 const FILES = {
+  "decision-api": {
+    steps: [
+      "product/decision-api-step-1-plugs-into-your-store.webp",
+      "product/decision-api-step-2-ranks-against-the-session.webp",
+      "product/decision-api-step-3-held-back-share.webp",
+    ],
+    gains: [
+      "product/decision-api-gain-1-one-script-no-replatform.webp",
+      "product/decision-api-gain-2-breakdown-on-every-product.webp",
+      "product/decision-api-gain-3-control-group-by-default.webp",
+      "product/decision-api-gain-4-fallback-not-error-page.webp",
+    ],
+  },
   search: {
     steps: [
       "product/search-step-1-relevance-as-now.webp",

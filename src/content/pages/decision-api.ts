@@ -13,6 +13,13 @@ export const DECISION_API: ChapterContent = {
   title: "Rank your catalogue live, once you have a reason to.",
   lede: "The runtime reads the current visit and orders your catalogue against what it can infer. It runs alongside your existing store and search, holds back a share of traffic as a control, and falls back to your own order if anything is slow.",
 
+  heroImage: {
+    src: "product/decision-api-hero-shop-window-reorders-per-visit.webp",
+    width: 1600,
+    height: 730,
+    alt: "The Decision API on one laptop: a storefront grid of sneakers, each with a thin bar of its factors, the first one joined to a card, why this is first, that splits its place into base, persona, affinity and price. Beside the laptop, the held-back share sees the same sneakers in their original order.",
+  },
+
   visualHeading: "Every ranked product explains itself.",
   visualBody:
     "Base, persona, price and brand, per product, so your merchandiser can see why anything moved.",
@@ -35,37 +42,6 @@ export const DECISION_API: ChapterContent = {
       tone: "warn",
     },
 
-    hero: {
-      kind: "flow",
-      steps: [
-        {
-          k: "The visit starts",
-          v: "a page view, a referrer, nothing else",
-          tone: "work",
-        },
-        {
-          k: "We infer",
-          v: "what this session appears to be deciding",
-          tone: "work",
-        },
-        {
-          k: "We rank",
-          v: "your catalogue against that, with a reason per product",
-          tone: "good",
-        },
-        {
-          k: "Or we stand aside",
-          v: "your own order, if anything is slow",
-          tone: "hold",
-        },
-        {
-          k: "A share never sees it",
-          v: "held back, so the result stays checkable",
-          tone: "hold",
-        },
-      ],
-      note: "No cookie, no login, no identity. The session is the input and it ends when the session does.",
-    },
     chain: {
       kind: "lanes",
       lanes: [
@@ -206,6 +182,13 @@ export const DECISION_API_VI: ChapterContent = {
   title: "Xếp hạng danh mục theo thời gian thực, khi bạn đã có lý do.",
   lede: "Bộ máy thời gian thực đọc phiên truy cập hiện tại và sắp xếp danh mục theo những gì nó suy luận được. Nó chạy song song với gian hàng và công cụ tìm kiếm sẵn có, giữ lại một phần lưu lượng làm nhóm đối chứng, và lùi về thứ tự gốc của bạn nếu có gì đó chậm.",
 
+  heroImage: {
+    src: "product/decision-api-hero-shop-window-reorders-per-visit.webp",
+    width: 1600,
+    height: 730,
+    alt: "Decision API trên một máy tính xách tay: một lưới giày trên cửa hàng, mỗi đôi có một thanh mảnh các yếu tố của nó, đôi đầu tiên nối với một thẻ giải thích vì sao nó đứng đầu, chia vị trí thành nền, chân dung, độ tương hợp và giá. Cạnh máy, phần được giữ lại thấy cùng những đôi giày theo thứ tự gốc.",
+  },
+
   visualHeading: "Mỗi sản phẩm được xếp hạng đều tự giải thích.",
   visualBody:
     "Điểm nền, chân dung, giá và thương hiệu, theo từng sản phẩm, để người phụ trách trưng bày hàng hoá thấy được vì sao một sản phẩm dịch chuyển.",
@@ -228,37 +211,6 @@ export const DECISION_API_VI: ChapterContent = {
       tone: "warn",
     },
 
-    hero: {
-      kind: "flow",
-      steps: [
-        {
-          k: "Phiên bắt đầu",
-          v: "một lượt xem trang, một nguồn dẫn, không gì khác",
-          tone: "work",
-        },
-        {
-          k: "Chúng tôi suy luận",
-          v: "phiên này có vẻ đang quyết định điều gì",
-          tone: "work",
-        },
-        {
-          k: "Chúng tôi xếp hạng",
-          v: "danh mục của bạn, kèm lý do cho từng sản phẩm",
-          tone: "good",
-        },
-        {
-          k: "Hoặc đứng sang một bên",
-          v: "dùng thứ tự của bạn, nếu có gì đó chậm",
-          tone: "hold",
-        },
-        {
-          k: "Một phần không bao giờ thấy",
-          v: "được giữ lại, để kết quả còn kiểm chứng được",
-          tone: "hold",
-        },
-      ],
-      note: "Không cookie, không đăng nhập, không danh tính. Đầu vào là phiên truy cập, và nó kết thúc khi phiên kết thúc.",
-    },
     chain: {
       kind: "lanes",
       lanes: [
@@ -391,3 +343,37 @@ export const DECISION_API_VI: ChapterContent = {
 
 export const decisionApi = (l: string) =>
   byLocale({ en: DECISION_API, vi: DECISION_API_VI }, l);
+
+/** The alt text of the owner's step and gain pictures, in the order of `steps.items` and `gets.items`. */
+export const decisionApiPictureAlt = (l: string) =>
+  byLocale(
+    {
+      en: {
+        steps: [
+          "An ordinary storefront, nothing in it changed, with one small script card plugged into its side, and three badges: no login, no cookie, no replatform.",
+          "What this visit viewed, searched and filtered flowing into the engine, and three ranked sneakers coming out, each with its own four factor bars.",
+          "A crowd of shoppers split two ways: most along a blue path to the ranked grid, a few along a grey path to your order, the same for the whole visit.",
+        ],
+        gains: [
+          "Two identical storefronts, one with the engine switched on and one switched off; the one switched off is your store, as it was.",
+          "Four sneakers, each with a bar of its factors; one opens into its breakdown, base, persona, affinity and price, with an override button.",
+          "Your order and the ranked order side by side, joined by a switch locked on: always on.",
+          "The engine marked slow, and the storefront going around it to render your own order, with a broken error page crossed out behind.",
+        ],
+      },
+      vi: {
+        steps: [
+          "Một cửa hàng bình thường, không gì bị thay đổi, với một thẻ mã script nhỏ cắm vào cạnh, và ba nhãn: không đăng nhập, không cookie, không đổi nền tảng.",
+          "Những gì lần ghé này đã xem, tìm và lọc chảy vào bộ máy, và ba đôi giày được xếp hạng đi ra, mỗi đôi có bốn thanh yếu tố riêng.",
+          "Một đám đông người mua tách hai: phần lớn theo đường xanh tới lưới đã xếp hạng, một ít theo đường xám tới thứ tự của bạn, giữ nguyên suốt lần ghé.",
+        ],
+        gains: [
+          "Hai cửa hàng giống hệt nhau, một bên bật bộ máy và một bên tắt; bên tắt là cửa hàng của bạn, y như cũ.",
+          "Bốn đôi giày, mỗi đôi một thanh yếu tố; một đôi mở ra phần chi tiết, nền, chân dung, độ tương hợp và giá, kèm nút ghi đè.",
+          "Thứ tự của bạn và thứ tự đã xếp hạng đặt cạnh nhau, nối bằng một công tắc khoá ở chế độ bật: luôn bật.",
+          "Bộ máy bị đánh dấu chậm, và cửa hàng đi vòng qua nó để hiển thị thứ tự của chính bạn, phía sau là một trang lỗi bị gạch bỏ.",
+        ],
+      },
+    },
+    l,
+  );

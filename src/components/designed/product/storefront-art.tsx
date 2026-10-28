@@ -224,26 +224,6 @@ export function RecommendationsOutput() {
   );
 }
 
-export function PagesOutput() {
-  const t = ui(renderLocale());
-  return (
-    <Panel
-      title={t.gridFor}
-      badge={<span className="badge-primary">{t.fromCampaign}</span>}
-      foot={t.pageNote}
-    >
-      <div className="grid grid-cols-4 gap-2" aria-hidden="true">
-        {Array.from({ length: 12 }, (_, i) => (
-          <span
-            key={i}
-            className={`aspect-3/4 rounded-md ${i < 4 ? "bg-primary-tint ring-1 ring-primary" : "bg-surface-1"}`}
-          />
-        ))}
-      </div>
-    </Panel>
-  );
-}
-
 export function StudioOutput() {
   const t = ui(renderLocale());
   return (

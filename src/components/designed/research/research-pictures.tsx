@@ -1,8 +1,8 @@
 /**
  * The picture on each Research card: the owner's generated set (28 Oct 2026), in place of the drawings
- * that stood in for them while the grid was built. Transparent, 3 : 2, on `surface-1`, so they follow
- * the theme; a finding waiting on a first merchant gets a dashed frame, so its status reads before
- * its badge does. Alt text is the finding's own, in both locales (`content/pages/research.ts`).
+ * that stood in for them while the grid was built. Transparent, 3 : 2, on the Decision Audit's picture
+ * panel (`how-glow` on `surface-1`), so they follow the theme; a finding waiting on a first merchant
+ * gets a dashed frame, so its status reads before its badge does. Alt text is the finding's own, in both locales (`content/pages/research.ts`).
  *
  * Their labels are in English, and they are copy: when a finding's numbers or order change, check its
  * picture says the same (07-WHAT-WE-DO-NOT-CLAIM applies to pictures too).
@@ -36,14 +36,14 @@ export function ResearchPicture({
 }) {
   return (
     <div
-      className={`aspect-3/2 overflow-hidden rounded-2xl bg-surface-1 ${waiting ? "border border-dashed border-line-control" : ""}`}
+      className={`how-glow aspect-3/2 overflow-hidden rounded-2xl border bg-surface-1 ${waiting ? "border-dashed border-line-control" : "border-line"}`}
     >
       <Image
         src={img(FILES[figure])}
         alt={alt}
         width={1200}
         height={800}
-        sizes="(min-width: 1024px) 36rem, (min-width: 768px) 50vw, 100vw"
+        sizes="(min-width: 768px) 28rem, 100vw"
         className="size-full object-contain"
       />
     </div>

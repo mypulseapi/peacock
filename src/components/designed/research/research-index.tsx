@@ -1,17 +1,16 @@
 "use client";
 
 /**
- * The Research page's findings as a journal grid (owner's pick, version 1 of five mockups, 28 Oct
- * 2026, after a reference of article cards): a search and the status chips, then a card per finding
- * in rows of two and three. No card is led large; the rows alternate, whatever the filter leaves.
+ * The Research page's findings as editorial rows (owner's pick, version 3 of three mockups, 28 Oct
+ * 2026): a search and the status chips, then one finding per row, its picture beside it, divided by
+ * hairlines rather than boxed in cards. The eye runs down one column of titles.
  *
- * Each card: the owner's picture (`research-pictures.tsx`),
- * the product and its status where the reference has a category and a date, the title, the finding
- * clamped to three lines, and the data and the limit behind one click, the limit in the amber
- * "missing" style. Opening it unclamps the finding. The search ignores Vietnamese accents.
+ * Each row: the owner's picture (`research-pictures.tsx`), the product and its status, the title, the
+ * whole finding, and the data and the limit side by side, always shown rather than behind a click,
+ * the limit in the amber "missing" style. The search ignores Vietnamese accents.
  */
 import { useState } from "react";
-import { ArrowRight, ChevronDown, Search } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import type { Finding, ResearchContent } from "@/content/pages/research";
 import { ResearchPicture } from "./research-pictures";
@@ -20,28 +19,6 @@ type Filter = "all" | Finding["status"];
 
 const fold = (s: string) =>
   s.normalize("NFD").replace(/\p{M}/gu, "").replace(/đ/gi, "d").toLowerCase();
-
-/** Rows of two, then three, alternating; a lone last card joins the row before it. */
-function spans(n: number) {
-  const rows: number[] = [];
-  for (let left = n, size = 2; left > 0; size = 5 - size) {
-    rows.push(Math.min(size, left));
-    left -= rows[rows.length - 1];
-  }
-  if (rows.length > 1 && rows[rows.length - 1] === 1) {
-    rows.pop();
-    const merged = rows.pop()! + 1;
-    rows.push(...(merged === 4 ? [2, 2] : [merged]));
-  }
-  return rows.flatMap((size) => Array<number>(size).fill(size));
-}
-
-/** Full class names, so Tailwind sees them. */
-const SPAN: Record<number, string> = {
-  1: "lg:col-span-12",
-  2: "lg:col-span-6",
-  3: "lg:col-span-4",
-};
 
 function Status({
   status,
@@ -82,7 +59,6 @@ export function ResearchIndex({
           q,
         )),
   );
-  const size = spans(shown.length);
   const chips: { f: Filter; label: string }[] = [
     { f: "all", label: labels.all },
     { f: "measured", label: labels.measured },
@@ -129,39 +105,29 @@ export function ResearchIndex({
       </p>
       {/* The list stays mounted when a search empties it: a remounted `.reveal` would wait for a
           scroll to be shown. */}
-      <ul className="reveal mt-6 grid gap-5 empty:hidden md:grid-cols-12">
-        {shown.map((f, i) => (
+      <ul className="reveal mt-6 border-t border-line empty:hidden">
+        {shown.map((f) => (
           <li
             key={f.title}
-            className={`group flex flex-col gap-4 rounded-3xl border border-line bg-card p-4 transition-colors hover:border-primary-line md:col-span-6 ${SPAN[size[i]]}`}
+            className="grid items-center gap-5 border-b border-line py-7 md:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] md:gap-8"
           >
             <ResearchPicture
               figure={f.figure}
               alt={f.alt}
               waiting={f.status === "waiting"}
             />
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 px-1">
-              <span className="text-sm font-semibold text-primary">
-                {f.product}
-              </span>
-              <span className="h-3.5 w-px bg-line" aria-hidden />
-              <Status status={f.status} label={labels[f.status]} />
-            </div>
-            <h3 className="px-1 text-lg leading-snug font-semibold text-balance text-ink">
-              {f.title.replace(/\.\s*$/, "")}
-            </h3>
-            <p className="line-clamp-3 px-1 text-body text-pretty text-muted group-has-[details[open]]:line-clamp-none">
-              {f.body}
-            </p>
-            <details className="px-1">
-              <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-1.5 rounded-lg text-sm font-semibold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus [&::-webkit-details-marker]:hidden">
-                {labels.dataAndLimit}
-                <ChevronDown
-                  className="size-4 text-primary transition-transform motion-reduce:transition-none [details[open]_&]:rotate-180"
-                  aria-hidden
-                />
-              </summary>
-              <dl className="mt-2 grid gap-3 text-sm">
+            <div className="grid gap-2.5">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <span className="text-sm font-semibold text-primary">
+                  {f.product}
+                </span>
+                <Status status={f.status} label={labels[f.status]} />
+              </div>
+              <h3 className="text-h3 text-balance text-ink">
+                {f.title.replace(/\.\s*$/, "")}
+              </h3>
+              <p className="text-body text-pretty text-muted">{f.body}</p>
+              <dl className="mt-1 grid gap-3 text-sm sm:grid-cols-2">
                 <div>
                   <dt className="font-semibold text-ink">{labels.data}</dt>
                   <dd className="mt-0.5 text-muted">{f.data}</dd>
@@ -171,15 +137,15 @@ export function ResearchIndex({
                   <dd className="mt-0.5 text-ink">{f.limit}</dd>
                 </div>
               </dl>
-            </details>
-            <Link
-              locale={locale}
-              href={f.href}
-              className="mt-auto inline-flex min-h-11 items-center gap-1.5 self-start px-1 text-sm font-semibold text-primary hover:underline"
-            >
-              {f.link}
-              <ArrowRight className="size-4" aria-hidden />
-            </Link>
+              <Link
+                locale={locale}
+                href={f.href}
+                className="inline-flex min-h-11 items-center gap-1.5 self-start text-sm font-semibold text-primary hover:underline"
+              >
+                {f.link}
+                <ArrowRight className="size-4" aria-hidden />
+              </Link>
+            </div>
           </li>
         ))}
       </ul>

@@ -72,7 +72,7 @@ export function DesignedFooter() {
               className="hit-area inline-flex"
             >
               <Image
-                src={asset("brand/logo.webp")}
+                src={asset("brand/logo-v2.webp")}
                 alt="Pulse"
                 width={84}
                 height={28}
@@ -80,7 +80,7 @@ export function DesignedFooter() {
                 className="h-7 w-auto theme-dark:hidden"
               />
               <Image
-                src={asset("brand/logo-white.webp")}
+                src={asset("brand/logo-white-v2.webp")}
                 alt=""
                 width={84}
                 height={28}

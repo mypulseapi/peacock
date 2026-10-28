@@ -352,7 +352,7 @@ Sticky step navigation: left `lg:col-span-3` column with `sticky top-16` nav; li
 `data-spy="<section-id>"` (the last link turns active at the page bottom; active links also get `aria-current="location"`) and style the active state with `data-active:border-primary data-active:text-ink`
 (set by `src/main.js`). Content blocks in `lg:col-span-9`, separated by `divide-y divide-line`.
 
-Header / navbar (from thepulseapi.com): sticky, `h-17`, `bg-card`, bottom hairline. Logo `src/assets/brand/logo.webp`
+Header / navbar (from thepulseapi.com): sticky, `h-17`, `bg-card`, bottom hairline. Logo `asset("brand/logo.webp")` (CDN only, staged in `public/assets/brand/` to upload)
 (84×28) left, as two images: `logo.webp` with `theme-dark:hidden` and the reversed `logo-white.webp` (`alt=""`, `aria-hidden`) with `hidden theme-dark:inline`, so dark mode — OS or `data-theme` — and the dark band always show the white wordmark (footer included); menu `nav-link`s centred (the page you are on gets `aria-current="page"`, added per page by `scripts/sync-shell.py`, and keeps the `surface-1` pill); language picker, Sign In and `btn-primary` CTA right; below `lg` a ☰ button
 opens a full-screen menu. Dropdowns are native `<details data-dropdown>` — they work without JavaScript.
 Mega menus (`<details data-dropdown data-mega>`): `[data-nav-content]` is `flex` with one

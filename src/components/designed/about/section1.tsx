@@ -34,14 +34,23 @@ export function Section1Section() {
               {/* The owner's picture (28 Oct 2026), in place of the drawn ranking figure that stood here.
                   A photo, so it sits framed in the page column rather than bleeding to the edges. */}
               <div className="reveal mt-14 delay-200 lg:mt-16">
+                {/* Light and dark are two drawings of the same scene; each theme shows one, as the logo does. Not
+                    `priority`: a preload would fetch the light one in the dark theme too. */}
                 <Image
                   src={img("about/who-we-are-shopping-network.webp")}
                   alt={t("pictureAlt")}
                   width={1735}
                   height={906}
                   sizes="(min-width: 96rem) 80rem, (min-width: 64rem) 70rem, 100vw"
-                  priority
-                  className="h-auto w-full rounded-2xl border border-line shadow-sm"
+                  className="h-auto w-full rounded-2xl border border-line shadow-sm theme-dark:hidden"
+                />
+                <Image
+                  src={img("about/who-we-are-shopping-network-dark.webp")}
+                  alt={t("pictureAlt")}
+                  width={1735}
+                  height={906}
+                  sizes="(min-width: 96rem) 80rem, (min-width: 64rem) 70rem, 100vw"
+                  className="hidden h-auto w-full rounded-2xl border border-line shadow-sm theme-dark:block"
                 />
               </div>
             </div>

@@ -5,9 +5,9 @@ import { storyFaqSchema } from "@/components/StoryPage";
 import { PageSchema } from "@/components/PageSchema";
 import { UseCasePage } from "@/components/designed/use-cases/use-case-page";
 import { TwoPlans } from "@/components/designed/use-cases/charts";
-import { TTM_GETS, TTM_STEPS, TtmHero, TtmSituation } from "@/components/designed/use-cases/drawings";
+import { timeToMarketPictures } from "@/components/designed/use-cases/pictures";
 import { ui } from "@/content/locale";
-import { timeToMarket } from "@/content/pages/time-to-market";
+import { timeToMarket, timeToMarketPictureAlt } from "@/content/pages/time-to-market";
 
 interface PageProps { params: Promise<{ locale: string }> }
 
@@ -44,7 +44,7 @@ export default async function Page({ params }: PageProps) {
             ]}
           />
         }
-        art={{ hero: <TtmHero />, situation: <TtmSituation />, steps: TTM_STEPS, gets: TTM_GETS }}
+        art={timeToMarketPictures(timeToMarketPictureAlt(locale))}
       />
     </>
   );

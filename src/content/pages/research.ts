@@ -9,6 +9,9 @@ import { byLocale } from "@/content/locale";
  * THE-THIRD-IGNORANCE.md (photographs), TWO-IGNORANCES.md §3 (1.20 and 4.24 bits, recomputed),
  * NEMOTRON-PERSONAS-VIETNAM.md (parser), AGENTS-READ-PROSE.md §6 (nine listings),
  * INTERVENTION-INTELLIGENCE.md §11 (Promotion Audit: no figure on the site, by decision).
+ * 2026-10-28: one row per product on the menu, adding Recommendations and Pages, Merchandising
+ * Studio (its built and unbuilt lists are the product page's, `merchandising-studio.ts`) and
+ * Opensource (`opensource.ts`: SDK and MCP server available, formats planned).
  * Synthetic data is called synthetic, no marketplace or competitor is named, and nothing here is a
  * lift, latency or returns claim (hires/07-WHAT-WE-DO-NOT-CLAIM.md).
  */
@@ -29,7 +32,13 @@ export interface ResearchContent {
   eyebrow: string;
   title: string;
   lede: string;
-  labels: { measured: string; waiting: string; data: string; limit: string; all: string };
+  labels: {
+    measured: string;
+    waiting: string;
+    data: string;
+    limit: string;
+    all: string;
+  };
   findingsHeading: string;
   findings: Finding[];
   method: { heading: string; items: { title: string; body: string }[] };
@@ -101,11 +110,22 @@ const EN: ResearchContent = {
       link: "About Search",
     },
     {
+      product: "Recommendations and Pages",
+      status: "waiting",
+      title: "The same ranker as Search, pointed at a strip and a grid.",
+      body: "Recommendations ranks a product strip and Pages ranks a category or landing grid, both from the visit that is happening, so a first visit needs no history. Neither is a second model: it is the Search ranker, and it carries the finding above, that it is only as good as the product facts it ranks on.",
+      data: "Our demonstration storefront. No merchant's live traffic yet.",
+      limit:
+        "A share of traffic is held back so a merchant can tell whether ranking helped. No holdback has run on live traffic, so there is no figure.",
+      href: "/product/recommendations",
+      link: "About Recommendations",
+    },
+    {
       product: "Decision API for AI agents",
       status: "measured",
       title:
         "A fact missing from a listing's fields is usually still on the page.",
-      body: "On nine laptop listings from a large Vietnamese marketplace, 17 of 36 facet readings were missing from the structured fields, and all 17 were in the title or the description. An agent that reads can find them. The hard part is reading correctly: two values for one fact, units, and saying it cannot tell when the page is silent. That is what the Decision API answers.",
+      body: "On nine laptop listings from a large Vietnamese marketplace, 17 of 36 facet readings were missing from the structured fields, and all 17 were in the title or the description. An agent that reads can find them. The hard part is reading correctly: two values for one fact, units, and saying it cannot tell when the page is silent. That is what the Decision API answers, for a shopper's laptop or a supplier's part, called directly or by an agent through our MCP server.",
       data: "Nine public listings, fetched once.",
       limit:
         "We pre-registered 60 listings and reached 9, so there is no verdict. We stopped rather than get around the site's access limits.",
@@ -143,6 +163,28 @@ const EN: ResearchContent = {
       limit: "Neither has run on a merchant's repaired catalogue.",
       href: "/product/decision-verification",
       link: "About Decision Verification",
+    },
+    {
+      product: "Merchandising Studio",
+      status: "waiting",
+      title: "Four things built, two named as not built.",
+      body: "The console holds the catalogue the engine reads, persona tags, the share of traffic held back, 5% by default, and the record behind any ranking decision. Position overrides and scheduled merchandising are not built, and the product page says so.",
+      data: "Counted from the codebase, not the roadmap.",
+      limit:
+        "The record explains a ranking; it does not show the ranking helped. That needs the holdback on a merchant's live traffic.",
+      href: "/product/merchandising-studio",
+      link: "About the Merchandising Studio",
+    },
+    {
+      product: "Opensource",
+      status: "waiting",
+      title: "Open code, so anyone can check how a decision is reached.",
+      body: "Open Pulse publishes the browser SDK, the MCP server AI agents call and runnable examples, MIT licensed. The requirement and evidence formats, the repair vocabulary and category packs are planned. Detection is open; deciding which gap matters most stays the paid product.",
+      data: "The examples run on sample data: a shopper's laptop request, suppliers and hotels, and a promotion check.",
+      limit:
+        "No benchmark has been published for the open code yet. The examples show the calls work, not how often an answer is right.",
+      href: "/opensource",
+      link: "About Opensource",
     },
   ],
   method: {
@@ -254,11 +296,23 @@ const VI: ResearchContent = {
       link: "Về Search",
     },
     {
+      product: "Recommendations và Pages",
+      status: "waiting",
+      title:
+        "Cùng bộ xếp hạng với Search, chĩa vào một dải gợi ý và một lưới hàng.",
+      body: "Recommendations xếp hạng một dải sản phẩm, Pages xếp hạng lưới của trang ngành hàng hoặc trang đích, cả hai theo lần ghé đang diễn ra, nên lần ghé đầu không cần lịch sử. Không cái nào là mô hình thứ hai: đó là bộ xếp hạng của Search, và nó mang theo kết quả ở trên, rằng nó chỉ tốt bằng thông tin sản phẩm nó dùng để xếp.",
+      data: "Cửa hàng trình diễn của chúng tôi. Chưa có lưu lượng thật của người bán.",
+      limit:
+        "Một phần lưu lượng được giữ lại để người bán biết xếp hạng có giúp ích không. Chưa có nhóm đối chứng nào chạy trên lưu lượng thật, nên chưa có con số.",
+      href: "/product/recommendations",
+      link: "Về Recommendations",
+    },
+    {
       product: "Decision API cho AI agent",
       status: "measured",
       title:
         "Thông tin thiếu trong các trường của trang sản phẩm thường vẫn có trên trang.",
-      body: "Trên chín trang laptop của một sàn thương mại điện tử lớn ở Việt Nam, 17 trong 36 lượt đọc thông tin không có trong các trường cấu trúc, và cả 17 đều nằm trong tiêu đề hoặc mô tả. Agent biết đọc có thể tìm ra. Phần khó là đọc đúng: hai giá trị cho một thông tin, đơn vị, và nói không xác định được khi trang không nói gì. Đó là điều Decision API trả lời.",
+      body: "Trên chín trang laptop của một sàn thương mại điện tử lớn ở Việt Nam, 17 trong 36 lượt đọc thông tin không có trong các trường cấu trúc, và cả 17 đều nằm trong tiêu đề hoặc mô tả. Agent biết đọc có thể tìm ra. Phần khó là đọc đúng: hai giá trị cho một thông tin, đơn vị, và nói không xác định được khi trang không nói gì. Đó là điều Decision API trả lời, cho laptop của người mua hay linh kiện của nhà cung cấp, gọi trực tiếp hoặc qua máy chủ MCP của chúng tôi khi là agent.",
       data: "Chín trang công khai, lấy một lần.",
       limit:
         "Chúng tôi đăng ký trước 60 trang và chỉ đạt 9, nên chưa có kết luận. Chúng tôi dừng lại thay vì vượt qua giới hạn truy cập của trang.",
@@ -296,6 +350,29 @@ const VI: ResearchContent = {
       limit: "Chưa cái nào chạy trên danh mục đã sửa của người bán.",
       href: "/product/decision-verification",
       link: "Về Decision Verification",
+    },
+    {
+      product: "Merchandising Studio",
+      status: "waiting",
+      title: "Bốn phần đã xây, hai phần được nêu rõ là chưa có.",
+      body: "Bảng điều khiển chứa danh mục mà bộ máy đọc, nhãn persona, phần lưu lượng được giữ lại, mặc định 5%, và bản ghi đằng sau mỗi quyết định xếp hạng. Ghim vị trí và lịch trưng bày chưa được xây, và trang sản phẩm nói rõ điều đó.",
+      data: "Đếm từ mã nguồn, không phải từ lộ trình.",
+      limit:
+        "Bản ghi giải thích một lần xếp hạng; nó không cho thấy xếp hạng đã giúp ích. Điều đó cần nhóm đối chứng trên lưu lượng thật của người bán.",
+      href: "/product/merchandising-studio",
+      link: "Về Merchandising Studio",
+    },
+    {
+      product: "Mã nguồn mở",
+      status: "waiting",
+      title:
+        "Mã nguồn mở, để ai cũng kiểm tra được một quyết định được đưa ra thế nào.",
+      body: "Open Pulse công bố SDK cho trình duyệt, máy chủ MCP mà tác tử AI gọi tới và các ví dụ chạy được, theo giấy phép MIT. Định dạng yêu cầu và bằng chứng, bộ từ vựng sửa lỗi và các gói ngành hàng đang được lên kế hoạch. Phần phát hiện là mở; quyết định khoảng trống nào quan trọng nhất vẫn là sản phẩm trả phí.",
+      data: "Các ví dụ chạy trên dữ liệu mẫu: yêu cầu laptop của người mua, nhà cung cấp và khách sạn, và một lần kiểm tra khuyến mãi.",
+      limit:
+        "Chưa công bố phép đo chuẩn nào cho phần mã mở. Các ví dụ cho thấy lời gọi hoạt động, không cho thấy câu trả lời đúng thường xuyên đến đâu.",
+      href: "/opensource",
+      link: "Về mã nguồn mở",
     },
   ],
   method: {

@@ -20,7 +20,7 @@ import Image from "next/image";
 import { img } from "@/lib/cdn";
 import { Link } from "@/i18n/routing";
 import { StoryCta, type StoryContent } from "@/components/StoryPage";
-import { GainsCards, type GainsArt } from "./gains";
+import { GainsCards } from "./gains";
 import { StepsZigzag } from "./steps-zigzag";
 import { CompareSlider } from "./compare-slider";
 
@@ -64,7 +64,6 @@ export function ChapterPage({
   chain,
   chainFramed = true,
   art,
-  gains,
   gainPictures,
   figure,
   output,
@@ -87,8 +86,7 @@ export function ChapterPage({
     steps?: ReactNode[];
     situationIsPanel?: boolean;
   };
-  /** One drawing per gain, in order (`gains.tsx`); or `gainPictures`, any picture per gain. */
-  gains?: GainsArt[];
+  /** One picture per gain, in order: the owner's generated pictures (`product-pictures.tsx`). */
   gainPictures?: ReactNode[];
   /** The hero figure while `c.heroImage` does not exist yet. */
   figure?: ReactNode;
@@ -97,7 +95,12 @@ export function ChapterPage({
    * Three layouts, for the owner to choose (26 Oct 2026): words beside the panel, words over it, or
    * both inside a wash panel as on Decision Verification's comparison.
    */
-  output?: { panel: ReactNode; layout?: "split" | "centre" | "band" };
+  output?: {
+    panel: ReactNode;
+    layout?: "split" | "centre" | "band";
+    /** A transparent picture rather than a panel: no window shadow, which would frame it as a box. */
+    bare?: boolean;
+  };
   /**
    * The two pictures of `c.beforeAfter`, on a slider (owner, 27 Oct 2026, the agent pages): drag to
    * wipe from one to the other, the two lists under it, after the gains.
@@ -232,7 +235,7 @@ export function ChapterPage({
       {whatYouGet ?? (
         <>
           {/* The gains as the older product pages show theirs (`gains.tsx`): one card per benefit, a
-          drawn picture on one side, alternating (owner, 26 Oct 2026). */}
+          picture on one side, alternating (owner, 26 Oct 2026). */}
           <section className="bg-soft-gradient scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">
               <div className="mx-auto max-w-2xl text-center">
@@ -242,7 +245,6 @@ export function ChapterPage({
               </div>
               <GainsCards
                 items={c.gets.items.map((g, i) => ({
-                  art: gains?.[i],
                   picture: gainPictures?.[i],
                   title: g.title,
                   body: g.body,
@@ -365,11 +367,13 @@ function Output({
   body,
   panel,
   layout = "split",
+  bare = false,
 }: {
   heading: string;
   body?: string;
   panel: ReactNode;
   layout?: "split" | "centre" | "band";
+  bare?: boolean;
 }) {
   const words = (
     <>
@@ -378,7 +382,11 @@ function Output({
     </>
   );
   const figure = (
-    <div className="reveal rounded-2xl shadow-window delay-100">{panel}</div>
+    <div
+      className={`reveal delay-100 ${bare ? "" : "rounded-2xl shadow-window"}`}
+    >
+      {panel}
+    </div>
   );
   if (layout === "centre")
     return (

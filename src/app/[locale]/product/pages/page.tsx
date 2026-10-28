@@ -3,13 +3,10 @@ import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
 import { storyFaqSchema } from "@/components/StoryPage";
 import { ChapterPage } from "@/components/designed/product/chapters";
-import {
-  PagesOutput,
-  StorefrontScene,
-} from "@/components/designed/product/storefront-art";
-import { STOREFRONT_DRAWINGS } from "@/components/designed/product/storefront-drawings";
+import { StorefrontScene } from "@/components/designed/product/storefront-art";
+import { productPictures } from "@/components/designed/product/product-pictures";
 import { PageSchema } from "@/components/PageSchema";
-import { pages } from "@/content/pages/pages";
+import { pages, pagesPictureAlt } from "@/content/pages/pages";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -33,6 +30,7 @@ export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
   const c = pages(locale);
+  const pictures = productPictures("pages", pagesPictureAlt(locale));
   return (
     <>
       {/* Headings on this page are the questions a merchant types, and the
@@ -44,20 +42,19 @@ export default async function Page({ params }: PageProps) {
         nodes={[storyFaqSchema(c)]}
       />
       {/* The owner's direction of 26 Oct 2026: the blocks of Return Verification and Promotion
-          Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero figure and
-          the step and gain drawings (storefront-drawings.tsx) stand in until the owner's images exist. */}
+          Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero, step and
+          gain pictures are the owner's (28 Oct 2026, product-pictures.tsx). */}
       <ChapterPage
         c={c}
-        figure={<StorefrontScene spec={c.scenes?.hero} />}
         chain={<StorefrontScene spec={c.scenes?.chain} />}
         chainFramed={false}
         art={{
           situation: <StorefrontScene spec={c.scenes?.situation} />,
-          steps: STOREFRONT_DRAWINGS["pages"].steps,
+          steps: pictures.steps,
           situationIsPanel: true,
         }}
-        gainPictures={STOREFRONT_DRAWINGS["pages"].gains}
-        output={{ panel: <PagesOutput />, layout: "band" }}
+        gainPictures={pictures.gains}
+        output={{ panel: pictures.output, layout: "band", bare: true }}
       />
     </>
   );

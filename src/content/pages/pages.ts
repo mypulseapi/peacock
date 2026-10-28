@@ -23,6 +23,13 @@ export const PAGES: ChapterContent = {
   title: "Category and landing pages ordered for whoever arrived.",
   lede: "A campaign sends a thousand people to one page and every one of them sees the same grid. This orders that grid against what each visit implies, from the first page view, with a share of traffic held back so you can tell whether it helped.",
 
+  heroImage: {
+    src: "product/pages-hero-ordered-for-whoever-arrived.webp",
+    width: 1600,
+    height: 711,
+    alt: "Pages: one product grid, two visits. A visitor from a newsletter and a visitor from a search ad land on the same page, and each sees the grid ordered for how they arrived.",
+  },
+
   visualHeading: "One page, two arms.",
   visualBody:
     "The same grid ordered by the engine and by your own rule, side by side, per session.",
@@ -51,24 +58,6 @@ export const PAGES: ChapterContent = {
       note: "of what arrived with the click reaches the grid. The rest is read by your ad platform and then dropped at the door.",
     },
 
-    hero: {
-      kind: "flow",
-      steps: [
-        { k: "The ad", v: "a keyword, a creative, a promise", tone: "good" },
-        { k: "The click", v: "carries all three in the request", tone: "good" },
-        {
-          k: "The landing page",
-          v: "discards them and renders the default grid",
-          tone: "warn",
-        },
-        {
-          k: "The shopper",
-          v: "scrolls a grid built before you knew they existed",
-          tone: "hold",
-        },
-      ],
-      note: "The ordering rule on most category pages was written once, for nobody in particular, and has not been revisited since.",
-    },
     chain: {
       kind: "delta",
       label: "Products above the fold that match what the ad promised",
@@ -196,6 +185,13 @@ export const PAGES_VI: ChapterContent = {
   title: "Trang ngành hàng và trang đích được sắp xếp cho đúng người vừa tới.",
   lede: "Một chiến dịch đưa một nghìn người tới cùng một trang và tất cả đều thấy chung một lưới sản phẩm. Cái này sắp xếp lưới đó theo những gì từng lần ghé hàm ý, ngay từ lượt xem trang đầu tiên, với một phần lưu lượng được giữ lại để bạn biết nó có giúp ích hay không.",
 
+  heroImage: {
+    src: "product/pages-hero-ordered-for-whoever-arrived.webp",
+    width: 1600,
+    height: 711,
+    alt: "Pages: một lưới sản phẩm, hai lần ghé. Một khách tới từ bản tin và một khách tới từ quảng cáo tìm kiếm vào cùng một trang, và mỗi người thấy lưới được sắp theo cách họ đến.",
+  },
+
   visualHeading: "Một trang, hai nhánh.",
   visualBody:
     "Cùng một lưới sản phẩm, sắp bởi bộ máy và sắp bởi quy tắc của bạn, đặt cạnh nhau, theo từng phiên.",
@@ -220,32 +216,6 @@ export const PAGES_VI: ChapterContent = {
       note: "trong những gì đi kèm cú nhấp thực sự tới được lưới sản phẩm. Phần còn lại được nền tảng quảng cáo đọc rồi bỏ lại ngoài cửa.",
     },
 
-    hero: {
-      kind: "flow",
-      steps: [
-        {
-          k: "Quảng cáo",
-          v: "một từ khoá, một mẫu hình, một lời hứa",
-          tone: "good",
-        },
-        {
-          k: "Cú nhấp",
-          v: "mang theo cả ba trong yêu cầu gửi lên",
-          tone: "good",
-        },
-        {
-          k: "Trang đích",
-          v: "vứt hết đi và dựng lưới mặc định",
-          tone: "warn",
-        },
-        {
-          k: "Người mua",
-          v: "cuộn một lưới dựng ra trước khi bạn biết họ tồn tại",
-          tone: "hold",
-        },
-      ],
-      note: "Quy tắc sắp xếp trên phần lớn trang ngành hàng được viết một lần, cho không ai cụ thể, và từ đó không ai xem lại.",
-    },
     chain: {
       kind: "delta",
       label: "Sản phẩm hiện ngay màn hình đầu khớp với lời hứa của quảng cáo",
@@ -364,3 +334,41 @@ export const PAGES_VI: ChapterContent = {
 };
 
 export const pages = (l: string) => byLocale({ en: PAGES, vi: PAGES_VI }, l);
+
+/** The alt text of the owner's pictures: the output section's, then the steps and gains in the order of `steps.items` and `gets.items`. */
+export const pagesPictureAlt = (l: string) =>
+  byLocale(
+    {
+      en: {
+        output:
+          "The same category page twice, side by side, with the same header, banner and footer: one window in your rule’s order, one ranked, the same eight hiking shoes in a different order in each, and each shopper kept in the same arm all session.",
+        steps: [
+          "The context a visit brings before any click, the referrer, the device and the campaign, joined to a shopper landing on a page.",
+          "A filter chosen in the sidebar, and the grid reordering what has not been seen yet to match it.",
+          "A crowd split two ways: a share is shown the page in your rule's order, the rest the ranked order.",
+        ],
+        gains: [
+          "Four kinds of page, a category listing, a landing page, a collection page and the home grid, each with a product grid.",
+          "A campaign ad for outdoor shoes leading to a first visit with no history, and a strip of shoes recommended for it.",
+          "The same page twice, its header, banner and footer unchanged, and only the products in the grid reordered.",
+          "Four different pages, each with a control marker, a share of visits seeing your existing order.",
+        ],
+      },
+      vi: {
+        output:
+          "Cùng một trang ngành hàng hiện hai lần, đặt cạnh nhau, giữ nguyên đầu trang, băng quảng cáo và chân trang: một cửa sổ theo thứ tự quy tắc của bạn, một cửa sổ đã xếp hạng, cùng tám đôi giày leo núi nhưng mỗi bên một thứ tự, và mỗi người mua ở nguyên một nhánh suốt phiên.",
+        steps: [
+          "Bối cảnh mà một lần ghé mang theo trước mọi cú nhấp, nguồn giới thiệu, thiết bị và chiến dịch, nối tới một người mua vừa vào trang.",
+          "Một bộ lọc được chọn ở thanh bên, và lưới sắp xếp lại những gì chưa được xem cho khớp với nó.",
+          "Một đám đông tách hai: một phần thấy trang theo thứ tự quy tắc của bạn, phần còn lại thấy thứ tự đã xếp hạng.",
+        ],
+        gains: [
+          "Bốn loại trang, trang ngành hàng, trang đích, trang bộ sưu tập và lưới trang chủ, mỗi trang một lưới sản phẩm.",
+          "Một quảng cáo chiến dịch cho giày dã ngoại dẫn tới lần ghé đầu tiên không có lịch sử, và một dải giày được gợi ý cho lần ghé đó.",
+          "Cùng một trang hai lần, đầu trang, băng quảng cáo và chân trang giữ nguyên, chỉ các sản phẩm trong lưới được sắp lại.",
+          "Bốn trang khác nhau, mỗi trang một dấu đối chứng, một phần lần ghé thấy thứ tự sẵn có của bạn.",
+        ],
+      },
+    },
+    l,
+  );

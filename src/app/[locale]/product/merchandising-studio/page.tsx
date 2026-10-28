@@ -7,9 +7,12 @@ import {
   StorefrontScene,
   StudioOutput,
 } from "@/components/designed/product/storefront-art";
-import { STOREFRONT_DRAWINGS } from "@/components/designed/product/storefront-drawings";
+import { productPictures } from "@/components/designed/product/product-pictures";
 import { PageSchema } from "@/components/PageSchema";
-import { merchandisingStudio } from "@/content/pages/merchandising-studio";
+import {
+  merchandisingStudio,
+  merchandisingStudioPictureAlt,
+} from "@/content/pages/merchandising-studio";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -33,6 +36,10 @@ export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
   const c = merchandisingStudio(locale);
+  const pictures = productPictures(
+    "merchandising-studio",
+    merchandisingStudioPictureAlt(locale),
+  );
   return (
     <>
       {/* Headings on this page are the questions a merchant types, and the
@@ -44,19 +51,18 @@ export default async function Page({ params }: PageProps) {
         nodes={[storyFaqSchema(c)]}
       />
       {/* The owner's direction of 26 Oct 2026: the blocks of Return Verification and Promotion
-          Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero figure and
-          the step and gain drawings (storefront-drawings.tsx) stand in until the owner's images exist. */}
+          Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero, step and
+          gain pictures are the owner's (28 Oct 2026, product-pictures.tsx). */}
       <ChapterPage
         c={c}
-        figure={<StorefrontScene spec={c.scenes?.hero} />}
         chain={<StorefrontScene spec={c.scenes?.chain} />}
         chainFramed={false}
         art={{
           situation: <StorefrontScene spec={c.scenes?.situation} />,
-          steps: STOREFRONT_DRAWINGS["merchandising-studio"].steps,
+          steps: pictures.steps,
           situationIsPanel: true,
         }}
-        gainPictures={STOREFRONT_DRAWINGS["merchandising-studio"].gains}
+        gainPictures={pictures.gains}
         output={{ panel: <StudioOutput />, layout: "band" }}
       />
     </>

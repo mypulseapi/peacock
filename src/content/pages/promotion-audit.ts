@@ -311,3 +311,43 @@ export const PROMOTION_AUDIT_VI: Content = {
 
 export const promotionAudit = (l: string) =>
   byLocale({ en: PROMOTION_AUDIT, vi: PROMOTION_AUDIT_VI }, l);
+
+/** The alt text of the owner's pictures, in the order of `steps.items` and `gets.items`. */
+export const promotionAuditPictureAlt = (l: string) =>
+  byLocale(
+    {
+      en: {
+        situation:
+          "A campaign report covering only the day a voucher ran, when orders jump; weeks later, outside the report, parcels come back and one is refused at the door.",
+        steps: [
+          "A promotion history table, group, offer, orders, returns and failed deliveries, under the groups it covers, new, repeat and cash on delivery, and the offers, a voucher, a price cut, free shipping and no offer.",
+          "Each offer’s range set against doing nothing: the voucher clears the no-offer line and is ticked, the price cut straddles it, and free shipping falls short.",
+          "A test naming one group, repeat buyers, and one offer, free shipping, split in two, beside an option marked not measured yet.",
+        ],
+        gains: [
+          "A voucher’s orders as one bar, with the returned and the failed deliveries peeling off and the part that was kept marked.",
+          "Three groups of shoppers, two given an offer, a voucher and free shipping, and the third given no offer, because it would buy anyway.",
+          "A balance with a voucher on one side and a product page whose size has just been filled in on the other, and the repair weighs more.",
+          "The same trainer in your shop and elsewhere, with the voucher, cashback, coins and shipping taken off elsewhere, and the price each shopper actually paid compared.",
+          "An offer that branches two ways: proven, or not proven and so sent to a test of a voucher on new buyers.",
+        ],
+      },
+      vi: {
+        situation:
+          "Một báo cáo chiến dịch chỉ bao trọn ngày chạy voucher, khi đơn hàng tăng vọt; vài tuần sau, ngoài phạm vi báo cáo, các kiện hàng bị trả về và một kiện bị từ chối ở cửa.",
+        steps: [
+          "Một bảng lịch sử khuyến mãi, gồm nhóm, ưu đãi, đơn hàng, hàng bị trả và giao hàng thất bại, dưới các nhóm mà nó bao gồm, khách mới, khách quay lại và trả tiền khi nhận hàng, cùng các ưu đãi, voucher, giảm giá, miễn phí vận chuyển và không ưu đãi.",
+          "Khoảng kết quả của từng ưu đãi đặt cạnh việc không làm gì: voucher vượt qua vạch không ưu đãi và được đánh dấu, giảm giá nằm vắt qua vạch, còn miễn phí vận chuyển thì chưa tới.",
+          "Một phép thử nêu một nhóm, khách quay lại, và một ưu đãi, miễn phí vận chuyển, chia làm hai, cạnh một lựa chọn được ghi là chưa đo.",
+        ],
+        gains: [
+          "Các đơn hàng của một voucher thành một thanh, phần bị trả và phần giao thất bại tách ra, phần giữ lại được đánh dấu.",
+          "Ba nhóm người mua, hai nhóm được ưu đãi, voucher và miễn phí vận chuyển, còn nhóm thứ ba không có ưu đãi nào, vì họ vẫn sẽ mua.",
+          "Một cái cân, một bên là voucher và bên kia là trang sản phẩm vừa được điền kích cỡ, và phía sửa trang nặng hơn.",
+          "Cùng một đôi giày ở cửa hàng của bạn và nơi khác, nơi khác trừ đi voucher, hoàn tiền, xu và phí vận chuyển, và giá mỗi người mua thực trả được so sánh.",
+          "Một ưu đãi rẽ hai nhánh: đã chứng minh, hoặc chưa chứng minh và vì thế được đưa đi thử, voucher cho khách mới.",
+        ],
+      },
+    },
+    l,
+  );

@@ -5,8 +5,8 @@
  *
  * Two kinds, as in `chapter-art.tsx`. The panels are markup, because their words must localise: the
  * scene data comes from each page's content module (`scenes`), the panel labels from `ui()`. The
- * first-visit strip below is inline SVG with no words; the step and gain drawings are in
- * `storefront-drawings.tsx`.
+ * first-visit strip below is inline SVG with no words; the step and gain pictures are the owner's
+ * (`product-pictures.tsx`).
  *
  * These replace `ApiVisual`, `SearchVisual`, `RecommendationsVisual`, `PagesVisual` and
  * `StudioVisual`, which drew in hard-coded hex and red, and the story scenes' versions of the same
@@ -220,26 +220,6 @@ export function RecommendationsOutput() {
           [t.priceBand, 14],
         ]}
       />
-    </Panel>
-  );
-}
-
-export function PagesOutput() {
-  const t = ui(renderLocale());
-  return (
-    <Panel
-      title={t.gridFor}
-      badge={<span className="badge-primary">{t.fromCampaign}</span>}
-      foot={t.pageNote}
-    >
-      <div className="grid grid-cols-4 gap-2" aria-hidden="true">
-        {Array.from({ length: 12 }, (_, i) => (
-          <span
-            key={i}
-            className={`aspect-3/4 rounded-md ${i < 4 ? "bg-primary-tint ring-1 ring-primary" : "bg-surface-1"}`}
-          />
-        ))}
-      </div>
     </Panel>
   );
 }

@@ -18,6 +18,13 @@ export const RECOMMENDATIONS: ChapterContent = {
   title: "Recommendations that work on a first visit.",
   lede: "Most engines need history before they say anything useful, so a new visitor gets your bestsellers. This reads the visit that is happening and ranks against it, which means the first session is served as well as the hundredth.",
 
+  heroImage: {
+    src: "product/recommendations-hero-works-on-a-first-visit.webp",
+    width: 1536,
+    height: 1024,
+    alt: "Recommendations on one laptop, for a first visit with no history. A panel beside the screen holds what this visit did, viewed trail shoes and filtered for waterproof, and the product page below it shows a strip, recommended for this visit, of trail shoes ordered by it.",
+  },
+
   visualHeading: "The same ranker, pointed at a slot.",
   visualBody:
     "Not a second model. The factors that order a search result order a recommendation strip.",
@@ -30,16 +37,6 @@ export const RECOMMENDATIONS: ChapterContent = {
   },
 
   scenes: {
-    hero: {
-      kind: "delta",
-      eyebrow: "A first-time visitor, no history, no account",
-      question: "What can a recommendation engine say about this person?",
-      label: "Signals available before the first recommendation",
-      before: { v: 0, label: "Purchase history" },
-      after: { v: 7, label: "Signals this visit" },
-      note: "Referrer, landing product, search terms, filters touched, products opened, time on each, and what was skipped. None of it needs a profile.",
-      footer: "Useful on visit one, which is the visit most engines sit out.",
-    },
     chain: {
       kind: "lanes",
       lanes: [
@@ -183,6 +180,13 @@ export const RECOMMENDATIONS_VI: ChapterContent = {
   title: "Gợi ý sản phẩm hoạt động ngay từ lần ghé đầu tiên.",
   lede: "Phần lớn bộ máy cần lịch sử trước khi nói được điều gì hữu ích, nên khách mới chỉ nhận được hàng bán chạy. Cái này đọc lần ghé đang diễn ra và xếp hạng theo đó, nghĩa là phiên đầu tiên được phục vụ tốt ngang phiên thứ một trăm.",
 
+  heroImage: {
+    src: "product/recommendations-hero-works-on-a-first-visit.webp",
+    width: 1536,
+    height: 1024,
+    alt: "Gợi ý sản phẩm trên một máy tính xách tay, cho lần ghé đầu tiên không có lịch sử. Một bảng cạnh màn hình ghi những gì lần ghé này đã làm, xem giày chạy địa hình và lọc chống nước, còn trang sản phẩm bên dưới hiện một dải gợi ý cho lần ghé này, gồm giày chạy địa hình được sắp theo đó.",
+  },
+
   visualHeading: "Cùng một bộ xếp hạng, chĩa vào một ô hiển thị.",
   visualBody:
     "Không phải mô hình thứ hai. Các yếu tố sắp xếp kết quả tìm kiếm cũng sắp xếp một dải gợi ý.",
@@ -195,16 +199,6 @@ export const RECOMMENDATIONS_VI: ChapterContent = {
   },
 
   scenes: {
-    hero: {
-      kind: "delta",
-      eyebrow: "Khách lần đầu, không lịch sử, không tài khoản",
-      question: "Một bộ máy gợi ý nói được gì về người này?",
-      label: "Tín hiệu có sẵn trước gợi ý đầu tiên",
-      before: { v: 0, label: "Lịch sử mua hàng" },
-      after: { v: 7, label: "Tín hiệu trong phiên" },
-      note: "Nguồn dẫn, sản phẩm vào đầu tiên, từ khoá tìm, bộ lọc đã chạm, sản phẩm đã mở, thời gian ở mỗi thứ, và thứ bị bỏ qua. Không cái nào cần hồ sơ người dùng.",
-      footer: "Hữu ích ngay lần ghé đầu, lần mà phần lớn bộ máy ngồi ngoài.",
-    },
     chain: {
       kind: "lanes",
       lanes: [
@@ -338,3 +332,37 @@ export const RECOMMENDATIONS_VI: ChapterContent = {
 
 export const recommendations = (l: string) =>
   byLocale({ en: RECOMMENDATIONS, vi: RECOMMENDATIONS_VI }, l);
+
+/** The alt text of the owner's step and gain pictures, in the order of `steps.items` and `gets.items`. */
+export const recommendationsPictureAlt = (l: string) =>
+  byLocale(
+    {
+      en: {
+        steps: [
+          "What the visit does, a view, a search, a filter and an add to cart, all flowing into the engine, with no profile stored.",
+          "A slot asks for four products; the catalogue goes through the engine and comes out as a strip, recommended for this visit, each product with its factor bars.",
+          "A strip of four products under its decision id, copied into a record of what was shown.",
+        ],
+        gains: [
+          "A new visitor, and a strip of trail shoes in front of the grey bestsellers a history-based engine would have shown.",
+          "Four surfaces, the home page, a category, a product page and the cart, each with its own recommended strip.",
+          "A search result list and a product strip joined through one engine, fed by the same view, search, filter and cart signals.",
+          "The engine unplugged, and the shop still showing its own strip, ticked.",
+        ],
+      },
+      vi: {
+        steps: [
+          "Những gì lần ghé làm, một lượt xem, một lượt tìm, một lượt lọc và một lần thêm vào giỏ, cùng chảy vào bộ máy, không hồ sơ nào được lưu.",
+          "Một ô hiển thị hỏi xin bốn sản phẩm; danh mục đi qua bộ máy và ra thành một dải gợi ý cho lần ghé này, mỗi sản phẩm kèm các thanh yếu tố.",
+          "Một dải bốn sản phẩm dưới mã quyết định của nó, được chép vào bản ghi những gì đã hiển thị.",
+        ],
+        gains: [
+          "Một khách mới, và một dải giày chạy địa hình đặt trước những món bán chạy màu xám mà bộ máy dựa trên lịch sử lẽ ra sẽ hiện.",
+          "Bốn bề mặt, trang chủ, một ngành hàng, một trang sản phẩm và giỏ hàng, mỗi nơi một dải gợi ý riêng.",
+          "Một danh sách kết quả tìm kiếm và một dải sản phẩm nối qua cùng một bộ máy, nhận cùng các tín hiệu xem, tìm, lọc và giỏ hàng.",
+          "Bộ máy bị rút điện, và cửa hàng vẫn hiện dải gợi ý của chính nó, có dấu tích.",
+        ],
+      },
+    },
+    l,
+  );

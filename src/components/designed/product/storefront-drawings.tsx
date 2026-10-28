@@ -1,7 +1,7 @@
 /**
  * One drawing per step and per gain on the storefront product pages (owner, 26 Oct 2026: "show,
  * don't tell", DESIGN.md principle 5), until the owner's pictures replace them (`storefront-pictures.tsx`;
- * Search's on 28 Oct). Each says its own idea through objects rather than a screen: a fork in the path
+ * Search's and Recommendations' on 28 Oct). Each says its own idea through objects rather than a screen: a fork in the path
  * for the held-back share, a safety net for the fallback.
  * They are the concepts of the image briefs (scratch `storefront-image-prompts`), drawn here so the pages
  * say something before the owner's images exist, and so they follow the theme and read in both locales.
@@ -12,16 +12,7 @@
  */
 import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
-import {
-  Eye,
-  Search,
-  Funnel,
-  ShoppingCart,
-  ShoppingBag,
-  Plug,
-  BookOpen,
-  Camera,
-} from "lucide-react";
+import { Eye, Search, Funnel, ShoppingBag, Plug } from "lucide-react";
 
 const D = ({ children }: { children: ReactNode }) => (
   <svg
@@ -346,22 +337,6 @@ const Net = () => (
     <Tile x={92} y={104} t="hold" />
   </>
 );
-/** A spotlight dims, and the shop's own display stays in place. */
-const Spotlight = () => (
-  <>
-    <path d="M120 18l-46 104h92z" className="fill-primary/10" />
-    <circle cx="120" cy="18" r="9" className="fill-baseline" />
-    <Card x={54} y={104} w={132} h={36} />
-    <Shelf
-      x={66}
-      y={112}
-      n={4}
-      s={16}
-      gap={14}
-      tones={["hold", "hold", "hold", "hold"]}
-    />
-  </>
-);
 
 /* ------------------------------------------------------------ pages */
 
@@ -457,200 +432,6 @@ export const STOREFRONT_DRAWINGS: Record<
       </G>,
       <G key="g4">
         <Net />
-      </G>,
-    ],
-  },
-  recommendations: {
-    steps: [
-      <D key="s1">
-        {[40, 60, 80, 100, 120].map((x, i) => (
-          <ellipse
-            key={x}
-            cx={x}
-            cy={i % 2 ? 132 : 140}
-            rx="5"
-            ry="3"
-            className="fill-baseline/40"
-          />
-        ))}
-        <Tok x={150} y={104} I={Eye} r={11} />
-        <Tok x={168} y={70} I={Search} r={11} />
-        <Tok x={190} y={42} I={Funnel} r={11} />
-        <Tok x={204} y={100} I={ShoppingCart} r={11} />
-        <path
-          d="M128 132c20-6 30-20 34-30"
-          className="fill-none stroke-primary/40"
-          strokeWidth="2"
-          strokeDasharray="3 4"
-        />
-      </D>,
-      <D key="s2">
-        <rect
-          x={20}
-          y={100}
-          width="200"
-          height="16"
-          rx="8"
-          className="fill-surface-1 stroke-line"
-          strokeWidth="1.5"
-        />
-        {[34, 70, 106, 142, 178].map((x) => (
-          <circle
-            key={x}
-            cx={x + 8}
-            cy={108}
-            r="4"
-            className="fill-baseline/50"
-          />
-        ))}
-        <Tile x={34} y={78} />
-        <Tile x={62} y={78} />
-        <Tile x={150} y={78} t="on" />
-        <Tile x={178} y={78} t="on" />
-        <path
-          d="M120 24v30l-14 20"
-          className="fill-none stroke-primary"
-          strokeWidth="4"
-        />
-        <circle cx={120} cy={24} r={8} className="fill-primary" />
-      </D>,
-      <D key="s3">
-        <rect
-          x={30}
-          y={36}
-          width="110"
-          height="70"
-          rx="8"
-          className="fill-card stroke-primary"
-          strokeWidth="2"
-        />
-        <Shelf
-          x={44}
-          y={60}
-          n={4}
-          s={16}
-          gap={8}
-          tones={["on", "on", "on", "on"]}
-        />
-        <Tok x={150} y={34} I={Camera} r={12} />
-        <path
-          d="M150 60c10 30 20 40 34 46"
-          className="fill-none stroke-baseline"
-          strokeWidth="1.5"
-          strokeDasharray="3 3"
-        />
-        <rect
-          x={168}
-          y={98}
-          width="52"
-          height="40"
-          rx="5"
-          className="fill-surface-1 stroke-line"
-          strokeWidth="1.5"
-        />
-        <rect
-          x={176}
-          y={92}
-          width="52"
-          height="40"
-          rx="5"
-          className="fill-card stroke-line"
-          strokeWidth="1.5"
-        />
-      </D>,
-    ],
-    gains: [
-      <G key="g1">
-        <path
-          d="M30 120l44-10 44 10V60l-44-10-44 10z"
-          className="fill-card stroke-line"
-          strokeWidth="1.5"
-        />
-        <path d="M74 50v60" className="stroke-line" strokeWidth="1.5" />
-        <BookOpen
-          x={54}
-          y={70}
-          width={40}
-          height={30}
-          className="text-baseline/40"
-          strokeWidth={1.5}
-        />
-        <Card x={132} y={60} w={88} h={56} />
-        <Shelf x={142} y={74} n={3} s={18} gap={8} tones={["on", "on", "on"]} />
-      </G>,
-      <G key="g2">
-        {[0, 1, 2, 3].map((k) => (
-          <g key={k}>
-            <rect
-              x={18 + k * 56}
-              y={70}
-              width="48"
-              height="58"
-              rx="6"
-              className="fill-card stroke-line"
-              strokeWidth="1.5"
-            />
-            <rect
-              x={24 + k * 56}
-              y={100}
-              width="36"
-              height="12"
-              rx="3"
-              className="fill-primary-tint stroke-primary"
-              strokeWidth="1.5"
-            />
-          </g>
-        ))}
-        <rect
-          x={96}
-          y={26}
-          width="48"
-          height="16"
-          rx="4"
-          className="fill-primary"
-        />
-        <path
-          d="M120 44v20"
-          className="stroke-primary"
-          strokeWidth="2"
-          strokeDasharray="3 3"
-        />
-      </G>,
-      <G key="g3">
-        <circle cx={120} cy={80} r={22} className="fill-primary" />
-        <circle cx={120} cy={80} r={8} className="fill-card" />
-        {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
-          <rect
-            key={a}
-            x={116}
-            y={52}
-            width="8"
-            height="10"
-            rx="2"
-            className="fill-primary"
-            transform={`rotate(${a} 120 80)`}
-          />
-        ))}
-        <Line d="M98 80H48" c="stroke-primary/40" w={8} />
-        <Line d="M142 80h50" c="stroke-primary/40" w={8} />
-        {[0, 1, 2].map((i) => (
-          <rect
-            key={i}
-            x={18}
-            y={48 + i * 22}
-            width="28"
-            height="16"
-            rx="3"
-            className="fill-card stroke-primary"
-            strokeWidth="1.5"
-          />
-        ))}
-        <Shelf x={196} y={72} n={1} s={18} tones={["on"]} />
-        <Tile x={196} y={46} t="on" />
-        <Tile x={196} y={98} t="on" />
-      </G>,
-      <G key="g4">
-        <Spotlight />
       </G>,
     ],
   },

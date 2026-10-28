@@ -8,29 +8,7 @@
       "1": "Who we are",
       "2": "Pulse is an intelligent product discovery platform that connects shoppers with the right products while helping businesses identify and close gaps in their product catalogs.",
       "audience": "Our customers are businesses across industries worldwide. We focus on those selling products through websites and e-commerce platforms, regardless of their geographic location.",
-      "3": "The same four gaps, ranked two ways",
-      "4": "Example data",
-      "5": "By how much is missing, of 216 products",
-      "6": "Processor",
-      "7": "Screen size",
-      "8": "Memory",
-      "9": "Storage",
-      "10": "By what shoppers need, of 32 requirements",
-      "11": "Screen size",
-      "12": "15 of 32",
-      "13": "Memory",
-      "14": "13 of 32",
-      "15": "Storage",
-      "16": "10 of 32",
-      "17": "Processor",
-      "18": "2 of 32",
-      "19": "Processor is missing from 162 products, but only 2 of 32 shopper requirements mention it.",
-      "20": "Ranked by absence it comes first; ranked by demand it comes last.",
-      "21": "A requirement is a need shoppers stated when choosing. This shelf has 32.",
-      "22": "48 hours",
-      "23": "From one category export to your ranked Decision Audit.",
-      "24": "12 of 12",
-      "25": "reruns of the example ranking put screen size first. Ranks 2 to 4 moved, and we say so."
+      "pictureAlt": "A globe linking shoppers around the world, each looking for something different, to the products that fit them."
     },
     "section2": {
       "1": "It started with a test shelf",
@@ -61,11 +39,9 @@
       "5": "Keep the negative results",
       "6": "We keep the attempt that failed its criteria, the one that passed for the wrong reason, and the one that held.",
       "7": "Say what we cannot measure",
-      "8": "next to the ranking",
-      "9": ", not in a footnote.",
       "10": "Earn the integration",
       "11": "The first audit needs no code, no tag and no access to your systems. If it is not useful, you have lost an export and an afternoon.",
-      "rankingSteady": "Our ranking is steady at the top and less steady below it, and we say so"
+      "rankingSteady": "Our ranking is steady at the top and less steady below it, and we say so."
     },
     "section4": {
       "1": "Early, and specific about it",

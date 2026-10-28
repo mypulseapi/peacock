@@ -773,29 +773,7 @@
       "1": "Chúng tôi là ai",
       "2": "Pulse là nền tảng khám phá sản phẩm thông minh, kết nối nhu cầu người mua với sản phẩm phù hợp, đồng thời giúp doanh nghiệp phát hiện và khắc phục những khoảng trống trong danh mục sản phẩm.",
       "audience": "Khách hàng của chúng tôi là các doanh nghiệp thuộc mọi ngành nghề trên toàn thế giới. Chúng tôi tập trung vào những doanh nghiệp bán sản phẩm qua website và các nền tảng thương mại điện tử, bất kể vị trí địa lý.",
-      "3": "Cùng bốn lỗ hổng, hai cách xếp hạng",
-      "4": "Dữ liệu ví dụ",
-      "5": "Theo mức độ thiếu, trên 216 sản phẩm",
-      "6": "Vi xử lý",
-      "7": "Kích thước màn hình",
-      "8": "RAM",
-      "9": "Lưu trữ",
-      "10": "Theo điều người mua cần, trên 32 yêu cầu",
-      "11": "Kích thước màn hình",
-      "12": "15 trên 32",
-      "13": "RAM",
-      "14": "13 trên 32",
-      "15": "Lưu trữ",
-      "16": "10 trên 32",
-      "17": "Vi xử lý",
-      "18": "2 trên 32",
-      "19": "Vi xử lý thiếu ở 162 sản phẩm, nhưng chỉ 2 trên 32 yêu cầu của người mua nhắc đến nó.",
-      "20": "Xếp theo mức độ thiếu thì nó đứng đầu; xếp theo nhu cầu thì nó đứng cuối.",
-      "21": "Một yêu cầu là nhu cầu mà người mua nêu ra khi lựa chọn. Nhóm hàng này có 32 yêu cầu.",
-      "22": "48 giờ",
-      "23": "Từ một bản xuất ngành hàng đến bản Decision Audit đã xếp hạng của bạn.",
-      "24": "12 trên 12",
-      "25": "lần chạy lại bảng xếp hạng ví dụ đều đặt kích thước màn hình lên đầu. Các hạng 2 đến 4 có thay đổi, và chúng tôi nói rõ điều đó."
+      "pictureAlt": "Quả địa cầu kết nối người mua khắp thế giới, mỗi người tìm một thứ khác nhau, với những sản phẩm phù hợp với họ."
     },
     "section2": {
       "1": "Mọi chuyện bắt đầu từ một kệ thử nghiệm",
@@ -820,11 +798,9 @@
       "5": "Giữ lại cả kết quả âm",
       "6": "Chúng tôi giữ lại cả lần thử không đạt tiêu chí, lần đạt vì lý do sai, và lần thực sự đứng vững.",
       "7": "Nói rõ điều chúng tôi không đo được",
-      "8": "ngay cạnh bảng xếp hạng",
-      "9": ", chứ không phải trong một chú thích cuối trang.",
       "10": "Xứng đáng với việc được tích hợp",
       "11": "Bản kiểm tra đầu tiên không cần code, không cần gắn thẻ và không cần truy cập hệ thống của bạn. Nếu nó không hữu ích, bạn chỉ mất một bản xuất và một buổi chiều.",
-      "rankingSteady": "Thứ hạng của chúng tôi ổn định ở đầu bảng và kém ổn định hơn ở phía dưới, và chúng tôi nói rõ điều đó"
+      "rankingSteady": "Thứ hạng của chúng tôi ổn định ở đầu bảng và kém ổn định hơn ở phía dưới, và chúng tôi nói rõ điều đó."
     },
     "section4": {
       "1": "Còn sớm, và chúng tôi nói rõ điều đó",

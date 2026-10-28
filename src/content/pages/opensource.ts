@@ -139,8 +139,8 @@ const EN: OpensourceContent = {
   },
   hero: {
     eyebrow: "Opensource",
-    title: "Teach software and AI agents what evidence a decision needs.",
-    lede: "Product data was built for databases, feeds and storefronts. An AI agent needs more: what the buyer is trying to decide, what evidence that takes, what the product actually shows, and what is still unresolved. Open Pulse is the open foundation for that layer. The Pulse API is the decision engine behind it.",
+    title: "Teach software and AI agents what decisions need.",
+    lede: "Product data serves databases, feeds and storefronts. AI agents need more: buyer intent, required evidence, product facts and unresolved gaps. Open Pulse provides the open foundation; the Pulse API powers the decisions.",
     primary: "Explore Open Pulse on GitHub",
     secondary: "Read the developer docs",
     supporting:
@@ -494,8 +494,8 @@ const VI: OpensourceContent = {
   status: { available: "Đã có", planned: "Dự kiến", illustrative: "Minh hoạ" },
   hero: {
     eyebrow: "Mã nguồn mở",
-    title: "Dạy phần mềm và tác tử AI biết một quyết định cần bằng chứng gì.",
-    lede: "Dữ liệu sản phẩm được tạo cho cơ sở dữ liệu, nguồn cấp và cửa hàng. Một tác tử AI cần nhiều hơn: người mua đang muốn quyết định điều gì, điều đó cần bằng chứng gì, sản phẩm thực sự cho thấy gì, và điều gì vẫn chưa rõ. Open Pulse là nền tảng mở cho lớp đó. Pulse API là bộ máy ra quyết định đứng sau.",
+    title: "Dạy phần mềm và tác tử AI biết quyết định cần gì.",
+    lede: "Dữ liệu sản phẩm phục vụ cơ sở dữ liệu, nguồn cấp và cửa hàng. Tác tử AI cần nhiều hơn: ý định của người mua, bằng chứng cần có, thông tin sản phẩm và những khoảng trống chưa rõ. Open Pulse cung cấp nền tảng mở; Pulse API vận hành các quyết định.",
     primary: "Xem Open Pulse trên GitHub",
     secondary: "Đọc tài liệu cho lập trình viên",
     supporting:

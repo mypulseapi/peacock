@@ -1,6 +1,7 @@
 import { Rocket, Layers, Timer, SplitSquareHorizontal } from "lucide-react";
 import type { StoryContent } from "@/components/StoryPage";
 import { byLocale } from "@/content/locale";
+import type { UseCasePictureAlt } from "@/content/pages/seo-aeo";
 
 /**
  * Time to market.
@@ -254,3 +255,45 @@ export const TIME_TO_MARKET_VI: StoryContent = {
 };
 
 export const timeToMarket = (l: string) => byLocale({ en: TIME_TO_MARKET, vi: TIME_TO_MARKET_VI }, l);
+
+/** Alt text for the page's pictures (the owner's generated set, 28 Oct 2026), in the page's order. */
+const TIME_TO_MARKET_PICTURE_ALT: Record<"en" | "vi", UseCasePictureAlt> = {
+  en: {
+    hero: "Eleven supplier files, spreadsheets, PDFs and feeds, flowing through one funnel into a catalogue of products, then on to a calendar with the launch date flagged.",
+    situation:
+      "A launch timeline over nine weeks: enriching everything runs past the launch date, while enriching what decides finishes before it, with the rest filled in after launch.",
+    steps: [
+      "A partial supplier spreadsheet with two fields blank, under a magnifying glass.",
+      "A handful of fields picked out of a grid of many, then ranked in a short list.",
+      "A readiness gauge, with supplier files arriving in a loop as it is measured again.",
+    ],
+    gets: [
+      "A short checklist of four ticked fields, picked out of a much larger catalogue schema.",
+      "Three places a fact can come from, the supplier's text, a feed, or nowhere, each feeding one product's fields.",
+      "A readiness gauge already reading, before any visitor has arrived.",
+      "A list of fields with a cut line drawn under the first three, the rest below it.",
+    ],
+  },
+  vi: {
+    hero: "Mười một tệp nhà cung cấp, bảng tính, PDF và nguồn cấp, đi qua một phễu vào danh mục sản phẩm, rồi tới lịch có cắm cờ ngày ra mắt.",
+    situation:
+      "Dòng thời gian ra mắt trong chín tuần: làm giàu mọi thứ kéo dài quá ngày ra mắt, còn làm giàu những gì quyết định thì xong trước ngày đó, phần còn lại được bổ sung sau khi ra mắt.",
+    steps: [
+      "Một bảng tính nhà cung cấp còn dở với hai trường để trống, dưới một kính lúp.",
+      "Một số ít trường được chọn ra từ lưới rất nhiều trường, rồi được xếp hạng thành danh sách ngắn.",
+      "Đồng hồ đo mức sẵn sàng, với các tệp nhà cung cấp đến theo vòng lặp khi được đo lại.",
+    ],
+    gets: [
+      "Danh sách kiểm tra ngắn gồm bốn trường đã tích, chọn ra từ một lược đồ danh mục lớn hơn nhiều.",
+      "Ba nơi một thông tin có thể đến từ, văn bản của nhà cung cấp, một nguồn cấp, hoặc không đâu cả, mỗi nơi đi vào các trường của một sản phẩm.",
+      "Đồng hồ đo mức sẵn sàng đã có số, trước khi có khách truy cập nào.",
+      "Danh sách trường với một vạch cắt kẻ dưới ba trường đầu, phần còn lại nằm dưới vạch.",
+    ],
+  },
+};
+
+export const timeToMarketPictureAlt = (l: string) =>
+  byLocale(
+    { en: TIME_TO_MARKET_PICTURE_ALT.en, vi: TIME_TO_MARKET_PICTURE_ALT.vi },
+    l,
+  );

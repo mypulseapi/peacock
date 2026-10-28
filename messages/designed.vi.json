@@ -1192,7 +1192,10 @@
         "4": "Thấy những sửa chữa nào là không đáng",
         "5": "Một số sửa chữa không thay đổi gì cả. Chúng tôi báo cáo những cái đó trước, vì một quý dành cho sai trường dữ liệu mới là sai lầm đắt giá.",
         "6": "Bằng chứng cho người đã phê duyệt",
-        "7": "Trước và sau trên cùng một thước đo, ngay trong tuần công việc hoàn tất chứ không phải quý sau."
+        "7": "Trước và sau trên cùng một thước đo, ngay trong tuần công việc hoàn tất chứ không phải quý sau.",
+        "picture1Alt": "Một người mua hỏi liệu máy tính xách tay có vừa túi của mình không, nối với trang sản phẩm của máy, nơi kích thước màn hình vừa được cập nhật và đáp ứng đúng nhu cầu.",
+        "picture2Alt": "Ba lần sửa xếp thành cột: tên màu và phụ kiện trong hộp không làm thay đổi gì và được báo cáo trước; kích thước màn hình có thay đổi và được đánh dấu.",
+        "picture3Alt": "Trước và sau trên cùng một thước đo, đặt trên một cái cân, phía sau cao hơn, cùng một thẻ phê duyệt, được duyệt ngay trong tuần."
       },
       "section5": {
         "1": "Những câu hỏi quyết định",

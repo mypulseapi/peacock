@@ -17,7 +17,7 @@ export function HeroSection() {
   const t = designedText("home.hero");
   return (
     <section
-      className="relative isolate hero-bg hero-screen flex items-center overflow-x-clip border-b border-line"
+      className="relative isolate bg-surface-0 hero-screen flex items-center overflow-x-clip border-b border-line"
       data-hero
     >
       <HeroAurora />

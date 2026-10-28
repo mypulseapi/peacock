@@ -3442,56 +3442,12 @@ html[data-theme="dark"] {
 }
 
 /* ------------------------------------------------------------------ */
-/* Hero: headline left, product demo right, one screen tall, on a soft  */
-/* gradient that follows the cursor.                                    */
+/* Hero: headline left, product demo right, one screen tall.           */
 /* ------------------------------------------------------------------ */
-/* Cursor position for the hero spotlight (src/main.js sets them on pointer move). Registered so they
-   can transition: a 100ms ease smooths the movement while the light stays on the cursor; the tail copies
-   take 300ms and 600ms, so while the cursor moves they stretch out behind it like a comet tail. */
-@property --hero-x {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 72%;
-}
-@property --hero-y {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 40%;
-}
-/* The tail: two fainter copies of the light that follow the same position more slowly. --hero-tail is 1
-   while the cursor moves and fades to 0 when it stops, so the tail only shows in motion. */
-@property --hero-tail {
-  syntax: "<number>";
-  inherits: false;
-  initial-value: 0;
-}
-@property --hero-tx1 {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 72%;
-}
-@property --hero-ty1 {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 40%;
-}
-@property --hero-tx2 {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 72%;
-}
-@property --hero-ty2 {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 40%;
-}
 /* One screen tall below the sticky h-17 header (svh: the mobile address bar never cuts it) */
 @utility hero-screen {
   min-height: calc(100svh - var(--spacing) * 17);
 }
-/* Soft background: page colour with a faint Sky wash (top right) and Pulse Blue wash (bottom left), plus a
-   small, clear primary light at --hero-x / --hero-y (solid core, soft edge) with a two-part tail that only
-   shows while the cursor moves. At rest: light 14% + wash 4% keeps text AA (muted 4.57 light / 6.26 dark). */
 /* Aurora (21st.dev "aurora-background" by manuarora700, owner 28 Oct 2026), ported to Tailwind v4 with
    no dependency: the same striped mask over a moving colour band, blurred and blended, in the brand's blue
    and sky only (the original's violet and indigo are out, by the owner's no-purple rule). It sits behind a
@@ -3559,32 +3515,18 @@ html[data-theme="dark"] {
     transform: translateX(-66.6667%);
   }
 }
+/* Soft background for the heroes other than home's: page colour with a faint Sky wash (top right) and Pulse
+   Blue wash (bottom left), plus a small, clear primary light (solid core, soft edge). It followed the cursor
+   on the home hero until 28 Oct 2026, when the owner had the motion and that hero's background removed.
+   Light 14% + wash 4% keeps text AA (muted 4.57 light / 6.26 dark). */
 @utility hero-bg {
   --hero-light: color-mix(in oklab, var(--color-primary) 14%, transparent);
   background-color: var(--color-surface-0);
   background-image:
     radial-gradient(
-      20rem circle at var(--hero-x) var(--hero-y),
+      20rem circle at 72% 40%,
       var(--hero-light),
       var(--hero-light) 20%,
-      transparent 70%
-    ),
-    radial-gradient(
-      17rem circle at var(--hero-tx1) var(--hero-ty1),
-      color-mix(
-        in oklab,
-        var(--color-primary) calc(var(--hero-tail) * 6%),
-        transparent
-      ),
-      transparent 70%
-    ),
-    radial-gradient(
-      14rem circle at var(--hero-tx2) var(--hero-ty2),
-      color-mix(
-        in oklab,
-        var(--color-primary) calc(var(--hero-tail) * 4%),
-        transparent
-      ),
       transparent 70%
     ),
     radial-gradient(
@@ -3597,14 +3539,6 @@ html[data-theme="dark"] {
       color-mix(in oklab, var(--color-primary) 4%, transparent),
       transparent
     );
-  transition:
-    --hero-x 100ms ease-out,
-    --hero-y 100ms ease-out,
-    --hero-tx1 300ms ease-out,
-    --hero-ty1 300ms ease-out,
-    --hero-tx2 600ms ease-out,
-    --hero-ty2 600ms ease-out,
-    --hero-tail 500ms ease-out;
 }
 /* Soft gradient section background (Why Pulse): page colour with a faint Pulse Blue wash from the top left and a
    Sky wash from the bottom right. 10% each keeps muted text AA even where they overlap (4.66 light / 5.97 dark). */

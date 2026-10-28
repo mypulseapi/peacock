@@ -6,7 +6,6 @@
 //   [data-shelf]           → draws a grid of product squares (data-total, data-ready)
 //   [data-demo]            → plays the hero workflow demo (tabs, steps, captions — see DESIGN.md §6)
 //   [data-spy] links       → highlight the section currently in view (sets [data-active], aria-current)
-//   [data-hero]            → hero background light (and its tail) follows the cursor (--hero-x / --hero-y …)
 //   [data-cta]             → call-to-action band: dots light up around the cursor (--cta-x / --cta-y)
 //   [data-why]             → Why PULSE orbit: turning ring; a circle turns to the top and opens its reason
 //   [data-pause] buttons   → pause the hero demo (sets [data-held] on [data-pausable])
@@ -234,8 +233,6 @@ function mountFeatures() {
  *
  * Kept as a flag rather than by deleting the three hover blocks, so a
  * re-copy of src/main.js needs this one line put back and nothing else.
- * `canHover` itself still drives the cursor-following hero light and the
- * card tilt, which are hover effects that should stay hover effects.
  *
  * Hover opens the menus for mouse and pen only, gated on `canHover`. Touch has no hover and
  * keyboard needs Enter, so both keep the click and Enter path unchanged. Leaving the nav closes
@@ -481,37 +478,6 @@ mobileMenu?.addEventListener("toggle", () => {
 mobileMenu
   ?.querySelectorAll("a")
   .forEach((a) => a.addEventListener("click", () => (mobileMenu.open = false)));
-
-// Hero background: the soft spotlight follows the cursor with a fading tail (CSS hero-bg transitions them).
-// Mouse and pen only, not with reduced motion; without it the light stays at its resting place.
-feature("[data-hero]", function initHero(hero) {
-  if (!(!reduceMotion)) return;
-  let frame = 0;
-  let still = 0;
-  hero.addEventListener("pointermove", (event) => {
-    if (event.pointerType === "touch") return;
-    // The tail shows while the cursor moves and fades out 150ms after it stops
-    hero.style.setProperty("--hero-tail", "1");
-    clearTimeout(still);
-    still = setTimeout(() => hero.style.setProperty("--hero-tail", "0"), 150);
-    if (frame) return;
-    frame = requestAnimationFrame(() => {
-      frame = 0;
-      const box = hero.getBoundingClientRect();
-      const x = ((event.clientX - box.left) / box.width) * 100;
-      const y = ((event.clientY - box.top) / box.height) * 100;
-      // The light and both tail copies get the same position; CSS moves the tail more slowly
-      for (const [px, py] of [
-        ["--hero-x", "--hero-y"],
-        ["--hero-tx1", "--hero-ty1"],
-        ["--hero-tx2", "--hero-ty2"],
-      ]) {
-        hero.style.setProperty(px, `${x.toFixed(1)}%`);
-        hero.style.setProperty(py, `${y.toFixed(1)}%`);
-      }
-    });
-  });
-});
 
 // Call-to-action band (every page): the dots around the cursor light up. Mouse and pen only, not with reduced
 // motion; the light fades out when the pointer leaves the band (CSS cta-dots).

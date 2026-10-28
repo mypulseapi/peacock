@@ -9,7 +9,7 @@ import { useCallback, useEffect } from "react";
  *
  * `public/designed-motion.js` is `src/main.js` from afedfc1 byte for byte, plus one appended
  * `rescan`. It drives everything the converted markup declares through data attributes: reveal on
- * scroll, the count-ups, the hero demo, the shelf grid, the cursor-following hero light, the
+ * scroll, the count-ups, the hero demo, the shelf grid, the
  * scroll spy.
  *
  * **Without it the pages are blank.** `.reveal` is `opacity: 0` whenever scripting is enabled and

@@ -1769,7 +1769,10 @@
         "4": "See which repairs were not worth it",
         "5": "Some repairs move nothing. We report those first, because a quarter spent on the wrong field is the expensive mistake.",
         "6": "Evidence for whoever signed it off",
-        "7": "Before and after on the same measure, in the week the work finishes rather than the quarter after."
+        "7": "Before and after on the same measure, in the week the work finishes rather than the quarter after.",
+        "picture1Alt": "A shopper asking whether a laptop will fit their bag, joined to the laptop’s product page, where the screen size has just been updated and meets the need.",
+        "picture2Alt": "Three repairs in a column: colour name and box contents moved nothing and are reported first; screen size moved and is ticked.",
+        "picture3Alt": "Before and after on the same measure, set on a balance, with the after higher, and a sign-off card, signed off the same week."
       },
       "section5": {
         "1": "The ones that decide it",

@@ -8,8 +8,13 @@
  */
 import { designedText } from "../../t";
 import { GainsCards } from "../gains";
+import { productPictures } from "../product-pictures";
 export function Section4Section() {
   const t = designedText("product.decision-verification.section4");
+  const { gains } = productPictures("decision-verification", {
+    steps: [],
+    gains: [t("picture1Alt"), t("picture2Alt"), t("picture3Alt")],
+  });
   return (
     <section className="bg-soft-gradient scroll-mt-16 border-b border-line">
             <div className="frame py-20 lg:py-28">
@@ -18,13 +23,14 @@ export function Section4Section() {
                   {t('1')}
                 </h2>
               </div>
-              {/* One card per benefit, each with a drawn picture (owner's layout A, 26 Oct 2026). It replaces
-                  the exported figure, whose three cards had only an icon each; titles and bodies unchanged. */}
+              {/* One card per benefit (owner's layout A, 26 Oct 2026), each with the owner's generated picture
+                  (28 Oct 2026, product-pictures.tsx). It replaced the exported figure, whose three cards had only
+                  an icon each; titles and bodies unchanged. */}
               <GainsCards
                 items={[
-                  { art: "validate", title: t("2"), body: t("3") },
-                  { art: "notWorthIt", title: t("4"), body: t("5") },
-                  { art: "evidence", title: t("6"), body: t("7") },
+                  { picture: gains[0], title: t("2"), body: t("3") },
+                  { picture: gains[1], title: t("4"), body: t("5") },
+                  { picture: gains[2], title: t("6"), body: t("7") },
                 ]}
               />
             </div>

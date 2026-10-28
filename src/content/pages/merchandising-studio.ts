@@ -26,6 +26,13 @@ export const MERCHANDISING_STUDIO: ChapterContent = {
   title: "The console, and an honest list of what it cannot do yet.",
   lede: "Where you manage the catalogue the engine reads, set how much traffic is held back, and pull the record behind any ranking decision. Overrides are not built yet, and this page says which ones and why rather than leaving you to find out in a pilot.",
 
+  heroImage: {
+    src: "product/merchandising-studio-hero-the-console.webp",
+    width: 1536,
+    height: 1024,
+    alt: "The Merchandising Studio console on one laptop: products, categories and brands down the side, the holdback switched on, and decision records with their factors. A dashed note beside it reads that overrides are not built yet.",
+  },
+
   visualHeading: "What the console holds today.",
   visualBody:
     "Catalogue and attributes, personas, the holdback percentage, and the decision record.",
@@ -63,37 +70,6 @@ export const MERCHANDISING_STUDIO: ChapterContent = {
       note: "Counted from the codebase rather than the roadmap. The second figure is the one most console pages leave out.",
     },
 
-    hero: {
-      kind: "flow",
-      steps: [
-        {
-          k: "Open a shelf",
-          v: "the catalogue the engine actually reads",
-          tone: "good",
-        },
-        {
-          k: "Inspect a ranking",
-          v: "any result, any session, any time",
-          tone: "good",
-        },
-        {
-          k: "Read the record",
-          v: "the factors behind that exact position",
-          tone: "good",
-        },
-        {
-          k: "Set the holdback",
-          v: "how much traffic never sees the engine",
-          tone: "work",
-        },
-        {
-          k: "Override a position",
-          v: "not built, and dated below",
-          tone: "warn",
-        },
-      ],
-      note: "Four of these exist today. The fifth is the one every merchandiser asks about first, which is why it is on the screen rather than left out of it.",
-    },
     chain: {
       kind: "lanes",
       lanes: [
@@ -234,6 +210,13 @@ export const MERCHANDISING_STUDIO_VI: ChapterContent = {
     "Bảng điều khiển, và một danh sách trung thực những gì nó chưa làm được.",
   lede: "Nơi bạn quản lý danh mục mà bộ máy đọc, đặt mức lưu lượng được giữ lại, và tra ra bản ghi đằng sau bất kỳ quyết định xếp hạng nào. Các quyền ghi đè chưa được xây dựng, và trang này nói rõ là những quyền nào cùng lý do, thay vì để bạn tự phát hiện giữa một chương trình thử nghiệm.",
 
+  heroImage: {
+    src: "product/merchandising-studio-hero-the-console.webp",
+    width: 1536,
+    height: 1024,
+    alt: "Bảng điều khiển Merchandising Studio trên một máy tính xách tay: sản phẩm, ngành hàng và thương hiệu ở cột bên, nhánh giữ lại đang bật, và các bản ghi quyết định kèm yếu tố. Một ghi chú viền đứt bên cạnh cho biết quyền ghi đè chưa được xây dựng.",
+  },
+
   visualHeading: "Bảng điều khiển hiện có những gì.",
   visualBody:
     "Danh mục và thuộc tính, chân dung, tỷ lệ lưu lượng giữ lại, và bản ghi quyết định.",
@@ -271,37 +254,6 @@ export const MERCHANDISING_STUDIO_VI: ChapterContent = {
       note: "Đếm từ mã nguồn chứ không phải từ lộ trình. Con số thứ hai là thứ phần lớn trang giới thiệu bảng điều khiển bỏ qua.",
     },
 
-    hero: {
-      kind: "flow",
-      steps: [
-        {
-          k: "Mở một kệ hàng",
-          v: "đúng danh mục mà bộ máy đang đọc",
-          tone: "good",
-        },
-        {
-          k: "Soi một bảng xếp hạng",
-          v: "kết quả nào, phiên nào, lúc nào cũng được",
-          tone: "good",
-        },
-        {
-          k: "Đọc bản ghi",
-          v: "các yếu tố dẫn tới đúng vị trí đó",
-          tone: "good",
-        },
-        {
-          k: "Đặt mức giữ lại",
-          v: "bao nhiêu lưu lượng không bao giờ thấy bộ máy",
-          tone: "work",
-        },
-        {
-          k: "Ghi đè một vị trí",
-          v: "chưa xây, và có nêu rõ bên dưới",
-          tone: "warn",
-        },
-      ],
-      note: "Bốn trong số này đã có hôm nay. Cái thứ năm là thứ mọi người làm trưng bày hàng hỏi đầu tiên, nên nó nằm trên màn hình chứ không bị giấu đi.",
-    },
     chain: {
       kind: "lanes",
       lanes: [
@@ -432,3 +384,37 @@ export const MERCHANDISING_STUDIO_VI: ChapterContent = {
 
 export const merchandisingStudio = (l: string) =>
   byLocale({ en: MERCHANDISING_STUDIO, vi: MERCHANDISING_STUDIO_VI }, l);
+
+/** The alt text of the owner's step and gain pictures, in the order of `steps.items` and `gets.items`. */
+export const merchandisingStudioPictureAlt = (l: string) =>
+  byLocale(
+    {
+      en: {
+        steps: [
+          "The catalogue in the console, products, categories and brands, beside the attribute schema the engine reads from them.",
+          "The holdback switch, and visitors split by it, most to the ranked strip and a share to your own, greyed.",
+          "A decision id looked up, and its record opened beside the results: the product and the six factors behind its place.",
+        ],
+        gains: [
+          "The taxonomy tree, electronics down to laptops, beside the attribute schema: screen size, memory, storage, colour, weight and processor.",
+          "Persona tags, traveller, student and creator, dragged onto products: a backpack, a laptop and a camera.",
+          "The holdback panel, a share of shoppers set apart, switched on by default.",
+          "A decision record: its id, the factors behind the first product, and the four products that were shown.",
+        ],
+      },
+      vi: {
+        steps: [
+          "Danh mục trong bảng điều khiển, sản phẩm, ngành hàng và thương hiệu, cạnh lược đồ thuộc tính mà bộ máy đọc từ đó.",
+          "Công tắc giữ lại, và khách được nó tách ra, phần lớn tới dải đã xếp hạng, một phần tới dải của chính bạn, tô xám.",
+          "Một mã quyết định được tra, và bản ghi của nó mở ra cạnh kết quả: sản phẩm và sáu yếu tố đứng sau vị trí của nó.",
+        ],
+        gains: [
+          "Cây phân loại, từ điện tử xuống máy tính xách tay, cạnh lược đồ thuộc tính: kích thước màn hình, bộ nhớ, dung lượng lưu trữ, màu, cân nặng và bộ xử lý.",
+          "Các nhãn chân dung, người đi du lịch, sinh viên và người sáng tạo, được kéo vào sản phẩm: một ba lô, một máy tính xách tay và một máy ảnh.",
+          "Bảng giữ lại, một phần người mua được tách riêng, bật sẵn theo mặc định.",
+          "Một bản ghi quyết định: mã của nó, các yếu tố đứng sau sản phẩm đầu tiên, và bốn sản phẩm đã được hiển thị.",
+        ],
+      },
+    },
+    l,
+  );

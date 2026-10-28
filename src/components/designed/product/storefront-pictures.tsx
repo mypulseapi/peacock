@@ -1,7 +1,7 @@
 /**
- * The storefront product pages' pictures, the owner's generated sets (Search and Recommendations,
- * 28 Oct 2026), in place of the drawings in `storefront-drawings.tsx`, which stay for the pages whose
- * set is not made yet. The hero is the page's `heroImage`, in its content.
+ * The storefront product pages' pictures, the owner's generated sets (Search, Recommendations, Pages
+ * and Merchandising Studio, 28 Oct 2026), in place of the drawings in `storefront-drawings.tsx`, which
+ * stay for the page whose set is not made yet. The hero is the page's `heroImage`, in its content.
  *
  * Transparent PNGs served as WebP, 3 : 2 like the boxes `ChapterPage` sets them in, so the box's own
  * surface shows through and they follow the theme.
@@ -34,6 +34,32 @@ const FILES = {
       "product/recommendations-gain-2-any-slot-on-any-surface.webp",
       "product/recommendations-gain-3-one-ranker-not-two.webp",
       "product/recommendations-gain-4-falls-back-to-your-own-strip.webp",
+    ],
+  },
+  pages: {
+    steps: [
+      "product/pages-step-1-the-visit-starts-with-context.webp",
+      "product/pages-step-2-it-re-ranks-as-they-move.webp",
+      "product/pages-step-3-a-share-sees-your-rule.webp",
+    ],
+    gains: [
+      "product/pages-gain-1-any-grid-any-page.webp",
+      "product/pages-gain-2-campaign-context-from-the-first-request.webp",
+      "product/pages-gain-3-your-layout-untouched.webp",
+      "product/pages-gain-4-a-control-arm-on-every-page.webp",
+    ],
+  },
+  "merchandising-studio": {
+    steps: [
+      "product/merchandising-studio-step-1-manage-what-the-engine-reads.webp",
+      "product/merchandising-studio-step-2-set-the-holdback.webp",
+      "product/merchandising-studio-step-3-pull-a-decision-record.webp",
+    ],
+    gains: [
+      "product/merchandising-studio-gain-1-catalogue-and-attributes.webp",
+      "product/merchandising-studio-gain-2-persona-tagging.webp",
+      "product/merchandising-studio-gain-3-holdback-control.webp",
+      "product/merchandising-studio-gain-4-the-decision-record.webp",
     ],
   },
 };

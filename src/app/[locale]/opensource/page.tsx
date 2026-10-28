@@ -5,7 +5,6 @@ import { img } from "@/lib/cdn";
 import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
 import { Link } from "@/i18n/routing";
-import { PageHero } from "@/components/PageHero";
 import { PageSchema } from "@/components/PageSchema";
 import {
   opensource,
@@ -140,30 +139,38 @@ export default async function Page({ params }: PageProps) {
           },
         ]}
       />
-      <PageHero
-        title={c.hero.title}
-        lede={c.hero.lede}
-        titleClassName="text-hero"
-        aside={<Picture src="hero-evidence-for-agents" alt={alt.hero} />}
-      >
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href={GITHUB}
-            className="btn-primary inline-flex items-center gap-2"
-          >
-            <svg className="size-4" aria-hidden="true">
-              <use href="#i-github" />
-            </svg>
-            {c.hero.primary}
-          </a>
-          <a href={DOCS} className="btn-secondary inline-flex">
-            {c.hero.secondary}
-          </a>
+      {/* The designed pages' hero (`hero-bg`, as on Research and the product pages), not `PageHero`,
+          whose older canvas did not match them in the dark theme. Words left, picture right. */}
+      <section className="hero-bg overflow-hidden border-b border-line">
+        <div className="frame grid items-center gap-12 pt-12 pb-20 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-24">
+          <div>
+            <h1 className="max-w-[20ch] text-hero text-balance">
+              {c.hero.title}
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted">
+              {c.hero.lede}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={GITHUB}
+                className="btn-primary inline-flex items-center gap-2"
+              >
+                <svg className="size-4" aria-hidden="true">
+                  <use href="#i-github" />
+                </svg>
+                {c.hero.primary}
+              </a>
+              <a href={DOCS} className="btn-secondary inline-flex">
+                {c.hero.secondary}
+              </a>
+            </div>
+            <p className="mt-5 max-w-2xl text-sm text-pretty text-muted">
+              {c.hero.supporting}
+            </p>
+          </div>
+          <Picture src="hero-evidence-for-agents" alt={alt.hero} />
         </div>
-        <p className="mt-5 max-w-2xl text-sm text-pretty text-muted">
-          {c.hero.supporting}
-        </p>
-      </PageHero>
+      </section>
 
       <Band
         heading={c.why.heading}

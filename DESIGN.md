@@ -125,8 +125,9 @@ reduced motion). The light is a small (20rem) 14% circle with a solid core and a
 designed page's hero (owner, 28 Oct 2026; ported from 21st.dev's aurora-background with no dependency). A striped band of
 Pulse Blue and Sky, blurred and difference-blended, drifting in the top-right corner (40s loop, still under reduced motion);
 no violet. It moves by `transform` only: animating its background repainted the blurred layer every frame and made
-scrolling the pricing hero stutter. Its corner mask and opacity (0.3, 0.2 on a phone) are set by contrast, not taste:
-`muted` text stays AA wherever a streak crosses it (lowest 4.63, light theme; 4.65 with no aurora). Stronger fails AA.
+scrolling the pricing hero stutter. Size and strength (opacity 0.5, the corner ellipse to 70%) are the owner's pick over
+a fainter corner that kept every line AA: where a bright streak crosses a hero's `muted` lede, that line can measure
+below 4.5 (lowest 3.3; 4.65 with no aurora). A known exception to the AA rule, by the owner's choice.
 
 **Dark band gradient:** `bg-void-gradient` — the `void` base with a soft Pulse Blue glow (top left) and Sky glow
 (bottom right). Not used on any page at the moment (the home research band and How it works are light now); white and `void-muted` text stay AA

@@ -3501,10 +3501,9 @@ html[data-theme="dark"] {
    The band moves by `transform` on a layer three heroes wide, not the original's animated
    `background-position` on a fixed background: that repainted the blurred, blended layer every frame,
    and scrolling the pricing hero dropped to about 45 fps on a 4x-throttled CPU; this way the compositor
-   slides one painted layer and scrolling holds 120 fps, as with no aurora at all. The corner mask and the
-   opacity keep `muted` text AA wherever a streak crosses it (lowest 4.5, light theme, on a phone; it was
-   4.65 with no aurora): 0.3, and 0.2 on a phone, where the hero is narrow enough for the corner to reach
-   the words. */
+   slides one painted layer and scrolling holds 120 fps, as with no aurora at all. Size and strength are
+   the owner's pick (28 Oct 2026, over a fainter corner that kept `muted` text AA): where a bright streak
+   crosses a hero's `muted` lede, that line can measure below 4.5 (lowest 3.3). */
 @utility aurora {
   --aurora-base: var(--color-surface-0);
   --aurora-stripes: repeating-linear-gradient(
@@ -3527,13 +3526,13 @@ html[data-theme="dark"] {
   );
   position: absolute;
   inset: -10px;
-  opacity: 0.2;
+  opacity: 0.5;
   pointer-events: none;
   background-image: var(--aurora-stripes), var(--aurora-band);
   background-size: 300%, 200%;
   background-position: 50% 50%, 50% 50%;
   filter: blur(10px) invert(1);
-  mask-image: radial-gradient(ellipse 70% 45% at 100% 0%, black 10%, transparent 100%);
+  mask-image: radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%);
   &::after {
     content: "";
     position: absolute;
@@ -3545,9 +3544,6 @@ html[data-theme="dark"] {
     mix-blend-mode: difference;
     will-change: transform;
     animation: aurora 40s linear infinite;
-  }
-  @media (width >= 48rem) {
-    opacity: 0.3;
   }
   &:is(html[data-theme="dark"] *) {
     filter: blur(10px);

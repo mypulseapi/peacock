@@ -97,7 +97,6 @@ export default async function Page({ params }: PageProps) {
         ]}
       />
       <PageHero
-        eyebrow={c.hero.eyebrow}
         title={c.hero.title}
         lede={c.hero.lede}
         titleClassName="text-hero"
@@ -124,7 +123,9 @@ export default async function Page({ params }: PageProps) {
       <Band heading={c.why.heading}>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className={card}>
-            <p className="eyebrow">{c.why.knowsLabel}</p>
+            <p className="text-sm font-semibold text-muted">
+              {c.why.knowsLabel}
+            </p>
             <ul className="mt-4 flex flex-wrap gap-2">
               {c.why.knows.map((k) => (
                 <li
@@ -137,7 +138,9 @@ export default async function Page({ params }: PageProps) {
             </ul>
           </div>
           <div className={card}>
-            <p className="eyebrow-primary">{c.why.asksLabel}</p>
+            <p className="text-sm font-semibold text-primary">
+              {c.why.asksLabel}
+            </p>
             <ul className="mt-4 space-y-2 text-body text-ink">
               {c.why.asks.map((a) => (
                 <li key={a}>“{a}”</li>
@@ -179,11 +182,15 @@ export default async function Page({ params }: PageProps) {
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <div className={`${card} space-y-4`}>
             <div>
-              <p className="eyebrow">{c.agent.userLabel}</p>
+              <p className="text-sm font-semibold text-muted">
+                {c.agent.userLabel}
+              </p>
               <p className="mt-1 text-body text-ink">{c.agent.user}</p>
             </div>
             <div className="rounded-xl bg-primary-tint p-4">
-              <p className="eyebrow-primary">{c.agent.agentLabel}</p>
+              <p className="text-sm font-semibold text-primary">
+                {c.agent.agentLabel}
+              </p>
               <p className="mt-1 text-body text-pretty text-ink">
                 {c.agent.reply}
               </p>
@@ -222,7 +229,9 @@ export default async function Page({ params }: PageProps) {
             </h2>
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className={card}>
-                <p className="eyebrow-primary">{c.honesty.canLabel}</p>
+                <p className="text-sm font-semibold text-primary">
+                  {c.honesty.canLabel}
+                </p>
                 <ul className="mt-3 space-y-2 text-sm text-muted">
                   {c.honesty.can.map((x) => (
                     <li key={x}>{x}</li>
@@ -230,7 +239,9 @@ export default async function Page({ params }: PageProps) {
                 </ul>
               </div>
               <div className={card}>
-                <p className="eyebrow">{c.honesty.neverLabel}</p>
+                <p className="text-sm font-semibold text-muted">
+                  {c.honesty.neverLabel}
+                </p>
                 <ul className="mt-3 space-y-2 text-sm text-muted">
                   {c.honesty.never.map((x) => (
                     <li key={x}>{x}</li>
@@ -281,7 +292,9 @@ export default async function Page({ params }: PageProps) {
       <Band heading={c.boundary.heading}>
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <div className={card}>
-            <p className="eyebrow-primary">{c.boundary.openLabel}</p>
+            <p className="text-sm font-semibold text-primary">
+              {c.boundary.openLabel}
+            </p>
             <ul className="mt-3">
               {c.boundary.open.map((o) => (
                 <li
@@ -295,7 +308,9 @@ export default async function Page({ params }: PageProps) {
             </ul>
           </div>
           <div className={card}>
-            <p className="eyebrow">{c.boundary.paidLabel}</p>
+            <p className="text-sm font-semibold text-muted">
+              {c.boundary.paidLabel}
+            </p>
             <ul className="mt-3">
               {c.boundary.paid.map((p) => (
                 <li
@@ -327,7 +342,9 @@ export default async function Page({ params }: PageProps) {
             </pre>
           </div>
           <div className={card}>
-            <p className="eyebrow">{c.packs.questionsLabel}</p>
+            <p className="text-sm font-semibold text-muted">
+              {c.packs.questionsLabel}
+            </p>
             <ol className="mt-3 list-decimal space-y-2 pl-5 text-body text-pretty text-muted">
               {c.packs.questions.map((q) => (
                 <li key={q}>{q}</li>

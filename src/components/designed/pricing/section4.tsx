@@ -14,10 +14,7 @@ export function Section4Section() {
     <section className="hero-bg border-b border-line">
       <div className="frame py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="reveal eyebrow">{t("finalEyebrow")}</p>
-          <h2 className="reveal mt-3 text-title text-balance">
-            {t("finalTitle")}
-          </h2>
+          <h2 className="reveal text-title text-balance">{t("finalTitle")}</h2>
           <p className="reveal mx-auto mt-4 max-w-xl text-body leading-relaxed text-pretty text-muted delay-100">
             {t("finalLede")}
           </p>

@@ -53,19 +53,23 @@ function Picture({ src, alt }: { src: string; alt: string }) {
 
 /**
  * One band of the page: a heading, optional intro, and its body. Alternating tint is the caller's.
- * With a `picture`, the heading and intro sit beside it from `lg` and the body runs full width below.
+ * With a `picture`, the heading and intro sit beside it from `lg` and the body runs full width below:
+ * the owner's zigzag (option A of five, 28 Oct 2026), `flip` putting the picture on the left so the
+ * sides alternate down the page. On a phone the picture always follows the heading.
  */
 function Band({
   heading,
   intro,
   tint,
   picture,
+  flip,
   children,
 }: {
   heading: string;
   intro?: string;
   tint?: boolean;
   picture?: ReactNode;
+  flip?: boolean;
   children: ReactNode;
 }) {
   const words = (
@@ -86,7 +90,7 @@ function Band({
         {picture ? (
           <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
             <div>{words}</div>
-            {picture}
+            <div className={flip ? "lg:order-first" : ""}>{picture}</div>
           </div>
         ) : (
           words
@@ -202,6 +206,7 @@ export default async function Page({ params }: PageProps) {
       <Band
         heading={c.model.heading}
         tint
+        flip
         picture={<Picture src="model-requirement-to-outcome" alt={alt.model} />}
       >
         <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -265,56 +270,53 @@ export default async function Page({ params }: PageProps) {
         </div>
       </Band>
 
-      <section className="border-b border-line bg-surface-1/50">
-        <div className="frame grid grid-cols-1 gap-10 py-16 lg:grid-cols-2 lg:py-20">
-          <div>
-            <h2 className="text-title text-balance">
-              {c.honesty.abstainHeading}
-            </h2>
-            {c.honesty.abstainBody.map((p) => (
-              <p key={p} className="mt-4 text-body text-pretty text-muted">
-                {p}
-              </p>
-            ))}
-            <div className="mt-8">
-              <Picture src="honesty-present-never-invent" alt={alt.honesty} />
-            </div>
-          </div>
-          <div>
-            <h2 className="text-title text-balance">
-              {c.honesty.factsHeading}
-            </h2>
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className={card}>
-                <p className="text-sm font-semibold text-primary">
-                  {c.honesty.canLabel}
-                </p>
-                <ul className="mt-3 space-y-2 text-sm text-muted">
-                  {c.honesty.can.map((x) => (
-                    <li key={x}>{x}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className={card}>
-                <p className="text-sm font-semibold text-muted">
-                  {c.honesty.neverLabel}
-                </p>
-                <ul className="mt-3 space-y-2 text-sm text-muted">
-                  {c.honesty.never.map((x) => (
-                    <li key={x}>{x}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <p className="mt-6 font-semibold text-pretty text-ink">
-              {c.honesty.rule}
+      <Band heading={c.honesty.abstainHeading} tint>
+        <div className="max-w-3xl space-y-4">
+          {c.honesty.abstainBody.map((p) => (
+            <p key={p} className="text-body text-pretty text-muted">
+              {p}
             </p>
+          ))}
+        </div>
+      </Band>
+
+      <Band
+        heading={c.honesty.factsHeading}
+        flip
+        picture={
+          <Picture src="honesty-present-never-invent" alt={alt.honesty} />
+        }
+      >
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className={card}>
+            <p className="text-sm font-semibold text-primary">
+              {c.honesty.canLabel}
+            </p>
+            <ul className="mt-3 space-y-2 text-sm text-muted">
+              {c.honesty.can.map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
+          </div>
+          <div className={card}>
+            <p className="text-sm font-semibold text-muted">
+              {c.honesty.neverLabel}
+            </p>
+            <ul className="mt-3 space-y-2 text-sm text-muted">
+              {c.honesty.never.map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
           </div>
         </div>
-      </section>
+        <p className="mt-6 font-semibold text-pretty text-ink">
+          {c.honesty.rule}
+        </p>
+      </Band>
 
       <Band
         heading={c.states.heading}
+        tint
         intro={c.states.intro}
         picture={
           <Picture src="states-six-evidence-problems" alt={alt.states} />
@@ -333,7 +335,7 @@ export default async function Page({ params }: PageProps) {
         </ul>
       </Band>
 
-      <Band heading={c.repairs.heading} intro={c.repairs.intro} tint>
+      <Band heading={c.repairs.heading} intro={c.repairs.intro}>
         <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
           {c.repairs.items.map((r) => (
             <li
@@ -354,6 +356,8 @@ export default async function Page({ params }: PageProps) {
 
       <Band
         heading={c.boundary.heading}
+        tint
+        flip
         picture={<Picture src="boundary-open-and-paid" alt={alt.boundary} />}
       >
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
@@ -394,7 +398,7 @@ export default async function Page({ params }: PageProps) {
         </p>
       </Band>
 
-      <Band heading={c.packs.heading} intro={c.packs.intro} tint>
+      <Band heading={c.packs.heading} intro={c.packs.intro}>
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <div className={card}>
             <div className="flex items-center justify-between gap-2">
@@ -422,6 +426,7 @@ export default async function Page({ params }: PageProps) {
 
       <Band
         heading={c.contribute.heading}
+        tint
         intro={c.contribute.intro}
         picture={
           <Picture
@@ -475,7 +480,7 @@ export default async function Page({ params }: PageProps) {
         </p>
       </Band>
 
-      <Band heading={c.audiences.heading} tint>
+      <Band heading={c.audiences.heading}>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {c.audiences.items.map((a) => (
             <li key={a.name} className={card}>
@@ -486,42 +491,33 @@ export default async function Page({ params }: PageProps) {
         </ul>
       </Band>
 
-      <section className="border-b border-line">
-        <div className="frame grid grid-cols-1 gap-10 py-16 lg:grid-cols-2 lg:py-20">
-          <div>
-            <h2 className="text-title text-balance">{c.not.heading}</h2>
-            <ul className="mt-6 space-y-3 text-body text-muted">
-              {c.not.items.map((n) => (
-                <li key={n} className="flex gap-3">
-                  <span aria-hidden="true" className="text-muted">
-                    ✕
-                  </span>
-                  {n}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 font-semibold text-pretty text-ink">
-              {c.not.close}
-            </p>
-          </div>
-          <div>
-            <h2 className="text-title text-balance">{c.principles.heading}</h2>
-            <ol className="mt-6 space-y-4">
-              {c.principles.items.map((p, i) => (
-                <li key={p.name} className="flex gap-4">
-                  <span className="font-mono text-sm text-primary">
-                    0{i + 1}
-                  </span>
-                  <span>
-                    <span className="font-semibold text-ink">{p.name}. </span>
-                    <span className="text-muted">{p.body}</span>
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
+      <Band heading={c.not.heading} tint>
+        <ul className="max-w-3xl space-y-3 text-body text-muted">
+          {c.not.items.map((n) => (
+            <li key={n} className="flex gap-3">
+              <span aria-hidden="true" className="text-muted">
+                ✕
+              </span>
+              {n}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 font-semibold text-pretty text-ink">{c.not.close}</p>
+      </Band>
+
+      <Band heading={c.principles.heading}>
+        <ol className="max-w-3xl space-y-4">
+          {c.principles.items.map((p, i) => (
+            <li key={p.name} className="flex gap-4">
+              <span className="font-mono text-sm text-primary">0{i + 1}</span>
+              <span>
+                <span className="font-semibold text-ink">{p.name}. </span>
+                <span className="text-muted">{p.body}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+      </Band>
 
       <section className="border-b border-line bg-surface-1/50">
         <div className="frame max-w-3xl py-16 lg:py-20">

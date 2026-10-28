@@ -5,8 +5,9 @@
       "2": "Request a Decision Audit"
     },
     "section1": {
-      "1": "We measure whether product data can answer the questions shoppers ask",
-      "2": "Pulse measures your product data against what shoppers actually decide on. Send one category export and get a ranked repair list back within 48 hours.",
+      "1": "Who we are",
+      "2": "Pulse is an intelligent product discovery platform that connects shoppers with the right products while helping businesses identify and close gaps in their product catalogs.",
+      "audience": "Our customers are businesses across industries worldwide. We focus on those selling products through websites and e-commerce platforms, regardless of their geographic location.",
       "3": "The same four gaps, ranked two ways",
       "4": "Example data",
       "5": "By how much is missing, of 216 products",

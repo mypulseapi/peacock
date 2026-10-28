@@ -23,6 +23,10 @@ export function Section1Section() {
                 >
                   {t('2')}
                 </p>
+                {/* Who we are (owner, 28 Oct 2026): who the customers are, in small type under the description. */}
+                <p className="mx-auto mt-6 max-w-xl text-sm text-pretty text-muted">
+                  {t("audience")}
+                </p>
               </div>
 
               <div

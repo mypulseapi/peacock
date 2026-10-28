@@ -1,6 +1,7 @@
 /**
- * The five storefront product pages' pictures, the owner's generated sets (28 Oct 2026), in place of
- * the drawings that stood in for them. The hero is the page's `heroImage`, in its content.
+ * The product pages' pictures, the owner's generated sets (28 Oct 2026), in place of the drawings that
+ * stood in for them: the five storefront pages, then Return Verification. The hero is the page's
+ * `heroImage`, in its content; a page whose situation is a picture rather than a panel has one here.
  *
  * Transparent PNGs served as WebP, 3 : 2 like the boxes `ChapterPage` sets them in, so the box's own
  * surface shows through and they follow the theme.
@@ -8,7 +9,26 @@
 import Image from "next/image";
 import { img } from "@/lib/cdn";
 
-const FILES = {
+const FILES: Record<
+  string,
+  { situation?: string; steps: string[]; gains: string[] }
+> = {
+  "return-verification": {
+    situation:
+      "product/return-verification-situation-reasons-nobody-joins.webp",
+    steps: [
+      "product/return-verification-step-1-export-orders-and-returns.webp",
+      "product/return-verification-step-2-join-returns-to-the-evidence.webp",
+      "product/return-verification-step-3-repair-then-verify.webp",
+    ],
+    gains: [
+      "product/return-verification-gain-1-returns-split-yours-and-not-yours.webp",
+      "product/return-verification-gain-2-facts-that-go-with-returns-ranked.webp",
+      "product/return-verification-gain-3-proof-a-repair-moved-the-right-returns.webp",
+      "product/return-verification-gain-4-value-at-your-own-costs.webp",
+      "product/return-verification-gain-5-ranking-for-purchases-that-stay-bought.webp",
+    ],
+  },
   "decision-api": {
     steps: [
       "product/decision-api-step-1-plugs-into-your-store.webp",
@@ -88,13 +108,17 @@ const pic = (src: string, alt: string) => (
   />
 );
 
-/** A page's step and gain pictures, for `ChapterPage`'s `art.steps` and `gainPictures`. */
-export function storefrontPictures(
-  slug: keyof typeof FILES,
-  alt: { steps: string[]; gains: string[] },
+/**
+ * A page's pictures for `ChapterPage`: `art.situation` where the page has one, `art.steps` and
+ * `gainPictures`. A slug missing from `FILES` fails the build, which is where it should be caught.
+ */
+export function productPictures(
+  slug: string,
+  alt: { situation?: string; steps: string[]; gains: string[] },
 ) {
   const f = FILES[slug];
   return {
+    situation: f.situation && pic(f.situation, alt.situation ?? ""),
     steps: f.steps.map((src, i) => pic(src, alt.steps[i])),
     gains: f.gains.map((src, i) => pic(src, alt.gains[i])),
   };

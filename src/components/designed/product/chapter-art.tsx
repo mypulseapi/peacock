@@ -2,9 +2,10 @@
  * The pictures on Return Verification and Promotion Audit (owner's mockup, 26 Oct 2026: hero A, sections C).
  *
  * Two kinds. The chain chart is markup, because its labels are words a reader needs and must
- * localise; their words come from each page's content module (`art`). The step and
+ * localise; their words come from each page's content module (`art`). Promotion Audit's step and
  * chapter drawings are inline SVG with no text and no figures, painted from the theme tokens, like
- * the gains pictures in `gains.tsx` (ODIN design/IMAGE-PLAN.md, "data gets drawn").
+ * the gains pictures in `gains.tsx` (ODIN design/IMAGE-PLAN.md, "data gets drawn"). Return
+ * Verification's are the owner's generated pictures now (`product-pictures.tsx`, 28 Oct 2026).
  *
  * Nothing here is measured. Each chart carries the page's "Illustration" badge, bar lengths are
  * shapes rather than values, and no number appears (ODIN hires/07-WHAT-WE-DO-NOT-CLAIM.md rule 9).
@@ -253,138 +254,6 @@ const Download = () => (
     />
   </g>
 );
-
-/** Two lines moving together until a repair, then one of them falls away. */
-const Diverge = () => (
-  <>
-    <rect
-      x="16"
-      y="16"
-      width="208"
-      height="128"
-      rx="12"
-      className="fill-card stroke-line"
-      strokeWidth="1.5"
-    />
-    <path d="M34 120h172" className="stroke-line" strokeWidth="1.5" />
-    <path
-      d="M128 32v88"
-      className="stroke-baseline"
-      strokeWidth="1.5"
-      strokeDasharray="4 4"
-    />
-    <path
-      d="M34 70l23-6 23 8 24-6 24 4 24-2 26 4 26 2"
-      className="fill-none stroke-baseline"
-      strokeWidth="3"
-    />
-    <path
-      d="M34 76l23-6 23 8 24-6 24 4 24 18 26 10 26 8"
-      className="fill-none stroke-primary"
-      strokeWidth="3"
-    />
-    <circle cx="128" cy="78" r="6" className="fill-primary" />
-  </>
-);
-
-export const RETURNS_ART = {
-  /** The reasons sit in a report; the product page they describe never hears of them. */
-  situation: (
-    <Drawing>
-      <Sheet x={14} y={26} w={90} rows={5} />
-      <rect
-        x="136"
-        y="26"
-        width="90"
-        height="112"
-        rx="10"
-        className="fill-card stroke-line"
-        strokeWidth="1.5"
-      />
-      <rect
-        x="146"
-        y="36"
-        width="70"
-        height="44"
-        rx="6"
-        className="fill-surface-1"
-      />
-      <rect
-        x="146"
-        y="90"
-        width="56"
-        height="7"
-        rx="3.5"
-        className="fill-surface-1"
-      />
-      <rect
-        x="146"
-        y="104"
-        width="44"
-        height="7"
-        rx="3.5"
-        className="fill-primary-tint"
-      />
-      <rect
-        x="146"
-        y="117"
-        width="62"
-        height="12"
-        rx="4"
-        className="fill-gap-fill stroke-gap-strong"
-        strokeWidth="1.2"
-        strokeDasharray="4 4"
-      />
-      <path
-        d="M106 82h8M126 82h8"
-        className="stroke-baseline"
-        strokeWidth="2.5"
-      />
-      <circle
-        cx="120"
-        cy="82"
-        r="7"
-        className="fill-card stroke-baseline"
-        strokeWidth="2"
-      />
-      <path d="M115 87l10-10" className="stroke-baseline" strokeWidth="2" />
-    </Drawing>
-  ),
-  steps: [
-    <Drawing key="export">
-      <Sheet x={40} y={18} w={160} rows={6} />
-      <rect
-        x="150"
-        y="44"
-        width="40"
-        height="106"
-        rx="6"
-        className="fill-none stroke-baseline"
-        strokeWidth="1.5"
-        strokeDasharray="4 4"
-      />
-      <path
-        d="M160 92l20 20M180 92l-20 20"
-        className="stroke-baseline"
-        strokeWidth="3"
-      />
-      <Download />
-    </Drawing>,
-    <Drawing key="join">
-      <Sheet x={14} y={24} w={88} rows={5} />
-      <Sheet x={138} y={24} w={88} rows={5} gapRow={2} />
-      <path
-        d="M102 57C120 57 120 93 138 93M102 75C120 75 120 75 138 75M102 111C120 111 120 93 138 93"
-        className="fill-none stroke-primary"
-        strokeWidth="2"
-      />
-      <circle cx="138" cy="93" r="4" className="fill-primary" />
-    </Drawing>,
-    <Drawing key="verify">
-      <Diverge />
-    </Drawing>,
-  ],
-};
 
 export const PROMOTIONS_ART = {
   /** Orders jump the day an offer runs; the returns come back weeks later, after the report. */

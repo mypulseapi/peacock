@@ -38,12 +38,7 @@ export function Section3Section() {
                 <li className="border-t-2 border-primary pt-6">
                   <h3 className="text-h3 text-ink">{t('7')}</h3>
                   <p className="mt-2 text-body leading-relaxed text-pretty text-muted">
-                    {t('rankingSteady')}{" "}
-                    <a
-                      href="#ranking"
-                      className="text-link underline underline-offset-4 hover:text-primary-hover"
-                      >{t('8')}</a
-                    >{t('9')}
+                    {t('rankingSteady')}
                   </p>
                 </li>
                 <li className="border-t-2 border-primary pt-6">

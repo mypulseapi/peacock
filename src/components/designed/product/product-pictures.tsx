@@ -1,6 +1,6 @@
 /**
  * The product pages' pictures, the owner's generated sets (28 Oct 2026), in place of the drawings that
- * stood in for them: the five storefront pages, then Return Verification. The hero is the page's
+ * stood in for them: the five storefront pages, Return Verification and Promotion Audit. The hero is the page's
  * `heroImage`, in its content; a page whose situation is a picture rather than a panel has one here.
  *
  * Transparent PNGs served as WebP, 3 : 2 like the boxes `ChapterPage` sets them in, so the box's own
@@ -13,6 +13,21 @@ const FILES: Record<
   string,
   { situation?: string; steps: string[]; gains: string[] }
 > = {
+  "promotion-audit": {
+    situation: "product/promotion-audit-situation-judged-on-the-day.webp",
+    steps: [
+      "product/promotion-audit-step-1-export-your-promotion-history.webp",
+      "product/promotion-audit-step-2-measure-each-offer-against-doing-nothing.webp",
+      "product/promotion-audit-step-3-test-what-is-not-yet-proven.webp",
+    ],
+    gains: [
+      "product/promotion-audit-gain-1-every-offer-net-of-returns.webp",
+      "product/promotion-audit-gain-2-where-to-give-nothing.webp",
+      "product/promotion-audit-gain-3-a-listing-repair-priced-against-a-discount.webp",
+      "product/promotion-audit-gain-4-the-price-shoppers-actually-pay.webp",
+      "product/promotion-audit-gain-5-tests-where-the-history-cannot-tell.webp",
+    ],
+  },
   "return-verification": {
     situation:
       "product/return-verification-situation-reasons-nobody-joins.webp",

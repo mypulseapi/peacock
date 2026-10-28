@@ -4,15 +4,17 @@
  * Hand-written rather than generated: the converter walks `<main>`, and this section sits between
  * `</main>` and the footer, so all six pages carrying the `shell:cta` markers lost it. The other
  * five already had a `request.tsx`; this page did not, which is why it was the one page whose
- * `[data-cta]` and two `.reveal` hooks came up short against the designer's DOM.
+ * call-to-action band and two `.reveal` hooks came up short against the designer's DOM.
  */
 import { designedHref, designedText } from "../t";
 import Link from "next/link";
+import { CtaBoxes } from "@/components/designed/cta-boxes";
 
 export function RequestSection() {
   const t = designedText("visual-evidence.request");
   return (
-    <section id="request" className="cta-dots scroll-mt-16 border-t border-line" data-cta>
+    <section id="request" className="cta-boxes scroll-mt-16 border-t border-line">
+      <CtaBoxes />
       <div className="frame py-24 text-center lg:py-32">
         <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
           {t('1')}

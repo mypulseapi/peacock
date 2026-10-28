@@ -23,6 +23,7 @@ import { renderLocale } from "@/i18n/render-locale";
 import { ui } from "@/content/locale";
 import { StoryCta, type StoryContent } from "@/components/StoryPage";
 import { UseCaseScene } from "./charts";
+import { HeroAurora } from "@/components/designed/hero-aurora";
 
 export interface UseCaseArt {
   hero: ReactNode;
@@ -62,7 +63,8 @@ export function UseCasePage({
   const t = ui(locale);
   return (
     <>
-      <section className="hero-bg overflow-hidden border-b border-line">
+      <section className="relative isolate hero-bg overflow-hidden border-b border-line">
+        <HeroAurora />
         <div className="frame pt-12 pb-20 lg:pt-16 lg:pb-28">
           <Essay figure={<UseCaseScene spec={c.scenes?.hero} />}>
             <h1 className="reveal text-hero text-balance">{h(c.title)}</h1>

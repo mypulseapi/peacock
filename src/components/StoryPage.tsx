@@ -12,6 +12,7 @@ import Image from "next/image";
 import { img } from "@/lib/cdn";
 import { Scene, type SceneSpec } from "@/components/story/Scenes";
 import { Section, SectionHead } from "@/components/home/Section";
+import { CtaBoxes } from "@/components/designed/cta-boxes";
 
 /**
  * One template for every page reached from the menu.
@@ -365,7 +366,8 @@ export function StoryCta({ c, title = c.cta.title }: { c: StoryContent; title?: 
   // The closing band every designed page ends on (home, about, careers): same classes, so a
   // story page closes the way the rest of the site does. The copy stays this page's own.
   return (
-    <section id="request" className="cta-dots scroll-mt-16 border-t border-line" data-cta>
+    <section id="request" className="cta-boxes scroll-mt-16 border-t border-line">
+      <CtaBoxes />
       <div className="frame py-24 text-center lg:py-32">
         <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">{title}</h2>
         <p className="reveal mx-auto mt-6 max-w-xl text-lg text-pretty text-muted delay-100">{c.cta.body}</p>

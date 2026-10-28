@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Image from "next/image";
+import { img } from "@/lib/cdn";
 import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
 import { Link } from "@/i18n/routing";
@@ -10,6 +12,7 @@ import {
   GITHUB,
   GITHUB_ISSUE,
   DOCS,
+  opensourcePictureAlt,
   type Status,
 } from "@/content/pages/opensource";
 
@@ -29,29 +32,65 @@ export async function generateMetadata({
   };
 }
 
-/** One band of the page: a heading, optional intro, and its body. Alternating tint is the caller's. */
+/**
+ * One of the owner's generated pictures (28 Oct 2026): transparent 3 : 2 WebP on the Decision Audit's
+ * picture panel (`how-glow` on `surface-1`), like the product pages', so it follows the theme.
+ */
+function Picture({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="how-glow aspect-3/2 overflow-hidden rounded-2xl border border-line bg-surface-1">
+      <Image
+        src={img(`opensource/${src}.webp`)}
+        alt={alt}
+        width={1000}
+        height={667}
+        sizes="(min-width: 1024px) 36rem, 100vw"
+        className="size-full object-contain"
+      />
+    </div>
+  );
+}
+
+/**
+ * One band of the page: a heading, optional intro, and its body. Alternating tint is the caller's.
+ * With a `picture`, the heading and intro sit beside it from `lg` and the body runs full width below.
+ */
 function Band({
   heading,
   intro,
   tint,
+  picture,
   children,
 }: {
   heading: string;
   intro?: string;
   tint?: boolean;
+  picture?: ReactNode;
   children: ReactNode;
 }) {
+  const words = (
+    <>
+      <h2 className="max-w-3xl text-title text-balance">{heading}</h2>
+      {intro ? (
+        <p className="mt-4 max-w-2xl text-body text-pretty text-muted">
+          {intro}
+        </p>
+      ) : null}
+    </>
+  );
   return (
     <section
       className={`border-b border-line ${tint ? "bg-surface-1/50" : ""}`}
     >
       <div className="frame py-16 lg:py-20">
-        <h2 className="max-w-3xl text-title text-balance">{heading}</h2>
-        {intro ? (
-          <p className="mt-4 max-w-2xl text-body text-pretty text-muted">
-            {intro}
-          </p>
-        ) : null}
+        {picture ? (
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+            <div>{words}</div>
+            {picture}
+          </div>
+        ) : (
+          words
+        )}
         <div className="mt-10">{children}</div>
       </div>
     </section>
@@ -69,6 +108,7 @@ export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
   const c = opensource(locale);
+  const alt = opensourcePictureAlt(locale);
   const badge = (s: Status) => (
     <span
       className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold ${
@@ -100,6 +140,7 @@ export default async function Page({ params }: PageProps) {
         title={c.hero.title}
         lede={c.hero.lede}
         titleClassName="text-hero"
+        aside={<Picture src="hero-evidence-for-agents" alt={alt.hero} />}
       >
         <div className="mt-8 flex flex-wrap gap-3">
           <a
@@ -120,7 +161,12 @@ export default async function Page({ params }: PageProps) {
         </p>
       </PageHero>
 
-      <Band heading={c.why.heading}>
+      <Band
+        heading={c.why.heading}
+        picture={
+          <Picture src="why-product-data-vs-decision-data" alt={alt.why} />
+        }
+      >
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className={card}>
             <p className="text-sm font-semibold text-muted">
@@ -153,7 +199,11 @@ export default async function Page({ params }: PageProps) {
         </p>
       </Band>
 
-      <Band heading={c.model.heading} tint>
+      <Band
+        heading={c.model.heading}
+        tint
+        picture={<Picture src="model-requirement-to-outcome" alt={alt.model} />}
+      >
         <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {c.model.steps.map((s, i) => (
             <li key={s.name} className={card}>
@@ -178,7 +228,11 @@ export default async function Page({ params }: PageProps) {
         </p>
       </Band>
 
-      <Band heading={c.agent.heading} intro={c.agent.intro}>
+      <Band
+        heading={c.agent.heading}
+        intro={c.agent.intro}
+        picture={<Picture src="agent-evidence-does-not-say" alt={alt.agent} />}
+      >
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <div className={`${card} space-y-4`}>
             <div>
@@ -222,6 +276,9 @@ export default async function Page({ params }: PageProps) {
                 {p}
               </p>
             ))}
+            <div className="mt-8">
+              <Picture src="honesty-present-never-invent" alt={alt.honesty} />
+            </div>
           </div>
           <div>
             <h2 className="text-title text-balance">
@@ -256,7 +313,13 @@ export default async function Page({ params }: PageProps) {
         </div>
       </section>
 
-      <Band heading={c.states.heading} intro={c.states.intro}>
+      <Band
+        heading={c.states.heading}
+        intro={c.states.intro}
+        picture={
+          <Picture src="states-six-evidence-problems" alt={alt.states} />
+        }
+      >
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {c.states.items.map((s) => (
             <li key={s.name} className={card}>
@@ -289,7 +352,10 @@ export default async function Page({ params }: PageProps) {
         </p>
       </Band>
 
-      <Band heading={c.boundary.heading}>
+      <Band
+        heading={c.boundary.heading}
+        picture={<Picture src="boundary-open-and-paid" alt={alt.boundary} />}
+      >
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <div className={card}>
             <p className="text-sm font-semibold text-primary">
@@ -354,7 +420,16 @@ export default async function Page({ params }: PageProps) {
         </div>
       </Band>
 
-      <Band heading={c.contribute.heading} intro={c.contribute.intro}>
+      <Band
+        heading={c.contribute.heading}
+        intro={c.contribute.intro}
+        picture={
+          <Picture
+            src="contribute-agent-proposes-people-review"
+            alt={alt.contribute}
+          />
+        }
+      >
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {c.contribute.ways.map((w) => (
             <li key={w.name} className={card}>

@@ -141,11 +141,11 @@ export default async function Page({ params }: PageProps) {
           },
         ]}
       />
-      {/* The designed pages' hero (`hero-bg`, as on Research and the product pages), not `PageHero`,
+      {/* The designed pages' hero (`hero-bg`, one screen tall like home's and the product pages'), not `PageHero`,
           whose older canvas did not match them in the dark theme. Words left, picture right. */}
-      <section className="relative isolate hero-bg overflow-hidden border-b border-line">
+      <section className="relative isolate hero-bg hero-screen flex items-center overflow-hidden border-b border-line">
         <HeroAurora />
-        <div className="frame grid items-center gap-12 pt-12 pb-20 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-24">
+        <div className="frame grid flex-1 items-center gap-12 pt-12 pb-20 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-24">
           <div>
             <h1 className="max-w-[20ch] text-hero text-balance">
               {c.hero.title}

@@ -23,6 +23,7 @@ import { StoryCta, type StoryContent } from "@/components/StoryPage";
 import { GainsCards } from "./gains";
 import { StepsZigzag } from "./steps-zigzag";
 import { CompareSlider } from "./compare-slider";
+import { HeroAurora } from "@/components/designed/hero-aurora";
 
 export type ChapterContent = StoryContent &
   Required<Pick<StoryContent, "situation" | "gets" | "limits">> & {
@@ -112,6 +113,7 @@ export function ChapterPage({
       {/* The hero of the designed product pages (decision-audit/section1.tsx), class for class:
           the words centred over a narrow column, then the figure across the whole screen. */}
       <section className="relative isolate overflow-hidden border-b border-line">
+        <HeroAurora />
         <div className="frame">
           <div className="pt-12 pb-0 lg:pt-16">
             <div className="mx-auto max-w-4xl text-center">

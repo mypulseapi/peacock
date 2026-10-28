@@ -24,6 +24,7 @@ import { ProblemDrawing, SceneDrawing, ShelfDrawing } from "./drawings";
 import { img } from "@/lib/cdn";
 import { designedHref, designedText } from "../t";
 import { CompareSlider } from "../product/compare-slider";
+import { HeroAurora } from "@/components/designed/hero-aurora";
 
 /** A picture on the CDN; `alt` is its message key, `"section1.figureAlt"`, so it follows the locale. */
 export interface SectorPicture {
@@ -135,7 +136,8 @@ export function SectorPage({ s }: { s: Sector }) {
   return (
     <>
       {/* Hero: the words centred over a narrow column, the sector's picture under them. */}
-      <section className="hero-bg overflow-hidden border-b border-line">
+      <section className="relative isolate hero-bg overflow-hidden border-b border-line">
+        <HeroAurora />
         <div className="frame pt-12 pb-16 lg:pt-16 lg:pb-20">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="reveal text-hero text-balance">{t1("1")}</h1>

@@ -34,9 +34,9 @@ export const RETURN_VERIFICATION: Content = {
     others: ["Transit damage", "Failed delivery"],
   },
   heroImage: {
-    src: "product/return-verification-returns-joined-to-missing-facts.webp",
-    width: 1946,
-    height: 808,
+    src: "product/return-verification-hero-returns-joined.webp",
+    width: 1280,
+    height: 531,
     alt: "Return Verification on one laptop. A table reads five return reasons: too large, does not work with my device and not as described each point to a missing fact, the dimensions, the compatibility and the material, while transit damage and failed delivery are set aside. Cards beside it split returns into yours and not yours, rank the facts that go with returns, show a repaired product's returns falling away from unrepaired ones, and value the change at your own costs. Three steps run beneath: export orders and returns, we join returns to the evidence, repair then verify.",
   },
 
@@ -178,9 +178,9 @@ export const RETURN_VERIFICATION_VI: Content = {
     others: ["Hư hỏng khi vận chuyển", "Giao hàng thất bại"],
   },
   heroImage: {
-    src: "product/return-verification-returns-joined-to-missing-facts.webp",
-    width: 1946,
-    height: 808,
+    src: "product/return-verification-hero-returns-joined.webp",
+    width: 1280,
+    height: 531,
     alt: "Return Verification trên một máy tính xách tay. Một bảng đọc năm lý do trả hàng: quá to, không dùng được với thiết bị của tôi và không giống mô tả, mỗi lý do chỉ tới một thông tin còn thiếu là kích thước, khả năng tương thích và chất liệu, còn hư hỏng khi vận chuyển và giao hàng thất bại được để riêng. Các thẻ bên cạnh tách hàng bị trả thành phần của bạn và phần không phải, xếp thứ tự các thông tin đi cùng hàng bị trả, cho thấy hàng bị trả của sản phẩm đã sửa giảm xuống so với sản phẩm chưa sửa, và định giá thay đổi theo chi phí của bạn. Ba bước ở bên dưới: xuất đơn hàng và hàng bị trả, nối hàng bị trả với bằng chứng, sửa rồi kiểm chứng.",
   },
 

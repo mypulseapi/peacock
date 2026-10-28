@@ -37,9 +37,9 @@ export const PROMOTION_AUDIT: Content = {
     kept: "Stay bought",
   },
   heroImage: {
-    src: "product/promotion-audit-offers-against-doing-nothing.webp",
-    width: 1913,
-    height: 822,
+    src: "product/promotion-audit-hero-offers.webp",
+    width: 1280,
+    height: 548,
     alt: "Promotion Audit on one laptop. A table sets each offer against doing nothing: a voucher is marked test first, a price cut did worse than doing nothing, and free shipping and a listing repair beat doing nothing. Cards beside it show an offer's orders net of returns and failed deliveries, where to give nothing, a listing repair priced against a price cut, and a test where the history cannot tell. Three steps run beneath: export your promotion history, we measure each offer against doing nothing, test what is not yet proven.",
   },
 
@@ -183,9 +183,9 @@ export const PROMOTION_AUDIT_VI: Content = {
     kept: "Được giữ lại",
   },
   heroImage: {
-    src: "product/promotion-audit-offers-against-doing-nothing.webp",
-    width: 1913,
-    height: 822,
+    src: "product/promotion-audit-hero-offers.webp",
+    width: 1280,
+    height: 548,
     alt: "Promotion Audit trên một máy tính xách tay. Một bảng đặt từng ưu đãi cạnh việc không làm gì: voucher được đánh dấu thử trước, giảm giá kém hơn không làm gì, còn miễn phí vận chuyển và sửa trang sản phẩm tốt hơn không làm gì. Các thẻ bên cạnh cho thấy đơn hàng của một ưu đãi sau khi trừ hàng bị trả và giao thất bại, chỗ nào không nên ưu đãi, việc sửa trang sản phẩm đặt cạnh giảm giá, và một thử nghiệm khi lịch sử không đủ để biết. Ba bước ở bên dưới: xuất lịch sử khuyến mãi, đo mỗi ưu đãi so với không làm gì, thử nghiệm những gì chưa được chứng minh.",
   },
 

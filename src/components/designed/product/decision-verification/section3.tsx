@@ -30,29 +30,31 @@ import { StepsZigzag } from "../steps-zigzag";
  * against after, and the coverage that moved with the report it comes back in.
  *
  * 26 Oct 2026, the owner: laid out as the zig-zag of the newer product pages (`steps-zigzag.tsx`),
- * one row per step with its number large, instead of three columns on a rail. The panels are opaque and pale, so
- * each keeps a light plate pinned in both themes, as before.
+ * one row per step with its number large, instead of three columns on a rail. The three pictures are
+ * the owner's transparent versions (28 Oct 2026), 3 : 2, on the Decision Audit's picture panel
+ * (`how-glow` on `surface-1`), which follows the theme, in the same full-width 3 : 2 box as the other
+ * product pages' steps (`Picture` in chapters.tsx). The white plate the opaque ones needed is gone.
  */
 const STEPS = [
   {
     n: "step-1",
-    src: "product/decision-verification-catalogue-export-progress.webp",
-    w: 716,
-    h: 724,
+    src: "product/decision-verification-export-progress.webp",
+    w: 720,
+    h: 480,
     alt: "figure1Alt",
   },
   {
     n: "step-2",
-    src: "product/decision-verification-before-after-attributes.webp",
-    w: 716,
-    h: 724,
+    src: "product/decision-verification-before-after.webp",
+    w: 720,
+    h: 480,
     alt: "figure2Alt",
   },
   {
     n: "step-3",
-    src: "product/decision-verification-coverage-gap-reduced-report.webp",
-    w: 712,
-    h: 724,
+    src: "product/decision-verification-coverage-gap-report.webp",
+    w: 720,
+    h: 480,
     alt: "figure3Alt",
   },
 ] as const;
@@ -77,14 +79,14 @@ export function Section3Section() {
         title: line(`${s.n}-title`),
         body: line(`${s.n}-body`),
         picture: (
-          <div className="mx-auto max-w-md overflow-hidden rounded-2xl border border-line bg-[#fdfdfd]">
+          <div className="how-glow grid aspect-3/2 place-items-center overflow-hidden rounded-2xl border border-line bg-surface-1">
             <Image
               src={img(s.src)}
               alt={t(s.alt)}
               width={s.w}
               height={s.h}
-              sizes="(min-width: 1024px) 28rem, 90vw"
-              className="h-auto w-full"
+              sizes="(min-width: 1024px) 36rem, 100vw"
+              className="size-full object-contain"
             />
           </div>
         ),

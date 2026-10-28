@@ -509,7 +509,6 @@
   },
   "pricing": {
     "section1": {
-      "1": "Đừng sửa nhầm trường dữ liệu nữa",
       "2": "Một bản xuất ngành hàng. Nhận lại Decision Audit đã xếp hạng trong vòng 48 giờ.",
       "3": "Bắt đầu từ đây",
       "5": "Danh sách xếp hạng những gì nên ghi nhận trước, trên chính sản phẩm của bạn.",
@@ -546,9 +545,9 @@
       "37": "Phân tích theo từng yếu tố cho mỗi sản phẩm",
       "38": "Tự động quay về thứ tự của bạn nếu chậm hoặc gián đoạn",
       "39": "Tính giá theo số quyết định, thống nhất sau dự án thử nghiệm",
-      "heroTitle": "Một khóa API, mọi sản phẩm.",
-      "heroTitle2": "Bạn trả tiền cho quyết định, không bao giờ cho đo lường.",
-      "heroLede": "Xây dựng miễn phí bằng các công cụ mã nguồn mở, bắt đầu với Decision Audit miễn phí, và trả tiền cho những quyết định Pulse đưa ra cho danh mục, cửa hàng hay tác tử AI của bạn.",
+      "heroTitle": "Một khóa API. Mọi sản phẩm.",
+      "heroTitle2": "Trả tiền cho quyết định, không phải cho đo lường.",
+      "heroLede": "Xây dựng miễn phí bằng các công cụ mã nguồn mở. Bắt đầu với Decision Audit miễn phí. Chỉ trả tiền cho những quyết định vận hành danh mục, cửa hàng hoặc tác tử AI của bạn.",
       "afterTitle": "Nếu bản kiểm tra tìm ra thứ đáng sửa",
       "afterLede": "Bạn chọn Pulse đi xa tới đâu.",
       "monitorBadge": "Định kỳ",

@@ -71,14 +71,13 @@ export function Section1Section() {
     <section className="hero-bg border-b border-line">
       <div className="frame pt-12 pb-16 lg:pb-20">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="reveal eyebrow">{t("1")}</p>
           {/*
                   `text-title` rather than `text-headline`, and wider. The sector heroes carry one
                   sentence and fit two lines at 48px; this carries two and ran to three, which read
                   as a heavier heading than the rest of the site. A step down plus the wider column
                   puts it back at two lines.
                 */}
-          <h1 className="reveal mx-auto mt-3 max-w-4xl text-title text-balance">
+          <h1 className="reveal mx-auto max-w-4xl text-title text-balance">
             <span className="sm:block">{t("heroTitle")}</span>{" "}
             <span className="sm:block">{t("heroTitle2")}</span>
           </h1>

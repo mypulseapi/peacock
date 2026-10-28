@@ -6,7 +6,7 @@
 //   [data-shelf]           → draws a grid of product squares (data-total, data-ready)
 //   [data-demo]            → plays the hero workflow demo (tabs, steps, captions — see DESIGN.md §6)
 //   [data-spy] links       → highlight the section currently in view (sets [data-active], aria-current)
-//   [data-cta]             → call-to-action band: dots light up around the cursor (--cta-x / --cta-y)
+//   [data-boxes]           → call-to-action grid: each cell the cursor enters gets a random colour (--lit)
 //   [data-why]             → Why PULSE orbit: turning ring; a circle turns to the top and opens its reason
 //   [data-pause] buttons   → pause the hero demo (sets [data-held] on [data-pausable])
 //   [data-bg-video]        → product hero background video: theme-matched source, plays only while on screen
@@ -479,27 +479,6 @@ mobileMenu
   ?.querySelectorAll("a")
   .forEach((a) => a.addEventListener("click", () => (mobileMenu.open = false)));
 
-// Call-to-action band (every page): the dots around the cursor light up. Mouse and pen only, not with reduced
-// motion; the light fades out when the pointer leaves the band (CSS cta-dots).
-feature("[data-cta]", function initCta(cta) {
-  if (reduceMotion) return;
-  let frame = 0;
-  let point = null;
-  cta.addEventListener("pointermove", (event) => {
-    if (event.pointerType === "touch") return;
-    cta.setAttribute("data-lit", "");
-    point = event;
-    if (frame) return;
-    frame = requestAnimationFrame(() => {
-      frame = 0;
-      const box = cta.getBoundingClientRect();
-      cta.style.setProperty("--cta-x", `${point.clientX - box.left}px`);
-      cta.style.setProperty("--cta-y", `${point.clientY - box.top}px`);
-    });
-  });
-  cta.addEventListener("pointerleave", () => cta.removeAttribute("data-lit"));
-});
-
 // Hero workflow demo: steps play in order. The pace comes from CSS — when the active tab's timer bar
 // (animate-demo-timer) finishes, the next step starts. Hovering the app window (not the timeline) or scrolling it out of view
 // pauses the timer; clicking a tab jumps to that step. With reduced motion the timer is hidden, so
@@ -851,6 +830,20 @@ feature("[data-pause]", function initPause(button) {
 // reduced motion, and only while on screen). Clicking a circle turns it to 3 o'clock and opens the card beside it
 // with its reason; clicking it again, the card's × or Esc closes the card and the ring turns on. "Next" moves on.
 // The ring also holds still while the pointer or keyboard focus is on the orbit.
+// Call-to-action background boxes (CSS boxes-grid): each cell the cursor enters gets one of the six box
+// colours at random, as 21st.dev's original does; CSS lights it and fades it out.
+feature("[data-boxes]", function initBoxes(grid, signal) {
+  grid.addEventListener(
+    "pointerover",
+    (event) => {
+      const cell = event.target;
+      if (cell.parentElement?.parentElement !== grid) return;
+      cell.style.setProperty("--lit", `var(--box-${1 + Math.floor(Math.random() * 6)})`);
+    },
+    { signal },
+  );
+});
+
 feature("[data-why]", function initWhy(why, signal) {
   const spin = why.querySelector("[data-why-spin]");
   const tabs = [...why.querySelectorAll("[data-why-tab]")];

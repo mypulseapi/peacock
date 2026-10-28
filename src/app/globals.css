@@ -3870,8 +3870,10 @@ html[data-theme="dark"] {
   [data-done] & {
     scale: 1 1; /* steps already played stay full on the timeline */
   }
+  /* Keyboard focus no longer holds it: after an arrow key picked a step, the countdown stood still
+     until focus left the demo, which read as broken (owner, 28 Oct 2026). An arrow key now restarts
+     the step like a click; the title-bar pause button is the WCAG 2.2.2 stop. */
   [data-demo]:has([data-demo-window]:hover) &, /* only over the app window, not the timeline */
-  [data-demo]:has(:focus-visible) &, /* keyboard focus inside the demo holds it (WCAG 2.2.2) */
   [data-demo][data-paused] &,
   [data-demo][data-held] & {
     animation-play-state: paused;

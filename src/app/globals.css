@@ -2581,7 +2581,6 @@ html[data-theme="dark"] {
   [data-demo][data-paused] &,
   [data-demo][data-held] &,
   [data-demo]:has([data-demo-window]:hover) &,
-  [data-demo]:has(:focus-visible) &,
   [data-how-card]:not([data-active]) &,
   [data-how-card][data-held] & {
     animation-play-state: paused;

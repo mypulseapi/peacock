@@ -3,10 +3,7 @@ import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
 import { storyFaqSchema } from "@/components/StoryPage";
 import { ChapterPage } from "@/components/designed/product/chapters";
-import {
-  PagesOutput,
-  StorefrontScene,
-} from "@/components/designed/product/storefront-art";
+import { StorefrontScene } from "@/components/designed/product/storefront-art";
 import { productPictures } from "@/components/designed/product/product-pictures";
 import { PageSchema } from "@/components/PageSchema";
 import { pages, pagesPictureAlt } from "@/content/pages/pages";
@@ -57,7 +54,7 @@ export default async function Page({ params }: PageProps) {
           situationIsPanel: true,
         }}
         gainPictures={pictures.gains}
-        output={{ panel: <PagesOutput />, layout: "band" }}
+        output={{ panel: pictures.output, layout: "band", bare: true }}
       />
     </>
   );

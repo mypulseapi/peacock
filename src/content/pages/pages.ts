@@ -335,11 +335,13 @@ export const PAGES_VI: ChapterContent = {
 
 export const pages = (l: string) => byLocale({ en: PAGES, vi: PAGES_VI }, l);
 
-/** The alt text of the owner's step and gain pictures, in the order of `steps.items` and `gets.items`. */
+/** The alt text of the owner's pictures: the output section's, then the steps and gains in the order of `steps.items` and `gets.items`. */
 export const pagesPictureAlt = (l: string) =>
   byLocale(
     {
       en: {
+        output:
+          "The same category page twice, side by side, with the same header, banner and footer: one window in your rule’s order, one ranked, the same eight hiking shoes in a different order in each, and each shopper kept in the same arm all session.",
         steps: [
           "The context a visit brings before any click, the referrer, the device and the campaign, joined to a shopper landing on a page.",
           "A filter chosen in the sidebar, and the grid reordering what has not been seen yet to match it.",
@@ -353,6 +355,8 @@ export const pagesPictureAlt = (l: string) =>
         ],
       },
       vi: {
+        output:
+          "Cùng một trang ngành hàng hiện hai lần, đặt cạnh nhau, giữ nguyên đầu trang, băng quảng cáo và chân trang: một cửa sổ theo thứ tự quy tắc của bạn, một cửa sổ đã xếp hạng, cùng tám đôi giày leo núi nhưng mỗi bên một thứ tự, và mỗi người mua ở nguyên một nhánh suốt phiên.",
         steps: [
           "Bối cảnh mà một lần ghé mang theo trước mọi cú nhấp, nguồn giới thiệu, thiết bị và chiến dịch, nối tới một người mua vừa vào trang.",
           "Một bộ lọc được chọn ở thanh bên, và lưới sắp xếp lại những gì chưa được xem cho khớp với nó.",

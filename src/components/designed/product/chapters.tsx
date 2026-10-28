@@ -95,7 +95,12 @@ export function ChapterPage({
    * Three layouts, for the owner to choose (26 Oct 2026): words beside the panel, words over it, or
    * both inside a wash panel as on Decision Verification's comparison.
    */
-  output?: { panel: ReactNode; layout?: "split" | "centre" | "band" };
+  output?: {
+    panel: ReactNode;
+    layout?: "split" | "centre" | "band";
+    /** A transparent picture rather than a panel: no window shadow, which would frame it as a box. */
+    bare?: boolean;
+  };
   /**
    * The two pictures of `c.beforeAfter`, on a slider (owner, 27 Oct 2026, the agent pages): drag to
    * wipe from one to the other, the two lists under it, after the gains.
@@ -362,11 +367,13 @@ function Output({
   body,
   panel,
   layout = "split",
+  bare = false,
 }: {
   heading: string;
   body?: string;
   panel: ReactNode;
   layout?: "split" | "centre" | "band";
+  bare?: boolean;
 }) {
   const words = (
     <>
@@ -375,7 +382,11 @@ function Output({
     </>
   );
   const figure = (
-    <div className="reveal rounded-2xl shadow-window delay-100">{panel}</div>
+    <div
+      className={`reveal delay-100 ${bare ? "" : "rounded-2xl shadow-window"}`}
+    >
+      {panel}
+    </div>
   );
   if (layout === "centre")
     return (

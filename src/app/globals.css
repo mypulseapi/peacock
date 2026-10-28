@@ -3611,14 +3611,25 @@ html[data-theme="dark"] {
     border-left: 1px solid var(--color-line);
   }
   & > div > div {
+    position: relative;
     width: 4rem;
     height: 2rem;
     border-top: 1px solid var(--color-line);
     border-right: 1px solid var(--color-line);
-    transition: background-color 2s;
   }
-  & > div > div:hover {
+  /* The light is a layer whose opacity fades, not the cell's background-color: Chrome runs a
+     background-color transition on the compositor, and as fades ended it painted an old lit square,
+     away from the cursor, for one frame (8 to 29 such frames in a 17s recording; 0 with opacity). */
+  & > div > div::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background-color: var(--lit, var(--color-signal));
+    opacity: 0;
+    transition: opacity 2s;
+  }
+  & > div > div:hover::before {
+    opacity: 1;
     transition-duration: 0s;
   }
   /* the columns overflow the grid's box, so the plus layer is sized from the counts CtaBoxes sets */
@@ -3859,8 +3870,10 @@ html[data-theme="dark"] {
   [data-done] & {
     scale: 1 1; /* steps already played stay full on the timeline */
   }
+  /* Keyboard focus no longer holds it: after an arrow key picked a step, the countdown stood still
+     until focus left the demo, which read as broken (owner, 28 Oct 2026). An arrow key now restarts
+     the step like a click; the title-bar pause button is the WCAG 2.2.2 stop. */
   [data-demo]:has([data-demo-window]:hover) &, /* only over the app window, not the timeline */
-  [data-demo]:has(:focus-visible) &, /* keyboard focus inside the demo holds it (WCAG 2.2.2) */
   [data-demo][data-paused] &,
   [data-demo][data-held] & {
     animation-play-state: paused;

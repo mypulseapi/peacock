@@ -1,7 +1,8 @@
 /**
  * The product pages' pictures, the owner's generated sets (28 Oct 2026), in place of the drawings that
- * stood in for them: the five storefront pages, Return Verification and Promotion Audit. The hero is the page's
- * `heroImage`, in its content; a page whose situation is a picture rather than a panel has one here.
+ * stood in for them: the five storefront pages, Return Verification, Promotion Audit, and Decision
+ * Monitor's gain cards. The hero is the page's `heroImage`, in its content; a page whose situation
+ * is a picture rather than a panel has one here.
  *
  * Transparent PNGs served as WebP, 3 : 2 like the boxes `ChapterPage` sets them in, so the box's own
  * surface shows through and they follow the theme.
@@ -13,6 +14,14 @@ const FILES: Record<
   string,
   { situation?: string; steps: string[]; gains: string[] }
 > = {
+  "decision-monitor": {
+    steps: [],
+    gains: [
+      "product/decision-monitor-gain-1-catch-decay-before-a-buyer-does.webp",
+      "product/decision-monitor-gain-2-know-the-cause-not-just-the-number.webp",
+      "product/decision-monitor-gain-3-compare-quarters-not-snapshots.webp",
+    ],
+  },
   "promotion-audit": {
     situation: "product/promotion-audit-situation-judged-on-the-day.webp",
     steps: [

@@ -2,8 +2,8 @@
  * The use-case pages' pictures, the owner's generated sets (SEO and AEO 28 Oct 2026, Time to market
  * the same day), in place of the drawings that stood in for them.
  *
- * Transparent PNGs served as WebP, in a wash frame, so the page's surface shows through and they
- * follow the theme. A page's steps and cards share one box shape, so a picture made a little wider or
+ * Transparent PNGs served as WebP, on the Decision Audit's picture panel (`how-glow` on `surface-1`,
+ * owner, 28 Oct 2026), so the panel's glow shows through and they follow the theme. A page's steps and cards share one box shape, so a picture made a little wider or
  * narrower still lines up with its neighbours: 3 : 2 on SEO and AEO, 2 : 1 on Time to market, whose
  * set came out wide.
  */
@@ -31,7 +31,7 @@ const Frame = ({
   box?: string;
 }) => (
   <div
-    className={`overflow-hidden rounded-2xl border border-line bg-primary-wash ${box}`}
+    className={`how-glow overflow-hidden rounded-2xl border border-line bg-surface-1 ${box}`}
   >
     {children}
   </div>

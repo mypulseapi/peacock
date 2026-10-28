@@ -5,7 +5,8 @@
  * Decision Audit's own section, which keeps its exported figure.
  *
  * The pictures are the owner's generated ones (`product-pictures.tsx`, 28 Oct 2026), transparent
- * WebP on the card's wash. They replaced the inline SVG drawings that stood in for them here.
+ * WebP on the Decision Audit's picture panel (`how-glow` on `surface-1`). They replaced the inline SVG
+ * drawings that stood in for them here.
  */
 import type { ReactNode } from "react";
 
@@ -23,7 +24,7 @@ export function GainsCards({
           className="reveal grid items-center gap-6 rounded-2xl border border-line bg-card p-4 lg:grid-cols-2 lg:gap-14 lg:p-5"
         >
           <div
-            className={`aspect-3/2 overflow-hidden rounded-xl border border-line bg-primary-wash ${i % 2 ? "lg:order-last" : ""}`}
+            className={`how-glow aspect-3/2 overflow-hidden rounded-xl border border-line bg-surface-1 ${i % 2 ? "lg:order-last" : ""}`}
           >
             {item.picture}
           </div>

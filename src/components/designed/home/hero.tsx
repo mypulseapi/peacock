@@ -11,14 +11,16 @@ import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
 import Link from "next/link";
+import { HeroAurora } from "@/components/designed/hero-aurora";
 
 export function HeroSection() {
   const t = designedText("home.hero");
   return (
     <section
-      className="hero-bg hero-screen flex items-center overflow-x-clip border-b border-line"
+      className="relative isolate hero-bg hero-screen flex items-center overflow-x-clip border-b border-line"
       data-hero
     >
+      <HeroAurora />
       <div className="w-full">
         <div className="frame grid grid-cols-1 items-center gap-12 py-12 xl:grid-cols-3 xl:gap-10">
           {/* Title one third, demo two thirds (26 Oct 2026, owner: a bigger title, same layout). At

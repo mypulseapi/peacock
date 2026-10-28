@@ -14,7 +14,7 @@ Live reference: `components.html` shows every component below rendered with the 
 
 1. **Flat and typographic.** Matte, opaque fills. No glassmorphism, no glow, no decorative
    illustration or stock imagery. Depth comes from 1px borders, spacing and `shadow-sm` only, plus one `shadow-window` on the hero demo's app window.
-   The only gradients are the Signal gradient (`bg-signal-gradient`), the calm gradient (`bg-calm-gradient`, the How it works progress line), the dark band gradient (`bg-void-gradient`), the soft gradient (`bg-soft-gradient`, the Why Pulse section) and the home hero's soft background (`hero-bg`) and coloured shadow (`hero-glow`), see §2.
+   The only gradients are the Signal gradient (`bg-signal-gradient`), the calm gradient (`bg-calm-gradient`, the How it works progress line), the dark band gradient (`bg-void-gradient`), the soft gradient (`bg-soft-gradient`, the Why Pulse section) and the home hero's soft background (`hero-bg`) and coloured shadow (`hero-glow`), and the aurora behind every hero (`aurora`), see §2.
 2. **Data first.** Visual interest comes from tables, ranked lists, scores and status badges —
    not decoration.
 3. **Colour has a job.** Every colour below has one meaning. Never use a colour outside its role.
@@ -120,6 +120,13 @@ Used for the How it works progress line. Same text rule.
 **Hero background:** `hero-bg` — the page colour with a faint Sky wash (top right) and Pulse Blue wash (bottom left), plus a
 soft primary light that follows the cursor (100ms ease, no visible lag) (`--hero-x` / `--hero-y`, set by `src/main.js`; mouse and pen only, not with
 reduced motion). The light is a small (20rem) 14% circle with a solid core and a two-part tail: 6% / 4% copies that follow in 300ms / 600ms, so they trail behind a moving cursor like a comet. The tail shows only while the cursor moves (`--hero-tail` 1 → 0, 500ms fade, 150ms after it stops). At rest, light + wash (4%) keep `muted` text AA: 4.57 light / 6.26 dark.
+
+**Hero aurora:** `aurora`, through `<HeroAurora />` as the first child of a `relative isolate` hero section, on every
+designed page's hero (owner, 28 Oct 2026; ported from 21st.dev's aurora-background with no dependency). A striped band of
+Pulse Blue and Sky, blurred and difference-blended, drifting in the top-right corner (40s loop, still under reduced motion);
+no violet. It moves by `transform` only: animating its background repainted the blurred layer every frame and made
+scrolling the pricing hero stutter. Its corner mask and opacity (0.3, 0.2 on a phone) are set by contrast, not taste:
+`muted` text stays AA wherever a streak crosses it (lowest 4.63, light theme; 4.65 with no aurora). Stronger fails AA.
 
 **Dark band gradient:** `bg-void-gradient` — the `void` base with a soft Pulse Blue glow (top left) and Sky glow
 (bottom right). Not used on any page at the moment (the home research band and How it works are light now); white and `void-muted` text stay AA
@@ -422,8 +429,8 @@ Quietly confident, empirical, calm. Peer to a merchandising lead.
 
 - A small label above a heading (`<p class="reveal eyebrow">…</p>` before an `h1`–`h6`): removed from every page on
   19 Oct 2026 at the owner's request. Headings stand alone; never add one back.
-- Gradients other than `bg-signal-gradient`, `bg-calm-gradient`, `bg-void-gradient`, `bg-soft-gradient` and `hero-bg`; glassmorphism, neon/glow shadows (exceptions: `hero-glow` behind the home hero demo, and the `shadow-glow` halo on the Why Pulse centre icon and selected circle), `shadow-lg`+ on light cards.
-- Decorative looping animation (spinners, floating blobs, parallax); hover scale/lift effects.
+- Gradients other than `bg-signal-gradient`, `bg-calm-gradient`, `bg-void-gradient`, `bg-soft-gradient`, `hero-bg` and `aurora`; glassmorphism, neon/glow shadows (exceptions: `hero-glow` behind the home hero demo, and the `shadow-glow` halo on the Why Pulse centre icon and selected circle), `shadow-lg`+ on light cards.
+- Decorative looping animation (spinners, floating blobs, parallax), except the hero `aurora` the owner asked for; hover scale/lift effects.
 - `signal` (Signal Red) more than once per view (two at most); red buttons; `gap` (amber) for anything that isn't missing data; `critical` for missing data or priority.
 - Telling the two reds apart by colour alone: an error (`critical`) always carries the error icon (`#i-triangle-alert`) and a word; the #1 (`signal` / `signal-text`) always carries the priority ring and its rank number.
 - Small or body text on the Signal gradient (white only, large text only); Signal Red, Sky or amber as text on light backgrounds (use `signal-text`, `link`, `gap-strong`); opacity reductions on text; Violet or Cyan decoration (Violet exists only inside the gradient).

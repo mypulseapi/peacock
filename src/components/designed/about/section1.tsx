@@ -7,10 +7,12 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { designedText } from "../t";
+import { HeroAurora } from "@/components/designed/hero-aurora";
 export function Section1Section() {
   const t = designedText("about.section1");
   return (
-    <section className="bg-soft-gradient border-b border-line">
+    <section className="relative isolate bg-soft-gradient border-b border-line">
+      <HeroAurora />
             <div className="frame pt-20 pb-20 lg:pt-28 lg:pb-24">
               <div className="reveal mx-auto max-w-3xl text-center">
                 <h1 className="text-display text-balance">

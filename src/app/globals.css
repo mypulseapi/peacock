@@ -3492,6 +3492,77 @@ html[data-theme="dark"] {
 /* Soft background: page colour with a faint Sky wash (top right) and Pulse Blue wash (bottom left), plus a
    small, clear primary light at --hero-x / --hero-y (solid core, soft edge) with a two-part tail that only
    shows while the cursor moves. At rest: light 14% + wash 4% keeps text AA (muted 4.57 light / 6.26 dark). */
+/* Aurora (21st.dev "aurora-background" by manuarora700, owner 28 Oct 2026), ported to Tailwind v4 with
+   no dependency: the same striped mask over a moving colour band, blurred and blended, in the brand's blue
+   and sky only (the original's violet and indigo are out, by the owner's no-purple rule). It sits behind a
+   hero's words (`HeroAurora`), weighted to the top right so the headline stays on plain ground; the
+   difference blend and the invert in light mode are the original's way of keeping it pale on white.
+   Reduced motion: the band holds still.
+   The band moves by `transform` on a layer three heroes wide, not the original's animated
+   `background-position` on a fixed background: that repainted the blurred, blended layer every frame,
+   and scrolling the pricing hero dropped to about 45 fps on a 4x-throttled CPU; this way the compositor
+   slides one painted layer and scrolling holds 120 fps, as with no aurora at all. The corner mask and the
+   opacity keep `muted` text AA wherever a streak crosses it (lowest 4.5, light theme, on a phone; it was
+   4.65 with no aurora): 0.3, and 0.2 on a phone, where the hero is narrow enough for the corner to reach
+   the words. */
+@utility aurora {
+  --aurora-base: var(--color-surface-0);
+  --aurora-stripes: repeating-linear-gradient(
+    100deg,
+    var(--aurora-base) 0%,
+    var(--aurora-base) 7%,
+    transparent 10%,
+    transparent 12%,
+    var(--aurora-base) 16%
+  );
+  /* Pulse Blue and Sky at full strength in both themes: the dark theme's softer pair washes to grey
+     through the difference blend. */
+  --aurora-band: repeating-linear-gradient(
+    100deg,
+    #2552ff 10%,
+    #9ec8f2 15%,
+    #3990e2 20%,
+    #a8bbff 25%,
+    #4f74ff 30%
+  );
+  position: absolute;
+  inset: -10px;
+  opacity: 0.2;
+  pointer-events: none;
+  background-image: var(--aurora-stripes), var(--aurora-band);
+  background-size: 300%, 200%;
+  background-position: 50% 50%, 50% 50%;
+  filter: blur(10px) invert(1);
+  mask-image: radial-gradient(ellipse 70% 45% at 100% 0%, black 10%, transparent 100%);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 300%;
+    background-image: var(--aurora-stripes), var(--aurora-band);
+    /* two heroes and one, as the original's 200% and 100%; sliding two heroes loops without a seam */
+    background-size: 66.6667%, 33.3333%;
+    mix-blend-mode: difference;
+    will-change: transform;
+    animation: aurora 40s linear infinite;
+  }
+  @media (width >= 48rem) {
+    opacity: 0.3;
+  }
+  &:is(html[data-theme="dark"] *) {
+    filter: blur(10px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      animation: none;
+    }
+  }
+}
+@keyframes aurora {
+  to {
+    transform: translateX(-66.6667%);
+  }
+}
 @utility hero-bg {
   --hero-light: color-mix(in oklab, var(--color-primary) 14%, transparent);
   background-color: var(--color-surface-0);

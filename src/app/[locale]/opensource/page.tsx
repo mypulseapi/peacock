@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Image from "next/image";
+import { img } from "@/lib/cdn";
 import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
 import { Link } from "@/i18n/routing";
-import { PageHero } from "@/components/PageHero";
 import { PageSchema } from "@/components/PageSchema";
 import {
   opensource,
   GITHUB,
   GITHUB_ISSUE,
   DOCS,
+  opensourcePictureAlt,
   type Status,
 } from "@/content/pages/opensource";
 
@@ -29,29 +31,69 @@ export async function generateMetadata({
   };
 }
 
-/** One band of the page: a heading, optional intro, and its body. Alternating tint is the caller's. */
+/**
+ * One of the owner's generated pictures (28 Oct 2026): transparent 3 : 2 WebP on the Decision Audit's
+ * picture panel (`how-glow` on `surface-1`), like the product pages', so it follows the theme.
+ */
+function Picture({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="how-glow aspect-3/2 overflow-hidden rounded-2xl border border-line bg-surface-1">
+      <Image
+        src={img(`opensource/${src}.webp`)}
+        alt={alt}
+        width={1000}
+        height={667}
+        sizes="(min-width: 1024px) 36rem, 100vw"
+        className="size-full object-contain"
+      />
+    </div>
+  );
+}
+
+/**
+ * One band of the page: a heading, optional intro, and its body. Alternating tint is the caller's.
+ * With a `picture`, the heading and intro sit beside it from `lg` and the body runs full width below:
+ * the owner's zigzag (option A of five, 28 Oct 2026), `flip` putting the picture on the left so the
+ * sides alternate down the page. On a phone the picture always follows the heading.
+ */
 function Band({
   heading,
   intro,
   tint,
+  picture,
+  flip,
   children,
 }: {
   heading: string;
   intro?: string;
   tint?: boolean;
+  picture?: ReactNode;
+  flip?: boolean;
   children: ReactNode;
 }) {
+  const words = (
+    <>
+      <h2 className="max-w-3xl text-title text-balance">{heading}</h2>
+      {intro ? (
+        <p className="mt-4 max-w-2xl text-body text-pretty text-muted">
+          {intro}
+        </p>
+      ) : null}
+    </>
+  );
   return (
     <section
       className={`border-b border-line ${tint ? "bg-surface-1/50" : ""}`}
     >
       <div className="frame py-16 lg:py-20">
-        <h2 className="max-w-3xl text-title text-balance">{heading}</h2>
-        {intro ? (
-          <p className="mt-4 max-w-2xl text-body text-pretty text-muted">
-            {intro}
-          </p>
-        ) : null}
+        {picture ? (
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+            <div>{words}</div>
+            <div className={flip ? "lg:order-first" : ""}>{picture}</div>
+          </div>
+        ) : (
+          words
+        )}
         <div className="mt-10">{children}</div>
       </div>
     </section>
@@ -69,6 +111,7 @@ export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
   const c = opensource(locale);
+  const alt = opensourcePictureAlt(locale);
   const badge = (s: Status) => (
     <span
       className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold ${
@@ -96,31 +139,45 @@ export default async function Page({ params }: PageProps) {
           },
         ]}
       />
-      <PageHero
-        title={c.hero.title}
-        lede={c.hero.lede}
-        titleClassName="text-hero"
-      >
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href={GITHUB}
-            className="btn-primary inline-flex items-center gap-2"
-          >
-            <svg className="size-4" aria-hidden="true">
-              <use href="#i-github" />
-            </svg>
-            {c.hero.primary}
-          </a>
-          <a href={DOCS} className="btn-secondary inline-flex">
-            {c.hero.secondary}
-          </a>
+      {/* The designed pages' hero (`hero-bg`, as on Research and the product pages), not `PageHero`,
+          whose older canvas did not match them in the dark theme. Words left, picture right. */}
+      <section className="hero-bg overflow-hidden border-b border-line">
+        <div className="frame grid items-center gap-12 pt-12 pb-20 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-24">
+          <div>
+            <h1 className="max-w-[20ch] text-hero text-balance">
+              {c.hero.title}
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted">
+              {c.hero.lede}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={GITHUB}
+                className="btn-primary inline-flex items-center gap-2"
+              >
+                <svg className="size-4" aria-hidden="true">
+                  <use href="#i-github" />
+                </svg>
+                {c.hero.primary}
+              </a>
+              <a href={DOCS} className="btn-secondary inline-flex">
+                {c.hero.secondary}
+              </a>
+            </div>
+            <p className="mt-5 max-w-2xl text-sm text-pretty text-muted">
+              {c.hero.supporting}
+            </p>
+          </div>
+          <Picture src="hero-evidence-for-agents" alt={alt.hero} />
         </div>
-        <p className="mt-5 max-w-2xl text-sm text-pretty text-muted">
-          {c.hero.supporting}
-        </p>
-      </PageHero>
+      </section>
 
-      <Band heading={c.why.heading}>
+      <Band
+        heading={c.why.heading}
+        picture={
+          <Picture src="why-product-data-vs-decision-data" alt={alt.why} />
+        }
+      >
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className={card}>
             <p className="text-sm font-semibold text-muted">
@@ -153,7 +210,12 @@ export default async function Page({ params }: PageProps) {
         </p>
       </Band>
 
-      <Band heading={c.model.heading} tint>
+      <Band
+        heading={c.model.heading}
+        tint
+        flip
+        picture={<Picture src="model-requirement-to-outcome" alt={alt.model} />}
+      >
         <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {c.model.steps.map((s, i) => (
             <li key={s.name} className={card}>
@@ -178,7 +240,11 @@ export default async function Page({ params }: PageProps) {
         </p>
       </Band>
 
-      <Band heading={c.agent.heading} intro={c.agent.intro}>
+      <Band
+        heading={c.agent.heading}
+        intro={c.agent.intro}
+        picture={<Picture src="agent-evidence-does-not-say" alt={alt.agent} />}
+      >
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <div className={`${card} space-y-4`}>
             <div>
@@ -211,52 +277,58 @@ export default async function Page({ params }: PageProps) {
         </div>
       </Band>
 
-      <section className="border-b border-line bg-surface-1/50">
-        <div className="frame grid grid-cols-1 gap-10 py-16 lg:grid-cols-2 lg:py-20">
-          <div>
-            <h2 className="text-title text-balance">
-              {c.honesty.abstainHeading}
-            </h2>
-            {c.honesty.abstainBody.map((p) => (
-              <p key={p} className="mt-4 text-body text-pretty text-muted">
-                {p}
-              </p>
-            ))}
-          </div>
-          <div>
-            <h2 className="text-title text-balance">
-              {c.honesty.factsHeading}
-            </h2>
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className={card}>
-                <p className="text-sm font-semibold text-primary">
-                  {c.honesty.canLabel}
-                </p>
-                <ul className="mt-3 space-y-2 text-sm text-muted">
-                  {c.honesty.can.map((x) => (
-                    <li key={x}>{x}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className={card}>
-                <p className="text-sm font-semibold text-muted">
-                  {c.honesty.neverLabel}
-                </p>
-                <ul className="mt-3 space-y-2 text-sm text-muted">
-                  {c.honesty.never.map((x) => (
-                    <li key={x}>{x}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <p className="mt-6 font-semibold text-pretty text-ink">
-              {c.honesty.rule}
+      <Band heading={c.honesty.abstainHeading} tint>
+        <div className="max-w-3xl space-y-4">
+          {c.honesty.abstainBody.map((p) => (
+            <p key={p} className="text-body text-pretty text-muted">
+              {p}
             </p>
+          ))}
+        </div>
+      </Band>
+
+      <Band
+        heading={c.honesty.factsHeading}
+        flip
+        picture={
+          <Picture src="honesty-present-never-invent" alt={alt.honesty} />
+        }
+      >
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className={card}>
+            <p className="text-sm font-semibold text-primary">
+              {c.honesty.canLabel}
+            </p>
+            <ul className="mt-3 space-y-2 text-sm text-muted">
+              {c.honesty.can.map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
+          </div>
+          <div className={card}>
+            <p className="text-sm font-semibold text-muted">
+              {c.honesty.neverLabel}
+            </p>
+            <ul className="mt-3 space-y-2 text-sm text-muted">
+              {c.honesty.never.map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
           </div>
         </div>
-      </section>
+        <p className="mt-6 font-semibold text-pretty text-ink">
+          {c.honesty.rule}
+        </p>
+      </Band>
 
-      <Band heading={c.states.heading} intro={c.states.intro}>
+      <Band
+        heading={c.states.heading}
+        tint
+        intro={c.states.intro}
+        picture={
+          <Picture src="states-six-evidence-problems" alt={alt.states} />
+        }
+      >
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {c.states.items.map((s) => (
             <li key={s.name} className={card}>
@@ -270,7 +342,7 @@ export default async function Page({ params }: PageProps) {
         </ul>
       </Band>
 
-      <Band heading={c.repairs.heading} intro={c.repairs.intro} tint>
+      <Band heading={c.repairs.heading} intro={c.repairs.intro}>
         <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
           {c.repairs.items.map((r) => (
             <li
@@ -289,7 +361,12 @@ export default async function Page({ params }: PageProps) {
         </p>
       </Band>
 
-      <Band heading={c.boundary.heading}>
+      <Band
+        heading={c.boundary.heading}
+        tint
+        flip
+        picture={<Picture src="boundary-open-and-paid" alt={alt.boundary} />}
+      >
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <div className={card}>
             <p className="text-sm font-semibold text-primary">
@@ -328,7 +405,7 @@ export default async function Page({ params }: PageProps) {
         </p>
       </Band>
 
-      <Band heading={c.packs.heading} intro={c.packs.intro} tint>
+      <Band heading={c.packs.heading} intro={c.packs.intro}>
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <div className={card}>
             <div className="flex items-center justify-between gap-2">
@@ -354,7 +431,17 @@ export default async function Page({ params }: PageProps) {
         </div>
       </Band>
 
-      <Band heading={c.contribute.heading} intro={c.contribute.intro}>
+      <Band
+        heading={c.contribute.heading}
+        tint
+        intro={c.contribute.intro}
+        picture={
+          <Picture
+            src="contribute-agent-proposes-people-review"
+            alt={alt.contribute}
+          />
+        }
+      >
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {c.contribute.ways.map((w) => (
             <li key={w.name} className={card}>
@@ -400,7 +487,7 @@ export default async function Page({ params }: PageProps) {
         </p>
       </Band>
 
-      <Band heading={c.audiences.heading} tint>
+      <Band heading={c.audiences.heading}>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {c.audiences.items.map((a) => (
             <li key={a.name} className={card}>
@@ -411,42 +498,33 @@ export default async function Page({ params }: PageProps) {
         </ul>
       </Band>
 
-      <section className="border-b border-line">
-        <div className="frame grid grid-cols-1 gap-10 py-16 lg:grid-cols-2 lg:py-20">
-          <div>
-            <h2 className="text-title text-balance">{c.not.heading}</h2>
-            <ul className="mt-6 space-y-3 text-body text-muted">
-              {c.not.items.map((n) => (
-                <li key={n} className="flex gap-3">
-                  <span aria-hidden="true" className="text-muted">
-                    ✕
-                  </span>
-                  {n}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 font-semibold text-pretty text-ink">
-              {c.not.close}
-            </p>
-          </div>
-          <div>
-            <h2 className="text-title text-balance">{c.principles.heading}</h2>
-            <ol className="mt-6 space-y-4">
-              {c.principles.items.map((p, i) => (
-                <li key={p.name} className="flex gap-4">
-                  <span className="font-mono text-sm text-primary">
-                    0{i + 1}
-                  </span>
-                  <span>
-                    <span className="font-semibold text-ink">{p.name}. </span>
-                    <span className="text-muted">{p.body}</span>
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
+      <Band heading={c.not.heading} tint>
+        <ul className="max-w-3xl space-y-3 text-body text-muted">
+          {c.not.items.map((n) => (
+            <li key={n} className="flex gap-3">
+              <span aria-hidden="true" className="text-muted">
+                ✕
+              </span>
+              {n}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 font-semibold text-pretty text-ink">{c.not.close}</p>
+      </Band>
+
+      <Band heading={c.principles.heading}>
+        <ol className="max-w-3xl space-y-4">
+          {c.principles.items.map((p, i) => (
+            <li key={p.name} className="flex gap-4">
+              <span className="font-mono text-sm text-primary">0{i + 1}</span>
+              <span>
+                <span className="font-semibold text-ink">{p.name}. </span>
+                <span className="text-muted">{p.body}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+      </Band>
 
       <section className="border-b border-line bg-surface-1/50">
         <div className="frame max-w-3xl py-16 lg:py-20">

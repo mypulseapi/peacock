@@ -69,7 +69,7 @@ export function Section1Section() {
   const t = designedText("pricing.section1");
   return (
     <section className="hero-bg border-b border-line">
-      <div className="frame pt-12 pb-16 lg:pb-20">
+      <div className="frame pt-12 pb-16 lg:pt-16 lg:pb-20">
         <div className="mx-auto max-w-5xl text-center">
           {/* The product pages' hero size (`text-hero`, owner, 28 Oct 2026). The column is wider than
               theirs so the longer second line still fits on one line on a wide screen. */}

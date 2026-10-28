@@ -34,17 +34,17 @@ export function Section5Section() {
                 aria-label="Team"
               >
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
                     aria-hidden="true"
                   ></div>
                   <div
                     className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
                   >
                     <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
                         <Image
@@ -53,7 +53,7 @@ export function Section5Section() {
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
@@ -66,7 +66,7 @@ export function Section5Section() {
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">{t('3')}</h3>
@@ -77,24 +77,24 @@ export function Section5Section() {
                     href="https://www.linkedin.com/in/van-bui-work"
                     target="_blank"
                     rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
                     aria-label="Tracy Bui on LinkedIn (opens in a new tab)"
                     ><svg className="size-5" aria-hidden="true">
                       <use href="#i-linkedin" /></svg
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
                     aria-hidden="true"
                   ></div>
                   <div
                     className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
                   >
                     <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
                         <Image
@@ -103,7 +103,7 @@ export function Section5Section() {
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
@@ -116,7 +116,7 @@ export function Section5Section() {
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">{t('5')}</h3>
@@ -127,24 +127,24 @@ export function Section5Section() {
                     href="https://www.linkedin.com/in/ynhii2309"
                     target="_blank"
                     rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
                     aria-label="Rosie Tran on LinkedIn (opens in a new tab)"
                     ><svg className="size-5" aria-hidden="true">
                       <use href="#i-linkedin" /></svg
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
                     aria-hidden="true"
                   ></div>
                   <div
                     className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
                   >
                     <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
                         <Image
@@ -153,7 +153,7 @@ export function Section5Section() {
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
@@ -166,7 +166,7 @@ export function Section5Section() {
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">{t('7')}</h3>
@@ -177,24 +177,24 @@ export function Section5Section() {
                     href="https://www.linkedin.com/in/b%E1%BA%A3o-nguy%C3%AAn-nguy%E1%BB%85n"
                     target="_blank"
                     rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
                     aria-label="Elena Nguyen on LinkedIn (opens in a new tab)"
                     ><svg className="size-5" aria-hidden="true">
                       <use href="#i-linkedin" /></svg
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
                     aria-hidden="true"
                   ></div>
                   <div
                     className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
                   >
                     <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
                         <Image
@@ -203,7 +203,7 @@ export function Section5Section() {
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
@@ -216,7 +216,7 @@ export function Section5Section() {
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">{t('9')}</h3>
@@ -227,24 +227,24 @@ export function Section5Section() {
                     href="https://www.linkedin.com/in/ngocle123/"
                     target="_blank"
                     rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
                     aria-label="Iris Le on LinkedIn (opens in a new tab)"
                     ><svg className="size-5" aria-hidden="true">
                       <use href="#i-linkedin" /></svg
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
                     aria-hidden="true"
                   ></div>
                   <div
                     className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
                   >
                     <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
                         <Image
@@ -253,7 +253,7 @@ export function Section5Section() {
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
@@ -266,7 +266,7 @@ export function Section5Section() {
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">{t('11')}</h3>
@@ -277,24 +277,24 @@ export function Section5Section() {
                     href="https://www.linkedin.com/in/quy-bui-quang"
                     target="_blank"
                     rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
                     aria-label="Albert Bui on LinkedIn (opens in a new tab)"
                     ><svg className="size-5" aria-hidden="true">
                       <use href="#i-linkedin" /></svg
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
                     aria-hidden="true"
                   ></div>
                   <div
                     className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
                   >
                     <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
                         <Image
@@ -303,7 +303,7 @@ export function Section5Section() {
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
@@ -316,7 +316,7 @@ export function Section5Section() {
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">{t('13')}</h3>
@@ -327,24 +327,24 @@ export function Section5Section() {
                     href="https://www.linkedin.com/in/truongthole"
                     target="_blank"
                     rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
                     aria-label="Stephen Le on LinkedIn (opens in a new tab)"
                     ><svg className="size-5" aria-hidden="true">
                       <use href="#i-linkedin" /></svg
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
                     aria-hidden="true"
                   ></div>
                   <div
                     className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
                   >
                     <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
                         <Image
@@ -353,7 +353,7 @@ export function Section5Section() {
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
@@ -366,7 +366,7 @@ export function Section5Section() {
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">{t('15')}</h3>
@@ -377,24 +377,24 @@ export function Section5Section() {
                     href="https://www.linkedin.com/in/phamtradev/"
                     target="_blank"
                     rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
                     aria-label="Eric Pham on LinkedIn (opens in a new tab)"
                     ><svg className="size-5" aria-hidden="true">
                       <use href="#i-linkedin" /></svg
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl focus-within:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
                     aria-hidden="true"
                   ></div>
                   <div
                     className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
                   >
                     <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-focus-within:ring-ink group-hover:ring-ink"
+                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
                     >
                       <div className="team-base size-full">
                         <Image
@@ -403,7 +403,7 @@ export function Section5Section() {
                           width={384}
                           height={384}
                           loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                       </div>
                     </div>
                     <div
@@ -416,7 +416,7 @@ export function Section5Section() {
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-focus-within:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-focus-within:scale-100 motion-reduce:group-hover:scale-100" />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
                     </div>
                   </div>
                   <h3 className="mt-5 text-h3 text-balance">{t('17')}</h3>
@@ -427,7 +427,7 @@ export function Section5Section() {
                     href="https://www.linkedin.com/in/ptannguyen"
                     target="_blank"
                     rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-focus-within:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
                     aria-label="Stan Nguyen on LinkedIn (opens in a new tab)"
                     ><svg className="size-5" aria-hidden="true">
                       <use href="#i-linkedin" /></svg

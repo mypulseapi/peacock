@@ -35,17 +35,12 @@ export type ChapterContent = StoryContent &
 
 const h = (s: string) => s.replace(/\.\s*$/, "");
 
-/** The wash box every drawing sits in, so the pictures share one shape. */
-const Picture = ({
-  children,
-  className = "bg-primary-wash",
-}: {
-  children: ReactNode;
-  className?: string;
-}) => (
-  <div
-    className={`grid aspect-3/2 place-items-center overflow-hidden rounded-2xl ${className}`}
-  >
+/**
+ * The box every picture sits in, so they share one shape: the Decision Audit's picture panel (`how-glow`
+ * on `surface-1`, owner, 28 Oct 2026), a Pulse Blue glow rising from the bottom behind the transparent picture.
+ */
+const Picture = ({ children }: { children: ReactNode }) => (
+  <div className="how-glow grid aspect-3/2 place-items-center overflow-hidden rounded-2xl border border-line bg-surface-1">
     {children}
   </div>
 );
@@ -223,11 +218,7 @@ export function ChapterPage({
             label: s.meta ?? "",
             title: s.title,
             body: s.body,
-            picture: (
-              <Picture className="border border-line bg-card">
-                {art.steps?.[i]}
-              </Picture>
-            ),
+            picture: <Picture>{art.steps?.[i]}</Picture>,
           }))}
         />
       )}

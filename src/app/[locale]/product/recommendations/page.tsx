@@ -8,9 +8,12 @@ import {
   SAME_STRIP,
   StorefrontScene,
 } from "@/components/designed/product/storefront-art";
-import { STOREFRONT_DRAWINGS } from "@/components/designed/product/storefront-drawings";
+import { storefrontPictures } from "@/components/designed/product/storefront-pictures";
 import { PageSchema } from "@/components/PageSchema";
-import { recommendations } from "@/content/pages/recommendations";
+import {
+  recommendations,
+  recommendationsPictureAlt,
+} from "@/content/pages/recommendations";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -34,6 +37,10 @@ export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
   const c = recommendations(locale);
+  const pictures = storefrontPictures(
+    "recommendations",
+    recommendationsPictureAlt(locale),
+  );
   return (
     <>
       {/* Headings on this page are the questions a merchant types, and the
@@ -45,18 +52,17 @@ export default async function Page({ params }: PageProps) {
         nodes={[storyFaqSchema(c)]}
       />
       {/* The owner's direction of 26 Oct 2026: the blocks of Return Verification and Promotion
-          Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero figure and
-          the step and gain drawings (storefront-drawings.tsx) stand in until the owner's images exist. */}
+          Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero, step and
+          gain pictures are the owner's (28 Oct 2026, storefront-pictures.tsx). */}
       <ChapterPage
         c={c}
-        figure={<StorefrontScene spec={c.scenes?.hero} />}
         chain={<StorefrontScene spec={c.scenes?.chain} />}
         chainFramed={false}
         art={{
           situation: SAME_STRIP,
-          steps: STOREFRONT_DRAWINGS["recommendations"].steps,
+          steps: pictures.steps,
         }}
-        gainPictures={STOREFRONT_DRAWINGS["recommendations"].gains}
+        gainPictures={pictures.gains}
         output={{ panel: <RecommendationsOutput />, layout: "band" }}
       />
     </>

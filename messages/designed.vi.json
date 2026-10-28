@@ -25,7 +25,7 @@
       "engineeringLabel": "Kỹ thuật",
       "engineeringValue": "Thành phố Hồ Chí Minh, Việt Nam",
       "builtForLabel": "Dành cho",
-      "builtForValue": "Các nhà bán hàng tại Việt Nam và Đông Nam Á",
+      "builtForValue": "Doanh nghiệp tại Việt Nam và Đông Nam Á",
       "measureHeading": "Đo và sửa",
       "liveHeading": "Quyết định trực tiếp",
       "apiName": "Decision API",
@@ -863,7 +863,7 @@
       "23": "Kỹ thuật",
       "24": "Thành phố Hồ Chí Minh, Việt Nam",
       "25": "Dành cho",
-      "26": "Các nhà bán hàng tại Việt Nam và Đông Nam Á"
+      "26": "Doanh nghiệp tại Việt Nam và Đông Nam Á"
     }
   },
   "visual-evidence": {

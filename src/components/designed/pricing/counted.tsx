@@ -49,13 +49,15 @@ export function CountedSection() {
         </div>
         <div className="reveal mx-auto mt-10 grid max-w-[1000px] grid-cols-1 gap-5 delay-100 md:grid-cols-2">
           <div className="rounded-2xl border border-line bg-card p-6">
-            <p className="eyebrow-primary">{t("countedHead")}</p>
+            <p className="text-sm font-semibold text-primary">
+              {t("countedHead")}
+            </p>
             <ul className="mt-3">
               {COUNTED.map((k) => row(k, "i-check", "text-primary"))}
             </ul>
           </div>
           <div className="rounded-2xl border border-line bg-card p-6">
-            <p className="eyebrow">{t("freeHead")}</p>
+            <p className="text-sm font-semibold text-muted">{t("freeHead")}</p>
             <ul className="mt-3">
               {FREE.map((k) => row(k, "i-circle-check", "text-success"))}
             </ul>

@@ -13,6 +13,7 @@ import { designedText } from "../t";
 import { ContactForm } from "./contact-form";
 import { BookCall } from "./book-call";
 import { contactEmail, type ContactRole } from "@/lib/contact-emails";
+import { HeroAurora } from "@/components/designed/hero-aurora";
 
 export function Section1Section() {
   const t = designedText("contact.section1");
@@ -31,7 +32,8 @@ export function Section1Section() {
   ];
 
   return (
-    <section className="hero-bg border-b border-line">
+    <section className="relative isolate hero-bg border-b border-line">
+      <HeroAurora />
             <div
               className="frame grid gap-10 py-16 lg:grid-cols-12 lg:gap-x-12 lg:gap-y-12 lg:py-24"
             >

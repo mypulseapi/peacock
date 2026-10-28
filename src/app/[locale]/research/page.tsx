@@ -6,6 +6,7 @@ import { Link } from "@/i18n/routing";
 import { PageSchema } from "@/components/PageSchema";
 import { ResearchIndex } from "@/components/designed/research/research-index";
 import { research } from "@/content/pages/research";
+import { HeroAurora } from "@/components/designed/hero-aurora";
 import { CtaBoxes } from "@/components/designed/cta-boxes";
 
 interface PageProps {
@@ -59,7 +60,8 @@ export default async function Page({ params }: PageProps) {
       />
       {/* The designed hero, as on the use-case and sector pages: `PageHero` paints its own older
           canvas, which did not match them in the dark theme (owner, 27 Oct 2026). */}
-      <section className="hero-bg overflow-hidden border-b border-line">
+      <section className="relative isolate hero-bg overflow-hidden border-b border-line">
+        <HeroAurora />
         <div className="frame pt-12 pb-20 lg:pt-16 lg:pb-28">
           <h1 className="reveal max-w-[20ch] text-hero text-balance">
             {h(c.title)}

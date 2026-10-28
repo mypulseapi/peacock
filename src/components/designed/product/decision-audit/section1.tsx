@@ -11,11 +11,13 @@ import Image from "next/image";
 import { img } from "@/lib/cdn";
 
 import Link from "next/link";
+import { HeroAurora } from "@/components/designed/hero-aurora";
 
 export function Section1Section() {
   const t = designedText("product.decision-audit.section1");
   return (
     <section className="relative isolate overflow-hidden border-b border-line">
+      <HeroAurora />
             {/* the frame keeps the page margins; the figure below then reclaims them, so the words sit
                  in the page column and the image spans the screen */}
             <div className="frame">

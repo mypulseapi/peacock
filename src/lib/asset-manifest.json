@@ -265,5 +265,16 @@
   "usecases/news.svg": "3880ae20",
   "usecases/social.svg": "fd53aad9",
   "usecases/streaming.svg": "c44636a2",
-  "usecases/travel.svg": "1832d9f8"
+  "usecases/travel.svg": "1832d9f8",
+  "research/catalogue-and-photographs.webp": "51758a9c",
+  "research/decision-api-agents.webp": "4d17f871",
+  "research/decision-audit.webp": "9aad4b9b",
+  "research/merchandising-studio.webp": "87380e41",
+  "research/opensource.webp": "b0b1cedf",
+  "research/products-over-shopper.webp": "cfb79dd3",
+  "research/promotion-audit.webp": "2e374527",
+  "research/recommendations-and-pages.webp": "d2a35d64",
+  "research/return-verification.webp": "6010cd42",
+  "research/search-parser.webp": "d96244fa",
+  "research/verification-and-monitor.webp": "5fe2f9ae"
 }

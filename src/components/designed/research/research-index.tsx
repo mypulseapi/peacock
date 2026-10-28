@@ -5,7 +5,7 @@
  * 2026, after a reference of article cards): a search and the status chips, then a card per finding
  * in rows of two and three. No card is led large; the rows alternate, whatever the filter leaves.
  *
- * Each card: its drawing (`research-figures.tsx`, the owner's pictures replace them when they land),
+ * Each card: the owner's picture (`research-pictures.tsx`),
  * the product and its status where the reference has a category and a date, the title, the finding
  * clamped to three lines, and the data and the limit behind one click, the limit in the amber
  * "missing" style. Opening it unclamps the finding. The search ignores Vietnamese accents.
@@ -14,7 +14,7 @@ import { useState } from "react";
 import { ArrowRight, ChevronDown, Search } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import type { Finding, ResearchContent } from "@/content/pages/research";
-import { ResearchFigure } from "./research-figures";
+import { ResearchPicture } from "./research-pictures";
 
 type Filter = "all" | Finding["status"];
 
@@ -135,8 +135,9 @@ export function ResearchIndex({
             key={f.title}
             className={`group flex flex-col gap-4 rounded-3xl border border-line bg-card p-4 transition-colors hover:border-primary-line md:col-span-6 ${SPAN[size[i]]}`}
           >
-            <ResearchFigure
+            <ResearchPicture
               figure={f.figure}
+              alt={f.alt}
               waiting={f.status === "waiting"}
             />
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 px-1">

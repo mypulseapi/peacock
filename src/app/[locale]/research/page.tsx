@@ -24,9 +24,10 @@ export async function generateMetadata({
 }
 
 /**
- * Research (owner's version 3, 27 Oct 2026): every finding as a row of one index that opens row by
- * row, then how the research is run, the questions and the call to action. No finding is led large:
- * the owner had the featured one put back in the list like the others (27 Oct 2026). The method
+ * Research: every finding as a card of one journal grid with its drawing (owner's pick of five
+ * mockups, 28 Oct 2026; it replaced version 3's index of rows), then how the research is run, the
+ * questions and the call to action. No finding is led large: the owner had the featured one put
+ * back with the others (27 Oct 2026), and the grid's rows of two and three keep it so. The method
  * follows the findings because its own words point back at "the nine listings above".
  *
  * Every word is the content module's (`content/pages/research.ts`, both locales). Headings carry no

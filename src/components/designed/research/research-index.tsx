@@ -1,19 +1,24 @@
 "use client";
 
 /**
- * The Research page's index (owner's version 3, 27 Oct 2026): every finding, a line each, with
- * chips to show the measured ones or the ones waiting on a merchant.
+ * The Research page's findings as editorial rows (owner's pick, version 3 of three mockups, 28 Oct
+ * 2026): a search and the status chips, then one finding per row, its picture beside it, divided by
+ * hairlines rather than boxed in cards. The eye runs down one column of titles.
  *
- * The whole row is the `<summary>`, so a click anywhere on it opens the finding, not only on its
- * title (owner, 27 Oct 2026). Open, it shows the finding, its data and its limit, the limit in the
- * amber "missing" style.
+ * Each row: the owner's picture (`research-pictures.tsx`), the product and its status, the title, the
+ * whole finding, and the data and the limit side by side, always shown rather than behind a click,
+ * the limit in the amber "missing" style. The search ignores Vietnamese accents.
  */
 import { useState } from "react";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import type { Finding, ResearchContent } from "@/content/pages/research";
+import { ResearchPicture } from "./research-pictures";
 
 type Filter = "all" | Finding["status"];
+
+const fold = (s: string) =>
+  s.normalize("NFD").replace(/\p{M}/gu, "").replace(/đ/gi, "d").toLowerCase();
 
 function Status({
   status,
@@ -44,6 +49,16 @@ export function ResearchIndex({
   locale: string;
 }) {
   const [filter, setFilter] = useState<Filter>("all");
+  const [query, setQuery] = useState("");
+  const q = fold(query.trim());
+  const shown = findings.filter(
+    (f) =>
+      (filter === "all" || f.status === filter) &&
+      (!q ||
+        fold(`${f.product} ${f.title} ${f.body} ${f.data} ${f.limit}`).includes(
+          q,
+        )),
+  );
   const chips: { f: Filter; label: string }[] = [
     { f: "all", label: labels.all },
     { f: "measured", label: labels.measured },
@@ -51,20 +66,27 @@ export function ResearchIndex({
   ];
   return (
     <>
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <h2 className="reveal text-title text-balance">{heading}</h2>
-        <div
-          className="reveal flex flex-wrap gap-2"
-          role="group"
-          aria-label={heading}
-        >
+      <h2 className="reveal text-title text-balance">{heading}</h2>
+      <div className="reveal mt-8 flex flex-wrap items-center gap-3">
+        <label className="flex min-h-11 min-w-56 flex-1 items-center gap-2.5 rounded-xl border border-line-control bg-card px-3.5 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-focus">
+          <Search className="size-4.5 shrink-0 text-muted" aria-hidden />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={labels.search}
+            aria-label={labels.search}
+            className="min-w-0 flex-1 bg-transparent text-base text-ink outline-none placeholder:text-muted"
+          />
+        </label>
+        <div className="flex flex-wrap gap-2" role="group" aria-label={heading}>
           {chips.map(({ f, label }) => (
             <button
               key={f}
               type="button"
               aria-pressed={filter === f}
               onClick={() => setFilter(f)}
-              className="inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-full border border-line bg-card px-4 text-sm font-medium text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-surface-0"
+              className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-line bg-card px-4 text-sm font-medium text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-surface-0"
             >
               {label}
               <span className="tabular-nums opacity-70">
@@ -76,56 +98,72 @@ export function ResearchIndex({
           ))}
         </div>
       </div>
-      <ul className="reveal mt-8 border-t border-line">
-        {findings.map((f) => (
+      <p className="mt-4 text-sm text-muted" aria-live="polite">
+        {labels.count
+          .replace("{shown}", String(shown.length))
+          .replace("{total}", String(findings.length))}
+      </p>
+      {/* The list stays mounted when a search empties it: a remounted `.reveal` would wait for a
+          scroll to be shown. */}
+      <ul className="reveal mt-6 border-t border-line empty:hidden">
+        {shown.map((f) => (
           <li
             key={f.title}
-            hidden={filter !== "all" && f.status !== filter}
-            className="border-b border-line"
+            className="grid items-center gap-5 border-b border-line py-7 md:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] md:gap-8"
           >
-            <details className="group">
-              <summary className="-mx-4 grid cursor-pointer list-none grid-cols-[minmax(0,1fr)_1.25rem] gap-x-5 gap-y-2 rounded-xl px-4 py-5 transition-colors hover:bg-primary-wash focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus md:grid-cols-[10rem_minmax(0,1fr)_auto_1.25rem] md:items-center [&::-webkit-details-marker]:hidden">
-                <span className="text-sm font-semibold text-muted">
+            <ResearchPicture
+              figure={f.figure}
+              alt={f.alt}
+              waiting={f.status === "waiting"}
+            />
+            <div className="grid gap-2.5">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <span className="text-sm font-semibold text-primary">
                   {f.product}
                 </span>
-                <h3 className="col-start-1 text-lg leading-snug font-semibold text-balance text-ink md:col-start-auto">
-                  {f.title.replace(/\.\s*$/, "")}
-                </h3>
-                <span className="col-start-1 md:col-start-auto">
-                  <Status status={f.status} label={labels[f.status]} />
-                </span>
-                <ChevronDown
-                  className="col-start-2 row-start-1 size-5 self-center text-primary transition-transform group-open:rotate-180 md:col-start-auto md:row-start-auto"
-                  aria-hidden
-                />
-              </summary>
-              <div className="grid gap-5 pt-1 pb-7 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-8 md:pl-[11.25rem]">
-                <div className="grid content-start gap-3">
-                  <p className="text-body text-pretty text-muted">{f.body}</p>
-                  <Link
-                    locale={locale}
-                    href={f.href}
-                    className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-                  >
-                    {f.link}
-                    <ArrowRight className="size-4" aria-hidden />
-                  </Link>
-                </div>
-                <dl className="grid content-start gap-3 text-sm">
-                  <div>
-                    <dt className="font-semibold text-ink">{labels.data}</dt>
-                    <dd className="mt-0.5 text-muted">{f.data}</dd>
-                  </div>
-                  <div className="missing-cell rounded-xl p-3.5">
-                    <dt className="font-semibold">{labels.limit}</dt>
-                    <dd className="mt-0.5 text-ink">{f.limit}</dd>
-                  </div>
-                </dl>
+                <Status status={f.status} label={labels[f.status]} />
               </div>
-            </details>
+              <h3 className="text-h3 text-balance text-ink">
+                {f.title.replace(/\.\s*$/, "")}
+              </h3>
+              <p className="text-body text-pretty text-muted">{f.body}</p>
+              <dl className="mt-1 grid gap-3 text-sm sm:grid-cols-2">
+                <div>
+                  <dt className="font-semibold text-ink">{labels.data}</dt>
+                  <dd className="mt-0.5 text-muted">{f.data}</dd>
+                </div>
+                <div className="missing-cell rounded-xl p-3.5">
+                  <dt className="font-semibold">{labels.limit}</dt>
+                  <dd className="mt-0.5 text-ink">{f.limit}</dd>
+                </div>
+              </dl>
+              <Link
+                locale={locale}
+                href={f.href}
+                className="inline-flex min-h-11 items-center gap-1.5 self-start text-sm font-semibold text-primary hover:underline"
+              >
+                {f.link}
+                <ArrowRight className="size-4" aria-hidden />
+              </Link>
+            </div>
           </li>
         ))}
       </ul>
+      {shown.length === 0 && (
+        <div className="mt-6 grid justify-items-center gap-4 rounded-3xl border border-dashed border-line-control px-6 py-14 text-center">
+          <p className="text-body text-muted">{labels.noMatch}</p>
+          <button
+            type="button"
+            onClick={() => {
+              setQuery("");
+              setFilter("all");
+            }}
+            className="inline-flex min-h-11 cursor-pointer items-center rounded-full border border-line bg-card px-4 text-sm font-medium text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+          >
+            {labels.showAll}
+          </button>
+        </div>
+      )}
     </>
   );
 }

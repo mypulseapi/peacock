@@ -6,6 +6,8 @@ import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
 import { Link } from "@/i18n/routing";
 import { PageSchema } from "@/components/PageSchema";
+import { HeroAurora } from "@/components/designed/hero-aurora";
+import { CtaBoxes } from "@/components/designed/cta-boxes";
 import {
   opensource,
   GITHUB,
@@ -139,10 +141,11 @@ export default async function Page({ params }: PageProps) {
           },
         ]}
       />
-      {/* The designed pages' hero (`hero-bg`, as on Research and the product pages), not `PageHero`,
+      {/* The designed pages' hero (`hero-bg`, one screen tall like home's and the product pages'), not `PageHero`,
           whose older canvas did not match them in the dark theme. Words left, picture right. */}
-      <section className="hero-bg overflow-hidden border-b border-line">
-        <div className="frame grid items-center gap-12 pt-12 pb-20 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-24">
+      <section className="relative isolate hero-bg hero-screen flex items-center overflow-hidden border-b border-line">
+        <HeroAurora />
+        <div className="frame grid flex-1 items-center gap-12 pt-12 pb-20 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-24">
           <div>
             <h1 className="max-w-[20ch] text-hero text-balance">
               {c.hero.title}
@@ -542,7 +545,8 @@ export default async function Page({ params }: PageProps) {
         </div>
       </section>
 
-      <section>
+      <section className="cta-boxes">
+        <CtaBoxes />
         <div className="frame py-16 text-center lg:py-20">
           <h2 className="mx-auto max-w-2xl text-title text-balance">
             {c.cta.title}

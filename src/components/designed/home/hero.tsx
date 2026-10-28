@@ -733,7 +733,7 @@ export function HeroSection() {
                               <div>
                                 <p className="flex h-4.5 items-center">
                                   <Image
-                                    src={asset("brand/logo.webp")}
+                                    src={asset("brand/logo-v2.webp")}
                                     alt="Pulse"
                                     width={54}
                                     height={18}
@@ -741,7 +741,7 @@ export function HeroSection() {
                                     priority
                                   />
                                   <Image
-                                    src={asset("brand/logo-white.webp")}
+                                    src={asset("brand/logo-white-v2.webp")}
                                     alt=""
                                     width={54}
                                     height={18}
@@ -1000,7 +1000,7 @@ export function HeroSection() {
                             <div className="min-w-0 flex-1">
                               <p className="flex h-4.5 items-center">
                                 <Image
-                                  src={asset("brand/logo.webp")}
+                                  src={asset("brand/logo-v2.webp")}
                                   alt="Pulse"
                                   width={54}
                                   height={18}
@@ -1008,7 +1008,7 @@ export function HeroSection() {
                                   priority
                                 />
                                 <Image
-                                  src={asset("brand/logo-white.webp")}
+                                  src={asset("brand/logo-white-v2.webp")}
                                   alt=""
                                   width={54}
                                   height={18}

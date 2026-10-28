@@ -1271,7 +1271,10 @@
         "4": "Biết nguyên nhân, không chỉ con số",
         "5": "Mỗi cảnh báo đều nêu rõ kệ hàng, thuộc tính và nguyên nhân khiến nó tụt, nên cách sửa đã rõ trước cả khi có ai mở bảng điều khiển.",
         "6": "So sánh theo quý, không phải theo ảnh chụp rời rạc",
-        "7": "Cùng một phương pháp ở mọi lần chạy, nên xu hướng của từng ngành hàng có ý nghĩa và một bước thụt lùi hiện ra đúng là một bước thụt lùi."
+        "7": "Cùng một phương pháp ở mọi lần chạy, nên xu hướng của từng ngành hàng có ý nghĩa và một bước thụt lùi hiện ra đúng là một bước thụt lùi.",
+        "picture1Alt": "Một kệ máy tính xách tay có sản phẩm mới nhất đến mà thông tin để trống, và biểu đồ của kệ tụt dần theo từng tuần: cảnh báo đang tụt đến ở lần giảm đầu tiên, rất lâu trước thời điểm người mua nhận ra.",
+        "picture2Alt": "Những máy tính xách tay mới đến với kích thước màn hình để trống, và cảnh báo chúng gây ra, nêu rõ kệ hàng là máy tính xách tay, thuộc tính là kích thước màn hình, và nguyên nhân: sản phẩm mới chưa được ghi.",
+        "picture3Alt": "Bốn báo cáo theo quý, từ Q1 đến Q4, mỗi báo cáo đo theo cùng một cách, với một đường xu hướng chạy qua tất cả, giữ ngang rồi giảm ở quý cuối, được đánh dấu là bước thụt lùi."
       },
       "section6": {
         "1": "Những câu hỏi quyết định",

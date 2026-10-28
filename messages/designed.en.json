@@ -1702,7 +1702,10 @@
         "4": "Know the cause, not just the number",
         "5": "Every alert names the shelf, the attribute and what caused the drop, so the fix is obvious before anyone opens a dashboard.",
         "6": "Compare quarters, not snapshots",
-        "7": "The same method on every run, so the trend per category means something and a regression is visible as a regression."
+        "7": "The same method on every run, so the trend per category means something and a regression is visible as a regression.",
+        "picture1Alt": "A laptop shelf whose newest product arrives with its details blank, and a chart of the shelf sliding week by week: the alert, slipping, comes at the first dip, long before the point where a buyer notices.",
+        "picture2Alt": "New laptops arriving with their screen size blank, and the alert they trigger, which names the shelf, laptops, the attribute, screen size, and the cause: new products, not recorded.",
+        "picture3Alt": "Four quarterly reports, Q1 to Q4, each measured the same way, with one trend line across them that holds level and then dips in the last quarter, flagged as a regression."
       },
       "section6": {
         "1": "The ones that decide it",

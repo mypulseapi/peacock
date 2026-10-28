@@ -69,17 +69,17 @@ export function Section1Section() {
                 */}
                 <div className="reveal mt-8 delay-200 lg:mt-10 lg:bleed-x">
                   {/*
-                    The height cap is what makes the whole figure visible at once: the image is 2:1,
-                    so at full page width it stands 720px tall on a 1440px screen and its lower half
-                    falls below the fold. `max-h` in `svh` bounds it against the screen rather than
+                    The height cap is what makes the whole figure visible at once: the image is 3:2
+                    (the owner's transparent dashboard, 28 Oct 2026), so at full page width it would
+                    stand far taller than the screen and its lower half would fall below the fold. `max-h` in `svh` bounds it against the screen rather than
                     the page, and `object-contain` then fits the whole image inside that bound
                     instead of cropping it. It keeps the full width wherever the height allows.
                   */}
                   <Image
-                    src={img("product/decision-audit-ranked-repair-list.webp")}
+                    src={img("product/decision-audit-hero-dashboard.webp")}
                     alt={t('figureAlt')}
-                    width={1600}
-                    height={800}
+                    width={1536}
+                    height={1024}
                     sizes="100vw"
                     priority
                     className="mx-auto h-auto w-full object-contain lg:max-h-[calc(100svh-28rem)]"

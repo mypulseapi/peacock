@@ -226,6 +226,8 @@ separated by a horizontal hairline.
 - **On a phone, the footer is the same content, tighter** (owner's version 2, 27 Oct 2026; below `sm` only): the email and
   the social icons share a row, each link column lays its links in two columns, the company facts are label and value
   rows, and the legal links wrap on one line.
+- **From `sm`, the footer's four columns are centred** (owner, 28 Oct 2026): the brand column and the three link columns
+  each centre their content and sit centred against each other in the row. The company facts table keeps its own layout.
 - At most one dark (`bg-void`) band per page.
 - Inside cards: `p-6` (compact `p-4`/`p-5`), gaps `gap-4`–`gap-6`.
 - Radius: `rounded-xl` cards and windows, `rounded-lg` buttons and inner panels, `rounded` chips,

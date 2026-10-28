@@ -3555,53 +3555,84 @@ html[data-theme="dark"] {
       transparent
     );
 }
-/* Call-to-action band (shared above the footer): a dot pattern that fades out towards the edges, and a layer of
-   primary dots that only shows inside a circle around the cursor (--cta-x / --cta-y, [data-lit], set by src/main.js).
-   The dots are 1.5–2px, so text over them keeps its contrast. Reduced motion or touch: static dots only. */
-@utility cta-dots {
+/* Call-to-action band (every page's, above the footer): the background-boxes grid (`CtaBoxes`), whose
+   cells light up under the cursor. The grid shows in the middle and sinks into the page colour
+   towards the edges (the overlay below, the original's mask). The words sit on that plain middle and
+   keep their contrast; a lit cell behind a word lasts only while the cursor is on it. The band's layout
+   box lets the cursor through to the grid, and only its words and buttons take it. */
+@utility cta-boxes {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   background-color: var(--color-surface-0);
-  &::before,
   &::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background-size: 22px 22px;
+    background-color: var(--color-surface-0);
+    mask-image: radial-gradient(transparent, black);
   }
-  &::before {
-    background-image: radial-gradient(
-      circle,
-      var(--color-line-control) 1.2px,
-      transparent 1.6px
-    );
-    opacity: 0.55;
-    mask-image: radial-gradient(70% 90% at 50% 50%, black 30%, transparent);
+  & .frame {
+    pointer-events: none;
   }
+  & .frame * {
+    pointer-events: auto;
+  }
+}
+/* The grid itself, the original's geometry: 64 x 32px cells, skewed and scaled into a receding plane,
+   with a plus at every other crossing (one masked layer, not an svg per cell). A cell lights at once
+   and fades over 2s, as the original's framer-motion did, in the colour the motion script picks as the
+   cursor enters it (`--lit`, one of the six below; Signal Red without the script). The original's
+   random pick of nine pastels, without its purple, indigo and violet, in the brand's own colours. */
+@utility boxes-grid {
+  position: absolute;
+  top: -25%;
+  left: 25%;
+  z-index: -2;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  transform: translate(-40%, -60%) skewX(-48deg) skewY(14deg) scale(0.675);
+  --box-1: var(--color-signal);
+  --box-2: var(--color-primary);
+  --box-3: var(--color-sky);
+  --box-4: var(--color-gap);
+  --box-5: var(--color-success);
+  --box-6: var(--color-step-2);
+  & > div {
+    position: relative;
+    flex-shrink: 0;
+    width: 4rem;
+    height: 2rem;
+    border-left: 1px solid var(--color-line);
+  }
+  & > div > div {
+    width: 4rem;
+    height: 2rem;
+    border-top: 1px solid var(--color-line);
+    border-right: 1px solid var(--color-line);
+    transition: background-color 2s;
+  }
+  & > div > div:hover {
+    background-color: var(--lit, var(--color-signal));
+    transition-duration: 0s;
+  }
+  /* the columns overflow the grid's box, so the plus layer is sized from the counts CtaBoxes sets */
   &::after {
-    background-image: radial-gradient(
-      circle,
-      var(--color-primary) 1.6px,
-      transparent 2.1px
-    );
-    mask-image: radial-gradient(
-      12rem circle at var(--cta-x, 50%) var(--cta-y, 50%),
-      black,
-      transparent
-    );
-    opacity: 0;
-    transition: opacity 300ms var(--ease-out-soft);
-  }
-  &[data-lit]::after {
-    opacity: 1;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    &::after {
-      display: none;
-    }
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--columns) * 4rem + 2rem);
+    height: calc(var(--cells) * 2rem + 2rem);
+    pointer-events: none;
+    background-color: var(--color-line-control);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='64'%3E%3Cpath d='M6 0v12M0 6h12' stroke='black'/%3E%3C/svg%3E");
+    mask-size: 128px 64px;
+    mask-position: 10px 10px;
   }
 }
 /* Coloured shadow behind the product demo: the Signal gradient, blurred, under the window */

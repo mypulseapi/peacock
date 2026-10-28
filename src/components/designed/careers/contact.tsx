@@ -7,10 +7,12 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { designedText } from "../t";
+import { CtaBoxes } from "@/components/designed/cta-boxes";
 export function ContactSection() {
   const t = designedText("careers.contact");
   return (
-    <section id="contact" className="cta-dots scroll-mt-20" data-cta>
+    <section id="contact" className="cta-boxes scroll-mt-20">
+            <CtaBoxes />
             <div className="frame py-24 text-center lg:py-32">
               <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
                 {t('1')}

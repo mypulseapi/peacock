@@ -24,6 +24,7 @@ import { ProblemDrawing, SceneDrawing, ShelfDrawing } from "./drawings";
 import { img } from "@/lib/cdn";
 import { designedHref, designedText } from "../t";
 import { CompareSlider } from "../product/compare-slider";
+import { CtaBoxes } from "@/components/designed/cta-boxes";
 
 /** A picture on the CDN; `alt` is its message key, `"section1.figureAlt"`, so it follows the locale. */
 export interface SectorPicture {
@@ -482,7 +483,8 @@ export function SectorPage({ s }: { s: Sector }) {
         </div>
       </section>
 
-      <section className="cta-dots" data-cta>
+      <section className="cta-boxes">
+        <CtaBoxes />
         <div className="frame py-24 text-center lg:py-32">
           <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
             {t6("1")}

@@ -6,6 +6,7 @@ import { Link } from "@/i18n/routing";
 import { PageSchema } from "@/components/PageSchema";
 import { ResearchIndex } from "@/components/designed/research/research-index";
 import { research } from "@/content/pages/research";
+import { CtaBoxes } from "@/components/designed/cta-boxes";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -128,7 +129,8 @@ export default async function Page({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="cta-dots" data-cta>
+      <section className="cta-boxes">
+        <CtaBoxes />
         <div className="frame py-24 text-center lg:py-32">
           <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
             {h(c.cta.title)}

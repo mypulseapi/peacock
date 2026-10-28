@@ -7,11 +7,13 @@
  */
 import { designedHref, designedText } from "../t";
 import Link from "next/link";
+import { CtaBoxes } from "@/components/designed/cta-boxes";
 
 export function Section4Section() {
   const t = designedText("pricing.section1");
   return (
-    <section className="hero-bg border-b border-line">
+    <section className="cta-boxes border-b border-line">
+      <CtaBoxes />
       <div className="frame py-20 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="reveal text-title text-balance">{t("finalTitle")}</h2>

@@ -306,3 +306,43 @@ export const RETURN_VERIFICATION_VI: Content = {
 
 export const returnVerification = (l: string) =>
   byLocale({ en: RETURN_VERIFICATION, vi: RETURN_VERIFICATION_VI }, l);
+
+/** The alt text of the owner's pictures, in the order of `steps.items` and `gets.items`. */
+export const returnVerificationPictureAlt = (l: string) =>
+  byLocale(
+    {
+      en: {
+        situation:
+          "A returns report listing four reasons, too large, not as described, doesn’t work with my device and damaged in transit, beside a travel backpack’s product page whose dimensions, compatibility and material are blank; a dotted line from the report stops short of the page.",
+        steps: [
+          "A spreadsheet of orders and returns, product, ordered and return reason, going into an upload tray, beside a card that reads no personal data: no name, no phone, no address.",
+          "Three return reasons, too large, doesn’t fit my device and not as described, joined to the product facts they name: dimensions, which is blank, compatibility and material. Beside them, recorded against missing for the same brand and price band.",
+          "The backpack’s product page with its dimensions now filled in, joined to a chart where repaired and unrepaired products move together until the repair, after which the repaired line falls.",
+        ],
+        gains: [
+          "Returned parcels sorted into two trays: yours to fix, for too large and not as described, and set aside, for transit damage, a wrong item sent and a failed delivery.",
+          "A ranked card, facts that go with returns: dimensions, compatibility and material, each with a bar where the fact is missing and one where it is recorded, each bar with its interval.",
+          "A chart of repaired against unrepaired products, moving together before the repair and parting after it, with a returned trainer and a wrench beside it.",
+          "A card of your costs, return shipping, handling and resale loss, feeding a stack of coins marked verified change only.",
+          "A storefront where the products that stay bought are marked and ranked first, a kettle that keeps coming back moves down, and a held-back share is shown in the corner.",
+        ],
+      },
+      vi: {
+        situation:
+          "Một báo cáo trả hàng liệt kê bốn lý do, quá to, không giống mô tả, không dùng được với thiết bị của tôi và hư hỏng khi vận chuyển, cạnh trang sản phẩm của một ba lô du lịch có kích thước, khả năng tương thích và chất liệu để trống; một đường chấm từ báo cáo dừng lại trước khi tới trang.",
+        steps: [
+          "Một bảng tính đơn hàng và hàng bị trả, gồm sản phẩm, đơn đặt và lý do trả hàng, đi vào khay tải lên, cạnh một thẻ ghi không có dữ liệu cá nhân: không tên, không số điện thoại, không địa chỉ.",
+          "Ba lý do trả hàng, quá to, không vừa thiết bị của tôi và không giống mô tả, nối với thông tin sản phẩm mà chúng nhắc tới: kích thước, đang để trống, khả năng tương thích và chất liệu. Bên cạnh là có ghi so với còn thiếu, cùng thương hiệu và cùng khoảng giá.",
+          "Trang sản phẩm của chiếc ba lô nay đã có kích thước, nối với một biểu đồ nơi sản phẩm đã sửa và chưa sửa đi cùng nhau cho tới lúc sửa, sau đó đường đã sửa giảm xuống.",
+        ],
+        gains: [
+          "Các kiện hàng bị trả được chia vào hai khay: phần của bạn cần sửa, cho quá to và không giống mô tả, và phần để riêng, cho hư hỏng khi vận chuyển, gửi nhầm hàng và giao hàng thất bại.",
+          "Một thẻ xếp hạng các thông tin đi cùng hàng bị trả: kích thước, khả năng tương thích và chất liệu, mỗi thông tin có một thanh khi còn thiếu và một thanh khi có ghi, mỗi thanh kèm khoảng tin cậy.",
+          "Một biểu đồ sản phẩm đã sửa so với chưa sửa, đi cùng nhau trước khi sửa và tách ra sau đó, cạnh một chiếc giày bị trả và một cờ lê.",
+          "Một thẻ chi phí của bạn, phí gửi trả, phí xử lý và lỗ khi bán lại, dẫn vào một chồng xu ghi chỉ thay đổi đã kiểm chứng.",
+          "Một cửa hàng nơi các sản phẩm ít bị trả được đánh dấu và xếp trước, một chiếc ấm đun hay bị trả lại bị chuyển xuống, và phần được giữ lại hiện ở góc.",
+        ],
+      },
+    },
+    l,
+  );

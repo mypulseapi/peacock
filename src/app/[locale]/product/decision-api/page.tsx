@@ -7,7 +7,7 @@ import {
   ApiOutput,
   StorefrontScene,
 } from "@/components/designed/product/storefront-art";
-import { storefrontPictures } from "@/components/designed/product/storefront-pictures";
+import { productPictures } from "@/components/designed/product/product-pictures";
 import { PageSchema } from "@/components/PageSchema";
 import {
   decisionApi,
@@ -36,7 +36,7 @@ export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
   const c = decisionApi(locale);
-  const pictures = storefrontPictures(
+  const pictures = productPictures(
     "decision-api",
     decisionApiPictureAlt(locale),
   );
@@ -52,7 +52,7 @@ export default async function Page({ params }: PageProps) {
       />
       {/* The owner's direction of 26 Oct 2026: the blocks of Return Verification and Promotion
           Audit, each page's own panels kept and restyled (storefront-art.tsx). The hero, step and
-          gain pictures are the owner's (28 Oct 2026, storefront-pictures.tsx). */}
+          gain pictures are the owner's (28 Oct 2026, product-pictures.tsx). */}
       <ChapterPage
         c={c}
         chain={<StorefrontScene spec={c.scenes?.chain} />}

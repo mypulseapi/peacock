@@ -5,8 +5,8 @@
  *
  * Two kinds, as in `chapter-art.tsx`. The panels are markup, because their words must localise: the
  * scene data comes from each page's content module (`scenes`), the panel labels from `ui()`. The
- * first-visit strip below is inline SVG with no words; the step and gain drawings are in
- * `storefront-drawings.tsx`.
+ * first-visit strip below is inline SVG with no words; the step and gain pictures are the owner's
+ * (`storefront-pictures.tsx`).
  *
  * These replace `ApiVisual`, `SearchVisual`, `RecommendationsVisual`, `PagesVisual` and
  * `StudioVisual`, which drew in hard-coded hex and red, and the story scenes' versions of the same

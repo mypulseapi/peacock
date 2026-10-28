@@ -322,7 +322,7 @@ About page colour (owner-approved step by step, 20 Oct 2026): the "Early, and sp
 with each column headed by a status icon and a 2px rule: "What we can show" `success` + `i-circle-check`, "What we cannot
 show yet" `warning` + `i-circle-alert` (claim status, always with icon and words); the four principles carry a 2px
 `border-primary` top rule; the "47 of 216" figure is `text-primary`.
-About hero (owner, 28 Oct 2026): "Who we are", the description and a small line on who the customers are, then the owner's
+About hero (owner, 28 Oct 2026): "Who we are" and the description, `pt-12 lg:pt-16` like the other heroes, then the owner's
 picture (`about/who-we-are-shopping-network.webp`, and its night version `-dark.webp` in the dark theme; CDN only, a photo, so framed in the page column with `rounded-2xl border
 border-line` rather than bled to the edges) in place of the drawn "same four gaps, ranked two ways" figure. The principles'
 "next to the ranking" link pointed at that figure and went with it; the line now ends "and we say so."

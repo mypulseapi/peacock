@@ -15,7 +15,7 @@ export function Section1Section() {
   return (
     <section className="relative isolate bg-soft-gradient border-b border-line">
       <HeroAurora />
-            <div className="frame pt-20 pb-20 lg:pt-28 lg:pb-24">
+            <div className="frame pt-12 pb-20 lg:pt-16 lg:pb-24">
               <div className="reveal mx-auto max-w-3xl text-center">
                 <h1 className="text-display text-balance">
                   {t('1')}
@@ -24,10 +24,6 @@ export function Section1Section() {
                   className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted"
                 >
                   {t('2')}
-                </p>
-                {/* Who we are (owner, 28 Oct 2026): who the customers are, in small type under the description. */}
-                <p className="mx-auto mt-6 max-w-xl text-sm text-pretty text-muted">
-                  {t("audience")}
                 </p>
               </div>
 

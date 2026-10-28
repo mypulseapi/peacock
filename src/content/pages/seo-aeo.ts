@@ -425,3 +425,53 @@ export const SEO_AEO_VI: StoryContent = {
 
 export const seoAeo = (l: string) =>
   byLocale({ en: SEO_AEO, vi: SEO_AEO_VI }, l);
+
+/**
+ * Alt text for the page's pictures (the owner's generated set, 28 Oct 2026), in the order the page
+ * shows them: the hero, the situation, the three steps and the four cards. Each says what the picture
+ * shows, so the page reads the same without it.
+ */
+export interface UseCasePictureAlt {
+  hero: string;
+  situation: string;
+  steps: string[];
+  gets: string[];
+}
+
+const SEO_AEO_PICTURE_ALT: Record<"en" | "vi", UseCasePictureAlt> = {
+  en: {
+    hero: "A laptop's product page read by a search engine and an answer engine: the name and type are marked up, two lines are written as prose, and screen size is blank, where the answer engine stops.",
+    situation:
+      "A validation report with every check passed, crawl access, indexation, structured data, content quality and technical setup, beside an organic traffic chart that stays flat after the report passed.",
+    steps: [
+      "A ranked list of fields with screen size first, then memory and storage, under a magnifying glass.",
+      "The phrase 15.6-inch display picked out of a laptop's description and recorded as a field, screen size 15.6\".",
+      'One value, screen size 15.6", feeding three places at once: the schema, a filter and an assistant.',
+    ],
+    gets: [
+      "Two laptop listings with memory blank: a search engine's robot still finds one, while an agent's filter drops the other.",
+      "A traffic line rising steeply, with an assistant's chat bubble at its peak.",
+      "A grid of empty field slots, with only screen size, processor and storage picked out.",
+      "One robot feeding three surfaces: a filter set to 15.6\", a shopping feed and an assistant's answer.",
+    ],
+  },
+  vi: {
+    hero: "Trang sản phẩm laptop được công cụ tìm kiếm và cỗ máy trả lời cùng đọc: tên và loại đã được đánh dấu, hai dòng viết dạng văn xuôi, còn kích thước màn hình để trống, chỗ cỗ máy trả lời dừng lại.",
+    situation:
+      "Báo cáo kiểm tra đạt mọi mục, truy cập thu thập, lập chỉ mục, dữ liệu có cấu trúc, chất lượng nội dung và thiết lập kỹ thuật, bên cạnh biểu đồ lưu lượng tự nhiên vẫn đi ngang sau khi báo cáo đạt.",
+    steps: [
+      "Danh sách trường được xếp hạng, kích thước màn hình đứng đầu, rồi bộ nhớ và ổ lưu trữ, dưới một kính lúp.",
+      'Cụm từ màn hình 15.6 inch được lấy ra từ mô tả laptop và ghi thành một trường, kích thước màn hình 15.6".',
+      'Một giá trị, kích thước màn hình 15.6", cùng lúc dùng cho ba nơi: lược đồ, bộ lọc và trợ lý.',
+    ],
+    gets: [
+      "Hai sản phẩm laptop để trống bộ nhớ: robot của công cụ tìm kiếm vẫn tìm thấy một chiếc, còn bộ lọc của tác tử loại chiếc kia.",
+      "Đường lưu lượng tăng mạnh, với bong bóng chat của trợ lý ở đỉnh.",
+      "Một lưới ô trường để trống, chỉ có kích thước màn hình, bộ xử lý và ổ lưu trữ được chọn ra.",
+      'Một robot cấp dữ liệu cho ba nơi: bộ lọc đặt ở 15.6", nguồn cấp mua sắm và câu trả lời của trợ lý.',
+    ],
+  },
+};
+
+export const seoAeoPictureAlt = (l: string) =>
+  byLocale({ en: SEO_AEO_PICTURE_ALT.en, vi: SEO_AEO_PICTURE_ALT.vi }, l);

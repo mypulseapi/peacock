@@ -5,14 +5,17 @@ import { storyFaqSchema } from "@/components/StoryPage";
 import { PageSchema } from "@/components/PageSchema";
 import { UseCasePage } from "@/components/designed/use-cases/use-case-page";
 import { SchemaBands } from "@/components/designed/use-cases/charts";
-import { SEO_GETS, SEO_STEPS, SeoHero, SeoSituation } from "@/components/designed/use-cases/drawings";
+import { seoAeoPictures } from "@/components/designed/use-cases/pictures";
 import { ui } from "@/content/locale";
-import { seoAeo } from "@/content/pages/seo-aeo";
+import { seoAeo, seoAeoPictureAlt } from "@/content/pages/seo-aeo";
 
-interface PageProps { params: Promise<{ locale: string }> }
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
 
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { locale } = await params;
   // Was a hardcoded English title and description, so /vi shipped
   // English metadata. Reads the locale's own copy now.
@@ -33,7 +36,11 @@ export default async function Page({ params }: PageProps) {
       {/* The questions on this page are the ones people type about AEO, so the
           FAQPage schema here is doing double duty: it is the thing an answer
           engine lifts, on a page about being liftable. */}
-      <PageSchema locale={locale} path="/use-cases/seo-aeo" nodes={[storyFaqSchema(seoAeo(locale))]} />
+      <PageSchema
+        locale={locale}
+        path="/use-cases/seo-aeo"
+        nodes={[storyFaqSchema(seoAeo(locale))]}
+      />
       <UseCasePage
         c={seoAeo(locale)}
         figure={
@@ -48,7 +55,7 @@ export default async function Page({ params }: PageProps) {
             ]}
           />
         }
-        art={{ hero: <SeoHero />, situation: <SeoSituation />, steps: SEO_STEPS, gets: SEO_GETS }}
+        art={seoAeoPictures(seoAeoPictureAlt(locale))}
       />
     </>
   );

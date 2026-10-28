@@ -474,6 +474,15 @@ mobileMenu?.addEventListener("toggle", () => {
     .querySelector("summary")
     .setAttribute("aria-label", mobileMenu.open ? "Close menu" : "Open menu");
 });
+// A link that opens a new tab keeps focus in this one. After a mouse or touch click, let it go: otherwise
+// the first key pressed on return (an arrow to scroll, Cmd+W on the other tab) makes it keyboard focus,
+// and an About team card lights up again. Enter on the keyboard (detail 0) keeps focus where it was put.
+document.addEventListener("click", (event) => {
+  const link =
+    event.target instanceof Element && event.target.closest('a[target="_blank"]');
+  if (link && event.detail > 0) link.blur();
+});
+
 // Close the mobile menu when one of its links is followed (e.g. #request)
 mobileMenu
   ?.querySelectorAll("a")

@@ -69,16 +69,11 @@ export function Section1Section() {
   const t = designedText("pricing.section1");
   return (
     <section className="hero-bg border-b border-line">
-      <div className="frame pt-12 pb-16 lg:pb-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="reveal eyebrow">{t("1")}</p>
-          {/*
-                  `text-title` rather than `text-headline`, and wider. The sector heroes carry one
-                  sentence and fit two lines at 48px; this carries two and ran to three, which read
-                  as a heavier heading than the rest of the site. A step down plus the wider column
-                  puts it back at two lines.
-                */}
-          <h1 className="reveal mx-auto mt-3 max-w-4xl text-title text-balance">
+      <div className="frame pt-12 pb-16 lg:pt-16 lg:pb-20">
+        <div className="mx-auto max-w-5xl text-center">
+          {/* The product pages' hero size (`text-hero`, owner, 28 Oct 2026). The column is wider than
+              theirs so the longer second line still fits on one line on a wide screen. */}
+          <h1 className="reveal mx-auto text-hero text-balance">
             <span className="sm:block">{t("heroTitle")}</span>{" "}
             <span className="sm:block">{t("heroTitle2")}</span>
           </h1>

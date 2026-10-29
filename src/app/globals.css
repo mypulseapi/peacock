@@ -1807,11 +1807,14 @@ html[data-theme="dark"] .logo-dark { display: block; }
   .text-title {
     font-stretch: 108%;
   }
-  /* Vietnamese hero capped at 42px: above that, in the 347px column beside the demo,
-     it breaks "ý định của / người mua", splitting "của người mua". At 42px every line is a phrase:
-     "Khám phá ý định / của người mua / và lỗ hổng / danh mục". */
+  /* Vietnamese hero capped at 50px (owner, 29 Oct 2026; 42px before). In the 347px column beside the
+     demo, 50px would break "ý định của / người mua", so the title's phrases ("ý định", "của người mua",
+     "lỗ hổng", "danh mục") are joined with no-break spaces in designed.vi.json, and every line stays a
+     phrase: "Khám phá / ý định / của người mua / và lỗ hổng / danh mục" at 1280 and 1440. There
+     "của người mua" is 358px in the 347px column, 11px into the gap and 29px clear of the demo: the
+     owner's choice over 48px, the largest size that fits. */
   :lang(vi) [data-hero] .text-hero {
-    font-size: min(var(--text-hero), 2.625rem);
+    font-size: min(var(--text-hero), 3.125rem);
   }
 }
 

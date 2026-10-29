@@ -10,12 +10,16 @@
  * On a phone every row opens with its picture; only the desktop row mirrors.
  */
 import type { ReactNode } from "react";
+import { Link } from "@/i18n/routing";
+import { renderLocale } from "@/i18n/render-locale";
 
 export interface ZigzagStep {
   label: string;
   title: string;
   body: string;
   picture: ReactNode;
+  /** The label is a product on a solution page: link it to that product's page. */
+  href?: string;
 }
 
 export function StepsZigzag({
@@ -27,6 +31,7 @@ export function StepsZigzag({
   intro?: string;
   steps: ZigzagStep[];
 }) {
+  const locale = renderLocale();
   return (
     <section className="scroll-mt-16 border-b border-line bg-primary-wash">
       <div className="frame py-20 lg:py-28">
@@ -53,7 +58,17 @@ export function StepsZigzag({
                   <span className="font-title text-display text-primary">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  {s.label && <span className="badge-primary">{s.label}</span>}
+                  {s.label && s.href ? (
+                    <Link
+                      locale={locale}
+                      href={s.href}
+                      className="badge-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+                    >
+                      {s.label}
+                    </Link>
+                  ) : (
+                    s.label && <span className="badge-primary">{s.label}</span>
+                  )}
                 </p>
                 <h3 className="reveal mt-4 text-h2 text-balance text-ink delay-100">
                   {s.title}

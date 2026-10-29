@@ -75,6 +75,7 @@ export function ChapterPage({
   beforeAfter,
   howItWorks,
   whatYouGet,
+  stepHrefs,
 }: {
   c: ChapterContent;
   /** The chart beside the chain chapter. Without it, or without `c.chainBlock`, there is no chain chapter. */
@@ -114,6 +115,8 @@ export function ChapterPage({
   /** Sections of a page's own in place of the shared zig-zag and gains (the agent pages, 27 Oct 2026). */
   howItWorks?: ReactNode;
   whatYouGet?: ReactNode;
+  /** A solution page's steps are its products: each step's label links to that product. */
+  stepHrefs?: string[];
 }) {
   const locale = renderLocale();
   const t = ui(locale);
@@ -237,6 +240,7 @@ export function ChapterPage({
             title: s.title,
             body: s.body,
             picture: <Picture>{art.steps?.[i]}</Picture>,
+            href: stepHrefs?.[i],
           }))}
         />
       )}

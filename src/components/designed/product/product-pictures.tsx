@@ -1,8 +1,9 @@
 /**
  * The product pages' pictures, the owner's generated sets (28 Oct 2026), in place of the drawings that
- * stood in for them: the five storefront pages, Return Verification, Promotion Audit, and the gain
- * cards of Decision Monitor and Decision Verification. The hero is the page's `heroImage`, in its
- * content; a page whose situation or output section is a picture rather than a panel has one here.
+ * stood in for them: the five storefront pages, Return Verification, Promotion Audit, the gain
+ * cards of Decision Monitor and Decision Verification, and the two solution pages. The hero is the
+ * page's `heroImage`, in its content; a page whose situation or output section is a picture rather
+ * than a panel has one here.
  *
  * Transparent PNGs served as WebP, 3 : 2 like the boxes `ChapterPage` sets them in, so the box's own
  * surface shows through and they follow the theme.
@@ -127,6 +128,26 @@ const FILES: Record<
       "product/merchandising-studio-gain-4-the-decision-record.webp",
     ],
   },
+};
+
+// The two solution pages (owner's pick B, 29 Oct 2026): each step and gain is the product page's own
+// picture for the same thing, and the three that no product page had were made for them.
+FILES["fixable-returns"] = {
+  steps: [
+    "product/fixable-returns-step-1-find-the-facts-the-catalogue-cannot-answer.webp",
+    FILES["return-verification"].steps[1],
+    "product/fixable-returns-step-3-repair-then-re-measure.webp",
+    FILES["decision-api"].steps[2],
+  ],
+  gains: [0, 1, 2, 4].map((i) => FILES["return-verification"].gains[i]),
+};
+FILES["promotions-that-pay"] = {
+  steps: [
+    FILES["promotion-audit"].steps[1],
+    "product/promotions-that-pay-step-2-decide-for-each-group.webp",
+    FILES["return-verification"].steps[2],
+  ],
+  gains: [0, 1, 2, 4].map((i) => FILES["promotion-audit"].gains[i]),
 };
 
 const pic = (src: string, alt: string) => (

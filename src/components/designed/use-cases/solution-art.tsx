@@ -4,12 +4,13 @@
  * pictures are generated ones (`product/product-pictures.tsx`); only the hero is markup, because its
  * products are links and its words must localise.
  *
- * A solution is products in order, so the hero shows the merchant's own data above the products as
- * a numbered row, each a link to its product page. The words come from each page's content module
+ * A solution is products in order, so the hero shows the merchant's own data beside the products as
+ * a numbered path, each a link to its product page. The words come from each page's content module
  * (`art`). Nothing in the panel is measured (ODIN hires/07-WHAT-WE-DO-NOT-CLAIM.md rule 9): it carries
  * the "Illustration" badge, and its bars are shapes rather than values.
  */
 import type { CSSProperties, ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { renderLocale } from "@/i18n/render-locale";
 
@@ -47,7 +48,10 @@ function Heading({ title, badge }: { title: string; badge: string }) {
   );
 }
 
-/** The hero: the merchant's data, then the products in order, each a link to its page. */
+/**
+ * The hero (owner's version D, 29 Oct 2026): one card, the merchant's data on the left and the
+ * products on the right as a numbered path, each a link to its product page.
+ */
 export function SolutionHero({
   panel,
   products,
@@ -59,22 +63,25 @@ export function SolutionHero({
 }) {
   const locale = renderLocale();
   return (
-    <div className="rounded-2xl border border-line bg-card text-left">
-      <div className="p-5 sm:p-6">{panel}</div>
-      <ol
-        className={`grid gap-3 border-t border-line p-4 sm:p-5 ${products.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}
-      >
+    <div className="grid rounded-2xl border border-line bg-card text-left md:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
+      <div className="self-center p-5 sm:p-6">{panel}</div>
+      <ol className="grid content-center gap-1 border-t border-line p-3 sm:p-4 md:border-t-0 md:border-l">
         {products.map((p, i) => (
-          <li key={p.href} className="fig-item" style={at(i + 3)}>
+          <li
+            key={p.href}
+            // The path: a dashed line from each number down to the next.
+            className="fig-item relative not-last:after:absolute not-last:after:top-11 not-last:after:-bottom-2 not-last:after:left-6.5 not-last:after:border-l-2 not-last:after:border-dashed not-last:after:border-primary-line"
+            style={at(i + 3)}
+          >
             <Link
               locale={locale}
               href={p.href}
-              className="group flex h-full gap-3 rounded-xl border border-line bg-surface-1 p-3 transition-colors duration-200 ease-out-soft hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+              className="group flex gap-3 rounded-xl border border-transparent p-3 transition-colors duration-200 ease-out-soft hover:border-line hover:bg-surface-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
             >
               <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold tabular-nums text-on-primary">
                 {i + 1}
               </span>
-              <span className="min-w-0">
+              <span className="min-w-0 flex-1">
                 <span className="block text-sm font-semibold text-ink group-hover:text-primary">
                   {p.label}
                 </span>
@@ -82,12 +89,16 @@ export function SolutionHero({
                   {p.note}
                 </span>
               </span>
+              <ArrowRight
+                className="size-4 shrink-0 self-center text-primary transition-transform duration-200 ease-out-soft group-hover:translate-x-0.5"
+                aria-hidden
+              />
             </Link>
           </li>
         ))}
       </ol>
       {note && (
-        <p className="border-t border-line px-5 py-3 text-caption text-pretty text-muted sm:px-6">
+        <p className="border-t border-line px-5 py-3 text-caption text-pretty text-muted sm:px-6 md:col-span-2">
           {note}
         </p>
       )}

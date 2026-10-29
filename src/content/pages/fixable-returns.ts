@@ -1,6 +1,11 @@
 import { Split, ListOrdered, GitCompare, Repeat } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
+import type { ReturnsSolutionArt } from "@/components/designed/use-cases/solution-art";
 import { byLocale } from "@/content/locale";
+import { returnVerificationPictureAlt } from "@/content/pages/return-verification";
+import { decisionApiPictureAlt } from "@/content/pages/decision-api";
+
+type Content = ChapterContent & { art: ReturnsSolutionArt };
 
 /**
  * Solution: cut fixable returns. A goal, not a product: it puts four products in the order a
@@ -16,7 +21,7 @@ import { byLocale } from "@/content/locale";
  * `scenes.chain` is the "yours, not yours, unclear" figure beside the visual heading; there is no
  * chain block.
  */
-export const FIXABLE_RETURNS: StoryContent = {
+export const FIXABLE_RETURNS: Content = {
   meta: {
     title: "Cut fixable returns: the missing facts behind them",
     description:
@@ -29,6 +34,19 @@ export const FIXABLE_RETURNS: StoryContent = {
   visualHeading: "Not every return is yours to fix.",
   visualBody:
     "Each return reason is read for the product fact it names. The ones a listing could have prevented are compared; the rest are counted and set aside, and vague codes are measured rather than guessed.",
+
+  // The words in the hero's panel (use-cases/solution-art.tsx). Nothing in it is measured.
+  art: {
+    note: "Illustration",
+    returns: "Returns",
+    reasons: [
+      ["Too large", "Dimensions"],
+      ["Does not work with my device", "Compatibility"],
+      ["Not as described", "Material"],
+    ],
+    others: ["Transit damage", "Failed delivery"],
+    setAside: "Set aside",
+  },
 
   scenes: {
     hero: {
@@ -218,7 +236,7 @@ export const FIXABLE_RETURNS: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const FIXABLE_RETURNS_VI: StoryContent = {
+export const FIXABLE_RETURNS_VI: Content = {
   meta: {
     title: "Giảm hàng bị trả có thể sửa: dữ kiện còn thiếu",
     description:
@@ -231,6 +249,18 @@ export const FIXABLE_RETURNS_VI: StoryContent = {
   visualHeading: "Không phải đơn trả nào cũng do bạn sửa được.",
   visualBody:
     "Mỗi lý do trả hàng được đọc để tìm dữ kiện sản phẩm mà nó nhắc tới. Những đơn mà trang sản phẩm có thể ngăn được thì được so sánh; phần còn lại được đếm và để riêng, còn các mã lý do mơ hồ thì được đo chứ không đoán.",
+
+  art: {
+    note: "Minh hoạ",
+    returns: "Hàng bị trả",
+    reasons: [
+      ["Quá to", "Kích thước"],
+      ["Không dùng được với thiết bị của tôi", "Khả năng tương thích"],
+      ["Không giống mô tả", "Chất liệu"],
+    ],
+    others: ["Hư hỏng khi vận chuyển", "Giao hàng thất bại"],
+    setAside: "Để riêng",
+  },
 
   scenes: {
     hero: {
@@ -418,3 +448,35 @@ export const FIXABLE_RETURNS_VI: StoryContent = {
 
 export const fixableReturns = (l: string) =>
   byLocale({ en: FIXABLE_RETURNS, vi: FIXABLE_RETURNS_VI }, l);
+
+/**
+ * The step and gain pictures' alt text, in the order `product-pictures.tsx` lists them: two made for
+ * this page, the rest the product pages' own pictures, with their own alt text.
+ */
+export const fixableReturnsPictureAlt = (l: string) => {
+  const rv = returnVerificationPictureAlt(l);
+  const own = byLocale(
+    {
+      en: {
+        find: "A backpack’s product page with its dimensions, compatibility and material left as empty amber boxes under a magnifying glass, joined to a card of missing facts ranked one to three, each with the backpacks it affects.",
+        repair:
+          "The same pair of headphones before and after: before, its dimensions and compatibility are empty amber boxes; after a wrench and an arrow, both are filled in and checked, with a re-measure icon above.",
+      },
+      vi: {
+        find: "Trang sản phẩm của một chiếc ba lô có kích thước, khả năng tương thích và chất liệu để trống trong các ô viền vàng, dưới một chiếc kính lúp, nối với một thẻ dữ kiện còn thiếu xếp từ một đến ba, mỗi dữ kiện kèm những chiếc ba lô nó ảnh hưởng.",
+        repair:
+          "Cùng một chiếc tai nghe trước và sau: trước đó, kích thước và khả năng tương thích là các ô viền vàng để trống; sau một cờ lê và một mũi tên, cả hai đã được điền và đánh dấu, phía trên có biểu tượng đo lại.",
+      },
+    },
+    l,
+  );
+  return {
+    steps: [
+      own.find,
+      rv.steps[1],
+      own.repair,
+      decisionApiPictureAlt(l).steps[2],
+    ],
+    gains: [0, 1, 2, 4].map((i) => rv.gains[i]),
+  };
+};

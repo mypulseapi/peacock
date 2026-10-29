@@ -16,13 +16,14 @@
 import type { CSSProperties, ReactNode } from "react";
 import { renderLocale } from "@/i18n/render-locale";
 import { ui } from "@/content/locale";
+import Image from "next/image";
+import { img } from "@/lib/cdn";
 import { Link } from "@/i18n/routing";
 import { StoryCta, type StoryContent } from "@/components/StoryPage";
 import { GainsCards } from "./gains";
 import { StepsZigzag } from "./steps-zigzag";
 import { CompareSlider } from "./compare-slider";
 import { HeroAurora } from "@/components/designed/hero-aurora";
-import { HeroPicture } from "@/components/designed/hero-picture";
 
 export type ChapterContent = StoryContent &
   Required<Pick<StoryContent, "situation" | "gets" | "limits">> & {
@@ -142,12 +143,14 @@ export function ChapterPage({
                 clips; the `svh` cap keeps the whole figure above the fold, as on the other heroes. */}
             {c.heroImage ? (
               <div className="reveal mt-8 delay-200 lg:mt-10 lg:bleed-x">
-                <HeroPicture
-                  src={c.heroImage.src}
+                <Image
+                  src={img(c.heroImage.src)}
                   alt={c.heroImage.alt}
                   width={c.heroImage.width}
                   height={c.heroImage.height}
                   sizes="100vw"
+                  priority
+                  fetchPriority="high"
                   className="mx-auto h-auto w-full object-contain lg:max-h-[calc(100svh-28rem)]"
                 />
               </div>

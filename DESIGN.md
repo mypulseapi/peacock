@@ -130,12 +130,6 @@ scrolling the pricing hero stutter. Size and strength (opacity 0.5, the corner e
 a fainter corner that kept every line AA: where a bright streak crosses a hero's `muted` lede, that line can measure
 below 4.5 (lowest 3.3; 4.65 with no aurora). A known exception to the AA rule, by the owner's choice.
 
-**Hero picture:** a picture that is its page's LCP renders through `<HeroPicture />` (`designed/hero-picture.tsx`, 29 Oct
-2026), never `next/image` with `priority`. Every hero picture has a phone copy beside it on the CDN, `<name>-sm.webp`,
-828px wide; the browser picks one by width and the pick is preloaded at high priority. Without it a phone fetched the
-desktop file (56-261 KB) behind the fonts, and LCP on the picture heroes sat at 2.5-4.3s on mobile; with it every page
-measured 0.8-1.3s. A new hero picture ships with its `-sm` copy (sharp, 828px, WebP q80), uploaded with the original.
-
 **Dark band gradient:** `bg-void-gradient` — the `void` base with a soft Pulse Blue glow (top left) and Sky glow
 (bottom right). Not used on any page at the moment (the home research band and How it works are light now); white and `void-muted` text stay AA
 on its brightest point (13.88 / 5.90, the Sky glow).

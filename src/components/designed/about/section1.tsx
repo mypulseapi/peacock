@@ -6,9 +6,10 @@
  *
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
+import Image from "next/image";
+import { img } from "@/lib/cdn";
 import { designedText } from "../t";
 import { HeroAurora } from "@/components/designed/hero-aurora";
-import { HeroPicture } from "@/components/designed/hero-picture";
 export function Section1Section() {
   const t = designedText("about.section1");
   return (
@@ -30,24 +31,26 @@ export function Section1Section() {
                   A photo, so it sits framed in the page column rather than bleeding to the edges. */}
               <div className="reveal mt-14 delay-200 lg:mt-16">
                 {/* Light and dark are two drawings of the same scene; each theme shows one, as the logo does. The
-                    light one is the page's LCP in the default theme, so it is the preloaded `HeroPicture`; the
-                    dark one stays lazy, so the default theme does not fetch both. */}
-                <HeroPicture
-                  src="about/who-we-are-shopping-network.webp"
+                    light one is the page's LCP in the default theme, so it loads at once and first; the dark one
+                    stays lazy, so the dark theme does not fetch both. No `priority`: a preload is fetched at low
+                    priority and would add nothing. */}
+                <Image
+                  src={img("about/who-we-are-shopping-network.webp")}
                   alt={t("pictureAlt")}
                   width={1735}
                   height={906}
                   sizes="(min-width: 96rem) 80rem, (min-width: 64rem) 70rem, 100vw"
                   className="h-auto w-full rounded-2xl border border-line shadow-sm theme-dark:hidden"
+                  loading="eager"
+                  fetchPriority="high"
                 />
-                <HeroPicture
-                  src="about/who-we-are-shopping-network-dark.webp"
+                <Image
+                  src={img("about/who-we-are-shopping-network-dark.webp")}
                   alt={t("pictureAlt")}
                   width={1735}
                   height={906}
                   sizes="(min-width: 96rem) 80rem, (min-width: 64rem) 70rem, 100vw"
                   className="hidden h-auto w-full rounded-2xl border border-line shadow-sm theme-dark:block"
-                  lazy
                 />
               </div>
             </div>

@@ -2787,6 +2787,27 @@ html[data-theme="dark"] {
     }
   }
 }
+/* A card that carries its own transition (About's team cards: the hover shadow and dome) cannot take
+   `reveal`, which would override it. It enters with a keyframe animation instead, in turn (`--i`), when
+   its list (`reveal-trigger`) scrolls in. */
+@utility card-in {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    &:not(:where([data-shown] *)) {
+      opacity: 0;
+      translate: 0 1rem;
+    }
+    :where([data-shown]) > & {
+      animation: card-in 700ms var(--ease-out-soft) both;
+      animation-delay: calc(min(var(--i, 0), 5) * 90ms);
+    }
+  }
+}
+@keyframes card-in {
+  from {
+    opacity: 0;
+    translate: 0 1rem;
+  }
+}
 @utility fig-pic {
   @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
     transition:
@@ -3995,7 +4016,7 @@ a[aria-disabled="true"] * {
  */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   html:not([data-motion]) .reveal:not([data-shown]),
-  html:not([data-motion]) :is(.fig-item, .fig-bar, .fig-flag, .fig-resort, .fig-pic) {
+  html:not([data-motion]) :is(.fig-item, .fig-bar, .fig-flag, .fig-resort, .fig-pic, .card-in) {
     animation: pulse-reveal-failsafe 400ms ease-out 1200ms forwards;
   }
 }

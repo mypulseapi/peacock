@@ -3,11 +3,12 @@ import { prepareLocale } from "@/i18n/render-locale";
 import { buildAlternates } from "@/lib/seo";
 import { storyFaqSchema } from "@/components/StoryPage";
 import { PageSchema } from "@/components/PageSchema";
-import {
-  NO_ART,
-  UseCasePage,
-} from "@/components/designed/use-cases/use-case-page";
+import { ChapterPage } from "@/components/designed/product/chapters";
 import { UseCaseScene } from "@/components/designed/use-cases/charts";
+import {
+  SolutionHero,
+  promotionsArt,
+} from "@/components/designed/use-cases/solution-art";
 import { promotionsThatPay } from "@/content/pages/promotions-that-pay";
 
 interface PageProps {
@@ -26,11 +27,24 @@ export async function generateMetadata({
   };
 }
 
-/** A solution: a goal, and the products that reach it in order. Pictures follow from the owner. */
+/** The products the steps use, in order; each opens its own page. */
+const PRODUCTS = [
+  "/product/promotion-audit",
+  "/product/decision-api",
+  "/product/return-verification",
+];
+
+/**
+ * A solution: a goal, and the products that reach it in order. On the product pages' template (owner's
+ * pick B, 29 Oct 2026), every section as before: the hero shows the products as links, the steps link
+ * each product, and the pictures are drawn (`solution-art.tsx`).
+ */
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
   const c = promotionsThatPay(locale);
+  const art = promotionsArt(c.art);
+  const hero = c.scenes?.hero;
   return (
     <>
       <PageSchema
@@ -38,18 +52,31 @@ export default async function Page({ params }: PageProps) {
         path="/use-cases/promotions-that-pay"
         nodes={[storyFaqSchema(c)]}
       />
-      <UseCasePage
+      <ChapterPage
         c={c}
-        figure={<UseCaseScene spec={c.scenes?.chain} />}
-        art={NO_ART}
-        products={[
-          { label: "Promotion Audit", href: "/product/promotion-audit" },
-          { label: "Decision API", href: "/product/decision-api" },
-          {
-            label: "Return Verification",
-            href: "/product/return-verification",
-          },
-        ]}
+        figure={
+          <SolutionHero
+            panel={art.panel}
+            note={hero?.kind === "facts" ? hero.note : undefined}
+            products={
+              hero?.kind === "facts"
+                ? hero.facts.map((f, i) => ({
+                    label: f.label,
+                    note: f.note ?? "",
+                    href: PRODUCTS[i],
+                  }))
+                : []
+            }
+          />
+        }
+        art={{
+          situation: <UseCaseScene spec={c.scenes?.situation} />,
+          situationIsPanel: true,
+          steps: art.steps,
+        }}
+        output={{ panel: <UseCaseScene spec={c.scenes?.chain} />, bare: true }}
+        stepHrefs={PRODUCTS}
+        gainPictures={art.gains}
       />
     </>
   );

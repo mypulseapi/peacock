@@ -1,6 +1,9 @@
 import { Split, ListOrdered, GitCompare, Repeat } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
+import type { ReturnsSolutionArt } from "@/components/designed/use-cases/solution-art";
 import { byLocale } from "@/content/locale";
+
+type Content = ChapterContent & { art: ReturnsSolutionArt };
 
 /**
  * Solution: cut fixable returns. A goal, not a product: it puts four products in the order a
@@ -16,7 +19,7 @@ import { byLocale } from "@/content/locale";
  * `scenes.chain` is the "yours, not yours, unclear" figure beside the visual heading; there is no
  * chain block.
  */
-export const FIXABLE_RETURNS: StoryContent = {
+export const FIXABLE_RETURNS: Content = {
   meta: {
     title: "Cut fixable returns: the missing facts behind them",
     description:
@@ -29,6 +32,29 @@ export const FIXABLE_RETURNS: StoryContent = {
   visualHeading: "Not every return is yours to fix.",
   visualBody:
     "Each return reason is read for the product fact it names. The ones a listing could have prevented are compared; the rest are counted and set aside, and vague codes are measured rather than guessed.",
+
+  // The words in the hero figure and the drawn pictures (use-cases/solution-art.tsx). Nothing
+  // in them is measured.
+  art: {
+    note: "Illustration",
+    returns: "Returns",
+    reasons: [
+      ["Too large", "Dimensions"],
+      ["Does not work with my device", "Compatibility"],
+      ["Not as described", "Material"],
+    ],
+    others: ["Transit damage", "Failed delivery"],
+    setAside: "Set aside",
+    yours: "Yours to fix",
+    missing: "Missing",
+    recorded: "Recorded",
+    repair: "Repair",
+    repaired: "Repaired",
+    notRepaired: "Not repaired",
+    ranked: "Sees the ranking",
+    holdback: "Never sees it",
+    fixable: "Comes back for a fixable reason",
+  },
 
   scenes: {
     hero: {
@@ -218,7 +244,7 @@ export const FIXABLE_RETURNS: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const FIXABLE_RETURNS_VI: StoryContent = {
+export const FIXABLE_RETURNS_VI: Content = {
   meta: {
     title: "Giảm hàng bị trả có thể sửa: dữ kiện còn thiếu",
     description:
@@ -231,6 +257,27 @@ export const FIXABLE_RETURNS_VI: StoryContent = {
   visualHeading: "Không phải đơn trả nào cũng do bạn sửa được.",
   visualBody:
     "Mỗi lý do trả hàng được đọc để tìm dữ kiện sản phẩm mà nó nhắc tới. Những đơn mà trang sản phẩm có thể ngăn được thì được so sánh; phần còn lại được đếm và để riêng, còn các mã lý do mơ hồ thì được đo chứ không đoán.",
+
+  art: {
+    note: "Minh hoạ",
+    returns: "Hàng bị trả",
+    reasons: [
+      ["Quá to", "Kích thước"],
+      ["Không dùng được với thiết bị của tôi", "Khả năng tương thích"],
+      ["Không giống mô tả", "Chất liệu"],
+    ],
+    others: ["Hư hỏng khi vận chuyển", "Giao hàng thất bại"],
+    setAside: "Để riêng",
+    yours: "Bạn sửa được",
+    missing: "Còn thiếu",
+    recorded: "Đã có",
+    repair: "Bản sửa",
+    repaired: "Đã sửa",
+    notRepaired: "Chưa sửa",
+    ranked: "Thấy thứ hạng",
+    holdback: "Không bao giờ thấy",
+    fixable: "Bị trả vì một lý do sửa được",
+  },
 
   scenes: {
     hero: {

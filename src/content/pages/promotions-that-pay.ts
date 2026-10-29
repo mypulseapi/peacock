@@ -1,6 +1,9 @@
 import { Undo2, CircleSlash, Wrench, FlaskConical } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
+import type { PromotionsSolutionArt } from "@/components/designed/use-cases/solution-art";
 import { byLocale } from "@/content/locale";
+
+type Content = ChapterContent & { art: PromotionsSolutionArt };
 
 /**
  * Solution: decide which promotions pay. A goal, not a product: it puts three products in the
@@ -15,7 +18,7 @@ import { byLocale } from "@/content/locale";
  *
  * `scenes.chain` is the "three answers" figure beside the visual heading; there is no chain block.
  */
-export const PROMOTIONS_THAT_PAY: StoryContent = {
+export const PROMOTIONS_THAT_PAY: Content = {
   meta: {
     title: "Decide which promotions pay, after the returns",
     description:
@@ -29,6 +32,23 @@ export const PROMOTIONS_THAT_PAY: StoryContent = {
     "Three possible answers for every group, and one of them is nothing.",
   visualBody:
     "For each group of shoppers you can already see, such as new buyers, a region or cash on delivery, the answer is an offer that beat doing nothing at the cautious end of its range, no offer, or a named test.",
+
+  // The words in the hero figure and the drawn pictures (use-cases/solution-art.tsx). Nothing
+  // in them is measured.
+  art: {
+    note: "Illustration",
+    campaign: "Campaign",
+    offers: ["Voucher", "Price cut", "Free shipping"],
+    repair: "Listing repair",
+    noOffer: "No offer",
+    kept: "Kept",
+    back: "Came back or refused",
+    beats: "Beats doing nothing, net of returns",
+    groups: ["New buyers", "A region", "Cash on delivery"],
+    answers: ["An offer", "No offer", "A test"],
+    repaired: "Repaired",
+    notRepaired: "Not repaired",
+  },
 
   scenes: {
     hero: {
@@ -203,7 +223,7 @@ export const PROMOTIONS_THAT_PAY: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const PROMOTIONS_THAT_PAY_VI: StoryContent = {
+export const PROMOTIONS_THAT_PAY_VI: Content = {
   meta: {
     title: "Quyết định khuyến mãi nào có lãi, sau hàng bị trả",
     description:
@@ -217,6 +237,21 @@ export const PROMOTIONS_THAT_PAY_VI: StoryContent = {
     "Ba câu trả lời cho mỗi nhóm, và một trong số đó là không làm gì.",
   visualBody:
     "Với mỗi nhóm người mua bạn đã thấy được, như khách mới, một vùng hay thanh toán khi nhận hàng, câu trả lời là một ưu đãi vẫn hơn việc không làm gì ở đầu thận trọng của khoảng ước lượng, không ưu đãi, hoặc một thử nghiệm được nêu rõ.",
+
+  art: {
+    note: "Minh hoạ",
+    campaign: "Chiến dịch",
+    offers: ["Voucher", "Giảm giá", "Miễn phí vận chuyển"],
+    repair: "Sửa trang sản phẩm",
+    noOffer: "Không ưu đãi",
+    kept: "Được giữ lại",
+    back: "Bị trả hoặc từ chối nhận",
+    beats: "Hơn việc không làm gì, sau hàng bị trả",
+    groups: ["Khách mới", "Một vùng", "Thanh toán khi nhận hàng"],
+    answers: ["Một ưu đãi", "Không ưu đãi", "Một thử nghiệm"],
+    repaired: "Đã sửa",
+    notRepaired: "Chưa sửa",
+  },
 
   scenes: {
     hero: {

@@ -96,7 +96,7 @@ export const PROMOTIONS_THAT_PAY: Content = {
           tone: "good",
         },
         {
-          value: "0",
+          value: "✕",
           label: "No offer",
           note: "Nothing beat doing nothing for this group",
           tone: "hold",
@@ -292,7 +292,7 @@ export const PROMOTIONS_THAT_PAY_VI: Content = {
           tone: "good",
         },
         {
-          value: "0",
+          value: "✕",
           label: "Không ưu đãi",
           note: "Không ưu đãi nào hơn việc không làm gì với nhóm này",
           tone: "hold",

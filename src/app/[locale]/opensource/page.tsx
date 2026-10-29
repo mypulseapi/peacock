@@ -8,11 +8,13 @@ import { Link } from "@/i18n/routing";
 import { PageSchema } from "@/components/PageSchema";
 import { HeroAurora } from "@/components/designed/hero-aurora";
 import { CtaBoxes } from "@/components/designed/cta-boxes";
+import { CopyButton } from "@/components/ui/CopyButton";
 import {
   opensource,
   GITHUB,
   GITHUB_ISSUE,
   DOCS,
+  INSTALL,
   opensourcePictureAlt,
   type Status,
 } from "@/content/pages/opensource";
@@ -153,11 +155,12 @@ export default async function Page({ params }: PageProps) {
           },
         ]}
       />
-      {/* The designed pages' hero (`hero-bg`, one screen tall like home's and the product pages'), not `PageHero`,
-          whose older canvas did not match them in the dark theme. Words left, picture right. */}
-      <section className="relative isolate hero-bg hero-screen flex items-center overflow-hidden border-b border-line">
+      {/* The designed pages' hero (`hero-bg`), sized to its content with Pricing's padding (owner, 29 Oct
+          2026). Words left; right, the owner's version D of five: the repository, its licence, what is
+          available now (from `boundary.open`, so the two never disagree) and the install line. */}
+      <section className="relative isolate hero-bg overflow-hidden border-b border-line">
         <HeroAurora />
-        <div className="frame grid flex-1 items-center gap-12 pt-12 pb-20 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-24">
+        <div className="frame grid items-center gap-12 pt-12 pb-16 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-20">
           <div>
             <h1 className="reveal max-w-[20ch] text-hero text-balance">
               {c.hero.title}
@@ -183,7 +186,46 @@ export default async function Page({ params }: PageProps) {
               {c.hero.supporting}
             </p>
           </div>
-          <Picture src="hero-evidence-for-agents" alt={alt.hero} />
+          <div className="reveal rounded-2xl border border-line bg-card shadow-sm delay-200">
+            <div className="flex flex-wrap items-center gap-2 border-b border-line px-5 py-4">
+              <svg className="size-5 text-ink" aria-hidden="true">
+                <use href="#i-github" />
+              </svg>
+              <a
+                href={GITHUB}
+                className="font-semibold text-ink hover:text-primary"
+              >
+                mypulseapi / open-pulse
+              </a>
+              <span className="shrink-0 rounded-full border border-line px-2.5 py-0.5 text-xs font-semibold text-ink">
+                MIT
+              </span>
+            </div>
+            <ul className="px-5 py-2">
+              {c.boundary.open
+                .filter((o) => o.status === "available")
+                .map((o) => (
+                  <li
+                    key={o.name}
+                    className="flex items-center justify-between gap-3 border-t border-line py-3 text-sm text-ink first:border-t-0"
+                  >
+                    <span className="min-w-0">{o.name}</span>
+                    {badge(o.status)}
+                  </li>
+                ))}
+            </ul>
+            <div className="mx-5 mb-5 flex items-center gap-3 rounded-xl border border-line bg-surface-1 px-4 py-3">
+              <code className="min-w-0 flex-1 overflow-x-auto font-mono text-sm whitespace-nowrap text-ink">
+                {INSTALL}
+              </code>
+              <CopyButton
+                code={INSTALL}
+                label={c.hero.copy}
+                copiedLabel={c.hero.copied}
+                className="inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-lg border border-line bg-card px-3 text-xs font-medium text-muted transition-colors duration-200 ease-out-soft hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

@@ -24,6 +24,9 @@ export interface OpensourceContent {
     primary: string;
     secondary: string;
     supporting: string;
+    /** The repository card's copy button (owner's version D, 29 Oct 2026). */
+    copy: string;
+    copied: string;
   };
   why: {
     heading: string;
@@ -116,6 +119,8 @@ export const GITHUB = "https://github.com/mypulseapi/open-pulse";
 export const GITHUB_ISSUE =
   "https://github.com/mypulseapi/open-pulse/issues/new";
 export const DOCS = "https://developer.thepulseapi.com/opensource";
+/** The install line on the hero's repository card: the MCP server, the package an agent builder starts with. */
+export const INSTALL = "npm i @thepulseapi/mcp";
 
 const PACK = `category: furniture.sofa
 requirements:
@@ -145,6 +150,8 @@ const EN: OpensourceContent = {
     secondary: "Read the developer docs",
     supporting:
       "MIT licensed. For developers, merchants, researchers and AI agents, in any industry where options have attributes.",
+    copy: "Copy",
+    copied: "Copied",
   },
   why: {
     heading:
@@ -500,6 +507,8 @@ const VI: OpensourceContent = {
     secondary: "Đọc tài liệu cho lập trình viên",
     supporting:
       "Giấy phép MIT. Dành cho lập trình viên, người bán, nhà nghiên cứu và tác tử AI, trong mọi ngành mà các lựa chọn có thuộc tính.",
+    copy: "Sao chép",
+    copied: "Đã sao chép",
   },
   why: {
     heading:
@@ -854,7 +863,6 @@ export const opensourcePictureAlt = (l: string) =>
   byLocale(
     {
       en: {
-        hero: "The Pulse robot reads a sofa's listing through a magnifier beside an open box marked Open Pulse. Two of the buyer's requirements, fits the doorway and what is in the box, are checked; the warranty is still a question.",
         why: "A neat product record, title, brand, price, colour, category and images, beside four shoppers asking whether it fits their doorway, whether it is compatible, what is in the box and whether the warranty is valid; none of their questions reaches the record.",
         model:
           "Five steps in a row, requirement, product evidence, visible evidence, decision and outcome, with one fact dropping out between product evidence and visible evidence into a tray marked never reaches the page.",
@@ -870,7 +878,6 @@ export const opensourcePictureAlt = (l: string) =>
           "A loop of six steps: a buyer asks, the agent tries to decide, a requirement is missing, the agent proposes it, people review it, and the knowledge improves.",
       },
       vi: {
-        hero: "Robot Pulse đọc trang sản phẩm của một chiếc sofa qua kính lúp, cạnh một chiếc hộp mở ghi Open Pulse. Hai yêu cầu của người mua, vừa khung cửa và trong hộp có gì, đã được đánh dấu; bảo hành vẫn là một dấu hỏi.",
         why: "Một hồ sơ sản phẩm gọn gàng, tiêu đề, thương hiệu, giá, màu, ngành hàng và hình ảnh, cạnh bốn người mua hỏi có vừa khung cửa không, có tương thích không, trong hộp có gì và bảo hành có hiệu lực không; không câu hỏi nào chạm tới hồ sơ.",
         model:
           "Năm bước nối nhau, yêu cầu, bằng chứng sản phẩm, bằng chứng nhìn thấy được, quyết định và kết quả, với một thông tin rơi ra giữa bằng chứng sản phẩm và bằng chứng nhìn thấy được vào một khay ghi không bao giờ tới được trang.",

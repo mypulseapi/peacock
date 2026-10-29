@@ -2,6 +2,8 @@ import { Split, ListOrdered, GitCompare, Repeat } from "lucide-react";
 import type { ChapterContent } from "@/components/designed/product/chapters";
 import type { ReturnsSolutionArt } from "@/components/designed/use-cases/solution-art";
 import { byLocale } from "@/content/locale";
+import { returnVerificationPictureAlt } from "@/content/pages/return-verification";
+import { decisionApiPictureAlt } from "@/content/pages/decision-api";
 
 type Content = ChapterContent & { art: ReturnsSolutionArt };
 
@@ -33,8 +35,7 @@ export const FIXABLE_RETURNS: Content = {
   visualBody:
     "Each return reason is read for the product fact it names. The ones a listing could have prevented are compared; the rest are counted and set aside, and vague codes are measured rather than guessed.",
 
-  // The words in the hero figure and the drawn pictures (use-cases/solution-art.tsx). Nothing
-  // in them is measured.
+  // The words in the hero's panel (use-cases/solution-art.tsx). Nothing in it is measured.
   art: {
     note: "Illustration",
     returns: "Returns",
@@ -45,15 +46,6 @@ export const FIXABLE_RETURNS: Content = {
     ],
     others: ["Transit damage", "Failed delivery"],
     setAside: "Set aside",
-    yours: "Yours to fix",
-    missing: "Missing",
-    recorded: "Recorded",
-    repair: "Repair",
-    repaired: "Repaired",
-    notRepaired: "Not repaired",
-    ranked: "Sees the ranking",
-    holdback: "Never sees it",
-    fixable: "Comes back for a fixable reason",
   },
 
   scenes: {
@@ -268,15 +260,6 @@ export const FIXABLE_RETURNS_VI: Content = {
     ],
     others: ["Hư hỏng khi vận chuyển", "Giao hàng thất bại"],
     setAside: "Để riêng",
-    yours: "Bạn sửa được",
-    missing: "Còn thiếu",
-    recorded: "Đã có",
-    repair: "Bản sửa",
-    repaired: "Đã sửa",
-    notRepaired: "Chưa sửa",
-    ranked: "Thấy thứ hạng",
-    holdback: "Không bao giờ thấy",
-    fixable: "Bị trả vì một lý do sửa được",
   },
 
   scenes: {
@@ -465,3 +448,35 @@ export const FIXABLE_RETURNS_VI: Content = {
 
 export const fixableReturns = (l: string) =>
   byLocale({ en: FIXABLE_RETURNS, vi: FIXABLE_RETURNS_VI }, l);
+
+/**
+ * The step and gain pictures' alt text, in the order `product-pictures.tsx` lists them: two made for
+ * this page, the rest the product pages' own pictures, with their own alt text.
+ */
+export const fixableReturnsPictureAlt = (l: string) => {
+  const rv = returnVerificationPictureAlt(l);
+  const own = byLocale(
+    {
+      en: {
+        find: "A backpack’s product page with its dimensions, compatibility and material left as empty amber boxes under a magnifying glass, joined to a card of missing facts ranked one to three, each with the backpacks it affects.",
+        repair:
+          "The same pair of headphones before and after: before, its dimensions and compatibility are empty amber boxes; after a wrench and an arrow, both are filled in and checked, with a re-measure icon above.",
+      },
+      vi: {
+        find: "Trang sản phẩm của một chiếc ba lô có kích thước, khả năng tương thích và chất liệu để trống trong các ô viền vàng, dưới một chiếc kính lúp, nối với một thẻ dữ kiện còn thiếu xếp từ một đến ba, mỗi dữ kiện kèm những chiếc ba lô nó ảnh hưởng.",
+        repair:
+          "Cùng một chiếc tai nghe trước và sau: trước đó, kích thước và khả năng tương thích là các ô viền vàng để trống; sau một cờ lê và một mũi tên, cả hai đã được điền và đánh dấu, phía trên có biểu tượng đo lại.",
+      },
+    },
+    l,
+  );
+  return {
+    steps: [
+      own.find,
+      rv.steps[1],
+      own.repair,
+      decisionApiPictureAlt(l).steps[2],
+    ],
+    gains: [0, 1, 2, 4].map((i) => rv.gains[i]),
+  };
+};

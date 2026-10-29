@@ -5,11 +5,15 @@ import { storyFaqSchema } from "@/components/StoryPage";
 import { PageSchema } from "@/components/PageSchema";
 import { ChapterPage } from "@/components/designed/product/chapters";
 import { UseCaseScene } from "@/components/designed/use-cases/charts";
+import { productPictures } from "@/components/designed/product/product-pictures";
 import {
   SolutionHero,
-  promotionsArt,
+  PromotionsPanel,
 } from "@/components/designed/use-cases/solution-art";
-import { promotionsThatPay } from "@/content/pages/promotions-that-pay";
+import {
+  promotionsThatPay,
+  promotionsThatPayPictureAlt,
+} from "@/content/pages/promotions-that-pay";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -37,13 +41,16 @@ const PRODUCTS = [
 /**
  * A solution: a goal, and the products that reach it in order. On the product pages' template (owner's
  * pick B, 29 Oct 2026), every section as before: the hero shows the products as links, the steps link
- * each product, and the pictures are drawn (`solution-art.tsx`).
+ * each product, and the step and gain pictures are the product pages' own, three made for these pages.
  */
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
   prepareLocale(locale);
   const c = promotionsThatPay(locale);
-  const art = promotionsArt(c.art);
+  const pictures = productPictures(
+    "promotions-that-pay",
+    promotionsThatPayPictureAlt(locale),
+  );
   const hero = c.scenes?.hero;
   return (
     <>
@@ -56,7 +63,7 @@ export default async function Page({ params }: PageProps) {
         c={c}
         figure={
           <SolutionHero
-            panel={art.panel}
+            panel={<PromotionsPanel l={c.art} />}
             note={hero?.kind === "facts" ? hero.note : undefined}
             products={
               hero?.kind === "facts"
@@ -72,11 +79,11 @@ export default async function Page({ params }: PageProps) {
         art={{
           situation: <UseCaseScene spec={c.scenes?.situation} />,
           situationIsPanel: true,
-          steps: art.steps,
+          steps: pictures.steps,
         }}
         output={{ panel: <UseCaseScene spec={c.scenes?.chain} />, bare: true }}
         stepHrefs={PRODUCTS}
-        gainPictures={art.gains}
+        gainPictures={pictures.gains}
       />
     </>
   );

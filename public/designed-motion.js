@@ -12,6 +12,10 @@
 //   [data-bg-video]        → product hero background video: theme-matched source, plays only while on screen
 //   [data-deal]            → About page DEAL acronym: big row → column → words (data-state hold/stack/expand/done)
 
+// First: tell the CSS this script is running, so the reveal failsafe in globals.css stands down
+// and below-the-fold content waits to fade up as it scrolls in, rather than appearing at 1.2s.
+document.documentElement.setAttribute("data-motion", "");
+
 const reduceMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;

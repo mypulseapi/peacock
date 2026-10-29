@@ -3984,15 +3984,18 @@ a[aria-disabled="true"] * {
  * observer was watching. Every one of those leaves real text at `opacity: 0`, which no test that
  * reads the DOM can see.
  *
- * So the hidden state now expires. The animation runs once, 1.2s after paint, and is the only
- * thing that can leave an element visible-by-default; the observer still does the real work and
- * almost always wins, because it fires as soon as the element scrolls into view. This is a
- * failsafe, not the mechanism.
+ * So the hidden state expires, 1.2s after paint, but only when the motion script has not started.
+ * It used to expire on every page: everything below the fold showed itself 1.2s after load, so by
+ * the time a visitor scrolled there was nothing left to fade up, and the site's scroll motion never
+ * played (found 29 Oct 2026). designed-motion.js now marks <html data-motion> as its first act; with
+ * the mark the observer does the work, and the late-node and hydration cases are its rescan's. The
+ * product figures (`fig-*`) wait for the same `[data-shown]`, so they share the failsafe.
  *
  * `forwards` matters: the element must stay visible after the animation ends, not snap back.
  */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  .reveal:not([data-shown]) {
+  html:not([data-motion]) .reveal:not([data-shown]),
+  html:not([data-motion]) :is(.fig-item, .fig-bar, .fig-flag, .fig-resort, .fig-pic) {
     animation: pulse-reveal-failsafe 400ms ease-out 1200ms forwards;
   }
 }
@@ -4001,6 +4004,7 @@ a[aria-disabled="true"] * {
   to {
     opacity: 1;
     translate: none;
+    scale: none;
   }
 }
 

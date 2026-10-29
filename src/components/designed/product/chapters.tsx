@@ -13,7 +13,7 @@
  * 2026). The `chainBlock`, written for both pages but never shown by the template because neither
  * had a scene for it, is a chapter here.
  */
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { renderLocale } from "@/i18n/render-locale";
 import { ui } from "@/content/locale";
 import Image from "next/image";
@@ -35,6 +35,15 @@ export type ChapterContent = StoryContent &
   };
 
 const h = (s: string) => s.replace(/\.\s*$/, "");
+
+/**
+ * Each heading, paragraph and list item fades up on its own (owner, 29 Oct 2026), the n-th a little
+ * after the one before it. Capped, so a long list does not keep a visitor waiting: the rest of it
+ * reveals as it scrolls in.
+ */
+const stagger = (i: number): CSSProperties => ({
+  transitionDelay: `${Math.min(i, 5) * 90}ms`,
+});
 
 /**
  * The box every picture sits in, so they share one shape: the Decision Audit's picture panel (`how-glow`
@@ -163,22 +172,26 @@ export function ChapterPage({
               <Picture>{art.situation}</Picture>
             )}
           </div>
-          <div className="reveal delay-100">
-            <h2 className="text-title text-balance">
+          <div>
+            <h2 className="reveal text-title text-balance">
               {h(c.situation.heading)}
             </h2>
             <div className="mt-6 grid gap-4">
-              {c.situation.body.map((p) => (
+              {c.situation.body.map((p, i) => (
                 <p
                   key={p.slice(0, 28)}
-                  className="text-body text-pretty text-muted"
+                  className="reveal text-body text-pretty text-muted"
+                  style={stagger(i + 1)}
                 >
                   {p}
                 </p>
               ))}
             </div>
             {c.situation.pull && (
-              <p className="mt-8 font-title text-xl font-semibold text-balance text-ink">
+              <p
+                className="reveal mt-8 font-title text-xl font-semibold text-balance text-ink"
+                style={stagger(c.situation.body.length + 1)}
+              >
                 {c.situation.pull}
               </p>
             )}
@@ -189,12 +202,15 @@ export function ChapterPage({
       {chain && c.chainBlock && (
         <section className="border-b border-line">
           <div className="frame grid items-center gap-10 py-20 lg:grid-cols-2 lg:gap-16 lg:py-28">
-            <div className="reveal">
-              <h2 className="text-title text-balance">
+            <div>
+              <h2 className="reveal text-title text-balance">
                 {h(c.chainBlock.heading)}
               </h2>
               {c.chainBlock.body && (
-                <p className="mt-6 text-lg text-pretty text-muted">
+                <p
+                  className="reveal mt-6 text-lg text-pretty text-muted"
+                  style={stagger(1)}
+                >
                   {c.chainBlock.body}
                 </p>
               )}
@@ -269,11 +285,15 @@ export function ChapterPage({
                   [c.beforeAfter.after, true],
                 ] as const
               ).map(([side, ok]) => (
-                <div key={side.label} className="reveal">
-                  <h3 className="text-h3 text-ink">{side.label}</h3>
+                <div key={side.label}>
+                  <h3 className="reveal text-h3 text-ink">{side.label}</h3>
                   <ul className="mt-4">
-                    {side.items.map((item) => (
-                      <li key={item} className="flex gap-3 py-2">
+                    {side.items.map((item, i) => (
+                      <li
+                        key={item}
+                        className="reveal flex gap-3 py-2"
+                        style={stagger(i + 1)}
+                      >
                         <Mark ok={ok} />
                         <span
                           className={`text-body text-pretty ${ok ? "text-ink" : "text-muted"}`}
@@ -302,13 +322,14 @@ export function ChapterPage({
                 [t.whatItDoesNot, c.limits.wont, false],
               ] as const
             ).map(([label, items, ok]) => (
-              <div key={label} className="reveal">
-                <h3 className="text-h3 text-ink">{label}</h3>
+              <div key={label}>
+                <h3 className="reveal text-h3 text-ink">{label}</h3>
                 <ul className="mt-4">
-                  {items.map((item) => (
+                  {items.map((item, i) => (
                     <li
                       key={item}
-                      className="flex gap-3 border-b border-line py-4 last:border-b-0"
+                      className="reveal flex gap-3 border-b border-line py-4 last:border-b-0"
+                      style={stagger(i + 1)}
                     >
                       <Mark ok={ok} />
                       <span
@@ -330,9 +351,13 @@ export function ChapterPage({
           <h2 className="reveal text-title text-balance lg:col-span-4">
             {h(t.theOnesThatDecide)}
           </h2>
-          <div className="reveal border-t border-line lg:col-span-8">
-            {c.faq.map((f) => (
-              <details key={f.q} className="group border-b border-line">
+          <div className="border-t border-line lg:col-span-8">
+            {c.faq.map((f, i) => (
+              <details
+                key={f.q}
+                className="reveal group border-b border-line"
+                style={stagger(i + 1)}
+              >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-h3 text-ink transition-colors duration-200 ease-out-soft group-open:text-primary hover:text-primary">
                   {f.q}
                   <svg
@@ -370,8 +395,15 @@ function Output({
 }) {
   const words = (
     <>
-      <h2 className="text-title text-balance">{heading}</h2>
-      {body && <p className="mt-4 text-lg text-pretty text-muted">{body}</p>}
+      <h2 className="reveal text-title text-balance">{heading}</h2>
+      {body && (
+        <p
+          className="reveal mt-4 text-lg text-pretty text-muted"
+          style={stagger(1)}
+        >
+          {body}
+        </p>
+      )}
     </>
   );
   const figure = (
@@ -385,7 +417,7 @@ function Output({
     return (
       <section className="border-b border-line">
         <div className="frame py-20 lg:py-28">
-          <div className="reveal mx-auto max-w-2xl text-center">{words}</div>
+          <div className="mx-auto max-w-2xl text-center">{words}</div>
           <div className="mx-auto mt-12 max-w-3xl lg:mt-14">{figure}</div>
         </div>
       </section>
@@ -395,7 +427,7 @@ function Output({
       <section className="border-b border-line">
         <div className="frame py-20 lg:py-28">
           <div className="grid items-center gap-10 rounded-3xl border border-line bg-primary-wash p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:p-14">
-            <div className="reveal">{words}</div>
+            <div>{words}</div>
             {figure}
           </div>
         </div>
@@ -404,7 +436,7 @@ function Output({
   return (
     <section className="border-b border-line">
       <div className="frame grid items-center gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-28">
-        <div className="reveal lg:col-span-5">{words}</div>
+        <div className="lg:col-span-5">{words}</div>
         <div className="lg:col-span-7">{figure}</div>
       </div>
     </section>

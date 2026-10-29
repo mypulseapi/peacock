@@ -40,20 +40,25 @@ export function StepsZigzag({
           {steps.map((s, i) => (
             <li
               key={s.title}
-              className="reveal grid items-center gap-8 lg:grid-cols-2 lg:gap-16"
+              className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16"
             >
-              <div className={i % 2 ? "" : "lg:order-last"}>{s.picture}</div>
+              {/* Each part fades up on its own, the picture a little after the words (owner, 29 Oct 2026). */}
+              <div
+                className={`reveal delay-300 ${i % 2 ? "" : "lg:order-last"}`}
+              >
+                {s.picture}
+              </div>
               <div>
-                <p className="flex items-baseline gap-4">
+                <p className="reveal flex items-baseline gap-4">
                   <span className="font-title text-display text-primary">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {s.label && <span className="badge-primary">{s.label}</span>}
                 </p>
-                <h3 className="mt-4 text-h2 text-balance text-ink">
+                <h3 className="reveal mt-4 text-h2 text-balance text-ink delay-100">
                   {s.title}
                 </h3>
-                <p className="mt-3 text-body text-pretty text-muted">
+                <p className="reveal mt-3 text-body text-pretty text-muted delay-200">
                   {s.body}
                 </p>
               </div>

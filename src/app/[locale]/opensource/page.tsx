@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import Image from "next/image";
 import { img } from "@/lib/cdn";
 import { prepareLocale } from "@/i18n/render-locale";
@@ -39,7 +39,7 @@ export async function generateMetadata({
  */
 function Picture({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="how-glow aspect-3/2 overflow-hidden rounded-2xl border border-line bg-surface-1">
+    <div className="reveal how-glow aspect-3/2 overflow-hidden rounded-2xl border border-line bg-surface-1 delay-200">
       <Image
         src={img(`opensource/${src}.webp`)}
         alt={alt}
@@ -75,9 +75,12 @@ function Band({
 }) {
   const words = (
     <>
-      <h2 className="max-w-3xl text-title text-balance">{heading}</h2>
+      <h2 className="reveal max-w-3xl text-title text-balance">{heading}</h2>
       {intro ? (
-        <p className="mt-4 max-w-2xl text-body text-pretty text-muted">
+        <p
+          className="reveal mt-4 max-w-2xl text-body text-pretty text-muted"
+          style={stagger(1)}
+        >
           {intro}
         </p>
       ) : null}
@@ -103,6 +106,15 @@ function Band({
 }
 
 const card = "rounded-2xl border border-line bg-card p-6";
+
+/**
+ * Each heading, paragraph, card and list item fades up on its own (owner, 29 Oct 2026, as on the
+ * product pages), the n-th a little after the one before. Capped, so a long list does not keep a
+ * visitor waiting: the rest of it reveals as it scrolls in.
+ */
+const stagger = (i: number): CSSProperties => ({
+  transitionDelay: `${Math.min(i, 5) * 90}ms`,
+});
 
 /**
  * Open Pulse. Its own layout rather than the story template: the brief has sixteen sections, a
@@ -147,13 +159,13 @@ export default async function Page({ params }: PageProps) {
         <HeroAurora />
         <div className="frame grid flex-1 items-center gap-12 pt-12 pb-20 lg:grid-cols-2 lg:gap-16 lg:pt-16 lg:pb-24">
           <div>
-            <h1 className="max-w-[20ch] text-hero text-balance">
+            <h1 className="reveal max-w-[20ch] text-hero text-balance">
               {c.hero.title}
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted">
+            <p className="reveal mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted delay-100">
               {c.hero.lede}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="reveal mt-8 flex flex-wrap gap-3 delay-200">
               <a
                 href={GITHUB}
                 className="btn-primary inline-flex items-center gap-2"
@@ -167,7 +179,7 @@ export default async function Page({ params }: PageProps) {
                 {c.hero.secondary}
               </a>
             </div>
-            <p className="mt-5 max-w-2xl text-sm text-pretty text-muted">
+            <p className="reveal mt-5 max-w-2xl text-sm text-pretty text-muted delay-300">
               {c.hero.supporting}
             </p>
           </div>
@@ -182,7 +194,7 @@ export default async function Page({ params }: PageProps) {
         }
       >
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          <div className={card}>
+          <div className={`reveal ${card}`}>
             <p className="text-sm font-semibold text-muted">
               {c.why.knowsLabel}
             </p>
@@ -197,7 +209,7 @@ export default async function Page({ params }: PageProps) {
               ))}
             </ul>
           </div>
-          <div className={card}>
+          <div className={`reveal ${card}`} style={stagger(1)}>
             <p className="text-sm font-semibold text-primary">
               {c.why.asksLabel}
             </p>
@@ -208,7 +220,7 @@ export default async function Page({ params }: PageProps) {
             </ul>
           </div>
         </div>
-        <p className="mt-8 max-w-3xl text-body text-pretty text-muted">
+        <p className="reveal mt-8 max-w-3xl text-body text-pretty text-muted">
           {c.why.close}
         </p>
       </Band>
@@ -221,17 +233,17 @@ export default async function Page({ params }: PageProps) {
       >
         <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {c.model.steps.map((s, i) => (
-            <li key={s.name} className={card}>
+            <li key={s.name} className={`reveal ${card}`} style={stagger(i)}>
               <span className="font-mono text-sm text-primary">0{i + 1}</span>
               <h3 className="mt-2 font-bold text-ink">{s.name}</h3>
               <p className="mt-1 text-sm text-pretty text-muted">{s.body}</p>
             </li>
           ))}
         </ol>
-        <p className="mt-8 max-w-3xl text-body text-pretty text-muted">
+        <p className="reveal mt-8 max-w-3xl text-body text-pretty text-muted">
           {c.model.note}
         </p>
-        <p className="mt-4 max-w-3xl text-body text-pretty text-ink">
+        <p className="reveal mt-4 max-w-3xl text-body text-pretty text-ink">
           {c.model.research}{" "}
           <Link
             locale={locale}
@@ -249,7 +261,7 @@ export default async function Page({ params }: PageProps) {
         picture={<Picture src="agent-evidence-does-not-say" alt={alt.agent} />}
       >
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-          <div className={`${card} space-y-4`}>
+          <div className={`reveal ${card} space-y-4`}>
             <div>
               <p className="text-sm font-semibold text-muted">
                 {c.agent.userLabel}
@@ -265,7 +277,7 @@ export default async function Page({ params }: PageProps) {
               </p>
             </div>
           </div>
-          <div className={card}>
+          <div className={`reveal ${card}`} style={stagger(1)}>
             <div className="flex items-center justify-between gap-2">
               <code className="font-mono text-sm text-ink">POST /decide</code>
               {badge("available")}
@@ -282,8 +294,12 @@ export default async function Page({ params }: PageProps) {
 
       <Band heading={c.honesty.abstainHeading} tint>
         <div className="max-w-3xl space-y-4">
-          {c.honesty.abstainBody.map((p) => (
-            <p key={p} className="text-body text-pretty text-muted">
+          {c.honesty.abstainBody.map((p, i) => (
+            <p
+              key={p}
+              className="reveal text-body text-pretty text-muted"
+              style={stagger(i)}
+            >
               {p}
             </p>
           ))}
@@ -298,7 +314,7 @@ export default async function Page({ params }: PageProps) {
         }
       >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className={card}>
+          <div className={`reveal ${card}`}>
             <p className="text-sm font-semibold text-primary">
               {c.honesty.canLabel}
             </p>
@@ -308,7 +324,7 @@ export default async function Page({ params }: PageProps) {
               ))}
             </ul>
           </div>
-          <div className={card}>
+          <div className={`reveal ${card}`} style={stagger(1)}>
             <p className="text-sm font-semibold text-muted">
               {c.honesty.neverLabel}
             </p>
@@ -319,7 +335,7 @@ export default async function Page({ params }: PageProps) {
             </ul>
           </div>
         </div>
-        <p className="mt-6 font-semibold text-pretty text-ink">
+        <p className="reveal mt-6 font-semibold text-pretty text-ink">
           {c.honesty.rule}
         </p>
       </Band>
@@ -333,8 +349,8 @@ export default async function Page({ params }: PageProps) {
         }
       >
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {c.states.items.map((s) => (
-            <li key={s.name} className={card}>
+          {c.states.items.map((s, i) => (
+            <li key={s.name} className={`reveal ${card}`} style={stagger(i)}>
               <div className="flex items-center justify-between gap-2">
                 <h3 className="font-bold text-ink">{s.name}</h3>
                 {badge("planned")}
@@ -347,10 +363,11 @@ export default async function Page({ params }: PageProps) {
 
       <Band heading={c.repairs.heading} intro={c.repairs.intro}>
         <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          {c.repairs.items.map((r) => (
+          {c.repairs.items.map((r, i) => (
             <li
               key={r.name}
-              className="rounded-xl border border-line bg-card p-4"
+              className="reveal rounded-xl border border-line bg-card p-4"
+              style={stagger(i)}
             >
               <p className="font-mono text-sm font-semibold tracking-wide text-primary uppercase">
                 {r.name}
@@ -359,7 +376,7 @@ export default async function Page({ params }: PageProps) {
             </li>
           ))}
         </ul>
-        <p className="mt-8 max-w-3xl text-body text-pretty text-muted">
+        <p className="reveal mt-8 max-w-3xl text-body text-pretty text-muted">
           {c.repairs.close}
         </p>
       </Band>
@@ -371,7 +388,7 @@ export default async function Page({ params }: PageProps) {
         picture={<Picture src="boundary-open-and-paid" alt={alt.boundary} />}
       >
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-          <div className={card}>
+          <div className={`reveal ${card}`}>
             <p className="text-sm font-semibold text-primary">
               {c.boundary.openLabel}
             </p>
@@ -387,7 +404,7 @@ export default async function Page({ params }: PageProps) {
               ))}
             </ul>
           </div>
-          <div className={card}>
+          <div className={`reveal ${card}`} style={stagger(1)}>
             <p className="text-sm font-semibold text-muted">
               {c.boundary.paidLabel}
             </p>
@@ -403,14 +420,14 @@ export default async function Page({ params }: PageProps) {
             </ul>
           </div>
         </div>
-        <p className="mt-8 text-lg font-semibold text-pretty text-ink">
+        <p className="reveal mt-8 text-lg font-semibold text-pretty text-ink">
           {c.boundary.pull}
         </p>
       </Band>
 
       <Band heading={c.packs.heading} intro={c.packs.intro}>
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-          <div className={card}>
+          <div className={`reveal ${card}`}>
             <div className="flex items-center justify-between gap-2">
               <code className="font-mono text-sm text-ink">
                 category-pack.yaml
@@ -421,7 +438,7 @@ export default async function Page({ params }: PageProps) {
               {c.packs.example}
             </pre>
           </div>
-          <div className={card}>
+          <div className={`reveal ${card}`} style={stagger(1)}>
             <p className="text-sm font-semibold text-muted">
               {c.packs.questionsLabel}
             </p>
@@ -446,15 +463,15 @@ export default async function Page({ params }: PageProps) {
         }
       >
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {c.contribute.ways.map((w) => (
-            <li key={w.name} className={card}>
+          {c.contribute.ways.map((w, i) => (
+            <li key={w.name} className={`reveal ${card}`} style={stagger(i)}>
               <h3 className="font-bold text-ink">{w.name}</h3>
               <p className="mt-1 text-sm text-pretty text-muted">{w.body}</p>
             </li>
           ))}
         </ul>
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <div>
+          <div className="reveal">
             <h3 className="text-xl font-bold text-ink">
               {c.contribute.expertsHeading}
             </h3>
@@ -462,7 +479,7 @@ export default async function Page({ params }: PageProps) {
               {c.contribute.expertsBody}
             </p>
           </div>
-          <div>
+          <div className="reveal" style={stagger(1)}>
             <h3 className="text-xl font-bold text-ink">
               {c.contribute.agentsHeading}
             </h3>
@@ -485,15 +502,15 @@ export default async function Page({ params }: PageProps) {
             </ol>
           </div>
         </div>
-        <p className="mt-8 max-w-3xl text-sm text-pretty text-muted">
+        <p className="reveal mt-8 max-w-3xl text-sm text-pretty text-muted">
           {c.contribute.terms}
         </p>
       </Band>
 
       <Band heading={c.audiences.heading}>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {c.audiences.items.map((a) => (
-            <li key={a.name} className={card}>
+          {c.audiences.items.map((a, i) => (
+            <li key={a.name} className={`reveal ${card}`} style={stagger(i)}>
               <h3 className="font-bold text-ink">{a.name}</h3>
               <p className="mt-1 text-sm text-pretty text-muted">{a.body}</p>
             </li>
@@ -503,8 +520,8 @@ export default async function Page({ params }: PageProps) {
 
       <Band heading={c.not.heading} tint>
         <ul className="max-w-3xl space-y-3 text-body text-muted">
-          {c.not.items.map((n) => (
-            <li key={n} className="flex gap-3">
+          {c.not.items.map((n, i) => (
+            <li key={n} className="reveal flex gap-3" style={stagger(i)}>
               <span aria-hidden="true" className="text-muted">
                 ✕
               </span>
@@ -512,13 +529,15 @@ export default async function Page({ params }: PageProps) {
             </li>
           ))}
         </ul>
-        <p className="mt-6 font-semibold text-pretty text-ink">{c.not.close}</p>
+        <p className="reveal mt-6 font-semibold text-pretty text-ink">
+          {c.not.close}
+        </p>
       </Band>
 
       <Band heading={c.principles.heading}>
         <ol className="max-w-3xl space-y-4">
           {c.principles.items.map((p, i) => (
-            <li key={p.name} className="flex gap-4">
+            <li key={p.name} className="reveal flex gap-4" style={stagger(i)}>
               <span className="font-mono text-sm text-primary">0{i + 1}</span>
               <span>
                 <span className="font-semibold text-ink">{p.name}. </span>
@@ -531,10 +550,10 @@ export default async function Page({ params }: PageProps) {
 
       <section className="border-b border-line bg-surface-1/50">
         <div className="frame max-w-3xl py-16 lg:py-20">
-          <h2 className="text-title text-balance">{c.faqHeading}</h2>
+          <h2 className="reveal text-title text-balance">{c.faqHeading}</h2>
           <div className="mt-8 divide-y divide-line border-y border-line">
-            {c.faq.map((f) => (
-              <details key={f.q} className="py-4">
+            {c.faq.map((f, i) => (
+              <details key={f.q} className="reveal py-4" style={stagger(i)}>
                 <summary className="cursor-pointer list-none font-semibold text-ink">
                   {f.q}
                 </summary>
@@ -548,13 +567,13 @@ export default async function Page({ params }: PageProps) {
       <section className="cta-boxes">
         <CtaBoxes />
         <div className="frame py-16 text-center lg:py-20">
-          <h2 className="mx-auto max-w-2xl text-title text-balance">
+          <h2 className="reveal mx-auto max-w-2xl text-title text-balance">
             {c.cta.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-body text-pretty text-muted">
+          <p className="reveal mx-auto mt-4 max-w-2xl text-body text-pretty text-muted delay-100">
             {c.cta.body}
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200">
             <a
               href={GITHUB}
               className="btn-primary inline-flex items-center gap-2"
@@ -575,7 +594,9 @@ export default async function Page({ params }: PageProps) {
               {c.cta.audit}
             </Link>
           </div>
-          <p className="mt-6 text-sm text-muted">{c.cta.supporting}</p>
+          <p className="reveal mt-6 text-sm text-muted delay-300">
+            {c.cta.supporting}
+          </p>
         </div>
       </section>
     </>

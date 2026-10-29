@@ -7,7 +7,7 @@
  * Nothing here is measured. Each chart carries the page's "Illustration" badge, bar lengths are
  * shapes rather than values, and no number appears (ODIN hires/07-WHAT-WE-DO-NOT-CLAIM.md rule 9).
  */
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 export interface ReturnsArtText {
   note: string;
@@ -87,7 +87,7 @@ export function ReturnsChain({ l }: { l: ReturnsArtText }) {
         className="mt-3 block h-10 w-full overflow-hidden rounded-lg"
         aria-hidden="true"
       >
-        {segs.map((s) => {
+        {segs.map((s, i) => {
           const r = (
             <rect
               key={s.t}
@@ -95,7 +95,8 @@ export function ReturnsChain({ l }: { l: ReturnsArtText }) {
               y="0"
               width={s.w - 0.6}
               height="10"
-              className={s.c}
+              className={`fig-bar ${s.c}`}
+              style={{ "--i": i } as CSSProperties}
             />
           );
           x += s.w;
@@ -103,8 +104,12 @@ export function ReturnsChain({ l }: { l: ReturnsArtText }) {
         })}
       </svg>
       <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-xs text-muted @md:grid-cols-3">
-        {segs.map((s) => (
-          <li key={s.t} className="flex items-center gap-2">
+        {segs.map((s, i) => (
+          <li
+            key={s.t}
+            className="fig-item flex items-center gap-2"
+            style={{ "--i": i + 2 } as CSSProperties}
+          >
             <Swatch className={s.s} />
             {s.t}
           </li>
@@ -125,10 +130,11 @@ export function PromotionsChain({ l }: { l: PromotionsArtText }) {
   return (
     <Panel heading={l.voucher} note={l.note}>
       <ul className="mt-4 grid gap-3">
-        {rows.map(([t, x, w, c]) => (
+        {rows.map(([t, x, w, c], i) => (
           <li
             key={t}
-            className="grid grid-cols-12 items-center gap-3 text-data text-ink"
+            className="fig-item grid grid-cols-12 items-center gap-3 text-data text-ink"
+            style={{ "--i": i * 2 } as CSSProperties}
           >
             <span className="col-span-4">{t}</span>
             <svg
@@ -137,7 +143,15 @@ export function PromotionsChain({ l }: { l: PromotionsArtText }) {
               className="col-span-8 h-6 w-full"
               aria-hidden="true"
             >
-              <rect x={x} y="0" width={w} height="10" rx="1.5" className={c} />
+              <rect
+                x={x}
+                y="0"
+                width={w}
+                height="10"
+                rx="1.5"
+                className={`fig-bar ${c}`}
+                style={{ "--i": i * 2 } as CSSProperties}
+              />
             </svg>
           </li>
         ))}

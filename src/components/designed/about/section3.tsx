@@ -15,33 +15,33 @@ export function Section3Section() {
               className="frame grid gap-10 py-20 lg:grid-cols-12 lg:gap-x-0 lg:py-28"
             >
               <div className="lg:col-span-5 lg:pr-16">
-                <h2 className="text-title text-balance">{t('1')}</h2>
+                <h2 className="reveal text-title text-balance">{t('1')}</h2>
                 <p
-                  className="mt-4 max-w-sm text-body leading-relaxed text-pretty text-muted"
+                  className="reveal mt-4 max-w-sm text-body leading-relaxed text-pretty text-muted delay-100"
                 >
                   {t('2')}
                 </p>
               </div>
               <ul className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:col-span-7">
-                <li className="border-t-2 border-primary pt-6">
+                <li className="reveal border-t-2 border-primary pt-6">
                   <h3 className="text-h3 text-ink">{t('3')}</h3>
                   <p className="mt-2 text-body leading-relaxed text-pretty text-muted">
                     {t('4')}
                   </p>
                 </li>
-                <li className="border-t-2 border-primary pt-6">
+                <li className="reveal border-t-2 border-primary pt-6 delay-100">
                   <h3 className="text-h3 text-ink">{t('5')}</h3>
                   <p className="mt-2 text-body leading-relaxed text-pretty text-muted">
                     {t('6')}
                   </p>
                 </li>
-                <li className="border-t-2 border-primary pt-6">
+                <li className="reveal border-t-2 border-primary pt-6 delay-200">
                   <h3 className="text-h3 text-ink">{t('7')}</h3>
                   <p className="mt-2 text-body leading-relaxed text-pretty text-muted">
                     {t('rankingSteady')}
                   </p>
                 </li>
-                <li className="border-t-2 border-primary pt-6">
+                <li className="reveal border-t-2 border-primary pt-6 delay-300">
                   <h3 className="text-h3 text-ink">{t('10')}</h3>
                   <p className="mt-2 text-body leading-relaxed text-pretty text-muted">
                     {t('11')}

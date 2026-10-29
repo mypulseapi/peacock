@@ -17,11 +17,11 @@ export function Section4Section() {
               className="frame grid gap-10 py-20 lg:grid-cols-12 lg:gap-x-0 lg:py-28"
             >
               <div className="lg:col-span-5 lg:pr-16">
-                <h2 className="text-title text-balance">
+                <h2 className="reveal text-title text-balance">
                   {t('1')}
                 </h2>
                 <p
-                  className="mt-4 max-w-sm text-body leading-relaxed text-pretty text-muted"
+                  className="reveal mt-4 max-w-sm text-body leading-relaxed text-pretty text-muted delay-100"
                 >
                   {t('2')}
                 </p>
@@ -30,7 +30,7 @@ export function Section4Section() {
                 <div
                   className="grid gap-10 rounded-3xl border border-primary-line bg-primary-wash p-6 md:grid-cols-2 md:gap-0 md:divide-x md:divide-line lg:p-8"
                 >
-                  <div className="md:pr-8">
+                  <div className="reveal md:pr-8">
                     <h3
                       className="flex items-center gap-2 border-b-2 border-success pb-3 text-h3 text-ink"
                     >
@@ -57,7 +57,7 @@ export function Section4Section() {
                       </div>
                     </dl>
                   </div>
-                  <div className="md:pl-8">
+                  <div className="reveal delay-200 md:pl-8">
                     <h3
                       className="flex items-center gap-2 border-b-2 border-warning pb-3 text-h3 text-ink"
                     >
@@ -104,7 +104,7 @@ export function Section4Section() {
                     </dl>
                   </div>
                 </div>
-                <p className="mt-10 border-t border-line pt-6 text-body text-ink">
+                <p className="reveal mt-10 border-t border-line pt-6 text-body text-ink">
                   {t('oneExport')}{" "}
                   <Link                 href={designedHref("/en/contact")}
                     className="hit-area font-medium text-link underline underline-offset-4 hover:text-primary-hover"

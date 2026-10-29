@@ -17,6 +17,7 @@
  *   closing      the call to action, as before
  */
 import type { ReactNode } from "react";
+import { HeroPicture } from "@/components/designed/hero-picture";
 import Image from "next/image";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
@@ -87,16 +88,25 @@ function Picture({
 }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-line bg-[#fdfdfd]">
-      <Image
-        src={img(p.src)}
-        alt={altOf(slug, p)}
-        width={p.width}
-        height={p.height}
-        sizes={sizes}
-        priority={priority}
-        fetchPriority={priority ? "high" : undefined}
-        className="h-auto w-full"
-      />
+      {priority ? (
+        <HeroPicture
+          src={p.src}
+          alt={altOf(slug, p)}
+          width={p.width}
+          height={p.height}
+          sizes={sizes}
+          className="h-auto w-full"
+        />
+      ) : (
+        <Image
+          src={img(p.src)}
+          alt={altOf(slug, p)}
+          width={p.width}
+          height={p.height}
+          sizes={sizes}
+          className="h-auto w-full"
+        />
+      )}
     </div>
   );
 }

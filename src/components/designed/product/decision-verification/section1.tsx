@@ -7,11 +7,10 @@
  * Text is still inline. Extracting it into the content modules for Vietnamese is the next pass.
  */
 import { designedHref, designedText } from "../../t";
-import Image from "next/image";
-import { img } from "@/lib/cdn";
 
 import Link from "next/link";
 import { HeroAurora } from "@/components/designed/hero-aurora";
+import { HeroPicture } from "@/components/designed/hero-picture";
 
 export function Section1Section() {
   const t = designedText("product.decision-verification.section1");
@@ -73,16 +72,7 @@ export function Section1Section() {
                   of cropping it.
                 */}
                 <div className="reveal mt-8 delay-200 lg:mt-10 lg:bleed-x">
-                  <Image
-                    src={img("product/decision-verification-attribute-evidence-check.webp")}
-                    alt={t('figureAlt')}
-                    width={1774}
-                    height={887}
-                    sizes="100vw"
-                    priority
-                    fetchPriority="high"
-                    className="mx-auto h-auto w-full object-contain lg:max-h-[calc(100svh-28rem)]"
-                  />
+                  <HeroPicture                    src="product/decision-verification-attribute-evidence-check.webp"                    alt={t('figureAlt')}                    width={1774}                    height={887}                    sizes="100vw"                    className="mx-auto h-auto w-full object-contain lg:max-h-[calc(100svh-28rem)]"                  />
                 </div>
               </div>
             </div>

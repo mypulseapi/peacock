@@ -718,7 +718,7 @@ const PICTURE_ALT: Record<
       situation:
         "A traveller's hand holding a booking card whose breakfast line is blank, beside a closed hotel breakfast room door, with the robot looking surprised.",
       before:
-        "Three hotel booking cards on a desk; the robot stamps booked on the one whose breakfast line is blank, as if breakfast were included.",
+        "Three hotel booking cards in a row, the middle one's breakfast line blank, while the robot, hand on its chin under a question mark, cannot tell whether breakfast is included.",
       after:
         "The same three hotel cards under a budget line: one ticked, one crossed, and the one with the blank breakfast line marked with a question and a note to check before booking, while the robot looks through a magnifying glass.",
     },
@@ -752,7 +752,7 @@ const PICTURE_ALT: Record<
       situation:
         "Bàn tay du khách cầm thẻ đặt phòng có dòng bữa sáng để trống, bên cánh cửa phòng ăn sáng của khách sạn đang đóng, với chú robot đang ngạc nhiên.",
       before:
-        "Ba thẻ khách sạn trên bàn; robot đóng dấu đã đặt lên thẻ có dòng bữa sáng để trống, như thể đã bao gồm bữa sáng.",
+        "Ba thẻ đặt phòng khách sạn xếp thành hàng, thẻ ở giữa có dòng bữa sáng để trống, trong khi robot chống cằm dưới một dấu hỏi, không biết bữa sáng có được bao gồm hay không.",
       after:
         "Cũng ba thẻ khách sạn đó dưới một vạch ngân sách: một thẻ được tích, một thẻ bị gạch, thẻ có dòng bữa sáng để trống được đánh dấu hỏi kèm ghi chú kiểm tra trước khi đặt, trong khi robot soi bằng kính lúp.",
     },

@@ -78,7 +78,7 @@ export const SECTORS: Record<string, Sector> = {
     hero: {
       src: "sectors/fmcg-shelf-label-evidence-coverage-ranked.webp",
       width: 1400,
-      height: 891,
+      height: 700,
       alt: "section1.figureAlt",
     },
     problem: {
@@ -118,8 +118,8 @@ export const SECTORS: Record<string, Sector> = {
     coverage: [63, 72, 74, 25],
     hero: {
       src: "sectors/technology-laptop-specs-attribute-coverage.webp",
-      width: 1300,
-      height: 1074,
+      width: 1400,
+      height: 700,
       alt: "section1.figureAlt",
     },
     scene: {
@@ -159,7 +159,7 @@ export const SECTORS: Record<string, Sector> = {
     hero: {
       src: "sectors/furniture-room-fit-measurements-coverage.webp",
       width: 1400,
-      height: 1023,
+      height: 700,
       alt: "section1.figureAlt",
     },
     scene: {

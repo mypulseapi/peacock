@@ -76,8 +76,8 @@ export function Section1Section() {
                   <Image
                     src={img("product/decision-verification-attribute-evidence-check.webp")}
                     alt={t('figureAlt')}
-                    width={1774}
-                    height={887}
+                    width={1400}
+                    height={700}
                     sizes="100vw"
                     priority
                     fetchPriority="high"

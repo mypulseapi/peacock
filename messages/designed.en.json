@@ -709,7 +709,7 @@
         "step2Body": "Suitability is prose, not a field a shopper can filter on.",
         "step3": "Pulse finds the gap",
         "step3Body": "The audit ranks which missing answer matters first.",
-        "figureAlt": "A skincare range on a bathroom counter, marked up with what the packs state: skin type sensitive skin, volume 250 ml, key ingredient hyaluronic acid and concern addressed hydration. A panel ranks attribute coverage on a typical cosmetics and personal care catalogue: concern addressed first at 24 per cent, then skin type 29, key ingredient 41 and volume 88."
+        "figureAlt": "A skincare range, marked up with what the packs state: skin type sensitive skin, volume 250 ml, key ingredient hyaluronic acid and concern addressed hydration. A panel ranks attribute coverage on a typical cosmetics and personal care catalogue: concern addressed first at 24 per cent, then skin type 29, key ingredient 41 and volume 88."
       },
       "section2": {
         "1": "What Cosmetics and personal care looks like right now",
@@ -1015,7 +1015,7 @@
         "4": "See what you get",
         "5": "Ranked repair list in 48 hours",
         "6": "from one category export",
-        "figureAlt": "A supermarket cereal shelf. The front pack is marked up with what its label states: pack size 500g and the dietary claim high fibre, read from the photograph, while concentration and suitable for children are flagged as not stated. Beside it, attribute coverage on a typical FMCG catalogue ranks concentration first at 22 per cent, then pack size 58, dietary claim 31 and brand 97.",
+        "figureAlt": "Two cereal boxes. The front pack is marked up with what its label states: pack size 500g and the dietary claim high fibre, read from the photograph, while concentration and suitable for children are flagged as not stated. Beside it, attribute coverage on a typical FMCG catalogue ranks concentration first at 22 per cent, then pack size 58, dietary claim 31 and brand 97.",
         "eyebrow": "FMCG and consumer goods",
         "lede": "Fast-moving goods are bought on small, specific facts: pack size, dietary claims, concentration, suitability and more. The facts often exist, but only on the packaging.",
         "step1": "Evidence exists",
@@ -1116,7 +1116,7 @@
         "step2Body": "They sit in a description instead of a field a shopper can filter on.",
         "step3": "Pulse finds the gap",
         "step3Body": "The audit ranks which missing measurement matters first.",
-        "figureAlt": "An armchair in a living room, marked up with what its listing states: weight capacity 120 kg, material oak wood, depth 78 cm and colour beige, with scale drawings beside it. A panel ranks attribute coverage on a typical furniture and homewares catalogue: weight capacity first at 18 per cent, then assembled depth 44, primary material 52 and colour 95."
+        "figureAlt": "An armchair, marked up with what its listing states: weight capacity 120 kg, material oak wood, depth 78 cm and colour beige, with scale drawings beside it. A panel ranks attribute coverage on a typical furniture and homewares catalogue: weight capacity first at 18 per cent, then assembled depth 44, primary material 52 and colour 95."
       },
       "section2": {
         "1": "What Furniture and homewares looks like right now",
@@ -1201,7 +1201,7 @@
         "step2Body": "The number sits in a title or a description, not a field.",
         "step3": "Pulse finds the gap",
         "step3Body": "The audit ranks which missing number matters first.",
-        "figureAlt": "Two laptops on a desk, marked up with the specification a buyer narrows on: screen size 14 inch, processor M3 Pro, memory 16 GB and storage 512 GB. A panel ranks attribute coverage on a typical technology and electronics catalogue: screen size first at 63 per cent, then memory 72, storage 74 and processor 25."
+        "figureAlt": "Two laptops, marked up with the specification a buyer narrows on: screen size 14 inch, processor M3 Pro, memory 16 GB and storage 512 GB. A panel ranks attribute coverage on a typical technology and electronics catalogue: screen size first at 63 per cent, then memory 72, storage 74 and processor 25."
       },
       "section2": {
         "1": "What Technology and electronics looks like right now",
@@ -1624,7 +1624,7 @@
         "3": "Catalogues decay quietly. New products arrive unrecorded and a shelf that was ready last quarter stops being ready. Monitor re-measures as yours changes and names the shelf, the attribute and the cause.",
         "4": "Request a Decision Audit",
         "5": "Ask AI",
-        "figureAlt": "Decision Monitor watching a skincare shelf. Shelf decisionability reads 78 per cent, up 18 points on a rising trend line, and re-measurement runs weekly. Skin type has dropped on 14 new lines while key ingredient stays recorded, and the shopper question it answers is whether a product suits their skin. A before and after pair shows a night cream going from two unanswered attributes to two filled in, and this week's top changes rank skin type as high impact, key ingredient medium and usage occasion low."
+        "figureAlt": "Decision Monitor watching a skincare shelf. Shelf decisionability reads 78 per cent, up 18 points on a rising trend line, and re-measurement runs weekly. Skin type is falling while key ingredient stays recorded, and the shopper question it answers is whether a product suits their skin. A before and after pair shows a night cream going from two unanswered attributes to two filled in, and this week's top changes rank skin type as high impact, key ingredient medium and usage occasion low."
       },
       "section2": {
         "1": "What does a shelf look like when it slips?",

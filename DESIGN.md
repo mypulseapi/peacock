@@ -130,6 +130,11 @@ scrolling the pricing hero stutter. Size and strength (opacity 0.5, the corner e
 a fainter corner that kept every line AA: where a bright streak crosses a hero's `muted` lede, that line can measure
 below 4.5 (lowest 3.3; 4.65 with no aurora). A known exception to the AA rule, by the owner's choice.
 
+**Hero pictures** (owner, 29 Oct 2026): one shape, 2:1 at 1400x700, a transparent WebP with no frame, sitting straight on
+the hero. The Decision Monitor and Verification heroes and the five sector heroes are made that way: the owner's PNG
+trimmed to its content, centred with 3% side and 4% top and bottom margins, WebP quality 60-68. They are each page's
+LCP, so they stay near 100 KB (86-107 KB); a heavier one held mobile LCP over 2.5s.
+
 **Dark band gradient:** `bg-void-gradient` — the `void` base with a soft Pulse Blue glow (top left) and Sky glow
 (bottom right). Not used on any page at the moment (the home research band and How it works are light now); white and `void-muted` text stay AA
 on its brightest point (13.88 / 5.90, the Sky glow).

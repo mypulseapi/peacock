@@ -1188,7 +1188,7 @@
         "3": "Danh mục xuống cấp một cách lặng lẽ. Sản phẩm mới về mà không được ghi nhận, và một kệ hàng đã sẵn sàng từ quý trước không còn sẵn sàng nữa. Monitor đo lại khi danh mục của bạn thay đổi và nêu rõ kệ hàng, thuộc tính và nguyên nhân.",
         "4": "Yêu cầu Decision Audit",
         "5": "Hỏi AI",
-        "figureAlt": "Decision Monitor theo dõi một kệ hàng chăm sóc da. Mức quyết định được của kệ là 78 phần trăm, tăng 18 điểm theo đường xu hướng đi lên, và việc đo lại chạy hằng tuần. Loại da đã rơi mất trên 14 dòng sản phẩm mới trong khi thành phần chính vẫn được ghi nhận, và câu hỏi của người mua mà nó trả lời là sản phẩm này có hợp với da mình không. Một cặp trước và sau cho thấy một lọ kem đêm đi từ hai thuộc tính chưa có lời đáp sang hai thuộc tính đã điền, và những thay đổi hàng đầu tuần này xếp loại da là ảnh hưởng cao, thành phần chính là trung bình và dịp sử dụng là thấp."
+        "figureAlt": "Decision Monitor theo dõi một kệ hàng chăm sóc da. Mức quyết định được của kệ là 78 phần trăm, tăng 18 điểm theo đường xu hướng đi lên, và việc đo lại chạy hằng tuần. Loại da đang giảm trong khi thành phần chính vẫn được ghi nhận, và câu hỏi của người mua mà nó trả lời là sản phẩm này có hợp với da mình không. Một cặp trước và sau cho thấy một lọ kem đêm đi từ hai thuộc tính chưa có lời đáp sang hai thuộc tính đã điền, và những thay đổi hàng đầu tuần này xếp loại da là ảnh hưởng cao, thành phần chính là trung bình và dịp sử dụng là thấp."
       },
       "section2": {
         "1": "Một kệ hàng trông thế nào khi nó tụt?",
@@ -1277,7 +1277,7 @@
         "step2Body": "Mức độ phù hợp là văn xuôi, không phải một trường mà người mua lọc được.",
         "step3": "Pulse tìm ra lỗ hổng",
         "step3Body": "Bản kiểm tra xếp hạng lời đáp nào còn thiếu là quan trọng trước.",
-        "figureAlt": "Một dòng sản phẩm chăm sóc da trên bệ phòng tắm, được chú thích những gì bao bì nêu: loại da là da nhạy cảm, dung tích 250 ml, thành phần chính là hyaluronic acid và mối quan tâm được giải quyết là cấp ẩm. Một khung xếp hạng độ phủ thuộc tính trên một danh mục mỹ phẩm và chăm sóc cá nhân điển hình: mối quan tâm được giải quyết đứng đầu ở 24 phần trăm, rồi loại da 29, thành phần chính 41 và dung tích 88."
+        "figureAlt": "Một dòng sản phẩm chăm sóc da, được chú thích những gì bao bì nêu: loại da là da nhạy cảm, dung tích 250 ml, thành phần chính là hyaluronic acid và mối quan tâm được giải quyết là cấp ẩm. Một khung xếp hạng độ phủ thuộc tính trên một danh mục mỹ phẩm và chăm sóc cá nhân điển hình: mối quan tâm được giải quyết đứng đầu ở 24 phần trăm, rồi loại da 29, thành phần chính 41 và dung tích 88."
       },
       "section3": {
         "2": "Điều một người mua ở đây đang cố quyết định:",
@@ -1577,7 +1577,7 @@
         "6": "từ một bản xuất ngành hàng",
         "1": "Bao bì trông giống hệt nhau. Quyết định nằm trên nhãn",
         "5": "Danh sách sửa chữa đã xếp hạng trong 48 giờ",
-        "figureAlt": "Một kệ ngũ cốc trong siêu thị. Hộp phía trước được chú thích những gì nhãn ghi: quy cách đóng gói 500g và công bố dinh dưỡng giàu chất xơ, đọc được từ ảnh chụp, trong khi nồng độ và phù hợp cho trẻ em bị đánh dấu là không nêu. Bên cạnh, độ phủ thuộc tính trên một danh mục FMCG điển hình xếp nồng độ đứng đầu ở 22 phần trăm, rồi quy cách đóng gói 58, công bố dinh dưỡng 31 và thương hiệu 97.",
+        "figureAlt": "Hai hộp ngũ cốc. Hộp phía trước được chú thích những gì nhãn ghi: quy cách đóng gói 500g và công bố dinh dưỡng giàu chất xơ, đọc được từ ảnh chụp, trong khi nồng độ và phù hợp cho trẻ em bị đánh dấu là không nêu. Bên cạnh, độ phủ thuộc tính trên một danh mục FMCG điển hình xếp nồng độ đứng đầu ở 22 phần trăm, rồi quy cách đóng gói 58, công bố dinh dưỡng 31 và thương hiệu 97.",
         "eyebrow": "FMCG và hàng tiêu dùng",
         "lede": "Hàng tiêu dùng nhanh được mua dựa trên những dữ kiện nhỏ và cụ thể: quy cách đóng gói, công bố dinh dưỡng, nồng độ, mức độ phù hợp và hơn thế. Những dữ kiện đó thường vẫn có, nhưng chỉ có trên bao bì.",
         "step1": "Bằng chứng vẫn có đó",
@@ -1675,7 +1675,7 @@
         "step2Body": "Chúng nằm trong mô tả thay vì trong một trường mà người mua lọc được.",
         "step3": "Pulse tìm ra lỗ hổng",
         "step3Body": "Bản kiểm tra xếp hạng số đo nào còn thiếu là quan trọng trước.",
-        "figureAlt": "Một chiếc ghế bị trong phòng khách, được chú thích những gì tin đăng nêu: tải trọng 120 kg, chất liệu gỗ sồi, chiều sâu 78 cm và màu be, kèm các bản vẽ tỷ lệ bên cạnh. Một khung xếp hạng độ phủ thuộc tính trên một danh mục nội thất và đồ gia dụng điển hình: tải trọng đứng đầu ở 18 phần trăm, rồi chiều sâu khi lắp 44, chất liệu chính 52 và màu sắc 95."
+        "figureAlt": "Một chiếc ghế bị, được chú thích những gì tin đăng nêu: tải trọng 120 kg, chất liệu gỗ sồi, chiều sâu 78 cm và màu be, kèm các bản vẽ tỷ lệ bên cạnh. Một khung xếp hạng độ phủ thuộc tính trên một danh mục nội thất và đồ gia dụng điển hình: tải trọng đứng đầu ở 18 phần trăm, rồi chiều sâu khi lắp 44, chất liệu chính 52 và màu sắc 95."
       },
       "section3": {
         "2": "Điều một người mua ở đây đang cố quyết định:",
@@ -1758,7 +1758,7 @@
         "step2Body": "Con số nằm trong tiêu đề hoặc mô tả, không phải trong một trường dữ liệu.",
         "step3": "Pulse tìm ra lỗ hổng",
         "step3Body": "Bản kiểm tra xếp hạng con số nào còn thiếu là quan trọng trước.",
-        "figureAlt": "Hai chiếc laptop trên bàn, được chú thích những thông số mà người mua dựa vào để thu hẹp lựa chọn: kích thước màn hình 14 inch, vi xử lý M3 Pro, RAM 16 GB và dung lượng 512 GB. Một khung xếp hạng độ phủ thuộc tính trên một danh mục công nghệ và điện tử điển hình: kích thước màn hình đứng đầu ở 63 phần trăm, rồi RAM 72, dung lượng 74 và vi xử lý 25."
+        "figureAlt": "Hai chiếc laptop, được chú thích những thông số mà người mua dựa vào để thu hẹp lựa chọn: kích thước màn hình 14 inch, vi xử lý M3 Pro, RAM 16 GB và dung lượng 512 GB. Một khung xếp hạng độ phủ thuộc tính trên một danh mục công nghệ và điện tử điển hình: kích thước màn hình đứng đầu ở 63 phần trăm, rồi RAM 72, dung lượng 74 và vi xử lý 25."
       },
       "section3": {
         "2": "Điều một người mua ở đây đang cố quyết định:",

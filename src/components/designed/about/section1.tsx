@@ -40,7 +40,7 @@ export function Section1Section() {
                   width={1735}
                   height={906}
                   sizes="(min-width: 96rem) 80rem, (min-width: 64rem) 70rem, 100vw"
-                  className="h-auto w-full rounded-2xl border border-line shadow-sm theme-dark:hidden"
+                  className="h-auto w-full rounded-2xl theme-dark:hidden"
                   loading="eager"
                   fetchPriority="high"
                 />
@@ -50,7 +50,7 @@ export function Section1Section() {
                   width={1735}
                   height={906}
                   sizes="(min-width: 96rem) 80rem, (min-width: 64rem) 70rem, 100vw"
-                  className="hidden h-auto w-full rounded-2xl border border-line shadow-sm theme-dark:block"
+                  className="hidden h-auto w-full rounded-2xl theme-dark:block"
                 />
               </div>
             </div>

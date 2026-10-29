@@ -137,7 +137,8 @@ const pic = (src: string, alt: string) => (
     width={1000}
     height={667}
     sizes="(min-width: 1024px) 36rem, 100vw"
-    className="size-full object-contain"
+    // Settles into its frame a beat after its words (`fig-pic`, owner's option A, 29 Oct 2026).
+    className="fig-pic size-full object-contain"
   />
 );
 

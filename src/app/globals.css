@@ -2736,6 +2736,71 @@ html[data-theme="dark"] {
   }
 }
 
+/* Figures and pictures on the product pages (owner's pick, 29 Oct 2026: mockup parts 1 and 2-A).
+   They play once, off the `reveal` around them: when designed-motion.js marks it [data-shown], a figure
+   tells its point in order and a picture settles a beat after its words. Rows, cards and dots are
+   `fig-item`, a bar's fill `fig-bar`, a Missing mark or lit square `fig-flag`, and `--i` is the order.
+   The final state is the default: they hide only where `reveal` hides (JS on, motion welcome), so with
+   no script or with reduced motion everything is simply there. */
+@utility fig-item {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    transition:
+      opacity 450ms var(--ease-out-soft),
+      translate 450ms var(--ease-out-soft);
+    transition-delay: calc(var(--i, 0) * 110ms + 300ms);
+    &:not(:where([data-shown] *)) {
+      opacity: 0;
+      translate: 0 0.375rem;
+    }
+  }
+}
+@utility fig-bar {
+  transform-box: fill-box;
+  transform-origin: left;
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    transition: scale 1100ms var(--ease-emphasized);
+    transition-delay: calc(var(--i, 0) * 160ms + 350ms);
+    &:not(:where([data-shown] *)) {
+      scale: 0 1;
+    }
+  }
+}
+@utility fig-flag {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    transition:
+      opacity 300ms var(--ease-out-soft),
+      scale 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: calc(var(--i, 0) * 110ms + 550ms);
+    &:not(:where([data-shown] *)) {
+      opacity: 0;
+      scale: 0.85;
+    }
+  }
+}
+/* Search's "why this result came first": the engine's rows start in the shop's own order (`--from`, rows
+   below their final place) and re-sort into Pulse's, the comparison happening in front of the reader. */
+@utility fig-resort {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    transition: translate 700ms var(--ease-out-soft) 700ms;
+    &:not(:where([data-shown] *)) {
+      translate: 0 calc(var(--from, 0) * (100% + 0.375rem));
+    }
+  }
+}
+@utility fig-pic {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    transition:
+      opacity 700ms var(--ease-out-soft) 200ms,
+      translate 700ms var(--ease-out-soft) 200ms,
+      scale 700ms var(--ease-out-soft) 200ms;
+    &:not(:where([data-shown] *)) {
+      opacity: 0;
+      translate: 0 0.875rem;
+      scale: 0.985;
+    }
+  }
+}
+
 /* Bars that grow from the left edge */
 /* How it works (lovable.dev style): src/main.js marks the step — and its card — whose card has crossed
    the middle of the screen with data-active, and sets --how-p (0 → 1) as that card scrolls past.

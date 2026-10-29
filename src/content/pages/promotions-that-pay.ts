@@ -1,6 +1,11 @@
 import { Undo2, CircleSlash, Wrench, FlaskConical } from "lucide-react";
-import type { StoryContent } from "@/components/StoryPage";
+import type { ChapterContent } from "@/components/designed/product/chapters";
+import type { PromotionsSolutionArt } from "@/components/designed/use-cases/solution-art";
 import { byLocale } from "@/content/locale";
+import { promotionAuditPictureAlt } from "@/content/pages/promotion-audit";
+import { returnVerificationPictureAlt } from "@/content/pages/return-verification";
+
+type Content = ChapterContent & { art: PromotionsSolutionArt };
 
 /**
  * Solution: decide which promotions pay. A goal, not a product: it puts three products in the
@@ -15,7 +20,7 @@ import { byLocale } from "@/content/locale";
  *
  * `scenes.chain` is the "three answers" figure beside the visual heading; there is no chain block.
  */
-export const PROMOTIONS_THAT_PAY: StoryContent = {
+export const PROMOTIONS_THAT_PAY: Content = {
   meta: {
     title: "Decide which promotions pay, after the returns",
     description:
@@ -29,6 +34,15 @@ export const PROMOTIONS_THAT_PAY: StoryContent = {
     "Three possible answers for every group, and one of them is nothing.",
   visualBody:
     "For each group of shoppers you can already see, such as new buyers, a region or cash on delivery, the answer is an offer that beat doing nothing at the cautious end of its range, no offer, or a named test.",
+
+  // The words in the hero's panel (use-cases/solution-art.tsx). Nothing in it is measured.
+  art: {
+    note: "Illustration",
+    campaign: "Campaign",
+    offers: ["Voucher", "Price cut", "Free shipping"],
+    kept: "Kept",
+    back: "Came back or refused",
+  },
 
   scenes: {
     hero: {
@@ -82,7 +96,7 @@ export const PROMOTIONS_THAT_PAY: StoryContent = {
           tone: "good",
         },
         {
-          value: "0",
+          value: "✕",
           label: "No offer",
           note: "Nothing beat doing nothing for this group",
           tone: "hold",
@@ -203,7 +217,7 @@ export const PROMOTIONS_THAT_PAY: StoryContent = {
 };
 
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
-export const PROMOTIONS_THAT_PAY_VI: StoryContent = {
+export const PROMOTIONS_THAT_PAY_VI: Content = {
   meta: {
     title: "Quyết định khuyến mãi nào có lãi, sau hàng bị trả",
     description:
@@ -217,6 +231,14 @@ export const PROMOTIONS_THAT_PAY_VI: StoryContent = {
     "Ba câu trả lời cho mỗi nhóm, và một trong số đó là không làm gì.",
   visualBody:
     "Với mỗi nhóm người mua bạn đã thấy được, như khách mới, một vùng hay thanh toán khi nhận hàng, câu trả lời là một ưu đãi vẫn hơn việc không làm gì ở đầu thận trọng của khoảng ước lượng, không ưu đãi, hoặc một thử nghiệm được nêu rõ.",
+
+  art: {
+    note: "Minh hoạ",
+    campaign: "Chiến dịch",
+    offers: ["Voucher", "Giảm giá", "Miễn phí vận chuyển"],
+    kept: "Được giữ lại",
+    back: "Bị trả hoặc từ chối nhận",
+  },
 
   scenes: {
     hero: {
@@ -270,7 +292,7 @@ export const PROMOTIONS_THAT_PAY_VI: StoryContent = {
           tone: "good",
         },
         {
-          value: "0",
+          value: "✕",
           label: "Không ưu đãi",
           note: "Không ưu đãi nào hơn việc không làm gì với nhóm này",
           tone: "hold",
@@ -392,3 +414,22 @@ export const PROMOTIONS_THAT_PAY_VI: StoryContent = {
 
 export const promotionsThatPay = (l: string) =>
   byLocale({ en: PROMOTIONS_THAT_PAY, vi: PROMOTIONS_THAT_PAY_VI }, l);
+
+/**
+ * The step and gain pictures' alt text, in the order `product-pictures.tsx` lists them: one made for
+ * this page, the rest the product pages' own pictures, with their own alt text.
+ */
+export const promotionsThatPayPictureAlt = (l: string) => {
+  const pa = promotionAuditPictureAlt(l);
+  const decide = byLocale(
+    {
+      en: "The Decision API joined to three groups of shoppers, each with its answer: new buyers get an offer, a region gets no offer, and cash on delivery gets a test.",
+      vi: "Decision API nối với ba nhóm người mua, mỗi nhóm một câu trả lời: khách mới nhận một ưu đãi, một vùng không có ưu đãi, và thanh toán khi nhận hàng được thử nghiệm.",
+    },
+    l,
+  );
+  return {
+    steps: [pa.steps[1], decide, returnVerificationPictureAlt(l).steps[2]],
+    gains: [0, 1, 2, 4].map((i) => pa.gains[i]),
+  };
+};

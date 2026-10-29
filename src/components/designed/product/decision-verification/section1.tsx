@@ -76,10 +76,11 @@ export function Section1Section() {
                   <Image
                     src={img("product/decision-verification-attribute-evidence-check.webp")}
                     alt={t('figureAlt')}
-                    width={1774}
-                    height={887}
+                    width={1400}
+                    height={700}
                     sizes="100vw"
                     priority
+                    fetchPriority="high"
                     className="mx-auto h-auto w-full object-contain lg:max-h-[calc(100svh-28rem)]"
                   />
                 </div>

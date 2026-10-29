@@ -12,7 +12,7 @@
  * `StudioVisual`, which drew in hard-coded hex and red, and the story scenes' versions of the same
  * data, which waited for an animation before showing anything. Everything here reads at rest.
  */
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { renderLocale } from "@/i18n/render-locale";
 import { ui } from "@/content/locale";
 import type {
@@ -71,9 +71,12 @@ function Panel({
 const Bar = ({
   value,
   className = "fill-chart-main",
+  i = 0,
 }: {
   value: number;
   className?: string;
+  /** Its place in the figure's sequence (`fig-bar`). */
+  i?: number;
 }) => (
   <svg
     viewBox="0 0 100 8"
@@ -95,7 +98,8 @@ const Bar = ({
       width={Math.max(1, Math.min(100, value))}
       height="8"
       rx="2"
-      className={className}
+      className={`fig-bar ${className}`}
+      style={{ "--i": i } as CSSProperties}
     />
   </svg>
 );
@@ -103,14 +107,15 @@ const Bar = ({
 function FactorRows({ rows }: { rows: [string, number][] }) {
   return (
     <ul className="grid gap-2.5">
-      {rows.map(([k, v]) => (
+      {rows.map(([k, v], i) => (
         <li
           key={k}
-          className="grid grid-cols-12 items-center gap-3 text-data text-ink"
+          className="fig-item grid grid-cols-12 items-center gap-3 text-data text-ink"
+          style={{ "--i": i } as CSSProperties}
         >
           <span className="col-span-6">{k}</span>
           <span className="col-span-4">
-            <Bar value={v * 2} />
+            <Bar value={v * 2} i={i} />
           </span>
           <span className="col-span-2 text-right font-mono text-xs text-muted tabular-nums">
             {v}%
@@ -154,6 +159,9 @@ export function ApiOutput() {
 
 export function SearchOutput() {
   const t = ui(renderLocale());
+  // The engine's rows start where the shop's own order had them (rows below their final place:
+  // ThinkPad third, MacBook first, Dell second) and re-sort (`fig-resort`).
+  const from = [2, -1, -1];
   const arms = [
     {
       h: t.engineArm,
@@ -185,10 +193,17 @@ export function SearchOutput() {
                 <li
                   key={r}
                   className={`flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-data ${
+                    a.engine ? "fig-resort" : "fig-item"
+                  } ${
                     a.engine && i === 0
                       ? "bg-primary-tint font-semibold text-ink ring-1 ring-primary"
                       : "bg-surface-1 text-muted"
                   }`}
+                  style={
+                    (a.engine
+                      ? { "--from": from[i] }
+                      : { "--i": i }) as unknown as CSSProperties
+                  }
                 >
                   <span className="font-mono text-xs tabular-nums">
                     {i + 1}
@@ -236,10 +251,11 @@ export function StudioOutput() {
         <div>
           <span className="badge-primary">{t.built}</span>
           <ul className="mt-2 grid gap-1.5">
-            {[t.cCatalogue, t.cPersonas, t.cHoldback, t.cRecord].map((r) => (
+            {[t.cCatalogue, t.cPersonas, t.cHoldback, t.cRecord].map((r, i) => (
               <li
                 key={r}
-                className="flex items-center gap-2 rounded-lg bg-primary-tint px-2.5 py-1.5 text-data text-ink"
+                className="fig-item flex items-center gap-2 rounded-lg bg-primary-tint px-2.5 py-1.5 text-data text-ink"
+                style={{ "--i": i } as CSSProperties}
               >
                 <Icon id="check" className="size-3.5 text-primary" />
                 {r}
@@ -252,10 +268,11 @@ export function StudioOutput() {
             {t.notBuilt}
           </span>
           <ul className="mt-2 grid gap-1.5">
-            {[t.cPin, t.cSimulate].map((r) => (
+            {[t.cPin, t.cSimulate].map((r, i) => (
               <li
                 key={r}
-                className="flex items-center gap-2 rounded-lg border border-dashed border-line-control px-2.5 py-1.5 text-data text-muted"
+                className="fig-flag flex items-center gap-2 rounded-lg border border-dashed border-line-control px-2.5 py-1.5 text-data text-muted"
+                style={{ "--i": 4 + i } as CSSProperties}
               >
                 <Icon id="x" className="size-3.5" />
                 {r}
@@ -283,7 +300,11 @@ function Flow({ s }: { s: FlowSpec }) {
     <Panel foot={s.note}>
       <ol className="grid gap-3">
         {s.steps.map((st, i) => (
-          <li key={st.k} className="flex items-start gap-3">
+          <li
+            key={st.k}
+            className="fig-item flex items-start gap-3"
+            style={{ "--i": i } as CSSProperties}
+          >
             <span
               className={`grid size-7 shrink-0 place-items-center rounded-full font-mono text-xs ${DOT[st.tone ?? "work"]}`}
             >
@@ -311,10 +332,11 @@ function Asks({ s, missing }: { s: AsksSpec; missing: boolean }) {
   return (
     <Panel title={s.eyebrow}>
       <ul>
-        {s.rows.map((r) => (
+        {s.rows.map((r, i) => (
           <li
             key={r.label}
-            className="flex items-center gap-3 border-t border-line py-2.5 text-data first:border-t-0 first:pt-0"
+            className="fig-item flex items-center gap-3 border-t border-line py-2.5 text-data first:border-t-0 first:pt-0"
+            style={{ "--i": i } as CSSProperties}
           >
             <Icon
               id={r.ok ? "check" : "x"}
@@ -327,7 +349,12 @@ function Asks({ s, missing }: { s: AsksSpec; missing: boolean }) {
             {r.ok ? (
               <span className="badge-primary">{s.okLabel}</span>
             ) : missing ? (
-              <span className="missing-flag">{s.noLabel}</span>
+              <span
+                className="missing-flag fig-flag"
+                style={{ "--i": i } as CSSProperties}
+              >
+                {s.noLabel}
+              </span>
             ) : (
               <span className="badge border-line bg-surface-1 text-muted">
                 {s.noLabel}
@@ -337,7 +364,10 @@ function Asks({ s, missing }: { s: AsksSpec; missing: boolean }) {
         ))}
       </ul>
       {s.note && (
-        <p className="mt-3 flex items-start gap-2.5 border-t border-line pt-3 text-xs text-muted">
+        <p
+          className="fig-item mt-3 flex items-start gap-2.5 border-t border-line pt-3 text-xs text-muted"
+          style={{ "--i": s.rows.length + 1 } as CSSProperties}
+        >
           <span className="badge border-line bg-surface-1 font-mono text-muted">
             {no}/{s.rows.length}
           </span>
@@ -375,7 +405,8 @@ function Grid({ s }: { s: GridSpec }) {
         {litSet(s.total, s.lit).map((on, i) => (
           <span
             key={i}
-            className={`aspect-square rounded-xs ${on ? "bg-chart-missing" : "bg-surface-1"}`}
+            className={`aspect-square rounded-xs ${on ? "fig-flag bg-chart-missing" : "bg-surface-1"}`}
+            style={on ? ({ "--i": i % 6 } as CSSProperties) : undefined}
           />
         ))}
       </div>
@@ -403,10 +434,11 @@ function Facts({ s }: { s: FactsSpec }) {
   return (
     <Panel foot={s.note}>
       <dl className="grid divide-line @md:grid-cols-3 @md:divide-x">
-        {s.facts.map((f) => (
+        {s.facts.map((f, i) => (
           <div
             key={f.label}
-            className="border-t border-line py-3 first:border-t-0 @md:border-t-0 @md:px-4 @md:first:pl-0"
+            className="fig-item border-t border-line py-3 first:border-t-0 @md:border-t-0 @md:px-4 @md:first:pl-0"
+            style={{ "--i": i } as CSSProperties}
           >
             <dd
               className={`font-title text-display ${f.tone === "good" ? "text-primary" : f.tone === "warn" ? "text-muted" : "text-ink"}`}
@@ -434,7 +466,8 @@ function Funnel({ s }: { s: FunnelSpec }) {
         {Array.from({ length: read.value }, (_, i) => (
           <span
             key={i}
-            className={`grid size-7 place-items-center rounded-lg ${i < apart.value ? "bg-primary-tint text-primary" : "bg-surface-1 text-muted"}`}
+            className={`fig-flag grid size-7 place-items-center rounded-lg ${i < apart.value ? "bg-primary-tint text-primary" : "bg-surface-1 text-muted"}`}
+            style={{ "--i": 6 + i * 0.6 } as CSSProperties}
           >
             <Icon id={i < apart.value ? "check" : "x"} className="size-3.5" />
           </span>
@@ -445,7 +478,7 @@ function Funnel({ s }: { s: FunnelSpec }) {
         <b className="text-ink">{read.value - apart.value}</b> {s.alike}
       </p>
       <ul className="mt-3 grid gap-2.5">
-        {s.bands.map((b) => (
+        {s.bands.map((b, i) => (
           <li
             key={b.label}
             className="grid grid-cols-12 items-center gap-x-3 gap-y-0.5"
@@ -454,7 +487,7 @@ function Funnel({ s }: { s: FunnelSpec }) {
               {b.value}
             </span>
             <span className="col-span-10">
-              <Bar value={(b.value / s.total) * 100} />
+              <Bar value={(b.value / s.total) * 100} i={i * 2} />
             </span>
             <span className="col-span-10 col-start-3 text-xs text-muted">
               {b.label}
@@ -471,12 +504,20 @@ function Delta({ s }: { s: DeltaSpec }) {
   return (
     <Panel title={s.label}>
       <div className="flex items-center justify-center gap-8 py-2">
-        <div className="text-center">
+        <div
+          className="fig-item text-center"
+          style={{ "--i": 0 } as CSSProperties}
+        >
           <p className="font-title text-display text-baseline">{s.before.v}</p>
           <p className="text-xs text-muted">{s.before.label}</p>
         </div>
-        <Icon id="arrow-right" className="size-5 text-line-control" />
-        <div className="text-center">
+        <span className="fig-item" style={{ "--i": 1 } as CSSProperties}>
+          <Icon id="arrow-right" className="size-5 text-line-control" />
+        </span>
+        <div
+          className="fig-item text-center"
+          style={{ "--i": 2 } as CSSProperties}
+        >
           <p className="font-title text-display text-primary">{s.after.v}</p>
           <p className="text-xs text-muted">{s.after.label}</p>
         </div>
@@ -487,7 +528,10 @@ function Delta({ s }: { s: DeltaSpec }) {
         </p>
       )}
       {s.footer && (
-        <p className="mt-3 flex items-center gap-2 border-t border-line pt-3 text-data font-semibold text-primary-hover">
+        <p
+          className="fig-item mt-3 flex items-center gap-2 border-t border-line pt-3 text-data font-semibold text-primary-hover"
+          style={{ "--i": 4 } as CSSProperties}
+        >
           <Icon id="check" className="size-4" />
           {s.footer}
         </p>
@@ -504,7 +548,8 @@ function Lanes({ s }: { s: LanesSpec }) {
       {s.lanes.map((l, i) => (
         <div
           key={l.title}
-          className={`grid gap-2 rounded-2xl border p-5 ${i ? "border-primary-line bg-card" : "border-line bg-surface-1"}`}
+          className={`fig-item grid gap-2 rounded-2xl border p-5 ${i ? "border-primary-line bg-card" : "border-line bg-surface-1"}`}
+          style={{ "--i": i * 2 } as CSSProperties}
         >
           <p className="text-h3 text-ink">{h(l.title)}</p>
           <p className="text-data text-pretty text-muted">{l.body}</p>

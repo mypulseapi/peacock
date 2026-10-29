@@ -13,8 +13,6 @@ import Image from "next/image";
 
 import Link from "next/link";
 
-const COMPANY_FACTS = ["founded", "hq", "engineering", "builtFor"];
-
 /** Three link columns of five rows each, so they line up row for row; the header's grouping. */
 const COLUMNS: Array<{ heading: string; links: Array<[string, string]> }> = [
   {
@@ -63,7 +61,7 @@ export function DesignedFooter() {
   const t = designedText("shell.designed-footer");
   return (
     <footer className="border-t border-line bg-card">
-      <div className="frame pt-12 pb-10 sm:pt-20 sm:pb-12 lg:pt-24">
+      <div className="frame py-12 sm:py-20 lg:py-24">
         {/* From `sm` the four columns sit centred, each in its cell and against the others (owner,
             28 Oct 2026); on a phone they keep the left-aligned compact layout. */}
         <div className="grid gap-8 sm:grid-cols-2 sm:items-center sm:gap-14 sm:text-center lg:grid-cols-4 lg:gap-10">
@@ -141,21 +139,6 @@ export function DesignedFooter() {
             </div>
           ))}
         </div>
-        {/* Company facts, the owner's Direction A (mockup pin 9): who and where, the first thing an
-            investor looks for. Same wording as the About page. Hairlines are a 1px gap over `line`. */}
-        <dl className="mt-10 grid sm:mt-14 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-          {COMPANY_FACTS.map((key) => (
-            <div
-              key={key}
-              className="bg-card px-4 py-3 max-sm:grid max-sm:grid-cols-[7rem_minmax(0,1fr)] max-sm:items-baseline max-sm:gap-3 sm:px-5 sm:py-4"
-            >
-              <dt className="text-caption text-muted">{t(`${key}Label`)}</dt>
-              <dd className="text-sm font-medium text-ink sm:mt-1">
-                {t(`${key}Value`)}
-              </dd>
-            </div>
-          ))}
-        </dl>
       </div>
       <div className="border-t border-line">
         <div className="frame flex flex-col gap-3 py-4 text-data text-ink sm:flex-row sm:items-center sm:justify-between">

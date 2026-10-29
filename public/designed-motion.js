@@ -12,6 +12,10 @@
 //   [data-bg-video]        → product hero background video: theme-matched source, plays only while on screen
 //   [data-deal]            → About page DEAL acronym: big row → column → words (data-state hold/stack/expand/done)
 
+// First: tell the CSS this script is running, so the reveal failsafe in globals.css stands down
+// and below-the-fold content waits to fade up as it scrolls in, rather than appearing at 1.2s.
+document.documentElement.setAttribute("data-motion", "");
+
 const reduceMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
@@ -90,7 +94,9 @@ function show(el) {
 // A .reveal-bar starts at scale 0, a zero-width box at the edge of its clipped track; when the page is zoomed
 // (90%, 80% …) such a box can fall just outside the clip and never count as visible, so the bar would never grow.
 // Bars are therefore watched through their track (the parent, which always has a width) and shown with it.
-const REVEALS = ".reveal, [data-count], [data-type], [data-shelf]";
+// `.reveal-trigger` is watched like a reveal but does not fade itself: it starts its children's
+// entrance (About's team cards, `card-in`, whose own hover transition `reveal` would override).
+const REVEALS = ".reveal, .reveal-trigger, [data-count], [data-type], [data-shelf]";
 const barsByTrack = new Map();
 const revealObserver = new IntersectionObserver(
   (entries) => {
@@ -1483,7 +1489,7 @@ feature("[data-chat]", function initChat(chat) {
  * observed is a no-op, so calling it repeatedly is safe.                *
  * ==================================================================== */
 const UNSHOWN =
-  ".reveal:not([data-shown]), [data-count]:not([data-shown]), [data-type]:not([data-shown]), [data-shelf]:not([data-shown])";
+  ".reveal:not([data-shown]), .reveal-trigger:not([data-shown]), [data-count]:not([data-shown]), [data-type]:not([data-shown]), [data-shelf]:not([data-shown])";
 
 window.__pulseMotionRescan = function rescan() {
   // Features first: a navigation brings new elements that nothing has bound yet, and takes away

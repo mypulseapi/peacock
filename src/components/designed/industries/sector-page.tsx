@@ -73,7 +73,10 @@ function altOf(slug: string, p: SectorPicture) {
   return designedText(`industries.${slug}.${section}`)(key);
 }
 
-/** The picture frame the sector images were drawn for: opaque, so it reads in both themes. */
+/**
+ * The picture frame the sector images were drawn for: opaque, so it reads in both themes. The hero
+ * picture has none (owner, 29 Oct 2026): it is transparent and sits on the hero like the product heroes.
+ */
 function Picture({
   slug,
   p,
@@ -86,7 +89,13 @@ function Picture({
   priority?: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-[#fdfdfd]">
+    <div
+      className={
+        priority
+          ? undefined
+          : "overflow-hidden rounded-2xl border border-line bg-[#fdfdfd]"
+      }
+    >
       <Image
         src={img(p.src)}
         alt={altOf(slug, p)}
@@ -94,6 +103,7 @@ function Picture({
         height={p.height}
         sizes={sizes}
         priority={priority}
+        fetchPriority={priority ? "high" : undefined}
         className="h-auto w-full"
       />
     </div>

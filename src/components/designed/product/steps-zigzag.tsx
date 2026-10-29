@@ -10,12 +10,16 @@
  * On a phone every row opens with its picture; only the desktop row mirrors.
  */
 import type { ReactNode } from "react";
+import { Link } from "@/i18n/routing";
+import { renderLocale } from "@/i18n/render-locale";
 
 export interface ZigzagStep {
   label: string;
   title: string;
   body: string;
   picture: ReactNode;
+  /** The label is a product on a solution page: link it to that product's page. */
+  href?: string;
 }
 
 export function StepsZigzag({
@@ -27,6 +31,7 @@ export function StepsZigzag({
   intro?: string;
   steps: ZigzagStep[];
 }) {
+  const locale = renderLocale();
   return (
     <section className="scroll-mt-16 border-b border-line bg-primary-wash">
       <div className="frame py-20 lg:py-28">
@@ -40,20 +45,35 @@ export function StepsZigzag({
           {steps.map((s, i) => (
             <li
               key={s.title}
-              className="reveal grid items-center gap-8 lg:grid-cols-2 lg:gap-16"
+              className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16"
             >
-              <div className={i % 2 ? "" : "lg:order-last"}>{s.picture}</div>
+              {/* Each part fades up on its own, the picture a little after the words (owner, 29 Oct 2026). */}
+              <div
+                className={`reveal delay-300 ${i % 2 ? "" : "lg:order-last"}`}
+              >
+                {s.picture}
+              </div>
               <div>
-                <p className="flex items-baseline gap-4">
+                <p className="reveal flex items-baseline gap-4">
                   <span className="font-title text-display text-primary">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  {s.label && <span className="badge-primary">{s.label}</span>}
+                  {s.label && s.href ? (
+                    <Link
+                      locale={locale}
+                      href={s.href}
+                      className="badge-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+                    >
+                      {s.label}
+                    </Link>
+                  ) : (
+                    s.label && <span className="badge-primary">{s.label}</span>
+                  )}
                 </p>
-                <h3 className="mt-4 text-h2 text-balance text-ink">
+                <h3 className="reveal mt-4 text-h2 text-balance text-ink delay-100">
                   {s.title}
                 </h3>
-                <p className="mt-3 text-body text-pretty text-muted">
+                <p className="reveal mt-3 text-body text-pretty text-muted delay-200">
                   {s.body}
                 </p>
               </div>

@@ -156,7 +156,7 @@ export function WhySection() {
                         alt=""
                         width={180}
                         height={180}
-                        className="size-full scale-130" priority />
+                        className="size-full scale-130" />
                     </span>
                   </div>
                   <div

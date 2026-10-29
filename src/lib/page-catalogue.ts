@@ -255,6 +255,20 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     decides: ["does-it-fit-me"],
   },
   {
+    route: "/use-cases/promotions-that-pay",
+    audience: "merchant",
+    area: "none",
+    depth: "explainer",
+    decides: ["does-it-fit-me"],
+  },
+  {
+    route: "/use-cases/fixable-returns",
+    audience: "merchant",
+    area: "none",
+    depth: "explainer",
+    decides: ["does-it-fit-me"],
+  },
+  {
     route: "/industries",
     audience: "merchant",
     area: "none",

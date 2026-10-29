@@ -19,7 +19,8 @@ import { FALLBACK_LOCALE, isLocale } from "@/i18n/locales";
 
 export type Locale = string;
 
-export const asLocale = (l: string): Locale => (isLocale(l) ? l : FALLBACK_LOCALE);
+export const asLocale = (l: string): Locale =>
+  isLocale(l) ? l : FALLBACK_LOCALE;
 
 /**
  * Pick a variant by locale, falling back to English.
@@ -56,8 +57,14 @@ export type Widen<T> = T extends string
           : T;
 
 /** Pick the right variant for the active locale, falling back to English. */
-export function pick<T>(byLocale: { en: T; vi: Widen<T> }, locale: string): Widen<T> {
-  return (asLocale(locale) === "vi" ? byLocale.vi : (byLocale.en as Widen<T>)) ?? (byLocale.en as Widen<T>);
+export function pick<T>(
+  byLocale: { en: T; vi: Widen<T> },
+  locale: string,
+): Widen<T> {
+  return (
+    (asLocale(locale) === "vi" ? byLocale.vi : (byLocale.en as Widen<T>)) ??
+    (byLocale.en as Widen<T>)
+  );
 }
 
 /**
@@ -83,6 +90,7 @@ const UI = {
     beforeYouCommit: "Before you commit",
     whatThisDoes: "What this does",
     whatItDoesNot: "What it does not do",
+    builtFrom: "Built from",
     questions: "Questions",
     theOnesThatDecide: "The ones that decide it.",
     willDo: "What we will do",
@@ -99,7 +107,8 @@ const UI = {
     rankedList: "Your ranked repair list",
     hours48: "48 hours",
     productsMissing: (n: number) => `${n} products missing it`,
-    rankedByBits: "Ranked by bits of decision information, not by how much is absent.",
+    rankedByBits:
+      "Ranked by bits of decision information, not by how much is absent.",
 
     // VerificationVisual
     coverageBeforeAfter: "Coverage, before and after",
@@ -123,20 +132,23 @@ const UI = {
     personaFit: "Persona fit",
     priceBand: "Price band",
     brandAffinity: "Brand affinity",
-    explainRanked: "Every ranked product carries this. Nothing is a black box to your merchandiser.",
+    explainRanked:
+      "Every ranked product carries this. Nothing is a black box to your merchandiser.",
 
     // MethodVisual
     whatOneBit: "What one bit buys a shopper",
     products216: "216 products",
     bits: "bits",
     left: "left",
-    oneBitHalves: "One bit halves the shelf. That is the unit, and it is why two attributes can be compared.",
+    oneBitHalves:
+      "One bit halves the shelf. That is the unit, and it is why two attributes can be compared.",
 
     // CompareVisual
     whereDiffer: "Where the two rankings differ",
     byEngagement: "By engagement",
     byDecision: "By decision value",
-    explainInvert: "Missing on the most products. Needed by the fewest shoppers.",
+    explainInvert:
+      "Missing on the most products. Needed by the fewest shoppers.",
 
     // TwoPlans, use-case figures (designed/use-cases/charts.tsx)
     twoPlans: "Two plans for the same range",
@@ -144,14 +156,16 @@ const UI = {
     fullEnrichment: "Enrich the whole schema",
     minimumSet: "The minimum decidable set",
     nFields: (n: number) => `${n} fields`,
-    twoPlansNote: "Both end in the same place. Only one of them ends before the date.",
+    twoPlansNote:
+      "Both end in the same place. Only one of them ends before the date.",
 
     // SchemaBands, use-case figures (designed/use-cases/charts.tsx)
     schemaCeiling: "Where schema coverage stops",
     markedUp: "Marked up today",
     heldNotExpressed: "Held, but written as prose",
     neverRecorded: "Never recorded at all",
-    schemaNote: "Only the red band needs new data. The blue band is a markup task on facts you already own.",
+    schemaNote:
+      "Only the red band needs new data. The blue band is a markup task on facts you already own.",
 
     // SectorVisual
     coverageVsDecision: "Coverage against what decides a purchase",
@@ -167,10 +181,12 @@ const UI = {
     queryLaptop: "\u201claptop for design work\u201d",
     engineArm: "Engine",
     controlArm: "Held back",
-    heldBackNote: "A share of sessions always sees your own order. That is the comparison.",
+    heldBackNote:
+      "A share of sessions always sees your own order. That is the comparison.",
     slotPdp: "Product detail slot",
     firstVisit: "First visit",
-    noHistoryNote: "No history, no cookie, no login. Ranked from this visit alone.",
+    noHistoryNote:
+      "No history, no cookie, no login. Ranked from this visit alone.",
     consoleTitle: "What the console holds",
     built: "Built",
     notBuilt: "Not built",
@@ -186,7 +202,8 @@ const UI = {
     stability: "Ranking stability across 12 runs",
     topOnly: "Top only",
     nthOf12: (n: string, k: number) => `${n} in ${k} of 12`,
-    firstOnly: "Only the first position is stable. We publish the rest and say so.",
+    firstOnly:
+      "Only the first position is stable. We publish the rest and say so.",
     ord: ["1st", "2nd", "3rd", "4th"],
   },
   vi: {
@@ -200,6 +217,7 @@ const UI = {
     beforeYouCommit: "Trước khi bạn cam kết",
     whatThisDoes: "Việc này làm được gì",
     whatItDoesNot: "Việc này không làm gì",
+    builtFrom: "Gồm các sản phẩm",
     questions: "Câu hỏi",
     theOnesThatDecide: "Những câu quyết định.",
     willDo: "Những gì chúng tôi sẽ làm",
@@ -213,7 +231,8 @@ const UI = {
     rankedList: "Danh sách sửa đã xếp hạng của bạn",
     hours48: "48 giờ",
     productsMissing: (n: number) => `${n} sản phẩm còn thiếu`,
-    rankedByBits: "Xếp theo bit thông tin quyết định, không theo mức độ vắng mặt.",
+    rankedByBits:
+      "Xếp theo bit thông tin quyết định, không theo mức độ vắng mặt.",
 
     coverageBeforeAfter: "Độ phủ, trước và sau",
     verified: "Đã xác minh",
@@ -234,13 +253,15 @@ const UI = {
     personaFit: "Khớp chân dung",
     priceBand: "Khoảng giá",
     brandAffinity: "Tương hợp thương hiệu",
-    explainRanked: "Mọi sản phẩm được xếp hạng đều kèm phần này. Không có gì là hộp đen với người phụ trách trưng bày hàng hoá của bạn.",
+    explainRanked:
+      "Mọi sản phẩm được xếp hạng đều kèm phần này. Không có gì là hộp đen với người phụ trách trưng bày hàng hoá của bạn.",
 
     whatOneBit: "Một bit mua được gì cho người mua",
     products216: "216 sản phẩm",
     bits: "bit",
     left: "còn lại",
-    oneBitHalves: "Một bit chia đôi kệ hàng. Đó là đơn vị đo, và là lý do hai thuộc tính so sánh được với nhau.",
+    oneBitHalves:
+      "Một bit chia đôi kệ hàng. Đó là đơn vị đo, và là lý do hai thuộc tính so sánh được với nhau.",
 
     whereDiffer: "Hai bảng xếp hạng khác nhau ở đâu",
     byEngagement: "Theo mức tương tác",
@@ -252,13 +273,15 @@ const UI = {
     fullEnrichment: "Làm giàu toàn bộ lược đồ",
     minimumSet: "Tập tối thiểu đủ để quyết định",
     nFields: (n: number) => `${n} trường`,
-    twoPlansNote: "Cả hai đều về cùng một đích. Chỉ một trong hai về kịp trước ngày ra mắt.",
+    twoPlansNote:
+      "Cả hai đều về cùng một đích. Chỉ một trong hai về kịp trước ngày ra mắt.",
 
     schemaCeiling: "Độ phủ lược đồ dừng ở đâu",
     markedUp: "Đã đánh dấu hôm nay",
     heldNotExpressed: "Đang có, nhưng viết dưới dạng văn xuôi",
     neverRecorded: "Chưa bao giờ được ghi",
-    schemaNote: "Chỉ dải màu đỏ cần dữ liệu mới. Dải màu xanh là việc đánh dấu trên những dữ kiện bạn vốn đã có.",
+    schemaNote:
+      "Chỉ dải màu đỏ cần dữ liệu mới. Dải màu xanh là việc đánh dấu trên những dữ kiện bạn vốn đã có.",
 
     coverageVsDecision: "Độ phủ so với thứ quyết định việc mua",
     theGap: "Khoảng trống",
@@ -272,10 +295,12 @@ const UI = {
     queryLaptop: "\u201claptop cho công việc thiết kế\u201d",
     engineArm: "Bộ máy",
     controlArm: "Giữ lại",
-    heldBackNote: "Một phần phiên truy cập luôn thấy thứ tự của chính bạn. Đó chính là phép so sánh.",
+    heldBackNote:
+      "Một phần phiên truy cập luôn thấy thứ tự của chính bạn. Đó chính là phép so sánh.",
     slotPdp: "Ô hiển thị trang sản phẩm",
     firstVisit: "Lần ghé đầu tiên",
-    noHistoryNote: "Không lịch sử, không cookie, không đăng nhập. Xếp hạng chỉ từ lần ghé này.",
+    noHistoryNote:
+      "Không lịch sử, không cookie, không đăng nhập. Xếp hạng chỉ từ lần ghé này.",
     consoleTitle: "Bảng điều khiển có những gì",
     built: "Đã xây",
     notBuilt: "Chưa xây",
@@ -290,7 +315,8 @@ const UI = {
     stability: "Độ ổn định của thứ hạng qua 12 lần chạy",
     topOnly: "Chỉ đầu bảng",
     nthOf12: (n: string, k: number) => `${n} ở ${k} trên 12 lần`,
-    firstOnly: "Chỉ vị trí đầu tiên là ổn định. Chúng tôi vẫn công bố phần còn lại và nói rõ điều đó.",
+    firstOnly:
+      "Chỉ vị trí đầu tiên là ổn định. Chúng tôi vẫn công bố phần còn lại và nói rõ điều đó.",
     ord: ["hạng 1", "hạng 2", "hạng 3", "hạng 4"],
   },
 } as const;
@@ -345,7 +371,8 @@ const STORY_UI = {
     scoringAgainst: "Scoring 216 products against 32 buying requirements",
     fourAttributes: "4 attributes",
     fieldsBlank: "347 fields are blank across this shelf.",
-    cannotFilter: "A shopper cannot filter on any of them, and neither can your search.",
+    cannotFilter:
+      "A shopper cannot filter on any of them, and neither can your search.",
     colName: "Name",
     colSku: "SKU",
     noData: "No data",
@@ -355,9 +382,12 @@ const STORY_UI = {
     footAudit: "Reading titles, descriptions and supplier specs.",
     footPriorityA: "Record",
     footPriorityB: "screen size",
-    footPriorityC: "on the 80 laptops missing it. It buys more than any other single change.",
-    footRepair: "Recovered from your own titles and supplier specs. No new data to go and buy.",
-    footPayoff: "Shoppers can now narrow to a shortlist they can actually choose from.",
+    footPriorityC:
+      "on the 80 laptops missing it. It buys more than any other single change.",
+    footRepair:
+      "Recovered from your own titles and supplier specs. No new data to go and buy.",
+    footPayoff:
+      "Shoppers can now narrow to a shortlist they can actually choose from.",
     readinessLabel: "readiness",
 
     // Priority
@@ -369,15 +399,18 @@ const STORY_UI = {
     ranksByNeed: "ranks by what shoppers need",
     firstToLast: "1st → last",
     processorA: "Processor",
-    processorB: "is missing on 162 products, so a completeness report puts it first. Only 2 of 32 requirements mention one, so it finishes last.",
-    processorC: "Fixing it first would have been the most expensive way to change nothing.",
+    processorB:
+      "is missing on 162 products, so a completeness report puts it first. Only 2 of 32 requirements mention one, so it finishes last.",
+    processorC:
+      "Fixing it first would have been the most expensive way to change nothing.",
 
     // Repair
     recoveringScreen: "Recovering screen size",
     noNewData: "No new data purchased",
     alreadyInText: "values were already in text you own.",
     otherNeedA: "The other",
-    otherNeedB: "genuinely need acquiring. We tell you which, so you can cost it before you commit.",
+    otherNeedB:
+      "genuinely need acquiring. We tell you which, so you can cost it before you commit.",
 
     // Payoff
     whatShoppersCan: "What your shoppers can now do",
@@ -415,7 +448,8 @@ const STORY_UI = {
     stepRevenue: "Doanh thu",
     noteProblem: "94 trên 216 sản phẩm mà người mua vẫn không phân biệt nổi",
     noteAudit: "Mọi thuộc tính đều được chấm theo quyết định mua thật",
-    notePriority: "Kích thước màn hình trước. Đáng 1,067 bit, thiếu ở 80 sản phẩm",
+    notePriority:
+      "Kích thước màn hình trước. Đáng 1,067 bit, thiếu ở 80 sản phẩm",
     noteRepair: "Lấy lại từ chính tiêu đề của bạn và thông số nhà cung cấp",
     notePayoff: "Gấp ba lần số sản phẩm mà người mua phân biệt được",
 
@@ -430,19 +464,24 @@ const STORY_UI = {
     scoringAgainst: "Đang chấm 216 sản phẩm theo 32 yêu cầu mua hàng",
     fourAttributes: "4 thuộc tính",
     fieldsBlank: "347 trường đang bỏ trống trên kệ hàng này.",
-    cannotFilter: "Người mua không lọc được theo bất kỳ trường nào, và công cụ tìm kiếm của bạn cũng vậy.",
+    cannotFilter:
+      "Người mua không lọc được theo bất kỳ trường nào, và công cụ tìm kiếm của bạn cũng vậy.",
     colName: "Tên",
     colSku: "SKU",
     noData: "Không có dữ liệu",
     missing: "Thiếu",
     scoring: "Đang chấm",
-    footProblem: "Mỗi ô trống là một câu hỏi danh mục của bạn không trả lời được.",
+    footProblem:
+      "Mỗi ô trống là một câu hỏi danh mục của bạn không trả lời được.",
     footAudit: "Đang đọc tiêu đề, mô tả và thông số nhà cung cấp.",
     footPriorityA: "Hãy ghi",
     footPriorityB: "kích thước màn hình",
-    footPriorityC: "cho 80 chiếc laptop còn thiếu. Nó đem lại nhiều hơn bất kỳ thay đổi đơn lẻ nào khác.",
-    footRepair: "Lấy lại từ chính tiêu đề của bạn và thông số nhà cung cấp. Không phải đi mua dữ liệu mới.",
-    footPayoff: "Giờ người mua thu hẹp được về một danh sách ngắn mà họ thực sự chọn được.",
+    footPriorityC:
+      "cho 80 chiếc laptop còn thiếu. Nó đem lại nhiều hơn bất kỳ thay đổi đơn lẻ nào khác.",
+    footRepair:
+      "Lấy lại từ chính tiêu đề của bạn và thông số nhà cung cấp. Không phải đi mua dữ liệu mới.",
+    footPayoff:
+      "Giờ người mua thu hẹp được về một danh sách ngắn mà họ thực sự chọn được.",
     readinessLabel: "mức sẵn sàng",
 
     twoWays: "Hai cách xếp hạng cùng bốn khoảng trống",
@@ -453,14 +492,17 @@ const STORY_UI = {
     ranksByNeed: "xếp theo thứ người mua cần",
     firstToLast: "hạng 1 → hạng chót",
     processorA: "Vi xử lý",
-    processorB: "thiếu ở 162 sản phẩm, nên một báo cáo mức hoàn thiện xếp nó đầu bảng. Chỉ 2 trong 32 yêu cầu có nhắc tới nó, nên nó về chót.",
-    processorC: "Sửa nó trước sẽ là cách tốn kém nhất để chẳng thay đổi được gì.",
+    processorB:
+      "thiếu ở 162 sản phẩm, nên một báo cáo mức hoàn thiện xếp nó đầu bảng. Chỉ 2 trong 32 yêu cầu có nhắc tới nó, nên nó về chót.",
+    processorC:
+      "Sửa nó trước sẽ là cách tốn kém nhất để chẳng thay đổi được gì.",
 
     recoveringScreen: "Đang lấy lại kích thước màn hình",
     noNewData: "Không mua dữ liệu mới nào",
     alreadyInText: "giá trị vốn đã nằm trong văn bản bạn đang có.",
     otherNeedA: "Còn lại",
-    otherNeedB: "giá trị thì thực sự phải đi thu thập. Chúng tôi chỉ rõ là những giá trị nào, để bạn tính được chi phí trước khi cam kết.",
+    otherNeedB:
+      "giá trị thì thực sự phải đi thu thập. Chúng tôi chỉ rõ là những giá trị nào, để bạn tính được chi phí trước khi cam kết.",
 
     whatShoppersCan: "Giờ người mua của bạn làm được gì",
     verifiedOnCatalogue: "Đã xác minh trên danh mục của bạn",

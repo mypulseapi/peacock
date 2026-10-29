@@ -62,12 +62,12 @@ const INDUSTRIES = [
 ];
 const GOALS = [
   {
-    href: "/en/product/promotion-audit",
+    href: "/en/use-cases/promotions-that-pay",
     key: "goalPromo",
     icon: "i-chart-pie",
   },
   {
-    href: "/en/product/return-verification",
+    href: "/en/use-cases/fixable-returns",
     key: "goalReturns",
     icon: "i-undo",
   },

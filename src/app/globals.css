@@ -2721,6 +2721,10 @@ html[data-theme="dark"] {
 /* Scroll motion — src/main.js sets [data-shown] when an element enters  */
 /* the viewport. Stagger with Tailwind delay-* classes.                 */
 /* ------------------------------------------------------------------ */
+/* The hero never waits for it (owner, 29 Oct 2026): nothing in a page's first section
+   (`main > section:first-of-type`) is hidden, so the headline and the hero figure paint with the page,
+   as on the home hero. Hiding them held Largest Contentful Paint until designed-motion.js ran and the
+   fade finished: 1.4-1.9s on desktop, 1.2-1.6s later than needed on mobile. Everything below still fades up. */
 @utility reveal {
   transition-property: opacity, translate;
   transition-duration: 700ms;
@@ -2729,7 +2733,7 @@ html[data-theme="dark"] {
      reduced motion it is simply there (the hiding rule is more specific than any plain override, so it must not
      apply at all rather than be overridden) */
   @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-    &:not([data-shown]) {
+    &:not([data-shown], main > section:first-of-type, main > section:first-of-type *) {
       opacity: 0;
       translate: 0 1rem;
     }
@@ -2751,7 +2755,7 @@ html[data-theme="dark"] {
       opacity 450ms var(--ease-out-soft),
       translate 450ms var(--ease-out-soft);
     transition-delay: calc(var(--i, 0) * 110ms + 300ms);
-    &:not(:where([data-shown] *)) {
+    &:not(:where([data-shown] *, main > section:first-of-type *)) {
       opacity: 0;
       translate: 0 0.375rem;
     }
@@ -2763,7 +2767,7 @@ html[data-theme="dark"] {
   @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
     transition: scale 1100ms var(--ease-emphasized);
     transition-delay: calc(var(--i, 0) * 160ms + 350ms);
-    &:not(:where([data-shown] *)) {
+    &:not(:where([data-shown] *, main > section:first-of-type *)) {
       scale: 0 1;
     }
   }
@@ -2774,7 +2778,7 @@ html[data-theme="dark"] {
       opacity 300ms var(--ease-out-soft),
       scale 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
     transition-delay: calc(var(--i, 0) * 110ms + 550ms);
-    &:not(:where([data-shown] *)) {
+    &:not(:where([data-shown] *, main > section:first-of-type *)) {
       opacity: 0;
       scale: 0.85;
     }
@@ -2785,7 +2789,7 @@ html[data-theme="dark"] {
 @utility fig-resort {
   @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
     transition: translate 700ms var(--ease-out-soft) 700ms;
-    &:not(:where([data-shown] *)) {
+    &:not(:where([data-shown] *, main > section:first-of-type *)) {
       translate: 0 calc(var(--from, 0) * (100% + 0.375rem));
     }
   }
@@ -2795,7 +2799,7 @@ html[data-theme="dark"] {
    its list (`reveal-trigger`) scrolls in. */
 @utility card-in {
   @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-    &:not(:where([data-shown] *)) {
+    &:not(:where([data-shown] *, main > section:first-of-type *)) {
       opacity: 0;
       translate: 0 1rem;
     }
@@ -2817,7 +2821,7 @@ html[data-theme="dark"] {
       opacity 700ms var(--ease-out-soft) 200ms,
       translate 700ms var(--ease-out-soft) 200ms,
       scale 700ms var(--ease-out-soft) 200ms;
-    &:not(:where([data-shown] *)) {
+    &:not(:where([data-shown] *, main > section:first-of-type *)) {
       opacity: 0;
       translate: 0 0.875rem;
       scale: 0.985;
@@ -3017,7 +3021,7 @@ html[data-theme="dark"] {
   transition-duration: 1100ms;
   transition-timing-function: var(--ease-emphasized);
   @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-    &:not([data-shown]) {
+    &:not([data-shown], main > section:first-of-type, main > section:first-of-type *) {
       scale: 0 1;
     }
   }
@@ -3029,7 +3033,7 @@ html[data-theme="dark"] {
    motion allowed, so without JS or with reduced motion the final state shows at once. Stagger with delay-*. */
 @custom-variant pre-shown {
   @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-    &:where(.reveal:not([data-shown]) *) {
+    &:where(.reveal:not([data-shown], main > section:first-of-type, main > section:first-of-type *) *) {
       @slot;
     }
   }

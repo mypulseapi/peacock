@@ -8,7 +8,7 @@
  * WebP on the Decision Audit's picture panel (`how-glow` on `surface-1`). They replaced the inline SVG
  * drawings that stood in for them here.
  */
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 export function GainsCards({
   items,
@@ -31,8 +31,14 @@ export function GainsCards({
           <div
             className={`px-2 pb-4 lg:px-0 lg:pb-0 ${i % 2 ? "lg:pl-6" : "lg:pr-6"}`}
           >
-            <h3 className="text-h3 text-balance text-ink">{item.title}</h3>
-            <p className="mt-2 max-w-prose text-body text-pretty text-muted">
+            {/* The card fades up, then its title and text in order (`fig-item`, owner, 29 Oct 2026). */}
+            <h3 className="fig-item text-h3 text-balance text-ink">
+              {item.title}
+            </h3>
+            <p
+              className="fig-item mt-2 max-w-prose text-body text-pretty text-muted"
+              style={{ "--i": 1 } as CSSProperties}
+            >
               {item.body}
             </p>
           </div>

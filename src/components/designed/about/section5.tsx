@@ -9,6 +9,7 @@
 import { asset } from "@/lib/cdn";
 import { designedText } from "../t";
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 export function Section5Section() {
   const t = designedText("about.section5");
@@ -16,11 +17,11 @@ export function Section5Section() {
     <section className="border-b border-line">
             <div className="frame py-20 lg:py-28">
               <div className="grid gap-4 lg:grid-cols-12 lg:gap-x-0">
-                <h2 className="text-title text-balance lg:col-span-5 lg:pr-16">
+                <h2 className="reveal text-title text-balance lg:col-span-5 lg:pr-16">
                   {t('1')}
                 </h2>
                 <p
-                  className="text-body leading-relaxed text-pretty text-muted lg:col-span-7"
+                  className="reveal text-body leading-relaxed text-pretty text-muted delay-100 lg:col-span-7"
                 >
                   {t('2')}
                 </p>
@@ -29,12 +30,15 @@ export function Section5Section() {
                    backgrounds removed). Card after the owner's reference: round portrait, name and role, LinkedIn; on hover or
                    keyboard focus a half-circle dome (rounded-t-full: primary-tint → primary-line, the reference's shape in Pulse Blue) rises behind the text
                    and the portrait gets an ink ring; the LinkedIn link shows only then (always on touch screens), and the portrait zooms 20% from its base so the head steps out over the ring (team-pop: a second copy of the photo, clipped to its top half only). Order (owner's): Tracy, Rosie, Elena, Iris on the first row; Albert, Stephen, Eric, Stan on the second. */}
+              {/* The list is the reveal and each card enters in turn (`card-in`): the cards carry their own
+                  hover transition, which `reveal` on them would override (DESIGN.md §6). */}
               <ul
-                className="mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:mt-16 lg:grid-cols-4"
+                className="reveal-trigger mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:mt-16 lg:grid-cols-4"
                 aria-label="Team"
               >
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  style={{ "--i": 0 } as CSSProperties}
+                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
                     className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
@@ -84,7 +88,8 @@ export function Section5Section() {
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  style={{ "--i": 1 } as CSSProperties}
+                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
                     className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
@@ -134,7 +139,8 @@ export function Section5Section() {
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  style={{ "--i": 2 } as CSSProperties}
+                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
                     className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
@@ -184,7 +190,8 @@ export function Section5Section() {
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  style={{ "--i": 3 } as CSSProperties}
+                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
                     className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
@@ -234,7 +241,8 @@ export function Section5Section() {
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  style={{ "--i": 4 } as CSSProperties}
+                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
                     className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
@@ -284,7 +292,8 @@ export function Section5Section() {
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  style={{ "--i": 5 } as CSSProperties}
+                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
                     className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
@@ -334,7 +343,8 @@ export function Section5Section() {
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  style={{ "--i": 6 } as CSSProperties}
+                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
                     className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
@@ -384,7 +394,8 @@ export function Section5Section() {
                   ></a>
                 </li>
                 <li
-                  className="group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
+                  style={{ "--i": 7 } as CSSProperties}
+                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
                 >
                   <div
                     className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
@@ -435,7 +446,7 @@ export function Section5Section() {
                 </li>
               </ul>
               <dl
-                className="mt-16 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 lg:grid-cols-4"
+                className="reveal mt-16 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 lg:grid-cols-4"
               >
                 <div>
                   <dt className="text-sm text-muted">{t('19')}</dt>

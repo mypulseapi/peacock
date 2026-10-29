@@ -15,16 +15,16 @@ export function Section2Section() {
     <section className="border-b border-line">
             <div className="frame py-20 lg:py-28">
               <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-0">
-                <h2 className="text-title text-balance lg:col-span-5 lg:pr-16">
+                <h2 className="reveal text-title text-balance lg:col-span-5 lg:pr-16">
                   {t('1')}
                 </h2>
                 <div
                   className="space-y-5 text-body leading-relaxed text-pretty text-muted lg:col-span-7"
                 >
-                  <p>
+                  <p className="reveal delay-100">
                     {t('2')}
                   </p>
-                  <p>
+                  <p className="reveal delay-200">
                     {t('3')}
                   </p>
                 </div>
@@ -32,7 +32,7 @@ export function Section2Section() {
               <div
                 className="mt-16 grid gap-8 border-t border-line pt-10 lg:mt-20 lg:grid-cols-12 lg:gap-x-0"
               >
-                <div className="lg:col-span-5 lg:pr-16">
+                <div className="reveal lg:col-span-5 lg:pr-16">
                   <p
                     className="font-display text-title font-semibold tabular-nums text-primary"
                   >
@@ -47,7 +47,7 @@ export function Section2Section() {
                       >{t('6')}</Link>
                   </p>
                 </div>
-                <div className="w-full max-w-lg lg:col-span-7 lg:justify-self-center">
+                <div className="reveal w-full max-w-lg delay-200 lg:col-span-7 lg:justify-self-center">
                   <div className="card min-w-0">
                     <p className="text-sm font-semibold text-ink">
                       {t('7')}

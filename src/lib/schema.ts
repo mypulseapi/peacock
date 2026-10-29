@@ -234,6 +234,14 @@ const CRUMB_LABELS: Record<string, { en: string; vi: string }> = {
   "/use-cases": { en: "Use cases", vi: "Trường hợp sử dụng" },
   "/use-cases/seo-aeo": { en: "SEO and AEO", vi: "SEO và AEO" },
   "/use-cases/time-to-market": { en: "Time to market", vi: "Thời gian ra mắt" },
+  "/use-cases/promotions-that-pay": {
+    en: "Promotions that pay",
+    vi: "Khuyến mãi có lãi",
+  },
+  "/use-cases/fixable-returns": {
+    en: "Fixable returns",
+    vi: "Hàng bị trả có thể sửa",
+  },
   "/industries": { en: "Industries", vi: "Ngành hàng" },
   "/agents": { en: "For AI Agents", vi: "Cho tác tử AI" },
   "/agents/shopping-assistants": {

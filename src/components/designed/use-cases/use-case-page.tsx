@@ -32,6 +32,14 @@ export interface UseCaseArt {
   gets: ReactNode[];
 }
 
+/** For a page whose pictures have not been made yet. */
+export const NO_ART: UseCaseArt = {
+  hero: null,
+  situation: null,
+  steps: [],
+  gets: [],
+};
+
 const h = (s: string) => s.replace(/\.\s*$/, "");
 
 /** Text on the left, its figure pinned beside it on a wide screen. */
@@ -54,10 +62,14 @@ export function UseCasePage({
   c,
   figure,
   art,
+  products,
 }: {
   c: StoryContent;
   figure: ReactNode;
+  /** A page waiting for its pictures passes `NO_ART`; empty slots render nothing. */
   art: UseCaseArt;
+  /** A solution page names the products it is built from, linked, under the hero's call to action. */
+  products?: { label: string; href: string }[];
 }) {
   const locale = renderLocale();
   const t = ui(locale);
@@ -76,8 +88,27 @@ export function UseCasePage({
                 {c.cta.label}
               </Link>
             </div>
+            {products && (
+              <p className="reveal mt-6 text-sm text-muted delay-200">
+                {t.builtFrom}{" "}
+                {products.map((p, i) => (
+                  <span key={p.href}>
+                    {i > 0 && " · "}
+                    <Link
+                      locale={locale}
+                      href={p.href}
+                      className="font-medium text-link underline underline-offset-4"
+                    >
+                      {p.label}
+                    </Link>
+                  </span>
+                ))}
+              </p>
+            )}
           </Essay>
-          <div className="reveal mt-12 delay-200 lg:mt-16">{art.hero}</div>
+          {art.hero && (
+            <div className="reveal mt-12 delay-200 lg:mt-16">{art.hero}</div>
+          )}
         </div>
       </section>
 
@@ -103,7 +134,9 @@ export function UseCasePage({
                   {c.situation.pull}
                 </p>
               )}
-              <div className="reveal mt-10">{art.situation}</div>
+              {art.situation && (
+                <div className="reveal mt-10">{art.situation}</div>
+              )}
             </Essay>
           </div>
         </section>
@@ -201,7 +234,7 @@ export function UseCasePage({
               {c.gets.items.map((g, i) => (
                 <li key={g.title} className="bg-card p-6 sm:p-7">
                   {art.gets[i]}
-                  <h3 className="mt-6 text-lg font-semibold text-ink">
+                  <h3 className="mt-6 text-lg font-semibold text-ink first:mt-0">
                     {g.title}
                   </h3>
                   <p className="mt-2 text-body text-pretty text-muted">

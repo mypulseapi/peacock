@@ -25,7 +25,7 @@
       "engineeringLabel": "Kỹ thuật",
       "engineeringValue": "Thành phố Hồ Chí Minh, Việt Nam",
       "builtForLabel": "Dành cho",
-      "builtForValue": "Các nhà bán hàng tại Việt Nam và Đông Nam Á",
+      "builtForValue": "Doanh nghiệp tại Việt Nam và Đông Nam Á",
       "measureHeading": "Đo và sửa",
       "liveHeading": "Quyết định trực tiếp",
       "apiName": "Decision API",
@@ -509,7 +509,6 @@
   },
   "pricing": {
     "section1": {
-      "1": "Đừng sửa nhầm trường dữ liệu nữa",
       "2": "Một bản xuất ngành hàng. Nhận lại Decision Audit đã xếp hạng trong vòng 48 giờ.",
       "3": "Bắt đầu từ đây",
       "5": "Danh sách xếp hạng những gì nên ghi nhận trước, trên chính sản phẩm của bạn.",
@@ -546,9 +545,9 @@
       "37": "Phân tích theo từng yếu tố cho mỗi sản phẩm",
       "38": "Tự động quay về thứ tự của bạn nếu chậm hoặc gián đoạn",
       "39": "Tính giá theo số quyết định, thống nhất sau dự án thử nghiệm",
-      "heroTitle": "Một khóa API, mọi sản phẩm.",
-      "heroTitle2": "Bạn trả tiền cho quyết định, không bao giờ cho đo lường.",
-      "heroLede": "Xây dựng miễn phí bằng các công cụ mã nguồn mở, bắt đầu với Decision Audit miễn phí, và trả tiền cho những quyết định Pulse đưa ra cho danh mục, cửa hàng hay tác tử AI của bạn.",
+      "heroTitle": "Một khóa API. Mọi sản phẩm.",
+      "heroTitle2": "Trả tiền cho quyết định, không phải cho đo lường.",
+      "heroLede": "Xây dựng miễn phí bằng các công cụ mã nguồn mở. Bắt đầu với Decision Audit miễn phí. Chỉ trả tiền cho những quyết định vận hành danh mục, cửa hàng hoặc tác tử AI của bạn.",
       "afterTitle": "Nếu bản kiểm tra tìm ra thứ đáng sửa",
       "afterLede": "Bạn chọn Pulse đi xa tới đâu.",
       "monitorBadge": "Định kỳ",
@@ -771,31 +770,9 @@
       "2": "Yêu cầu Decision Audit"
     },
     "section1": {
-      "1": "Chúng tôi đo xem dữ liệu sản phẩm có trả lời được những câu hỏi người mua đặt ra hay không",
-      "2": "Pulse đo dữ liệu sản phẩm của bạn theo những gì người mua thực sự dựa vào để quyết định. Gửi một bản xuất ngành hàng và nhận lại danh sách sửa chữa đã xếp hạng trong vòng 48 giờ.",
-      "3": "Cùng bốn lỗ hổng, hai cách xếp hạng",
-      "4": "Dữ liệu ví dụ",
-      "5": "Theo mức độ thiếu, trên 216 sản phẩm",
-      "6": "Vi xử lý",
-      "7": "Kích thước màn hình",
-      "8": "RAM",
-      "9": "Lưu trữ",
-      "10": "Theo điều người mua cần, trên 32 yêu cầu",
-      "11": "Kích thước màn hình",
-      "12": "15 trên 32",
-      "13": "RAM",
-      "14": "13 trên 32",
-      "15": "Lưu trữ",
-      "16": "10 trên 32",
-      "17": "Vi xử lý",
-      "18": "2 trên 32",
-      "19": "Vi xử lý thiếu ở 162 sản phẩm, nhưng chỉ 2 trên 32 yêu cầu của người mua nhắc đến nó.",
-      "20": "Xếp theo mức độ thiếu thì nó đứng đầu; xếp theo nhu cầu thì nó đứng cuối.",
-      "21": "Một yêu cầu là nhu cầu mà người mua nêu ra khi lựa chọn. Nhóm hàng này có 32 yêu cầu.",
-      "22": "48 giờ",
-      "23": "Từ một bản xuất ngành hàng đến bản Decision Audit đã xếp hạng của bạn.",
-      "24": "12 trên 12",
-      "25": "lần chạy lại bảng xếp hạng ví dụ đều đặt kích thước màn hình lên đầu. Các hạng 2 đến 4 có thay đổi, và chúng tôi nói rõ điều đó."
+      "1": "Chúng tôi là ai",
+      "2": "Pulse là nền tảng khám phá sản phẩm thông minh, kết nối nhu cầu người mua với sản phẩm phù hợp, đồng thời giúp doanh nghiệp phát hiện và khắc phục những khoảng trống trong danh mục sản phẩm.",
+      "pictureAlt": "Quả địa cầu kết nối người mua khắp thế giới, mỗi người tìm một thứ khác nhau, với những sản phẩm phù hợp với họ."
     },
     "section2": {
       "1": "Mọi chuyện bắt đầu từ một kệ thử nghiệm",
@@ -820,11 +797,9 @@
       "5": "Giữ lại cả kết quả âm",
       "6": "Chúng tôi giữ lại cả lần thử không đạt tiêu chí, lần đạt vì lý do sai, và lần thực sự đứng vững.",
       "7": "Nói rõ điều chúng tôi không đo được",
-      "8": "ngay cạnh bảng xếp hạng",
-      "9": ", chứ không phải trong một chú thích cuối trang.",
       "10": "Xứng đáng với việc được tích hợp",
       "11": "Bản kiểm tra đầu tiên không cần code, không cần gắn thẻ và không cần truy cập hệ thống của bạn. Nếu nó không hữu ích, bạn chỉ mất một bản xuất và một buổi chiều.",
-      "rankingSteady": "Thứ hạng của chúng tôi ổn định ở đầu bảng và kém ổn định hơn ở phía dưới, và chúng tôi nói rõ điều đó"
+      "rankingSteady": "Thứ hạng của chúng tôi ổn định ở đầu bảng và kém ổn định hơn ở phía dưới, và chúng tôi nói rõ điều đó."
     },
     "section4": {
       "1": "Còn sớm, và chúng tôi nói rõ điều đó",
@@ -864,7 +839,7 @@
       "23": "Kỹ thuật",
       "24": "Thành phố Hồ Chí Minh, Việt Nam",
       "25": "Dành cho",
-      "26": "Các nhà bán hàng tại Việt Nam và Đông Nam Á"
+      "26": "Doanh nghiệp tại Việt Nam và Đông Nam Á"
     }
   },
   "visual-evidence": {
@@ -1052,7 +1027,7 @@
         "3": "Xác định, ưu tiên và kiểm chứng những sửa chữa thông tin sản phẩm có ảnh hưởng lớn nhất đến quyết định mua hàng.",
         "4": "Yêu cầu Decision Audit",
         "5": "Hỏi AI",
-        "figureAlt": "Một bản Decision Audit cho một chiếc laptop. RAM, dung lượng và vi xử lý đã được ghi nhận; kích thước màn hình nằm trong tiêu đề và không lọc được. Một bảng xếp hạng chín thuộc tính theo độ phủ và mức ảnh hưởng tới quyết định, cùng một khung liệt kê năm việc cần sửa trước, đứng đầu là bổ sung kích thước màn hình vào dữ liệu có cấu trúc."
+        "figureAlt": "Một bản Decision Audit cho một chiếc laptop. RAM, dung lượng và vi xử lý đã được ghi nhận; kích thước màn hình nằm trong tiêu đề và không lọc được. Một bảng xếp hạng chín thuộc tính theo độ phủ và mức ảnh hưởng tới quyết định, cùng một khung liệt kê năm việc cần sửa trước, đứng đầu là bổ sung kích thước màn hình vào dữ liệu có cấu trúc. Bên dưới là ba bước: ghi nhận những gì đã có, tìm những gì còn thiếu, nhận danh sách sửa đã xếp hạng."
       },
       "section2": {
         "1": "Một kệ hàng, từ lỗ hổng đến việc sửa",

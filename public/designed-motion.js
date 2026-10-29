@@ -6,8 +6,7 @@
 //   [data-shelf]           → draws a grid of product squares (data-total, data-ready)
 //   [data-demo]            → plays the hero workflow demo (tabs, steps, captions — see DESIGN.md §6)
 //   [data-spy] links       → highlight the section currently in view (sets [data-active], aria-current)
-//   [data-hero]            → hero background light (and its tail) follows the cursor (--hero-x / --hero-y …)
-//   [data-cta]             → call-to-action band: dots light up around the cursor (--cta-x / --cta-y)
+//   [data-boxes]           → call-to-action grid: each cell the cursor enters gets a random colour (--lit)
 //   [data-why]             → Why PULSE orbit: turning ring; a circle turns to the top and opens its reason
 //   [data-pause] buttons   → pause the hero demo (sets [data-held] on [data-pausable])
 //   [data-bg-video]        → product hero background video: theme-matched source, plays only while on screen
@@ -234,8 +233,6 @@ function mountFeatures() {
  *
  * Kept as a flag rather than by deleting the three hover blocks, so a
  * re-copy of src/main.js needs this one line put back and nothing else.
- * `canHover` itself still drives the cursor-following hero light and the
- * card tilt, which are hover effects that should stay hover effects.
  *
  * Hover opens the menus for mouse and pen only, gated on `canHover`. Touch has no hover and
  * keyboard needs Enter, so both keep the click and Enter path unchanged. Leaving the nav closes
@@ -477,62 +474,19 @@ mobileMenu?.addEventListener("toggle", () => {
     .querySelector("summary")
     .setAttribute("aria-label", mobileMenu.open ? "Close menu" : "Open menu");
 });
+// A link that opens a new tab keeps focus in this one. After a mouse or touch click, let it go: otherwise
+// the first key pressed on return (an arrow to scroll, Cmd+W on the other tab) makes it keyboard focus,
+// and an About team card lights up again. Enter on the keyboard (detail 0) keeps focus where it was put.
+document.addEventListener("click", (event) => {
+  const link =
+    event.target instanceof Element && event.target.closest('a[target="_blank"]');
+  if (link && event.detail > 0) link.blur();
+});
+
 // Close the mobile menu when one of its links is followed (e.g. #request)
 mobileMenu
   ?.querySelectorAll("a")
   .forEach((a) => a.addEventListener("click", () => (mobileMenu.open = false)));
-
-// Hero background: the soft spotlight follows the cursor with a fading tail (CSS hero-bg transitions them).
-// Mouse and pen only, not with reduced motion; without it the light stays at its resting place.
-feature("[data-hero]", function initHero(hero) {
-  if (!(!reduceMotion)) return;
-  let frame = 0;
-  let still = 0;
-  hero.addEventListener("pointermove", (event) => {
-    if (event.pointerType === "touch") return;
-    // The tail shows while the cursor moves and fades out 150ms after it stops
-    hero.style.setProperty("--hero-tail", "1");
-    clearTimeout(still);
-    still = setTimeout(() => hero.style.setProperty("--hero-tail", "0"), 150);
-    if (frame) return;
-    frame = requestAnimationFrame(() => {
-      frame = 0;
-      const box = hero.getBoundingClientRect();
-      const x = ((event.clientX - box.left) / box.width) * 100;
-      const y = ((event.clientY - box.top) / box.height) * 100;
-      // The light and both tail copies get the same position; CSS moves the tail more slowly
-      for (const [px, py] of [
-        ["--hero-x", "--hero-y"],
-        ["--hero-tx1", "--hero-ty1"],
-        ["--hero-tx2", "--hero-ty2"],
-      ]) {
-        hero.style.setProperty(px, `${x.toFixed(1)}%`);
-        hero.style.setProperty(py, `${y.toFixed(1)}%`);
-      }
-    });
-  });
-});
-
-// Call-to-action band (every page): the dots around the cursor light up. Mouse and pen only, not with reduced
-// motion; the light fades out when the pointer leaves the band (CSS cta-dots).
-feature("[data-cta]", function initCta(cta) {
-  if (reduceMotion) return;
-  let frame = 0;
-  let point = null;
-  cta.addEventListener("pointermove", (event) => {
-    if (event.pointerType === "touch") return;
-    cta.setAttribute("data-lit", "");
-    point = event;
-    if (frame) return;
-    frame = requestAnimationFrame(() => {
-      frame = 0;
-      const box = cta.getBoundingClientRect();
-      cta.style.setProperty("--cta-x", `${point.clientX - box.left}px`);
-      cta.style.setProperty("--cta-y", `${point.clientY - box.top}px`);
-    });
-  });
-  cta.addEventListener("pointerleave", () => cta.removeAttribute("data-lit"));
-});
 
 // Hero workflow demo: steps play in order. The pace comes from CSS — when the active tab's timer bar
 // (animate-demo-timer) finishes, the next step starts. Hovering the app window (not the timeline) or scrolling it out of view
@@ -885,6 +839,20 @@ feature("[data-pause]", function initPause(button) {
 // reduced motion, and only while on screen). Clicking a circle turns it to 3 o'clock and opens the card beside it
 // with its reason; clicking it again, the card's × or Esc closes the card and the ring turns on. "Next" moves on.
 // The ring also holds still while the pointer or keyboard focus is on the orbit.
+// Call-to-action background boxes (CSS boxes-grid): each cell the cursor enters gets one of the six box
+// colours at random, as 21st.dev's original does; CSS lights it and fades it out.
+feature("[data-boxes]", function initBoxes(grid, signal) {
+  grid.addEventListener(
+    "pointerover",
+    (event) => {
+      const cell = event.target;
+      if (cell.parentElement?.parentElement !== grid) return;
+      cell.style.setProperty("--lit", `var(--box-${1 + Math.floor(Math.random() * 6)})`);
+    },
+    { signal },
+  );
+});
+
 feature("[data-why]", function initWhy(why, signal) {
   const spin = why.querySelector("[data-why-spin]");
   const tabs = [...why.querySelectorAll("[data-why-tab]")];

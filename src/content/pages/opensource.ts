@@ -848,3 +848,43 @@ missing      package_width`,
 };
 
 export const opensource = (l: string) => byLocale({ en: EN, vi: VI }, l);
+
+/** The alt text of the owner's generated pictures (28 Oct 2026), one per section that has one. */
+export const opensourcePictureAlt = (l: string) =>
+  byLocale(
+    {
+      en: {
+        hero: "The Pulse robot reads a sofa's listing through a magnifier beside an open box marked Open Pulse. Two of the buyer's requirements, fits the doorway and what is in the box, are checked; the warranty is still a question.",
+        why: "A neat product record, title, brand, price, colour, category and images, beside four shoppers asking whether it fits their doorway, whether it is compatible, what is in the box and whether the warranty is valid; none of their questions reaches the record.",
+        model:
+          "Five steps in a row, requirement, product evidence, visible evidence, decision and outcome, with one fact dropping out between product evidence and visible evidence into a tray marked never reaches the page.",
+        agent:
+          "A doorway with its width marked, beside a sofa listing that gives the assembled width but leaves the package width blank. The robot between them says the evidence does not say, marked cannot tell.",
+        honesty:
+          "Two copies of a sofa listing. Under AI can help, verified specifications are laid out and a dimension drawing is made from them. Under it must never invent, an extra specification that was made up is crossed out.",
+        states:
+          "A power adapter's product page with six callouts: missing, a blank field; buried, a fact deep in long text; invisible, a fact on an internal sheet; unresolved, a half-filled field; conflicting, two different values; and not observable, a photograph that cannot show it.",
+        boundary:
+          "An open box marked Open Pulse with the SDK, the MCP server and examples rising out of it, two more cards marked planned, and evidence cards flowing from it into a blue engine marked Pulse that returns a ranked list.",
+        contribute:
+          "A loop of six steps: a buyer asks, the agent tries to decide, a requirement is missing, the agent proposes it, people review it, and the knowledge improves.",
+      },
+      vi: {
+        hero: "Robot Pulse đọc trang sản phẩm của một chiếc sofa qua kính lúp, cạnh một chiếc hộp mở ghi Open Pulse. Hai yêu cầu của người mua, vừa khung cửa và trong hộp có gì, đã được đánh dấu; bảo hành vẫn là một dấu hỏi.",
+        why: "Một hồ sơ sản phẩm gọn gàng, tiêu đề, thương hiệu, giá, màu, ngành hàng và hình ảnh, cạnh bốn người mua hỏi có vừa khung cửa không, có tương thích không, trong hộp có gì và bảo hành có hiệu lực không; không câu hỏi nào chạm tới hồ sơ.",
+        model:
+          "Năm bước nối nhau, yêu cầu, bằng chứng sản phẩm, bằng chứng nhìn thấy được, quyết định và kết quả, với một thông tin rơi ra giữa bằng chứng sản phẩm và bằng chứng nhìn thấy được vào một khay ghi không bao giờ tới được trang.",
+        agent:
+          "Một khung cửa có đánh dấu chiều rộng, cạnh trang sản phẩm sofa ghi chiều rộng khi lắp ráp nhưng để trống chiều rộng kiện hàng. Robot ở giữa nói bằng chứng không cho biết, được đánh dấu không thể kết luận.",
+        honesty:
+          "Hai bản của cùng một trang sofa. Dưới mục AI có thể giúp, các thông số đã kiểm chứng được sắp xếp và một bản vẽ kích thước được dựng từ đó. Dưới mục không bao giờ được bịa, một thông số bị bịa thêm bị gạch bỏ.",
+        states:
+          "Trang sản phẩm của một bộ sạc với sáu chú thích: thiếu, một trường để trống; bị chôn vùi, thông tin nằm sâu trong đoạn văn dài; vô hình, thông tin nằm trên một bảng nội bộ; chưa giải quyết, một trường mới điền một nửa; mâu thuẫn, hai giá trị khác nhau; và không quan sát được, một bức ảnh không thể cho thấy điều đó.",
+        boundary:
+          "Một chiếc hộp mở ghi Open Pulse với SDK, máy chủ MCP và các ví dụ nhô lên, hai thẻ khác ghi dự kiến, và các thẻ bằng chứng chảy từ đó vào một bộ máy màu xanh ghi Pulse, trả về một danh sách đã xếp hạng.",
+        contribute:
+          "Một vòng sáu bước: người mua hỏi, tác tử cố gắng quyết định, thiếu một yêu cầu, tác tử đề xuất nó, con người xem xét, và tri thức được cải thiện.",
+      },
+    },
+    l,
+  );

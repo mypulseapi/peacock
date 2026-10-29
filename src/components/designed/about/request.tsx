@@ -8,11 +8,13 @@
  */
 import { designedHref, designedText } from "../t";
 import Link from "next/link";
+import { CtaBoxes } from "@/components/designed/cta-boxes";
 
 export function RequestSection() {
   const t = designedText("about.request");
   return (
-    <section id="request" className="cta-dots scroll-mt-16" data-cta>
+    <section id="request" className="cta-boxes scroll-mt-16">
+            <CtaBoxes />
             <div className="frame py-24 text-center lg:py-32">
               <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
                 {t('1')}

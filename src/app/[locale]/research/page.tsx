@@ -6,6 +6,8 @@ import { Link } from "@/i18n/routing";
 import { PageSchema } from "@/components/PageSchema";
 import { ResearchIndex } from "@/components/designed/research/research-index";
 import { research } from "@/content/pages/research";
+import { HeroAurora } from "@/components/designed/hero-aurora";
+import { CtaBoxes } from "@/components/designed/cta-boxes";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -24,9 +26,10 @@ export async function generateMetadata({
 }
 
 /**
- * Research (owner's version 3, 27 Oct 2026): every finding as a row of one index that opens row by
- * row, then how the research is run, the questions and the call to action. No finding is led large:
- * the owner had the featured one put back in the list like the others (27 Oct 2026). The method
+ * Research: every finding as a card of one journal grid with its drawing (owner's pick of five
+ * mockups, 28 Oct 2026; it replaced version 3's index of rows), then how the research is run, the
+ * questions and the call to action. No finding is led large: the owner had the featured one put
+ * back with the others (27 Oct 2026), and the grid's rows of two and three keep it so. The method
  * follows the findings because its own words point back at "the nine listings above".
  *
  * Every word is the content module's (`content/pages/research.ts`, both locales). Headings carry no
@@ -57,7 +60,8 @@ export default async function Page({ params }: PageProps) {
       />
       {/* The designed hero, as on the use-case and sector pages: `PageHero` paints its own older
           canvas, which did not match them in the dark theme (owner, 27 Oct 2026). */}
-      <section className="hero-bg overflow-hidden border-b border-line">
+      <section className="relative isolate hero-bg overflow-hidden border-b border-line">
+        <HeroAurora />
         <div className="frame pt-12 pb-20 lg:pt-16 lg:pb-28">
           <h1 className="reveal max-w-[20ch] text-hero text-balance">
             {h(c.title)}
@@ -127,7 +131,8 @@ export default async function Page({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="cta-dots" data-cta>
+      <section className="cta-boxes">
+        <CtaBoxes />
         <div className="frame py-24 text-center lg:py-32">
           <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
             {h(c.cta.title)}

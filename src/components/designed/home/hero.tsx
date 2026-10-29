@@ -11,14 +11,16 @@ import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
 import Link from "next/link";
+import { HeroAurora } from "@/components/designed/hero-aurora";
 
 export function HeroSection() {
   const t = designedText("home.hero");
   return (
     <section
-      className="hero-bg hero-screen flex items-center overflow-x-clip border-b border-line"
+      className="relative isolate bg-surface-0 hero-screen flex items-center overflow-x-clip border-b border-line"
       data-hero
     >
+      <HeroAurora />
       <div className="w-full">
         <div className="frame grid grid-cols-1 items-center gap-12 py-12 xl:grid-cols-3 xl:gap-10">
           {/* Title one third, demo two thirds (26 Oct 2026, owner: a bigger title, same layout). At
@@ -731,7 +733,7 @@ export function HeroSection() {
                               <div>
                                 <p className="flex h-4.5 items-center">
                                   <Image
-                                    src={asset("brand/logo.webp")}
+                                    src={asset("brand/logo-v2.webp")}
                                     alt="Pulse"
                                     width={54}
                                     height={18}
@@ -739,7 +741,7 @@ export function HeroSection() {
                                     priority
                                   />
                                   <Image
-                                    src={asset("brand/logo-white.webp")}
+                                    src={asset("brand/logo-white-v2.webp")}
                                     alt=""
                                     width={54}
                                     height={18}
@@ -998,7 +1000,7 @@ export function HeroSection() {
                             <div className="min-w-0 flex-1">
                               <p className="flex h-4.5 items-center">
                                 <Image
-                                  src={asset("brand/logo.webp")}
+                                  src={asset("brand/logo-v2.webp")}
                                   alt="Pulse"
                                   width={54}
                                   height={18}
@@ -1006,7 +1008,7 @@ export function HeroSection() {
                                   priority
                                 />
                                 <Image
-                                  src={asset("brand/logo-white.webp")}
+                                  src={asset("brand/logo-white-v2.webp")}
                                   alt=""
                                   width={54}
                                   height={18}

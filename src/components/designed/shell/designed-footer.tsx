@@ -64,7 +64,9 @@ export function DesignedFooter() {
   return (
     <footer className="border-t border-line bg-card">
       <div className="frame pt-12 pb-10 sm:pt-20 sm:pb-12 lg:pt-24">
-        <div className="grid gap-8 sm:grid-cols-2 sm:gap-14 lg:grid-cols-4 lg:gap-10">
+        {/* From `sm` the four columns sit centred, each in its cell and against the others (owner,
+            28 Oct 2026); on a phone they keep the left-aligned compact layout. */}
+        <div className="grid gap-8 sm:grid-cols-2 sm:items-center sm:gap-14 sm:text-center lg:grid-cols-4 lg:gap-10">
           <div>
             <Link
               href={designedHref("/en")}
@@ -72,7 +74,7 @@ export function DesignedFooter() {
               className="hit-area inline-flex"
             >
               <Image
-                src={asset("brand/logo.webp")}
+                src={asset("brand/logo-v2.webp")}
                 alt="Pulse"
                 width={84}
                 height={28}
@@ -80,7 +82,7 @@ export function DesignedFooter() {
                 className="h-7 w-auto theme-dark:hidden"
               />
               <Image
-                src={asset("brand/logo-white.webp")}
+                src={asset("brand/logo-white-v2.webp")}
                 alt=""
                 width={84}
                 height={28}
@@ -89,7 +91,7 @@ export function DesignedFooter() {
                 aria-hidden="true"
               />
             </Link>
-            <p className="mt-4 max-w-xs text-sm text-pretty text-muted">
+            <p className="mt-4 max-w-xs text-sm text-pretty text-muted sm:mx-auto">
               {t("tagline")}
             </p>
             {/* Contact sits under the logo (2026-10-26): the brand column carries who we are and
@@ -97,7 +99,7 @@ export function DesignedFooter() {
             {/* On a phone, the email and the social icons share one row (owner's version 2, 27 Oct
                 2026); from `sm` they stack as before. */}
             <div className="mt-5 flex flex-wrap items-center justify-between gap-3 sm:mt-6 sm:block">
-              <div className="flex gap-3">
+              <div className="flex gap-3 sm:justify-center">
                 {SOCIALS.map((s) => (
                   <a
                     key={s.icon}

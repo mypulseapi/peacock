@@ -30,8 +30,10 @@ export function Section1Section() {
               {/* The owner's picture (28 Oct 2026), in place of the drawn ranking figure that stood here.
                   A photo, so it sits framed in the page column rather than bleeding to the edges. */}
               <div className="reveal mt-14 delay-200 lg:mt-16">
-                {/* Light and dark are two drawings of the same scene; each theme shows one, as the logo does. Not
-                    `priority`: a preload would fetch the light one in the dark theme too. */}
+                {/* Light and dark are two drawings of the same scene; each theme shows one, as the logo does. The
+                    light one is the page's LCP in the default theme, so it loads at once and first; the dark one
+                    stays lazy, so the dark theme does not fetch both. No `priority`: a preload is fetched at low
+                    priority and would add nothing. */}
                 <Image
                   src={img("about/who-we-are-shopping-network.webp")}
                   alt={t("pictureAlt")}
@@ -39,6 +41,8 @@ export function Section1Section() {
                   height={906}
                   sizes="(min-width: 96rem) 80rem, (min-width: 64rem) 70rem, 100vw"
                   className="h-auto w-full rounded-2xl border border-line shadow-sm theme-dark:hidden"
+                  loading="eager"
+                  fetchPriority="high"
                 />
                 <Image
                   src={img("about/who-we-are-shopping-network-dark.webp")}

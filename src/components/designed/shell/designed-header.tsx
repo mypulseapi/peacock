@@ -107,7 +107,6 @@ export function DesignedHeader() {
             height={28}
             className="hidden h-7 w-auto theme-dark:inline"
             aria-hidden="true"
-            priority
           />
         </Link>
 

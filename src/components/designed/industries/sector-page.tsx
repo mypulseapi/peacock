@@ -94,6 +94,7 @@ function Picture({
         height={p.height}
         sizes={sizes}
         priority={priority}
+        fetchPriority={priority ? "high" : undefined}
         className="h-auto w-full"
       />
     </div>

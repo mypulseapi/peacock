@@ -150,6 +150,7 @@ export function ChapterPage({
                   height={c.heroImage.height}
                   sizes="100vw"
                   priority
+                  fetchPriority="high"
                   className="mx-auto h-auto w-full object-contain lg:max-h-[calc(100svh-28rem)]"
                 />
               </div>

@@ -15,14 +15,19 @@
  * the HTML and again in the page's RSC data were most of the "big file size" an SEO crawl flagged
  * on every page (2026-10-30).
  */
-import { useEffect, useState, type CSSProperties } from "react";
+import { useSyncExternalStore, type CSSProperties } from "react";
 
 const COLUMNS = Array.from({ length: 64 });
 const CELLS = Array.from({ length: 44 });
+const noop = () => () => {};
 
 export function CtaBoxes() {
-  const [drawn, setDrawn] = useState(false);
-  useEffect(() => setDrawn(true), []);
+  // false in the export and during hydration, true once hydrated: no effect, no second render pass
+  const drawn = useSyncExternalStore(
+    noop,
+    () => true,
+    () => false,
+  );
   return (
     <div
       aria-hidden="true"

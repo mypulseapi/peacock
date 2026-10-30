@@ -23,13 +23,13 @@ type Content = ChapterContent & { art: ReturnsSolutionArt };
  */
 export const FIXABLE_RETURNS: Content = {
   meta: {
-    title: "Cut fixable returns: the missing facts behind them",
+    title: "Reduce ecommerce returns caused by product data",
     description:
       "Find the product facts your catalogue leaves out, see which go with returns, repair those first, and check the returns moved, on your own orders.",
   },
   eyebrow: "Solution",
   title: "Fix the returns your product pages cause, first.",
-  lede: "Some returns are about the courier or a change of mind, and no product page touches them. Others are about a fact the shopper needed and could not find. This puts four Pulse products in order: find the facts your catalogue leaves out, see which of them go with returns, repair those first, and check the returns actually moved.",
+  lede: "To reduce ecommerce returns caused by product data, start by separating them. Some returns are about the courier or a change of mind, and no product page touches them. Others are about a fact the shopper needed and could not find. This puts four Pulse products in order: find the facts your catalogue leaves out, see which of them go with returns, repair those first, and check the returns actually moved.",
 
   visualHeading: "Not every return is yours to fix.",
   visualBody:
@@ -238,7 +238,7 @@ export const FIXABLE_RETURNS: Content = {
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
 export const FIXABLE_RETURNS_VI: Content = {
   meta: {
-    title: "Giảm hàng bị trả có thể sửa: dữ kiện còn thiếu",
+    title: "Giảm hàng bị trả do thiếu thông tin sản phẩm",
     description:
       "Tìm dữ kiện sản phẩm danh mục còn thiếu, xem dữ kiện nào đi kèm hàng bị trả, sửa chúng trước, và kiểm tra hàng bị trả có giảm không, trên đơn hàng của bạn.",
   },

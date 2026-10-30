@@ -5,7 +5,7 @@
       "2": "Request a Decision Audit"
     },
     "section1": {
-      "1": "Who we are",
+      "1": "Who we are: the team measuring product data",
       "2": "Pulse is an intelligent product discovery platform that connects shoppers with the right products while helping businesses identify and close gaps in their product catalogs.",
       "pictureAlt": "A globe linking shoppers around the world, each looking for something different, to the products that fit them."
     },
@@ -171,7 +171,8 @@
     "section3": {
       "1": "Would you rather see it live?",
       "2": "We walk through an audit on a real catalogue, answer the awkward questions, and show you where the method stops.",
-      "3": "Book a demo"
+      "3": "Book a demo",
+      "4": "Decision Audit dashboard showing how much of a catalogue can support a buying decision"
     }
   },
   "cookies": {
@@ -1621,7 +1622,7 @@
       "section1": {
         "1": "Know the week a shelf",
         "2": "stopped being decidable",
-        "3": "Catalogues decay quietly. New products arrive unrecorded and a shelf that was ready last quarter stops being ready. Monitor re-measures as yours changes and names the shelf, the attribute and the cause.",
+        "3": "Catalogues decay quietly, and product data quality with them. New products arrive unrecorded and a shelf that was ready last quarter stops being ready. Monitor re-measures as yours changes and names the shelf, the attribute and the cause.",
         "4": "Request a Decision Audit",
         "5": "Ask AI",
         "figureAlt": "Decision Monitor watching a skincare shelf. Shelf decisionability reads 78 per cent, up 18 points on a rising trend line, and re-measurement runs weekly. Skin type is falling while key ingredient stays recorded, and the shopper question it answers is whether a product suits their skin. A before and after pair shows a night cream going from two unanswered attributes to two filled in, and this week's top changes rank skin type as high impact, key ingredient medium and usage occasion low."
@@ -1705,7 +1706,7 @@
       "section1": {
         "1": "Verify every fix",
         "2": "against what shoppers need",
-        "3": "Your team populated the top attribute. We run the same measurement again and show you exactly what moved, attribute by attribute. It reads your catalogue rather than your traffic, so there is nothing to wait for.",
+        "3": "Your team populated the top attribute. To verify the fixes, we run the same measurement again and show you exactly what moved, attribute by attribute. It reads your catalogue rather than your traffic, so there is nothing to wait for.",
         "4": "Request a Decision Audit",
         "5": "Ask AI",
         "figureAlt": "Decision Verification on one laptop, before and after. A before card lists screen size, memory, storage and processor as unanswered; the after card fills all four in. A table sets each attribute's before value against its after value, turning missing, partial and unclear into 15.6 inches, 16 GB, 512 GB, Intel i7, RTX 4060, 8 hours and 1.8 kg. Decision completeness rises from 42 to 87 per cent, and the same answers are checked across Amazon, Google, Meta, Shopify and TikTok."

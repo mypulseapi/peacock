@@ -205,27 +205,27 @@ export default function IntegrationsPage() {
         <div className="grid sm:grid-cols-3 gap-6 mb-12 sm:mb-16">
           <div className="glass-card p-6 text-center">
             <Clock className="w-8 h-8 text-[var(--accent-secondary-light)] mx-auto mb-3" />
-            <h3 className="font-semibold text-[var(--text-primary)] mb-2">
+            <p className="font-semibold text-[var(--text-primary)] mb-2">
               {t("quickSetup")}
-            </h3>
+            </p>
             <p className="text-sm text-[var(--text-secondary)]">
               {t("quickSetupDesc")}
             </p>
           </div>
           <div className="glass-card p-6 text-center">
             <Code className="w-8 h-8 text-[var(--accent-primary-light)] mx-auto mb-3" />
-            <h3 className="font-semibold text-[var(--text-primary)] mb-2">
+            <p className="font-semibold text-[var(--text-primary)] mb-2">
               {t("noCodeChanges")}
-            </h3>
+            </p>
             <p className="text-sm text-[var(--text-secondary)]">
               {t("noCodeChangesDesc")}
             </p>
           </div>
           <div className="glass-card p-6 text-center">
             <Sparkles className="w-8 h-8 text-[var(--accent-tertiary-light)] mx-auto mb-3" />
-            <h3 className="font-semibold text-[var(--text-primary)] mb-2">
+            <p className="font-semibold text-[var(--text-primary)] mb-2">
               {t("instantValue")}
-            </h3>
+            </p>
             <p className="text-sm text-[var(--text-secondary)]">
               {t("instantValueDesc")}
             </p>

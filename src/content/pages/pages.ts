@@ -15,13 +15,13 @@ import type { ChapterContent } from "@/components/designed/product/chapters";
  */
 export const PAGES: ChapterContent = {
   meta: {
-    title: "Pages: category grids ordered for whoever arrived",
+    title: "Personalised category pages and landing pages",
     description:
       "A campaign sends a thousand people to one page and all see the same grid. This orders it against what each visit implies, with a held-back control arm.",
   },
   eyebrow: "Pages",
   title: "Category and landing pages ordered for whoever arrived.",
-  lede: "A campaign sends a thousand people to one page and every one of them sees the same grid. This orders that grid against what each visit implies, from the first page view, with a share of traffic held back so you can tell whether it helped.",
+  lede: "A campaign sends a thousand people to one page and every one of them sees the same grid. Personalised category pages order that grid against what each visit implies, from the first page view, with a share of traffic held back so you can tell whether it helped.",
 
   heroImage: {
     src: "product/pages-hero-ordered-for-whoever-arrived.webp",

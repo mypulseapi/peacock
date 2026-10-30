@@ -102,7 +102,7 @@ export function DesignedHeader() {
           />
           <Image
             src={asset("brand/logo-white-v2.webp")}
-            alt=""
+            alt="Pulse"
             width={84}
             height={28}
             className="hidden h-7 w-auto theme-dark:inline"

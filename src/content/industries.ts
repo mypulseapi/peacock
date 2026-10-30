@@ -99,7 +99,7 @@ const EN: Sector[] = [
     name: "Ecommerce and retail",
     tagline:
       "Deep shelves, and two products that differ on a field nobody recorded",
-    metaTitle: "Ecommerce and retail: the unrecorded field",
+    metaTitle: "Ecommerce product data: attributes buyers choose on",
     summary:
       "A category with hundreds of near-identical products, where the fact that separates them was never a column.",
     heroTitle: "Your shelf has ninety products and",
@@ -171,7 +171,7 @@ const EN: Sector[] = [
     name: "FMCG and consumer goods",
     tagline:
       "Hundreds of near-identical packs, separated by a fact on the label",
-    metaTitle: "FMCG: near-identical packs, one label fact",
+    metaTitle: "FMCG product data: the label facts that decide",
     summary:
       "Shelves where the pack looks the same and the decision turns on a claim, a size or an ingredient nobody put in a field.",
     heroTitle: "The pack looks the same. The",
@@ -223,7 +223,7 @@ const EN: Sector[] = [
     name: "Technology and electronics",
     tagline:
       "The category we measured, and the one where specifications decide everything",
-    metaTitle: "Technology and electronics: specs decide",
+    metaTitle: "Electronics product data: specifications that decide",
     summary:
       "Deep specification-led shelves where two devices differ on one number, and that number is missing.",
     heroTitle: "Two devices, one number apart, and",
@@ -282,7 +282,7 @@ const EN: Sector[] = [
     icon: Sofa,
     name: "Furniture and homewares",
     tagline: "Bought on dimensions and materials, listed on photographs",
-    metaTitle: "Furniture: bought on dimensions, listed on photos",
+    metaTitle: "Furniture product data: dimensions buyers need",
     summary:
       "A category where the decision is whether it fits and what it is made of, and both are often absent.",
     heroTitle: "It looks right. Whether it",
@@ -328,7 +328,7 @@ const EN: Sector[] = [
     name: "Cosmetics and personal care",
     tagline:
       "Chosen on skin type, ingredients and concerns that were never fields",
-    metaTitle: "Cosmetics: skin type and ingredients as fields",
+    metaTitle: "Cosmetics product data: skin type and suitability",
     summary:
       "A category bought on suitability, where the attributes that decide suitability live in the description.",
     heroTitle: "Suitability decides the sale, and",
@@ -393,7 +393,7 @@ const EN: Sector[] = [
     name: "B2B and industrial",
     tagline:
       "Specification-driven buying against catalogues built for order codes",
-    metaTitle: "B2B and industrial: catalogues built for codes",
+    metaTitle: "B2B product data: specs buyers search for",
     summary:
       "Your buyers choose on specification, and the catalogue was built to be ordered from rather than searched.",
     heroTitle: "Your buyers choose on spec. Your catalogue",
@@ -452,7 +452,7 @@ const VI: Sector[] = [
     name: "Thương mại điện tử và bán lẻ",
     tagline:
       "Danh mục sâu, và hai sản phẩm khác nhau ở một trường không ai ghi lại",
-    metaTitle: "Thương mại điện tử: trường dữ liệu bị bỏ sót",
+    metaTitle: "Thương mại điện tử: thuộc tính người mua cần",
     summary:
       "Một ngành hàng với hàng trăm sản phẩm gần như giống hệt nhau, nơi dữ kiện phân biệt chúng chưa bao giờ là một cột dữ liệu.",
     heroTitle: "Kệ hàng của bạn có chín mươi sản phẩm và",

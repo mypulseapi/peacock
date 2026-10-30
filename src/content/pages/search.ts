@@ -16,13 +16,13 @@ import type { ChapterContent } from "@/components/designed/product/chapters";
  */
 export const SEARCH: ChapterContent = {
   meta: {
-    title: "Search: rank results on what the shopper is deciding",
+    title: "Ecommerce search ranked on shopper intent",
     description:
       "Runs beside your existing search rather than replacing it, scores every result on factors you can read, and always holds a share of traffic back.",
   },
   eyebrow: "Search",
   title: "Search that ranks on what the shopper is deciding.",
-  lede: "It runs beside the search you already have rather than replacing it, scores every result on factors you can read, and always holds a share of traffic back so you can see what it is actually doing.",
+  lede: "This is ecommerce search ranked on shopper intent. It runs beside the search you already have rather than replacing it, scores every result on factors you can read, and always holds a share of traffic back so you can see what it is actually doing.",
 
   heroImage: {
     src: "product/search-hero-ranks-on-what-the-shopper-is-deciding.webp",

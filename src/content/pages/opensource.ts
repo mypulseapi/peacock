@@ -133,7 +133,7 @@ requirements:
 
 const EN: OpensourceContent = {
   meta: {
-    title: "Open Pulse: open decision evidence for AI agents",
+    title: "Open Pulse: open-source decision layer for AI agents",
     description:
       "Open Pulse is the MIT-licensed foundation for decision evidence AI agents can inspect instead of guess. See what is released, what is planned and how to help.",
   },

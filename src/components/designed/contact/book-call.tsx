@@ -66,7 +66,7 @@ export function BookCall() {
               <Image
                 className="size-11 shrink-0 rounded-full object-cover"
                 src={img(person.photo)}
-                alt=""
+                alt={person.name}
                 width={88}
                 height={88}
               />

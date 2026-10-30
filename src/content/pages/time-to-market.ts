@@ -21,7 +21,7 @@ import type { UseCasePictureAlt } from "@/content/pages/seo-aeo";
  */
 export const TIME_TO_MARKET: StoryContent = {
   meta: {
-    title: "Time to market: launch before the data is finished",
+    title: "Faster time to market for new products",
     description:
       "What blocks a range is not knowing which fields are load-bearing. Get the minimum decidable set, measured before launch, from a partial supplier export.",
   },

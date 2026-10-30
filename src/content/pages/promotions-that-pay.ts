@@ -22,13 +22,13 @@ type Content = ChapterContent & { art: PromotionsSolutionArt };
  */
 export const PROMOTIONS_THAT_PAY: Content = {
   meta: {
-    title: "Decide which promotions pay, after the returns",
+    title: "Promotion effectiveness: which promotions pay",
     description:
       "Judge vouchers, price cuts and free shipping on orders that stayed bought, decide per group before a campaign, and price a listing repair against a discount.",
   },
   eyebrow: "Solution",
   title: "Spend the promotion budget where the orders stay bought.",
-  lede: "A voucher is judged on the day it runs and paid for weeks later, in returns and refused deliveries. This puts three Pulse products in order: read what your past offers actually kept, decide for each group of shoppers before the next campaign, and check the listing repair you chose instead of a discount.",
+  lede: "A voucher is judged on the day it runs and paid for weeks later, in returns and refused deliveries, so promotion effectiveness is only known after them. To see which promotions pay, this puts three Pulse products in order: read what your past offers actually kept, decide for each group of shoppers before the next campaign, and check the listing repair you chose instead of a discount.",
 
   visualHeading:
     "Three possible answers for every group, and one of them is nothing.",

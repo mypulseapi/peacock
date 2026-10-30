@@ -74,7 +74,7 @@ export interface ResearchContent {
 
 const EN: ResearchContent = {
   meta: {
-    title: "Research: what we measured, product by product",
+    title: "Product data research: what we measured",
     description:
       "The measurement behind each Pulse product: what we ran, on what data, the result and its limit, and which products have not yet met a real merchant's data.",
   },

@@ -5710,7 +5710,7 @@ html[data-js] .figure-hold *::after {
 .ec-window-body { display: grid; grid-template-columns: 122px 1fr; }
 
 .ec-filters { padding: 4px 15px 18px 20px; border-right: 1px solid var(--color-line); }
-.ec-filters h3 { margin: 0 0 18px; color: var(--color-ink); font-size: 1.125rem; font-weight: 600; }
+.ec-filters-title { margin: 0 0 18px; color: var(--color-ink); font-size: 1.125rem; font-weight: 600; }
 .ec-filter {
   display: flex;
   align-items: center;

@@ -4,13 +4,13 @@ import type { StoryContent } from "@/components/StoryPage";
 /** For the person who did the work and now has to prove it landed. */
 export const DECISION_VERIFICATION: StoryContent = {
   meta: {
-    title: "Decision Verification: prove the enrichment worked",
+    title: "Decision Verification: verify product data fixes",
     description:
       "Re-export the repaired catalogue and we recompute the same measurement, so you can show exactly what moved. No traffic, no waiting, no test to design.",
   },
   eyebrow: "Decision Verification",
   title: "Verify every fix against what shoppers need",
-  lede: "You populated the top attribute. Send the repaired catalogue back and we recompute the same measurement, so you can show exactly what moved. No traffic, no waiting, no test to design.",
+  lede: "You populated the top attribute. To verify the fixes, send the repaired catalogue back and we recompute the same measurement, so you can show exactly what moved. No traffic, no waiting, no test to design.",
 
   visualHeading: "Before and after, attribute by attribute.",
   visualBody:
@@ -104,13 +104,13 @@ export const DECISION_VERIFICATION: StoryContent = {
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
 export const DECISION_VERIFICATION_VI: StoryContent = {
   meta: {
-    title: "Decision Verification: xác minh làm giàu dữ liệu",
+    title: "Decision Verification: xác minh dữ liệu đã sửa",
     description:
       "Xuất lại danh mục đã sửa và chúng tôi chạy lại đúng phép đo đó, để bạn chỉ rõ chính xác điều gì đã dịch chuyển. Không cần lưu lượng, không phải chờ đợi.",
   },
   eyebrow: "Decision Verification",
   title: "Kiểm chứng mọi thay đổi theo đúng thứ người mua cần",
-  lede: "Bạn đã điền xong thuộc tính đứng đầu bảng. Gửi lại danh mục đã sửa và chúng tôi chạy lại đúng phép đo đó, để bạn chỉ ra chính xác điều gì đã dịch chuyển. Không cần lưu lượng, không phải chờ, không phải thiết kế thử nghiệm nào.",
+  lede: "Bạn đã điền xong thuộc tính đứng đầu bảng. Để xác minh dữ liệu đã sửa, gửi lại danh mục đã sửa và chúng tôi chạy lại đúng phép đo đó, để bạn chỉ ra chính xác điều gì đã dịch chuyển. Không cần lưu lượng, không phải chờ, không phải thiết kế thử nghiệm nào.",
 
   visualHeading: "Trước và sau, theo từng thuộc tính.",
   visualBody:

@@ -742,7 +742,7 @@ export function HeroSection() {
                                   />
                                   <Image
                                     src={asset("brand/logo-white-v2.webp")}
-                                    alt=""
+                                    alt="Pulse"
                                     width={54}
                                     height={18}
                                     className="hidden h-4.5 w-auto theme-dark:inline"
@@ -1009,7 +1009,7 @@ export function HeroSection() {
                                 />
                                 <Image
                                   src={asset("brand/logo-white-v2.webp")}
-                                  alt=""
+                                  alt="Pulse"
                                   width={54}
                                   height={18}
                                   className="hidden h-4.5 w-auto theme-dark:inline"

@@ -18,13 +18,13 @@ import type { ChapterContent } from "@/components/designed/product/chapters";
  */
 export const MERCHANDISING_STUDIO: ChapterContent = {
   meta: {
-    title: "Merchandising Studio: the console, and its limits",
+    title: "Merchandising Studio: ecommerce merchandising tool",
     description:
       "Manage the catalogue the engine reads, set the holdback, pull the record behind any ranking. Overrides are not built yet, and this page says so.",
   },
   eyebrow: "Merchandising Studio",
   title: "The console, and an honest list of what it cannot do yet.",
-  lede: "Where you manage the catalogue the engine reads, set how much traffic is held back, and pull the record behind any ranking decision. Overrides are not built yet, and this page says which ones and why rather than leaving you to find out in a pilot.",
+  lede: "Merchandising Studio is the ecommerce merchandising tool where you manage the catalogue the engine reads, set how much traffic is held back, and pull the record behind any ranking decision. Overrides are not built yet, and this page says which ones and why rather than leaving you to find out in a pilot.",
 
   heroImage: {
     src: "product/merchandising-studio-hero-the-console.webp",
@@ -208,7 +208,7 @@ export const MERCHANDISING_STUDIO_VI: ChapterContent = {
   eyebrow: "Merchandising Studio",
   title:
     "Bảng điều khiển, và một danh sách trung thực những gì nó chưa làm được.",
-  lede: "Nơi bạn quản lý danh mục mà bộ máy đọc, đặt mức lưu lượng được giữ lại, và tra ra bản ghi đằng sau bất kỳ quyết định xếp hạng nào. Các quyền ghi đè chưa được xây dựng, và trang này nói rõ là những quyền nào cùng lý do, thay vì để bạn tự phát hiện giữa một chương trình thử nghiệm.",
+  lede: "Merchandising Studio là công cụ merchandising cho thương mại điện tử, nơi bạn quản lý danh mục mà bộ máy đọc, đặt mức lưu lượng được giữ lại, và tra ra bản ghi đằng sau bất kỳ quyết định xếp hạng nào. Các quyền ghi đè chưa được xây dựng, và trang này nói rõ là những quyền nào cùng lý do, thay vì để bạn tự phát hiện giữa một chương trình thử nghiệm.",
 
   heroImage: {
     src: "product/merchandising-studio-hero-the-console.webp",

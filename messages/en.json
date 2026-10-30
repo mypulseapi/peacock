@@ -198,15 +198,15 @@
       "allIndustries": "All Industries"
     },
     "meta": {
-      "title": "Commerce decision intelligence for product data",
+      "title": "Product data audit and decision intelligence",
       "description": "Pulse measures whether your catalogue holds the evidence shoppers and AI agents need to decide, ranks the data gaps worth fixing, and verifies the repair."
     }
   },
   "about": {
     "meta": {
-      "title": "About Pulse: the measurement, and its limits",
+      "title": "About Pulse: who we are and how we measure",
       "description": "We measure whether product data can answer the questions shoppers ask. Every figure is reproducible from our repository, including the runs that failed.",
-      "ogTitle": "About Pulse: the measurement, and its limits",
+      "ogTitle": "About Pulse: who we are and how we measure",
       "ogDescription": "We measure whether product data can answer the questions shoppers ask. Every figure is reproducible from our repository, including the runs that failed."
     },
     "badge": "About PULSE",
@@ -307,9 +307,9 @@
   },
   "contact": {
     "meta": {
-      "title": "Request a Decision Audit, or ask us something harder",
+      "title": "Contact Pulse: request a product data audit",
       "description": "Send one category export and get back a ranked list of what to record first, inside 48 hours. No code, no tag, no customer data and no obligation.",
-      "ogTitle": "Request a Decision Audit, or ask us something harder",
+      "ogTitle": "Contact Pulse: request a product data audit",
       "ogDescription": "Send one category export and get back a ranked list of what to record first, inside 48 hours. No code, no tag, no customer data and no obligation."
     },
     "badge": "Request a Decision Audit",
@@ -408,9 +408,9 @@
   },
   "careers": {
     "meta": {
-      "title": "Careers at Pulse: build it, publish the limits",
+      "title": "Careers at Pulse: build the future of e-commerce",
       "description": "We are a small team measuring whether product catalogues can support the decisions buyers are trying to make. The open roles, and how we actually work.",
-      "ogTitle": "Careers at Pulse: build it, publish the limits",
+      "ogTitle": "Careers at Pulse: build the future of e-commerce",
       "ogDescription": "We are a small team measuring whether product catalogues can support the decisions buyers are trying to make. The open roles, and how we actually work."
     },
     "badge": "We're Hiring",
@@ -508,12 +508,12 @@
   },
   "status": {
     "meta": {
-      "title": "System status and live latency for the Pulse API",
+      "title": "Pulse API status and latency",
       "description": "Current availability and incident history, with p50 and p95 latency reported as a distribution rather than a median that hides the slowest requests.",
-      "ogTitle": "System status and live latency for the Pulse API",
+      "ogTitle": "Pulse API status and latency",
       "ogDescription": "Current availability and incident history, with p50 and p95 latency reported as a distribution rather than a median that hides the slowest requests."
     },
-    "title": "System Status",
+    "title": "Pulse API system status",
     "description": "Real-time status of Pulse services and infrastructure",
     "lastUpdated": "Last updated:",
     "allOperational": "All Systems Operational",
@@ -541,9 +541,9 @@
   },
   "pricing": {
     "meta": {
-      "title": "Pricing: pay for decisions, never for measurement",
+      "title": "Pricing: product data audit and Decision API",
       "description": "Open-source tools free, the Decision Audit free, then pay per repair cycle or per decision served. Measuring results is never counted. See what counts.",
-      "ogTitle": "Pricing: pay for decisions, never for measurement",
+      "ogTitle": "Pricing: product data audit and Decision API",
       "ogDescription": "Open-source tools free, the Decision Audit free, then pay per repair cycle or per decision served. Measuring results is never counted. See what counts."
     },
     "title": "Priced on what it decides.",
@@ -641,9 +641,9 @@
     "anyBody": "The audit reads product data and nothing else, so the method does not change with your sector. What changes is which attributes matter, and that is the thing we measure rather than assume. Send one category and we will tell you whether it is worth your time.",
     "anyCta": "Request a Decision Audit",
     "meta": {
-      "title": "Solutions by sector: where data decides the sale",
+      "title": "Product data solutions for every category",
       "description": "Decision Audits for ecommerce, marketplaces, B2B distribution, shopping feeds, travel and AI shopping agents. One category export, ranked findings in 48 hours.",
-      "ogTitle": "Solutions by sector: where data decides the sale",
+      "ogTitle": "Product data solutions for every category",
       "ogDescription": "Decision Audits for ecommerce, marketplaces, B2B distribution, shopping feeds, travel and AI shopping agents. One category export, ranked findings in 48 hours."
     }
   },
@@ -668,12 +668,12 @@
   },
   "integrations": {
     "meta": {
-      "title": "Integrations: read the export you already produce",
+      "title": "Integrations: connect Pulse to your platform",
       "description": "Pulse reads a CSV or JSON category export and hands back a ranked repair list. The optional runtime is one script tag alongside your existing stack.",
-      "ogTitle": "Integrations: read the export you already produce",
+      "ogTitle": "Integrations: connect Pulse to your platform",
       "ogDescription": "Pulse reads a CSV or JSON category export and hands back a ranked repair list. The optional runtime is one script tag alongside your existing stack."
     },
-    "title": "Integrations",
+    "title": "Ecommerce integrations for Pulse",
     "description": "Connect Pulse with your existing tech stack. Native integrations for all major platforms, plus flexible APIs for custom setups.",
     "quickSetup": "Quick Setup",
     "quickSetupDesc": "Most integrations can be completed in under 30 minutes",
@@ -710,9 +710,9 @@
   },
   "product": {
     "meta": {
-      "title": "Commerce decision intelligence for product data",
+      "title": "Pulse products: audit, monitor and rank",
       "description": "Pulse audits product catalogues against real buying requirements, ranks the product-data gaps worth fixing, verifies enrichment and monitors decision readiness.",
-      "ogTitle": "Commerce decision intelligence for product data",
+      "ogTitle": "Pulse products: audit, monitor and rank",
       "ogDescription": "Pulse audits product catalogues against real buying requirements, ranks the product-data gaps worth fixing, verifies enrichment and monitors decision readiness."
     },
     "badge": "The engine",
@@ -844,12 +844,12 @@
   },
   "privacy": {
     "meta": {
-      "title": "Privacy: product data only, no identity",
+      "title": "Privacy policy: product data, not personal data",
       "description": "What Pulse collects and what it never collects, and how the Decision Audit runs without customer records, order history or any personal data at all.",
-      "ogTitle": "Privacy: product data only, no identity",
+      "ogTitle": "Privacy policy: product data, not personal data",
       "ogDescription": "What Pulse collects and what it never collects, and how the Decision Audit runs without customer records, order history or any personal data at all."
     },
-    "title": "Privacy Policy",
+    "title": "Pulse privacy policy",
     "description": "At Pulse, privacy isn't an afterthought -it's our foundation. We've built our technology to deliver powerful personalization without compromising user privacy.",
     "lastUpdated": "Last updated: January 2025",
     "highlights": {
@@ -921,12 +921,12 @@
   },
   "terms": {
     "meta": {
-      "title": "Terms of service",
+      "title": "Terms of service for using Pulse services",
       "description": "The terms covering use of the Pulse Decision Audit, Decision Verification, Decision Monitor and the Decision API, and what each of them does not promise.",
-      "ogTitle": "Terms of service",
+      "ogTitle": "Terms of service for using Pulse services",
       "ogDescription": "The terms covering use of the Pulse Decision Audit, Decision Verification, Decision Monitor and the Decision API, and what each of them does not promise."
     },
-    "title": "Terms of Service",
+    "title": "Pulse terms of service",
     "description": "Please read these terms carefully before using Pulse services.",
     "lastUpdated": "Last updated: January 2025",
     "sections": {
@@ -995,12 +995,12 @@
   },
   "cookies": {
     "meta": {
-      "title": "Cookie policy: what this site sets",
+      "title": "Pulse cookie policy: the cookies we use",
       "description": "This site sets a small number of cookies, listed here in full. The Pulse engine itself runs without a single one, which is a product decision not a policy.",
-      "ogTitle": "Cookie policy: what this site sets",
+      "ogTitle": "Pulse cookie policy: the cookies we use",
       "ogDescription": "This site sets a small number of cookies, listed here in full. The Pulse engine itself runs without a single one, which is a product decision not a policy."
     },
-    "title": "Cookie Policy",
+    "title": "Pulse cookie policy",
     "lastUpdated": "Last updated: January 2025",
     "approach": {
       "title": "Our Cookie-Free Approach",
@@ -1032,12 +1032,12 @@
   },
   "gdpr": {
     "meta": {
-      "title": "GDPR: how Pulse handles data, and how little",
+      "title": "GDPR compliance at Pulse and your data rights",
       "description": "The audit runs on product data alone. No customer records, no order history, no profiles, and deletion of a submitted catalogue export on request.",
-      "ogTitle": "GDPR: how Pulse handles data, and how little",
+      "ogTitle": "GDPR compliance at Pulse and your data rights",
       "ogDescription": "The audit runs on product data alone. No customer records, no order history, no profiles, and deletion of a submitted catalogue export on request."
     },
-    "title": "GDPR Compliance",
+    "title": "GDPR compliance at Pulse",
     "description": "Pulse is committed to protecting the privacy rights of individuals in the European Union under the General Data Protection Regulation (GDPR).",
     "lastUpdated": "Last updated: January 2025",
     "badge": "GDPR Compliant",
@@ -1304,7 +1304,7 @@
   },
   "whyPage": {
     "meta": {
-      "title": "Why Pulse: the method and the limits",
+      "title": "Why Pulse: a reproducible measurement method",
       "description": "How a decision-information gap is measured, how it differs from engagement-ranked tooling, and exactly where the measurement stops being reliable."
     }
   },

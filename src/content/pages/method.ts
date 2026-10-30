@@ -5,13 +5,13 @@ import type { StoryContent } from "@/components/StoryPage";
 /** For the technical person the buyer forwards this to. */
 export const METHOD: StoryContent = {
   meta: {
-    title: "The method: how a missing field gets a number",
+    title: "Our method for scoring missing product attributes",
     description:
       "Every ranking here comes from one measurement, reproducible from our repository with a single command. What it does, what a bit means, and where it stops.",
   },
   eyebrow: "The method",
   title: "How a missing field gets a number.",
-  lede: "Every ranking on this site comes from one measurement, and it is reproducible from our repository with a single command. This is what it does, what the unit means, and where it stops being reliable.",
+  lede: "Every ranking on this site comes from one measurement for scoring missing product attributes, and it is reproducible from our repository with a single command. This is what it does, what the unit means, and where it stops being reliable.",
 
   visualHeading: "What one bit actually buys.",
   visualBody:

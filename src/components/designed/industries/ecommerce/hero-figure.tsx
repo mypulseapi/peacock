@@ -93,7 +93,7 @@ export function EcommerceHeroFigure() {
           </div>
           <div className="ec-window-body">
             <aside className="ec-filters">
-              <h3>{t("shelfName")}</h3>
+              <p className="ec-filters-title">{t("shelfName")}</p>
               {filters.map((f) => (
                 <div
                   key={f.label}
@@ -193,7 +193,7 @@ export function EcommerceHeroFigure() {
               <div key={c.name} className="text-center">
                 <Image
                   src={img(c.icon)}
-                  alt=""
+                  alt={c.name}
                   width={128}
                   height={107}
                   sizes="28px"

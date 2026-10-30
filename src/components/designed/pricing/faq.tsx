@@ -3,6 +3,19 @@ import { designedText } from "../t";
 
 const QUESTIONS = ["faq1", "faq2", "faq3", "faq4"] as const;
 
+/** The same questions as a FAQPage graph node, so the schema cannot drift from the page. */
+export function pricingFaqSchema() {
+  const t = designedText("pricing.section1");
+  return {
+    "@type": "FAQPage",
+    mainEntity: QUESTIONS.map((k) => ({
+      "@type": "Question",
+      name: t(`${k}Q`),
+      acceptedAnswer: { "@type": "Answer", text: t(`${k}A`) },
+    })),
+  };
+}
+
 export function PricingFaq() {
   const t = designedText("pricing.section1");
   return (

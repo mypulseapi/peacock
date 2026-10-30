@@ -5,13 +5,13 @@ import type { ChapterContent } from "@/components/designed/product/chapters";
 /** The runtime. Last on purpose, and the page says why. */
 export const DECISION_API: ChapterContent = {
   meta: {
-    title: "Decision API: rank your catalogue live",
+    title: "Decision API: real-time product ranking API",
     description:
       "Reads the current visit and orders your catalogue against it. Runs beside your existing store, holds a control arm back, falls back to your own order.",
   },
   eyebrow: "Decision API",
   title: "Rank your catalogue live, once you have a reason to.",
-  lede: "The runtime reads the current visit and orders your catalogue against what it can infer. It runs alongside your existing store and search, holds back a share of traffic as a control, and falls back to your own order if anything is slow.",
+  lede: "The Decision API is a real-time product ranking API. It reads the current visit and orders your catalogue against what it can infer. It runs alongside your existing store and search, holds back a share of traffic as a control, and falls back to your own order if anything is slow.",
 
   heroImage: {
     src: "product/decision-api-hero-shop-window-reorders-per-visit.webp",
@@ -180,7 +180,7 @@ export const DECISION_API_VI: ChapterContent = {
   },
   eyebrow: "Decision API",
   title: "Xếp hạng danh mục theo thời gian thực, khi bạn đã có lý do.",
-  lede: "Bộ máy thời gian thực đọc phiên truy cập hiện tại và sắp xếp danh mục theo những gì nó suy luận được. Nó chạy song song với gian hàng và công cụ tìm kiếm sẵn có, giữ lại một phần lưu lượng làm nhóm đối chứng, và lùi về thứ tự gốc của bạn nếu có gì đó chậm.",
+  lede: "Decision API là API xếp hạng sản phẩm theo thời gian thực. Nó đọc phiên truy cập hiện tại và sắp xếp danh mục theo những gì nó suy luận được. Nó chạy song song với gian hàng và công cụ tìm kiếm sẵn có, giữ lại một phần lưu lượng làm nhóm đối chứng, và lùi về thứ tự gốc của bạn nếu có gì đó chậm.",
 
   heroImage: {
     src: "product/decision-api-hero-shop-window-reorders-per-visit.webp",

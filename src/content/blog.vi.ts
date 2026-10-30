@@ -134,8 +134,8 @@ export const BLOG_VI: Record<string, string> = {
     "79% trang sản phẩm không xuất bản đầy đủ dữ liệu có cấu trúc",
   "Adobe scored US retail product pages at 66% machine readability, the lowest of any page type. Product pages are exactly where the comparison detail an agent needs is supposed to live.":
     "Adobe chấm trang sản phẩm của ngành bán lẻ Mỹ ở mức 66% về khả năng đọc máy, thấp nhất trong mọi loại trang. Thế nhưng trang sản phẩm lại đúng là nơi đáng lẽ phải chứa những chi tiết so sánh mà một tác nhân AI cần.",
-  "79% of product pages lack full structured data":
-    "79% trang sản phẩm thiếu dữ liệu có cấu trúc",
+  "79% of pages do not ship full structured data":
+    "79% trang sản phẩm chưa đủ dữ liệu có cấu trúc",
   "Adobe scored US retail product pages at 66% machine readability, the lowest of any page type, and that is where an agent looks for comparison detail.":
     "Adobe chấm trang sản phẩm bán lẻ Mỹ ở mức 66% khả năng đọc máy, thấp nhất trong mọi loại trang, mà đó lại là nơi tác nhân AI tìm chi tiết so sánh.",
   "Agentic commerce": "Thương mại bằng tác nhân AI",

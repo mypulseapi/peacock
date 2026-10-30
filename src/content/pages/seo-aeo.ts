@@ -18,13 +18,13 @@ import { byLocale } from "@/content/locale";
  */
 export const SEO_AEO: StoryContent = {
   meta: {
-    title: "SEO and AEO: you cannot mark up a fact you lack",
+    title: "Product data for SEO and AEO: facts AI can cite",
     description:
       "Structured data is capped by what your catalogue records. The audit ranks the missing attributes capping what search and answer engines can do.",
   },
   eyebrow: "Use case",
   title: "You cannot mark up a fact you do not have.",
-  lede: "Structured data is how a search engine and an answer engine read a product, and it is capped by what your catalogue actually records. The audit tells you which missing attributes are costing you the most visibility, ranked, before anybody writes a line of markup.",
+  lede: "Structured data is how a search engine and an answer engine read a product and what an AI answer can cite, and it is capped by what your catalogue actually records. The audit tells you which missing attributes are costing you the most visibility, ranked, before anybody writes a line of markup.",
 
   visualHeading: "Where schema coverage actually stops.",
   visualBody:

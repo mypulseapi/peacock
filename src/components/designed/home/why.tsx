@@ -153,7 +153,7 @@ export function WhySection() {
                       {/* the icon file has a light margin round its circle: zoom 1.3× (circle is 144 of 180px) to crop it */}
                       <Image
                         src={asset("brand/apple-touch-icon.png")}
-                        alt=""
+                        alt="Pulse"
                         width={180}
                         height={180}
                         className="size-full scale-130" />

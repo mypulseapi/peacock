@@ -51,7 +51,7 @@ export function Section3Section() {
                 <div className="-mb-14 hidden lg:col-span-7 lg:-mb-20 lg:block">
                   <Image
                     src={img("contact/product-audit-dashboard-decision-coverage.webp")}
-                    alt=""
+                  alt={t('4')}
                     width={1600}
                     height={683}
                     sizes="(min-width: 1024px) 58vw, 0px"

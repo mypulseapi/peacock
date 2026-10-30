@@ -12,7 +12,7 @@ import type { StoryContent } from "@/components/StoryPage";
  */
 export const LIMITS: StoryContent = {
   meta: {
-    title: "What Pulse cannot claim yet",
+    title: "Limits: what our product data audit cannot claim",
     description:
       "No uplift figure, a ranking stable only at the top, and no customers to name. The limits of the measurement, written down so you can weigh them before a pilot.",
   },
@@ -200,7 +200,7 @@ export const LIMITS: StoryContent = {
 /** Vietnamese. See `content/locale.ts` for the provenance caveat. */
 export const LIMITS_VI: StoryContent = {
   meta: {
-    title: "Những gì Pulse chưa thể khẳng định",
+    title: "Những gì chúng tôi chưa thể khẳng định",
     description:
       "Không con số tăng trưởng, thứ hạng chỉ ổn định ở đầu bảng, và chưa có khách hàng để nêu tên. Các giới hạn được viết ra để bạn cân nhắc trước.",
   },

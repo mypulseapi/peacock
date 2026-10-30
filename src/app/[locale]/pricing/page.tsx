@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { prepareLocale } from "@/i18n/render-locale";
 import { PageSchema } from "@/components/PageSchema";
 import { DesignedPricing } from "@/components/designed/pricing";
+import { pricingFaqSchema } from "@/components/designed/pricing/faq";
 import { buildAlternates } from "@/lib/seo";
 
 interface PageProps {
@@ -26,7 +27,11 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <PageSchema locale={locale} path="/pricing" />
+      <PageSchema
+        locale={locale}
+        path="/pricing"
+        nodes={[pricingFaqSchema()]}
+      />
       {/* English gets the designer's converted page; Vietnamese keeps the translated one until
           that conversion's text has been extracted and translated. See [locale]/page.tsx. */}
       <DesignedPricing />

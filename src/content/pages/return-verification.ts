@@ -17,13 +17,13 @@ type Content = ChapterContent & { art: ReturnsArtText };
  */
 export const RETURN_VERIFICATION: Content = {
   meta: {
-    title: "Return Verification: missing facts behind returns",
+    title: "Return Verification: product data behind returns",
     description:
       "Join returns to your catalogue: see which missing product facts go with them, whether a repair moved them, and what that was worth at your own costs.",
   },
   eyebrow: "Return Verification",
   title: "Find the missing facts your returns are telling you about.",
-  lede: "Send your order history with the reasons people gave. We join it to your catalogue, show which missing product information goes with returns, and after a repair, whether that slice of returns actually moved.",
+  lede: "Send your order history with the reasons people gave. We join it to your catalogue, show which missing product information sits behind returns, and after a repair, whether that slice of returns actually moved.",
 
   // The words in the chain chart (chapter-art.tsx), and the hero image, on the CDN like the other
   // product heroes (owner's image, 26 Oct 2026). Nothing in either is a measured result.

@@ -21,14 +21,14 @@ import type { StoryContent } from "@/components/StoryPage";
  */
 export const COMPARE: StoryContent = {
   meta: {
-    title: "How we compare: four actions, not one",
+    title: "Pulse vs PIM, search and enrichment tools",
     description:
       "Every system here can answer. The difference is what happens when the catalogue cannot support an answer, and whether anything prices the alternatives.",
   },
   eyebrow: "How we compare",
   title:
     "Everything in your stack can answer. None of it can tell you when not to.",
-  lede: "Given a buying task and incomplete information, a system has four moves: decide now, ask the shopper, record the missing product fact, or say the shelf cannot be resolved. Most of the market has one of them, and nothing we have checked prices them against each other.",
+  lede: "Given a buying task and incomplete information, a system has four moves: decide now, ask the shopper, record the missing product fact, or say the shelf cannot be resolved. Most of the market has one of them, and nothing we have checked prices them against each other. Pulse prices all four in one unit.",
 
   visualHeading: "The two rankings invert, on one shelf.",
   visualBody:

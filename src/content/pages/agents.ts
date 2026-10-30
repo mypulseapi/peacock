@@ -229,7 +229,7 @@ const SHARED_VI = {
 const EN: Record<AgentSlug, Specific> = {
   "shopping-assistants": {
     meta: {
-      title: "Pulse for shopping assistants",
+      title: "AI shopping assistant that never invents a spec",
       description:
         "Let a shopping assistant recommend only what a listing proves: fits, fails or cannot tell for each product, with the missing facts named instead of guessed.",
     },
@@ -286,7 +286,7 @@ const EN: Record<AgentSlug, Specific> = {
   },
   procurement: {
     meta: {
-      title: "Pulse for procurement agents",
+      title: "Procurement agent spec checks with Pulse",
       description:
         "Check every supplier and part against the spec: fits, fails or cannot tell for each requirement, with the missing datasheet fields named for follow-up.",
     },
@@ -343,7 +343,7 @@ const EN: Record<AgentSlug, Specific> = {
   },
   travel: {
     meta: {
-      title: "Pulse for travel and booking agents",
+      title: "Travel booking agent: check what a listing includes",
       description:
         "Match hotels, fares and plans to what the traveller needs: fits, fails or cannot tell for every option, with the missing details named instead of assumed.",
     },
@@ -404,7 +404,7 @@ const EN: Record<AgentSlug, Specific> = {
   },
   "coding-agents": {
     meta: {
-      title: "Pulse for coding agents: Claude Code, Cursor, Codex",
+      title: "Pulse MCP for Claude Code, Cursor and Codex",
       description:
         "Give Claude Code, Cursor or Codex the Pulse MCP server: it reads current Pulse docs instead of recalling endpoints, and calls the decision API as it builds.",
     },
@@ -569,7 +569,7 @@ const VI: Record<AgentSlug, Specific> = {
   },
   travel: {
     meta: {
-      title: "Pulse cho tác tử du lịch và đặt chỗ",
+      title: "Pulse cho tác tử đặt chỗ và đặt phòng",
       description:
         "Khớp khách sạn, vé và gói dịch vụ với điều khách cần: đạt, không đạt hoặc không đủ thông tin cho từng lựa chọn, kèm chi tiết còn thiếu thay vì giả định.",
     },

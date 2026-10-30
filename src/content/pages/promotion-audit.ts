@@ -18,7 +18,7 @@ type Content = ChapterContent & { art: PromotionsArtText };
  */
 export const PROMOTION_AUDIT: Content = {
   meta: {
-    title: "Promotion Audit: which discounts paid for themselves",
+    title: "Promotion Audit: which promotions pay after returns",
     description:
       "Judge vouchers, price cuts and free shipping on the orders that stayed bought, net of returns and failed deliveries, and see where doing nothing was better.",
   },

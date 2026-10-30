@@ -349,7 +349,7 @@ export const ARTICLES: Article[] = [
     title: "79% of product pages do not ship a full set of structured data",
     excerpt:
       "Adobe scored US retail product pages at 66% machine readability, the lowest of any page type. Product pages are exactly where the comparison detail an agent needs is supposed to live.",
-    metaTitle: "79% of product pages lack full structured data",
+    metaTitle: "79% of pages do not ship full structured data",
     metaDescription:
       "Adobe scored US retail product pages at 66% machine readability, the lowest of any page type, and that is where an agent looks for comparison detail.",
     category: "Agentic commerce",

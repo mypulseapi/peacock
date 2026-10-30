@@ -198,15 +198,15 @@
       "allIndustries": "Tất cả ngành nghề"
     },
     "meta": {
-      "title": "Pulse: trí tuệ quyết định cho dữ liệu sản phẩm",
+      "title": "Kiểm tra dữ liệu sản phẩm cho quyết định mua hàng",
       "description": "Pulse đo xem danh mục có đủ bằng chứng để người mua và tác tử AI quyết định không, xếp hạng khoảng trống dữ liệu đáng sửa, và xác minh kết quả sửa."
     }
   },
   "about": {
     "meta": {
-      "title": "Về Pulse: phép đo và những giới hạn của nó",
+      "title": "Về Pulse: chúng tôi là ai và đo lường thế nào",
       "description": "Chúng tôi đo xem dữ liệu sản phẩm có trả lời được những câu người mua hỏi hay không. Mọi con số đều tái lập được từ kho mã, kể cả những lần chạy thất bại.",
-      "ogTitle": "Về Pulse: phép đo và những giới hạn của nó",
+      "ogTitle": "Về Pulse: chúng tôi là ai và đo lường thế nào",
       "ogDescription": "Chúng tôi đo xem dữ liệu sản phẩm có trả lời được những câu người mua hỏi hay không. Mọi con số đều tái lập được từ kho mã, kể cả những lần chạy thất bại."
     },
     "badge": "Về PULSE",
@@ -307,9 +307,9 @@
   },
   "contact": {
     "meta": {
-      "title": "Yêu cầu Decision Audit cho danh mục của bạn",
+      "title": "Liên hệ Pulse: yêu cầu kiểm tra dữ liệu sản phẩm",
       "description": "Gửi một tệp xuất ngành hàng và nhận lại danh sách xếp hạng những gì cần ghi trước, trong 48 giờ. Không mã nguồn, không thẻ, không dữ liệu khách hàng.",
-      "ogTitle": "Yêu cầu Decision Audit cho danh mục của bạn",
+      "ogTitle": "Liên hệ Pulse: yêu cầu kiểm tra dữ liệu sản phẩm",
       "ogDescription": "Gửi một tệp xuất ngành hàng và nhận lại danh sách xếp hạng những gì cần ghi trước, trong 48 giờ. Không mã nguồn, không thẻ, không dữ liệu khách hàng."
     },
     "badge": "Yêu cầu Decision Audit",
@@ -408,9 +408,9 @@
   },
   "careers": {
     "meta": {
-      "title": "Tuyển dụng tại Pulse: xây phép đo, công bố giới hạn",
+      "title": "Việc làm tại Pulse: xây tương lai thương mại điện tử",
       "description": "Chúng tôi là một đội nhỏ đo xem danh mục sản phẩm có hỗ trợ được quyết định của người mua hay không. Các vị trí đang tuyển và cách chúng tôi làm việc.",
-      "ogTitle": "Tuyển dụng tại Pulse: xây phép đo, công bố giới hạn",
+      "ogTitle": "Việc làm tại Pulse: xây tương lai thương mại điện tử",
       "ogDescription": "Chúng tôi là một đội nhỏ đo xem danh mục sản phẩm có hỗ trợ được quyết định của người mua hay không. Các vị trí đang tuyển và cách chúng tôi làm việc."
     },
     "badge": "Đang tuyển dụng",
@@ -513,7 +513,7 @@
       "ogTitle": "Trạng thái hệ thống và độ trễ Pulse API",
       "ogDescription": "Tình trạng hoạt động hiện tại và lịch sử sự cố, với độ trễ p50 và p95 báo dưới dạng phân phối thay vì số trung vị, cho từng dịch vụ và từng khu vực."
     },
-    "title": "Trạng thái hệ thống",
+    "title": "Trạng thái hệ thống Pulse API",
     "description": "Trạng thái thời gian thực của các dịch vụ và cơ sở hạ tầng Pulse",
     "lastUpdated": "Cập nhật lần cuối:",
     "allOperational": "Tất cả hệ thống hoạt động",
@@ -541,9 +541,9 @@
   },
   "pricing": {
     "meta": {
-      "title": "Bảng giá: trả cho quyết định, không cho đo lường",
+      "title": "Bảng giá kiểm tra dữ liệu sản phẩm và Decision API",
       "description": "Công cụ mã nguồn mở miễn phí, Decision Audit miễn phí, sau đó trả theo đợt sửa hoặc theo quyết định. Đo lường kết quả không bao giờ được tính phí.",
-      "ogTitle": "Bảng giá: trả cho quyết định, không cho đo lường",
+      "ogTitle": "Bảng giá kiểm tra dữ liệu sản phẩm và Decision API",
       "ogDescription": "Công cụ mã nguồn mở miễn phí, Decision Audit miễn phí, sau đó trả theo đợt sửa hoặc theo quyết định. Đo lường kết quả không bao giờ được tính phí."
     },
     "title": "Tính theo quyết định tạo ra.",
@@ -650,12 +650,12 @@
   },
   "integrations": {
     "meta": {
-      "title": "Tích hợp: đọc chính tệp xuất bạn vốn đã tạo ra",
+      "title": "Tích hợp: kết nối Pulse với nền tảng của bạn",
       "description": "Pulse đọc một tệp CSV hoặc JSON và trả lại danh sách sửa đã xếp hạng. Bộ máy thời gian thực tuỳ chọn chỉ là một thẻ script chạy song song với hệ thống sẵn có.",
-      "ogTitle": "Tích hợp: đọc chính tệp xuất bạn vốn đã tạo ra",
+      "ogTitle": "Tích hợp: kết nối Pulse với nền tảng của bạn",
       "ogDescription": "Pulse đọc một tệp CSV hoặc JSON và trả lại danh sách sửa đã xếp hạng. Bộ máy thời gian thực tuỳ chọn chỉ là một thẻ script chạy song song với hệ thống sẵn có."
     },
-    "title": "Tích hợp",
+    "title": "Tích hợp thương mại điện tử cho Pulse",
     "description": "Kết nối Pulse với hệ thống thương mại điện tử hiện có. Tích hợp gốc cho tất cả các nền tảng chính, cùng với API linh hoạt cho cài đặt tùy chỉnh.",
     "quickSetup": "Cài đặt nhanh",
     "quickSetupDesc": "Hầu hết các tích hợp có thể hoàn thành trong dưới 30 phút",
@@ -692,9 +692,9 @@
   },
   "product": {
     "meta": {
-      "title": "Trí tuệ quyết định thương mại cho dữ liệu sản phẩm",
+      "title": "Sản phẩm Pulse: đo, sửa và xếp hạng danh mục",
       "description": "Pulse kiểm tra danh mục theo yêu cầu mua thật, xếp hạng khoảng trống dữ liệu đáng sửa, xác minh việc làm giàu dữ liệu và theo dõi mức sẵn sàng cho quyết định.",
-      "ogTitle": "Trí tuệ quyết định thương mại cho dữ liệu sản phẩm",
+      "ogTitle": "Sản phẩm Pulse: đo, sửa và xếp hạng danh mục",
       "ogDescription": "Pulse kiểm tra danh mục theo yêu cầu mua thật, xếp hạng khoảng trống dữ liệu đáng sửa, xác minh việc làm giàu dữ liệu và theo dõi mức sẵn sàng cho quyết định."
     },
     "badge": "Engine",
@@ -831,7 +831,7 @@
       "ogTitle": "Quyền riêng tư: chỉ dữ liệu sản phẩm",
       "ogDescription": "Pulse thu thập gì, không bao giờ thu thập gì, và bản kiểm tra chạy ra sao mà không cần hồ sơ khách hàng, lịch sử đơn hàng hay bất kỳ dữ liệu cá nhân nào."
     },
-    "title": "Chính sách Bảo mật",
+    "title": "Chính sách quyền riêng tư của Pulse",
     "description": "Tại Pulse, quyền riêng tư không phải là suy nghĩ sau - đó là nền tảng của chúng tôi. Chúng tôi đã xây dựng công nghệ để cung cấp cá nhân hóa mạnh mẽ mà không ảnh hưởng đến quyền riêng tư của người dùng.",
     "lastUpdated": "Cập nhật lần cuối: Tháng 1, 2025",
     "highlights": {
@@ -903,12 +903,12 @@
   },
   "terms": {
     "meta": {
-      "title": "Điều khoản dịch vụ",
+      "title": "Điều khoản dịch vụ khi sử dụng Pulse",
       "description": "Các điều khoản áp dụng cho việc sử dụng Pulse Decision Audit, Decision Verification, Decision Monitor và Decision API, cùng giới hạn trách nhiệm của chúng tôi.",
-      "ogTitle": "Điều khoản dịch vụ",
+      "ogTitle": "Điều khoản dịch vụ khi sử dụng Pulse",
       "ogDescription": "Các điều khoản áp dụng cho việc sử dụng Pulse Decision Audit, Decision Verification, Decision Monitor và Decision API, cùng giới hạn trách nhiệm của chúng tôi."
     },
-    "title": "Điều khoản Dịch vụ",
+    "title": "Điều khoản dịch vụ của Pulse",
     "description": "Vui lòng đọc kỹ các điều khoản này trước khi sử dụng dịch vụ Pulse.",
     "lastUpdated": "Cập nhật lần cuối: Tháng 1, 2025",
     "sections": {
@@ -977,12 +977,12 @@
   },
   "cookies": {
     "meta": {
-      "title": "Chính sách cookie: website này đặt những gì",
+      "title": "Chính sách cookie của Pulse",
       "description": "Website này dùng một số ít cookie. Bản thân bộ máy Pulse chạy mà không cần cookie nào, và đó là một lựa chọn sản phẩm chứ không phải một lựa chọn chính sách.",
-      "ogTitle": "Chính sách cookie: website này đặt những gì",
+      "ogTitle": "Chính sách cookie của Pulse",
       "ogDescription": "Website này dùng một số ít cookie. Bản thân bộ máy Pulse chạy mà không cần cookie nào, và đó là một lựa chọn sản phẩm chứ không phải một lựa chọn chính sách."
     },
-    "title": "Chính sách Cookie",
+    "title": "Chính sách cookie của Pulse",
     "lastUpdated": "Cập nhật lần cuối: Tháng 1, 2025",
     "approach": {
       "title": "Phương pháp Không Cookie của Chúng tôi",
@@ -1014,12 +1014,12 @@
   },
   "gdpr": {
     "meta": {
-      "title": "GDPR: Pulse xử lý dữ liệu sản phẩm thế nào",
+      "title": "Tuân thủ GDPR tại Pulse và quyền dữ liệu của bạn",
       "description": "Bản kiểm tra chỉ chạy trên dữ liệu sản phẩm. Không hồ sơ khách hàng, không lịch sử đơn hàng, không hồ sơ cá nhân, và xoá tệp danh mục đã gửi khi được yêu cầu.",
-      "ogTitle": "GDPR: Pulse xử lý dữ liệu sản phẩm thế nào",
+      "ogTitle": "Tuân thủ GDPR tại Pulse và quyền dữ liệu của bạn",
       "ogDescription": "Bản kiểm tra chỉ chạy trên dữ liệu sản phẩm. Không hồ sơ khách hàng, không lịch sử đơn hàng, không hồ sơ cá nhân, và xoá tệp danh mục đã gửi khi được yêu cầu."
     },
-    "title": "Tuân thủ GDPR",
+    "title": "Tuân thủ GDPR tại Pulse",
     "description": "Pulse cam kết bảo vệ quyền riêng tư của các cá nhân trong Liên minh Châu Âu theo Quy định Bảo vệ Dữ liệu Chung (GDPR).",
     "lastUpdated": "Cập nhật lần cuối: Tháng 1, 2025",
     "badge": "Tuân thủ GDPR",
@@ -1121,9 +1121,9 @@
     "anyBody": "Bản kiểm tra chỉ đọc dữ liệu sản phẩm và không đọc gì khác, nên phương pháp không thay đổi theo ngành của bạn. Thứ thay đổi là những thuộc tính nào quan trọng, và đó chính là thứ chúng tôi đo thay vì phỏng đoán. Gửi một ngành hàng và chúng tôi sẽ cho biết việc này có đáng thời gian của bạn hay không.",
     "anyCta": "Yêu cầu Decision Audit",
     "meta": {
-      "title": "Giải pháp theo ngành: nơi dữ liệu quyết định",
+      "title": "Dữ liệu sản phẩm cho mọi ngành hàng",
       "description": "Decision Audit cho thương mại điện tử, sàn thương mại, phân phối B2B, nguồn cấp dữ liệu, du lịch và tác tử AI. Một tệp xuất, kết quả trong 48 giờ.",
-      "ogTitle": "Giải pháp theo ngành: nơi dữ liệu quyết định",
+      "ogTitle": "Dữ liệu sản phẩm cho mọi ngành hàng",
       "ogDescription": "Decision Audit cho thương mại điện tử, sàn thương mại, phân phối B2B, nguồn cấp dữ liệu, du lịch và tác tử AI. Một tệp xuất, kết quả trong 48 giờ."
     }
   },
@@ -1304,7 +1304,7 @@
   },
   "whyPage": {
     "meta": {
-      "title": "Vì sao chọn Pulse: phương pháp và những giới hạn",
+      "title": "Vì sao là Pulse: phương pháp và giới hạn",
       "description": "Cách đo khoảng trống thông tin quyết định, cách nó khác với những công cụ xếp hạng theo mức tương tác, và chính xác chỗ nào phép đo thôi còn đáng tin."
     }
   },

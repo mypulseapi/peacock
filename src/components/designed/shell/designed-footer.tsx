@@ -81,7 +81,7 @@ export function DesignedFooter() {
               />
               <Image
                 src={asset("brand/logo-white-v2.webp")}
-                alt=""
+                alt="Pulse"
                 width={84}
                 height={28}
                 loading="lazy"

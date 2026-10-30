@@ -66,7 +66,7 @@ export function Section5Section() {
                     >
                       <Image
                         src={asset("team/tracy-bui.png")}
-                        alt=""
+                        alt={`${t('3')}, ${t('4')}`}
                         width={384}
                         height={384}
                         loading="lazy"
@@ -117,7 +117,7 @@ export function Section5Section() {
                     >
                       <Image
                         src={asset("team/rosie-tran.png")}
-                        alt=""
+                        alt={`${t('5')}, ${t('6')}`}
                         width={384}
                         height={384}
                         loading="lazy"
@@ -168,7 +168,7 @@ export function Section5Section() {
                     >
                       <Image
                         src={asset("team/elena-nguyen.png")}
-                        alt=""
+                        alt={`${t('7')}, ${t('8')}`}
                         width={384}
                         height={384}
                         loading="lazy"
@@ -219,7 +219,7 @@ export function Section5Section() {
                     >
                       <Image
                         src={asset("team/iris-le.png")}
-                        alt=""
+                        alt={`${t('9')}, ${t('10')}`}
                         width={384}
                         height={384}
                         loading="lazy"
@@ -270,7 +270,7 @@ export function Section5Section() {
                     >
                       <Image
                         src={asset("team/albert-bui.png")}
-                        alt=""
+                        alt={`${t('11')}, ${t('12')}`}
                         width={384}
                         height={384}
                         loading="lazy"
@@ -321,7 +321,7 @@ export function Section5Section() {
                     >
                       <Image
                         src={asset("team/stephen-le.png")}
-                        alt=""
+                        alt={`${t('13')}, ${t('14')}`}
                         width={384}
                         height={384}
                         loading="lazy"
@@ -372,7 +372,7 @@ export function Section5Section() {
                     >
                       <Image
                         src={asset("team/eric-pham.png")}
-                        alt=""
+                        alt={`${t('15')}, ${t('16')}`}
                         width={384}
                         height={384}
                         loading="lazy"
@@ -423,7 +423,7 @@ export function Section5Section() {
                     >
                       <Image
                         src={asset("team/stan-nguyen.png")}
-                        alt=""
+                        alt={`${t('17')}, ${t('18')}`}
                         width={384}
                         height={384}
                         loading="lazy"

@@ -30,7 +30,7 @@ function Shell({
   return (
     <figure className="ed-raise my-12 rounded-2xl border border-[color:var(--ed-line)] p-6 sm:p-8">
       <figcaption className="mb-7">
-        <h3 className="text-[1.0625rem] leading-snug font-bold" style={{ color: C.ink }}>{title}</h3>
+        <p className="text-[1.0625rem] leading-snug font-bold" style={{ color: C.ink }}>{title}</p>
         <cite className="mt-1.5 block text-[0.8125rem] not-italic" style={{ color: C.mute }}>{source}</cite>
       </figcaption>
 

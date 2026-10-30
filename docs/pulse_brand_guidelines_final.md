@@ -1,12 +1,12 @@
 # Pulse — Brand Guidelines "Signal" (final)
 
-Oct 16, 2026 · @Henry · Final, Oct 19, 2026: typography changed from Inter to Geist + Geist Mono (§8); dark surfaces changed from navy to cool black `#0B0D12`, new §5.1 dark mode reference and chart tokens; reversed logo in every dark context (§7).
+Oct 16, 2026 · @Henry · Final, Oct 19, 2026: typography changed from Inter to Geist + Geist Mono (§8); dark surfaces changed from navy to cool black `#0B0D12`, new §5.1 dark mode reference and chart tokens; reversed logo in every dark context (§7). Oct 30, 2026: titles set in Mona Sans, the owner's Option C, made final (§8).
 
 **This is the final, current guideline** and the single source of truth for brand colour and type. `DESIGN.md` applies it to the website, and every value here lives as a token in `src/input.css`. Earlier versions (v2 Aurora, the v4 dark-mode draft) were removed on 19 Oct 2026; they remain in git history.
 
 ## 1. What changes in v3, and why
 
-v3 replaces the Aurora palette with **Signal**, built from your three favourites and tuned so each one does its job better: Pulse Blue `#2552FF`, Signal Red `#F84840` and Sky Blue `#3990E2`. Everything else in v2 that already works stays: the voice, Lucide icons, the 4px grid, layout and motion. (The final version later replaced Inter with Geist + Geist Mono, §8.)
+v3 replaces the Aurora palette with **Signal**, built from your three favourites and tuned so each one does its job better: Pulse Blue `#2552FF`, Signal Red `#F84840` and Sky Blue `#3990E2`. Everything else in v2 that already works stays: the voice, Lucide icons, the 4px grid, layout and motion. (The final version later replaced Inter with Geist + Geist Mono and set titles in Mona Sans, §8.)
 
 **How the final colours were chosen.** I searched every colour within a small distance of your originals (OKLCH, calculated in Python) and kept the one that fixed the most problems while still looking like your choice.
 
@@ -276,31 +276,37 @@ Keep the logo's shape; retune its two colours to Signal. The change is small eno
 
 **Don't:** stretch, rotate, recolour outside the variants above, add shadows or glows, place the full-colour logo on the gradient, or redraw it from a screenshot.
 
-## 8. Typography — Geist + Geist Mono (final)
+## 8. Typography — Mona Sans titles, Geist + Geist Mono (final)
+
+**Titles are Mona Sans** (GitHub, SIL OFL), semi-expanded: the owner's Option C, set on the website on 26 Oct 2026 and made final on 30 Oct 2026. It gives the four title sizes a wider, more confident voice while everything else stays Geist. It is self-hosted in Latin, Latin Extended and Vietnamese, cut to the range the titles use (weight 500–700, width 100–115%).
 
 Geist replaces Inter. It was chosen on 19 Oct 2026 from three pairings rendered with real Pulse components (the laptop audit table, the ranked list, the "94 → 31" stat) in English and Vietnamese. Geist stays neutral enough to let the colour carry the brand; Geist Mono gives the data its own clear voice. Both are open source (SIL OFL), self-hosted, cover every Vietnamese letter for the coming `vi` site, and have tabular figures.
 
 | Role                                   | Font                                 | Weights |
 | -------------------------------------- | ------------------------------------ | ------- |
-| Headings, big numbers                  | Geist                                | 500–600 |
+| Titles: hero, display, headline, title | Mona Sans, 112% width (title 108%)   | 600–620 |
+| Smaller headings, big numbers          | Geist                                | 500–600 |
 | Body, UI, labels, numbers in sentences | Geist, `tabular-nums` on for numbers | 400–600 |
 | Data: table values, numeric readouts   | Geist Mono (fixed-width digits)      | 400–600 |
 
 Geist Mono is only for data: the values in tables and readouts such as bit values. Never for headings, prose or labels. Product names in tables and the Missing flag stay in Geist.
 
-| Style    | Size            | Line-height | Weight  |
-| -------- | --------------- | ----------- | ------- |
-| Display  | 40 → 60px fluid | 1.1         | 600     |
-| Headline | 36 → 48px fluid | 1.12        | 600     |
-| Title    | 28 → 32px fluid | 1.18        | 550     |
-| Lead     | 18px            | 1.6         | 400     |
-| Body     | 16px            | 1.6         | 400     |
-| Data     | 14px            | 1.5         | 400–600 |
-| Caption  | 12px            | 1.4         | 500     |
+| Style    | Size            | Line-height | Weight  | Font       |
+| -------- | --------------- | ----------- | ------- | ---------- |
+| Hero     | 32 → 54px fluid | 1.1         | 620     | Mona Sans  |
+| Display  | 40 → 60px fluid | 1.1         | 620     | Mona Sans  |
+| Headline | 36 → 48px fluid | 1.12        | 620     | Mona Sans  |
+| Title    | 28 → 36px fluid | 1.18        | 600     | Mona Sans  |
+| Lead     | 18px            | 1.6         | 400     | Geist      |
+| Body     | 16px            | 1.6         | 400     | Geist      |
+| Data     | 14px            | 1.5         | 400–600 | Geist Mono |
+| Caption  | 12px            | 1.4         | 500     | Geist      |
+
+The Vietnamese home hero is capped at 50px so its phrases fit the column beside the demo. Big numbers set beside a title size stay Geist.
 
 **Headlines and titles never end with a full stop** (decided 19 Oct 2026): "Know which product data to fix first", not "…first.". A full stop between two sentences in one heading stays.
 
-One new rule for colour in type: **one red word or number per headline, at most.** The key number in a stat ("**94** of 216") may use `signal-text`; the rest of the headline stays Ink. Letter-spacing and the Vietnamese line-height rule (1.1 or above) are unchanged from v2. Fallbacks are metric-matched Arial (Geist) and Courier New (Geist Mono), so lines do not re-wrap when the fonts load. Inter's stylistic set 03 no longer applies.
+One new rule for colour in type: **one red word or number per headline, at most.** The key number in a stat ("**94** of 216") may use `signal-text`; the rest of the headline stays Ink. Letter-spacing and the Vietnamese line-height rule (1.1 or above) are unchanged from v2. Fallbacks are metric-matched Arial (Geist) and Courier New (Geist Mono), so lines do not re-wrap when the fonts load; Mona Sans falls back to Geist, so a slow load swaps one grotesque for another. Inter's stylistic set 03 no longer applies.
 
 ## 9. Visual identity, UI and charts
 
@@ -408,7 +414,7 @@ Example from the site: in "The emptiest field is usually the wrong one to fix", 
 | Aurora palette                       | Replaced                                                                     | 16 Oct 2026                    |
 | Missing in the hero demo             | Amber, no red exception                                                      | Proposed                       |
 | Logo colours                         | Signal gradient P, Pulse Blue wordmark                                       | Applied, 16 Oct 2026           |
-| Fonts                                | Geist + Geist Mono (replaces Inter)                                          | Changed, 19 Oct 2026           |
+| Fonts                                | Geist + Geist Mono (replaces Inter); titles in Mona Sans                     | 19 Oct 2026; titles 30 Oct     |
 | Dark mode                            | Follows the OS, no toggle; cool black surfaces `#0B0D12`, dark band included | Approved 16 Oct 2026           |
 | Chart colours                        | `chart-*` tokens, own dark values                                            | Applied, 19 Oct 2026           |
 | Mission, vision, values, brand owner | Section 2                                                                    | Open                           |

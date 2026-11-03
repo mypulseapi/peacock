@@ -71,6 +71,20 @@ export const SITE = {
   auth: origin("NEXT_PUBLIC_AUTH_URL", process.env.NEXT_PUBLIC_AUTH_URL),
 } as const;
 
+/**
+ * The company's legal name, from `NEXT_PUBLIC_COMPANY_NAME`. The brand stays "Pulse"; this is the
+ * entity behind it, for the company record, the copyright line and "made by". No fallback in a
+ * build, because a renamed company shipping the old name is worse than a failed build.
+ */
+export const COMPANY_NAME = (() => {
+  const value = (process.env.NEXT_PUBLIC_COMPANY_NAME ?? "").trim();
+  if (value) return value;
+  if (process.env.NODE_ENV === "production") {
+    throw new Error("NEXT_PUBLIC_COMPANY_NAME is not set. It is the company's legal name.");
+  }
+  return "the company (set NEXT_PUBLIC_COMPANY_NAME)";
+})();
+
 /** Paths on the dashboard that the site deep-links to. */
 export const APP_PATHS = {
   // Merchant sign-in lives in the dashboard: one page, Create account a mode of it.

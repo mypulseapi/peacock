@@ -130,7 +130,9 @@ export async function fetchFormConfig(): Promise<{ turnstileSiteKey: string | nu
   try {
     const response = await fetch(apiUrl("/public/forms/config"), { cache: "no-store" });
     if (!response.ok) return { turnstileSiteKey: null };
-    return await response.json();
+    // The gateway wraps every answer as `{ success, data }`; the key is inside `data`.
+    const body = await response.json();
+    return { turnstileSiteKey: body.data?.turnstileSiteKey ?? null };
   } catch {
     return { turnstileSiteKey: null };
   }

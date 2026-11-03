@@ -121,6 +121,13 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     decides: ["what-it-does", "is-it-proven"],
   },
   {
+    route: "/product/visual-evidence",
+    audience: "merchant",
+    area: "audit",
+    depth: "explainer",
+    decides: ["what-it-does", "how-it-works"],
+  },
+  {
     route: "/product/return-verification",
     audience: "merchant",
     area: "returns",

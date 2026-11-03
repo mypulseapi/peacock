@@ -81,6 +81,9 @@ export const metadata: Metadata = {
  * Built from the declared origins rather than written out, so adding a service to `SITE` cannot
  * leave it blocked by a policy nobody remembered to edit.
  */
+// Cloudflare Turnstile: the script and the challenge iframe on every form (src/components/Turnstile.tsx).
+const TURNSTILE = "https://challenges.cloudflare.com";
+
 const CSP = [
   "default-src 'self'",
   /*
@@ -91,7 +94,9 @@ const CSP = [
    * the old header-based CSP made the same exception for the same reason, and it was lost in the
    * move to a meta tag.
    */
-  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline' ${TURNSTILE}${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
+  // Turnstile renders its challenge in an iframe; without this the forms post an empty token.
+  `frame-src ${TURNSTILE}`,
   "style-src 'self' 'unsafe-inline'",
   `img-src 'self' data: blob: https://images.unsplash.com ${SITE.cdn}`,
   "font-src 'self' data:",

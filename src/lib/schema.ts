@@ -1,4 +1,4 @@
-import { SITE } from "./site";
+import { COMPANY_NAME, SITE } from "./site";
 import { SAME_AS } from "./social";
 import { img } from "./cdn";
 import { localeMeta } from "@/i18n/locales";
@@ -48,7 +48,7 @@ function organization(): GraphNode {
     "@type": "Organization",
     "@id": ORG_ID,
     name: "Pulse",
-    legalName: "Resolve Labs",
+    legalName: COMPANY_NAME,
     url: SITE.www,
     logo: {
       "@type": "ImageObject",

@@ -4,6 +4,7 @@
  */
 import assert from "node:assert/strict";
 import { talk, type Origins } from "../src/lib/assistant/talk";
+import { COMPANY_NAME } from "../src/lib/site";
 
 const o: Origins = {
   site: "https://thepulseapi.com",
@@ -61,7 +62,7 @@ assert.match(
   talk("which industries is pulse built for", "en", o)!.answer.body,
   /Cosmetics/,
 );
-assert.match(talk("who founded pulse", "en", o)!.answer.body, /Resolve Labs/);
+assert.ok(talk("who founded pulse", "en", o)!.answer.body.includes(COMPANY_NAME));
 assert.match(
   talk("does pulse work for shops in vietnam", "en", o)!.answer.body,
   /Southeast Asia/,

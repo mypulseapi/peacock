@@ -64,6 +64,7 @@ PULSE is a decision call: requirements and evidence in; for every option, fits, 
 - [Decision Audit](${en("/product/decision-audit")}): which product data to fix first, ranked by how many shoppers need it.
 - [Decision Verification](${en("/product/decision-verification")}): the same measurement on the repaired export, so a fix can be proved without traffic.
 - [Return Verification](${en("/product/return-verification")}): which missing product facts go with returns in your order history, and whether a repair moved them.
+- [Visual Evidence](${en("/product/visual-evidence")}): early access. Which product photo shows, contradicts or cannot show each fact a buyer needs, and the photo to add; benchmarked on public data, not yet run on a merchant.
 - [Promotion Audit](${en("/product/promotion-audit")}): which vouchers, price cuts and free-shipping offers paid for themselves after returns and failed deliveries, where to give nothing, and where a listing repair beats a discount.
 - [Decision Monitor](${en("/product/decision-monitor")}): what decays in a catalogue over time, and where.
 - [Decision API](${en("/product/decision-api")}): the endpoints behind all of it.

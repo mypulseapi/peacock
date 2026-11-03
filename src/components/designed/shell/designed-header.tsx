@@ -259,6 +259,26 @@ export function DesignedHeader() {
                           </li>
                           <li>
                             <Link
+                              href={designedHref("/en/product/visual-evidence")}
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
+                            >
+                              <span className="nav-icon-tile">
+                                <svg className="size-4" aria-hidden="true">
+                                  <use href="#i-image" />
+                                </svg>
+                              </span>
+                              <span className="min-w-0">
+                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                                  {t("visualName")}
+                                </span>
+                                <span className="mt-1 block text-sm text-pretty text-muted">
+                                  {t("visualBlurb")}
+                                </span>
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
                               href={designedHref("/en/product/promotion-audit")}
                               className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
                             >
@@ -679,6 +699,19 @@ export function DesignedHeader() {
                         </svg>
                       </span>
                       {t("returnName")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={designedHref("/en/product/visual-evidence")}
+                      className="flex min-h-12 items-center gap-3.5 rounded-control py-1 font-medium text-ink"
+                    >
+                      <span className="nav-icon-tile size-9">
+                        <svg className="size-4" aria-hidden="true">
+                          <use href="#i-image" />
+                        </svg>
+                      </span>
+                      {t("visualName")}
                     </Link>
                   </li>
                   <li>

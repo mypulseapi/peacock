@@ -22,6 +22,7 @@ const COLUMNS: Array<{ heading: string; links: Array<[string, string]> }> = [
       ["/en/product/decision-audit", "2"],
       ["/en/product/decision-verification", "3"],
       ["/en/product/return-verification", "returnName"],
+      ["/en/product/visual-evidence", "visualName"],
       ["/en/product/promotion-audit", "promotionName"],
       ["/en/product/decision-monitor", "4"],
     ],
@@ -143,7 +144,11 @@ export function DesignedFooter() {
       </div>
       <div className="border-t border-line">
         <div className="frame flex flex-col gap-3 py-4 text-data text-ink sm:flex-row sm:items-center sm:justify-between">
-          <p>{t("12").replace("{year}", String(new Date().getFullYear())).replace("{company}", COMPANY_NAME)}</p>
+          <p>
+            {t("12")
+              .replace("{year}", String(new Date().getFullYear()))
+              .replace("{company}", COMPANY_NAME)}
+          </p>
           <ul className="flex flex-wrap items-center gap-x-5 sm:gap-x-7 sm:gap-y-5">
             <li>
               <Link

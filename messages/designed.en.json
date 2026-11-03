@@ -1824,7 +1824,8 @@
       "searchName": "Search",
       "recsName": "Recommendations",
       "pagesName": "Pages",
-      "studioName": "Merchandising Studio"
+      "studioName": "Merchandising Studio",
+      "visualName": "Visual Evidence"
     },
     "designed-header": {
       "1": "Product",
@@ -1923,7 +1924,9 @@
       "goalAeoName": "Get Found by AI Agents",
       "goalAeoBlurb": "Product data search and answer engines can read",
       "goalLaunchName": "Launch Faster",
-      "goalLaunchBlurb": "Get a new range ready to sell sooner"
+      "goalLaunchBlurb": "Get a new range ready to sell sooner",
+      "visualName": "Visual Evidence",
+      "visualBlurb": "Which photo proves what the buyer needs, and the photo to add. Early access"
     },
     "designed-skip-link": {
       "1": "Skip to content"

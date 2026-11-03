@@ -1196,6 +1196,7 @@
       "/product/decision-audit": "Decision Audit",
       "/product/decision-verification": "Decision Verification",
       "/product/return-verification": "Return Verification",
+      "/product/visual-evidence": "Visual Evidence",
       "/product/decision-monitor": "Decision Monitor",
       "/product/decision-api": "Decision API",
       "/product/search": "Search",

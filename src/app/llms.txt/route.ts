@@ -1,4 +1,4 @@
-import { SITE } from "@/lib/site";
+import { COMPANY_NAME, SITE } from "@/lib/site";
 
 /*
  * Generated at build time, like robots.txt and sitemap.xml. `output: "export"` has no request to
@@ -30,7 +30,7 @@ export function GET() {
 
 > Pulse measures whether a merchant's product data is ready to support the buying decisions their
 > shoppers are trying to make. It ranks the attributes worth recording, in the merchant's own
-> catalogue, and re-measures once they have been filled in. It is built by Resolve Labs. The first
+> catalogue, and re-measures once they have been filled in. It is built by ${COMPANY_NAME}. The first
 > useful answer comes from a single category export: nothing has to go on the merchant's site, and
 > no traffic history is needed.
 
@@ -81,7 +81,7 @@ PULSE is a decision call: requirements and evidence in; for every option, fits, 
 - [The limits](${en("/why/limits")}): what the measurement does not tell you.
 
 ## Company
-- [About Resolve Labs](${en("/about")}): who builds this, and what we cannot show yet.
+- [About ${COMPANY_NAME}](${en("/about")}): who builds this, and what we cannot show yet.
 - [Pricing](${en("/pricing")}): how it is charged.
 - [Research](${en("/research")}): what we measured for each product, on what data, and the limit of each result; products not yet run on a real merchant are marked.
 - [Contact](${en("/contact")}): how to reach the team.

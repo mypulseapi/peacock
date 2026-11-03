@@ -88,6 +88,7 @@ jobs:
         env:
           NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://thepulseapi.com' }}
           NEXT_PUBLIC_DOCS_URL: ${{ vars.NEXT_PUBLIC_DOCS_URL || 'https://developer.thepulseapi.com' }}
+          NEXT_PUBLIC_COMPANY_NAME: ${{ vars.NEXT_PUBLIC_COMPANY_NAME }}
           NEXT_PUBLIC_APP_URL: ${{ vars.NEXT_PUBLIC_APP_URL || 'https://app.thepulseapi.com' }}
           NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL || 'https://api.thepulseapi.com' }}
           NEXT_PUBLIC_CDN_URL: ${{ vars.NEXT_PUBLIC_CDN_URL || 'https://cdn.thepulseapi.com' }}

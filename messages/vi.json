@@ -516,6 +516,7 @@
     "title": "Trạng thái hệ thống Pulse API",
     "description": "Trạng thái thời gian thực của các dịch vụ và cơ sở hạ tầng Pulse",
     "lastUpdated": "Cập nhật lần cuối:",
+    "sampleNotice": "Dữ liệu mẫu: trang này chưa kết nối với hệ thống giám sát thật. Các số liệu bên dưới chỉ là ví dụ, không phải số đo.",
     "allOperational": "Tất cả hệ thống hoạt động",
     "allOperationalDesc": "Tất cả dịch vụ Pulse đang chạy bình thường không có vấn đề được báo cáo.",
     "services": "Dịch vụ",

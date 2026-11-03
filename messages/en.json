@@ -516,6 +516,7 @@
     "title": "Pulse API system status",
     "description": "Real-time status of Pulse services and infrastructure",
     "lastUpdated": "Last updated:",
+    "sampleNotice": "Sample data: this page is not connected to live monitoring yet. The figures below are examples, not measurements.",
     "allOperational": "All Systems Operational",
     "allOperationalDesc": "All Pulse services are running normally with no reported issues.",
     "services": "Services",

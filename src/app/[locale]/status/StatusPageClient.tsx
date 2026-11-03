@@ -17,7 +17,8 @@ const VI: Record<string, string> = {
   Dashboard: "Bảng điều khiển",
   "Data Pipeline": "Luồng dữ liệu",
   Authentication: "Xác thực",
-  "Ranking endpoint for the Decision API": "Điểm cuối xếp hạng của Decision API",
+  "Ranking endpoint for the Decision API":
+    "Điểm cuối xếp hạng của Decision API",
   "Customer dashboard and analytics": "Bảng điều khiển khách hàng và phân tích",
   "Event ingestion and processing": "Thu nhận và xử lý sự kiện",
   "API key and OAuth services": "Dịch vụ khoá API và OAuth",
@@ -40,7 +41,16 @@ const VI: Record<string, string> = {
   "15 minutes": "15 phút",
   "8 minutes": "8 phút",
 };
-import { Activity, CheckCircle, Clock, Server, Globe, Zap, Database, Shield } from "lucide-react";
+import {
+  Activity,
+  CheckCircle,
+  Clock,
+  Server,
+  Globe,
+  Zap,
+  Database,
+  Shield,
+} from "lucide-react";
 import { NewsletterForm } from "@/components/NewsletterForm";
 
 export default function StatusPage() {
@@ -96,14 +106,16 @@ export default function StatusPage() {
     {
       date: "January 2, 2025",
       title: "Scheduled Maintenance Completed",
-      description: "Database optimization and security updates applied successfully.",
+      description:
+        "Database optimization and security updates applied successfully.",
       status: "resolved",
       duration: "15 minutes",
     },
     {
       date: "December 15, 2024",
       title: "Elevated API Latency",
-      description: "Brief period of increased latency in US East region due to traffic spike.",
+      description:
+        "Brief period of increased latency in US East region due to traffic spike.",
       status: "resolved",
       duration: "8 minutes",
     },
@@ -147,7 +159,13 @@ export default function StatusPage() {
         </p>
       </PageHero>
       <Section>
-
+        {/* Not connected to monitoring yet: every figure below is an example (rainbow BUG-88). */}
+        <p
+          role="note"
+          className="glass-card p-4 mb-8 text-center text-[var(--text-secondary)]"
+        >
+          {t("sampleNotice")}
+        </p>
 
         {/* Overall Status */}
         <div className="glass-card p-6 sm:p-8 mb-8 border-[var(--accent-secondary)]/30">
@@ -188,11 +206,17 @@ export default function StatusPage() {
                     </div>
                     <div className="flex items-center gap-6">
                       <div className="hidden sm:block text-right">
-                        <p className="text-sm text-[var(--text-secondary)]">{service.uptime} uptime</p>
-                        <p className="text-xs text-[var(--text-muted)]">{service.latency} avg</p>
+                        <p className="text-sm text-[var(--text-secondary)]">
+                          {service.uptime} uptime
+                        </p>
+                        <p className="text-xs text-[var(--text-muted)]">
+                          {service.latency} avg
+                        </p>
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className={`w-2.5 h-2.5 rounded-full ${getStatusColor(service.status)}`} />
+                        <div
+                          className={`w-2.5 h-2.5 rounded-full ${getStatusColor(service.status)}`}
+                        />
                         <span className="text-sm text-[var(--accent-secondary-light)] hidden sm:inline">
                           {getStatusText(service.status)}
                         </span>
@@ -213,13 +237,20 @@ export default function StatusPage() {
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {regions.map((region, idx) => (
-              <div key={idx} className="glass-card p-4 flex items-center justify-between">
+              <div
+                key={idx}
+                className="glass-card p-4 flex items-center justify-between"
+              >
                 <div className="flex items-center gap-3">
                   <span className="text-xl">{region.flag}</span>
-                  <span className="text-[var(--text-primary)]">{tr(region.name)}</span>
+                  <span className="text-[var(--text-primary)]">
+                    {tr(region.name)}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className={`w-2 h-2 rounded-full ${getStatusColor(region.status)}`} />
+                  <div
+                    className={`w-2 h-2 rounded-full ${getStatusColor(region.status)}`}
+                  />
                   <span className="text-sm text-[var(--accent-secondary-light)]">
                     {getStatusText(region.status)}
                   </span>
@@ -236,15 +267,21 @@ export default function StatusPage() {
           </h2>
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <p className="text-2xl sm:text-3xl font-bold text-gradient-green mb-1">99.99%</p>
+              <p className="text-2xl sm:text-3xl font-bold text-gradient-green mb-1">
+                99.99%
+              </p>
               <p className="text-sm text-[var(--text-muted)]">{t("last30")}</p>
             </div>
             <div>
-              <p className="text-2xl sm:text-3xl font-bold text-gradient-blue mb-1">99.98%</p>
+              <p className="text-2xl sm:text-3xl font-bold text-gradient-blue mb-1">
+                99.98%
+              </p>
               <p className="text-sm text-[var(--text-muted)]">{t("last90")}</p>
             </div>
             <div>
-              <p className="text-2xl sm:text-3xl font-bold text-gradient-purple mb-1">99.97%</p>
+              <p className="text-2xl sm:text-3xl font-bold text-gradient-purple mb-1">
+                99.97%
+              </p>
               <p className="text-sm text-[var(--text-muted)]">{t("last12m")}</p>
             </div>
           </div>
@@ -264,7 +301,9 @@ export default function StatusPage() {
                     <h3 className="font-medium text-[var(--text-primary)]">
                       {tr(incident.title)}
                     </h3>
-                    <p className="text-sm text-[var(--text-muted)]">{tr(incident.date)}</p>
+                    <p className="text-sm text-[var(--text-muted)]">
+                      {tr(incident.date)}
+                    </p>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-[var(--accent-secondary-light)]" />
@@ -295,7 +334,7 @@ export default function StatusPage() {
           </p>
           <NewsletterForm />
         </div>
-    </Section>
-  </>
+      </Section>
+    </>
   );
 }

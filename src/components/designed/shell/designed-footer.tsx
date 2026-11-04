@@ -144,12 +144,14 @@ export function DesignedFooter() {
       </div>
       <div className="border-t border-line">
         <div className="frame flex flex-col gap-3 py-4 text-data text-ink sm:flex-row sm:items-center sm:justify-between">
-          <p>
+          {/* Phones (owner, 4 Nov 2026): the copyright under the links, small capitals, both centred, and the links
+              at 10px so all four sit on one line, which at 375px only 10px allows. */}
+          <p className="max-sm:order-last max-sm:text-center max-sm:text-[10px] max-sm:uppercase">
             {t("12")
               .replace("{year}", String(new Date().getFullYear()))
               .replace("{company}", COMPANY_NAME)}
           </p>
-          <ul className="flex flex-wrap items-center gap-x-5 sm:gap-x-7 sm:gap-y-5">
+          <ul className="flex flex-wrap items-center gap-x-5 max-sm:justify-between max-sm:gap-x-2 max-sm:text-[10px] sm:gap-x-7 sm:gap-y-5">
             <li>
               <Link
                 href={designedHref("/en/privacy")}

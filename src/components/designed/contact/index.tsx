@@ -9,11 +9,13 @@
 import { Section1Section } from "./section1";
 import { Section2Section } from "./section2";
 import { Section3Section } from "./section3";
+import { CalculatorSection } from "../calculator";
 
 export function DesignedContact() {
   return (
     <>
       <Section1Section />
+      <CalculatorSection />
       <Section2Section />
       <Section3Section />
     </>

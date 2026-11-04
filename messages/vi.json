@@ -1333,5 +1333,13 @@
     "errResumeType": "Vui lòng tải lên tệp PDF hoặc Word",
     "errVerification": "Vui lòng hoàn tất phần xác minh bên dưới.",
     "errSubmitFailed": "Gửi hồ sơ không thành công. Vui lòng thử lại."
+  },
+  "calculator": {
+    "meta": {
+      "title": "Công cụ tính giá trị lưu lượng và chuyển đổi",
+      "description": "Nhập chi phí marketing, lượt truy cập và đơn hàng để thấy một lượt truy cập, một đơn hàng và mỗi điểm chuyển đổi đáng giá bao nhiêu với cửa hàng điện tử.",
+      "ogTitle": "Công cụ tính giá trị lưu lượng và chuyển đổi",
+      "ogDescription": "Nhập chi phí marketing, lượt truy cập và đơn hàng để thấy một lượt truy cập, một đơn hàng và mỗi điểm chuyển đổi đáng giá bao nhiêu với cửa hàng điện tử."
+    }
   }
 }

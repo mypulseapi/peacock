@@ -1854,7 +1854,8 @@
         "3": "Yêu cầu Decision Audit",
         "4": "Xem bảng giá",
         "5": "Một mức phí cố định, không ràng buộc, và nếu danh mục của bạn vốn đã ổn thì chúng tôi sẽ nói thẳng.",
-        "1": "Gửi cho chúng tôi một ngành hàng công nghệ và điện tử"
+        "1": "Gửi cho chúng tôi một ngành hàng công nghệ và điện tử",
+        "calculator": "Lưu lượng của bạn đáng giá bao nhiêu?"
       },
       "section2": {
         "1": "Ngành công nghệ và điện tử hiện ra sao",
@@ -2004,6 +2005,58 @@
       "38": "Liên hệ Cán bộ bảo vệ dữ liệu của chúng tôi",
       "39": "Với mọi thắc mắc liên quan đến GDPR hoặc để thực hiện các quyền của bạn, vui lòng liên hệ DPO của chúng tôi.",
       "consentBasis": "Khi được cung cấp một cách rõ ràng cho những hoạt động xử lý cụ thể."
+    }
+  },
+  "calculator": {
+    "page": {
+      "title": "Lưu lượng của bạn đáng giá bao nhiêu, theo chính số liệu của bạn",
+      "lede": "Bạn đã trả tiền để đưa người mua tới website và ứng dụng. Nhập số liệu tháng trước để thấy một lượt truy cập, một đơn hàng và một điểm chuyển đổi đáng giá bao nhiêu với bạn, rồi những câu hỏi người mua cần được trả lời trước khi mua.",
+      "industry": "Ngành:",
+      "industryName": "Công nghệ và điện tử",
+      "inputsTitle": "Tháng của bạn",
+      "spend": "Chi phí marketing và thu hút khách",
+      "visits": "Lượt truy cập website và ứng dụng",
+      "orders": "Đơn hàng hoàn tất",
+      "aov": "Giá trị đơn hàng trung bình",
+      "margin": "Biên lợi nhuận gộp (%)",
+      "currency": "Tiền tệ",
+      "lift": "Mức tăng chuyển đổi bạn muốn kiểm chứng",
+      "liftNote": "Đây là giả định của bạn, không phải cam kết của chúng tôi. Pulse chưa đo mức tăng nào trên cửa hàng của bạn; một nhóm đối chứng trên lưu lượng của bạn sẽ đo con số thật.",
+      "resultsTitle": "Mỗi lượt truy cập và đơn hàng tốn của bạn bao nhiêu",
+      "spendPerVisit": "Chi phí mỗi lượt truy cập",
+      "conversion": "Tỷ lệ chuyển đổi từ truy cập sang đơn hàng",
+      "costPerOrder": "Chi phí thu hút mỗi đơn hàng",
+      "revenuePerVisit": "Doanh thu mỗi lượt truy cập",
+      "perTenthPoint": "Lợi nhuận gộp từ mỗi 0,1 điểm chuyển đổi, mỗi tháng",
+      "liftTitle": "Nếu chuyển đổi tăng {lift}%",
+      "liftedConversion": "Tỷ lệ chuyển đổi",
+      "extraOrders": "Đơn hàng tăng thêm mỗi tháng",
+      "extraRevenue": "Doanh thu tăng thêm mỗi tháng",
+      "extraGrossProfit": "Lợi nhuận gộp tăng thêm mỗi tháng",
+      "liftedCostPerOrder": "Chi phí thu hút mỗi đơn hàng",
+      "empty": "Nhập ít nhất lượt truy cập và đơn hàng để xem số liệu của bạn. Những gì bạn nhập không rời khỏi trang này.",
+      "questionsTitle": "Điều người mua của bạn cần xác nhận trước khi mua",
+      "questionsLede": "Một lượt truy cập bạn đã trả tiền chỉ thành đơn hàng khi người mua xác nhận được sản phẩm đáp ứng nhu cầu của họ. Đây là những câu hỏi quyết định điều đó.",
+      "laptopName": "Laptop",
+      "laptop-portable": "Đủ nhẹ để mang theo mỗi ngày: trọng lượng và kích thước",
+      "laptop-two-monitors": "Xuất được hai màn hình ngoài: cổng xuất hình và số màn hình hỗ trợ",
+      "laptop-all-day-battery": "Dùng cả ngày làm việc không cần sạc: thời lượng pin",
+      "laptop-memory": "Đủ RAM cho công việc: dung lượng RAM và có nâng cấp được không",
+      "laptop-screen": "Kích thước màn hình họ muốn",
+      "laptop-operating-system": "Chạy hệ điều hành họ cần",
+      "laptop-look": "Màu sắc và hoàn thiện họ muốn",
+      "monitorName": "Màn hình",
+      "monitor-size": "Kích thước màn hình họ muốn",
+      "monitor-sharpness": "Độ phân giải đủ cao",
+      "monitor-smooth-motion": "Tần số quét bằng hoặc cao hơn mức họ cần",
+      "monitor-connects": "Kết nối được với máy tính của họ: cổng đầu vào",
+      "monitor-desk-fit": "Vừa bàn làm việc: kích thước",
+      "monitor-look": "Màu sắc họ muốn",
+      "questionsNote": "Từ thư viện yêu cầu của Pulse. Decision Audit miễn phí cho thấy sản phẩm nào của bạn chưa trả lời được từng câu.",
+      "measureTitle": "Chúng tôi đo con số thật trên lưu lượng của bạn",
+      "measureBody": "Sửa những bằng chứng quan trọng, giữ lại một phần lưu lượng làm nhóm đối chứng, rồi so sánh. Bạn thấy kết quả đo được, tốt hay không, trước khi bất kỳ ai gọi đó là mức tăng.",
+      "cta": "Yêu cầu Decision Audit",
+      "ctaNote": "Một tệp xuất ngành hàng · Không cần tích hợp · 48 giờ"
     }
   }
 }

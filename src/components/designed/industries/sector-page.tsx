@@ -511,6 +511,12 @@ export function SectorPage({ s }: { s: Sector }) {
             <Link href={designedHref("/en/pricing")} className="btn-secondary">
               {t6("4")}
             </Link>
+            {/* The calculator has an industry layer for technology only, so far (CONVERSION-MODEL.md § 3). */}
+            {s.slug === "technology" && (
+              <Link href={designedHref("/en/calculator")} className="btn-ghost">
+                {t6("calculator")}
+              </Link>
+            )}
           </div>
           <p className="reveal mx-auto mt-6 max-w-md text-sm text-pretty text-muted delay-300">
             {t6("5")}

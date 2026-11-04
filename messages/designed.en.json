@@ -1269,7 +1269,8 @@
         "2": "Pick the shelf where you most suspect buyers struggle. You get a ranked list, the affected products, and half an hour with whoever owns merchandising.",
         "3": "Request a Decision Audit",
         "4": "View pricing",
-        "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so."
+        "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so.",
+        "calculator": "What is your traffic worth?"
       }
     },
     "sectorPage": {
@@ -2128,6 +2129,58 @@
       "4": "What we can and cannot claim",
       "measuredIn": "Measured in October 2026. Nothing on this page is for sale.",
       "isTheRest": "is the rest of it."
+    }
+  },
+  "calculator": {
+    "page": {
+      "title": "What your traffic is worth, in your own numbers",
+      "lede": "You already pay to bring shoppers to your site and app. Enter last month's figures to see what a visit, an order and one point of conversion are worth to you, then the questions your shoppers need answered before they buy.",
+      "industry": "Industry:",
+      "industryName": "Technology and electronics",
+      "inputsTitle": "Your month",
+      "spend": "Marketing and acquisition spend",
+      "visits": "Website and app visits",
+      "orders": "Completed orders",
+      "aov": "Average order value",
+      "margin": "Gross margin (%)",
+      "currency": "Currency",
+      "lift": "Conversion lift you want to test",
+      "liftNote": "Your assumption, not our promise. Pulse has not measured an uplift on your store; a held-back control group on your traffic measures the real one.",
+      "resultsTitle": "What each visit and order costs you",
+      "spendPerVisit": "Spend per visit",
+      "conversion": "Visit-to-order conversion",
+      "costPerOrder": "Acquisition cost per order",
+      "revenuePerVisit": "Revenue per visit",
+      "perTenthPoint": "Gross profit from each 0.1 point of conversion, a month",
+      "liftTitle": "If conversion rose by {lift}%",
+      "liftedConversion": "Conversion",
+      "extraOrders": "Extra orders a month",
+      "extraRevenue": "Extra revenue a month",
+      "extraGrossProfit": "Extra gross profit a month",
+      "liftedCostPerOrder": "Acquisition cost per order",
+      "empty": "Enter at least visits and orders to see your numbers. Nothing you type leaves this page.",
+      "questionsTitle": "What your shoppers need to confirm before they buy",
+      "questionsLede": "A visit you paid for ends in an order only when the shopper can confirm the product does what they need. These are the questions that decide it.",
+      "laptopName": "Laptops",
+      "laptop-portable": "Light enough to carry every day: weight and dimensions",
+      "laptop-two-monitors": "Drives two external monitors: display ports and supported displays",
+      "laptop-all-day-battery": "Lasts a working day unplugged: battery life",
+      "laptop-memory": "Enough memory for the work: RAM, and whether it can be upgraded",
+      "laptop-screen": "The screen size they want",
+      "laptop-operating-system": "Runs the operating system they need",
+      "laptop-look": "The colour and finish they want",
+      "monitorName": "Monitors",
+      "monitor-size": "The screen size they want",
+      "monitor-sharpness": "High enough resolution",
+      "monitor-smooth-motion": "A refresh rate at or above what they need",
+      "monitor-connects": "Connects to their computer: input ports",
+      "monitor-desk-fit": "Fits the desk: dimensions",
+      "monitor-look": "The colour they want",
+      "questionsNote": "From the Pulse requirement library. The free Decision Audit shows which of your products cannot answer each one.",
+      "measureTitle": "We measure the real number on your traffic",
+      "measureBody": "Repair the evidence that matters, hold back a share of traffic as a control, and compare. You see the measured result, positive or not, before anyone calls it an uplift.",
+      "cta": "Request a Decision Audit",
+      "ctaNote": "One category export · No integration · 48 hours"
     }
   }
 }

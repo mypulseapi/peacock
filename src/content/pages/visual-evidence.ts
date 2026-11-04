@@ -25,7 +25,7 @@ export const VISUAL_EVIDENCE: ChapterContent = {
   },
   eyebrow: "Visual Evidence · Early access",
   title: "Know which photos prove what buyers need.",
-  lede: "Visual Evidence reads your product photos the way the Decision Audit reads your data. For each buying requirement it says whether a photo shows the fact, contradicts your record, or cannot show it at all, and which photo to add before which field to fill.",
+  lede: "Visual Evidence checks product photos against buying requirements, revealing what they prove, what contradicts your data, and what they can't show—so you know which photo to add before updating product fields.",
 
   // The hero picture (owner's generated set, 4 Nov 2026), on the CDN like the other product heroes.
   heroImage: {
@@ -158,7 +158,7 @@ export const VISUAL_EVIDENCE_VI: ChapterContent = {
   },
   eyebrow: "Visual Evidence · Truy cập sớm",
   title: "Biết ảnh nào chứng minh điều người mua cần.",
-  lede: "Visual Evidence đọc ảnh sản phẩm của bạn giống như Decision Audit đọc dữ liệu. Với mỗi yêu cầu mua hàng, nó cho biết ảnh có cho thấy thông tin không, có mâu thuẫn với dữ liệu không, hay không thể cho thấy, và nên thêm ảnh nào trước, điền trường nào trước.",
+  lede: "Visual Evidence đối chiếu ảnh sản phẩm với các yêu cầu mua hàng, cho thấy ảnh chứng minh được gì, điều gì mâu thuẫn với dữ liệu của bạn và điều gì ảnh không thể hiện được—để bạn biết nên thêm ảnh nào trước khi cập nhật các trường sản phẩm.",
 
   // The hero picture (owner's generated set, 4 Nov 2026), on the CDN like the other product heroes.
   heroImage: {

@@ -2117,8 +2117,8 @@
   },
   "calculator": {
     "page": {
-      "title": "What your traffic is worth, in your own numbers",
-      "lede": "You already pay to bring shoppers to your site and app. Enter last month's figures to see what a visit, an order and one point of conversion are worth to you, then the questions your shoppers need answered before they buy.",
+      "title": "What would better product pages earn you?",
+      "lede": "Your marketing already buys the visits. See what each one is worth, and what a lift in conversion adds to your gross profit. Start from the example store, then type in your own month.",
       "industry": "Industry:",
       "industryName": "Technology and electronics",
       "inputsTitle": "Your month",
@@ -2128,20 +2128,14 @@
       "aov": "Average order value",
       "margin": "Gross margin (%)",
       "currency": "Currency",
-      "lift": "Conversion lift you want to test",
+      "lift": "Conversion lift to test",
       "liftNote": "Your assumption, not our promise. Pulse has not measured an uplift on your store; a held-back control group on your traffic measures the real one.",
-      "resultsTitle": "What each visit and order costs you",
+      "resultsTitle": "Your funnel today",
       "spendPerVisit": "Spend per visit",
       "conversion": "Visit-to-order conversion",
-      "costPerOrder": "Acquisition cost per order",
+      "costPerOrder": "Acquisition cost per order, now → after the lift",
       "revenuePerVisit": "Revenue per visit",
       "perTenthPoint": "Gross profit from each 0.1 point of conversion, a month",
-      "liftTitle": "If conversion rose by {lift}%",
-      "liftedConversion": "Conversion",
-      "extraOrders": "Extra orders a month",
-      "extraRevenue": "Extra revenue a month",
-      "extraGrossProfit": "Extra gross profit a month",
-      "liftedCostPerOrder": "Acquisition cost per order",
       "empty": "Enter at least visits and orders to see your numbers. Nothing you type leaves this page.",
       "questionsTitle": "What your shoppers need to confirm before they buy",
       "questionsLede": "A visit you paid for ends in an order only when the shopper can confirm the product does what they need. These are the questions that decide it.",
@@ -2161,7 +2155,11 @@
       "monitor-desk-fit": "Fits the desk: dimensions",
       "monitor-look": "The colour they want",
       "questionsNote": "From the Pulse requirement library. The free Decision Audit shows which of your products cannot answer each one.",
-      "measureBody": "Repair the evidence that matters, hold back a share of traffic as a control, and compare. You see the measured result, positive or not, before anyone calls it an uplift."
+      "measureBody": "Repair the evidence that matters, hold back a share of traffic as a control, and compare. You see the measured result, positive or not, before anyone calls it an uplift.",
+      "exampleNote": "Example store: replace with your numbers",
+      "reset": "Back to the example store",
+      "headline": "Extra gross profit a month",
+      "headlineSub": "{orders} more orders and {revenue} more revenue, as conversion goes from {from} to {to}"
     }
   }
 }

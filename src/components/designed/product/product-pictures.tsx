@@ -132,6 +132,23 @@ const FILES: Record<
 
 // The two solution pages (owner's pick B, 29 Oct 2026): each step and gain is the product page's own
 // picture for the same thing, and the three that no product page had were made for them.
+// Visual Evidence (owner's generated set, 4 Nov 2026).
+FILES["visual-evidence"] = {
+  situation:
+    "product/visual-evidence-situation-gallery-complete-question-open.webp",
+  steps: [
+    "product/visual-evidence-step-1-send-one-category-with-images.webp",
+    "product/visual-evidence-step-2-check-each-photo-against-requirements.webp",
+    "product/visual-evidence-step-3-photo-and-data-repairs-ranked.webp",
+  ],
+  gains: [
+    "product/visual-evidence-gain-1-facts-photos-show-data-lacks.webp",
+    "product/visual-evidence-gain-2-photos-that-contradict-data.webp",
+    "product/visual-evidence-gain-3-the-photo-to-add.webp",
+    "product/visual-evidence-gain-4-what-no-photo-can-show.webp",
+    "product/visual-evidence-gain-5-a-model-that-says-cannot-tell.webp",
+  ],
+};
 FILES["fixable-returns"] = {
   steps: [
     "product/fixable-returns-step-1-find-the-facts-the-catalogue-cannot-answer.webp",

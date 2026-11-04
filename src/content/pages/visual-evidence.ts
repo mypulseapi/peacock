@@ -27,6 +27,14 @@ export const VISUAL_EVIDENCE: ChapterContent = {
   title: "Find out which product photo proves what the buyer needs to know.",
   lede: "Visual Evidence reads your product photos the way the Decision Audit reads your data. For each buying requirement it says whether a photo shows the fact, contradicts your record, or cannot show it at all, and which photo to add before which field to fill.",
 
+  // The hero picture (owner's generated set, 4 Nov 2026), on the CDN like the other product heroes.
+  heroImage: {
+    src: "product/visual-evidence-hero-photos-against-requirements.webp",
+    width: 1400,
+    height: 700,
+    alt: "A laptop's photo gallery, one side photo under a magnifying glass, joined to a card of buying requirements: ports shown in the photo, colour contradicting the data, the port side needing a photo, and battery life, which no photo can show.",
+  },
+
   situation: {
     heading: "A complete gallery can still leave the question open.",
     body: [
@@ -152,6 +160,14 @@ export const VISUAL_EVIDENCE_VI: ChapterContent = {
   title: "Biết ảnh sản phẩm nào chứng minh điều người mua cần biết.",
   lede: "Visual Evidence đọc ảnh sản phẩm của bạn giống như Decision Audit đọc dữ liệu. Với mỗi yêu cầu mua hàng, nó cho biết ảnh có cho thấy thông tin không, có mâu thuẫn với dữ liệu không, hay không thể cho thấy, và nên thêm ảnh nào trước, điền trường nào trước.",
 
+  // The hero picture (owner's generated set, 4 Nov 2026), on the CDN like the other product heroes.
+  heroImage: {
+    src: "product/visual-evidence-hero-photos-against-requirements.webp",
+    width: 1400,
+    height: 700,
+    alt: "Bộ ảnh của một chiếc laptop, một ảnh cạnh bên dưới kính lúp, nối với thẻ yêu cầu mua hàng: cổng kết nối có trong ảnh, màu mâu thuẫn với dữ liệu, mặt cổng cần thêm ảnh, và thời lượng pin, điều không ảnh nào cho thấy.",
+  },
+
   situation: {
     heading: "Một bộ ảnh đầy đủ vẫn có thể để câu hỏi bỏ ngỏ.",
     body: [
@@ -268,3 +284,43 @@ export const VISUAL_EVIDENCE_VI: ChapterContent = {
 
 export const visualEvidence = (locale: string) =>
   byLocale({ en: VISUAL_EVIDENCE, vi: VISUAL_EVIDENCE_VI }, locale);
+
+/** The situation, step and gain pictures' alt text, in the order `product-pictures.tsx` lists them. */
+export const visualEvidencePictureAlt = (l: string) =>
+  byLocale(
+    {
+      en: {
+        situation:
+          "A complete gallery of laptop photos marked gallery complete, beside a shopper with a question: the port side is still a question mark, and battery life is marked as something no photo can show.",
+        steps: [
+          "A spreadsheet of products, categories and image links sliding into an upload tray, with a badge saying no customer data.",
+          "A laptop's side photo under a scanning frame, passed to the requirement engine, which marks ports as shown in a photo, soldered memory as no photo, and battery life as never.",
+          "A ranked list of repairs: first add a photo of the port side, then record the ports, then reconcile the colour, linked to the photos and the data they change.",
+        ],
+        gains: [
+          "The ports in a laptop's side photo lifted into the data, where the ports row is now checked while soldered memory and battery life stay empty.",
+          "A data card saying colour navy and two HDMI ports, contradicted by a photo of a green laptop with one HDMI port, beside a returned parcel.",
+          "A laptop gallery with an empty slot for a photo of the port side, linked to a desk where the laptop drives two monitors.",
+          "Battery life, weight and upgradeable memory, each marked as something no photo can show, all leading to one place: record it.",
+          "An AI chip saying cannot tell, beside a benchmark scorecard where cannot tell scores higher than a lucky guess.",
+        ],
+      },
+      vi: {
+        situation:
+          "Bộ ảnh laptop đầy đủ được đánh dấu là hoàn chỉnh, bên cạnh một người mua đang thắc mắc: mặt cổng vẫn là dấu hỏi, còn thời lượng pin được đánh dấu là điều không ảnh nào cho thấy.",
+        steps: [
+          "Một bảng tính gồm sản phẩm, ngành hàng và đường dẫn ảnh đi vào khay tải lên, kèm nhãn không có dữ liệu khách hàng.",
+          "Ảnh cạnh bên của laptop trong khung quét, chuyển tới bộ máy yêu cầu, nơi cổng kết nối được đánh dấu là có trong ảnh, bộ nhớ hàn chết là không có ảnh, và thời lượng pin là không bao giờ.",
+          "Danh sách việc sửa đã xếp hạng: trước tiên thêm ảnh mặt cổng, rồi ghi cổng kết nối vào dữ liệu, rồi đối chiếu màu, nối với ảnh và dữ liệu mà chúng thay đổi.",
+        ],
+        gains: [
+          "Cổng kết nối trong ảnh cạnh bên của laptop được đưa vào dữ liệu: dòng cổng kết nối đã được đánh dấu, còn bộ nhớ hàn chết và thời lượng pin vẫn để trống.",
+          "Thẻ dữ liệu ghi màu xanh navy và hai cổng HDMI, mâu thuẫn với ảnh một chiếc laptop màu xanh lá có một cổng HDMI, bên cạnh một kiện hàng bị trả.",
+          "Bộ ảnh laptop có một ô trống cho ảnh mặt cổng, nối với một bàn làm việc nơi laptop nối với hai màn hình.",
+          "Thời lượng pin, trọng lượng và bộ nhớ nâng cấp được, mỗi thứ được đánh dấu là điều không ảnh nào cho thấy, cùng dẫn về một chỗ: ghi vào dữ liệu.",
+          "Một con chip AI nói không xác định được, bên cạnh bảng điểm kiểm thử nơi không xác định được đạt điểm cao hơn một lần đoán may.",
+        ],
+      },
+    },
+    l,
+  );

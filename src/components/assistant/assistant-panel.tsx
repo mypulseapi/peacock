@@ -13,6 +13,23 @@ import {
 
 const SEEN_KEY = "pulse-assistant-greeted";
 
+/** The launcher's inset from the screen edges on a phone: `right-4 bottom-4`. */
+const EDGE = 16;
+
+/**
+ * Keep a dragged launcher on screen and below the sticky header. `x` and `y` are offsets from its
+ * resting place in the bottom-right corner, so both run from 0 down to negative.
+ */
+function clampLauncher(x: number, y: number, w: number, h: number) {
+  const top =
+    (document.querySelector("header")?.getBoundingClientRect().bottom ?? 0) +
+    EDGE;
+  return {
+    x: Math.min(0, Math.max(x, 2 * EDGE + w - window.innerWidth)),
+    y: Math.min(0, Math.max(y, top + h + EDGE - window.innerHeight)),
+  };
+}
+
 const COPY = {
   en: {
     open: "Ask Pulse",
@@ -346,6 +363,38 @@ export function AssistantPanel({ lang }: { lang: "en" | "vi" }) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  /*
+   * On a phone the launcher can be dragged out of the way (owner, 4 Nov 2026): in the bottom-right
+   * corner it covers whatever is there, the footer's legal links included. Let go and it sticks to
+   * the nearer side edge at the height it was dropped; a press that does not move is still a tap.
+   * The offset lives here rather than on the button so it survives the panel opening and closing.
+   * A width change (rotation) puts it back in the corner; a height change does not, because the
+   * address bar showing and hiding while scrolling changes the height.
+   */
+  const [offset, setOffset] = useState<{ x: number; y: number } | null>(null);
+  const [dragging, setDragging] = useState(false);
+  const drag = useRef<{
+    px: number;
+    py: number;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+    moved: boolean;
+  } | null>(null);
+  const dragged = useRef(false);
+
+  useEffect(() => {
+    let width = window.innerWidth;
+    const onResize = () => {
+      if (window.innerWidth === width) return;
+      width = window.innerWidth;
+      setOffset(null);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   const submit = () => {
     ask(draft);
     setDraft("");
@@ -355,9 +404,73 @@ export function AssistantPanel({ lang }: { lang: "en" | "vi" }) {
     return (
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          if (dragged.current) {
+            dragged.current = false;
+            return;
+          }
+          setOpen(true);
+        }}
+        onPointerDown={(e) => {
+          if (!window.matchMedia("(max-width: 639px)").matches) return;
+          const r = e.currentTarget.getBoundingClientRect();
+          drag.current = {
+            px: e.clientX,
+            py: e.clientY,
+            x: offset?.x ?? 0,
+            y: offset?.y ?? 0,
+            w: r.width,
+            h: r.height,
+            moved: false,
+          };
+          e.currentTarget.setPointerCapture(e.pointerId);
+        }}
+        onPointerMove={(e) => {
+          const d = drag.current;
+          if (!d) return;
+          const dx = e.clientX - d.px;
+          const dy = e.clientY - d.py;
+          if (!d.moved && Math.hypot(dx, dy) < 6) return;
+          if (!d.moved) setDragging(true);
+          d.moved = true;
+          setOffset(clampLauncher(d.x + dx, d.y + dy, d.w, d.h));
+        }}
+        onPointerUp={(e) => {
+          const d = drag.current;
+          drag.current = null;
+          if (!d?.moved) return;
+          dragged.current = true;
+          setDragging(false);
+          const at = clampLauncher(
+            d.x + e.clientX - d.px,
+            d.y + e.clientY - d.py,
+            d.w,
+            d.h,
+          );
+          // The button's centre, measured from the left; the default place is the right edge.
+          const centre = window.innerWidth - EDGE - d.w / 2 + at.x;
+          setOffset({
+            x:
+              centre < window.innerWidth / 2
+                ? 2 * EDGE + d.w - window.innerWidth
+                : 0,
+            y: at.y,
+          });
+        }}
+        onPointerCancel={() => {
+          drag.current = null;
+          setDragging(false);
+        }}
+        style={
+          offset
+            ? {
+                transform: `translate(${offset.x}px, ${offset.y}px)`,
+                transition: dragging ? "none" : undefined,
+              }
+            : undefined
+        }
         aria-label={t.open}
-        className="bg-primary fixed right-4 bottom-4 z-40 flex items-center gap-2 rounded-full px-4 py-3 text-sm font-medium text-on-primary shadow-nav transition-transform duration-150 hover:scale-[1.03] sm:right-5 sm:bottom-5"
+        className="bg-primary fixed right-4 bottom-4 z-40 flex items-center gap-2 rounded-full px-4 py-3 text-sm font-medium text-on-primary shadow-nav transition-transform duration-150 hover:scale-[1.03] motion-reduce:transition-none max-sm:touch-none sm:right-5 sm:bottom-5"
       >
         <Sparkles className="size-4 shrink-0" />
         <span className="hidden sm:inline">{t.open}</span>

@@ -1,4 +1,6 @@
 import { byLocale } from "@/content/locale";
+import { SOCIAL } from "@/lib/social";
+import { docsUrl } from "@/lib/site";
 
 /**
  * Open Pulse, the open-source page. Copy from the dev's brief (OPEN-PULSE-WEBSITE-CONTENT.md,
@@ -115,10 +117,10 @@ export interface OpensourceContent {
   };
 }
 
-export const GITHUB = "https://github.com/mypulseapi/open-pulse";
-export const GITHUB_ISSUE =
-  "https://github.com/mypulseapi/open-pulse/issues/new";
-export const DOCS = "https://developer.thepulseapi.com/opensource";
+/** The repository, from `NEXT_PUBLIC_OPENSOURCE_REPO_URL` (src/lib/social.ts); never a URL in code. */
+export const GITHUB = SOCIAL.repo ?? "";
+export const GITHUB_ISSUE = GITHUB && `${GITHUB}/issues/new`;
+export const DOCS = docsUrl("/opensource");
 /** The install line on the hero's repository card: the MCP server, the package an agent builder starts with. */
 export const INSTALL = "npm i @thepulseapi/mcp";
 

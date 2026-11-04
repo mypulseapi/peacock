@@ -102,16 +102,17 @@ jobs:
           NEXT_PUBLIC_APP_SIGNUP_PATH: ${{ vars.NEXT_PUBLIC_APP_SIGNUP_PATH || '/register' }}
           NEXT_PUBLIC_APP_API_KEY_PATH: ${{ vars.NEXT_PUBLIC_APP_API_KEY_PATH || '/settings/api' }}
           NEXT_PUBLIC_GOOGLE_ENABLED: ${{ vars.NEXT_PUBLIC_GOOGLE_ENABLED || 'false' }}
-          NEXT_PUBLIC_GITHUB_URL: ${{ vars.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/mypulseapi' }}
-          NEXT_PUBLIC_LINKEDIN_URL: ${{ vars.NEXT_PUBLIC_LINKEDIN_URL || 'https://www.linkedin.com/company/thepulseapi/' }}
+          NEXT_PUBLIC_GITHUB_URL: ${{ vars.NEXT_PUBLIC_GITHUB_URL }}
+          NEXT_PUBLIC_LINKEDIN_URL: ${{ vars.NEXT_PUBLIC_LINKEDIN_URL }}
+          NEXT_PUBLIC_FACEBOOK_URL: ${{ vars.NEXT_PUBLIC_FACEBOOK_URL }}
+          NEXT_PUBLIC_OPENSOURCE_REPO_URL: ${{ vars.NEXT_PUBLIC_OPENSOURCE_REPO_URL }}
           NEXT_PUBLIC_CONTACT_EMAIL: ${{ vars.NEXT_PUBLIC_CONTACT_EMAIL || 'getintouch@thepulseapi.com' }}
           NEXT_PUBLIC_SALES_EMAIL: ${{ vars.NEXT_PUBLIC_SALES_EMAIL || 'sales@thepulseapi.com' }}
           NEXT_PUBLIC_SUPPORT_EMAIL: ${{ vars.NEXT_PUBLIC_SUPPORT_EMAIL || 'support@thepulseapi.com' }}
           NEXT_PUBLIC_PARTNERS_EMAIL: ${{ vars.NEXT_PUBLIC_PARTNERS_EMAIL || 'partners@thepulseapi.com' }}
           NEXT_PUBLIC_PRESS_EMAIL: ${{ vars.NEXT_PUBLIC_PRESS_EMAIL || 'press@thepulseapi.com' }}
           NEXT_PUBLIC_CAREERS_EMAIL: ${{ vars.NEXT_PUBLIC_CAREERS_EMAIL || 'careers@thepulseapi.com' }}
-          NEXT_PUBLIC_CALENDLY_ELENA_URL: ${{ vars.NEXT_PUBLIC_CALENDLY_ELENA_URL || 'https://calendly.com/elena-nguyen-thepulseapi/30min' }}
-          NEXT_PUBLIC_CALENDLY_ROSIE_URL: ${{ vars.NEXT_PUBLIC_CALENDLY_ROSIE_URL || 'https://calendly.com/rosie-tran-thepulseapi/30min' }}
+          NEXT_PUBLIC_TEAM: ${{ vars.NEXT_PUBLIC_TEAM }}
         run: pnpm build
 
       - name: SEO and AEO gates

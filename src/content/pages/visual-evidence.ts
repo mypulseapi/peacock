@@ -157,8 +157,8 @@ export const VISUAL_EVIDENCE_VI: ChapterContent = {
       "Kiểm tra ảnh sản phẩm theo những gì người mua cần biết: thông tin ảnh cho thấy nhưng dữ liệu thiếu, ảnh mâu thuẫn với dữ liệu, và ảnh cần thêm. Truy cập sớm.",
   },
   eyebrow: "Visual Evidence · Truy cập sớm",
-  title: "Biết ảnh nào chứng minh điều người mua cần.",
-  lede: "Visual Evidence đối chiếu ảnh sản phẩm với các yêu cầu mua hàng, cho thấy ảnh chứng minh được gì, điều gì mâu thuẫn với dữ liệu của bạn và điều gì ảnh không thể hiện được—để bạn biết nên thêm ảnh nào trước khi cập nhật các trường sản phẩm.",
+  title: "Biết ảnh nào chứng minh điều người mua cần biết.",
+  lede: "Visual Evidence đối chiếu ảnh sản phẩm với yêu cầu mua hàng, xác định thông tin được chứng minh, mâu thuẫn hoặc không thể hiện qua ảnh, đồng thời gợi ý ảnh cần bổ sung và dữ liệu cần cập nhật theo thứ tự ưu tiên.",
 
   // The hero picture (owner's generated set, 4 Nov 2026), on the CDN like the other product heroes.
   heroImage: {

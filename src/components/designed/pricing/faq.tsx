@@ -1,7 +1,7 @@
 /** Pricing questions, answered in a sentence each, so an answer engine can lift one on its own. */
 import { designedText } from "../t";
 
-const QUESTIONS = ["faq1", "faq2", "faq3", "faq4"] as const;
+const QUESTIONS = ["faq1", "faq2", "faq3", "faq4", "faq5"] as const;
 
 /** The same questions as a FAQPage graph node, so the schema cannot drift from the page. */
 export function pricingFaqSchema() {

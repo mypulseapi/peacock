@@ -45,8 +45,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       "No cookies, no login required",
     ],
   };
-  // ponytail: no `offers` in the JSON-LD, pricing is negotiated per pilot, and a
-  // hardcoded price here would be the one uplift-style claim we cannot support.
+  // ponytail: no `offers` in the JSON-LD; the plans and their USD prices live on /pricing
+  // (rainbow ODIN/product/PRICING.md §3.7), and a second copy here would drift from it.
 
   return (
     <>

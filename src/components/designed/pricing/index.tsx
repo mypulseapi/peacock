@@ -10,6 +10,7 @@ import { Section1Section } from "./section1";
 import { Section2Section } from "./section2";
 import { Section3Section } from "./section3";
 import { Section4Section } from "./section4";
+import { PlansSection } from "./plans";
 import { CountedSection } from "./counted";
 import { PricingFaq } from "./faq";
 
@@ -17,6 +18,7 @@ export function DesignedPricing() {
   return (
     <>
       <Section1Section />
+      <PlansSection />
       <Section2Section />
       <CountedSection />
       <Section3Section />

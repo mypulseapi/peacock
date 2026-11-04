@@ -133,7 +133,7 @@ export const DECISION_API: ChapterContent = {
     ],
     wont: [
       "Come with an uplift figure. We have run no live experiment, so any percentage would be someone else's store or an invention",
-      "Be sold before a pilot. Pricing is agreed per pilot, because what it is worth depends on your catalogue and your traffic",
+      "Run without a cap. Every plan includes a set number of calls, and calls past it are billed per 1,000 rather than cut off",
       "Replace your search or your storefront",
       "Help much on a catalogue that has not been repaired first",
     ],
@@ -167,7 +167,7 @@ export const DECISION_API: ChapterContent = {
     body: "The runtime comes after a pilot, and the pilot comes after a shelf worth ranking. That begins with one category export.",
     label: "Request a Decision Audit",
     href: "/contact",
-    note: "Runtime pricing is agreed per pilot, never before one.",
+    note: "The Decision API is in the Growth plan and above, from $990 a month.",
   },
 };
 
@@ -303,7 +303,7 @@ export const DECISION_API_VI: ChapterContent = {
     ],
     wont: [
       "Đi kèm một con số tăng trưởng. Chúng tôi chưa chạy thử nghiệm trực tiếp nào, nên bất kỳ tỷ lệ nào cũng sẽ là cửa hàng của người khác hoặc là bịa",
-      "Được bán trước khi có một chương trình thử nghiệm. Giá được thống nhất theo từng chương trình, vì giá trị của nó phụ thuộc vào danh mục và lưu lượng của bạn",
+      "Chạy không giới hạn. Mỗi gói gồm một số lệnh gọi nhất định, và lệnh gọi vượt mức được tính theo mỗi 1.000 thay vì bị ngắt",
       "Thay thế công cụ tìm kiếm hay gian hàng của bạn",
       "Giúp được nhiều trên một danh mục chưa được sửa trước",
     ],
@@ -337,7 +337,7 @@ export const DECISION_API_VI: ChapterContent = {
     body: "Bộ máy thời gian thực đến sau một chương trình thử nghiệm, và chương trình đó đến sau một kệ hàng đáng xếp hạng. Việc ấy bắt đầu bằng một tệp xuất ngành hàng.",
     label: "Yêu cầu Decision Audit",
     href: "/contact",
-    note: "Giá bộ máy thời gian thực được thống nhất theo từng chương trình thử nghiệm, không bao giờ trước đó.",
+    note: "Decision API có trong gói Growth trở lên, từ $990 mỗi tháng.",
   },
 };
 

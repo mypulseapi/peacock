@@ -4,8 +4,8 @@
  * The page used to describe only the catalogue journey. Pulse now sells to developers and AI agents
  * too, so the three lanes come first, each with its price model as decided in ODIN
  * (business/COMMERCIAL.md, MERCHANT-PROPOSAL.md): open-source tools free; the audit free and the
- * work after it per cycle or recurring; live decisions per decision served, agreed after a pilot.
- * No amounts: there is no rate card yet, and the FAQ says why.
+ * work after it from Starter; live decisions from Growth. The amounts are the plans section
+ * (`plans.tsx`, PRICING.md §3.7 v0.4, USD).
  */
 import Link from "next/link";
 import { designedHref, designedText } from "../t";

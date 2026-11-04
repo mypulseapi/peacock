@@ -603,7 +603,7 @@
         },
         {
           "question": "Nếu audit không tìm ra gì thì tôi mất gì?",
-          "answer": "Một file xuất danh mục và một khoản phí cố định. Nếu danh mục của bạn ổn, báo cáo sẽ nói đúng như vậy, và bạn đã bỏ rất ít để biết rằng nút thắt không nằm ở khâu tìm sản phẩm. Đó là một câu trả lời có ích."
+          "answer": "Một file xuất danh mục, không gì khác: bản audit miễn phí cho một ngành hàng. Nếu danh mục của bạn ổn, báo cáo sẽ nói đúng như vậy, và bạn biết được nút thắt không nằm ở khâu tìm sản phẩm mà không tốn gì. Đó là một câu trả lời có ích."
         },
         {
           "question": "Chúng tôi đã có tìm kiếm và gợi ý sản phẩm. Cái này thay thế chúng à?",
@@ -1158,7 +1158,7 @@
     "otherIndustries": "Các ngành khác",
     "ctaTitle": "Gửi cho chúng tôi một ngành hàng {sector}.",
     "ctaBody": "Chọn nhóm hàng bạn nghi ngờ người mua gặp khó nhất. Bạn nhận được danh sách xếp hạng, các sản phẩm bị ảnh hưởng, và nửa giờ với người phụ trách trưng bày hàng hoá.",
-    "ctaNote": "Một mức phí cố định, không ràng buộc, và nếu danh mục của bạn vốn đã ổn, chúng tôi sẽ nói vậy.",
+    "ctaNote": "Miễn phí cho một ngành hàng, không ràng buộc, và nếu danh mục của bạn vốn đã ổn, chúng tôi sẽ nói vậy.",
     "situationEyebrow": "Điều diễn ra ở đây",
     "figureCaption": "Minh hoạ cho hình dạng của ngành này. Các con số đã đo nằm ở trang phương pháp, kèm câu lệnh tái lập chúng.",
     "decisionIntro": "Điều một người mua ở đây đang cố quyết định: {decision}",

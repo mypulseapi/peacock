@@ -38,6 +38,7 @@ const staticPages = [
   // method and the whole product detail were the only ones search could not
   // find. Each is a separate story with its own FAQPage schema.
   "/product/decision-audit",
+  "/test-my-catalogue",
   "/product/decision-verification",
   "/product/return-verification",
   "/product/visual-evidence",
@@ -82,6 +83,7 @@ const pagePriorities: Record<string, number> = {
   "": 1.0,
   "/product": 0.9,
   "/product/decision-audit": 0.9,
+  "/test-my-catalogue": 0.9,
   "/product/decision-verification": 0.8,
   "/product/return-verification": 0.8,
   "/product/visual-evidence": 0.7,
@@ -125,6 +127,7 @@ const changeFrequencies: Record<
   "": "weekly",
   "/product": "monthly",
   "/product/decision-audit": "monthly",
+  "/test-my-catalogue": "weekly",
   "/product/decision-verification": "monthly",
   "/product/return-verification": "monthly",
   "/product/visual-evidence": "monthly",

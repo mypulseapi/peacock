@@ -151,7 +151,7 @@ export function DesignedFooter() {
               .replace("{year}", String(new Date().getFullYear()))
               .replace("{company}", COMPANY_NAME)}
           </p>
-          <ul className="flex flex-wrap items-center gap-x-5 max-sm:justify-evenly max-sm:gap-x-2 max-sm:text-[10px] sm:gap-x-7 sm:gap-y-5">
+          <ul className="flex flex-wrap items-center gap-x-5 max-sm:justify-between max-sm:gap-x-2 max-sm:text-[10px] sm:gap-x-7 sm:gap-y-5">
             <li>
               <Link
                 href={designedHref("/en/privacy")}

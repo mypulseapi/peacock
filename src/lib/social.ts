@@ -1,21 +1,28 @@
 /**
- * Where the company is, off this site.
+ * Where the company and its people are, off this site. **Every URL comes from the environment**
+ * (owner, 2026-11-04: no LinkedIn or other profile link is hard-coded in peacock; the team's
+ * profiles are `team.ts`). An unset variable
+ * drops its link from the page rather than falling back to a URL in code, so a profile changes in
+ * `.env` (and the deploy's repository variables), never in a pull request.
  *
- * Three places disagreed before this existed. The footer a visitor actually clicks pointed at
- * `linkedin.com/company/108237732/`, the numeric id rather than the vanity URL; the legacy footer
- * pointed at `company/thepulseapi` without the trailing slash; and `schema.ts` told search engines
- * `company/thepulseapi/`. The GitHub link in both footers pointed at `github.com/thepulseapi`,
- * which is not our organisation: ours is `mypulseapi`.
+ * Each `process.env.NEXT_PUBLIC_*` is written out literally on purpose: the static export inlines a
+ * variable only where its full name appears in the source, so a computed name would read undefined.
  *
  * `sameAs` in the structured data has to match the link in the page, because that is the whole
  * point of `sameAs`: it is the claim that these profiles are the same organisation as this site.
  * One source makes them agree by construction.
  */
+const url = (v: string | undefined) => (v ?? "").trim() || undefined;
+
 export const SOCIAL = {
-  github: process.env.NEXT_PUBLIC_GITHUB_URL || "https://github.com/mypulseapi",
-  linkedin:
-    process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://www.linkedin.com/company/thepulseapi/",
+  github: url(process.env.NEXT_PUBLIC_GITHUB_URL),
+  linkedin: url(process.env.NEXT_PUBLIC_LINKEDIN_URL),
+  facebook: url(process.env.NEXT_PUBLIC_FACEBOOK_URL),
+  /** The open-source repository (Opensource page). */
+  repo: url(process.env.NEXT_PUBLIC_OPENSOURCE_REPO_URL),
 } as const;
 
 /** Every off-site profile, for `sameAs`. */
-export const SAME_AS = [SOCIAL.linkedin, SOCIAL.github];
+export const SAME_AS = [SOCIAL.linkedin, SOCIAL.facebook, SOCIAL.github].filter(
+  (u): u is string => Boolean(u),
+);

@@ -8,466 +8,115 @@
  */
 import { asset } from "@/lib/cdn";
 import { designedText } from "../t";
+import { renderLocale } from "@/i18n/render-locale";
+import { TEAM, roleOf } from "@/lib/team";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 
 export function Section5Section() {
   const t = designedText("about.section5");
+  const locale = renderLocale();
   return (
     <section className="border-b border-line">
-            <div className="frame py-20 lg:py-28">
-              <div className="grid gap-4 lg:grid-cols-12 lg:gap-x-0">
-                <h2 className="reveal text-title text-balance lg:col-span-5 lg:pr-16">
-                  {t('1')}
-                </h2>
-                <p
-                  className="reveal text-body leading-relaxed text-pretty text-muted delay-100 lg:col-span-7"
-                >
-                  {t('2')}
-                </p>
-              </div>
-              {/* Team (names, roles and LinkedIn from team.md, 19 Oct 2026; photos in src/assets/team as 384px transparent PNGs,
-                   backgrounds removed). Card after the owner's reference: round portrait, name and role, LinkedIn; on hover or
+      <div className="frame py-20 lg:py-28">
+        <div className="grid gap-4 lg:grid-cols-12 lg:gap-x-0">
+          <h2 className="reveal text-title text-balance lg:col-span-5 lg:pr-16">
+            {t("1")}
+          </h2>
+          <p className="reveal text-body leading-relaxed text-pretty text-muted delay-100 lg:col-span-7">
+            {t("2")}
+          </p>
+        </div>
+        {/* Team: every name, role, photo and LinkedIn link is a profile in NEXT_PUBLIC_TEAM (src/lib/team.ts, 4 Nov 2026);
+                   photos on the CDN under assets/team as 384px PNGs. Card after the owner's reference: round portrait, name and role, LinkedIn; on hover or
                    keyboard focus a half-circle dome (rounded-t-full: primary-tint → primary-line, the reference's shape in Pulse Blue) rises behind the text
                    and the portrait gets an ink ring; the LinkedIn link shows only then (always on touch screens), and the portrait zooms 20% from its base so the head steps out over the ring (team-pop: a second copy of the photo, clipped to its top half only). Order (owner's): Tracy, Rosie, Elena, Iris on the first row; Albert, Stephen, Eric, Stan on the second. */}
-              {/* The list is the reveal and each card enters in turn (`card-in`): the cards carry their own
+        {/* The list is the reveal and each card enters in turn (`card-in`): the cards carry their own
                   hover transition, which `reveal` on them would override (DESIGN.md §6). */}
-              <ul
-                className="reveal-trigger mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:mt-16 lg:grid-cols-4"
-                aria-label="Team"
+        <ul
+          className="reveal-trigger mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:mt-16 lg:grid-cols-4"
+          aria-label="Team"
+        >
+          {/* One card per profile in NEXT_PUBLIC_TEAM (src/lib/team.ts), in its order. */}
+          {TEAM.map((p, i) => {
+            const role = roleOf(p, locale);
+            return (
+              <li
+                key={p.id}
+                style={{ "--i": i } as CSSProperties}
+                className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
               >
-                <li
-                  style={{ "--i": 0 } as CSSProperties}
-                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
-                >
-                  <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
-                    aria-hidden="true"
-                  ></div>
-                  <div
-                    className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
-                  >
-                    <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
-                    >
-                      <div className="team-base size-full">
-                        <Image
-                          src={asset("team/tracy-bui.png")}
-                          alt={`${t('3')}, ${t('4')}`}
-                          width={384}
-                          height={384}
-                          loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                      </div>
-                    </div>
-                    <div
-                      className="team-pop pointer-events-none absolute inset-0"
-                      aria-hidden="true"
-                    >
+                <div
+                  className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                  aria-hidden="true"
+                ></div>
+                <div className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36">
+                  <div className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink">
+                    <div className="team-base size-full">
                       <Image
-                        src={asset("team/tracy-bui.png")}
-                        alt={`${t('3')}, ${t('4')}`}
+                        src={asset(p.photo)}
+                        alt={`${p.name}, ${role}`}
                         width={384}
                         height={384}
                         loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
+                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100"
+                      />
                     </div>
                   </div>
-                  <h3 className="mt-5 text-h3 text-balance">{t('3')}</h3>
-                  <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    {t('4')}
-                  </p>
-                  <a
-                    href="https://www.linkedin.com/in/van-bui-work"
-                    target="_blank"
-                    rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
-                    aria-label="Tracy Bui on LinkedIn (opens in a new tab)"
-                    ><svg className="size-5" aria-hidden="true">
-                      <use href="#i-linkedin" /></svg
-                  ></a>
-                </li>
-                <li
-                  style={{ "--i": 1 } as CSSProperties}
-                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
-                >
                   <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
+                    className="team-pop pointer-events-none absolute inset-0"
                     aria-hidden="true"
-                  ></div>
-                  <div
-                    className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
                   >
-                    <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
-                    >
-                      <div className="team-base size-full">
-                        <Image
-                          src={asset("team/rosie-tran.png")}
-                          alt={`${t('5')}, ${t('6')}`}
-                          width={384}
-                          height={384}
-                          loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                      </div>
-                    </div>
-                    <div
-                      className="team-pop pointer-events-none absolute inset-0"
-                      aria-hidden="true"
-                    >
-                      <Image
-                        src={asset("team/rosie-tran.png")}
-                        alt={`${t('5')}, ${t('6')}`}
-                        width={384}
-                        height={384}
-                        loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                    </div>
+                    <Image
+                      src={asset(p.photo)}
+                      alt=""
+                      width={384}
+                      height={384}
+                      loading="lazy"
+                      className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100"
+                    />
                   </div>
-                  <h3 className="mt-5 text-h3 text-balance">{t('5')}</h3>
-                  <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    {t('6')}
-                  </p>
-                  <a
-                    href="https://www.linkedin.com/in/khanh-nguyen-1b400a182/"
-                    target="_blank"
-                    rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
-                    aria-label="Rosie Tran on LinkedIn (opens in a new tab)"
-                    ><svg className="size-5" aria-hidden="true">
-                      <use href="#i-linkedin" /></svg
-                  ></a>
-                </li>
-                <li
-                  style={{ "--i": 2 } as CSSProperties}
-                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
-                >
-                  <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
-                    aria-hidden="true"
-                  ></div>
-                  <div
-                    className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
-                  >
-                    <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
-                    >
-                      <div className="team-base size-full">
-                        <Image
-                          src={asset("team/elena-nguyen.png")}
-                          alt={`${t('7')}, ${t('8')}`}
-                          width={384}
-                          height={384}
-                          loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                      </div>
-                    </div>
-                    <div
-                      className="team-pop pointer-events-none absolute inset-0"
-                      aria-hidden="true"
-                    >
-                      <Image
-                        src={asset("team/elena-nguyen.png")}
-                        alt={`${t('7')}, ${t('8')}`}
-                        width={384}
-                        height={384}
-                        loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                    </div>
-                  </div>
-                  <h3 className="mt-5 text-h3 text-balance">{t('7')}</h3>
-                  <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    {t('8')}
-                  </p>
-                  <a
-                    href="https://www.linkedin.com/in/b%E1%BA%A3o-nguy%C3%AAn-nguy%E1%BB%85n"
-                    target="_blank"
-                    rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
-                    aria-label="Elena Nguyen on LinkedIn (opens in a new tab)"
-                    ><svg className="size-5" aria-hidden="true">
-                      <use href="#i-linkedin" /></svg
-                  ></a>
-                </li>
-                <li
-                  style={{ "--i": 3 } as CSSProperties}
-                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
-                >
-                  <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
-                    aria-hidden="true"
-                  ></div>
-                  <div
-                    className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
-                  >
-                    <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
-                    >
-                      <div className="team-base size-full">
-                        <Image
-                          src={asset("team/iris-le.png")}
-                          alt={`${t('9')}, ${t('10')}`}
-                          width={384}
-                          height={384}
-                          loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                      </div>
-                    </div>
-                    <div
-                      className="team-pop pointer-events-none absolute inset-0"
-                      aria-hidden="true"
-                    >
-                      <Image
-                        src={asset("team/iris-le.png")}
-                        alt={`${t('9')}, ${t('10')}`}
-                        width={384}
-                        height={384}
-                        loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                    </div>
-                  </div>
-                  <h3 className="mt-5 text-h3 text-balance">{t('9')}</h3>
-                  <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    {t('10')}
-                  </p>
-                  <a
-                    href="https://www.linkedin.com/in/ngocle123/"
-                    target="_blank"
-                    rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
-                    aria-label="Iris Le on LinkedIn (opens in a new tab)"
-                    ><svg className="size-5" aria-hidden="true">
-                      <use href="#i-linkedin" /></svg
-                  ></a>
-                </li>
-                <li
-                  style={{ "--i": 4 } as CSSProperties}
-                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
-                >
-                  <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
-                    aria-hidden="true"
-                  ></div>
-                  <div
-                    className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
-                  >
-                    <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
-                    >
-                      <div className="team-base size-full">
-                        <Image
-                          src={asset("team/albert-bui.png")}
-                          alt={`${t('11')}, ${t('12')}`}
-                          width={384}
-                          height={384}
-                          loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                      </div>
-                    </div>
-                    <div
-                      className="team-pop pointer-events-none absolute inset-0"
-                      aria-hidden="true"
-                    >
-                      <Image
-                        src={asset("team/albert-bui.png")}
-                        alt={`${t('11')}, ${t('12')}`}
-                        width={384}
-                        height={384}
-                        loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                    </div>
-                  </div>
-                  <h3 className="mt-5 text-h3 text-balance">{t('11')}</h3>
-                  <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    {t('12')}
-                  </p>
-                  <a
-                    href="https://www.linkedin.com/in/quy-bui-quang"
-                    target="_blank"
-                    rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
-                    aria-label="Albert Bui on LinkedIn (opens in a new tab)"
-                    ><svg className="size-5" aria-hidden="true">
-                      <use href="#i-linkedin" /></svg
-                  ></a>
-                </li>
-                <li
-                  style={{ "--i": 5 } as CSSProperties}
-                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
-                >
-                  <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
-                    aria-hidden="true"
-                  ></div>
-                  <div
-                    className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
-                  >
-                    <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
-                    >
-                      <div className="team-base size-full">
-                        <Image
-                          src={asset("team/stephen-le.png")}
-                          alt={`${t('13')}, ${t('14')}`}
-                          width={384}
-                          height={384}
-                          loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                      </div>
-                    </div>
-                    <div
-                      className="team-pop pointer-events-none absolute inset-0"
-                      aria-hidden="true"
-                    >
-                      <Image
-                        src={asset("team/stephen-le.png")}
-                        alt={`${t('13')}, ${t('14')}`}
-                        width={384}
-                        height={384}
-                        loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                    </div>
-                  </div>
-                  <h3 className="mt-5 text-h3 text-balance">{t('13')}</h3>
-                  <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    {t('14')}
-                  </p>
-                  <a
-                    href="https://www.linkedin.com/in/truongthole"
-                    target="_blank"
-                    rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
-                    aria-label="Stephen Le on LinkedIn (opens in a new tab)"
-                    ><svg className="size-5" aria-hidden="true">
-                      <use href="#i-linkedin" /></svg
-                  ></a>
-                </li>
-                <li
-                  style={{ "--i": 6 } as CSSProperties}
-                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
-                >
-                  <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
-                    aria-hidden="true"
-                  ></div>
-                  <div
-                    className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
-                  >
-                    <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
-                    >
-                      <div className="team-base size-full">
-                        <Image
-                          src={asset("team/eric-pham.png")}
-                          alt={`${t('15')}, ${t('16')}`}
-                          width={384}
-                          height={384}
-                          loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                      </div>
-                    </div>
-                    <div
-                      className="team-pop pointer-events-none absolute inset-0"
-                      aria-hidden="true"
-                    >
-                      <Image
-                        src={asset("team/eric-pham.png")}
-                        alt={`${t('15')}, ${t('16')}`}
-                        width={384}
-                        height={384}
-                        loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                    </div>
-                  </div>
-                  <h3 className="mt-5 text-h3 text-balance">{t('15')}</h3>
-                  <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    {t('16')}
-                  </p>
-                  <a
-                    href="https://www.linkedin.com/in/phamtradev/"
-                    target="_blank"
-                    rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
-                    aria-label="Eric Pham on LinkedIn (opens in a new tab)"
-                    ><svg className="size-5" aria-hidden="true">
-                      <use href="#i-linkedin" /></svg
-                  ></a>
-                </li>
-                <li
-                  style={{ "--i": 7 } as CSSProperties}
-                  className="card-in group relative isolate flex flex-col items-center overflow-hidden rounded-2xl bg-card px-4 pt-7 pb-4 text-center shadow-sm transition duration-300 ease-out-soft hover:shadow-xl has-focus-visible:shadow-xl motion-reduce:transition-none sm:px-6 sm:pt-8"
-                >
-                  <div
-                    className="absolute inset-x-0 bottom-0 -z-10 h-3/5 rounded-t-full translate-y-1/4 bg-linear-to-b from-primary-tint to-primary-line theme-dark:from-card opacity-0 transition duration-500 ease-out-soft group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-opacity"
-                    aria-hidden="true"
-                  ></div>
-                  <div
-                    className="relative aspect-square w-24 max-w-full sm:w-32 lg:w-36"
-                  >
-                    <div
-                      className="size-full overflow-hidden rounded-full bg-surface-1 ring-3 ring-card transition-shadow duration-500 ease-out-soft group-has-focus-visible:ring-ink group-hover:ring-ink"
-                    >
-                      <div className="team-base size-full">
-                        <Image
-                          src={asset("team/stan-nguyen.png")}
-                          alt={`${t('17')}, ${t('18')}`}
-                          width={384}
-                          height={384}
-                          loading="lazy"
-                          className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                      </div>
-                    </div>
-                    <div
-                      className="team-pop pointer-events-none absolute inset-0"
-                      aria-hidden="true"
-                    >
-                      <Image
-                        src={asset("team/stan-nguyen.png")}
-                        alt={`${t('17')}, ${t('18')}`}
-                        width={384}
-                        height={384}
-                        loading="lazy"
-                        className="size-full object-cover origin-bottom transition-transform duration-500 ease-out-soft group-has-focus-visible:scale-120 group-hover:scale-120 motion-reduce:transition-none motion-reduce:group-has-focus-visible:scale-100 motion-reduce:group-hover:scale-100" />
-                    </div>
-                  </div>
-                  <h3 className="mt-5 text-h3 text-balance">{t('17')}</h3>
-                  <p className="mt-1 mb-1 text-sm text-pretty text-muted">
-                    {t('18')}
-                  </p>
-                  <a
-                    href="https://www.linkedin.com/in/ptannguyen"
-                    target="_blank"
-                    rel="noopener"
-                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
-                    aria-label="Stan Nguyen on LinkedIn (opens in a new tab)"
-                    ><svg className="size-5" aria-hidden="true">
-                      <use href="#i-linkedin" /></svg
-                  ></a>
-                </li>
-              </ul>
-              <dl
-                className="reveal mt-16 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 lg:grid-cols-4"
-              >
-                <div>
-                  <dt className="text-sm text-muted">{t('19')}</dt>
-                  <dd className="mt-1 text-data text-ink">{t('20')}</dd>
                 </div>
-                <div>
-                  <dt className="text-sm text-muted">{t('21')}</dt>
-                  <dd className="mt-1 text-data text-ink">{t('22')}</dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-muted">{t('23')}</dt>
-                  <dd className="mt-1 text-data text-ink">{t('24')}</dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-muted">{t('25')}</dt>
-                  <dd className="mt-1 text-data text-pretty text-ink">
-                    {t('26')}
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </section>
+                <h3 className="mt-5 text-h3 text-balance">{p.name}</h3>
+                <p className="mt-1 mb-1 text-sm text-pretty text-muted">
+                  {role}
+                </p>
+                {p.linkedin && (
+                  <a
+                    href={p.linkedin}
+                    target="_blank"
+                    rel="noopener"
+                    className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"
+                    aria-label={`${p.name} on LinkedIn (opens in a new tab)`}
+                  >
+                    <svg className="size-5" aria-hidden="true">
+                      <use href="#i-linkedin" />
+                    </svg>
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+        <dl className="reveal mt-16 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 lg:grid-cols-4">
+          <div>
+            <dt className="text-sm text-muted">{t("19")}</dt>
+            <dd className="mt-1 text-data text-ink">{t("20")}</dd>
+          </div>
+          <div>
+            <dt className="text-sm text-muted">{t("21")}</dt>
+            <dd className="mt-1 text-data text-ink">{t("22")}</dd>
+          </div>
+          <div>
+            <dt className="text-sm text-muted">{t("23")}</dt>
+            <dd className="mt-1 text-data text-ink">{t("24")}</dd>
+          </div>
+          <div>
+            <dt className="text-sm text-muted">{t("25")}</dt>
+            <dd className="mt-1 text-data text-pretty text-ink">{t("26")}</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
   );
 }

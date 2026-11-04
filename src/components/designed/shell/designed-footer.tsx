@@ -51,13 +51,11 @@ const COLUMNS: Array<{ heading: string; links: Array<[string, string]> }> = [
 
 const SOCIALS = [
   { name: "LinkedIn", href: SOCIAL.linkedin, icon: "i-linkedin" },
-  {
-    name: "Facebook",
-    href: "https://www.facebook.com/people/The-Pulse-API/61591908084667/",
-    icon: "i-facebook",
-  },
+  { name: "Facebook", href: SOCIAL.facebook, icon: "i-facebook" },
   { name: "GitHub", href: SOCIAL.github, icon: "i-github" },
-];
+].filter((s): s is { name: string; href: string; icon: string } =>
+  Boolean(s.href),
+);
 
 export function DesignedFooter() {
   const t = designedText("shell.designed-footer");

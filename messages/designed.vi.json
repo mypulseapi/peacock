@@ -2001,8 +2001,8 @@
   },
   "calculator": {
     "page": {
-      "title": "Lưu lượng của bạn đáng giá bao nhiêu, theo chính số liệu của bạn",
-      "lede": "Bạn đã trả tiền để đưa người mua tới website và ứng dụng. Nhập số liệu tháng trước để thấy một lượt truy cập, một đơn hàng và một điểm chuyển đổi đáng giá bao nhiêu với bạn, rồi những câu hỏi người mua cần được trả lời trước khi mua.",
+      "title": "Trang sản phẩm tốt hơn mang lại cho bạn bao nhiêu?",
+      "lede": "Chi phí marketing của bạn đã mua về các lượt truy cập. Xem mỗi lượt đáng giá bao nhiêu, và mức tăng chuyển đổi cộng thêm bao nhiêu vào lợi nhuận gộp. Bắt đầu từ cửa hàng ví dụ, rồi nhập số liệu tháng của bạn.",
       "industry": "Ngành:",
       "industryName": "Công nghệ và điện tử",
       "inputsTitle": "Tháng của bạn",
@@ -2012,20 +2012,14 @@
       "aov": "Giá trị đơn hàng trung bình",
       "margin": "Biên lợi nhuận gộp (%)",
       "currency": "Tiền tệ",
-      "lift": "Mức tăng chuyển đổi bạn muốn kiểm chứng",
+      "lift": "Mức tăng chuyển đổi để kiểm chứng",
       "liftNote": "Đây là giả định của bạn, không phải cam kết của chúng tôi. Pulse chưa đo mức tăng nào trên cửa hàng của bạn; một nhóm đối chứng trên lưu lượng của bạn sẽ đo con số thật.",
-      "resultsTitle": "Mỗi lượt truy cập và đơn hàng tốn của bạn bao nhiêu",
+      "resultsTitle": "Phễu bán hàng hiện tại của bạn",
       "spendPerVisit": "Chi phí mỗi lượt truy cập",
       "conversion": "Tỷ lệ chuyển đổi từ truy cập sang đơn hàng",
-      "costPerOrder": "Chi phí thu hút mỗi đơn hàng",
+      "costPerOrder": "Chi phí thu hút mỗi đơn, hiện tại → sau khi tăng",
       "revenuePerVisit": "Doanh thu mỗi lượt truy cập",
       "perTenthPoint": "Lợi nhuận gộp từ mỗi 0,1 điểm chuyển đổi, mỗi tháng",
-      "liftTitle": "Nếu chuyển đổi tăng {lift}%",
-      "liftedConversion": "Tỷ lệ chuyển đổi",
-      "extraOrders": "Đơn hàng tăng thêm mỗi tháng",
-      "extraRevenue": "Doanh thu tăng thêm mỗi tháng",
-      "extraGrossProfit": "Lợi nhuận gộp tăng thêm mỗi tháng",
-      "liftedCostPerOrder": "Chi phí thu hút mỗi đơn hàng",
       "empty": "Nhập ít nhất lượt truy cập và đơn hàng để xem số liệu của bạn. Những gì bạn nhập không rời khỏi trang này.",
       "questionsTitle": "Điều người mua của bạn cần xác nhận trước khi mua",
       "questionsLede": "Một lượt truy cập bạn đã trả tiền chỉ thành đơn hàng khi người mua xác nhận được sản phẩm đáp ứng nhu cầu của họ. Đây là những câu hỏi quyết định điều đó.",
@@ -2045,7 +2039,11 @@
       "monitor-desk-fit": "Vừa bàn làm việc: kích thước",
       "monitor-look": "Màu sắc họ muốn",
       "questionsNote": "Từ thư viện yêu cầu của Pulse. Decision Audit miễn phí cho thấy sản phẩm nào của bạn chưa trả lời được từng câu.",
-      "measureBody": "Sửa những bằng chứng quan trọng, giữ lại một phần lưu lượng làm nhóm đối chứng, rồi so sánh. Bạn thấy kết quả đo được, tốt hay không, trước khi bất kỳ ai gọi đó là mức tăng."
+      "measureBody": "Sửa những bằng chứng quan trọng, giữ lại một phần lưu lượng làm nhóm đối chứng, rồi so sánh. Bạn thấy kết quả đo được, tốt hay không, trước khi bất kỳ ai gọi đó là mức tăng.",
+      "exampleNote": "Cửa hàng ví dụ: thay bằng số liệu của bạn",
+      "reset": "Quay lại cửa hàng ví dụ",
+      "headline": "Lợi nhuận gộp tăng thêm mỗi tháng",
+      "headlineSub": "Thêm {orders} đơn hàng và {revenue} doanh thu, khi chuyển đổi tăng từ {from} lên {to}"
     }
   }
 }

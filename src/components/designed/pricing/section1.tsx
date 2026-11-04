@@ -18,6 +18,7 @@
  */
 import { designedHref, designedText } from "../t";
 import { Lanes } from "./lanes";
+import { CalculatorBlock } from "../calculator";
 import Link from "next/link";
 import { HeroAurora } from "@/components/designed/hero-aurora";
 
@@ -82,6 +83,11 @@ export function Section1Section() {
           <p className="reveal mx-auto mt-4 max-w-2xl text-body leading-relaxed text-pretty text-muted delay-100">
             {t("heroLede")}
           </p>
+        </div>
+
+        {/* What we sell, first (owner, 2026-11-04): the merchant's gain, before the lanes and plans. */}
+        <div className="mt-12">
+          <CalculatorBlock />
         </div>
 
         <Lanes />

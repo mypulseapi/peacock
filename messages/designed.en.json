@@ -2177,10 +2177,7 @@
       "monitor-desk-fit": "Fits the desk: dimensions",
       "monitor-look": "The colour they want",
       "questionsNote": "From the Pulse requirement library. The free Decision Audit shows which of your products cannot answer each one.",
-      "measureTitle": "We measure the real number on your traffic",
-      "measureBody": "Repair the evidence that matters, hold back a share of traffic as a control, and compare. You see the measured result, positive or not, before anyone calls it an uplift.",
-      "cta": "Request a Decision Audit",
-      "ctaNote": "One category export · No integration · 48 hours"
+      "measureBody": "Repair the evidence that matters, hold back a share of traffic as a control, and compare. You see the measured result, positive or not, before anyone calls it an uplift."
     }
   }
 }

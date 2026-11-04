@@ -299,13 +299,6 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
 
   // Commercial
   {
-    route: "/calculator",
-    audience: "merchant",
-    area: "audit",
-    depth: "explainer",
-    decides: ["does-it-fit-me", "what-it-costs"],
-  },
-  {
     route: "/pricing",
     audience: "merchant",
     area: "none",

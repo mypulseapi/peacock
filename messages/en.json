@@ -1333,13 +1333,5 @@
     "errResumeType": "Please upload a PDF or Word document",
     "errVerification": "Please complete the verification below.",
     "errSubmitFailed": "Failed to submit application. Please try again."
-  },
-  "calculator": {
-    "meta": {
-      "title": "Traffic and conversion value calculator",
-      "description": "Enter your marketing spend, visits and orders to see what a visit, an order and each point of conversion are worth, then what your electronics shoppers need.",
-      "ogTitle": "Traffic and conversion value calculator",
-      "ogDescription": "Enter your marketing spend, visits and orders to see what a visit, an order and each point of conversion are worth, then what your electronics shoppers need."
-    }
   }
 }

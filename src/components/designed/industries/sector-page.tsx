@@ -513,7 +513,7 @@ export function SectorPage({ s }: { s: Sector }) {
             </Link>
             {/* The calculator has an industry layer for technology only, so far (CONVERSION-MODEL.md § 3). */}
             {s.slug === "technology" && (
-              <Link href={designedHref("/en/calculator")} className="btn-ghost">
+              <Link href={designedHref("/en/pricing#calculator")} className="btn-ghost">
                 {t6("calculator")}
               </Link>
             )}

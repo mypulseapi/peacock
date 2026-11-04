@@ -42,7 +42,7 @@ const PRODUCTS: {
     key: "audit",
     name: "Decision Audit",
     plan: "free",
-    accent: "border-t-primary text-primary",
+    accent: "text-primary",
     fixes: "Decision Audit",
     href: "/en/product/decision-audit",
   },
@@ -50,28 +50,28 @@ const PRODUCTS: {
     key: "verification",
     name: "Decision Verification",
     plan: "starter",
-    accent: "border-t-success text-success",
+    accent: "text-success",
     href: "/en/product/decision-verification",
   },
   {
     key: "monitor",
     name: "Decision Monitor",
     plan: "starter",
-    accent: "border-t-sky text-sky",
+    accent: "text-sky",
     href: "/en/product/decision-monitor",
   },
   {
     key: "returns",
     name: "Return Verification",
     plan: "starter",
-    accent: "border-t-chart-second text-chart-second",
+    accent: "text-chart-second",
     href: "/en/product/return-verification",
   },
   {
     key: "visual",
     name: "Visual Evidence",
     plan: "starter",
-    accent: "border-t-gap text-gap-strong",
+    accent: "text-gap-strong",
     fixes: "Visual Evidence",
     href: "/en/product/visual-evidence",
   },
@@ -79,7 +79,7 @@ const PRODUCTS: {
     key: "api",
     name: "Decision API",
     plan: "growth",
-    accent: "border-t-brand-indigo text-brand-indigo",
+    accent: "text-brand-indigo",
     fixes: "Decision API / MCP",
     href: "/en/product/decision-api",
   },
@@ -87,14 +87,14 @@ const PRODUCTS: {
     key: "promotions",
     name: "Promotion Audit",
     plan: "growth",
-    accent: "border-t-signal text-signal-text",
+    accent: "text-signal-text",
     href: "/en/product/promotion-audit",
   },
   {
     key: "pages",
     name: "Pages",
     plan: "scale",
-    accent: "border-t-chart-second text-chart-second",
+    accent: "text-chart-second",
     fixes: "Pages and merchandising",
     href: "/en/product/pages",
   },
@@ -102,14 +102,14 @@ const PRODUCTS: {
     key: "search",
     name: "Search",
     plan: "scale",
-    accent: "border-t-primary text-primary",
+    accent: "text-primary",
     href: "/en/product/search",
   },
   {
     key: "recommendations",
     name: "Recommendations",
     plan: "scale",
-    accent: "border-t-success text-success",
+    accent: "text-success",
     href: "/en/product/recommendations",
   },
 ];
@@ -364,12 +364,17 @@ export function Result({
             return (
               <li
                 key={p.key}
-                className={`flex flex-col rounded-xl border border-t-4 border-line bg-card p-5 ${p.accent}`}
+                className={`flex flex-col rounded-xl border border-line bg-card p-5 ${p.accent}`}
               >
                 <a
                   href={href(p.href)}
-                  className="font-semibold text-ink underline-offset-4 hover:underline"
+                  className="flex items-center gap-2 font-semibold text-ink underline-offset-4 hover:underline"
                 >
+                  {/* The product's colour, as a marker rather than a border on the rounded card. */}
+                  <span
+                    aria-hidden="true"
+                    className={`size-2.5 shrink-0 rounded-full bg-current ${p.accent}`}
+                  />
                   {p.name}
                 </a>
                 <p className="mt-1 text-sm text-pretty text-muted">

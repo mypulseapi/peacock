@@ -543,9 +543,9 @@
   "pricing": {
     "meta": {
       "title": "Pricing: product data audit and Decision API",
-      "description": "Open-source tools free, the Decision Audit free, then pay per repair cycle or per decision served. Measuring results is never counted. See what counts.",
+      "description": "Plans in US dollars: the Decision Audit free, Starter $349, Growth $990 and Scale $2,390 a month. Measuring results is never counted. See what counts.",
       "ogTitle": "Pricing: product data audit and Decision API",
-      "ogDescription": "Open-source tools free, the Decision Audit free, then pay per repair cycle or per decision served. Measuring results is never counted. See what counts."
+      "ogDescription": "Plans in US dollars: the Decision Audit free, Starter $349, Growth $990 and Scale $2,390 a month. Measuring results is never counted. See what counts."
     },
     "title": "Priced on what it decides.",
     "titleHighlight": "Not on what it stores.",

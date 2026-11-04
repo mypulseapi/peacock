@@ -1958,7 +1958,8 @@
       "goalLaunchName": "Launch Faster",
       "goalLaunchBlurb": "Get a new range ready to sell sooner",
       "visualName": "Visual Evidence",
-      "visualBlurb": "Which photo proves what the buyer needs, and the photo to add. Early access"
+      "visualBlurb": "Which photo proves what the buyer needs, and the photo to add. Early access",
+      "menuPictureAlt": "A Decision Audit dashboard ranking missing product facts"
     },
     "designed-skip-link": {
       "1": "Skip to content"

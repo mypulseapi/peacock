@@ -603,7 +603,7 @@
         },
         {
           "question": "What does the audit actually cost me if it finds nothing?",
-          "answer": "A catalogue export and a fixed fee. If the audit says your catalogue is fine, it says so, and you have spent very little to learn that discovery is not your bottleneck. That is a useful answer."
+          "answer": "One catalogue export, and nothing else: the audit is free for one category. If it says your catalogue is fine, it says so, and you have learned that discovery is not your bottleneck at no cost. That is a useful answer."
         },
         {
           "question": "We already have search and recommendations. Does this replace them?",
@@ -1158,7 +1158,7 @@
     "otherIndustries": "Other sectors",
     "ctaTitle": "Send us one {sector} category.",
     "ctaBody": "Pick the shelf where you most suspect buyers struggle. You get a ranked list, the affected products, and half an hour with whoever owns merchandising.",
-    "ctaNote": "A fixed fee, no obligation, and if your catalogue is already fine we will say so.",
+    "ctaNote": "Free for one category, no obligation, and if your catalogue is already fine we will say so.",
     "situationEyebrow": "What happens here",
     "figureCaption": "Illustrative of this sector's shape. The measured figures are on the method page, with the command that reproduces them.",
     "decisionIntro": "What a buyer here is trying to decide: {decision}",

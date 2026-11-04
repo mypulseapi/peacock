@@ -777,7 +777,7 @@
         "2": "Pick the shelf where you most suspect buyers struggle. You get a ranked list, the affected products, and half an hour with whoever owns merchandising.",
         "3": "Request a Decision Audit",
         "4": "View pricing",
-        "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so."
+        "5": "Free for one category, no obligation, and if your catalogue is already fine we will say so."
       }
     },
     "distribution": {
@@ -861,7 +861,7 @@
         "2": "Pick the shelf where you most suspect buyers struggle. You get a ranked list, the affected products, and half an hour with whoever owns merchandising.",
         "3": "Request a Decision Audit",
         "4": "View pricing",
-        "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so."
+        "5": "Free for one category, no obligation, and if your catalogue is already fine we will say so."
       },
       "figure": {
         "requirement": "The buyer has to hit",
@@ -990,7 +990,7 @@
         "2": "Pick the shelf where you most suspect buyers struggle. You get a ranked list, the affected products, and half an hour with whoever owns merchandising.",
         "3": "Request a Decision Audit",
         "4": "View pricing",
-        "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so."
+        "5": "Free for one category, no obligation, and if your catalogue is already fine we will say so."
       },
       "scene": {
         "category": "Laptops",
@@ -1099,7 +1099,7 @@
         "2": "Pick the shelf where you most suspect buyers struggle. You get a ranked list, the affected products, and half an hour with whoever owns merchandising.",
         "3": "Request a Decision Audit",
         "4": "View pricing",
-        "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so."
+        "5": "Free for one category, no obligation, and if your catalogue is already fine we will say so."
       }
     },
     "furniture": {
@@ -1184,7 +1184,7 @@
         "2": "Pick the shelf where you most suspect buyers struggle. You get a ranked list, the affected products, and half an hour with whoever owns merchandising.",
         "3": "Request a Decision Audit",
         "4": "View pricing",
-        "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so."
+        "5": "Free for one category, no obligation, and if your catalogue is already fine we will say so."
       }
     },
     "technology": {
@@ -1269,7 +1269,7 @@
         "2": "Pick the shelf where you most suspect buyers struggle. You get a ranked list, the affected products, and half an hour with whoever owns merchandising.",
         "3": "Request a Decision Audit",
         "4": "View pricing",
-        "5": "A fixed fee, no obligation, and if your catalogue is already fine we will say so.",
+        "5": "Free for one category, no obligation, and if your catalogue is already fine we will say so.",
         "calculator": "What is your traffic worth?"
       }
     },

@@ -129,7 +129,7 @@ export function Section5Section() {
                     {t('6')}
                   </p>
                   <a
-                    href="https://www.linkedin.com/in/ynhii2309"
+                    href="https://www.linkedin.com/in/khanh-nguyen-1b400a182/"
                     target="_blank"
                     rel="noopener"
                     className="hit-area mt-auto inline-flex size-9 items-center justify-center rounded-full text-muted opacity-0 transition duration-200 ease-out-soft group-has-focus-visible:opacity-100 group-hover:opacity-100 hover:text-primary focus-visible:outline-ink pointer-coarse:opacity-100"

@@ -81,22 +81,12 @@ export interface PageItem {
  */
 export const PAGE_CATALOGUE: readonly PageItem[] = [
   // Entry
-  // Test My Catalogue since 2026-11-04 (owner): the store-address test, Pingdom-style.
   {
     route: "/",
-    // Everyone lands here, whoever they are: a landing is not evidence of audience.
-    audience: "any",
-    area: "audit",
-    depth: "entry",
-    decides: ["does-it-fit-me", "how-do-i-start"],
-  },
-  // The page that was the homepage until 2026-11-04.
-  {
-    route: "/overview",
     audience: "any",
     area: "none",
-    depth: "explainer",
-    decides: ["what-it-does", "how-it-works"],
+    depth: "entry",
+    decides: ["what-it-does", "does-it-fit-me"],
   },
   // Temporary: the converted home page, rendered alongside the current one so the two can be
   // compared before anything a visitor sees changes. noindex, and deleted once it lands on /.
@@ -308,14 +298,6 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
   },
 
   // Commercial
-  // Test My Catalogue: a store's public pages tested against buying requirements (2026-11-04).
-  {
-    route: "/test-my-catalogue",
-    audience: "merchant",
-    area: "audit",
-    depth: "transactional",
-    decides: ["how-do-i-start"],
-  },
   {
     route: "/pricing",
     audience: "merchant",

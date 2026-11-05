@@ -5,7 +5,6 @@ import { useLocale } from "next-intl";
 import { AlertCircle, Loader2, Send } from "lucide-react";
 import { Turnstile } from "@/components/Turnstile";
 import { postForm } from "@/lib/forms";
-import { useSearch } from "@/lib/catalogue-test";
 import { contactForm } from "@/content/contact-form";
 import { contactEmail } from "@/lib/contact-emails";
 
@@ -51,24 +50,15 @@ export function ContactForm({
   labels: { heading: string; company: string; email: string; submit: string };
 }) {
   const C = contactForm(useLocale());
-  const [values, setValues] = useState<Record<Field, string>>({
-    company: "",
-    email: "",
-  });
+  const [values, setValues] = useState<Record<Field, string>>({ company: "", email: "" });
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [state, setState] = useState<State>("idle");
   const [failure, setFailure] = useState("");
   const [token, setToken] = useState("");
   // Changing this remounts the widget, which is how Turnstile is reset for a second attempt.
   const [challenge, setChallenge] = useState(0);
-  // A Test My Catalogue result the visitor came from ("Request your full Decision Audit"): its id
-  // goes with the enquiry, so the CRM lead carries the result (store-url-audit NLR § 8).
-  const ref = useSearch().get("ref");
-  const reference = ref && /^[0-9a-f-]{36}$/i.test(ref) ? ref : null;
 
-  const validate = (
-    v: Record<Field, string>,
-  ): Partial<Record<Field, string>> => {
+  const validate = (v: Record<Field, string>): Partial<Record<Field, string>> => {
     const e: Partial<Record<Field, string>> = {};
     if (!v.company.trim()) e.company = C.required;
     if (!v.email.trim()) e.email = C.required;
@@ -94,7 +84,6 @@ export function ContactForm({
       company: values.company.trim(),
       email: values.email.trim(),
       recaptchaToken: token,
-      ...(reference && { reference }),
     });
 
     if (result.ok) {
@@ -109,22 +98,12 @@ export function ContactForm({
     // 429 is not a failure to report as one: the message landed, this is the second attempt.
     setState(result.status === 429 ? "limited" : "failed");
     setErrors(result.data.details ?? {});
-    setFailure(
-      result.status === 429 ? C.rateLimited : result.data.error || C.failed,
-    );
+    setFailure(result.status === 429 ? C.rateLimited : result.data.error || C.failed);
   }
 
-  const field = (
-    name: Field,
-    label: string,
-    type: "text" | "email",
-    hint: string,
-  ) => (
+  const field = (name: Field, label: string, type: "text" | "email", hint: string) => (
     <div>
-      <label
-        htmlFor={`f-${name}`}
-        className="mb-1.5 block text-sm font-medium text-ink"
-      >
+      <label htmlFor={`f-${name}`} className="mb-1.5 block text-sm font-medium text-ink">
         {label} <span className="text-critical">*</span>
       </label>
       <input
@@ -141,14 +120,8 @@ export function ContactForm({
         className="field"
       />
       {errors[name] && (
-        <p
-          id={`e-${name}`}
-          className="mt-1.5 flex items-start gap-1.5 text-sm text-critical"
-        >
-          <AlertCircle
-            className="mt-0.5 size-3.5 shrink-0"
-            aria-hidden="true"
-          />
+        <p id={`e-${name}`} className="mt-1.5 flex items-start gap-1.5 text-sm text-critical">
+          <AlertCircle className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
           {errors[name]}
         </p>
       )}
@@ -164,7 +137,7 @@ export function ContactForm({
     >
       <h2 className="text-h2 text-ink">{labels.heading}</h2>
       <p id="form-note" className="mt-2 text-sm text-pretty text-muted">
-        {reference ? C.aboutTest : C.note}
+        {C.note}
       </p>
 
       {/* Three rows: who you are, where to reply, and the one button. */}
@@ -199,40 +172,24 @@ export function ContactForm({
           {state === "sent" && (
             <>
               <p className="sent-flag" role="status">
-                <svg
-                  className="sent-tick"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
+                <svg className="sent-tick" viewBox="0 0 24 24" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" />
                   <path d="m8 12.5 2.7 2.7L16 9.8" />
                 </svg>
                 {C.sentShort}
               </p>
-              <p className="sent-detail basis-full text-sm text-pretty text-muted">
-                {C.sent}
-              </p>
+              <p className="sent-detail basis-full text-sm text-pretty text-muted">{C.sent}</p>
             </>
           )}
         </div>
       </div>
 
       {/* Invisible in managed mode; renders nothing at all when no site key is configured. */}
-      <Turnstile
-        key={challenge}
-        onToken={setToken}
-        className="mt-4 empty:mt-0"
-      />
+      <Turnstile key={challenge} onToken={setToken} className="mt-4 empty:mt-0" />
 
       {(state === "failed" || state === "limited") && (
-        <p
-          className="mt-4 flex items-start gap-1.5 text-sm text-critical"
-          role="alert"
-        >
-          <AlertCircle
-            className="mt-0.5 size-3.5 shrink-0"
-            aria-hidden="true"
-          />
+        <p className="mt-4 flex items-start gap-1.5 text-sm text-critical" role="alert">
+          <AlertCircle className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
           <span>
             {failure}
             {state === "failed" && FALLBACK && (

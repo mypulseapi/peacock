@@ -2086,6 +2086,7 @@
       "status_done": "Xong",
       "status_blocked": "Cửa hàng đã chặn chúng tôi sau {n} trang. Kết quả dùng những gì đã đọc.",
       "status_failed": "Không thể hoàn tất lượt kiểm tra này.",
+      "status_stopped": "Bị cửa hàng chặn",
       "reading": "Đang đọc",
       "soFar": "Đến lúc này, từng trang",
       "legend": "Đủ: mọi thông tin đều ghi. Một phần: thiếu vài thông tin. Bị chôn: chỉ có trong tiêu đề hoặc mô tả. Không đủ: thiếu hoặc tự mâu thuẫn.",

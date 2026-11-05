@@ -3,12 +3,12 @@
 import {
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
   type ReactNode,
 } from "react";
 import { Turnstile } from "@/components/Turnstile";
-import { Result } from "./result";
 import {
   domainOf,
   pollTest,
@@ -16,8 +16,10 @@ import {
   startTest,
   testConfig,
   TestError,
+  type Finding,
   type LiveEvent,
   type RequirementResult,
+  type Teaser,
   type TestState,
 } from "@/lib/catalogue-test";
 
@@ -66,14 +68,10 @@ export function CatalogueTest({
   labels,
   locale,
   calculator,
-  header,
-  ctaBar,
 }: {
   labels: Labels;
   locale: string;
   calculator: ReactNode;
-  header: ReactNode;
-  ctaBar: ReactNode;
 }) {
   const t = useCallback(
     (k: string, vars: Record<string, string | number> = {}) =>
@@ -238,330 +236,548 @@ export function CatalogueTest({
 
   const status = state?.status ?? (id ? "queued" : null);
   const teaser = state?.teaser ?? null;
-  const running =
-    Boolean(id) && !teaser && status !== "failed" && status !== "blocked";
   const done = rows.filter(
     (r) => r.state === "done" || r.state === "skipped",
   ).length;
 
   return (
-    <div>
-      {/* Pingdom's layout (owner, 2026-11-04): a band with the heading and one row, address,
-          category and the button, which stays put while the result builds underneath. */}
-      <div className="border-b border-line bg-surface-1">
-        <div className="frame py-14 lg:py-20">
-          {running ? (
-            <div className="mx-auto max-w-xl text-center" aria-live="polite">
-              <h2 className="text-title text-balance">{t("runningTitle")}</h2>
-              <Gauge />
-              <p className="mt-2 text-muted">
-                {status === "queued" && state?.ahead
-                  ? t("queuedAhead", { n: state.ahead })
-                  : rows.length
-                    ? t("runningProgress", { n: done, of: rows.length })
-                    : t(`status_${status}`)}
-              </p>
-            </div>
-          ) : (
-            header
+    <div className="mx-auto max-w-[1100px]">
+      {!id && (
+        <form
+          onSubmit={submit}
+          className="rounded-3xl border border-line bg-card p-6 shadow-sm sm:p-8"
+          noValidate
+        >
+          {enabled === false && (
+            <p className="mb-4 text-sm text-pretty text-muted">{t("closed")}</p>
           )}
-          <form
-            hidden={running}
-            onSubmit={submit}
-            className="mx-auto mt-8 max-w-5xl"
-            noValidate
-          >
-            {enabled === false && (
-              <p className="mb-4 text-center text-sm text-pretty text-muted">
-                {t("closed")}
-              </p>
-            )}
-            <fieldset disabled={enabled !== true || busy} className="space-y-3">
-              <div className="grid grid-cols-1 items-end gap-3 md:grid-cols-[minmax(0,1fr)_13rem_auto]">
-                <label className="block">
-                  <span className="text-sm font-medium text-ink">
-                    {t("urlLabel")}
-                  </span>
-                  <input
-                    id="test-url"
-                    className="field mt-1.5 font-mono"
-                    inputMode="url"
-                    autoComplete="url"
-                    placeholder={t("urlPlaceholder")}
-                    value={urls[0]}
-                    onChange={(e) =>
-                      setUrls(
-                        urls.map((x, j) => (j === 0 ? e.target.value : x)),
-                      )
-                    }
-                  />
-                </label>
-                <label className="block">
-                  <span className="text-sm font-medium text-ink">
-                    {t("category")}
-                  </span>
-                  <select
-                    id="test-category"
-                    className="field mt-1.5"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                  >
-                    <option value="">{t("catAuto")}</option>
-                    <option value="laptop">{t("cat_laptop")}</option>
-                    <option value="monitor">{t("cat_monitor")}</option>
-                  </select>
-                </label>
-                <button
-                  type="submit"
-                  className="btn-primary"
-                  disabled={!domain || !!mixed || !token}
-                >
-                  {busy ? t("starting") : t("submit")}
-                </button>
-              </div>
-              {urls.slice(1).map((u, k) => (
+          <fieldset disabled={enabled !== true || busy} className="space-y-4">
+            {urls.map((u, i) => (
+              <label key={i} className="block">
+                <span className="text-sm font-medium text-ink">
+                  {i === 0 ? t("urlLabel") : t("urlMore")}
+                </span>
                 <input
-                  key={k}
-                  aria-label={t("urlMore")}
-                  className="field font-mono"
+                  className="field mt-1.5 font-mono"
                   inputMode="url"
-                  placeholder={domain ? `${domain}/...` : t("urlPlaceholder")}
+                  autoComplete="url"
+                  placeholder={
+                    i === 0
+                      ? t("urlPlaceholder")
+                      : domain
+                        ? `${domain}/...`
+                        : t("urlPlaceholder")
+                  }
                   value={u}
                   onChange={(e) =>
-                    setUrls(
-                      urls.map((x, j) => (j === k + 1 ? e.target.value : x)),
-                    )
+                    setUrls(urls.map((x, j) => (j === i ? e.target.value : x)))
                   }
                 />
-              ))}
-              {mixed && domain && (
-                <p className="text-sm text-ink" role="alert">
-                  {t("sameDomain", { domain })}
-                </p>
-              )}
-              <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-                <span className="text-sm text-muted">{t("note")}</span>
-                {urls.length < 20 && domain && (
-                  <button
-                    type="button"
-                    onClick={() => setUrls([...urls, ""])}
-                    className="text-sm font-medium text-primary underline-offset-4 hover:underline"
-                  >
-                    {t("addUrl")}
-                  </button>
-                )}
-              </div>
-              {enabled && <Turnstile onToken={setToken} />}
-              {error && !id && (
-                <p className="text-sm text-ink" role="alert">
-                  {error}
-                </p>
-              )}
-            </fieldset>
-          </form>
-          {ctaBar}
-        </div>
-      </div>
-
-      <div className="frame py-12 lg:py-16 empty:hidden">
-        {id && !teaser && (
-          <section
-            aria-live="polite"
-            className="rounded-3xl border border-line bg-card p-6 shadow-sm sm:p-8"
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-3">
-              <h2 className="text-lg font-semibold text-ink">
-                {state?.domain ?? domain}
-              </h2>
-              <p className="text-sm text-muted">
-                {status === "queued" && state?.ahead
-                  ? t("queuedAhead", { n: state.ahead })
-                  : t(`status_${status}`)}
+              </label>
+            ))}
+            {mixed && domain && (
+              <p className="text-sm text-ink" role="alert">
+                {t("sameDomain", { domain })}
               </p>
-            </div>
-            {rows.length > 0 && (
-              <>
-                <div
-                  className="mt-4 h-1.5 overflow-hidden rounded-full bg-surface-1"
-                  role="progressbar"
-                  aria-valuenow={done}
-                  aria-valuemax={rows.length}
-                >
-                  <div
-                    className="h-full rounded-full bg-primary transition-[width] duration-700 motion-reduce:transition-none"
-                    style={{ width: `${(done / rows.length) * 100}%` }}
-                  />
-                </div>
-                {now && (
-                  <p className="mt-3 truncate font-mono text-xs text-muted">
-                    {t("reading")} {now}
-                  </p>
-                )}
-                <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
-                  <ol className="max-h-80 space-y-1 overflow-y-auto pr-2 text-sm">
-                    {rows.map((r) => (
-                      <li
-                        key={r.url}
-                        className="flex items-center gap-2 border-t border-line py-1.5 first:border-t-0"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className={`size-2 shrink-0 rounded-full ${r.state === "inspecting" ? "animate-pulse bg-primary motion-reduce:animate-none" : r.state === "done" ? "bg-primary" : r.state === "skipped" ? "bg-muted/40" : "bg-line"}`}
-                        />
-                        <span className="min-w-0 flex-1 truncate text-ink">
-                          {r.title || new URL(r.url).pathname}
-                        </span>
-                        {r.facts && (
-                          <span className="flex shrink-0 gap-1 font-mono text-xs">
-                            <span
-                              title={t("factVisible")}
-                              className="rounded bg-primary/10 px-1.5 text-primary"
-                            >
-                              {r.facts.visible}
-                            </span>
-                            <span
-                              title={t("factBuried")}
-                              className="rounded bg-surface-1 px-1.5 text-muted"
-                            >
-                              {r.facts.buried}
-                            </span>
-                            <span
-                              title={t("factMissing")}
-                              className="rounded bg-surface-1 px-1.5 text-ink"
-                            >
-                              {r.facts.missing}
-                            </span>
-                            {r.facts.conflicting > 0 && (
-                              <span
-                                title={t("factConflicting")}
-                                className="rounded bg-surface-1 px-1.5 text-ink"
-                              >
-                                !{r.facts.conflicting}
-                              </span>
-                            )}
-                          </span>
-                        )}
-                        {r.state === "skipped" && (
-                          <span className="shrink-0 text-xs text-muted">
-                            {t(`skip_${r.reason}`)}
-                          </span>
-                        )}
-                      </li>
-                    ))}
-                  </ol>
-                  <div>
-                    <p className="text-xs font-semibold tracking-wide text-muted uppercase">
-                      {t("soFar")}
-                    </p>
-                    <ul className="mt-2 space-y-2.5">
-                      {Object.entries(reqs).map(([rid, c]) => {
-                        const total =
-                          RESULTS.reduce((n, r) => n + c[r], 0) || 1;
-                        return (
-                          <li key={rid}>
-                            <div className="flex justify-between text-sm">
-                              <span className="text-ink">
-                                {t(`req_${rid}`)}
-                              </span>
-                              <span className="font-mono text-xs text-muted">
-                                {c.supported}/{total}
-                              </span>
-                            </div>
-                            <div className="mt-1 flex h-2 overflow-hidden rounded-full bg-surface-1">
-                              {RESULTS.map((r) => (
-                                <div
-                                  key={r}
-                                  className={`${BAR[r]} transition-[width] duration-700 motion-reduce:transition-none`}
-                                  style={{ width: `${(c[r] / total) * 100}%` }}
-                                />
-                              ))}
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                    <p className="mt-3 text-xs text-pretty text-muted">
-                      {t("legend")}
-                    </p>
-                  </div>
-                </div>
-              </>
             )}
-            {(status === "failed" || (status === "blocked" && !teaser)) && (
-              <div className="mt-4">
-                <p className="text-sm text-ink">
-                  {state?.reason ?? t(`status_${status}`)}
-                </p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              {urls.length < 20 && domain && (
                 <button
                   type="button"
-                  onClick={reset}
-                  className="mt-3 text-sm font-medium text-primary underline-offset-4 hover:underline"
+                  onClick={() => setUrls([...urls, ""])}
+                  className="text-sm font-medium text-primary underline-offset-4 hover:underline"
                 >
-                  {t("testAnother")}
+                  {t("addUrl")}
                 </button>
+              )}
+              <div
+                role="radiogroup"
+                aria-label={t("category")}
+                className="inline-flex rounded-full border border-line bg-surface-1 p-0.5"
+              >
+                {["", "laptop", "monitor"].map((c) => (
+                  <button
+                    key={c || "auto"}
+                    type="button"
+                    role="radio"
+                    aria-checked={category === c}
+                    onClick={() => setCategory(c)}
+                    className={`min-h-9 rounded-full px-4 text-sm font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus ${category === c ? "bg-card text-ink shadow-sm" : "text-muted hover:text-ink"}`}
+                  >
+                    {t(c ? `cat_${c}` : "catAuto")}
+                  </button>
+                ))}
               </div>
-            )}
+            </div>
+            {enabled && <Turnstile onToken={setToken} />}
+            <div className="flex flex-wrap items-center gap-4">
+              <button
+                type="submit"
+                className="btn-primary"
+                disabled={!domain || !!mixed || !token}
+              >
+                {busy ? t("starting") : t("submit")}
+              </button>
+              <span className="text-sm text-muted">{t("note")}</span>
+            </div>
             {error && (
-              <p className="mt-4 text-sm text-ink" role="alert">
+              <p className="text-sm text-ink" role="alert">
                 {error}
               </p>
             )}
-          </section>
-        )}
+          </fieldset>
+        </form>
+      )}
 
-        {teaser && state && (
-          <Result
-            teaser={teaser}
-            state={state}
-            t={t}
-            num={num}
-            id={id!}
-            locale={locale}
-            calculator={calculator}
-            onReset={reset}
-          />
-        )}
-      </div>
+      {id && !teaser && (
+        <section
+          aria-live="polite"
+          className="rounded-3xl border border-line bg-card p-6 shadow-sm sm:p-8"
+        >
+          <div className="flex flex-wrap items-baseline justify-between gap-3">
+            <h2 className="text-lg font-semibold text-ink">
+              {state?.domain ?? domain}
+            </h2>
+            <p className="text-sm text-muted">
+              {status === "queued" && state?.ahead
+                ? t("queuedAhead", { n: state.ahead })
+                : t(`status_${status}`)}
+            </p>
+          </div>
+          {rows.length > 0 && (
+            <>
+              <div
+                className="mt-4 h-1.5 overflow-hidden rounded-full bg-surface-1"
+                role="progressbar"
+                aria-valuenow={done}
+                aria-valuemax={rows.length}
+              >
+                <div
+                  className="h-full rounded-full bg-primary transition-[width] duration-700 motion-reduce:transition-none"
+                  style={{ width: `${(done / rows.length) * 100}%` }}
+                />
+              </div>
+              {now && (
+                <p className="mt-3 truncate font-mono text-xs text-muted">
+                  {t("reading")} {now}
+                </p>
+              )}
+              <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+                <ol className="max-h-80 space-y-1 overflow-y-auto pr-2 text-sm">
+                  {rows.map((r) => (
+                    <li
+                      key={r.url}
+                      className="flex items-center gap-2 border-t border-line py-1.5 first:border-t-0"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className={`size-2 shrink-0 rounded-full ${r.state === "inspecting" ? "animate-pulse bg-primary motion-reduce:animate-none" : r.state === "done" ? "bg-primary" : r.state === "skipped" ? "bg-muted/40" : "bg-line"}`}
+                      />
+                      <span className="min-w-0 flex-1 truncate text-ink">
+                        {r.title || new URL(r.url).pathname}
+                      </span>
+                      {r.facts && (
+                        <span className="flex shrink-0 gap-1 font-mono text-xs">
+                          <span
+                            title={t("factVisible")}
+                            className="rounded bg-primary/10 px-1.5 text-primary"
+                          >
+                            {r.facts.visible}
+                          </span>
+                          <span
+                            title={t("factBuried")}
+                            className="rounded bg-surface-1 px-1.5 text-muted"
+                          >
+                            {r.facts.buried}
+                          </span>
+                          <span
+                            title={t("factMissing")}
+                            className="rounded bg-surface-1 px-1.5 text-ink"
+                          >
+                            {r.facts.missing}
+                          </span>
+                          {r.facts.conflicting > 0 && (
+                            <span
+                              title={t("factConflicting")}
+                              className="rounded bg-surface-1 px-1.5 text-ink"
+                            >
+                              !{r.facts.conflicting}
+                            </span>
+                          )}
+                        </span>
+                      )}
+                      {r.state === "skipped" && (
+                        <span className="shrink-0 text-xs text-muted">
+                          {t(`skip_${r.reason}`)}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+                <div>
+                  <p className="text-xs font-semibold tracking-wide text-muted uppercase">
+                    {t("soFar")}
+                  </p>
+                  <ul className="mt-2 space-y-2.5">
+                    {Object.entries(reqs).map(([rid, c]) => {
+                      const total = RESULTS.reduce((n, r) => n + c[r], 0) || 1;
+                      return (
+                        <li key={rid}>
+                          <div className="flex justify-between text-sm">
+                            <span className="text-ink">{t(`req_${rid}`)}</span>
+                            <span className="font-mono text-xs text-muted">
+                              {c.supported}/{total}
+                            </span>
+                          </div>
+                          <div className="mt-1 flex h-2 overflow-hidden rounded-full bg-surface-1">
+                            {RESULTS.map((r) => (
+                              <div
+                                key={r}
+                                className={`${BAR[r]} transition-[width] duration-700 motion-reduce:transition-none`}
+                                style={{ width: `${(c[r] / total) * 100}%` }}
+                              />
+                            ))}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <p className="mt-3 text-xs text-pretty text-muted">
+                    {t("legend")}
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+          {(status === "failed" || (status === "blocked" && !teaser)) && (
+            <div className="mt-4">
+              <p className="text-sm text-ink">
+                {state?.reason ?? t(`status_${status}`)}
+              </p>
+              <button
+                type="button"
+                onClick={reset}
+                className="mt-3 text-sm font-medium text-primary underline-offset-4 hover:underline"
+              >
+                {t("testAnother")}
+              </button>
+            </div>
+          )}
+          {error && (
+            <p className="mt-4 text-sm text-ink" role="alert">
+              {error}
+            </p>
+          )}
+        </section>
+      )}
+
+      {teaser && state && (
+        <TeaserView
+          teaser={teaser}
+          state={state}
+          t={t}
+          num={num}
+          id={id!}
+          locale={locale}
+          calculator={calculator}
+          onReset={reset}
+        />
+      )}
     </div>
   );
 }
 
-/** A gauge whose needle sweeps while the test runs, like Pingdom's (owner, 2026-11-04). Still under reduced motion. */
-function Gauge() {
-  return (
-    <svg
-      viewBox="0 0 120 120"
-      className="mx-auto mt-6 size-28 text-primary"
-      aria-hidden="true"
-    >
-      <circle
-        cx="60"
-        cy="60"
-        r="48"
-        fill="none"
-        stroke="currentColor"
-        strokeOpacity="0.15"
-        strokeWidth="12"
-      />
-      <path
-        d="M60 12a48 48 0 0 1 48 48"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="12"
-        strokeLinecap="round"
-      />
-      <g className="origin-center animate-spin [animation-duration:2.4s] motion-reduce:animate-none">
-        <line
-          x1="60"
-          y1="60"
-          x2="60"
-          y2="26"
-          stroke="currentColor"
-          strokeWidth="8"
-          strokeLinecap="round"
-        />
-      </g>
-      <circle cx="60" cy="60" r="9" fill="currentColor" />
-    </svg>
+function TeaserView({
+  teaser,
+  state,
+  t,
+  num,
+  id,
+  locale,
+  calculator,
+  onReset,
+}: {
+  teaser: Teaser;
+  state: TestState;
+  t: (k: string, v?: Record<string, string | number>) => string;
+  num: (n: number) => string;
+  id: string;
+  locale: string;
+  calculator: ReactNode;
+  onReset: () => void;
+}) {
+  const [copied, setCopied] = useState(false);
+  const tiles = [
+    {
+      label: t("tileProducts"),
+      value: num(teaser.tiles.productsTested),
+      of: t("tileFound", { n: num(teaser.discovered) }),
+    },
+    {
+      label: t("tileRequirements"),
+      value: num(teaser.tiles.requirementsTested),
+    },
+    {
+      label: t("tileFix"),
+      value: num(teaser.tiles.productsToFix),
+      of: t("tileOf", { n: num(teaser.tiles.productsTested) }),
+    },
+    {
+      label: t("tileAgent"),
+      value: num(teaser.tiles.questionsAnswerable),
+      of: t("tileOf", { n: num(teaser.tiles.questions) }),
+    },
+  ];
+  const share = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+    } catch {
+      setCopied(false);
+    }
+  };
+  const open = teaser.open;
+  const title = useMemo(
+    () => (open ? findingTitle(open, t, num) : ""),
+    [open, t, num],
   );
+
+  return (
+    <div className="space-y-10">
+      <section>
+        <div className="flex flex-wrap items-baseline justify-between gap-3">
+          <h2 className="text-title text-balance">
+            {t("resultsTitle", { domain: state.domain })}
+          </h2>
+          <div className="flex gap-4 text-sm">
+            <button
+              type="button"
+              onClick={share}
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              {copied ? t("copied") : t("share")}
+            </button>
+            <button
+              type="button"
+              onClick={onReset}
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              {t("testAnother")}
+            </button>
+          </div>
+        </div>
+        {teaser.stoppedAfter !== undefined && (
+          <p className="mt-2 text-sm text-muted">
+            {t("status_blocked", { n: teaser.stoppedAfter })}
+          </p>
+        )}
+        <dl className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {tiles.map((x) => (
+            <div
+              key={x.label}
+              className="rounded-2xl border border-line bg-card p-5 text-center"
+            >
+              <dt className="text-sm text-pretty text-muted">{x.label}</dt>
+              <dd className="mt-2 font-display text-4xl font-semibold tracking-tight text-ink">
+                {x.value}
+              </dd>
+              {x.of && <dd className="mt-1 text-xs text-muted">{x.of}</dd>}
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section>
+        <h3 className="text-lg font-semibold text-ink">
+          {t("byProductTitle")}
+        </h3>
+        <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {teaser.byProduct.map((p) => (
+            <li
+              key={p.product}
+              className="rounded-2xl border border-line bg-card p-5"
+            >
+              <p className="font-semibold text-ink">{p.product}</p>
+              {p.fixes === null ? (
+                <p className="mt-2 text-sm text-muted">{t("notChecked")}</p>
+              ) : (
+                <>
+                  <p className="mt-2 font-display text-3xl font-semibold text-ink">
+                    {num(p.fixes)}
+                  </p>
+                  <p className="text-sm text-muted">
+                    {t(`unit_${slug(p.product)}`)}
+                  </p>
+                  {p.products !== null && (
+                    <p className="mt-1 text-xs text-muted">
+                      {t("acrossProducts", { n: num(p.products) })}
+                    </p>
+                  )}
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {open && (
+        <section className="rounded-3xl border border-line bg-card p-6 sm:p-8">
+          <p className="text-sm font-medium text-muted">{t("openTitle")}</p>
+          <h3 className="mt-1 text-xl font-semibold text-pretty text-ink">
+            {title}
+          </h3>
+          <p className="mt-1 text-sm text-muted">
+            {t("openNext", { product: open.product })}
+          </p>
+          <ul className="mt-5 space-y-4">
+            {open.examples.map((e) => (
+              <li
+                key={e.url}
+                className="border-t border-line pt-4 first:border-t-0 first:pt-0"
+              >
+                <a
+                  href={e.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary underline-offset-4 hover:underline"
+                >
+                  {e.title || e.url}
+                </a>
+                <ul className="mt-2 space-y-1 text-sm">
+                  {e.facts.map((f) => (
+                    <li key={f.fact} className="flex flex-wrap gap-x-2">
+                      <span className="text-muted">
+                        {t(`fact_${slug(f.fact)}`)}:
+                      </span>
+                      <span className="text-ink">{t(`state_${f.state}`)}</span>
+                      {f.value && (
+                        <span className="font-mono text-xs text-muted">
+                          &ldquo;{f.value.slice(0, 80)}&rdquo;
+                        </span>
+                      )}
+                      {f.found && (
+                        <span className="font-mono text-xs text-muted">
+                          {t("pageSays", { v: f.found })}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-muted">{t("openCheck")}</p>
+        </section>
+      )}
+
+      {teaser.masked.length > 0 && (
+        <section>
+          <h3 className="text-lg font-semibold text-ink">
+            {t("maskedTitle", { n: teaser.masked.length })}
+          </h3>
+          <ul className="mt-4 divide-y divide-line rounded-2xl border border-line bg-card">
+            {teaser.masked.map((m, i) => (
+              <li
+                key={i}
+                className="flex items-center justify-between gap-4 px-5 py-3"
+              >
+                {/* The finding's text is withheld by spider; the bar stands where it would be. */}
+                <span
+                  aria-hidden="true"
+                  className="h-3 flex-1 rounded bg-surface-1 blur-[1px]"
+                />
+                <span className="shrink-0 text-sm text-muted">{m.product}</span>
+                <span className="shrink-0 font-mono text-sm text-ink">
+                  {t("maskedCount", { n: num(m.affected), of: num(m.of) })}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section>
+        <h3 className="text-lg font-semibold text-ink">{t("moneyTitle")}</h3>
+        <p className="mt-1 text-sm text-pretty text-muted">
+          {t("moneyLede", {
+            n: num(teaser.tiles.productsToFix),
+            of: num(teaser.tiles.productsTested),
+          })}
+        </p>
+        <div className="mt-4">{calculator}</div>
+      </section>
+
+      <section className="rounded-3xl border border-line bg-surface-1 p-6 text-center sm:p-8">
+        <h3 className="text-xl font-semibold text-ink">
+          {t("unlockTitle", { n: teaser.masked.length })}
+        </h3>
+        <p className="mx-auto mt-2 max-w-xl text-sm text-pretty text-muted">
+          {t("unlockLede")}
+        </p>
+        <a
+          href={`/${locale}/contact?ref=${id}`}
+          className="btn-primary mt-5 inline-flex"
+        >
+          {t("unlock")}
+        </a>
+      </section>
+
+      <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div>
+          <h3 className="text-lg font-semibold text-ink">
+            {t("requestsTitle")}
+          </h3>
+          <ul className="mt-3 space-y-2 text-sm">
+            {teaser.requests.map((q) => (
+              <li
+                key={q.id}
+                className="border-t border-line pt-2 first:border-t-0"
+              >
+                <p className="text-ink">&ldquo;{t(`ask_${q.id}`)}&rdquo;</p>
+                <p className="text-muted">
+                  {t("requestRow", { n: num(q.canRecommend), of: num(q.of) })}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold text-ink">{t("cannotTitle")}</h3>
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-pretty text-muted">
+            <li>{t("cannotReturns")}</li>
+            <li>{t("cannotPromo")}</li>
+            <li>{t("cannotUplift")}</li>
+            {!teaser.cannotSee.filtersRead && <li>{t("cannotFilters")}</li>}
+            {teaser.cannotSee.unreadable > 0 && (
+              <li>
+                {t("cannotUnreadable", { n: teaser.cannotSee.unreadable })}
+              </li>
+            )}
+          </ul>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+const slug = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+/** An evidence or request finding's title in the page's language, from its fields; others as sent. */
+function findingTitle(
+  f: Finding,
+  t: (k: string, v?: Record<string, string | number>) => string,
+  num: (n: number) => string,
+) {
+  const req = f.requirements?.[0];
+  if (f.kind === "evidence" && req)
+    return t("findingEvidence", {
+      req: t(`req_${req}`),
+      n: num(f.affected),
+      of: num(f.of),
+    });
+  return f.title;
 }

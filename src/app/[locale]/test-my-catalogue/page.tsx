@@ -1,6 +1,8 @@
 import { prepareLocale } from "@/i18n/render-locale";
+import { PageSchema } from "@/components/PageSchema";
 import { CatalogueTestPage } from "@/components/designed/catalogue-test";
 import { designedText } from "@/components/designed/t";
+import { buildAlternates } from "@/lib/seo";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -13,10 +15,8 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: t("title"),
     description: t("description"),
-    // Kept for result links already sent (?id=), noindex: the homepage is this page since
-    // 2026-11-04, so the canonical is the homepage.
-    robots: { index: false, follow: true },
-    alternates: { canonical: `/${locale}` },
+    // The canonical has no query string: ?id= results are the visitor's, not pages to index.
+    alternates: buildAlternates(locale, "/test-my-catalogue"),
   };
 }
 
@@ -25,6 +25,7 @@ export default async function Page({ params }: PageProps) {
   prepareLocale(locale);
   return (
     <>
+      <PageSchema locale={locale} path="/test-my-catalogue" nodes={[]} />
       <CatalogueTestPage />
     </>
   );

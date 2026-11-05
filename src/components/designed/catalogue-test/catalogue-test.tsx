@@ -492,9 +492,7 @@ export function CatalogueTest({
             {(status === "failed" || (status === "blocked" && !teaser)) && (
               <div className="mt-4">
                 <p className="text-sm text-ink">
-                  {state?.reason === "no_category"
-                    ? t("reason_no_category")
-                    : (state?.reason ?? t(`status_${status}`))}
+                  {state?.reason ?? t(`status_${status}`)}
                 </p>
                 <button
                   type="button"

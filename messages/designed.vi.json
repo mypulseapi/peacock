@@ -2087,7 +2087,6 @@
       "status_blocked": "Cửa hàng đã chặn chúng tôi sau {n} trang. Kết quả dùng những gì đã đọc.",
       "status_failed": "Không thể hoàn tất lượt kiểm tra này.",
       "status_stopped": "Bị cửa hàng chặn",
-      "reason_no_category": "Chúng tôi không thấy laptop hay màn hình nào trên trang này. Hiện Test My Catalogue chỉ kiểm tra laptop và màn hình; với ngành hàng khác, hãy yêu cầu một Decision Audit.",
       "reading": "Đang đọc",
       "soFar": "Đến lúc này, từng trang",
       "legend": "Đủ: mọi thông tin đều ghi. Một phần: thiếu vài thông tin. Bị chôn: chỉ có trong tiêu đề hoặc mô tả. Không đủ: thiếu hoặc tự mâu thuẫn.",

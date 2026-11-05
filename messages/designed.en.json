@@ -2202,7 +2202,6 @@
       "status_done": "Done",
       "status_blocked": "Your store stopped us after {n} pages. The results use what we read.",
       "status_failed": "We could not finish this test.",
-      "status_stopped": "Stopped by your store",
       "reading": "Reading",
       "soFar": "So far, page by page",
       "legend": "Supported: every fact stated. Partly: some missing. Buried: only in the title or description. Insufficient: missing or contradicting itself.",

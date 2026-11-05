@@ -376,9 +376,7 @@ export function CatalogueTest({
               <p className="text-sm text-muted">
                 {status === "queued" && state?.ahead
                   ? t("queuedAhead", { n: state.ahead })
-                  : status === "blocked"
-                    ? t("status_stopped")
-                    : t(`status_${status}`)}
+                  : t(`status_${status}`)}
               </p>
             </div>
             {rows.length > 0 && (

@@ -13,25 +13,19 @@ import { CtaBoxes } from "@/components/designed/cta-boxes";
 export function RequestSection() {
   const t = designedText("visual-evidence.request");
   return (
-    <section
-      id="request"
-      className="cta-boxes scroll-mt-16 border-t border-line"
-    >
+    <section id="request" className="cta-boxes scroll-mt-16 border-t border-line">
       <CtaBoxes />
       <div className="frame py-24 text-center lg:py-32">
         <h2 className="reveal mx-auto max-w-3xl text-headline text-balance">
-          {t("1")}
+          {t('1')}
         </h2>
 
         <div className="reveal mt-8 flex flex-wrap justify-center gap-3 delay-200">
           <Link href={designedHref("/en/contact")} className="btn-primary">
-            {t("2")}
+            {t('2')}
           </Link>
-          <Link
-            href={designedHref("/en/overview#method")}
-            className="btn-secondary"
-          >
-            {t("3")}
+          <Link href={designedHref("/en#method")} className="btn-secondary">
+            {t('3')}
           </Link>
         </div>
       </div>

@@ -57,16 +57,12 @@ const CATEGORIES = {
   ],
 } as const;
 
-/**
- * Heading, calculator and the category questions, with no section around them. `bare`: the
- * calculator alone, for Test My Catalogue's result, which has its own heading above it.
- */
-export function CalculatorBlock({ bare = false }: { bare?: boolean }) {
+/** Heading, calculator and the category questions, with no section around them. */
+export function CalculatorBlock() {
   const t = designedText("calculator.page");
   const labels = Object.fromEntries(
     LABELS.map((k) => [k, t(k)]),
   ) as unknown as CalculatorLabels;
-  if (bare) return <Calculator labels={labels} locale={renderLocale()} />;
   return (
     <div id="calculator" className="mx-auto max-w-[1100px] scroll-mt-24">
       <div className="mx-auto max-w-3xl text-center">

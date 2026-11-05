@@ -298,14 +298,6 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
   },
 
   // Commercial
-  // Test My Catalogue: a store's public pages tested against buying requirements (2026-11-04).
-  {
-    route: "/test-my-catalogue",
-    audience: "merchant",
-    area: "audit",
-    depth: "transactional",
-    decides: ["what-it-does", "how-do-i-start"],
-  },
   {
     route: "/pricing",
     audience: "merchant",

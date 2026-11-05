@@ -14,8 +14,6 @@ const COPY = {
   en: {
     /** Shown under the heading, before anything is submitted. */
     note: "Two fields, nothing else. We reply within one business day. No newsletter, no sales sequence.",
-    aboutTest:
-      "About your Test My Catalogue result: we send the full Decision Audit, every finding and its fix. Two fields, nothing else.",
 
     /* Placeholders. An example, not a restatement of the label: "Company Name" above an input
        reading "Enter company name" is the label twice. */
@@ -33,8 +31,7 @@ const COPY = {
     sentShort: "Sent",
     sent: "Thank you. We have your details and will reply within one business day.",
     failed: "That did not send. Try again, or email us directly.",
-    rateLimited:
-      "We already have a request from you today. We will reply to that one.",
+    rateLimited: "We already have a request from you today. We will reply to that one.",
 
     /** The call booking, beside the form. */
     callTitle: "Rather talk it through?",
@@ -45,8 +42,6 @@ const COPY = {
   },
   vi: {
     note: "Chỉ hai ô, không gì thêm. Chúng tôi trả lời trong vòng một ngày làm việc. Không bản tin, không chuỗi email bán hàng.",
-    aboutTest:
-      "Về kết quả Kiểm tra danh mục của bạn: chúng tôi gửi Decision Audit đầy đủ, mọi phát hiện và cách khắc phục. Chỉ hai ô, không gì thêm.",
 
     companyHint: "Công ty Bán lẻ Acme",
     emailHint: "ban@congty.com",
@@ -57,10 +52,8 @@ const COPY = {
     sending: "Đang gửi…",
     sentShort: "Đã gửi",
     sent: "Cảm ơn bạn. Chúng tôi đã nhận được thông tin và sẽ trả lời trong vòng một ngày làm việc.",
-    failed:
-      "Chưa gửi được. Hãy thử lại, hoặc gửi email trực tiếp cho chúng tôi.",
-    rateLimited:
-      "Hôm nay chúng tôi đã nhận được một yêu cầu từ bạn. Chúng tôi sẽ trả lời yêu cầu đó.",
+    failed: "Chưa gửi được. Hãy thử lại, hoặc gửi email trực tiếp cho chúng tôi.",
+    rateLimited: "Hôm nay chúng tôi đã nhận được một yêu cầu từ bạn. Chúng tôi sẽ trả lời yêu cầu đó.",
 
     callTitle: "Bạn muốn trao đổi trực tiếp hơn?",
     callBody:
@@ -71,3 +64,4 @@ const COPY = {
 
 /** The form's strings for the active locale. */
 export const contactForm = (locale: string) => byLocale(COPY, locale);
+

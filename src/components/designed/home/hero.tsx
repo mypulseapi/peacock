@@ -12,6 +12,8 @@ import Image from "next/image";
 
 import Link from "next/link";
 import { HeroAurora } from "@/components/designed/hero-aurora";
+import { renderLocale } from "@/i18n/render-locale";
+import { HeroTestForm } from "./hero-test-form";
 
 export function HeroSection() {
   const t = designedText("home.hero");
@@ -48,11 +50,23 @@ export function HeroSection() {
             <p className="mt-6 max-w-md text-lg leading-relaxed text-pretty text-muted">
               {t("3")}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href={designedHref("/en/contact")} className="btn-primary">
+            {/* Test My Catalogue is the primary action (owner, 2026-11-04); the audit request
+                becomes the secondary one, so the view keeps one btn-primary. */}
+            <HeroTestForm
+              locale={renderLocale()}
+              label={t("testLabel")}
+              placeholder={t("testPlaceholder")}
+              submit={t("testSubmit")}
+              note={t("testNote")}
+            />
+            <div className="mt-4 flex flex-wrap gap-3">
+              <Link
+                href={designedHref("/en/contact")}
+                className="btn-secondary"
+              >
                 {t("4")}
               </Link>
-              <a href="#method" className="btn-secondary">
+              <a href="#method" className="btn-ghost">
                 {t("5")}
               </a>
             </div>

@@ -1,0 +1,508 @@
+"use client";
+
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
+import { ArrowRight, Clock, Globe, Tag } from "lucide-react";
+import { Turnstile } from "@/components/Turnstile";
+import { HeroAurora } from "@/components/designed/hero-aurora";
+import { AddressBar } from "./address-bar";
+import { Result } from "./result";
+import { BlockedGuide } from "./blocked-guide";
+import { RunPipeline } from "./run-pipeline";
+import {
+  domainOf,
+  pollTest,
+  useSearch,
+  startTest,
+  testConfig,
+  TestError,
+  type LiveEvent,
+  type RequirementResult,
+  type TestConfig,
+  type TestState,
+} from "@/lib/catalogue-test";
+
+/**
+ * Test My Catalogue (rainbow `ODIN/specs/nlr/requirements/store-url-audit/store-url-audit.md`).
+ * The merchant enters pages from one store; spider reads them in a queue and this shows it live,
+ * then the result the way Pingdom shows a speed test (owner, 2026-11-04): number tiles, what each
+ * Pulse product would fix as counts, one finding open as proof, the rest masked to their counts,
+ * the calculator on the merchant's own numbers, and the ask.
+ *
+ * Text arrives as props: `designedText` reads the static export's render store, which a client
+ * cannot. `{name}` in a label is filled here.
+ */
+export type Labels = Record<string, string>;
+
+function fill(s: string, vars: Record<string, string | number>) {
+  return s.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m));
+}
+
+const reducedMotion = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+interface Row {
+  url: string;
+  title?: string;
+  state: "queued" | "inspecting" | "done" | "skipped";
+  reason?: string;
+  facts?: LiveEvent["facts"];
+}
+
+export function CatalogueTest({
+  labels,
+  locale,
+  calculator,
+  header,
+  ask,
+}: {
+  labels: Labels;
+  locale: string;
+  calculator: ReactNode;
+  header: ReactNode;
+  /** One line under the bar: ask us to run it instead. Shown with the form, not during a run. */
+  ask: ReactNode;
+}) {
+  const t = useCallback(
+    (k: string, vars: Record<string, string | number> = {}) =>
+      fill(labels[k] ?? k, vars),
+    [labels],
+  );
+  const num = useCallback(
+    (n: number) =>
+      new Intl.NumberFormat(locale === "vi" ? "vi-VN" : "en-US").format(n),
+    [locale],
+  );
+
+  const [enabled, setEnabled] = useState<boolean | null>(null);
+  // The config could not be fetched: not the same as the test being switched off. Saying "opens
+  // soon" for a failed request told visitors it was closed when it was broken.
+  const [unavailable, setUnavailable] = useState(false);
+  // What spider can test today, from its config; laptops and monitors until it answers.
+  const [categories, setCategories] = useState<string[]>(["laptop", "monitor"]);
+  // All 780 categories of the canonical taxonomy, grouped and labelled by the service.
+  const [taxonomy, setTaxonomy] = useState<
+    Pick<TestConfig, "groups" | "labels" | "draft">
+  >({});
+  // A shared result opens straight on it; ?url= prefills the form (the homepage box links here).
+  const search = useSearch();
+  const [pages, setPages] = useState<string[]>([]);
+  const [pagesOk, setPagesOk] = useState(false);
+  const [category, setCategory] = useState<string>("");
+  const [token, setToken] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [chosen, setId] = useState<string | null | undefined>(undefined);
+  const id = chosen === undefined ? search.get("id") : chosen;
+  // Bumped on every submit, so polling restarts even when the API hands back the id already shown:
+  // a reused test has the same id, and without this the page sat on "Waiting in line" (BUG-104).
+  const [run, setRun] = useState(0);
+  const [state, setState] = useState<TestState | null>(null);
+  const [rows, setRows] = useState<Row[]>([]);
+  const [reqs, setReqs] = useState<
+    Record<string, Record<RequirementResult, number>>
+  >({});
+  const [now, setNow] = useState<string | null>(null);
+  // From the live events: spider says "evaluating" only as an event, never as the stored status, so
+  // the page keeps it here (step 4 of the pipeline); the products found on the store; when it started.
+  const [evaluating, setEvaluating] = useState(false);
+  const [found, setFound] = useState<number | null>(null);
+  const [startedAt, setStartedAt] = useState<number | null>(null);
+  const [elapsed, setElapsed] = useState<number | null>(null);
+  const started = useRef<number | null>(null);
+  const runAt = useRef<HTMLDivElement>(null);
+  const cursor = useRef(0);
+  const timers = useRef<number[]>([]);
+
+  useEffect(() => {
+    testConfig()
+      .then((c) => {
+        setEnabled(c.enabled);
+        if (c.categories?.length) setCategories(c.categories);
+        setTaxonomy({ groups: c.groups, labels: c.labels, draft: c.draft });
+      })
+      .catch(() => setUnavailable(true));
+  }, []);
+
+  const apply = useCallback((e: LiveEvent) => {
+    if (e.type === "status" && e.status === "evaluating") setEvaluating(true);
+    if (e.type === "discovered" && e.discovered !== undefined)
+      setFound(e.discovered);
+    if (e.type === "discovered" && e.urls)
+      setRows(e.urls.map((url) => ({ url, state: "queued" })));
+    if (e.type === "inspecting" && e.url) {
+      setNow(e.url);
+      setRows((r) =>
+        r.map((x) => (x.url === e.url ? { ...x, state: "inspecting" } : x)),
+      );
+    }
+    if (e.type === "inspected" && e.url) {
+      setRows((r) =>
+        r.map((x) =>
+          x.url === e.url
+            ? { ...x, state: "done", title: e.title, facts: e.facts }
+            : x,
+        ),
+      );
+      if (e.reqs)
+        setReqs((prev) => {
+          const next = { ...prev };
+          for (const [rid, res] of Object.entries(e.reqs!)) {
+            const c = {
+              ...(next[rid] ?? {
+                supported: 0,
+                partial: 0,
+                buried: 0,
+                insufficient: 0,
+              }),
+            };
+            c[res]++;
+            next[rid] = c;
+          }
+          return next;
+        });
+    }
+    if (e.type === "skipped" && e.url)
+      setRows((r) =>
+        r.map((x) =>
+          x.url === e.url ? { ...x, state: "skipped", reason: e.reason } : x,
+        ),
+      );
+  }, []);
+
+  // A new test brings its pipeline into view (owner, 6 Nov 2026).
+  useEffect(() => {
+    if (!run) return;
+    requestAnimationFrame(() =>
+      runAt.current?.scrollIntoView({
+        behavior: reducedMotion() ? "auto" : "smooth",
+        block: "start",
+      }),
+    );
+  }, [run]);
+
+  // Poll while running; play each batch across the interval so the ticker moves rather than jumps.
+  useEffect(() => {
+    if (!id) return;
+    let stop = false;
+    let handle: number | undefined;
+    const tick = async () => {
+      try {
+        const s = await pollTest(id, cursor.current);
+        if (stop) return;
+        cursor.current = s.cursor;
+        setState(s);
+        if (started.current === null && s.events.length) {
+          started.current = s.events[0].at;
+          setStartedAt(started.current);
+        }
+        if (started.current !== null) setElapsed(Date.now() - started.current);
+        const gap =
+          s.nextPollMs && !reducedMotion()
+            ? s.nextPollMs / Math.max(1, s.events.length)
+            : 0;
+        s.events.forEach((e, i) => {
+          if (gap)
+            timers.current.push(window.setTimeout(() => apply(e), i * gap));
+          else apply(e);
+        });
+        if (s.nextPollMs) handle = window.setTimeout(tick, s.nextPollMs);
+      } catch (e) {
+        if (!stop)
+          setError(
+            e instanceof TestError && e.status === 404
+              ? t("notFound")
+              : t("error"),
+          );
+      }
+    };
+    tick();
+    return () => {
+      stop = true;
+      if (handle) clearTimeout(handle);
+      timers.current.forEach(clearTimeout);
+      timers.current = [];
+    };
+  }, [id, run, apply, t]);
+
+  // The clock ticks every second while the test runs, not only when a poll lands (owner, 6 Nov 2026).
+  const live =
+    startedAt !== null &&
+    !["done", "failed", "blocked"].includes(state?.status ?? "");
+  useEffect(() => {
+    if (!live) return;
+    const h = window.setInterval(
+      () => setElapsed(Date.now() - startedAt!),
+      1000,
+    );
+    return () => clearInterval(h);
+  }, [live, startedAt]);
+
+  const domain = domainOf(pages[0] ?? "");
+
+  const submit = async (ev: React.FormEvent) => {
+    ev.preventDefault();
+    setError(null);
+    const list = pages;
+    if (!list.length || !pagesOk || !token) return;
+    setBusy(true);
+    try {
+      const r = await startTest(list, token, category || undefined);
+      cursor.current = 0;
+      setRows([]);
+      setReqs({});
+      setEvaluating(false);
+      setFound(null);
+      setStartedAt(null);
+      setElapsed(null);
+      started.current = null;
+      setState(null);
+      setId(r.id);
+      setRun((n) => n + 1);
+      setToken("");
+      window.history.replaceState(null, "", `?id=${r.id}`);
+    } catch (e) {
+      const err = e as TestError;
+      setError(
+        err.details
+          ? Object.values(err.details)[0]!
+          : err.status === 429
+            ? t("tooMany")
+            : err.status === 503
+              ? t("closed")
+              : t("error"),
+      );
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const reset = () => {
+    setId(null);
+    setState(null);
+    setRows([]);
+    setReqs({});
+    setEvaluating(false);
+    setFound(null);
+    setStartedAt(null);
+    setElapsed(null);
+    started.current = null;
+    cursor.current = 0;
+    window.history.replaceState(null, "", window.location.pathname);
+  };
+
+  const status = state?.status ?? (id ? "queued" : null);
+  // The tested category in the page's language, from the service's labels (develop #8). No category
+  // is shown as a draft (owner, 9 Nov 2026); `draft` only picks the service's own words below.
+  const categoryLabel = state?.category
+    ? (taxonomy.labels?.[state.category]?.[locale === "vi" ? "vi" : "en"] ??
+      (labels[`cat_${state.category}`] ? t(`cat_${state.category}`) : null))
+    : null;
+  const draft = Boolean(
+    state?.category && taxonomy.draft?.includes(state.category),
+  );
+  const teaser = state?.teaser ?? null;
+  // A draft checklist's requirements and questions have no catalogue line, and an id like "brand"
+  // can mean something else in a calibrated one: the service's own words for those, else the id.
+  const said = useMemo(
+    () =>
+      Object.fromEntries([
+        ...(teaser?.requirements ?? []).map((r) => [`req_${r.id}`, r.label]),
+        ...(teaser?.requests ?? []).map((q) => [`ask_${q.id}`, q.ask]),
+      ]) as Record<string, string>,
+    [teaser],
+  );
+  const tr = useCallback(
+    (k: string, vars?: Record<string, string | number>) => {
+      if (!/^(req|ask|fact)_/.test(k) || (labels[k] && !(draft && said[k])))
+        return t(k, vars);
+      const s = said[k] ?? k.slice(k.indexOf("_") + 1).replace(/[-_]/g, " ");
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    },
+    [t, labels, draft, said],
+  );
+  const done = rows.filter(
+    (r) => r.state === "done" || r.state === "skipped",
+  ).length;
+
+  // The run as a pipeline of stations (owner, 5 Nov 2026; the designer's progress mockup).
+  const pipeline = (
+    <>
+      <RunPipeline
+        t={tr}
+        num={num}
+        status={
+          evaluating && status === "inspecting"
+            ? "evaluating"
+            : (status ?? "queued")
+        }
+        domain={state?.domain ?? domain ?? ""}
+        ahead={state?.ahead}
+        found={found}
+        sampled={rows.length}
+        read={done}
+        now={now}
+        pages={rows}
+        reqs={reqs}
+        startedAt={startedAt}
+        elapsed={elapsed}
+        category={categoryLabel}
+        onReset={reset}
+        reason={
+          state?.reason === "no_category"
+            ? t("reason_no_category")
+            : // Every page read was something else, agoda.com's hotel maps under "tea-garden".
+              status === "failed" &&
+                rows.length > 0 &&
+                rows.every(
+                  (r) => r.state === "skipped" && r.reason === "not-a-product",
+                )
+              ? t("reason_no_products")
+              : null
+        }
+      />
+      {status === "blocked" && (
+        <BlockedGuide t={t} contactHref={`/${locale}/contact`} />
+      )}
+      {error && (
+        <p className="mt-4 text-sm text-ink" role="alert">
+          {error}
+        </p>
+      )}
+    </>
+  );
+
+  return (
+    <div className="flex flex-1 flex-col">
+      {/* Pingdom's layout (owner, 2026-11-04): a band with the heading and one row, address,
+          category and the button, which stays put while the result builds underneath. The hero
+          background (`hero-bg` and the aurora), like every other hero's (owner, 5 Nov 2026); `isolate` also keeps the bar's
+          glow behind the bar. It clips sideways only, so the category list can hang below it over the next section (`z-10`). Pricing's hero padding, `pt-12 pb-16 lg:pt-16 lg:pb-20`, as the other heroes (owner, 5 Nov 2026). Until a test starts the page stretches the hero to fill the first
+          screen with About Pulse under it, About at its own height and the hero's content centred in the room left
+          over; the title and the bar keep their fixed gap (owner, 5 Nov 2026). */}
+      <section
+        className={`relative isolate z-10 hero-bg overflow-x-clip border-b border-line ${id ? "" : "flex flex-1 flex-col"}`}
+      >
+        <HeroAurora />
+        {/* A row around `frame` so it grows to its usual width (it is content-box with auto margins, and a
+            flex column would shrink it to its content), and stretches to the hero's height. */}
+        <div className={id ? undefined : "flex flex-1"}>
+          <div
+            className={`frame pt-12 pb-16 lg:pt-16 lg:pb-20 ${id ? "" : "flex flex-1 flex-col justify-center"}`}
+          >
+            {/* The hero and its form stay put through a run; the run plays below (owner, 6 Nov 2026). */}
+            {header}
+            <form
+              onSubmit={submit}
+              className="mx-auto mt-12 w-full max-w-5xl lg:mt-16"
+              noValidate
+            >
+              {(enabled === false || unavailable) && (
+                <p className="mb-4 text-center text-sm text-pretty text-muted">
+                  {t(unavailable ? "unavailable" : "closed")}
+                </p>
+              )}
+              <fieldset
+                disabled={enabled !== true || busy}
+                className="space-y-3"
+              >
+                <AddressBar
+                  t={t}
+                  initial={search.get("url") ?? ""}
+                  category={category}
+                  categories={categories}
+                  groups={taxonomy.groups ?? []}
+                  labels={taxonomy.labels ?? {}}
+                  locale={locale}
+                  onCategory={setCategory}
+                  onPages={(list, ok) => {
+                    setPages(list);
+                    setPagesOk(ok);
+                  }}
+                  leaving={busy}
+                >
+                  <button
+                    type="submit"
+                    className="btn-primary group min-h-12 rounded-full px-5.5 aria-busy:cursor-progress aria-busy:opacity-100"
+                    disabled={!pagesOk || !token}
+                    aria-busy={busy || undefined}
+                  >
+                    {busy ? t("starting") : t("submit")}
+                    <ArrowRight
+                      className="size-4 transition-transform duration-200 ease-out-soft group-enabled:group-hover:translate-x-0.5"
+                      aria-hidden
+                    />
+                  </button>
+                </AddressBar>
+                {/* Three facts, each with its own icon rather than a tick on each (owner's pick C3, 5 Nov 2026), with
+                  more room above them (owner, 5 Nov 2026). */}
+                <ul className="flex flex-wrap justify-center gap-x-6 gap-y-1.5 pt-3 text-sm text-muted lg:pt-5">
+                  {(
+                    [
+                      [Tag, "factFree"],
+                      [Globe, "factPublic"],
+                      [Clock, "factTime"],
+                    ] as const
+                  ).map(([Icon, k]) => (
+                    <li key={k} className="inline-flex items-center gap-1.5">
+                      <Icon
+                        className="size-[15px] text-primary/85"
+                        aria-hidden
+                      />
+                      {t(k)}
+                    </li>
+                  ))}
+                </ul>
+                {/* A token is good for one test: a new one after each start (owner, 6 Nov 2026). */}
+                {enabled && <Turnstile key={run} onToken={setToken} />}
+                {error && !id && (
+                  <p className="text-sm text-ink" role="alert">
+                    {error}
+                  </p>
+                )}
+              </fieldset>
+            </form>
+            {ask}
+          </div>
+        </div>
+      </section>
+
+      {/* A plain block around `frame`: the root is a flex column, which would size `frame` (content-box,
+          auto margins) to its widest line instead of the page's width. */}
+      <div className="empty:hidden">
+        <div className="frame py-12 lg:py-16 empty:hidden">
+          {/* The run as a pipeline of stations, kept above the result once it is done; a new test
+              scrolls here (owner, 6 Nov 2026). */}
+          {id && (
+            <div ref={runAt} className="scroll-mt-24">
+              {pipeline}
+            </div>
+          )}
+
+          {teaser && state && (
+            <div className="mt-14 max-md:mt-10">
+              <Result
+                teaser={teaser}
+                state={state}
+                t={tr}
+                num={num}
+                id={id!}
+                locale={locale}
+                calculator={calculator}
+                category={categoryLabel}
+                onReset={reset}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

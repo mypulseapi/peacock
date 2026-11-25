@@ -11,6 +11,7 @@ import { asset } from "@/lib/cdn";
 import { renderLocale } from "@/i18n/render-locale";
 import { DesignedLocaleMenu } from "./designed-locale-switch";
 import { DesignedThemeSwitch } from "./designed-theme-switch";
+import { SidebarToggle } from "./sidebar-link";
 import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
@@ -22,7 +23,7 @@ import { SIGNIN_URL } from "@/lib/constants";
  * search, and the menu listed only the catalogue tools. Third in the panel because the Decision
  * Audit is what is sold first; these act on a live storefront once there is a reason to.
  */
-const STOREFRONT = [
+export const STOREFRONT = [
   { href: "/en/product/decision-api", key: "api", icon: "i-terminal" },
   { href: "/en/product/search", key: "search", icon: "i-user-search" },
   { href: "/en/product/recommendations", key: "recs", icon: "i-sparkles" },
@@ -36,31 +37,13 @@ const STOREFRONT = [
 
 // The Solutions panel (2026-10-26, was "Templates"): agents first, because a decision call AI agents
 // use in any industry is the proposition now (ODIN/strategy/OPEN-SOURCE.md §0).
-const AGENTS = [
+export const AGENTS = [
   { href: "/en/agents/shopping-assistants", key: "agentShop", icon: "i-cart" },
   { href: "/en/agents/procurement", key: "agentProc", icon: "i-factory" },
   { href: "/en/agents/travel", key: "agentTravel", icon: "i-globe" },
   { href: "/en/agents/coding-agents", key: "agentCode", icon: "i-terminal" },
 ];
-const INDUSTRIES = [
-  { href: "/en/industries/ecommerce", name: "15", blurb: "16", icon: "i-cart" },
-  { href: "/en/industries/fmcg", name: "17", blurb: "18", icon: "i-basket" },
-  { href: "/en/industries/furniture", name: "20", blurb: "21", icon: "i-sofa" },
-  {
-    href: "/en/industries/cosmetics",
-    name: "22",
-    blurb: "23",
-    icon: "i-sparkles",
-  },
-  { href: "/en/industries/technology", name: "25", blurb: "26", icon: "i-cpu" },
-  {
-    href: "/en/industries/distribution",
-    name: "27",
-    blurb: "28",
-    icon: "i-factory",
-  },
-];
-const GOALS = [
+export const GOALS = [
   {
     href: "/en/use-cases/promotions-that-pay",
     key: "goalPromo",
@@ -83,14 +66,18 @@ export function DesignedHeader() {
   const t = designedText("shell.designed-header");
   return (
     <header
-      className="sticky top-0 z-50 border-b border-line bg-card font-display"
+      className="sticky top-0 z-50 border-b border-line bg-card font-display xl:border-transparent"
       data-nav
     >
-      <div className="frame flex h-17 items-center justify-between gap-4 lg:gap-2 xl:gap-4">
+      <div className="frame flex h-17 items-center justify-between gap-4 lg:gap-2 xl:justify-end xl:gap-4">
+        {/* From `xl`, only while the sidebar is closed (globals.css): the button that opens it again. */}
+        <div data-sidebar-open className="mr-auto hidden">
+          <SidebarToggle label={t("openSidebar")} open={false} />
+        </div>
         <Link
           href={designedHref("/en")}
           aria-label="Pulse home"
-          className="hit-area shrink-0"
+          className="hit-area shrink-0 xl:hidden"
         >
           <Image
             src={asset("brand/logo-v2.webp")}
@@ -110,498 +97,6 @@ export function DesignedHeader() {
           />
         </Link>
 
-        {/*
-              Desktop from `xl`, not `lg`.
-              
-              The row does not fit at 1024: measured 1068px in English and 1171px in Vietnamese,
-              so every page scrolled sideways between 1024 and 1171, which is most tablets in
-              landscape and every small laptop. Five nav items, two switches, a link and a CTA
-              need the room, and Vietnamese needs 147px more of it than English.
-              
-              Tightening gaps was the first instinct and it cannot work: clawing back 147px means
-              dropping items, and a nav that differs by language is worse than a compact menu for
-              one breakpoint band. Below `xl` the mobile sheet carries the same links, which is
-              what it is for. Vietnamese keeps the sheet to 88rem, where its row fits
-              (`:lang(vi) [data-nav]` in globals.css).
-            */}
-        <nav
-          aria-label="Main"
-          className="relative hidden self-stretch xl:flex xl:items-center"
-          data-mega-nav
-        >
-          <ul className="flex items-center gap-0.5">
-            {/* About us is deliberately not a top-level item. It lives once, under
-                     Resources > Company. Two entry points to /about read as two destinations. */}
-            <li className="relative">
-              <details className="group" data-dropdown data-mega>
-                <summary className="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink">
-                  {t("1")}
-                  <svg
-                    className="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
-                    aria-hidden="true"
-                  >
-                    <use href="#i-chevron-down" />
-                  </svg>
-                </summary>
-                <div
-                  data-panel
-                  className="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none"
-                >
-                  {/* A fixed width, three columns' worth like Templates (2026-10-26). Its columns grow to fill
-                      (`flex-1`), so without one it took whatever width the viewport had when the script
-                      measured it: 608px on first open or after Resources, 912px after Templates. */}
-                  <div
-                    data-nav-content
-                    className="nav-content flex w-228 flex-col"
-                  >
-                    {/* The catalogue tools side by side, three each (Decision Monitor with Measure & repair, owner,
-                        2026-11-10), on one row grid, items top-aligned, so an item's name lines up with the one beside it
-                        however many lines its description takes; the storefront as a row of three under them. */}
-                    <div className="grid w-full grid-cols-2 grid-rows-[auto_repeat(3,auto)]">
-                      <div className="nav-column row-span-4 grid grid-rows-subgrid p-3">
-                        <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                          {t("2")}
-                        </p>
-                        <ul className="row-span-3 grid grid-rows-subgrid gap-y-1">
-                          <li>
-                            <Link
-                              href={designedHref("/en/product/decision-audit")}
-                              className="flex h-full items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                            >
-                              <span className="nav-icon-tile">
-                                <svg className="size-4" aria-hidden="true">
-                                  <use href="#i-clipboard-check" />
-                                </svg>
-                              </span>
-                              <span className="min-w-0">
-                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                  {t("3")}
-                                </span>
-                                <span className="mt-1 block text-sm text-pretty text-muted">
-                                  {t("4")}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href={designedHref(
-                                "/en/product/decision-verification",
-                              )}
-                              className="flex h-full items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                            >
-                              <span className="nav-icon-tile">
-                                <svg className="size-4" aria-hidden="true">
-                                  <use href="#i-compare" />
-                                </svg>
-                              </span>
-                              <span className="min-w-0">
-                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                  {t("5")}
-                                </span>
-                                <span className="mt-1 block text-sm text-pretty text-muted">
-                                  {t("6")}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href={designedHref(
-                                "/en/product/decision-monitor",
-                              )}
-                              className="flex h-full items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                            >
-                              <span className="nav-icon-tile">
-                                <svg className="size-4" aria-hidden="true">
-                                  <use href="#i-bell-ring" />
-                                </svg>
-                              </span>
-                              <span className="min-w-0">
-                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                  {t("8")}
-                                  <span className="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase">
-                                    {t("9")}
-                                  </span>
-                                </span>
-                                <span className="mt-1 block text-sm text-pretty text-muted">
-                                  {t("10")}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="nav-column row-span-4 grid grid-rows-subgrid p-3">
-                        <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                          {t("7")}
-                        </p>
-                        <ul className="row-span-3 grid grid-rows-subgrid gap-y-1">
-                          <li>
-                            <Link
-                              href={designedHref(
-                                "/en/product/return-verification",
-                              )}
-                              className="flex h-full items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                            >
-                              <span className="nav-icon-tile">
-                                <svg className="size-4" aria-hidden="true">
-                                  <use href="#i-undo" />
-                                </svg>
-                              </span>
-                              <span className="min-w-0">
-                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                  {t("returnName")}
-                                </span>
-                                <span className="mt-1 block text-sm text-pretty text-muted">
-                                  {t("returnBlurb")}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href={designedHref("/en/product/visual-evidence")}
-                              className="flex h-full items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                            >
-                              <span className="nav-icon-tile">
-                                <svg className="size-4" aria-hidden="true">
-                                  <use href="#i-image" />
-                                </svg>
-                              </span>
-                              <span className="min-w-0">
-                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                  {t("visualName")}
-                                </span>
-                                <span className="mt-1 block text-sm text-pretty text-muted">
-                                  {t("visualBlurb")}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href={designedHref("/en/product/promotion-audit")}
-                              className="flex h-full items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                            >
-                              <span className="nav-icon-tile">
-                                <svg className="size-4" aria-hidden="true">
-                                  <use href="#i-chart-pie" />
-                                </svg>
-                              </span>
-                              <span className="min-w-0">
-                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                  {t("promotionName")}
-                                </span>
-                                <span className="mt-1 block text-sm text-pretty text-muted">
-                                  {t("promotionBlurb")}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="relative py-3 before:absolute before:inset-x-6 before:top-0 before:h-px before:bg-line/60 before:content-['']">
-                      {/* No side padding here: each cell carries the columns' p-3, so the grid lines up with them. */}
-                      <p className="mx-3 px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                        {t("storefront")}
-                      </p>
-                      <ul className="grid grid-cols-3 gap-y-1">
-                        {STOREFRONT.map((p) => (
-                          <li key={p.href} className="px-3">
-                            <Link
-                              href={designedHref(p.href)}
-                              className="flex h-full items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                            >
-                              <span className="nav-icon-tile">
-                                <svg className="size-4" aria-hidden="true">
-                                  <use href={`#${p.icon}`} />
-                                </svg>
-                              </span>
-                              <span className="min-w-0">
-                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                  {t(`${p.key}Name`)}
-                                </span>
-                                <span className="mt-1 block text-sm text-pretty text-muted">
-                                  {t(`${p.key}Blurb`)}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </details>
-            </li>
-
-            <li className="relative">
-              <details className="group" data-dropdown data-mega>
-                <summary className="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink">
-                  {t("13")}
-                  <svg
-                    className="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
-                    aria-hidden="true"
-                  >
-                    <use href="#i-chevron-down" />
-                  </svg>
-                </summary>
-                <div
-                  data-panel
-                  className="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none"
-                >
-                  <div data-nav-content className="nav-content flex">
-                    <div className="nav-column w-76 p-3">
-                      <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                        {t("agentsHeading")}
-                      </p>
-                      <ul className="space-y-1">
-                        {AGENTS.map((p) => (
-                          <li key={p.href}>
-                            <Link
-                              href={designedHref(p.href)}
-                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                            >
-                              <span className="nav-icon-tile">
-                                <svg className="size-4" aria-hidden="true">
-                                  <use href={`#${p.icon}`} />
-                                </svg>
-                              </span>
-                              <span className="min-w-0">
-                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                  {t(`${p.key}Name`)}
-                                  <span className="rounded bg-primary-tint px-1.5 py-0.5 text-label font-semibold text-primary uppercase">
-                                    {t("newTag")}
-                                  </span>
-                                </span>
-                                <span className="mt-1 block text-sm text-pretty text-muted">
-                                  {t(`${p.key}Blurb`)}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="nav-column w-76 p-3">
-                      <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                        {t("industriesHeading")}
-                      </p>
-                      <ul className="space-y-1">
-                        {INDUSTRIES.map((p) => (
-                          <li key={p.href}>
-                            <Link
-                              href={designedHref(p.href)}
-                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                            >
-                              <span className="nav-icon-tile">
-                                <svg className="size-4" aria-hidden="true">
-                                  <use href={`#${p.icon}`} />
-                                </svg>
-                              </span>
-                              <span className="min-w-0">
-                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                  {t(p.name)}
-                                </span>
-                                <span className="mt-1 block text-sm text-pretty text-muted">
-                                  {t(p.blurb)}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="nav-column w-76 p-3">
-                      <p className="px-3 pt-1 pb-2 text-xs font-medium text-muted">
-                        {t("goalsHeading")}
-                      </p>
-                      <ul className="space-y-1">
-                        {GOALS.map((p) => (
-                          <li key={p.href}>
-                            <Link
-                              href={designedHref(p.href)}
-                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                            >
-                              <span className="nav-icon-tile">
-                                <svg className="size-4" aria-hidden="true">
-                                  <use href={`#${p.icon}`} />
-                                </svg>
-                              </span>
-                              <span className="min-w-0">
-                                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                  {t(`${p.key}Name`)}
-                                </span>
-                                <span className="mt-1 block text-sm text-pretty text-muted">
-                                  {t(`${p.key}Blurb`)}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </details>
-            </li>
-
-            <li className="relative">
-              <details className="group" data-dropdown data-mega>
-                <summary className="nav-link cursor-pointer group-open:bg-surface-1 group-open:text-ink">
-                  {t("29")}
-                  <svg
-                    className="size-3.5 transition-transform duration-150 ease-out-soft group-open:rotate-180"
-                    aria-hidden="true"
-                  >
-                    <use href="#i-chevron-down" />
-                  </svg>
-                </summary>
-                <div
-                  data-panel
-                  className="absolute top-full left-0 mt-2 animate-dropdown overflow-hidden rounded-2xl bg-card shadow-nav motion-reduce:animate-none"
-                >
-                  {/*
-                        Two columns of two, and no section headings.
-
-                        It used to be Learn and Company side by side, three items against one.
-                        Once Documentation was promoted to the top bar, Learn held nothing but
-                        Research, and a heading over a single link is a label doing no work. The
-                        four links are one group, so they stay unnamed; since 2026-10-26 they are
-                        laid out as two columns, matching the Product menu, rather than one list.
-                      */}
-                  <div data-nav-content className="nav-content flex">
-                    <div className="nav-column w-76 p-3">
-                      <ul className="space-y-1">
-                        <li>
-                          <Link
-                            href={designedHref("/en/research")}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="nav-icon-tile">
-                              <svg className="size-4" aria-hidden="true">
-                                <use href="#i-flask" />
-                              </svg>
-                            </span>
-                            <span className="min-w-0">
-                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                {t("33")}
-                              </span>
-                              <span className="mt-1 block text-sm text-pretty text-muted">
-                                {t("34")}
-                              </span>
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href={designedHref("/en/about")}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="nav-icon-tile">
-                              <svg className="size-4" aria-hidden="true">
-                                <use href="#i-user-round" />
-                              </svg>
-                            </span>
-                            <span className="min-w-0">
-                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                {t("36")}
-                              </span>
-                              <span className="mt-1 block text-sm text-pretty text-muted">
-                                {t("37")}
-                              </span>
-                            </span>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="nav-column w-76 p-3">
-                      <ul className="space-y-1">
-                        <li>
-                          <Link
-                            href={designedHref("/en/contact")}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="nav-icon-tile">
-                              <svg className="size-4" aria-hidden="true">
-                                <use href="#i-message-circle" />
-                              </svg>
-                            </span>
-                            <span className="min-w-0">
-                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                {t("38")}
-                              </span>
-                              <span className="mt-1 block text-sm text-pretty text-muted">
-                                {t("39")}
-                              </span>
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href={designedHref("/en/careers")}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out-soft hover:bg-surface-1"
-                          >
-                            <span className="nav-icon-tile">
-                              <svg className="size-4" aria-hidden="true">
-                                <use href="#i-briefcase" />
-                              </svg>
-                            </span>
-                            <span className="min-w-0">
-                              <span className="flex items-center gap-2 text-sm font-semibold text-ink">
-                                {t("40")}
-                              </span>
-                              <span className="mt-1 block text-sm text-pretty text-muted">
-                                {t("41")}
-                              </span>
-                            </span>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </details>
-            </li>
-
-            {/* Promoted out of the Resources panel: the docs are a destination of their own,
-                     not something to go hunting for behind a menu. It stays an <a> rather than a
-                     <Link>, because it leaves this site for the handbook. */}
-            <li>
-              <a
-                href="https://developer.thepulseapi.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-link"
-              >
-                {t("31")}
-              </a>
-            </li>
-            <li>
-              <Link href={designedHref("/en/pricing")} className="nav-link">
-                {t("42")}
-              </Link>
-            </li>
-            <li>
-              {/* The selling point, so it stands apart: the GitHub mark and the primary colour. */}
-              <Link
-                href={designedHref("/en/opensource")}
-                className="nav-link gap-1.5 font-semibold text-primary! hover:bg-primary-tint!"
-              >
-                <svg className="size-4" aria-hidden="true">
-                  <use href="#i-github" />
-                </svg>
-                {t("opensource")}
-              </Link>
-            </li>
-          </ul>
-          <div className="nav-viewport" data-nav-viewport>
-            <div className="nav-viewport-stack" data-nav-stack></div>
-          </div>
-        </nav>
-
         {/* Desktop actions */}
         <div
           className="hidden items-center gap-2 self-stretch xl:flex"
@@ -609,22 +104,25 @@ export function DesignedHeader() {
         >
           <DesignedThemeSwitch label={t("themeDark")} />
           <DesignedLocaleMenu heading={t("44")} current={renderLocale()} />
-          {/* Sign-in is the dashboard's own page, another origin: a plain link. */}
-          <a href={SIGNIN_URL} className="nav-link">
-            {t("46")}
-          </a>
-          <Link
-            href={designedHref("/en/contact")}
-            className="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap"
-          >
-            {t("47")}
-            <svg
-              className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
-              aria-hidden="true"
+          {/* Sign-in is the dashboard's own page, another origin: a plain link. In the sidebar's
+              foot from `xl`, here only while the sidebar is closed (globals.css). */}
+          <div data-header-account className="items-center gap-2">
+            <a href={SIGNIN_URL} className="nav-link">
+              {t("46")}
+            </a>
+            <Link
+              href={designedHref("/en/contact")}
+              className="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap"
             >
-              <use href="#i-arrow-right" />
-            </svg>
-          </Link>
+              {t("47")}
+              <svg
+                className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
+                aria-hidden="true"
+              >
+                <use href="#i-arrow-right" />
+              </svg>
+            </Link>
+          </div>
         </div>
 
         {/* Phones: the language dropdown beside the menu button, outside the menu. */}

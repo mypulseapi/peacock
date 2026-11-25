@@ -120,7 +120,10 @@
       "goalLaunchName": "Ra mắt nhanh hơn",
       "goalLaunchBlurb": "Đưa dòng sản phẩm mới lên bán sớm hơn",
       "visualName": "Visual Evidence",
-      "visualBlurb": "Ảnh nào cho thấy rõ điều người mua cần biết, và cần thêm ảnh nào. Truy cập sớm"
+      "visualBlurb": "Ảnh nào cho thấy rõ điều người mua cần biết, và cần thêm ảnh nào. Truy cập sớm",
+      "ask": "Hỏi Pulse",
+      "closeSidebar": "Đóng thanh bên",
+      "openSidebar": "Mở thanh bên"
     },
     "notFound": {
       "title": "Trang này không tồn tại",

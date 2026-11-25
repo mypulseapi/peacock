@@ -6582,18 +6582,61 @@ html[data-js] .figure-hold *::after {
   }
 }
 
-/* The chat-style sidebar (designed-sidebar.tsx), from `xl`: SidebarToggle sets `data-sidebar` on <html>.
-   Open, the sidebar holds sign-in and the ask; closed, the header shows them and the open button.
-   Unlayered, so it wins over the `hidden` utility on the open button. */
+/* The chat-style sidebar and header, from `xl` (designed-sidebar.tsx, sidebar-link.tsx). Unlayered,
+   so these win over the utilities on the same elements. */
 @media (width >= 80rem) {
-  [data-header-account] {
+  /* Closed, the sidebar is a 56px rail of icons; each keeps its name as a tooltip. */
+  html:not([data-sidebar="closed"]) [data-rail-only],
+  html[data-sidebar="closed"] [data-site-sidebar] [data-rail-hide] {
     display: none;
   }
   html[data-sidebar="closed"] [data-site-sidebar] {
-    display: none;
+    width: 3.5rem;
   }
-  html[data-sidebar="closed"] [data-sidebar-open],
-  html[data-sidebar="closed"] [data-header-account] {
-    display: flex;
+  html[data-sidebar="closed"] [data-site-sidebar] :is(nav, [data-side-row]) {
+    padding-inline: 0.625rem;
+  }
+  html[data-sidebar="closed"] [data-side-row] {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    height: auto;
+    padding-block: 0.75rem 0.5rem;
+  }
+  html[data-sidebar="closed"] [data-side-item] {
+    justify-content: center;
+    padding-inline: 0;
+  }
+  html[data-sidebar="closed"] [data-side-cta] {
+    width: 2.25rem;
+    min-height: 2.25rem;
+    padding: 0;
+    justify-self: center;
+  }
+  html[data-sidebar="closed"] [data-site-sidebar] > div:last-child {
+    padding-inline: 0.625rem;
+  }
+
+  /* The header takes the page's own background: transparent over the first section, which runs up
+     under it (a spacer of the header's height opens it, inside its box, so its glow layers reach the
+     top too), and solid once the page scrolls (data-scrolled, HeaderScrolled). */
+  [data-nav] {
+    background-color: transparent;
+    border-bottom-color: transparent;
+    transition:
+      background-color 150ms,
+      border-color 150ms;
+  }
+  [data-nav][data-scrolled] {
+    background-color: var(--color-card);
+    border-bottom-color: var(--color-line);
+  }
+  #main > :nth-child(1 of :not(script, style, link, template)) {
+    margin-top: calc(-4.25rem - 1px);
+    &::before {
+      content: "";
+      display: block;
+      height: calc(4.25rem + 1px);
+    }
   }
 }

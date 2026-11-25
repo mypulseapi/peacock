@@ -10,7 +10,6 @@ import { prepareLocale, setRenderLocale } from "@/i18n/render-locale";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
-import { AssistantPanel } from "@/components/assistant/assistant-panel";
 import { NavigationProgress } from "@/components/NavigationProgress";
 import { PulseAnalytics } from "@/components/PulseAnalytics";
 import { IntentPanel } from "@/components/IntentPanel";
@@ -235,9 +234,8 @@ export default async function LocaleLayout({
                 <DesignedFooter />
               </div>
             </div>
-            {/* Ask Pulse, on every page and in both languages. This replaces the designer's
-                static chat shell from chat.html, which had the panel but nothing behind it. */}
-            <AssistantPanel lang={locale === "vi" ? "vi" : "en"} />
+            {/* Ask Pulse is switched off for now (the dev, 25 Nov 2026): put <AssistantPanel /> back here to
+                bring it back; components/assistant/ is unchanged. */}
             {/* The motion the designer's markup declares through data attributes. Without it every
                 `.reveal` stays at opacity 0, which is 363 elements across the converted pages. */}
             <DesignedMotion />

@@ -8,10 +8,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { ArrowRight, Clock, Globe, MessageCircle, Tag } from "lucide-react";
+import { ArrowRight, Clock, Globe, Tag } from "lucide-react";
 import { Turnstile } from "@/components/Turnstile";
-import { SUGGESTIONS } from "@/components/assistant/assistant-panel";
-import { askPulse } from "@/lib/assistant/session";
 import { AddressBar } from "./address-bar";
 import { Result } from "./result";
 import { BlockedGuide } from "./blocked-guide";
@@ -475,27 +473,6 @@ export function CatalogueTest({
                 )}
               </fieldset>
             </form>
-            {/* Ask Pulse's starter questions as the prototype's chips: each opens the panel and asks it.
-                Outside the form, so a closed or unreachable test never disables them. */}
-            {!id && (
-              <ul className="flex flex-wrap justify-center gap-2 mt-4">
-                {SUGGESTIONS[locale === "vi" ? "vi" : "en"].map((q) => (
-                  <li key={q}>
-                    <button
-                      type="button"
-                      onClick={() => askPulse(q)}
-                      className="inline-flex min-h-9 items-center gap-2 rounded-full border border-line bg-card px-3.5 text-sm text-ink transition-colors duration-150 ease-out-soft hover:bg-surface-1 focus-visible:outline-2 focus-visible:outline-focus"
-                    >
-                      <MessageCircle
-                        className="size-3.5 text-muted"
-                        aria-hidden
-                      />
-                      {q}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
             {ask}
           </div>
         </div>

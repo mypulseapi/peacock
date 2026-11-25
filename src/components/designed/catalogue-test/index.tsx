@@ -69,7 +69,7 @@ export function CatalogueTestPage() {
           so the split screens never start above the fold (owner,
           5 Nov 2026). About keeps its own height; the hero takes the rest, its content centred. On a
           short screen the two are taller than it and simply run on. */}
-      <div className="flex min-h-[calc(100svh-4.25rem-1px)] flex-col">
+      <div className="flex min-h-[calc(100svh-4.25rem-1px)] flex-col bg-card xl:min-h-svh">
         <CatalogueTest
           labels={labels}
           locale={renderLocale()}

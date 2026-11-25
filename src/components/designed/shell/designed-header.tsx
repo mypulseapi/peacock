@@ -11,7 +11,7 @@ import { asset } from "@/lib/cdn";
 import { renderLocale } from "@/i18n/render-locale";
 import { DesignedLocaleMenu } from "./designed-locale-switch";
 import { DesignedThemeSwitch } from "./designed-theme-switch";
-import { SidebarToggle } from "./sidebar-link";
+import { HeaderScrolled } from "./sidebar-link";
 import { designedHref, designedText } from "../t";
 import Image from "next/image";
 
@@ -66,14 +66,12 @@ export function DesignedHeader() {
   const t = designedText("shell.designed-header");
   return (
     <header
-      className="sticky top-0 z-50 border-b border-line bg-card font-display xl:border-transparent"
+      className="sticky top-0 z-50 border-b border-line bg-card font-display"
       data-nav
     >
       <div className="frame flex h-17 items-center justify-between gap-4 lg:gap-2 xl:justify-end xl:gap-4">
         {/* From `xl`, only while the sidebar is closed (globals.css): the button that opens it again. */}
-        <div data-sidebar-open className="mr-auto hidden">
-          <SidebarToggle label={t("openSidebar")} open={false} />
-        </div>
+        <HeaderScrolled />
         <Link
           href={designedHref("/en")}
           aria-label="Pulse home"
@@ -97,32 +95,13 @@ export function DesignedHeader() {
           />
         </Link>
 
-        {/* Desktop actions */}
+        {/* Desktop actions: sign-in and the call to action are in the sidebar's foot from `xl`. */}
         <div
           className="hidden items-center gap-2 self-stretch xl:flex"
           data-nav-actions
         >
           <DesignedThemeSwitch label={t("themeDark")} />
           <DesignedLocaleMenu heading={t("44")} current={renderLocale()} />
-          {/* Sign-in is the dashboard's own page, another origin: a plain link. In the sidebar's
-              foot from `xl`, here only while the sidebar is closed (globals.css). */}
-          <div data-header-account className="items-center gap-2">
-            <a href={SIGNIN_URL} className="nav-link">
-              {t("46")}
-            </a>
-            <Link
-              href={designedHref("/en/contact")}
-              className="group btn-primary gap-1.5 rounded-control text-nav whitespace-nowrap"
-            >
-              {t("47")}
-              <svg
-                className="size-3.5 transition-transform duration-150 ease-out-soft group-hover:translate-x-0.5"
-                aria-hidden="true"
-              >
-                <use href="#i-arrow-right" />
-              </svg>
-            </Link>
-          </div>
         </div>
 
         {/* Phones: the language dropdown beside the menu button, outside the menu. */}

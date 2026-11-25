@@ -8,9 +8,10 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { ArrowRight, Clock, Globe, Tag } from "lucide-react";
+import { ArrowRight, Clock, Globe, MessageCircle, Tag } from "lucide-react";
 import { Turnstile } from "@/components/Turnstile";
-import { HeroAurora } from "@/components/designed/hero-aurora";
+import { SUGGESTIONS } from "@/components/assistant/assistant-panel";
+import { askPulse } from "@/lib/assistant/session";
 import { AddressBar } from "./address-bar";
 import { Result } from "./result";
 import { BlockedGuide } from "./blocked-guide";
@@ -392,9 +393,8 @@ export function CatalogueTest({
           screen with About Pulse under it, About at its own height and the hero's content centred in the room left
           over; the title and the bar keep their fixed gap (owner, 5 Nov 2026). */}
       <section
-        className={`relative isolate z-10 hero-bg overflow-x-clip border-b border-line ${id ? "" : "flex flex-1 flex-col"}`}
+        className={`relative isolate z-10 overflow-x-clip bg-card ${id ? "border-b border-line" : "flex flex-1 flex-col"}`}
       >
-        <HeroAurora />
         {/* A row around `frame` so it grows to its usual width (it is content-box with auto margins, and a
             flex column would shrink it to its content), and stretches to the hero's height. */}
         <div className={id ? undefined : "flex flex-1"}>
@@ -405,7 +405,7 @@ export function CatalogueTest({
             {header}
             <form
               onSubmit={submit}
-              className="mx-auto mt-12 w-full max-w-5xl lg:mt-16"
+              className="mx-auto mt-8 w-full max-w-3xl"
               noValidate
             >
               {(enabled === false || unavailable) && (
@@ -465,7 +465,9 @@ export function CatalogueTest({
                   ))}
                 </ul>
                 {/* A token is good for one test: a new one after each start (owner, 6 Nov 2026). */}
-                {enabled && <Turnstile key={`${run}:${retry}`} onToken={setToken} />}
+                {enabled && (
+                  <Turnstile key={`${run}:${retry}`} onToken={setToken} />
+                )}
                 {error && !id && (
                   <p className="text-sm text-ink" role="alert">
                     {error}
@@ -473,6 +475,27 @@ export function CatalogueTest({
                 )}
               </fieldset>
             </form>
+            {/* Ask Pulse's starter questions as the prototype's chips: each opens the panel and asks it.
+                Outside the form, so a closed or unreachable test never disables them. */}
+            {!id && (
+              <ul className="flex flex-wrap justify-center gap-2 mt-4">
+                {SUGGESTIONS[locale === "vi" ? "vi" : "en"].map((q) => (
+                  <li key={q}>
+                    <button
+                      type="button"
+                      onClick={() => askPulse(q)}
+                      className="inline-flex min-h-9 items-center gap-2 rounded-full border border-line bg-card px-3.5 text-sm text-ink transition-colors duration-150 ease-out-soft hover:bg-surface-1 focus-visible:outline-2 focus-visible:outline-focus"
+                    >
+                      <MessageCircle
+                        className="size-3.5 text-muted"
+                        aria-hidden
+                      />
+                      {q}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
             {ask}
           </div>
         </div>

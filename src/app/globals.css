@@ -6581,3 +6581,19 @@ html[data-js] .figure-hold *::after {
     88.89%, 100% { opacity: 0; scale: 1.5; }
   }
 }
+
+/* The chat-style sidebar (designed-sidebar.tsx), from `xl`: SidebarToggle sets `data-sidebar` on <html>.
+   Open, the sidebar holds sign-in and the ask; closed, the header shows them and the open button.
+   Unlayered, so it wins over the `hidden` utility on the open button. */
+@media (width >= 80rem) {
+  [data-header-account] {
+    display: none;
+  }
+  html[data-sidebar="closed"] [data-site-sidebar] {
+    display: none;
+  }
+  html[data-sidebar="closed"] [data-sidebar-open],
+  html[data-sidebar="closed"] [data-header-account] {
+    display: flex;
+  }
+}

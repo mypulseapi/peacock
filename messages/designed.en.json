@@ -1975,7 +1975,10 @@
       "goalLaunchName": "Launch Faster",
       "goalLaunchBlurb": "Get a new range ready to sell sooner",
       "visualName": "Visual Evidence",
-      "visualBlurb": "Which photo proves what the buyer needs, and the photo to add. Early access"
+      "visualBlurb": "Which photo proves what the buyer needs, and the photo to add. Early access",
+      "ask": "Ask Pulse",
+      "closeSidebar": "Close sidebar",
+      "openSidebar": "Open sidebar"
     },
     "designed-skip-link": {
       "1": "Skip to content"
@@ -2333,7 +2336,7 @@
       "description": "Enter your store's address. Pulse reads your public product pages and shows which buying questions they cannot answer for shoppers and AI agents. Free."
     },
     "page": {
-      "title": "discover missing product information",
+      "title": "Discover missing product information",
       "titleMark": "missing",
       "statStores": "stores tested",
       "statProducts": "products checked",

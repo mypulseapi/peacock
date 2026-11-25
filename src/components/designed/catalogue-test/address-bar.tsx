@@ -267,7 +267,7 @@ export function AddressBar({
     <div>
       {/* The label, and the paste tip beside it (owner, 5 Nov 2026), so it is read before anything is
           entered; under it on a phone. */}
-      <div className="mx-5 mb-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+      <div className="sr-only">
         <label htmlFor="test-url" className="text-sm font-medium text-ink">
           {t("urlLabel")}
         </label>
@@ -275,10 +275,10 @@ export function AddressBar({
           {t("pasteHint")}
         </p>
       </div>
-      <div className="flow-bar flex flex-wrap items-center gap-1.5 rounded-[2rem] p-2 pl-5 max-md:rounded-3xl md:flex-nowrap md:py-[7px] md:pr-[7px]">
+      <div className="flow-bar flex flex-wrap items-center gap-1.5 rounded-3xl p-2 pl-5">
         {/* The address area: tags, then the field, wrapping onto more lines as pages are added. */}
         <div
-          className="flex min-w-0 flex-1 basis-full cursor-text flex-wrap items-center gap-1.5 self-stretch py-1 md:basis-0"
+          className="flex min-w-0 flex-1 basis-full cursor-text flex-wrap items-center gap-1.5 self-stretch py-2"
           onClick={(e) =>
             e.target === e.currentTarget && input.current?.focus()
           }
@@ -392,11 +392,7 @@ export function AddressBar({
             )}
           </div>
         </div>
-        <span
-          aria-hidden
-          className="mx-0.5 my-2.5 hidden w-px self-stretch bg-line md:block"
-        />
-        <div className="flex items-center gap-0.5 pl-1 md:pl-2">
+        <div className="flex items-center gap-0.5">
           <label
             htmlFor="test-category"
             className="cursor-pointer text-[0.8125rem] text-muted"
@@ -414,7 +410,7 @@ export function AddressBar({
             onChange={onCategory}
           />
         </div>
-        <div className="ml-auto md:ml-0">{children}</div>
+        <div className="ml-auto">{children}</div>
       </div>
       <p
         aria-live="polite"

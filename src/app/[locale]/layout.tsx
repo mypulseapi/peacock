@@ -18,6 +18,7 @@ import { IconSprite } from "@/components/designed/icon-sprite";
 import {
   DesignedFooter,
   DesignedHeader,
+  DesignedSidebar,
   DesignedSkipLink,
 } from "@/components/designed/shell";
 import { DesignedMotion } from "@/components/designed/motion";
@@ -223,11 +224,17 @@ export default async function LocaleLayout({
               <NavigationProgress />
             </Suspense>
             <DesignedSkipLink />
-            <DesignedHeader />
-            <main id="main">{children}</main>
-            {/* B4: ordered by what this visit has not answered. Renders nothing when nothing is. */}
-            <Suspense fallback={null}></Suspense>
-            <DesignedFooter />
+            {/* From `xl`, a chat-style layout: the sidebar holds the navigation, the column the page. */}
+            <div className="xl:flex">
+              <DesignedSidebar />
+              <div className="min-w-0 flex-1">
+                <DesignedHeader />
+                <main id="main">{children}</main>
+                {/* B4: ordered by what this visit has not answered. Renders nothing when nothing is. */}
+                <Suspense fallback={null}></Suspense>
+                <DesignedFooter />
+              </div>
+            </div>
             {/* Ask Pulse, on every page and in both languages. This replaces the designer's
                 static chat shell from chat.html, which had the panel but nothing behind it. */}
             <AssistantPanel lang={locale === "vi" ? "vi" : "en"} />

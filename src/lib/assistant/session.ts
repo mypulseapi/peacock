@@ -1,4 +1,4 @@
-import type { Message } from '@/components/assistant/use-assistant';
+import type { Message } from "@/components/assistant/use-assistant";
 
 /**
  * The conversation, kept across navigation and across closing the panel.
@@ -17,8 +17,8 @@ import type { Message } from '@/components/assistant/use-assistant';
  * write, and an assistant that takes the page down with it is worse than one that forgets.
  */
 
-const KEY = 'pulse-assistant-session-v1';
-const OPEN_KEY = 'pulse-assistant-open';
+const KEY = "pulse-assistant-session-v1";
+const OPEN_KEY = "pulse-assistant-open";
 
 /** Cap it so a long sitting cannot grow past the quota and start throwing on every write. */
 const MAX_MESSAGES = 60;
@@ -32,7 +32,9 @@ export function loadMessages(): Message[] {
     // A message that was mid-reveal when the page changed is restored finished rather than
     // frozen with a caret that never advances.
     return parsed
-      .filter((m): m is Message => typeof m === 'object' && m !== null && 'role' in m)
+      .filter(
+        (m): m is Message => typeof m === "object" && m !== null && "role" in m,
+      )
       .map((m) => ({ ...m, text: m.full ?? m.text, streaming: false }));
   } catch {
     return [];
@@ -78,7 +80,7 @@ export function subscribeOpen(cb: () => void): () => void {
 
 export function getOpen(): boolean {
   try {
-    return sessionStorage.getItem(OPEN_KEY) === '1';
+    return sessionStorage.getItem(OPEN_KEY) === "1";
   } catch {
     return false;
   }
@@ -90,9 +92,23 @@ export function getOpenOnServer(): boolean {
 
 export function setOpen(open: boolean): void {
   try {
-    sessionStorage.setItem(OPEN_KEY, open ? '1' : '0');
+    sessionStorage.setItem(OPEN_KEY, open ? "1" : "0");
   } catch {
     /* nothing to do: the panel still opens, it just will not survive a navigation */
   }
   for (const cb of listeners) cb();
+}
+
+/** A question asked from outside the panel (the home page's chips): it opens and asks it. */
+let queued: string | null = null;
+
+export function askPulse(question: string): void {
+  queued = question;
+  setOpen(true);
+}
+
+export function takeQueued(): string | null {
+  const q = queued;
+  queued = null;
+  return q;
 }

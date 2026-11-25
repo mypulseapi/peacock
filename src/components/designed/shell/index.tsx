@@ -21,4 +21,5 @@
  */
 export { DesignedSkipLink } from "./designed-skip-link";
 export { DesignedHeader } from "./designed-header";
+export { DesignedSidebar } from "./designed-sidebar";
 export { DesignedFooter } from "./designed-footer";

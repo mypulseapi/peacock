@@ -9,6 +9,7 @@ import {
   getOpenOnServer,
   setOpen as writeOpen,
   subscribeOpen,
+  takeQueued,
 } from "@/lib/assistant/session";
 
 const SEEN_KEY = "pulse-assistant-greeted";
@@ -266,6 +267,12 @@ function Typing({ label }: { label: string }) {
   );
 }
 
+/** The starter questions, also shown as chips on the home page. */
+export const SUGGESTIONS = {
+  en: COPY.en.suggestions,
+  vi: COPY.vi.suggestions,
+};
+
 /**
  * The assistant, as a panel over the documentation.
  *
@@ -330,6 +337,11 @@ export function AssistantPanel({ lang }: { lang: "en" | "vi" }) {
   useEffect(() => {
     if (open && status !== "failed") input.current?.focus();
   }, [open, status]);
+
+  useEffect(() => {
+    const q = open ? takeQueued() : null;
+    if (q) ask(q);
+  }, [open, ask]);
 
   useEffect(() => {
     scroller.current?.scrollTo({

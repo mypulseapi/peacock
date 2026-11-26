@@ -8,7 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { ArrowRight, Clock, Globe, Tag } from "lucide-react";
+import { ArrowUp, Clock, Globe, LoaderCircle, Tag } from "lucide-react";
 import { Turnstile } from "@/components/Turnstile";
 import { AddressBar } from "./address-bar";
 import { Result } from "./result";
@@ -61,8 +61,6 @@ export function CatalogueTest({
   calculator,
   header,
   ask,
-  aside,
-  align = "center",
 }: {
   labels: Labels;
   locale: string;
@@ -70,10 +68,6 @@ export function CatalogueTest({
   header: ReactNode;
   /** One line under the bar: ask us to run it instead. Shown with the form, not during a run. */
   ask: ReactNode;
-  /** Beside the hero on wide screens, until a test starts (home variant A). */
-  aside?: ReactNode;
-  /** The trust row's alignment under the bar. */
-  align?: "center" | "start";
 }) {
   const t = useCallback(
     (k: string, vars: Record<string, string | number> = {}) =>
@@ -405,99 +399,93 @@ export function CatalogueTest({
             className={`frame pt-12 pb-16 lg:pt-16 lg:pb-20 ${id ? "" : "flex flex-1 flex-col justify-center"}`}
           >
             {/* The hero and its form stay put through a run; the run plays below (owner, 6 Nov 2026). */}
-            <div
-              className={
-                aside && !id
-                  ? "grid items-center gap-x-14 gap-y-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]"
-                  : undefined
-              }
-            >
-              <div>
-                {header}
-                <form
-                  onSubmit={submit}
-                  className="mx-auto mt-8 w-full max-w-3xl"
-                  noValidate
+            <div>
+              {header}
+              <form
+                onSubmit={submit}
+                className="mx-auto mt-8 w-full max-w-3xl"
+                noValidate
+              >
+                {(enabled === false || unavailable) && (
+                  <p className="mb-4 text-center text-sm text-pretty text-muted">
+                    {t(unavailable ? "unavailable" : "closed")}
+                  </p>
+                )}
+                <fieldset
+                  disabled={enabled !== true || busy}
+                  className="space-y-3"
                 >
-                  {(enabled === false || unavailable) && (
-                    <p className="mb-4 text-center text-sm text-pretty text-muted">
-                      {t(unavailable ? "unavailable" : "closed")}
-                    </p>
-                  )}
-                  <fieldset
-                    disabled={enabled !== true || busy}
-                    className="space-y-3"
+                  <AddressBar
+                    t={t}
+                    initial={search.get("url") ?? ""}
+                    category={category}
+                    categories={categories}
+                    groups={taxonomy.groups ?? []}
+                    labels={taxonomy.labels ?? {}}
+                    locale={locale}
+                    onCategory={setCategory}
+                    onPages={(list, ok) => {
+                      setPages(list);
+                      setPagesOk(ok);
+                    }}
+                    leaving={busy}
                   >
-                    <AddressBar
-                      t={t}
-                      initial={search.get("url") ?? ""}
-                      category={category}
-                      categories={categories}
-                      groups={taxonomy.groups ?? []}
-                      labels={taxonomy.labels ?? {}}
-                      locale={locale}
-                      onCategory={setCategory}
-                      onPages={(list, ok) => {
-                        setPages(list);
-                        setPagesOk(ok);
-                      }}
-                      leaving={busy}
+                    {/* A round send button, as a chat composer's; its words are its name and tooltip. */}
+                    <button
+                      type="submit"
+                      className="btn-primary min-h-10 size-10 shrink-0 rounded-full p-0 aria-busy:cursor-progress aria-busy:opacity-100"
+                      disabled={!pagesOk || !token}
+                      aria-busy={busy || undefined}
+                      aria-label={busy ? t("starting") : t("submit")}
+                      title={busy ? t("starting") : t("submit")}
                     >
-                      <button
-                        type="submit"
-                        className="btn-primary group min-h-12 rounded-full px-5.5 aria-busy:cursor-progress aria-busy:opacity-100"
-                        disabled={!pagesOk || !token}
-                        aria-busy={busy || undefined}
-                      >
-                        {busy ? t("starting") : t("submit")}
-                        <ArrowRight
-                          className="size-4 transition-transform duration-200 ease-out-soft group-enabled:group-hover:translate-x-0.5"
+                      {busy ? (
+                        <LoaderCircle
+                          className="size-5 animate-spin motion-reduce:animate-none"
                           aria-hidden
                         />
-                      </button>
-                    </AddressBar>
-                    {/* Three facts, each with its own icon rather than a tick on each (owner's pick C3, 5 Nov 2026), with
+                      ) : (
+                        <ArrowUp className="size-5" aria-hidden />
+                      )}
+                    </button>
+                  </AddressBar>
+                  {/* Three facts, each with its own icon rather than a tick on each (owner's pick C3, 5 Nov 2026), with
                   more room above them (owner, 5 Nov 2026). */}
-                    <ul
-                      className={`flex flex-wrap ${align === "start" ? "justify-start" : "justify-center"} gap-x-6 gap-y-1.5 pt-3 text-sm text-muted lg:pt-5`}
-                    >
-                      {(
-                        [
-                          [Tag, "factFree"],
-                          [Globe, "factPublic"],
-                          [Clock, "factTime"],
-                        ] as const
-                      ).map(([Icon, k]) => (
-                        <li
-                          key={k}
-                          className="inline-flex items-center gap-1.5"
-                        >
-                          <Icon
-                            className="size-[15px] text-primary/85"
-                            aria-hidden
-                          />
-                          {t(k)}
-                        </li>
-                      ))}
-                    </ul>
-                    {/* A token is good for one test: a new one after each start (owner, 6 Nov 2026). */}
-                    {enabled && (
-                      <Turnstile
-                        key={`${run}:${retry}`}
-                        onToken={setToken}
-                        className={`flex ${align === "start" ? "justify-start" : "justify-center"} empty:hidden`}
-                      />
-                    )}
-                    {error && !id && (
-                      <p className="text-sm text-ink" role="alert">
-                        {error}
-                      </p>
-                    )}
-                  </fieldset>
-                </form>
-                {ask}
-              </div>
-              {!id && aside}
+                  <ul
+                    className={`flex flex-wrap justify-center gap-x-6 gap-y-1.5 pt-3 text-sm text-muted lg:pt-5`}
+                  >
+                    {(
+                      [
+                        [Tag, "factFree"],
+                        [Globe, "factPublic"],
+                        [Clock, "factTime"],
+                      ] as const
+                    ).map(([Icon, k]) => (
+                      <li key={k} className="inline-flex items-center gap-1.5">
+                        <Icon
+                          className="size-[15px] text-primary/85"
+                          aria-hidden
+                        />
+                        {t(k)}
+                      </li>
+                    ))}
+                  </ul>
+                  {/* A token is good for one test: a new one after each start (owner, 6 Nov 2026). */}
+                  {enabled && (
+                    <Turnstile
+                      key={`${run}:${retry}`}
+                      onToken={setToken}
+                      className={`flex justify-center empty:hidden`}
+                    />
+                  )}
+                  {error && !id && (
+                    <p className="text-sm text-ink" role="alert">
+                      {error}
+                    </p>
+                  )}
+                </fieldset>
+              </form>
+              {ask}
             </div>
           </div>
         </div>

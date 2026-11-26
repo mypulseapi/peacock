@@ -56,7 +56,7 @@ const MODELS = [
 
 /** Pages that are redirects, duplicates or machine endpoints: nothing to answer from. */
 const SKIP =
-  /^\/(404|_not-found|llms\.txt|robots\.txt|sitemap\.xml)?$|preview-home|home-variants/;
+  /^\/(404|_not-found|llms\.txt|robots\.txt|sitemap\.xml)?$|preview-home/;
 
 function walk(dir) {
   const out = [];

@@ -2335,8 +2335,7 @@
       "description": "Enter your store's address. Pulse reads your public product pages and shows which buying questions they cannot answer for shoppers and AI agents. Free."
     },
     "page": {
-      "title": "Can your product pages answer what buyers and AI agents ask?",
-      "titleMark": "answer",
+      "title": "How can I help you?",
       "statProducts": "products checked",
       "statGaps": "gaps found",
       "urlLabel": "Your store's address",
@@ -2578,10 +2577,6 @@
       "sampleGapUsbc": "USB-C charging",
       "sampleGapMonitors": "Two external monitors",
       "sampleMissing": "missing on {n} of {total}",
-      "questionUsbc": "Does it charge over USB-C?",
-      "questionMonitors": "Can it run two external monitors?",
-      "pagesSilent": "pages don't say",
-      "questionsSource": "Two buyer questions from a real run on 4 November 2026: 50 laptop pages from a Vietnamese retailer, store not named.",
       "nextTitle": "What happens next",
       "step1Title": "Test",
       "step1Body": "Free, about two minutes, public pages only.",

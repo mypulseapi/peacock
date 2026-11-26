@@ -36,7 +36,9 @@ export function StatsCounter({
       {items.map(([v, l]) => (
         <div key={l} className="flex items-baseline gap-1.5">
           <dt className="sr-only">{l}</dt>
-          <dd className="font-mono font-semibold text-ink">{n(v)}</dd>
+          <dd className="font-mono text-xl font-semibold text-ink tabular-nums">
+            {n(v)}
+          </dd>
           <span aria-hidden="true" className="text-muted">
             {l}
           </span>

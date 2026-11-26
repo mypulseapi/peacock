@@ -383,15 +383,14 @@ export function CatalogueTest({
   );
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex flex-col">
       {/* Pingdom's layout (owner, 2026-11-04): a band with the heading and one row, address,
           category and the button, which stays put while the result builds underneath. The hero
           background (`hero-bg` and the aurora), like every other hero's (owner, 5 Nov 2026); `isolate` also keeps the bar's
-          glow behind the bar. It clips sideways only, so the category list can hang below it over the next section (`z-10`). Pricing's hero padding, `pt-12 pb-16 lg:pt-16 lg:pb-20`, as the other heroes (owner, 5 Nov 2026). Until a test starts the page stretches the hero to fill the first
-          screen with About Pulse under it, About at its own height and the hero's content centred in the room left
-          over; the title and the bar keep their fixed gap (owner, 5 Nov 2026). */}
+          glow behind the bar. It clips sideways only, so the category list can hang below it over the next section (`z-10`). Pricing's hero padding, `pt-12 pb-16 lg:pt-16 lg:pb-20`, as the other heroes (owner, 5 Nov 2026). Until a test starts the hero and About Pulse
+          fill the first screen together, centred as one group, so a tall screen opens no gap between them (2026-11-26). */}
       <section
-        className={`relative isolate z-10 overflow-x-clip bg-card ${id ? "border-b border-line" : "flex flex-1 flex-col"}`}
+        className={`relative isolate z-10 overflow-x-clip bg-card ${id ? "border-b border-line" : "flex flex-col"}`}
       >
         {/* A row around `frame` so it grows to its usual width (it is content-box with auto margins, and a
             flex column would shrink it to its content), and stretches to the hero's height. */}
@@ -464,7 +463,11 @@ export function CatalogueTest({
                 </ul>
                 {/* A token is good for one test: a new one after each start (owner, 6 Nov 2026). */}
                 {enabled && (
-                  <Turnstile key={`${run}:${retry}`} onToken={setToken} />
+                  <Turnstile
+                    key={`${run}:${retry}`}
+                    onToken={setToken}
+                    className="flex justify-center empty:hidden"
+                  />
                 )}
                 {error && !id && (
                   <p className="text-sm text-ink" role="alert">

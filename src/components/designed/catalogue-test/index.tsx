@@ -66,10 +66,10 @@ export function CatalogueTestPage() {
   return (
     <>
       {/* The hero and About Pulse fill the first screen under the header together (68px and its 1px border),
-          so the split screens never start above the fold (owner,
-          5 Nov 2026). About keeps its own height; the hero takes the rest, its content centred. On a
-          short screen the two are taller than it and simply run on. */}
-      <div className="flex min-h-[calc(100svh-4.25rem-1px)] flex-col bg-card xl:min-h-svh">
+          so the split screens never start above the fold (owner, 5 Nov 2026). The two are centred as one
+          group, so a tall screen adds room above and below them, not between (2026-11-26). On a short
+          screen they are taller than it and simply run on. */}
+      <div className="flex min-h-[calc(100svh-4.25rem-1px)] flex-col justify-center bg-card xl:min-h-svh">
         <CatalogueTest
           labels={labels}
           locale={renderLocale()}
@@ -81,7 +81,7 @@ export function CatalogueTestPage() {
         {/* About Pulse, a section of its own after the hero, on white, its heading at the section title size
           (owner, 5 Nov 2026). A text link, so the hero's bar keeps the page's first button. */}
         <section aria-labelledby="about-pulse-title" className="bg-card">
-          <div className="frame grid items-center gap-x-16 gap-y-5 py-20 md:grid-cols-2 lg:py-28">
+          <div className="frame grid items-center gap-x-16 gap-y-5 pt-4 pb-20 md:grid-cols-2 lg:pb-28">
             <h2 id="about-pulse-title" className="text-title text-balance">
               {t("aboutTitle")}
             </h2>

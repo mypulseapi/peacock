@@ -82,10 +82,13 @@ export function Turnstile({
     let cancelled = false;
 
     const render = () => {
-      if (cancelled || !ref.current || !window.turnstile || widgetId.current) return;
+      if (cancelled || !ref.current || !window.turnstile || widgetId.current)
+        return;
       widgetId.current = window.turnstile.render(ref.current, {
         sitekey: siteKey,
         action: "turnstile-spin-v1",
+        // Shown only when Cloudflare needs the visitor to act; a passed check is invisible.
+        appearance: "interaction-only",
         callback: (token: string) => cb.current(token),
         "expired-callback": () => cb.current(""),
         "error-callback": () => cb.current(""),
@@ -95,7 +98,9 @@ export function Turnstile({
     if (window.turnstile) {
       render();
     } else {
-      let script = document.querySelector<HTMLScriptElement>(`script[src="${SRC}"]`);
+      let script = document.querySelector<HTMLScriptElement>(
+        `script[src="${SRC}"]`,
+      );
       if (!script) {
         script = document.createElement("script");
         script.src = SRC;

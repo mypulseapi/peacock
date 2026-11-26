@@ -8,7 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { ArrowRight, Clock, Globe, Tag } from "lucide-react";
+import { ArrowUp, Clock, Globe, LoaderCircle, Tag } from "lucide-react";
 import { Turnstile } from "@/components/Turnstile";
 import { AddressBar } from "./address-bar";
 import { Result } from "./result";
@@ -383,15 +383,14 @@ export function CatalogueTest({
   );
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex flex-col">
       {/* Pingdom's layout (owner, 2026-11-04): a band with the heading and one row, address,
           category and the button, which stays put while the result builds underneath. The hero
           background (`hero-bg` and the aurora), like every other hero's (owner, 5 Nov 2026); `isolate` also keeps the bar's
-          glow behind the bar. It clips sideways only, so the category list can hang below it over the next section (`z-10`). Pricing's hero padding, `pt-12 pb-16 lg:pt-16 lg:pb-20`, as the other heroes (owner, 5 Nov 2026). Until a test starts the page stretches the hero to fill the first
-          screen with About Pulse under it, About at its own height and the hero's content centred in the room left
-          over; the title and the bar keep their fixed gap (owner, 5 Nov 2026). */}
+          glow behind the bar. It clips sideways only, so the category list can hang below it over the next section (`z-10`). Pricing's hero padding, `pt-12 pb-16 lg:pt-16 lg:pb-20`, as the other heroes (owner, 5 Nov 2026). Until a test starts the hero and About Pulse
+          fill the first screen together, centred as one group, so a tall screen opens no gap between them (2026-11-26). */}
       <section
-        className={`relative isolate z-10 overflow-x-clip bg-card ${id ? "border-b border-line" : "flex flex-1 flex-col"}`}
+        className={`relative isolate z-10 overflow-x-clip bg-card ${id ? "border-b border-line" : "flex flex-col"}`}
       >
         {/* A row around `frame` so it grows to its usual width (it is content-box with auto margins, and a
             flex column would shrink it to its content), and stretches to the hero's height. */}
@@ -400,80 +399,94 @@ export function CatalogueTest({
             className={`frame pt-12 pb-16 lg:pt-16 lg:pb-20 ${id ? "" : "flex flex-1 flex-col justify-center"}`}
           >
             {/* The hero and its form stay put through a run; the run plays below (owner, 6 Nov 2026). */}
-            {header}
-            <form
-              onSubmit={submit}
-              className="mx-auto mt-8 w-full max-w-3xl"
-              noValidate
-            >
-              {(enabled === false || unavailable) && (
-                <p className="mb-4 text-center text-sm text-pretty text-muted">
-                  {t(unavailable ? "unavailable" : "closed")}
-                </p>
-              )}
-              <fieldset
-                disabled={enabled !== true || busy}
-                className="space-y-3"
+            <div>
+              {header}
+              <form
+                onSubmit={submit}
+                className="mx-auto mt-8 w-full max-w-3xl"
+                noValidate
               >
-                <AddressBar
-                  t={t}
-                  initial={search.get("url") ?? ""}
-                  category={category}
-                  categories={categories}
-                  groups={taxonomy.groups ?? []}
-                  labels={taxonomy.labels ?? {}}
-                  locale={locale}
-                  onCategory={setCategory}
-                  onPages={(list, ok) => {
-                    setPages(list);
-                    setPagesOk(ok);
-                  }}
-                  leaving={busy}
-                >
-                  <button
-                    type="submit"
-                    className="btn-primary group min-h-12 rounded-full px-5.5 aria-busy:cursor-progress aria-busy:opacity-100"
-                    disabled={!pagesOk || !token}
-                    aria-busy={busy || undefined}
-                  >
-                    {busy ? t("starting") : t("submit")}
-                    <ArrowRight
-                      className="size-4 transition-transform duration-200 ease-out-soft group-enabled:group-hover:translate-x-0.5"
-                      aria-hidden
-                    />
-                  </button>
-                </AddressBar>
-                {/* Three facts, each with its own icon rather than a tick on each (owner's pick C3, 5 Nov 2026), with
-                  more room above them (owner, 5 Nov 2026). */}
-                <ul className="flex flex-wrap justify-center gap-x-6 gap-y-1.5 pt-3 text-sm text-muted lg:pt-5">
-                  {(
-                    [
-                      [Tag, "factFree"],
-                      [Globe, "factPublic"],
-                      [Clock, "factTime"],
-                    ] as const
-                  ).map(([Icon, k]) => (
-                    <li key={k} className="inline-flex items-center gap-1.5">
-                      <Icon
-                        className="size-[15px] text-primary/85"
-                        aria-hidden
-                      />
-                      {t(k)}
-                    </li>
-                  ))}
-                </ul>
-                {/* A token is good for one test: a new one after each start (owner, 6 Nov 2026). */}
-                {enabled && (
-                  <Turnstile key={`${run}:${retry}`} onToken={setToken} />
-                )}
-                {error && !id && (
-                  <p className="text-sm text-ink" role="alert">
-                    {error}
+                {(enabled === false || unavailable) && (
+                  <p className="mb-4 text-center text-sm text-pretty text-muted">
+                    {t(unavailable ? "unavailable" : "closed")}
                   </p>
                 )}
-              </fieldset>
-            </form>
-            {ask}
+                <fieldset
+                  disabled={enabled !== true || busy}
+                  className="space-y-3"
+                >
+                  <AddressBar
+                    t={t}
+                    initial={search.get("url") ?? ""}
+                    category={category}
+                    categories={categories}
+                    groups={taxonomy.groups ?? []}
+                    labels={taxonomy.labels ?? {}}
+                    locale={locale}
+                    onCategory={setCategory}
+                    onPages={(list, ok) => {
+                      setPages(list);
+                      setPagesOk(ok);
+                    }}
+                    leaving={busy}
+                  >
+                    {/* A round send button, as a chat composer's; its words are its name and tooltip. */}
+                    <button
+                      type="submit"
+                      className="btn-primary min-h-10 size-10 shrink-0 rounded-full p-0 aria-busy:cursor-progress aria-busy:opacity-100"
+                      disabled={!pagesOk || !token}
+                      aria-busy={busy || undefined}
+                      aria-label={busy ? t("starting") : t("submit")}
+                      title={busy ? t("starting") : t("submit")}
+                    >
+                      {busy ? (
+                        <LoaderCircle
+                          className="size-5 animate-spin motion-reduce:animate-none"
+                          aria-hidden
+                        />
+                      ) : (
+                        <ArrowUp className="size-5" aria-hidden />
+                      )}
+                    </button>
+                  </AddressBar>
+                  {/* Three facts, each with its own icon rather than a tick on each (owner's pick C3, 5 Nov 2026), with
+                  more room above them (owner, 5 Nov 2026). */}
+                  <ul
+                    className={`flex flex-wrap justify-center gap-x-6 gap-y-1.5 pt-3 text-sm text-muted lg:pt-5`}
+                  >
+                    {(
+                      [
+                        [Tag, "factFree"],
+                        [Globe, "factPublic"],
+                        [Clock, "factTime"],
+                      ] as const
+                    ).map(([Icon, k]) => (
+                      <li key={k} className="inline-flex items-center gap-1.5">
+                        <Icon
+                          className="size-[15px] text-primary/85"
+                          aria-hidden
+                        />
+                        {t(k)}
+                      </li>
+                    ))}
+                  </ul>
+                  {/* A token is good for one test: a new one after each start (owner, 6 Nov 2026). */}
+                  {enabled && (
+                    <Turnstile
+                      key={`${run}:${retry}`}
+                      onToken={setToken}
+                      className={`flex justify-center empty:hidden`}
+                    />
+                  )}
+                  {error && !id && (
+                    <p className="text-sm text-ink" role="alert">
+                      {error}
+                    </p>
+                  )}
+                </fieldset>
+              </form>
+              {ask}
+            </div>
           </div>
         </div>
       </section>

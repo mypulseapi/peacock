@@ -304,7 +304,6 @@ console.log(`responsive: ${sample.length} of ${routes.length} pages x ${WIDTHS.l
  * width. Tap targets are judged on touch viewports because that is where a thumb is, and a
  * baseline measured with a mouse cannot excuse them.
  */
-const ABSOLUTE = new Set(["horizontal-scroll", "tap-target", "http"]);
 const baselineByRoute = new Map();
 
 for (const { w, h, name } of [...WIDTHS].reverse()) {

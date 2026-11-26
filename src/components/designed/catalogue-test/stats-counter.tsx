@@ -10,9 +10,11 @@ import { testStats } from "@/lib/catalogue-test";
 export function StatsCounter({
   labels,
   locale,
+  align = "center",
 }: {
   labels: Record<string, string>;
   locale: string;
+  align?: "center" | "start";
 }) {
   const [s, setS] = useState<Awaited<ReturnType<typeof testStats>> | null>(
     null,
@@ -31,7 +33,9 @@ export function StatsCounter({
     [s.productsChecked, labels.statProducts!],
   ];
   return (
-    <dl className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm">
+    <dl
+      className={`mt-6 flex flex-wrap ${align === "start" ? "justify-start" : "justify-center"} gap-x-8 gap-y-2 text-sm`}
+    >
       {items.map(([v, l]) => (
         <div key={l} className="flex items-baseline gap-1.5">
           <dt className="sr-only">{l}</dt>

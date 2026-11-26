@@ -107,6 +107,13 @@ export const PAGE_CATALOGUE: readonly PageItem[] = [
     depth: "entry",
     decides: ["what-it-does", "does-it-fit-me"],
   },
+  {
+    route: "/home-variants/[v]",
+    audience: "any",
+    area: "none",
+    depth: "entry",
+    decides: ["what-it-does", "does-it-fit-me"],
+  },
 
   // Product
   {

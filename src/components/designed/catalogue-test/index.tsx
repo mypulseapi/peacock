@@ -20,6 +20,20 @@ import { CatalogueTest } from "./catalogue-test";
 import { SplitScroll } from "./split-scroll";
 import { StatsCounter } from "./stats-counter";
 
+/** The 4 Nov 2026 laptop run (store-url-audit NLR changelog): 50 of 393 pages, 9 of 11 requirements. */
+const SAMPLE = {
+  read: 50,
+  answered: 9,
+  tested: 11,
+  gaps: [
+    ["sampleGapUsbc", 27],
+    ["sampleGapMonitors", 50],
+  ] as const,
+};
+
+const fill = (s: string, vars: Record<string, number>) =>
+  s.replace(/\{(\w+)\}/g, (m, k: string) => String(vars[k] ?? m));
+
 export function CatalogueTestPage() {
   const t = designedText("catalogueTest.page");
   const labels = Object.fromEntries(
@@ -78,20 +92,69 @@ export function CatalogueTestPage() {
           ask={ask}
         />
 
-        {/* About Pulse, a section of its own after the hero, on white, its heading at the section title size
-          (owner, 5 Nov 2026). A text link, so the hero's bar keeps the page's first button. */}
-        <section aria-labelledby="about-pulse-title" className="bg-card">
-          <div className="frame grid items-center gap-x-16 gap-y-5 pt-4 pb-20 md:grid-cols-2 lg:pb-28">
-            <h2 id="about-pulse-title" className="text-title text-balance">
-              {t("aboutTitle")}
-            </h2>
+        {/* What a visitor gets and what follows (2026-11-26): a real past result, so value shows before
+          anyone types, and the path from the free test to the paid steps. Replaces About Pulse. */}
+        <section aria-labelledby="sample-title" className="bg-card">
+          <div className="frame grid gap-x-16 gap-y-12 pt-4 pb-20 md:grid-cols-2 lg:pb-28">
             <div>
-              <p className="max-w-[56ch] text-lg text-pretty text-muted">
-                {t("aboutP1")}
-              </p>
+              <h2 id="sample-title" className="text-h2 text-balance">
+                {t("sampleTitle")}
+              </h2>
+              <div className="card mt-5">
+                <p className="text-sm text-muted">
+                  {fill(t("sampleRead"), { n: SAMPLE.read })}
+                </p>
+                <p className="mt-1 text-lg font-semibold text-ink">
+                  {fill(t("sampleAnswered"), {
+                    n: SAMPLE.answered,
+                    total: SAMPLE.tested,
+                  })}
+                </p>
+                <ul className="mt-5 space-y-4">
+                  {SAMPLE.gaps.map(([k, n]) => (
+                    <li key={k}>
+                      <div className="flex items-baseline justify-between gap-4 text-sm">
+                        <span className="text-ink">{t(k)}</span>
+                        <span className="text-muted tabular-nums">
+                          {fill(t("sampleMissing"), { n, total: SAMPLE.read })}
+                        </span>
+                      </div>
+                      <div className="mt-1.5 h-1.5 rounded-full bg-surface-1">
+                        <div
+                          className="h-full rounded-full bg-gap"
+                          style={{ width: `${(n / SAMPLE.read) * 100}%` }}
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-5 text-xs text-pretty text-muted">
+                  {t("sampleSource")}
+                </p>
+              </div>
+            </div>
+            <div>
+              <h2 className="text-h2 text-balance">{t("nextTitle")}</h2>
+              <ol className="mt-5 space-y-5">
+                {[1, 2, 3, 4].map((i) => (
+                  <li key={i} className="flex gap-4">
+                    <span className="grid size-7 shrink-0 place-items-center rounded-full border border-line font-mono text-sm text-ink">
+                      {i}
+                    </span>
+                    <div>
+                      <p className="font-semibold text-ink">
+                        {t(`step${i}Title`)}
+                      </p>
+                      <p className="text-pretty text-muted">
+                        {t(`step${i}Body`)}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
               <a
                 href={designedHref("/en/overview")}
-                className="group mt-5 inline-block font-medium text-primary underline-offset-4 hover:underline"
+                className="group mt-6 inline-block font-medium text-primary underline-offset-4 hover:underline"
               >
                 {t("overview")}
                 <ArrowRight

@@ -26,10 +26,9 @@ export function StatsCounter({
   const n = (v: number) =>
     new Intl.NumberFormat(locale === "vi" ? "vi-VN" : "en-US").format(v);
   const items: [number, string][] = [
-    [s.storesTested, labels.statStores!],
-    [s.productsChecked, labels.statProducts!],
-    [s.requirementsTested, labels.statRequirements!],
+    // Gaps and products only: a small store count read as "nobody uses this" (2026-11-26).
     [s.gapsFound, labels.statGaps!],
+    [s.productsChecked, labels.statProducts!],
   ];
   return (
     <dl className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm">

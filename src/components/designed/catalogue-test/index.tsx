@@ -8,7 +8,7 @@
  * The client component draws the band, the live run and the result; the heading, that line and
  * every label come from here, and the calculator as a server-rendered child.
  *
- * `variant` lays the same parts out three more ways for review (`/home-variants/[v]`, noindex);
+ * `variant` lays the same parts out four more ways for review (`/home-variants/[v]`, noindex);
  * the one chosen becomes the default and the others are deleted.
  */
 import en from "../../../../messages/designed.en.json";
@@ -22,7 +22,7 @@ import { CatalogueTest } from "./catalogue-test";
 import { SplitScroll } from "./split-scroll";
 import { StatsCounter } from "./stats-counter";
 
-export const HOME_VARIANTS = ["a", "b", "c"] as const;
+export const HOME_VARIANTS = ["a", "b", "c", "d"] as const;
 export type HomeVariant = "default" | (typeof HOME_VARIANTS)[number];
 
 /** The 4 Nov 2026 laptop run (store-url-audit NLR changelog): 50 of 393 pages, 9 of 11 requirements. */
@@ -41,9 +41,17 @@ type T = (key: string) => string;
 const fill = (s: string, vars: Record<string, number>) =>
   s.replace(/\{(\w+)\}/g, (m, k: string) => String(vars[k] ?? m));
 
-function SampleCard({ t, wide = false }: { t: T; wide?: boolean }) {
+function SampleCard({
+  t,
+  wide = false,
+  plain = false,
+}: {
+  t: T;
+  wide?: boolean;
+  plain?: boolean;
+}) {
   return (
-    <div className="card">
+    <div className={plain ? undefined : "card"}>
       <div
         className={
           wide ? "grid items-center gap-x-12 gap-y-5 md:grid-cols-2" : undefined
@@ -187,6 +195,8 @@ export function CatalogueTestPage({
     Object.keys(en.catalogueTest.page).map((k) => [k, t(k)]),
   );
   const start = variant === "a";
+  // Variant D, Google's principles: one task on the first screen, the counts as its footer line.
+  const quiet = variant === "d";
   const [before, after] = t("title").split(t("titleMark"));
   // The wand stays on the line with the first word, so a phone never leaves it alone at a line end.
   const firstWord = before.split(" ", 1)[0];
@@ -206,11 +216,13 @@ export function CatalogueTestPage({
         <span className="text-signal-text">{t("titleMark")}</span>
         {after}
       </h1>
-      <StatsCounter
-        labels={labels}
-        locale={renderLocale()}
-        align={start ? "start" : "center"}
-      />
+      {!quiet && (
+        <StatsCounter
+          labels={labels}
+          locale={renderLocale()}
+          align={start ? "start" : "center"}
+        />
+      )}
       {variant === "b" && <BuyerQuestions t={t} />}
     </div>
   );
@@ -254,6 +266,26 @@ export function CatalogueTestPage({
           <OverviewLink t={t} />
         </div>
       </div>
+    ) : quiet ? (
+      <div className="frame py-24 lg:py-32">
+        <div className="mx-auto max-w-xl space-y-20">
+          <div>
+            <h2 id="next-title" className="text-h2 text-balance">
+              {t("sampleTitle")}
+            </h2>
+            <div className="mt-6">
+              <SampleCard t={t} plain />
+            </div>
+          </div>
+          <div>
+            <h2 className="text-h2 text-balance">{t("nextTitle")}</h2>
+            <div className="mt-6">
+              <NextSteps t={t} />
+            </div>
+            <OverviewLink t={t} />
+          </div>
+        </div>
+      </div>
     ) : variant === "c" ? (
       <div className="frame pt-4 pb-20 lg:pb-28">
         <h2 id="next-title" className="text-h2 text-balance">
@@ -276,26 +308,51 @@ export function CatalogueTestPage({
       </div>
     );
 
+  const hero = (
+    <CatalogueTest
+      labels={labels}
+      locale={renderLocale()}
+      calculator={<CalculatorBlock key="calculator" bare />}
+      header={header}
+      ask={ask}
+      aside={start ? <SampleCard t={t} /> : undefined}
+      align={start ? "start" : "center"}
+    />
+  );
+
   return (
     <>
       {/* The hero and the section under it fill the first screen under the header together (68px and its
           1px border), so the split screens never start above the fold (owner, 5 Nov 2026). The two are
           centred as one group, so a tall screen adds room above and below them, not between (2026-11-26).
           On a short screen they are taller than it and simply run on. */}
-      <div className="flex min-h-[calc(100svh-4.25rem-1px)] flex-col justify-center bg-card xl:min-h-svh">
-        <CatalogueTest
-          labels={labels}
-          locale={renderLocale()}
-          calculator={<CalculatorBlock key="calculator" bare />}
-          header={header}
-          ask={ask}
-          aside={start ? <SampleCard t={t} /> : undefined}
-          align={start ? "start" : "center"}
-        />
-        <section aria-labelledby="next-title" className="bg-card">
-          {below}
-        </section>
-      </div>
+      {quiet ? (
+        <>
+          {/* The test alone fills the first screen; the counts sit at its foot, like a page footer. */}
+          <div className="flex min-h-[calc(100svh-4.25rem-1px)] flex-col bg-card xl:min-h-svh">
+            <div className="flex flex-1 flex-col justify-center">{hero}</div>
+            {/* Hidden until the counts load, so no empty strip shows. */}
+            <div className="hidden border-t border-line has-[dl]:block">
+              <div className="frame py-4">
+                <StatsCounter labels={labels} locale={renderLocale()} quiet />
+              </div>
+            </div>
+          </div>
+          <section
+            aria-labelledby="next-title"
+            className="border-t border-line bg-card"
+          >
+            {below}
+          </section>
+        </>
+      ) : (
+        <div className="flex min-h-[calc(100svh-4.25rem-1px)] flex-col justify-center bg-card xl:min-h-svh">
+          {hero}
+          <section aria-labelledby="next-title" className="bg-card">
+            {below}
+          </section>
+        </div>
+      )}
 
       <SplitScroll labels={labels} />
 

@@ -11,10 +11,13 @@ export function StatsCounter({
   labels,
   locale,
   align = "center",
+  quiet = false,
 }: {
   labels: Record<string, string>;
   locale: string;
   align?: "center" | "start";
+  /** Small type, as a footer line (variant D). */
+  quiet?: boolean;
 }) {
   const [s, setS] = useState<Awaited<ReturnType<typeof testStats>> | null>(
     null,
@@ -34,12 +37,14 @@ export function StatsCounter({
   ];
   return (
     <dl
-      className={`mt-6 flex flex-wrap ${align === "start" ? "justify-start" : "justify-center"} gap-x-8 gap-y-2 text-sm`}
+      className={`${quiet ? "" : "mt-6"} flex flex-wrap ${align === "start" ? "justify-start" : "justify-center"} gap-x-8 gap-y-2 text-sm`}
     >
       {items.map(([v, l]) => (
         <div key={l} className="flex items-baseline gap-1.5">
           <dt className="sr-only">{l}</dt>
-          <dd className="font-mono text-xl font-semibold text-ink tabular-nums">
+          <dd
+            className={`font-mono font-semibold text-ink tabular-nums ${quiet ? "text-sm" : "text-xl"}`}
+          >
             {n(v)}
           </dd>
           <span aria-hidden="true" className="text-muted">

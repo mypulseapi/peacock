@@ -21,7 +21,7 @@
  */
 import { S3Client, PutObjectCommand, ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from "node:fs";
-import { join, relative, extname, basename } from "node:path";
+import { join, extname } from "node:path";
 import * as dotenv from "dotenv";
 
 dotenv.config({ path: ".env.local" });

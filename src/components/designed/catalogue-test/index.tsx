@@ -13,7 +13,6 @@ import { renderLocale } from "@/i18n/render-locale";
 import { ArrowRight } from "lucide-react";
 import { CalculatorBlock } from "../calculator";
 import { CtaBoxes } from "../cta-boxes";
-import { HeroSpark } from "./hero-spark";
 import { CatalogueTest } from "./catalogue-test";
 import { SplitScroll } from "./split-scroll";
 import { StatsCounter } from "./stats-counter";
@@ -41,9 +40,8 @@ export function CatalogueTestPage() {
   );
   const header = (
     <div key="header" className="mx-auto w-full max-w-3xl text-center">
-      {/* A chat home's greeting (owner, 26 Nov 2026): body face, regular weight, no marked word. */}
+      {/* A chat home's greeting (owner, 26 Nov 2026): body face, regular weight, no icon, no marked word. */}
       <h1 className="text-[1.75rem] leading-tight font-normal tracking-tight text-balance text-ink sm:text-[2rem]">
-        <HeroSpark />
         {t("title")}
       </h1>
     </div>

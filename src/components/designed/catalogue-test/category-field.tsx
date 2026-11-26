@@ -274,7 +274,7 @@ export function CategoryField({
         }
         autoComplete="off"
         spellCheck={false}
-        className="w-[10.5rem] min-w-0 resize-none overflow-hidden bg-transparent py-2.5 pl-1 text-[0.9375rem] leading-6 text-ink outline-none placeholder:text-ink focus:placeholder:text-muted max-md:w-[9.5rem]"
+        className="w-[10.5rem] min-w-0 resize-none overflow-hidden bg-transparent py-2.5 pl-1 text-[0.9375rem] leading-6 text-ink outline-none placeholder:text-ink focus:placeholder:text-muted supports-[field-sizing:content]:w-auto supports-[field-sizing:content]:max-w-[12rem] supports-[field-sizing:content]:min-w-[5.5rem] supports-[field-sizing:content]:[field-sizing:content]"
         value={fieldText}
         placeholder={t("catAuto")}
         onChange={(e) => {

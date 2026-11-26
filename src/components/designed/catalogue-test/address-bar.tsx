@@ -10,14 +10,14 @@ import {
   type KeyboardEvent,
   type ReactNode,
 } from "react";
-import { X } from "lucide-react";
+import { Globe, LayoutGrid, X } from "lucide-react";
 import { domainOf, type CategoryGroup } from "@/lib/catalogue-test";
 import { CategoryField } from "./category-field";
 
 /**
- * Test My Catalogue's address bar, "Flow" (owner's pick from mockups, 5 Nov 2026): one rounded bar with
- * the store's address, the category and the button, its border the Signal gradient flowing round
- * (`flow-bar` in globals.css).
+ * Test My Catalogue's address bar, a chat composer (owner, 26 Nov 2026, after ChatGPT's home): one row
+ * with the store's address, the category as a chip and a round send button (`composer` in globals.css);
+ * on a phone the chip and the button take a second row.
  *
  * One address stays plain text. More pages go into the same field, pasted (one or many, split on spaces,
  * commas or new lines) or typed (Space or a comma starts the next; with tags, Enter adds), and from two
@@ -275,10 +275,10 @@ export function AddressBar({
           {t("pasteHint")}
         </p>
       </div>
-      <div className="flow-bar flex flex-wrap items-center gap-1.5 rounded-3xl p-2 pl-5">
+      <div className="composer flex flex-wrap items-center gap-x-1 gap-y-1 rounded-[1.75rem] p-2 pl-4">
         {/* The address area: tags, then the field, wrapping onto more lines as pages are added. */}
         <div
-          className="flex min-w-0 flex-1 basis-full cursor-text flex-wrap items-center gap-1.5 self-stretch py-2"
+          className={`flex min-w-0 flex-1 cursor-text flex-wrap items-center gap-1.5 self-stretch ${tags.length ? "basis-full py-1" : "max-sm:basis-full"}`}
           onClick={(e) =>
             e.target === e.currentTarget && input.current?.focus()
           }
@@ -323,12 +323,10 @@ export function AddressBar({
             );
           })}
           {!tags.length && (
-            <span
+            <Globe
               aria-hidden
-              className={`font-mono text-base leading-6 transition-colors duration-200 ease-out-soft ${focused ? "text-primary" : "text-muted"}`}
-            >
-              https://
-            </span>
+              className={`size-5 shrink-0 transition-colors duration-200 ease-out-soft ${focused ? "text-ink" : "text-muted"}`}
+            />
           )}
           <div className="relative flex min-h-10 min-w-30 flex-[1_1_11rem] self-stretch">
             {/* A long address wraps onto the next line rather than being cut (owner, 6 Nov 2026). */}
@@ -337,7 +335,7 @@ export function AddressBar({
               id="test-url"
               rows={1}
               aria-describedby="test-url-tip"
-              className={`min-w-0 flex-1 resize-none self-center overflow-hidden bg-transparent py-2 font-mono! text-base leading-6 [overflow-wrap:anywhere] outline-none placeholder:text-muted ${ghost.length ? "text-transparent" : "text-ink"}`}
+              className={`min-w-0 flex-1 resize-none self-center overflow-hidden bg-transparent py-2 text-base leading-6 [overflow-wrap:anywhere] outline-none placeholder:text-muted ${ghost.length ? "text-transparent" : "text-ink"}`}
               inputMode="url"
               autoComplete="url"
               value={text}
@@ -357,7 +355,7 @@ export function AddressBar({
             {!text && !tags.length && (
               <span
                 aria-hidden
-                className={`pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 truncate font-mono text-base text-muted transition-[opacity,translate] duration-300 ease-out-soft ${phase === "out" ? "-translate-y-[calc(50%+10px)] opacity-0" : phase === "in" ? "translate-y-[calc(-50%+10px)] opacity-0 transition-none" : ""}`}
+                className={`pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 truncate text-base text-muted transition-[opacity,translate] duration-300 ease-out-soft ${phase === "out" ? "-translate-y-[calc(50%+10px)] opacity-0" : phase === "in" ? "translate-y-[calc(-50%+10px)] opacity-0 transition-none" : ""}`}
               >
                 {examples[example % examples.length]}
               </span>
@@ -365,7 +363,7 @@ export function AddressBar({
             {ghost.length > 0 && (
               <span
                 aria-hidden
-                className="pointer-events-none absolute inset-0 flex items-center font-mono text-base whitespace-pre"
+                className="pointer-events-none absolute inset-0 flex items-center text-base whitespace-pre"
               >
                 {ghost.map((g, i) => (
                   <span key={i} className="vanish-char" style={g.style}>
@@ -392,12 +390,11 @@ export function AddressBar({
             )}
           </div>
         </div>
-        <div className="flex items-center gap-0.5">
-          <label
-            htmlFor="test-category"
-            className="cursor-pointer text-[0.8125rem] text-muted"
-          >
-            {t("category")}
+        {/* The category as a chip beside the send button, as ChatGPT's "Think". */}
+        <div className="ml-auto flex items-center rounded-full pl-2.5 text-muted transition-colors duration-200 ease-out-soft hover:bg-surface-1">
+          <label htmlFor="test-category" className="cursor-pointer">
+            <LayoutGrid aria-hidden className="size-4" />
+            <span className="sr-only">{t("category")}</span>
           </label>
           {/* No ring and no blue label (owner, 5 Nov 2026): the bar's light shows focus is in the bar. */}
           <CategoryField
@@ -410,7 +407,7 @@ export function AddressBar({
             onChange={onCategory}
           />
         </div>
-        <div className="ml-auto">{children}</div>
+        {children}
       </div>
       <p
         aria-live="polite"
